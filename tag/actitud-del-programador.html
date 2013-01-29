@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>@#$%_ - Actitud del Programador</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href=".././theme/css/main.css" type="text/css" />
+        
+        <link href="http://iferminmontilla.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="@#$%_ Atom Feed" />
+        
+        
+
+        <!--[if IE]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href=".././css/ie.css"/>
+                <script src=".././js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href=".././css/ie6.css"/><![endif]-->
+
+</head>
+
+<body id="index" class="home">
+
+        <header id="banner" class="body">
+                <h1><a href="../.">@#$%_ </a></h1>
+                <nav><ul>
+                
+                
+                
+                
+                
+                    <li ><a href=".././category/acerca-de.html">Acerca de...</a></li>
+                
+                    <li ><a href=".././category/blog.html">Blog</a></li>
+                
+                    <li ><a href=".././category/cv.html">CV</a></li>
+                
+                </ul></nav>
+        </header><!-- /#banner -->
+                
+
+            
+
+        
+        
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href=".././testing-la-etapa-olvidada.html">Testing: la etapa olvidada.</a></h1> 
+                    <footer class="post-info">
+        <abbr class="published" title="2012-07-19T12:50:00">
+                Thu 19 July 2012
+        </abbr>
+
+        
+        <address class="vcard author">
+                By <a class="url fn" href=".././author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+        </address>
+        
+<p>In <a href=".././category/blog.html">Blog</a>. </p>
+<p>tags: <a href=".././tag/actitud-del-programador.html">Actitud del Programador</a><a href=".././tag/desarrollo-de-software.html">desarrollo de software</a><a href=".././tag/informatica.html">informática</a><a href=".././tag/metodologia.html">metodología</a><a href=".././tag/testing.html">testing</a></p>
+
+
+</footer><!-- /.post-info --><p>En esta oportunidad, vengo a hablarles de una etapa del
+desarrollo que suele ser olvidada y marginada por la mayoría de los
+desarrolladores que conozco: las pruebas. En&nbsp;<a class="reference external" href="http://zava.com.ve">Zava</a>, la compañía en
+la que trabajo actualmente, llevamos un tiempo hablando acerca de
+usar&nbsp;<a class="reference external" href="http://es.wikipedia.org/wiki/Desarrollo_guiado_por_pruebas">TDD</a>&nbsp;(Test Driven Development o Desarrollo Guiado por Pruebas)
+como metodología de desarrollo, en esta metodología, las pruebas
+unitarias juegan un papel principal, incluso hasta protagónico, pues son
+el motor del desarrollo del proyecto. Aún cuando no es oficial el hecho
+de que desarrollaremos utilizando esta metodología, personalmente me
+tomé en serio el hecho de probar suerte ejecutando mis tareas de
+programación guiadas por pruebas. En general, el flujo de trabajo en TDD
+es el siguiente:</p>
+<ol class="arabic simple">
+<li><strong>Elegir un requerimiento:&nbsp;</strong>dependiendo de la metodología de
+gestión de proyecto, será distinto este proceso, en nuestro caso,
+implementamos una versión modificada de SCRUM, por lo que lo primero
+que se hace es tomar uno de los requerimientos seleccionados para el
+sprint que está en desarrollo.</li>
+<li><strong>Escribir las pruebas unitarias:&nbsp;</strong>normalmente, el requerimiento
+tiene unas características que deben ser cumplidas, estas pruebas
+deben asegurarse de que dichas condiciones sean cumplidas. Es decir,
+una pieza de código lleva el programa de un estado A, a un estado B,
+la prueba deba asegurarse de que el estado B sea alcanzado
+completamente.</li>
+<li><strong>Escribir la implementación:&nbsp;</strong>lógicamente, si ejecutamos las
+pruebas sin la implementación, todas van a fallar. En este paso &quot;se
+le pone carne al esqueleto&quot;, es decir, de le agrega cuerpo a las
+funcionalidades cuyas pruebas fueron escritas.</li>
+<li><strong>Ejecutar las pruebas automatizadas:&nbsp;</strong>una vez codificado, se
+corren las pruebas y se realizan ajustas hasta asegurarse de que
+todas las pruebas pasan de manera satisfactoria.</li>
+<li><strong>Refactor:&nbsp;</strong>se realizan ajustes para eliminar la duplicación,
+reducir el acoplamiento y aumentar la cohesión.</li>
+<li><strong>Actualizar la lista de requerimientos:&nbsp;</strong>se marca el
+requerimiento como terminado.</li>
+</ol>
+<p>Usualmente el proceso de desarrollo se lleva a cabo al revés, es decir,
+primero se escribe la funcionalidad y luego se prueba. El problema de
+este enfoque es el siguiente:</p>
+<ol class="arabic simple">
+<li>Muchas veces por cuestiones de tiempo y prisa por entregar,
+simplemente se codifica la funcionalidad y se prueba de manera
+empírica y no se deja alguna garantía de que esa pieza de software
+funciona de manera correcta.</li>
+<li>No se validan todos los casos de prueba, ya sea que se pruebe
+utilizando la funcionalidad o escribiendo pruebas unitarias una vez
+codificada la pieza que se desea probar.</li>
+<li>Quien codifica la funcionalidad sabe lo que está bien y lo que está
+mal y, por la prisa de entregar, no validará los casos en los que
+sabe que falla pues, dependiendo de la metodología, cuando algo falle
+puede retomarse por mantenimiento y bug-fixing.</li>
+<li>En equipos de desarrollo pequeños, es el mismo desarrollador quien
+escribe las pruebas y si la carga de trabajo es muy alta, no se
+prueba de manera correcta.</li>
+</ol>
+<p>Personalmente me ha ocurrido que al desarrollar primero y escribir las
+pruebas después, termino validando únicamente mis casos base, que es lo
+que debería ocurrir la mayor parte del tiempo, pero los casos borde
+quedan sin ser validados y, cuando llega el momento en que algún usuario
+cae dentro de estos casos y el software falla, debo volver sobre esa
+funcionalidad que, usualmente, está poco documentada (la documentación
+es otra de las etapas olvidadas por nosotros los desarrolladores), la
+escribí hace algún tiempo y no recuerdo bien cuál fue la lógica o, peor
+aún, la escribió otro desarrollador y no tengo ni la más remota idea de
+qué fue lo que hizo y, además, tengo otras cosas que hacer en el
+momento, por lo que simplemente terminaba escribiendo un parche
+específico para validar lo que estaba ocurriendo en el momento y
+solventar el problema particular. Si existía más de un caso borde sin
+validar, este proceso se podía repetir N veces. En el poco tiempo que
+tengo probando seguir el esquema que propone TDD, mi manera de
+enfrentarme a los problemas de desarrollo ha experimentado varios
+cambios y he visto las siguientes ventajas:</p>
+<ol class="arabic simple">
+<li>El escribir las pruebas primero, requiere que tenga muy claro el
+requerimiento y las condiciones que deben ser satisfechas, por lo
+tanto, empiezo a codificar la funcionalidad con una idea más clara de
+lo que debo hacer.</li>
+<li>A medida que voy escribiendo las pruebas unitarias y validando los
+casos de prueba, surgen casos borde que, quizás, al principio no
+había considerado. Al final, tengo una validación completa de mi
+código y una mayor seguridad en que lo que hice está bien y funciona.</li>
+<li>Al desarrollar la funcionalidad como tal con una idea más clara de lo
+que cubre el requerimiento, puedo separar el código en módulos que
+ejecuten cada uno de los pasos necesarios para cubrirlo de manera
+satisfactoria.</li>
+<li>Al tener todos los casos de prueba definidos y, con ello, el
+requerimiento bien claro y definido, no escribo código de más,
+simplemente me concentro en cubrir la funcionalidad y todo el código
+que escribí se utiliza para ello.</li>
+<li>La cantidad de bugs en el código que produzco ha reducido
+considerablemente.</li>
+<li>A la hora de alguna falla, las mismas pruebas me ayudan a cercar el
+error.</li>
+<li>Si agrego código que rompe una funcionalidad previa, las mismas
+pruebas me indican qué está fallando y dónde, por lo que puedo hacer
+refactor inmediatamente y &nbsp;hacer mis módulos más ortogonales entre
+sí.</li>
+<li>Si otro desarrollador debe utilizar lo que yo desarrollé, el código
+lo entrego con una garantía de que lo que hace, lo hace bien.</li>
+<li>Cumplo con todas las etapas del desarrollo de software y ninguna
+queda incompleta.</li>
+</ol>
+<p>En lo personal, la manera de trabajar que propone TDD me ha funcionado
+bastante bien, la única desventaja fue que al inicio de mi experimento
+no tenía mucha experiencia con frameworks o librerías para el desarrollo
+de pruebas, más allá de algunas pruebas unitarias que hice durante la
+universidad en los cursos de Ingeniería del Software utilizando JUnit en
+Java, por lo que debí cubrir una curva de aprendizaje. Una vez hecho
+esto, todo fluyó mucho más rápido y siento que soy más productivo.
+Trataré de publicar un par de tutoriales de las herramientas que he
+usado recientemente para ver si motivo a alguien más a utilizarlas y a
+tomar un poco más en serio las pruebas de software pues, aunque en la
+universidad las mencionan como una etapa importante en algunos cursos,
+muy pocas personas en la calle toman realmente en serio este recurso tan
+útil.</p>
+</p>
+                </article>
+                
+            </aside><!-- /#featured -->
+            
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+            
+        
+        
+        
+            
+
+        
+         
+            
+            <li><article class="hentry">    
+                <header>
+                    <h1><a href=".././graduado-y-ahora.html" rel="bookmark"
+                           title="Permalink to Graduado, ¿y ahora?">Graduado, ¿y ahora?</a></h1>
+                </header>
+                
+                <div class="entry-content">
+                <footer class="post-info">
+        <abbr class="published" title="2012-06-27T10:59:00">
+                Wed 27 June 2012
+        </abbr>
+
+        
+        <address class="vcard author">
+                By <a class="url fn" href=".././author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+        </address>
+        
+<p>In <a href=".././category/blog.html">Blog</a>. </p>
+<p>tags: <a href=".././tag/actitud-del-programador.html">Actitud del Programador</a><a href=".././tag/carrera.html">carrera</a><a href=".././tag/opinion.html">opinión</a><a href=".././tag/personal.html">personal</a></p>
+
+
+</footer><!-- /.post-info -->
+                <p>Bueno, vengo con otra reflexión respecto a qué ocurre al culminar la
+carrera a nivel universitario, quiero empezar aclarando que acá expondré
+mi (¿poca?) experiencia personal y este artículo estará marcado por mi
+manera particular de ver las cosas que no necesariamente resulta ser la
+de todos.</p>
+<p>Realmente no hace ...</p>
+                <a class="readmore" href=".././graduado-y-ahora.html">read more</a>
+                
+                </div><!-- /.entry-content -->
+            </article></li>
+        
+        
+            
+
+        
+         
+            
+            <li><article class="hentry">    
+                <header>
+                    <h1><a href=".././cosas-que-amo-de-python-ii-su-filosofia.html" rel="bookmark"
+                           title="Permalink to Cosas que amo de Python II: Su Filosofía">Cosas que amo de Python II: Su Filosofía</a></h1>
+                </header>
+                
+                <div class="entry-content">
+                <footer class="post-info">
+        <abbr class="published" title="2011-09-13T09:30:00">
+                Tue 13 September 2011
+        </abbr>
+
+        
+        <address class="vcard author">
+                By <a class="url fn" href=".././author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+        </address>
+        
+<p>In <a href=".././category/blog.html">Blog</a>. </p>
+<p>tags: <a href=".././tag/actitud-del-programador.html">Actitud del Programador</a><a href=".././tag/lenguajes.html">Lenguajes</a><a href=".././tag/programacion.html">Programación</a></p>
+
+
+</footer><!-- /.post-info -->
+                <p>Cada lenguaje y cada herramienta vienen con una filosofía y, al parecer,
+con una manera de pensar. Los que usamos Linux pensamos de una manera,
+por ejemplo, estamos muy orientados al software libre.</p>
+<p>Quienes usan
+Windows piensan de otra manera muy distinta y quienes son usuarios de
+las herramientas de ...</p>
+                <a class="readmore" href=".././cosas-que-amo-de-python-ii-su-filosofia.html">read more</a>
+                
+                </div><!-- /.entry-content -->
+            </article></li>
+        
+        
+            
+
+        
+         
+            
+            <li><article class="hentry">    
+                <header>
+                    <h1><a href=".././por-que-aprender-un-nuevo-lenguaje.html" rel="bookmark"
+                           title="Permalink to ¿Por qué aprender un nuevo lenguaje?">¿Por qué aprender un nuevo lenguaje?</a></h1>
+                </header>
+                
+                <div class="entry-content">
+                <footer class="post-info">
+        <abbr class="published" title="2011-09-11T20:56:00">
+                Sun 11 September 2011
+        </abbr>
+
+        
+        <address class="vcard author">
+                By <a class="url fn" href=".././author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+        </address>
+        
+<p>In <a href=".././category/blog.html">Blog</a>. </p>
+<p>tags: <a href=".././tag/actitud-del-programador.html">Actitud del Programador</a><a href=".././tag/carrera.html">carrera</a><a href=".././tag/informatica.html">informática</a><a href=".././tag/opinion.html">opinión</a></p>
+
+
+</footer><!-- /.post-info -->
+                <p>Java, C, C#, ,C++, PHP, Perl, Ruby, SQL, SmallTalk, Erlang, Python,
+Haskell... Existen muchísimos lenguajes de programación, cada uno con
+sus fortalezas y debilidades, ya aprendí Java en la Universidad, también
+C, he hecho uno que otro proyecto web en PHP, &quot;¡con JQuery y todo!&quot;.
+¿Por qué debería aprender un ...</p>
+                <a class="readmore" href=".././por-que-aprender-un-nuevo-lenguaje.html">read more</a>
+                
+                </div><!-- /.entry-content -->
+            </article></li>
+        
+        
+            
+
+        
+         
+            
+            <li><article class="hentry">    
+                <header>
+                    <h1><a href=".././virtudes-del-buen-programador.html" rel="bookmark"
+                           title="Permalink to Virtudes del buen programador">Virtudes del buen programador</a></h1>
+                </header>
+                
+                <div class="entry-content">
+                <footer class="post-info">
+        <abbr class="published" title="2011-07-03T14:11:00">
+                Sun 03 July 2011
+        </abbr>
+
+        
+        <address class="vcard author">
+                By <a class="url fn" href=".././author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+        </address>
+        
+<p>In <a href=".././category/blog.html">Blog</a>. </p>
+<p>tags: <a href=".././tag/actitud-del-programador.html">Actitud del Programador</a><a href=".././tag/opinion.html">opinión</a></p>
+
+
+</footer><!-- /.post-info -->
+                <p>Bueno, llevaba tiempo formándome una imagen mental de cómo sería un buen
+programador, pensé en estupideces como paciencia, constancia,
+perseverancia, espíritu de equipo, empatía. Lo cierto es que ninguno de
+los buenos programadores que conozco son así. En fin, en estos días,
+Francisco Palm (&#64;mapologo en Twitter) me iluminó enunciando ...</p>
+                <a class="readmore" href=".././virtudes-del-buen-programador.html">read more</a>
+                
+                </div><!-- /.entry-content -->
+            </article></li>
+        
+        
+            </ol><!-- /#posts-list -->
+            
+                
+<p class="paginator">
+    
+    Page 1 / 1
+    
+</p>
+
+            
+            </section><!-- /#content -->
+        
+    
+
+
+        <section id="extras" class="body">
+        
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                        
+                            <li><a href="http://docs.notmyidea.org/alexis/pelican/">Pelican</a></li>
+                        
+                            <li><a href="http://python.org">Python.org</a></li>
+                        
+                            <li><a href="http://jinja.pocoo.org">Jinja2</a></li>
+                        
+                        </ul>
+                </div><!-- /.blogroll -->
+        
+        
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://iferminmontilla.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                            
+
+                        
+                            <li><a href="http://twitter.com/iferminm">Twitter</a></li>
+                        
+                            <li><a href="http://www.linkedin.com/profile/view?id=66587805&trk=tab_pro">LinkedIn</a></li>
+                        
+                            <li><a href="http://stackoverflow.com/users/1157389/israelord">StackOverflow</a></li>
+                        
+                            <li><a href="https://github.com/iferminm">GitHub</a></li>
+                        
+                        </ul>
+                </div><!-- /.social -->
+        
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+
+
+
+</body>
+</html>

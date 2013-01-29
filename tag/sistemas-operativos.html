@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>@#$%_ - Sistemas Operativos</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href=".././theme/css/main.css" type="text/css" />
+        
+        <link href="http://iferminmontilla.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="@#$%_ Atom Feed" />
+        
+        
+
+        <!--[if IE]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href=".././css/ie.css"/>
+                <script src=".././js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href=".././css/ie6.css"/><![endif]-->
+
+</head>
+
+<body id="index" class="home">
+
+        <header id="banner" class="body">
+                <h1><a href="../.">@#$%_ </a></h1>
+                <nav><ul>
+                
+                
+                
+                
+                
+                    <li ><a href=".././category/acerca-de.html">Acerca de...</a></li>
+                
+                    <li ><a href=".././category/blog.html">Blog</a></li>
+                
+                    <li ><a href=".././category/cv.html">CV</a></li>
+                
+                </ul></nav>
+        </header><!-- /#banner -->
+                
+
+            
+
+        
+        
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href=".././limpiando-la-torta-e-instalando-cyanogenmod-7.html">Limpiando la torta e instalando Cyanogenmod 7</a></h1> 
+                    <footer class="post-info">
+        <abbr class="published" title="2011-12-20T10:20:00">
+                Tue 20 December 2011
+        </abbr>
+
+        
+        <address class="vcard author">
+                By <a class="url fn" href=".././author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+        </address>
+        
+<p>In <a href=".././category/blog.html">Blog</a>. </p>
+<p>tags: <a href=".././tag/android.html">Android</a><a href=".././tag/sistemas-operativos.html">Sistemas Operativos</a><a href=".././tag/software-libre.html">Software Libre</a></p>
+
+
+</footer><!-- /.post-info --><p>Ya en la entrada anterior expliqué cómo hice para,
+&quot;inocentemente&quot;, poner la torta mientras instalaba Cyanogenmod, ahora
+explicaré paso a paso cómo lo reparé, luego de eso, explicaré cómo
+procedí a instalar Cyanogenmod 7 en mi Samsung Captivate (AT&amp;T Galaxy
+S). El escenario era este: 2:00am, mucho sueño y ganas de dormir, un
+poco frustrado porque mi flamante Captivate no era más que un
+pisapapeles muy costoso, la &quot;pantalla negra de la muerte&quot; era una
+perturbación en la fuerza realmente fuerte, era hora de invertir las
+próximas horas en averiguar cómo solucionar el problema y, además, en
+Linux: <strong>Unbricking</strong> Lo primero que debía hacer era regresar mi
+teléfono a su estado de fábrica, por lo que busqué (como un loco) algún
+sitio web que tuviera para descargas el ROM original del Captivate, por
+fortuna lo conseguí y lo respaldé en mi carpeta pública de Dropbox
+(junto con otras cosas que menciono acá, si a alguien le hace falta,
+puede pedirmelas y se las mando por mail). El primer reto era &quot;romper el
+ladrillo&quot;, por fortuna existe una aplicación, desarrollada en java, que
+se llama <em>OneClick Unbricker</em>, simplemente conecté el teléfono a la
+computadora, activé la aplicación y automáticamente el teléfono estaba
+en su estado anterior, es decir, no respondía, pero al menos iniciaba y
+me permitía entrar a modo de descarga, lo cual me permitió pasar al
+siguiente paso. <strong>Instalando el ROM de fábrica</strong> Luego de descargar el
+ROM, hay que flashearlo en el dispositivo, para ello existe un
+aplicativo llamado Odín, que sólo corre en Windows pero que no cunda el
+pánico, Heimdall, un aplicativo similar, corre perfecto en linux, es un
+programa similar a Odín, cuenta con interfaces para línea de comandos y
+un frontend gráfico que no da problemas. Al descomprimir el firmware,
+debemos conseguir los siguientes archivos:</p>
+<ul class="simple">
+<li>boot.bin: que lo colocamos en el campo <em>Primary Bootloader</em></li>
+<li>Sbl.bin: que corresponde con el campo <em>Secondary Bootloader</em></li>
+<li>factoryfs.rfs: que es el sistema de archivos original</li>
+<li>zImage: que corresponde con la imagen del kernel</li>
+<li>param.lfs, dbdata.rfs, cache.rfs y modem.bin que van en los campos
+del mismo nombre en el Heimdall</li>
+<li>firmware.xml: que va en el campo <em>recovery</em></li>
+</ul>
+<p>Esto puede cambiar dependiendo de la versión del Heimdall, tengo
+entendido que en la última versión se coloca el rar completo y él mismo
+extrae los archivos que necesita. Una vez que tenemos todo listo,
+iniciamos nuestro Galaxy S Cativate en modo Descarga, para ello
+retiramos la batería, conectamos el equipo via USB, presionamos los dos
+botones de volúmen y el de encendido mientras colocamos la batería y
+luego liberamos el botón de encendido, cuando veamos una pantalla negra
+con una señal en amarillo que dice <em>Download,</em>&nbsp; presionamos <em>Start</em>en
+el Heimdall&nbsp;para flashear el firmware, una vez que la barra de progreso
+llegue al final, el teléfono reiniciará y tendrá el firmware de fábrica.
+<strong>Instalando Cyanogenmod 7</strong> Antes de seguir, es recomendable que hagan
+un respaldo completo del sistema, para que no les ocurra lo mismo que a
+mi en caso de desastre, dicho esto, el procedimiento para instalar
+<em>Cyanogenmod 7</em>&nbsp;es súper sencillo:</p>
+<ul class="simple">
+<li>Descargamos la versión para nuestro dispositivo, junto con la versión
+de google apps pues Cyanogen no las incluye debido a una exigencia de
+Google de no incluir sus aplicaciones directamente en el ROM, sino
+distribuirlas aparte.</li>
+<li>Descargamos el zImage de ClockWork Recovery y lo flasheamos con
+Heimdall en el teléfono (también lo tengo en Dropbox).</li>
+<li>Colocamos ambos zip (si descargamos los dos) en el internal_sd del
+teléfono y reiniciamos en modo Recovery, para ello apagamos el
+teléfono y presionamos los botones de power, y losdos de volúmen al
+mismo tiempo hasta que nos aparezca un menú.</li>
+<li>Hacemos un wipe de la data y del caché con las opciones
+correspondientes (utilizamos los botones de volúmen para desplazarnos
+por el menú y el botón de encendido para seleccionar).</li>
+<li>Luego, seleccionamos <em>install zip from SD.</em></li>
+<li>Después, <em>choose zip from SD.</em></li>
+<li>Seleccionamos el zip a instalar.</li>
+</ul>
+<p>Debemos repetir los pasos 5, 6 y 7 para el zip de Google Apps si
+deseamos instalarlo. Al reiniciar el teléfono, empezará a arrancar
+Cyanogen, es importante que el teléfono <strong>no se apague</strong>&nbsp;durante este
+proceso, lo digo por experiencia ;-), el primer arranque siempre tardará
+un poco así que hay que tener algo de paciencia.</p>
+
+                </article>
+                
+            </aside><!-- /#featured -->
+            
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+            
+        
+        
+        
+            
+
+        
+         
+            
+            <li><article class="hentry">    
+                <header>
+                    <h1><a href=".././como-no-instalar-un-nuevo-rom-brickeando-tu-cel.html" rel="bookmark"
+                           title="Permalink to Cómo NO instalar un nuevo ROM (Brickeando tu cel)">Cómo NO instalar un nuevo ROM (Brickeando tu cel)</a></h1>
+                </header>
+                
+                <div class="entry-content">
+                <footer class="post-info">
+        <abbr class="published" title="2011-12-19T10:20:00">
+                Mon 19 December 2011
+        </abbr>
+
+        
+        <address class="vcard author">
+                By <a class="url fn" href=".././author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+        </address>
+        
+<p>In <a href=".././category/blog.html">Blog</a>. </p>
+<p>tags: <a href=".././tag/android.html">Android</a><a href=".././tag/sistemas-operativos.html">Sistemas Operativos</a><a href=".././tag/software-libre.html">Software Libre</a></p>
+
+
+</footer><!-- /.post-info -->
+                <p>Bien, en este post pretendo resumir mi primera metida de
+pata flasheando mi Samsung Captivate (Galaxy S versión AT&amp;T) con
+Cyanogenmod 7.</p>
+<p>Vale destacar, que este es el primero de una serie de
+tres artículos sobre qué hacer y qué no hacer al flashear tu teléfono
+celular con un ...</p>
+                <a class="readmore" href=".././como-no-instalar-un-nuevo-rom-brickeando-tu-cel.html">read more</a>
+                
+                </div><!-- /.entry-content -->
+            </article></li>
+        
+        
+            </ol><!-- /#posts-list -->
+            
+                
+<p class="paginator">
+    
+    Page 1 / 1
+    
+</p>
+
+            
+            </section><!-- /#content -->
+        
+    
+
+
+        <section id="extras" class="body">
+        
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                        
+                            <li><a href="http://docs.notmyidea.org/alexis/pelican/">Pelican</a></li>
+                        
+                            <li><a href="http://python.org">Python.org</a></li>
+                        
+                            <li><a href="http://jinja.pocoo.org">Jinja2</a></li>
+                        
+                        </ul>
+                </div><!-- /.blogroll -->
+        
+        
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://iferminmontilla.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                            
+
+                        
+                            <li><a href="http://twitter.com/iferminm">Twitter</a></li>
+                        
+                            <li><a href="http://www.linkedin.com/profile/view?id=66587805&trk=tab_pro">LinkedIn</a></li>
+                        
+                            <li><a href="http://stackoverflow.com/users/1157389/israelord">StackOverflow</a></li>
+                        
+                            <li><a href="https://github.com/iferminm">GitHub</a></li>
+                        
+                        </ul>
+                </div><!-- /.social -->
+        
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+
+
+
+</body>
+</html>
