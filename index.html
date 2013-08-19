@@ -25,8 +25,274 @@
 
                             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://iferminmontilla.com/y-al-fin-me-estrene-como-ponente.html">Y al fin!, me estrené como ponente</a></h1> 
+                    <h1 class="entry-title"><a href="http://iferminmontilla.com/clientes-soap-en-python.html">Clientes SOAP en Python</a></h1> 
                     <footer class="post-info">
+        <abbr class="published" title="2013-08-18T08:30:00">
+                dom 18 agosto 2013
+        </abbr>
+
+                <address class="vcard author">
+                By <a class="url fn" href="http://iferminmontilla.com/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+        </address>
+        <p>In <a href="http://iferminmontilla.com/category/blog.html">Blog</a>. </p>
+<p>tags: <a href="http://iferminmontilla.com/tag/python.html">python</a><a href="http://iferminmontilla.com/tag/web-services.html">web services</a><a href="http://iferminmontilla.com/tag/soap.html">soap</a></p>
+</footer><!-- /.post-info --><p>Como todos saben, y algunos me chalequean por eso, en la
+primera mitad de 2013 cambié de trabajo dos veces, estaba
+algo aburrido en Metamax y decidí aceptar una oportunidad
+en 4geeks, junto con una serie de proyectos para una empresa
+en el extranjero que pintaban bastante bien, una vez que terminé
+los proyectos de la otra empresa, terminé enamorándome del proyecto
+que desarrollaba desde 4geeks y uniéndome al startup a tiempo completo.</p>
+<p>La historia en 4geeks es muy graciosa, un tal Saúl Lustgarten
+llevaba tiempo escribiendo en todas las listas de correo donde
+estoy pidiendo un desarrollador Python, incluso me contactó personalmente
+varias veces vía email y a través de <em>LinkedIn</em> para desarrollar su
+<em>startup</em>, una central telefónica en la nube llamada <em>RingTu</em>, el tema
+era que no me resultaba atractivo, así que en ese momento acepté la oferta
+de 4geeks.</p>
+<p>El primer día en 4geeks, me informan acerca del proyecto que iba a desarrollar,
+&quot;vas a hacer uno de los startups de Wayra, es una central telefónica en la nube&quot;
+y yo &quot;¿RingTu?&quot;, &quot;sí ese mismo&quot;, vaya, al parecer hasta se las arregló para que
+desde 4geeks desarrollara su startup, jajajajajajaja.</p>
+<p>Básicamente lo que debía hacer era unos wrappers para unos servicios web
+que ellos consumen, ese era sólo el inicio del proyecto, pensé que sería
+divertido, ya había hecho wrappers para otros servicios web, y en Python
+es muy fácil hacer clientes para servicios web, sin importar si hablan JSON o
+XML o algún protocolo propio, la cosa se puso esotérica cuando vi que todos
+los URL de los servicios con los que iba a trabajar terminaban en .wsdl.</p>
+<p>¿SOAP?, con el boom de REST ¿quién usa SOAP?, en fin, ¿qué tan difícil puede ser?,
+en Java es realmente fácil escribir clientes y servicios web usando SOAP y en
+Python no debe ser la excepción, hay librerías para todo, dejé de hacerme
+preguntas acerca del sentido de la vida, el universo y todo lo demás y puse manos
+a la obra a investigar alguna buena librería que me facilitara el trabajo.</p>
+<p>Luego de unos minutos leyendo en <em>StackOverflow</em>, vi que al parecer suds era
+la mejor opción, no se veía tan abandonada y, comparada a las demás opciones,
+tenía una documentación decente.</p>
+<p>Lo primero es, obviamente, instalarla:</p>
+<div class="highlight"><pre>pip install suds
+</pre></div>
+<p>Recuerden que siempre es buena práctica trabajar con virtualenvs y, además, es muy
+buena opción el hecho de utilizar virtualenvwrapper para gestionarlos.</p>
+<p>Una vez que tenemos suds ya instalado, es sólo cuestión de empezar a utilizarla,
+para hacer clientes, que es de lo que hablaré en este post, sólo nos interesa la
+clase definida en <em>suds.client.Client</em>.</p>
+<p>Si repasamos un poco de teoría acerca de los servicios web sobre el protocolo SOAP,
+veremos que se convirtió en la capa subyacente para servicios complejos basados en
+WSDL, que es una manera de especificar los objetos y métodos que expone un servicio web
+y a los que el cliente puede tener acceso. WSDL es un acrónimo que significa <em>Web Service
+Description Language</em>.</p>
+<p>Toda la definición de servicios web SOAP se hace en un documento WSDL, que no es mas que un
+XML donde se define todo lo que este servicio expone para ser consumido por sus clientes.
+De igual manera, el pase de mensajes (soap messages) entre el cliente y el servidor, se hace
+en formato XML.</p>
+<p>A continuación un ejemplo de documento WSDL:</p>
+<div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;description</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/ns/wsdl&quot;</span>
+             <span class="na">xmlns:tns=</span><span class="s">&quot;http://www.tmsws.com/wsdl20sample&quot;</span>
+             <span class="na">xmlns:whttp=</span><span class="s">&quot;http://schemas.xmlsoap.org/wsdl/http/&quot;</span>
+             <span class="na">xmlns:wsoap=</span><span class="s">&quot;http://schemas.xmlsoap.org/wsdl/soap/&quot;</span>
+             <span class="na">targetNamespace=</span><span class="s">&quot;http://www.tmsws.com/wsdl20sample&quot;</span><span class="nt">&gt;</span>
+
+<span class="c">&lt;!-- Tipos Abstractos --&gt;</span>
+   <span class="nt">&lt;types&gt;</span>
+      <span class="nt">&lt;xs:schema</span> <span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span>
+                <span class="na">xmlns=</span><span class="s">&quot;http://www.tmsws.com/wsdl20sample&quot;</span>
+                <span class="na">targetNamespace=</span><span class="s">&quot;http://www.example.com/wsdl20sample&quot;</span><span class="nt">&gt;</span>
+
+         <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;request&quot;</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/xs:element&gt;</span>
+         <span class="nt">&lt;xs:element</span> <span class="na">name=</span><span class="s">&quot;response&quot;</span><span class="nt">&gt;</span> ... <span class="nt">&lt;/xs:element&gt;</span>
+      <span class="nt">&lt;/xs:schema&gt;</span>
+   <span class="nt">&lt;/types&gt;</span>
+
+<span class="c">&lt;!-- Interfaces abstractas --&gt;</span>
+   <span class="nt">&lt;interface</span> <span class="na">name=</span><span class="s">&quot;Interface1&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fault</span> <span class="na">name=</span><span class="s">&quot;Error1&quot;</span> <span class="na">element=</span><span class="s">&quot;tns:response&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;operation</span> <span class="na">name=</span><span class="s">&quot;Opp1&quot;</span> <span class="na">pattern=</span><span class="s">&quot;http://www.w3.org/ns/wsdl/in-out&quot;</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;input</span> <span class="na">messageLabel=</span><span class="s">&quot;In&quot;</span> <span class="na">element=</span><span class="s">&quot;tns:request&quot;</span><span class="nt">/&gt;</span>
+         <span class="nt">&lt;output</span> <span class="na">messageLabel=</span><span class="s">&quot;Out&quot;</span> <span class="na">element=</span><span class="s">&quot;tns:response&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/operation&gt;</span>
+   <span class="nt">&lt;/interface&gt;</span>
+
+<span class="c">&lt;!-- Interface concreta sobre HTTP --&gt;</span>
+   <span class="nt">&lt;binding</span> <span class="na">name=</span><span class="s">&quot;HttpBinding&quot;</span> <span class="na">interface=</span><span class="s">&quot;tns:Interface1&quot;</span>
+            <span class="na">type=</span><span class="s">&quot;http://www.w3.org/ns/wsdl/http&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;operation</span> <span class="na">ref=</span><span class="s">&quot;tns:Get&quot;</span> <span class="na">whttp:method=</span><span class="s">&quot;GET&quot;</span><span class="nt">/&gt;</span>
+   <span class="nt">&lt;/binding&gt;</span>
+
+<span class="c">&lt;!-- Interface concreta sobre SOAP --&gt;</span>
+   <span class="nt">&lt;binding</span> <span class="na">name=</span><span class="s">&quot;SoapBinding&quot;</span> <span class="na">interface=</span><span class="s">&quot;tns:Interface1&quot;</span>
+            <span class="na">type=</span><span class="s">&quot;http://www.w3.org/ns/wsdl/soap&quot;</span>
+            <span class="na">wsoap:protocol=</span><span class="s">&quot;http://www.w3.org/2003/05/soap/bindings/HTTP/&quot;</span>
+            <span class="na">wsoap:mepDefault=</span><span class="s">&quot;http://www.w3.org/2003/05/soap/mep/request-response&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;operation</span> <span class="na">ref=</span><span class="s">&quot;tns:Ge99t&quot;</span> <span class="nt">/&gt;</span>
+   <span class="nt">&lt;/binding&gt;</span>
+
+
+<span class="c">&lt;!-- Endpoints que ofrecen el servicio --&gt;</span>
+   <span class="nt">&lt;service</span> <span class="na">name=</span><span class="s">&quot;Service1&quot;</span> <span class="na">interface=</span><span class="s">&quot;tns:Interface1&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;endpoint</span> <span class="na">name=</span><span class="s">&quot;HttpEndpoint&quot;</span>
+                <span class="na">binding=</span><span class="s">&quot;tns:HttpBinding&quot;</span>
+                <span class="na">address=</span><span class="s">&quot;http://www.example.com/rest/&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;endpoint</span> <span class="na">name=</span><span class="s">&quot;SoapEndpoint&quot;</span>
+                <span class="na">binding=</span><span class="s">&quot;tns:SoapBinding&quot;</span>
+                <span class="na">address=</span><span class="s">&quot;http://www.example.com/soap/&quot;</span><span class="nt">/&gt;</span>
+   <span class="nt">&lt;/service&gt;</span>
+<span class="nt">&lt;/description&gt;</span>
+</pre></div>
+<p>La sección <em>types</em> describe los tipos de dato a los que da soporte el servicio web
+que se está describiendo. Las <em>interfaces</em>, definen un servicio como tal, es decir,
+las operaciones que pueden ser realizadas y los mensajes que son soportados para realizar
+cada operación. Los <em>bindings</em> especifican la interface y cómo deben ser pasados los mensajes
+e incluso el protocolo que debe ser utilizado para el transporte. Finalmente, los <em>endpoints</em>,
+definen los puntos de conexión con el servicio web.</p>
+<p>Por otra parte, un mensaje SOAP debería verse de la siguiente manera:</p>
+<div class="highlight"><pre>POST /InStock HTTP/1.1
+Host: www.example.org
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: 299
+SOAPAction: &quot;http://www.w3.org/2003/05/soap-envelope&quot;
+
+<span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;soap:Envelope</span> <span class="na">xmlns:soap=</span><span class="s">&quot;http://www.w3.org/2003/05/soap-envelope&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;soap:Header&gt;</span>
+    <span class="nt">&lt;/soap:Header&gt;</span>
+    <span class="nt">&lt;soap:Body&gt;</span>
+        <span class="nt">&lt;m:GetStockPrice</span> <span class="na">xmlns:m=</span><span class="s">&quot;http://www.example.org/stock&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;m:StockName&gt;</span>IBM<span class="nt">&lt;/m:StockName&gt;</span>
+        <span class="nt">&lt;/m:GetStockPrice&gt;</span>
+    <span class="nt">&lt;/soap:Body&gt;</span>
+<span class="nt">&lt;/soap:Envelope&gt;</span>
+</pre></div>
+<p>En un mensaje, el <em>envelope</em> es lo que identifica el XML como un mensaje SOAP,
+el <em>header</em> contiene información de encabezado, como por ejemplo, llaves de autenticación
+o tokens de acceso. Finalmente, el <em>body</em> o cuerpo del mensaje, es el que contiene
+el mensaje como tal que se está enviando, ya sea en solicitud o respuesta del servicio.</p>
+<p>En este caso, se está invocando una función remota <em>GetStockPrice</em> definida en un namespace <em>m</em>
+del wsdl que describe este servicio. A esta función remota se le está enviando un argumento llamado
+<em>StockName</em> y el valor de este argumento es <em>IBM</em>, el servicio debería retornar el precio del producto
+cuyo <em>StockName</em> sea <em>IBM</em></p>
+<p>Para que pueda darse el intercambio de información entre un cliente y un servidor SOAP, ambos deben tener
+conocimiento de lo que está definido en el descriptor del servicio, es decir, ambos deben tener acceso
+al WSDL, es por ello que lo usual es que el proveedor del servicio web exponga el documento en un URL accesible.</p>
+<p>Para este tutorial, usaremos este servicio web: <a class="reference external" href="http://www.webservicex.com/globalweather.asmx?WSDL">http://www.webservicex.com/globalweather.asmx?WSDL</a>, que es un
+servicio web de clima. Acá: <a class="reference external" href="http://www.service-repository.com/operation/operations?id=4">http://www.service-repository.com/operation/operations?id=4</a> podemos observar
+las operaciones y sus parámetros en un formato amigable al humano :-).</p>
+<p>Lo primero es, en nuestro caso, construir una instancia de suds.client.Client que tenga conocimiento
+del WSDL que describe el servicio que vamos a usar:</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">suds.client</span> <span class="kn">import</span> <span class="n">Client</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s">&#39;http://www.webservicex.com/globalweather.asmx?WSDL&#39;</span><span class="p">)</span>
+</pre></div>
+<p>Listo, ya tenemos un cliente SOAP listo para consumir el servicio desde Python.</p>
+<p>Lo que nos queda es revisar la documentación del servicio o, si no la hay, el WSDL
+para ver cuáles objetos pueden ser pasados como mensajes, construir el request e
+invocar el método remoto, para ello nos interesan: Client.factory y Client.service.</p>
+<p>Por ejemplo, obtengamos el tiempo para Caracas - Venezuela:</p>
+<div class="highlight"><pre><span class="n">request</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s">&#39;tns:GetWeather&#39;</span><span class="p">)</span>
+<span class="n">request</span><span class="o">.</span><span class="n">CityName</span> <span class="o">=</span> <span class="s">&#39;Caracas&#39;</span>
+<span class="n">request</span><span class="o">.</span><span class="n">CountryName</span> <span class="o">=</span> <span class="s">&#39;Venezuela&#39;</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">GetWeather</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+</pre></div>
+<p>Listo, así de fácil, explorando la documentación o el WSDL veremos que hay un objeto
+llamado <em>GetWeather</em> definido en el namespace <em>tns</em>, este objeto tiene dos campos <em>string</em>:
+<em>CityName</em> y <em>CountryName</em>, también, si vemos la definición de la respuesta en el WSDL, podremos
+observar que es un texto plano (es decir, viene un objeto primitivo <em>string</em> como SOAPResponse).
+Vamos a ver cómo maneja suds ambos casos:</p>
+<div class="highlight"><pre><span class="nb">type</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="n">instance</span>
+<span class="k">print</span> <span class="n">request</span>
+<span class="p">(</span><span class="n">GetWeather</span><span class="p">){</span>
+   <span class="n">CityName</span> <span class="o">=</span> <span class="s">&quot;Caracas&quot;</span>
+   <span class="n">CountryName</span> <span class="o">=</span> <span class="s">&quot;Venezuela&quot;</span>
+<span class="p">}</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+<span class="n">suds</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">Text</span>
+<span class="k">print</span> <span class="n">response</span>
+<span class="o">&lt;</span><span class="err">?</span><span class="n">xml</span> <span class="n">version</span><span class="o">=</span><span class="s">&quot;1.0&quot;</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&quot;utf-16&quot;</span><span class="err">?</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">CurrentWeather</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;</span><span class="n">Caracas</span> <span class="o">/</span> <span class="n">Maiquetia</span> <span class="n">Aerop</span><span class="o">.</span> <span class="n">Intl</span><span class="o">.</span> <span class="n">Simon</span> <span class="n">Bolivar</span><span class="p">,</span> <span class="n">Venezuela</span> <span class="p">(</span><span class="n">SVMI</span><span class="p">)</span> <span class="mi">10</span><span class="o">-</span><span class="mi">36</span><span class="n">N</span> <span class="mo">066</span><span class="o">-</span><span class="mi">59</span><span class="n">W</span> <span class="mi">48</span><span class="n">M</span><span class="o">&lt;/</span><span class="n">Location</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">Time</span><span class="o">&gt;</span><span class="n">Aug</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">2013</span> <span class="o">-</span> <span class="mi">09</span><span class="p">:</span><span class="mo">00</span> <span class="n">PM</span> <span class="n">EDT</span> <span class="o">/</span> <span class="mf">2013.08</span><span class="o">.</span><span class="mi">19</span> <span class="mo">0100</span> <span class="n">UTC</span><span class="o">&lt;/</span><span class="n">Time</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">Wind</span><span class="o">&gt;</span> <span class="n">Calm</span><span class="p">:</span><span class="mi">0</span><span class="o">&lt;/</span><span class="n">Wind</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">Visibility</span><span class="o">&gt;</span> <span class="n">greater</span> <span class="n">than</span> <span class="mi">7</span> <span class="n">mile</span><span class="p">(</span><span class="n">s</span><span class="p">):</span><span class="mi">0</span><span class="o">&lt;/</span><span class="n">Visibility</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">SkyConditions</span><span class="o">&gt;</span> <span class="n">partly</span> <span class="n">cloudy</span><span class="o">&lt;/</span><span class="n">SkyConditions</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">Temperature</span><span class="o">&gt;</span> <span class="mi">82</span> <span class="n">F</span> <span class="p">(</span><span class="mi">28</span> <span class="n">C</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">Temperature</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">DewPoint</span><span class="o">&gt;</span> <span class="mi">80</span> <span class="n">F</span> <span class="p">(</span><span class="mi">27</span> <span class="n">C</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">DewPoint</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">RelativeHumidity</span><span class="o">&gt;</span> <span class="mi">94</span><span class="o">%&lt;/</span><span class="n">RelativeHumidity</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">Pressure</span><span class="o">&gt;</span> <span class="mf">29.88</span> <span class="ow">in</span><span class="o">.</span> <span class="n">Hg</span> <span class="p">(</span><span class="mi">1012</span> <span class="n">hPa</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">Pressure</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">Status</span><span class="o">&gt;</span><span class="n">Success</span><span class="o">&lt;/</span><span class="n">Status</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">CurrentWeather</span><span class="o">&gt;</span>
+</pre></div>
+<p>Como veremos, suds nos crea un objeto Python a partir de la definición que obtuvo del
+WSDL en el caso del <em>request</em> que se construye a partir de la fábrica del cliente usando
+el objeto remoto <em>tns:GetWeather</em> como plantilla.</p>
+<p>En el caso del response, que está declarada como string, nos envía un objeto suds.sax.text.Text,
+que puede ser tratado como un objeto string o unicode Python normalmente.</p>
+<p>Suds, no sólo nos hace más fácil la interacción con servicios SOAP, sino que también nos abstrae
+del hecho de que tratamos con objetos remotos, convirtiendo todo a objetos Python por nosotros.</p>
+<p>En algunos casos es necesario autenticarse contra un servicio web para poder utilizar sus métodos
+remotos, usualmente eso se hace a través de un método público de autenticación que revisa los
+permisos y retorna un token de acceso encapsulado en un objeto, este objeto debe colocarse en el
+header de los requests que van dirigidos a los métodos privados.</p>
+<p>Debido a que no conseguí ningún servicio web que me permitiera hacer un ejemplo de esto, simplemente
+haré un ejemplo <em>dummy</em> de cómo sería en código:</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">suds.client</span> <span class="kn">import</span> <span class="n">Client</span>
+
+<span class="n">auth_client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="s">&#39;http://www.servicio.com/authservice.wsdl&#39;</span><span class="p">)</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">auth_client</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s">&#39;ns:AuthObjectRequest&#39;</span><span class="p">)</span>
+<span class="n">request</span><span class="o">.</span><span class="n">login</span> <span class="o">=</span> <span class="s">&#39;MiUsuarioParaElServicio&#39;</span>
+<span class="n">request</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="s">&#39;MiClaveSuperSegura&#39;</span>
+
+<span class="n">auth_object</span> <span class="o">=</span> <span class="n">auth_client</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">GetAccessToken</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="s">&#39;https://www.servicio.com/otras_cosas.wsdl&#39;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">set_options</span><span class="p">(</span><span class="n">soapheaders</span><span class="o">=</span><span class="n">auth_object</span><span class="p">)</span>
+</pre></div>
+<p>Algunas veces, basta sólo con un objeto que contenga el usuario y el password para
+el servicio (como el request de este ejemplo) en el soapheaders del client y listo.</p>
+<p>La única desventaja que vi al trabajar con suds es que no viene con soporte nativo
+para attachments, sin embargo, es relativamente fácil añadir esta funcionalidad en
+<a class="reference external" href="https://gist.github.com/iferminm/6265400">este gist</a> podemos ver el código para hacerlo.</p>
+<p>La manera de utilizarlo es la siguiente:</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">suds.client</span> <span class="kn">import</span> <span class="n">Client</span>
+<span class="kn">from</span> <span class="nn">soap_attachments</span> <span class="kn">import</span> <span class="n">with_soap_attachment</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s">&#39;http://www.servicio.com/wsdl/servicio.wsdl&#39;</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;/home/user/music/panama.mp3&#39;</span><span class="p">,</span> <span class="s">&#39;rb&#39;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">mime_type</span> <span class="o">=</span> <span class="s">&#39;audio/mpeg&#39;</span>
+<span class="n">bin_param</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">mime_type</span><span class="p">)</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s">&#39;ns0:RequestConAttachment&#39;</span><span class="p">)</span>
+<span class="n">request</span><span class="o">.</span><span class="n">usuario</span> <span class="o">=</span> <span class="s">&#39;iferminm&#39;</span>
+<span class="n">request</span><span class="o">.</span><span class="n">nombre_audio</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">name</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">with_soap_attachment</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">subir_pista</span><span class="p">,</span> <span class="n">bin_param</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+</pre></div>
+<p>Básicamente lo que se hace es leer los bytes que conforman el archivo y colocarlos en el
+cuerpo del mensaje SOAP (eso hace with_soap_attachment), lo único que hay que saber acá
+es que el endpoint (que se ve como parámetro en la llamada a with_soap_attachment) es el
+punto de conexión al servicio web especificado en el WSDL.</p>
+<p>De esta manera, colocamos un archivo adjunto al mensaje SOAP para que sea subido al servidor
+vía SOAP.</p>
+<p>Para más información recomiendo revisar la documentación de la librería <a class="reference external" href="https://fedorahosted.org/suds/wiki/Documentation">acá</a>, para
+hacer clientes para servicios SOAP básicos, con este tutorial debería ser suficiente.</p>
+<p>There are <a href="http://iferminmontilla.com/clientes-soap-en-python.html#disqus_thread">comments</a>.</p>                </article>
+                            </aside><!-- /#featured -->
+                            <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+                                                
+
+                 
+                        <li><article class="hentry">    
+                <header>
+                    <h1><a href="http://iferminmontilla.com/y-al-fin-me-estrene-como-ponente.html" rel="bookmark"
+                           title="Permalink to Y al fin!, me estrené como ponente">Y al fin!, me estrené como ponente</a></h1>
+                </header>
+                
+                <div class="entry-content">
+                <footer class="post-info">
         <abbr class="published" title="2013-08-10T21:00:00">
                 sáb 10 agosto 2013
         </abbr>
@@ -36,55 +302,16 @@
         </address>
         <p>In <a href="http://iferminmontilla.com/category/blog.html">Blog</a>. </p>
 <p>tags: <a href="http://iferminmontilla.com/tag/personal.html">personal</a><a href="http://iferminmontilla.com/tag/anecdota.html">anécdota</a></p>
-</footer><!-- /.post-info --><p>Bueno, esto ya es tema viejo, pero no había tenido
+</footer><!-- /.post-info -->                <p>Bueno, esto ya es tema viejo, pero no había tenido
 tiempo de escribir al respecto. Desde que organicé el
 <em>PyConVE2012</em> había tenido la idea de probar cómo me
 iba dando alguna ponencia o algún tutorial, ya en la
 Universidad era preparador y miembro del <em>Sun Team
-University</em>, una de las iniciativas académicas de <em>Sun
-Microsystems</em> que <em>Oracle</em> mató luego de la compra. En
-el <em>Sun Team</em> daba charlas y también como preparador
-hablaba en público, pero es muy diferente el ámbito académico
-de hablar en una conferencia ante otros especialistas quizás
-con más experiencia o mejor preparados que yo.</p>
-<p>Desafortunadamente, en el <em>PyCon</em> sabía lo que me esperaba
-pues éramos pocos organizando e iba a tener que estar corriendo
-de un lado a otro de la sede (la UCAB) resolviendo problemas
-de última hora, así que decidí no postular ninguna charla.</p>
-<p>Este año, mi buen amigo <a class="reference external" href="http://twitter.com/kadaba">Jin Kadaba</a> estaba organizando el
-<a class="reference external" href="http://flisol.org.ve">FLISOL 2013</a>, y me invitó a dar una charla. Como es una
-conferencia de Software Libre y se acepta cualquier tema relacionado,
-decidí iniciarme con una charla no-técnica, hablé sobre Comunidades
-de Software Libre y mi experiencia en <em>PyVE</em> y organizando el <em>PyCon</em>.
-Al parecer a la gente le gustó.</p>
-<p>Luego de un par de meses, Mimia Lo, una buena amiga de la Universidad,
-estaba de nuevo organizando las <a class="reference external" href="http://joincic.com.ve">JOINCIC</a> y me invitó a proponer
-alguna charla, confieso que tengo un poco de miedo a hablar en público,
-así que decidí no pararme en la tarima del Aula Magna, sino más bien
-dar un taller práctico, propuse un par de mesas de trabajo a ver si aprobaban
-al menos una, para mi sorpresa me pidieron dar las dos :-) y estaba
-muy contento.</p>
-<p>Tanto el FLISOL como las JOINCIC fueron muy gratas experiencias
-para mi, tuve la oportunidad de compartir y conocer a otras personas
-entusiastas del Software Libre en el FLISOL y de compartir con viejos
-amigos de la Universidad en las JOINCIC, sin mencionar que pude
-dar a conocer algo de Python en ambos eventos.</p>
-<p>Acá les dejo los slides de las tres presentaciones, espero sean de su agrado:</p>
-<p><strong>FLISOL</strong></p>
-<p><em>Comunidad: orden dentro del caos, caos dentro del orden</em>
-<a class="reference external" href="http://www.slideshare.net/iferminm/comunidad-caos-dentro-del-orden-orden-dentro-del-caos">http://www.slideshare.net/iferminm/comunidad-caos-dentro-del-orden-orden-dentro-del-caos</a></p>
-<p><strong>JOINCIC</strong></p>
-<p><em>Testing: la etapa olvidada</em>
-<a class="reference external" href="http://www.slideshare.net/iferminm/testing-etapa-olvidada">http://www.slideshare.net/iferminm/testing-etapa-olvidada</a></p>
-<p><em>Iniciación a las artes marciales con Python</em>
-<a class="reference external" href="http://www.slideshare.net/iferminm/iniciacin-a-las-artes-marciales-con-python">http://www.slideshare.net/iferminm/iniciacin-a-las-artes-marciales-con-python</a></p>
-<p>There are <a href="http://iferminmontilla.com/y-al-fin-me-estrene-como-ponente.html#disqus_thread">comments</a>.</p>                </article>
-                            </aside><!-- /#featured -->
-                            <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-                                                
+University</em>, una de las ...</p>
+                <a class="readmore" href="http://iferminmontilla.com/y-al-fin-me-estrene-como-ponente.html">read more</a>
+                <p>There are <a href="http://iferminmontilla.com/y-al-fin-me-estrene-como-ponente.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+                            
 
                  
                         <li><article class="hentry">    
@@ -312,33 +539,6 @@ de todos.</p>
 <p>Realmente no hace ...</p>
                 <a class="readmore" href="http://iferminmontilla.com/graduado-y-ahora.html">read more</a>
                 <p>There are <a href="http://iferminmontilla.com/graduado-y-ahora.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-                            
-
-                 
-                        <li><article class="hentry">    
-                <header>
-                    <h1><a href="http://iferminmontilla.com/una-nueva-etapa-se-cierra.html" rel="bookmark"
-                           title="Permalink to Una nueva etapa se cierra">Una nueva etapa se cierra</a></h1>
-                </header>
-                
-                <div class="entry-content">
-                <footer class="post-info">
-        <abbr class="published" title="2012-06-23T01:10:00">
-                sáb 23 junio 2012
-        </abbr>
-
-                <address class="vcard author">
-                By <a class="url fn" href="http://iferminmontilla.com/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
-        </address>
-        <p>In <a href="http://iferminmontilla.com/category/blog.html">Blog</a>. </p>
-<p>tags: <a href="http://iferminmontilla.com/tag/opinion.html">opinión</a><a href="http://iferminmontilla.com/tag/universidad.html">universidad</a></p>
-</footer><!-- /.post-info -->                <p>He tenido un poco abandonado el&nbsp;blog&nbsp;debido a mi trabajo
-especial de grado (TEG) y a mi nuevo trabajo en&nbsp;Zava, pero poco a poco
-he ido adelantando cosas y hoy conseguí algo de tiempo para escribir las
-últimas cosas sobre las que he estado reflexionando las últimas semanas ...</p>
-                <a class="readmore" href="http://iferminmontilla.com/una-nueva-etapa-se-cierra.html">read more</a>
-                <p>There are <a href="http://iferminmontilla.com/una-nueva-etapa-se-cierra.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
             </article></li>
                             </ol><!-- /#posts-list -->
                             <p class="paginator">
