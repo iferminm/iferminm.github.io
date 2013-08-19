@@ -237,7 +237,7 @@ es que el endpoint (que se ve como parámetro en la llamada a with_soap_attachme
 punto de conexión al servicio web especificado en el WSDL.&lt;/p&gt;
 &lt;p&gt;De esta manera, colocamos un archivo adjunto al mensaje SOAP para que sea subido al servidor
 vía SOAP.&lt;/p&gt;
-&lt;p&gt;Para más información recomiendo revisar la documentación de la librería &lt;a class="reference external" href="https://fedorahosted.org/suds/wiki/Documentation"&gt;acá&lt;/a&gt;, para
+&lt;p&gt;Para más información recomiendo revisar la documentación de la librería &lt;a class="reference external" href="https://fedorahosted.org/suds/wiki/Documentation"&gt;acá&lt;/a&gt;, sin embargo, para
 hacer clientes para servicios SOAP básicos, con este tutorial debería ser suficiente.&lt;/p&gt;
 </summary><category term="python"></category><category term="web services"></category><category term="soap"></category></entry><entry><title>Y al fin!, me estrené como ponente</title><link href="http://iferminmontilla.com/y-al-fin-me-estrene-como-ponente.html" rel="alternate"></link><updated>2013-08-10T21:00:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2013-08-10:y-al-fin-me-estrene-como-ponente.html</id><summary type="html">&lt;p&gt;Bueno, esto ya es tema viejo, pero no había tenido
 tiempo de escribir al respecto. Desde que organicé el
