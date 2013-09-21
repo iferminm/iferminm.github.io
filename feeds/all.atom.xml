@@ -1,5 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>@#$%_</title><link href="http://iferminmontilla.com/" rel="alternate"></link><link href="http://iferminmontilla.com/feeds/all.atom.xml" rel="self"></link><id>http://iferminmontilla.com/</id><updated>2013-08-18T08:30:00-05:30</updated><entry><title>Clientes SOAP en Python</title><link href="http://iferminmontilla.com/clientes-soap-en-python.html" rel="alternate"></link><updated>2013-08-18T08:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2013-08-18:clientes-soap-en-python.html</id><summary type="html">&lt;p&gt;Como todos saben, y algunos me chalequean por eso, en la
+<feed xmlns="http://www.w3.org/2005/Atom"><title>@#$%_</title><link href="http://iferminmontilla.com/" rel="alternate"></link><link href="http://iferminmontilla.com/feeds/all.atom.xml" rel="self"></link><id>http://iferminmontilla.com/</id><updated>2013-09-21T01:30:00-05:30</updated><entry><title>Ahora soy lead developer y no tengo mucha idea: anécdotas y reflexión</title><link href="http://iferminmontilla.com/ahora-soy-lead-developer-y-no-tengo-mucha-idea-anecdotas-y-reflexion.html" rel="alternate"></link><updated>2013-09-21T01:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2013-09-21:ahora-soy-lead-developer-y-no-tengo-mucha-idea-anecdotas-y-reflexion.html</id><summary type="html">&lt;p&gt;Primero que nada, me gustaría pedir disculpas (o permiso xD) si
+cometo algún error ortográfico en este artículo, se me olvidó pasar
+el &lt;a class="reference external" href="http://aspell.net/"&gt;aspell&lt;/a&gt;, el hecho es que, para ponerlos un poco en contexto, vengo
+de un rato un poco etílico.&lt;/p&gt;
+&lt;p&gt;Bueno, para empezar, quienes me conocen y están pendientes de mi desarrollo
+como profesional, saben que ahora estoy en un puesto de &lt;em&gt;líder de proyecto&lt;/em&gt;
+en un startup de telefonía en la nube. Además, quien me conozca
+sabe que los temas &lt;em&gt;gerenciales&lt;/em&gt; siempre me han dado ladilla, como decimos
+acá en Venezuela.&lt;/p&gt;
+&lt;p&gt;El tema es que siempre, desde que tengo personal a mi cargo, me he esforzado
+en hacerles entender que &lt;strong&gt;no&lt;/strong&gt; trabajan para mi, &lt;strong&gt;sino conmigo&lt;/strong&gt;, es decir,
+&lt;strong&gt;no soy&lt;/strong&gt; su jefe, sino alguien que los debe ayudar a cumplir con sus obligaciones
+a tiempo y a quien le pueden preguntar en caso de alguna duda, en fin, alguien
+quien puede enseñarles, una especia de mentor o profesor o como quieran verlo.
+Para mi, la definición de un líder, debe ser alguien a quien respetas profesional
+y personalmente, alguien de quien consideras que puedes aprender y a quien no le molesta
+aprender de ti. Eso, para mi, es un líder.&lt;/p&gt;
+&lt;p&gt;Luego, está otro tema, uno que se remonta a cuando estaba estudiando en la UCAB
+y discutía temas diversos con mi pana &lt;a class="reference external" href="http://gerardobarcia.com/blog/"&gt;Gerardo Barcia&lt;/a&gt;, gran fanático de los temas
+que tienen que ver con Gerencia de Proyectos. Uno de los temas que siempre causó controversia
+fue el del papel del Ingeniero en un proyecto: gerente o ejecutor.&lt;/p&gt;
+&lt;p&gt;Siempre abogué por el papel del Ingeniero como &lt;em&gt;ejecutor&lt;/em&gt; de un proyecto, es decir
+si estudias &lt;em&gt;supuestamente&lt;/em&gt; 5 años en una Universidad y te enseñan a programar y
+diversos conceptos de sistemas operativos y distribuidos, es para que los apliques
+en los sistemas que vas a implementar o en los proyectos que vayas a desarrollar, además,
+en el mundo de la informática se aplica mucho lo que yo llamo la &lt;em&gt;cultura hacker&lt;/em&gt;, que es
+el hecho de &lt;em&gt;respetar&lt;/em&gt; a alguien que sabe más que tú y que de verdad puedes comprobar que
+es así, es decir, alguien quien sabe de qué habla y de quien puedes aprender o, quizás no,
+quizás es simplemente alguien que está a tu mismo nivel pero que tiene las mismas ganas
+que tu de aprender y tiene la misma &lt;em&gt;curiosidad científica&lt;/em&gt; por descubrir cosas y, quizás
+&lt;em&gt;reinventar la rueda&lt;/em&gt; sólo para ver cómo funciona.&lt;/p&gt;
+&lt;p&gt;Por otra parte, mi pana Gerardo siempre pensó que el rol del Ingeniero en un proyecto
+es el del Gerente. Decirle a los técnicos qué hacer y cómo hacerlo, estimar el tiempo
+que deberían tardarse, supervisarlos, ver que lo que hacen cumple y aceptarlo o rechazarlo
+y dar directrices de cómo y por dónde debe encaminarse el proyecto, es decir, el rol del
+gerente de proyectos o, quizás, consultor.&lt;/p&gt;
+&lt;div class="section" id="quien-tenia-la-razon"&gt;
+&lt;h2&gt;¿Quién tenía la razón?&lt;/h2&gt;
+&lt;p&gt;Pues creo que ambos, un Ingeniero en un proyecto debe cumplir ambos roles, sin embargo
+para poder liderar un equipo, &lt;strong&gt;siempre&lt;/strong&gt; he dicho que debes tener experiencia suficiente
+como para poder decirle a alguien lo que debe hacer con total confianza, es decir, poder
+tener la habilidad, el conocimiento y la experiencia para conocer y prever imprevistos
+dentro del proceso y advertir a la persona acerca de &lt;em&gt;con qué se podría encontrar&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;El punto es que a mi pana Gerardo, le ha tocado programar, y programar &lt;strong&gt;duro&lt;/strong&gt;, al igual que
+a mi. Desarrollar sistemas en los que &lt;em&gt;alguien&lt;/em&gt; nos dice qué hacer y cuáles son las necesidades
+y debemos escribir software que las cubra o que las automatice de la mejor manera posible y
+sin poder tomar muchas decisiones acerca del &lt;em&gt;cómo&lt;/em&gt; implementar las cosas.&lt;/p&gt;
+&lt;p&gt;Ahora a mi, aunque considero, &lt;em&gt;quizás&lt;/em&gt;, no tener la experiencia necesaria, me toca liderar un equipo
+de programadores. Mi equipo me respeta profesionalmente y nos llevamos &lt;strong&gt;muy bien&lt;/strong&gt; personalmente,
+de hecho, me parece que mi equipo está conformado por las mejores personas que alguien podría
+querer, todos le ponen muchísimas ganas e incluso han resuelto problemas en los que no tenía ni idea
+ni tiempo de revisar a fondo cómo solventarlos, obviamente, todos estamos aprendiendo, ellos porque aún
+están estudiando en la Universidad y el trabajo les sirve de experiencia y yo porque es mi primer trabajo
+al frente de un equipo.&lt;/p&gt;
+&lt;p&gt;Como &lt;em&gt;persona a cargo&lt;/em&gt; de un equipo, he metido la pata y &lt;strong&gt;mucho&lt;/strong&gt;, desde estimando tareas que toman más
+de lo que pensé, porque en realidad no eran una tarea sino &lt;strong&gt;muchas&lt;/strong&gt; que eran necesarias para cumplir un
+objetivo, causando que quizás la persona se frustrara porque se tardó mucho haciéndola, hasta viendo
+dependencias entre tareas que eran obvias y asignándolas de manera errada con prioridades distintas y
+retrasando algunas entregas, sí, lo se, &lt;strong&gt;terrible&lt;/strong&gt;. Pero el colmo, y lo que me hace escribir este artículo
+es que ocurrió algo en una reunión que me hizo cuestionarme a mi mismo como líder de proyecto y como Ingeniero
+a cargo de un proyecto:&lt;/p&gt;
+&lt;p&gt;Hace más o menos un mes y medio, se discutió el flujo de un proceso y cómo debía ser implementado yo dije que
+debía ser de &lt;em&gt;X&lt;/em&gt; forma y el CEO dijo que debía ser de &lt;em&gt;Y&lt;/em&gt; forma, al final, se hizo de la forma &lt;em&gt;Y&lt;/em&gt;, pero el tiempo
+demostró que la forma &lt;em&gt;X&lt;/em&gt; era la correcta, entonces, tiempo y esfuerzo &lt;em&gt;quizás&lt;/em&gt; perdidos. No me duele mi tiempo
+y mi esfuerzo, sino el de mi equipo porque fue &lt;strong&gt;mi culpa&lt;/strong&gt; que las cosas no se hicieran bien desde el principio,
+no se, capaz me faltó liderazgo o capacidad de &lt;em&gt;algo&lt;/em&gt; en el momento de la primera discusión, no lo se, el punto es
+que, reflexionando, capaz producto de las bebidas espirituosas de hoy, he empezado a pensar que quizás no estoy listo
+para asumir responsabilidades de este calibre aún, quizás sea algo de actitud o quizás sea algo de aptitud. Ustedes, ¿qué
+piensan?.&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="carrera"></category><category term="actitud"></category><category term="personal"></category></entry><entry><title>Clientes SOAP en Python</title><link href="http://iferminmontilla.com/clientes-soap-en-python.html" rel="alternate"></link><updated>2013-08-18T08:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2013-08-18:clientes-soap-en-python.html</id><summary type="html">&lt;p&gt;Como todos saben, y algunos me chalequean por eso, en la
 primera mitad de 2013 cambié de trabajo dos veces, estaba
 algo aburrido en Metamax y decidí aceptar una oportunidad
 en 4geeks, junto con una serie de proyectos para una empresa
