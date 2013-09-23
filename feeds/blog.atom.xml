@@ -1,5 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>@#$%_</title><link href="http://iferminmontilla.com/" rel="alternate"></link><link href="http://iferminmontilla.com/feeds/blog.atom.xml" rel="self"></link><id>http://iferminmontilla.com/</id><updated>2013-09-21T01:30:00-05:30</updated><entry><title>Ahora soy lead developer y no tengo mucha idea: anécdotas y reflexión</title><link href="http://iferminmontilla.com/ahora-soy-lead-developer-y-no-tengo-mucha-idea-anecdotas-y-reflexion.html" rel="alternate"></link><updated>2013-09-21T01:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2013-09-21:ahora-soy-lead-developer-y-no-tengo-mucha-idea-anecdotas-y-reflexion.html</id><summary type="html">&lt;p&gt;Primero que nada, me gustaría pedir disculpas (o permiso xD) si
+<feed xmlns="http://www.w3.org/2005/Atom"><title>@#$%_</title><link href="http://iferminmontilla.com/" rel="alternate"></link><link href="http://iferminmontilla.com/feeds/blog.atom.xml" rel="self"></link><id>http://iferminmontilla.com/</id><updated>2013-09-25T12:34:00-05:30</updated><entry><title>Heroku + Django sin morir en el intento (Parte 1)</title><link href="http://iferminmontilla.com/heroku-django-sin-morir-en-el-intento-parte-1.html" rel="alternate"></link><updated>2013-09-25T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2013-09-25:heroku-django-sin-morir-en-el-intento-parte-1.html</id><summary type="html">&lt;p&gt;Antes, para tener tu sistema web en línea, debías contratar
+un servicio de Servidor Dedicado o mínimo un VPS y administrarlo,
+si tenías más presupuesto, comprabas un servidor y lo acondicionabas
+o alquilabas un rack en algún centro de datos para tenerlo colocado allí.&lt;/p&gt;
+&lt;p&gt;Ahora, con el boom de &lt;em&gt;Infraestructura como Servicio&lt;/em&gt; (IaaS) y &lt;em&gt;Plataforma
+como Servicio&lt;/em&gt; (PaaS), ya no es necesario tener servidores propios y, dependiendo
+del servicio, es decir, si es &lt;em&gt;IaaS&lt;/em&gt; o &lt;em&gt;PaaS&lt;/em&gt;, tampoco debes tener conocimientos de
+administración de servidores.&lt;/p&gt;
+&lt;div class="section" id="iaas-vs-paas"&gt;
+&lt;h2&gt;IAAS vs PAAS&lt;/h2&gt;
+&lt;p&gt;En general, un proveedor de &lt;em&gt;IaaS&lt;/em&gt; te da el hardware para que tú lo configures
+y ensambles el ambiente en el que va a correr tu aplicación, esto es instalar
+todos los paquetes de software necesarios par que el proyecto corra: servidor de
+base de datos, servidor web, intérpretes, bibliotecas, storages adicionales y un
+largo &lt;em&gt;end of thinking capacity&lt;/em&gt; (etc). La ventaja de un proveedor de este tipo
+es que hacen que escalar tu infraestructura de manera horizontal es realmente fácil
+y no tienes que construir un centro de datos para albergar tu granja de servidores
+ni mucho menos configurar todo lo que eso implica, un ejemplo de servicios de este tipo
+es el &lt;em&gt;Elastic Compute Cloud&lt;/em&gt; de &lt;em&gt;Amazon Web Services&lt;/em&gt; (AWS EC-2).&lt;/p&gt;
+&lt;p&gt;Por otra parte, un proveedor de &lt;em&gt;PaaS&lt;/em&gt;, hace exactamente lo mismo, pero con un nivel más
+de abstracción, te proveen toda la infraestructura y el ambiente para que simplemente
+deposites tu código allí y pongas tu aplicación a correr con configuraciones mínimas y sin
+ser un experto en administración y configuración de servidores, de hecho, es transparente
+para ti toda la nube que hay por detrás. &lt;em&gt;`Heroku`_&lt;/em&gt; es un proveedor de este tipo de servicio
+que además cumple con el &lt;em&gt;`12 factor app`_&lt;/em&gt; por lo que además hace que sea súper fácil
+ajustar tu código para correr allí y que tome los parámetros de configuración que define
+la plataforma sin mucho problema.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="ahora-heroku"&gt;
+&lt;h2&gt;Ahora, Heroku&lt;/h2&gt;
+&lt;p&gt;El modelo de trabajo en &lt;em&gt;Heroku&lt;/em&gt; se basa en add-ons, que básicamente integran tu sistema con
+un DBMS, un sistema de alertas en caso de fallos o de monitoreo
+para ver el rendimiento, detectar cuellos de botella y tomar correctivos al respecto, todo esto
+con unos cuantos clicks (y una tarjeta de crédito), sin configurar absolutamente nada a nivel de
+servidores sino todo a nivel de aplicación.&lt;/p&gt;
+&lt;p&gt;Todo esto suena como un sueño hecho realidad y, en muchos casos, lo es, pero nada es perfecto y
+&lt;em&gt;Heroku&lt;/em&gt;, aunque facilita muchísimas cosas a nivel de despliegue, te complica muchas otras a nivel
+de desarrollo, esto puede ser bueno, te obliga a optimizar y a aprender, pero a veces, el esquema de
+plugins y addons puede volverse insostenible, sobre todo cuando debes pagar por varios y el presupuesto
+es limitado, además, desde el punto de vista de aplicación, &lt;em&gt;Heroku&lt;/em&gt; impone varias limitaciones acerca
+de cómo debe comportarse, el tiempo en que debe responder, el tiempo que debe durar el deploy y
+cuánto debe pesar.&lt;/p&gt;
+&lt;div class="section" id="algunas-limitaciones"&gt;
+&lt;h3&gt;Algunas limitaciones&lt;/h3&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;em&gt;El app debe iniciar en 60 segundos o menos:&lt;/em&gt; si este tiempo se excede, el deploy falla.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Heroku duerme dynos cada cierto tiempo:&lt;/em&gt; cada cierto tiempo Heroku reinicia los dynos, esto es un proceso
+totalmente aleatorio, por eso se recomienda tener al menos 2, si uno es reiniciado el otro sigue aceptando
+requests. Cuando esto ocurre, el proceso recibe un &lt;em&gt;SIGTERM&lt;/em&gt;, al recibir la señal, se tienen 10 segundos de
+gracia para terminar lo que se estaba haciendo antes de recibir un &lt;em&gt;SIGKILL&lt;/em&gt; y reiniciar.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;El app no puede pesar más de 300MB:&lt;/em&gt; de lo contrario, el deploy falla, es recomendable usar el .slugignore
+para excluir archivos que sólo se usan para desarrollo y que no hacen falta en producción, lo mismo con las
+librerías para testing, no deberían incluirse en el requirements.txt que va a producción.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;El app debe responder a los requests en 30 segundos:&lt;/em&gt; de lo contrario se levanta un error H12 (Worker Timeout)
+y la respectiva pantalla de &lt;em&gt;Application Error&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Heroku es stateless:&lt;/em&gt; esto quiere decir que no guarda estado, para conservar estado del app es necesario valerse
+de otras herramientas, como una base de datos, memcached, y servicios de almacenamiento externos.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="algunos-de-los-golpes"&gt;
+&lt;h3&gt;Algunos de los golpes&lt;/h3&gt;
+&lt;p&gt;Con esas limitaciones se puede vivir, pero hay que darle la vuelta para no desesperarse, hay algunas cosas que
+capaz son obvias, pero que uno no las ve sino hasta que empieza a trabajar y se consigue con un problema, basta
+con volver sobre las limitaciones antes expuestas y encontraremos una respuesta o al menos una posible razón.&lt;/p&gt;
+&lt;p&gt;Ahora voy a empezar a listar los problemas que he tenido en &lt;em&gt;RingTu&lt;/em&gt; y cómo los solucioné. Recuerden que
+estoy trabajando con &lt;strong&gt;Django&lt;/strong&gt;, por lo que todo lo he resuelto utilizando herramientas para este framework.&lt;/p&gt;
+&lt;div class="section" id="no-es-bueno-para-servir-assets"&gt;
+&lt;h4&gt;No es bueno para servir assets&lt;/h4&gt;
+&lt;p&gt;Cuando digo assets, me refiero a los archivos estáticos que dan forma a la interface web:
+css, js, imágenes, gradientes, ¿gifs animados?, tipografías y demás cosas bonitas que hacen los diseñadores
+por nosotros.&lt;/p&gt;
+&lt;p&gt;Por defecto, nuestro dyno sirve todos estos archivos, además de servir nuestra aplicación, aceptando peticiones
+de nuestros clientes, procesándolas y decidiendo qué es lo que va a enviarse de vuelta.&lt;/p&gt;
+&lt;p&gt;Servir los archivos estáticos o &lt;em&gt;static assets&lt;/em&gt; resulta en requests adicionales que van a mantener ocupado nuestro
+dyno y esto nos cuesta tiempo y, si ya estamos pagando, dinero. Esos requests adicionales se podrían invertir en
+responder y procesar solicitudes nuevas y no en entregar archivos estáticos, además, la &lt;strong&gt;buena práctica&lt;/strong&gt; con &lt;em&gt;django&lt;/em&gt;
+es delegar la entrega de contenido estático a un &lt;strong&gt;servidor web&lt;/strong&gt; como &lt;em&gt;Apache&lt;/em&gt; o &lt;em&gt;NGinx&lt;/em&gt; y así evitar procesamiento
+adicional a nivel de &lt;em&gt;views&lt;/em&gt; (los &lt;em&gt;controladores&lt;/em&gt; de &lt;em&gt;django&lt;/em&gt;).&lt;/p&gt;
+&lt;p&gt;La solución acá es, simplemente, almacenar los archivos estáticos &lt;em&gt;en otro lado&lt;/em&gt;, puede ser incluso un &lt;em&gt;VPS&lt;/em&gt; con &lt;em&gt;Apache&lt;/em&gt;
+o &lt;em&gt;NGinx&lt;/em&gt; instalado, pero hay varios servicios que pueden hacerlo mejor y optimizar la entrega de contenidos como &lt;em&gt;Cloudfile&lt;/em&gt;
+de &lt;strong&gt;Rackspace&lt;/strong&gt; y, el que opté por usar, &lt;em&gt;Simple Storage Service&lt;/em&gt; de &lt;strong&gt;Amazon&lt;/strong&gt;. Si ya tus assets no cambian mucho, lo mejor
+es servirlos a través de una &lt;em&gt;CDN&lt;/em&gt; (Content Delivery Nerwork o Red de Entrega de Contenidos), como &lt;em&gt;Cloudfront&lt;/em&gt;, también de
+&lt;strong&gt;Amazon&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Ahora, &lt;strong&gt;¿Cómo se resuelve esto en django?&lt;/strong&gt;, bueno, hay varias librerías que te permiten sincronizar los archivos estáticos
+con un servicio de almacenamiento remoto, la que decidí usar fue &lt;em&gt;`django-s3-folder-storage`_&lt;/em&gt;, una pequeña librería que se vale
+de otra más compleja (y completa, soporta múltiples servicios) llamada &lt;em&gt;`django-storages`_&lt;/em&gt; para organizar tu contenido en directorios
+dentro de un &lt;em&gt;bucket&lt;/em&gt; de &lt;em&gt;S3&lt;/em&gt;, es necesario agregar parámetros de configuración en nuestro &lt;em&gt;settings.py&lt;/em&gt;, sería algo como esto:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;AWS_QUERYSTRING_AUTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;span class="n"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getenv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;AWS_ACCESS_KEY_ID&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getenv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;AWS_SECRET_ACCESS_KEY&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getenv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;AWS_STORAGE_BUCKET_NAME&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c"&gt;# Expires 20 years in the future at 8PM GMT&lt;/span&gt;
+&lt;span class="n"&gt;tenyrs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;date&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;today&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;timedelta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;days&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;365&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;AWS_HEADERS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;Expires&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;tenyrs&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;strftime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;%a, &lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s"&gt; %b %Y 20:00:00 GMT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;STATICFILES_STORAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;s3_folder_storage.s3.StaticStorage&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;STATIC_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;http://&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;.s3.amazonaws.com/static/&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt;
+&lt;span class="n"&gt;STATIC_S3_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;static/&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;El parámetro de configuración AWS_QUERYSTRING_AUTH colocado en &lt;em&gt;False&lt;/em&gt; es para que &lt;em&gt;S3&lt;/em&gt; no nos genere urls firmadas
+para los assets sino que nos permita acceso público permanente. Si lo dejamos en &lt;em&gt;True&lt;/em&gt;, su valor por defecto, nos va
+a generar un url válido por 5min y, como son archivos estáticos, esta url no se va a refrescar nunca, así que nuestra página
+se verá &lt;strong&gt;bien&lt;/strong&gt;, con todos sus estilos y efectos sólo mientras duren las urls vigentes.&lt;/p&gt;
+&lt;p&gt;Los demás son simplemente parámetros de configuración de S3, deben recordar añadir las variables de configuración en &lt;em&gt;Heroku&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;heroku config:add &lt;span class="nv"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;EL_KEY_ID_DE_AWS_S3
+heroku config:add &lt;span class="nv"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;EL_SECRET_KEY_ID_DE_AWS_S3
+heroku config:add &lt;span class="nv"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;EL_NOMBRE_DEL_BUCKET
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Recuerden también colocar &lt;em&gt;s3_folder_storage&lt;/em&gt; entre los &lt;em&gt;INSTALLED_APPS&lt;/em&gt; del proyecto y activar la opción de &lt;em&gt;Heroku&lt;/em&gt; para que
+reconozca las variables de configuración en tiempo de compilación, de otra manera, el deploy fallará.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;heroku labs:enable user-env-compile
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Con esto, ya deberíamos poder sincronizar los &lt;em&gt;assets&lt;/em&gt; a &lt;em&gt;S3&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;heroku run python manage.py collectstatic
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Dependiendo de qué tantos archivos estáticos tengamos, va a tardar más o menos, va a enviar todo lo que esté
+en nuestro &lt;em&gt;STATIC_ROOT&lt;/em&gt; al &lt;em&gt;bucket S3&lt;/em&gt; que configuramos anteriormente.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="no-puedes-utilizar-el-sistema-de-archivos"&gt;
+&lt;h4&gt;No puedes utilizar el sistema de archivos&lt;/h4&gt;
+&lt;p&gt;Había dicho al principio que &lt;em&gt;Heroku&lt;/em&gt; es &lt;em&gt;stateless&lt;/em&gt;, es decir, no conserva el estado de tu aplicación. Entonces
+ellos implementaron algo llamado &lt;em&gt;Ephemeral Filesystem&lt;/em&gt;, es decir, un sistema de archivos &lt;em&gt;efímero&lt;/em&gt;, que se reinicia
+cada vez que los dynos son reiniciados por cualquier razón, sea un deploy o sea porque heroku los reinició.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;¿Qué significa esto?&lt;/strong&gt;, pues que &lt;strong&gt;no puedes escribir a disco&lt;/strong&gt; como lo harías en cualquier servidor &lt;em&gt;normal&lt;/em&gt;,
+si lo haces, debes saber que cuando tu app sea reiniciada, perderás todos los archivos, tiene un poco de sentido,
+cuando usas más de un dyno y escribes a disco, cuando el usuario quiera recuperar lo que subió, no tenemos manera de
+saber cuál dyno atendió aquella solicitud y no sabremos dónde buscar, así que, de una manera u otra, lo mejor es almacenar
+los archivos de nuestros usuarios en un lugar seguro y de donde podamos recuperarlos luego sin problemas.&lt;/p&gt;
+&lt;p&gt;Nuevamente podemos utilizar &lt;em&gt;AWS-S3&lt;/em&gt; para ello, con algunas configuraciones adicionales, podemos hacer que por defecto
+nuestros &lt;em&gt;media files&lt;/em&gt;, para usar la terminología de &lt;em&gt;django&lt;/em&gt;, sean almacenados en nuestro &lt;em&gt;bucket&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Es necesario agregar las siguientes líneas a nuestro &lt;em&gt;settings.py&lt;/em&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;MEDIA_ROOT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;DEFAULT_FILE_STORAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;s3_folder_storage.s3.DefaultStorage&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;DEFAULT_S3_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;media/&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;MEDIA_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;http://&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;.s3.amazonaws.com/media/&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Con esto, todo lo que suban nuestros usuarios irá a la carpeta &lt;em&gt;media/&lt;/em&gt; de nuestro bucket.&lt;/p&gt;
+&lt;p&gt;Hay que tener en cuenta que todo se está subiendo al mismo &lt;em&gt;bucket&lt;/em&gt; y la política que se definió en principio para
+poder almacenar los archivos estáticos da acceso público a todo el contenido por defecto, por lo que hay que tomar
+previsiones &lt;em&gt;de alguna manera&lt;/em&gt; para que no todo el mundo pueda ver los archivos de nuestros usuarios de manera directa.&lt;/p&gt;
+&lt;p&gt;Acá expondré la estrategia que uso:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;&lt;strong&gt;Sobre-escritura del método save():&lt;/strong&gt; en los modelos que tengan un &lt;em&gt;ImageField&lt;/em&gt; o un &lt;em&gt;FileField&lt;/em&gt;, la idea de esto es
+sobreescribir la política de control de acceso particular para el archivo una ves que fue subido. Para esto utilizaremos
+una librería llamada &lt;em&gt;`boto`_&lt;/em&gt; que es un wrapper en Python para el API de &lt;em&gt;AWS&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.auth.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Video&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ForeignKey&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;video&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FileField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;upload_to&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;user_videos/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;boto.s3&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;connection&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;
+        &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;VoiceMessage&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;connection&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;S3Connection&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;bucket&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_bucket&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Key&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bucket&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;%s%s&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DEFAULT_S3_PATH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;video&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_acl&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;private&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Con esto tenemos el archivo privado en &lt;em&gt;S3&lt;/em&gt;, ahora, necesitamos una manera de darle acceso al usuario que es propietario
+del archivo.&lt;/p&gt;
+&lt;ol class="arabic simple" start="2"&gt;
+&lt;li&gt;&lt;strong&gt;Escribiendo una vista para acceder al archivo privado:&lt;/strong&gt; la mejor manera que conseguí para darle acceso al usuario a su
+archivo fue escribiendo una vista de &lt;em&gt;django&lt;/em&gt; que revisara que el usuario que origina el request es realmente el propietario
+del objeto y redirigirlo a la ubicación de su archivo en &lt;em&gt;S3&lt;/em&gt;. Escribiremos un pequeño helper, además, para encapsular la
+generación del URL, como es un archivo privado, el url debe ir firmado y sólo será válido por el tiempo que nosotros indiquemos,
+en este caso, lo haremos por una hora.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;En el helper colocamos lo siguiente:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_s3_redirect_url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filepath&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ttl&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;60&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;boto.s3.connection&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;S3Connection&lt;/span&gt;
+
+    &lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;S3Connection&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;is_secure&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;generate_url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ttl&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;GET&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bucket&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;filepath&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;force_http&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;y en la vista:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.http&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;HttpResponseRedirect&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.auth.decorators&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;login_required&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Video&lt;/span&gt;
+
+&lt;span class="nd"&gt;@login_required&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_user_video&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;video_id&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;GET&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.helpers&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;get_s3_redirect_url&lt;/span&gt;
+        &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;
+        &lt;span class="n"&gt;video&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Video&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;video_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;video&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;filepath&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;%s%s&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;settinga&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DEFAULT_S3_PATH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;video&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;video&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;get_s3_redirect_url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filepath&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ttl&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;3600&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponseRedirect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;status&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;403&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Con esto generamos una url firmada y válida por 3600 segundos (una hora) si el usuario que origina la solicitud
+es el propietario del objeto que contiene el archivo (video) que se desea obtener, caso contrario retornamos
+403 ya que la persona no tiene permisos para ver ese contenido.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="heroku"></category><category term="herramientas"></category><category term="tecnología"></category><category term="programación"></category></entry><entry><title>Ahora soy lead developer y no tengo mucha idea: anécdotas y reflexión</title><link href="http://iferminmontilla.com/ahora-soy-lead-developer-y-no-tengo-mucha-idea-anecdotas-y-reflexion.html" rel="alternate"></link><updated>2013-09-21T01:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2013-09-21:ahora-soy-lead-developer-y-no-tengo-mucha-idea-anecdotas-y-reflexion.html</id><summary type="html">&lt;p&gt;Primero que nada, me gustaría pedir disculpas (o permiso xD) si
 cometo algún error ortográfico en este artículo, se me olvidó pasar
 el &lt;a class="reference external" href="http://aspell.net/"&gt;aspell&lt;/a&gt;, el hecho es que, para ponerlos un poco en contexto, vengo
 de un rato un poco etílico.&lt;/p&gt;
