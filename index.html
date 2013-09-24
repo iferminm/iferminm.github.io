@@ -59,8 +59,8 @@ es el <em>Elastic Compute Cloud</em> de <em>Amazon Web Services</em> (AWS EC-2).
 de abstracción, te proveen toda la infraestructura y el ambiente para que simplemente
 deposites tu código allí y pongas tu aplicación a correr con configuraciones mínimas y sin
 ser un experto en administración y configuración de servidores, de hecho, es transparente
-para ti toda la nube que hay por detrás. <em>`Heroku`_</em> es un proveedor de este tipo de servicio
-que además cumple con el <em>`12 factor app`_</em> por lo que además hace que sea súper fácil
+para ti toda la nube que hay por detrás. <a class="reference external" href="http://www.heroku.com/">Heroku</a> es un proveedor de este tipo de servicio
+que además cumple con el <a class="reference external" href="http://12factor.net/">12 factor app</a> por lo que además hace que sea súper fácil
 ajustar tu código para correr allí y que tome los parámetros de configuración que define
 la plataforma sin mucho problema.</p>
 </div>
@@ -120,8 +120,8 @@ de <strong>Rackspace</strong> y, el que opté por usar, <em>Simple Storage Servi
 es servirlos a través de una <em>CDN</em> (Content Delivery Nerwork o Red de Entrega de Contenidos), como <em>Cloudfront</em>, también de
 <strong>Amazon</strong>.</p>
 <p>Ahora, <strong>¿Cómo se resuelve esto en django?</strong>, bueno, hay varias librerías que te permiten sincronizar los archivos estáticos
-con un servicio de almacenamiento remoto, la que decidí usar fue <em>`django-s3-folder-storage`_</em>, una pequeña librería que se vale
-de otra más compleja (y completa, soporta múltiples servicios) llamada <em>`django-storages`_</em> para organizar tu contenido en directorios
+con un servicio de almacenamiento remoto, la que decidí usar fue <a class="reference external" href="https://github.com/jamstooks/django-s3-folder-storage">django-s3-folder-storage</a>, una pequeña librería que se vale
+de otra más compleja (y completa, soporta múltiples servicios) llamada <a class="reference external" href="https://github.com/iserko/django-storages">django-storages</a> para organizar tu contenido en directorios
 dentro de un <em>bucket</em> de <em>S3</em>, es necesario agregar parámetros de configuración en nuestro <em>settings.py</em>, sería algo como esto:</p>
 <div class="highlight"><pre><span class="n">AWS_QUERYSTRING_AUTH</span> <span class="o">=</span> <span class="bp">False</span>
 <span class="n">AWS_ACCESS_KEY_ID</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">&#39;AWS_ACCESS_KEY_ID&#39;</span><span class="p">)</span>
@@ -183,7 +183,7 @@ previsiones <em>de alguna manera</em> para que no todo el mundo pueda ver los ar
 <ol class="arabic simple">
 <li><strong>Sobre-escritura del método save():</strong> en los modelos que tengan un <em>ImageField</em> o un <em>FileField</em>, la idea de esto es
 sobreescribir la política de control de acceso particular para el archivo una ves que fue subido. Para esto utilizaremos
-una librería llamada <em>`boto`_</em> que es un wrapper en Python para el API de <em>AWS</em></li>
+una librería llamada <a class="reference external" href="https://github.com/boto/boto">boto</a> que es un wrapper en Python para el API de <em>AWS</em></li>
 </ol>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 <span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
@@ -200,7 +200,7 @@ una librería llamada <em>`boto`_</em> que es un wrapper en Python para el API d
         <span class="n">conn</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">S3Connection</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">AWS_ACCESS_KEY_ID</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">AWS_SECRET_ACCESS_KEY</span><span class="p">)</span>
         <span class="n">bucket</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">get_bucket</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">AWS_STORAGE_BUCKET_NAME</span><span class="p">)</span>
         <span class="n">k</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">Key</span><span class="p">(</span><span class="n">bucket</span><span class="p">)</span>
-        <span class="n">k</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">DEFAULT_S3_PATH</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">video</span><span class="p">)</span>
+        <span class="n">k</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">DEFAULTS3_PATH</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">video</span><span class="p">)</span>
         <span class="n">k</span><span class="o">.</span><span class="n">set_acl</span><span class="p">(</span><span class="s">&#39;private&#39;</span><span class="p">)</span>
 </pre></div>
 <p>Con esto tenemos el archivo privado en <em>S3</em>, ahora, necesitamos una manera de darle acceso al usuario que es propietario
