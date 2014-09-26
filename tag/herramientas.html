@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8" />
         <title>@#$%_ - herramientas</title>
-        <link rel="stylesheet" href="http://iferminmontilla.com/theme/css/main.css">
-                <link href="http://iferminmontilla.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="@#$%_ Atom Feed" />
-                
+        <link rel="stylesheet" href="http://iferminmontilla.com/theme/css/main.css" />
+        <link href="http://iferminmontilla.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="@#$%_ Atom Feed" />
+
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
@@ -15,265 +15,214 @@
         <header id="banner" class="body">
                 <h1><a href="http://iferminmontilla.com/">@#$%_ </a></h1>
                 <nav><ul>
-                                                                                    <li ><a href="http://iferminmontilla.com/category/acerca-de.html">Acerca de...</a></li>
-                                    <li ><a href="http://iferminmontilla.com/category/blog.html">Blog</a></li>
-                                    <li ><a href="http://iferminmontilla.com/category/cv.html">CV</a></li>
-                                                </ul></nav>
+                    <li><a href="http://iferminmontilla.com/category/acerca-de.html">Acerca de...</a></li>
+                    <li><a href="http://iferminmontilla.com/category/blog.html">Blog</a></li>
+                    <li><a href="http://iferminmontilla.com/category/cv.html">CV</a></li>
+                </ul></nav>
         </header><!-- /#banner -->
-                
-            
 
-                            <aside id="featured" class="body">
+            <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://iferminmontilla.com/heroku-django-sin-morir-en-el-intento-parte-1.html">Heroku + Django sin morir en el intento (Parte 1)</a></h1> 
-                    <footer class="post-info">
-        <abbr class="published" title="2013-09-23T12:34:00">
-                lun 23 septiembre 2013
+                    <h1 class="entry-title"><a href="http://iferminmontilla.com/heroku-django-sin-morir-en-el-intento-parte-2.html">Heroku + Django sin morir en el intento (Parte 2)</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-09-20T12:34:00">
+                Published: Sat 20 September 2014
         </abbr>
 
-                <address class="vcard author">
-                By <a class="url fn" href="http://iferminmontilla.com/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://iferminmontilla.com/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
         </address>
-        <p>In <a href="http://iferminmontilla.com/category/blog.html">Blog</a>. </p>
-<p>tags: <a href="http://iferminmontilla.com/tag/heroku.html">heroku</a><a href="http://iferminmontilla.com/tag/herramientas.html">herramientas</a><a href="http://iferminmontilla.com/tag/tecnologia.html">tecnología</a><a href="http://iferminmontilla.com/tag/programacion.html">programación</a></p>
-</footer><!-- /.post-info --><p>Antes, para tener tu sistema web en línea, debías contratar
+<p>In <a href="http://iferminmontilla.com/category/blog.html">Blog</a>. </p>
+<p>tags: <a href="http://iferminmontilla.com/tag/heroku.html">heroku</a> <a href="http://iferminmontilla.com/tag/herramientas.html">herramientas</a> <a href="http://iferminmontilla.com/tag/tecnologia.html">tecnología</a> <a href="http://iferminmontilla.com/tag/programacion.html">programación</a> </p>
+</footer><!-- /.post-info --><p>En el artículo anterior, hablamos de IaaS y de PaaS y de cómo se diferencian
+concluímos que <em>Heroku</em> es PaaS, además, expusimos algunas de las limitaciones
+que nos impone la plataforma para desplegar nuestras aplicaciones y cómo trabajar
+alrededor de ellas para hacer funcionar todo.</p>
+<p>Muchas veces, quizás por inocentes o inexpertos, tendemos a hacer todo en la vista
+(y hablo de vistas de <em>django</em>), por ejemplo, necesitamos enviar algo al servidor
+donde hosteamos las imágenes, simplemente hacemos ejecutamos ese request en la vista,
+necesitamos enviar un correo electrónico de confirmación, nada, lo enviamos en la vista,
+necesitamos procesar una imagen para reducir la calidad y que ocupe menos espacio en
+el servior donde la vamos a hostear, dale... en la vista.</p>
+<p>Bueno, exagero un poco, quizás no en la vista, si somos estrictos con nuestro código,
+escribiremos una función que suba la foto al servidor, otra que envíe el correo y otra
+que procese la imagen para reducir el tamaño y llamaremos todo desde la vista. Este
+enfoque sigue estando errado y, a continuación, voy a explicar por qué.</p>
+<p>Todos venimos de hacer proyectos en la universidad, algunos más difíciles que otros,
+en algún proyecto, seguramente nos tocó realizar llamadas a alguna <em>API REST</em>, o
+enviar algún archivo a un servidor remoto, en todos los casos, estoy seguro de que
+todos hicimos lo mismo, una función que se ejecuta cuando enviamos el formulario y
+hace todo en línea: llamadas remotas, envío de archivos, envío de correos, etc.</p>
+<p>No es incorrecto, funciona, pero ¿cuánto tardó la página siguiente en cargar?, la
+pregunta más adecuada sería ¿cuánto tiempo tardó la función en redirigirme a la
+siguiente página?, calculemos unos 3 a 5 segundos por llamada remota y unos 2 a 3
+segundos, total, alrededor de 15 segundos en redirigir, a eso hay que sumarle
+el tiempo de carga de la página siguiente.</p>
+<p>Particularmente, mi primer trabajo fue en el mundo de los ERP, es una historia
+totalmente distinta, si una persona manda a generar un reporte que tarda 4 horas
+en ejecutarse y para ello el programa se bloquea y no le permite hacer más nada,
+simplemente no tiene otra opción más que esperar las 4 horas sentado en su escritorio,
+ir a tomarse un café, bajar a fumar un cigarrillo hasta que esté listo.</p>
+<p>Cuando programas para web, debes tomar en cuanta que debes ser gentil con el usuario
+y no hacerlo esperar, tu página debe responder rápido, sino, hay muchas otras páginas
+que hacen lo mismo y el usuario simplemente tiene que regresar a la pestaña del navegador
+donde está su búsqueda en google y seleccionar otro resultado. Una buena <em>rule of thumb</em>
+a la hora de ejecutar operaciones pesadas, como todas las que incluyan llamadas remotas
+o procesamiento de imágenes, es realizarlas de manera asíncrona, para ello debemos
+valernos de <em>algo</em> que nos permita retrasar la ejecusión de una tarea.</p>
+<p>Por un lado, necesitaremos algo que nos sirga para mantener una cola de tareas pendientes
+por ejecutar, por otro lado necesitamos algo que vaya leyendo esas tareas y ejecutándolas,
+la manera más simple de hacerlo en <em>Python</em> es con una librería llamada <em>python-rq</em> y
+usando <em>Redis</em> como backend de tareas, es muy fácil de configurar y súper sencilla de usar
+para la mayoría de proyectos pequeños a medianos funcionará bastante bien. Para proyectos
+a mayor escala, quizás lo mejor sea utilizar <em>celery</em> con <em>RabbitMQ</em> como broker de mensajes.
+Hay muchas herramientas que podemos usar como backend de mensajes: Redis, RabbitMQ, ZeroMQ,
+Kafka, HornetQ... es cuestión de evaluarlas y ver cuál se ajusta más al proyecto en cuestión
+en el cual estamos trabajando.</p>
+<p>Como todo en <em>django</em>, tenemos un paquete llamado <em>django-rq</em> que nos ayuda a organizar
+el código de una mejor manera y nos hace la vida más fácil, empecemos por descargar
+las librerías y paquetes necesarias:</p>
+<div class="highlight"><pre>sudo aptitude install redis-server
+pip install django-rq django
+</pre></div>
+<p>Si estamos en <em>Heroku</em>, no es necesario instalar <em>redis</em>, simplemente agregar los nuevos
+paquetes Python al <em>requirements.txt</em> para que sean instalados al hacer <em>push</em></p>
+<p>Para poder agregar trabajos a las colas, debemos declararlas para que <em>django-rq</em> las
+reconozca, simplemente agregamos una nueva variable en nuestro <em>settings.py</em>. A continuación
+un ejemplo de configuración para <em>django_rq</em>, la cola <em>default</em> es un ejemplo para desarrollo,
+la cola <em>high</em> es un ejemplo de configuración para Heroku si estamos usando el <em>add on</em> de
+<em>Redis To Go</em>.</p>
+<div class="highlight"><pre><span class="n">RQ_QUEUES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&#39;HOST&#39;</span><span class="p">:</span> <span class="s">&#39;localhost&#39;</span><span class="p">,</span>
+        <span class="s">&#39;PORT&#39;</span><span class="p">:</span> <span class="mi">6379</span><span class="p">,</span>
+        <span class="s">&#39;DB&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s">&#39;high&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&#39;HOST&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">&#39;REDISTOGO_URL&#39;</span><span class="p">),</span>
+        <span class="s">&#39;PORT&#39;</span><span class="p">:</span> <span class="mi">6379</span><span class="p">,</span>
+        <span class="s">&#39;DB&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>Ahora, las funciones sumamente pesadas pueden ser encoladas en cualquiera de las dos
+colas que hemos declarado en <em>settings.py</em>.</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">funcion_sumamente_pesada</span><span class="p">(</span><span class="n">argumento</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+<p>Lo que haremos en nuestra vista es, en vez de llamar a la función directamente, le diremos
+a <em>django_rq</em> que agregue el trabajo en la cola que consideremos conveniente.</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">django_rq</span>
+<span class="kn">from</span> <span class="nn">helpers</span> <span class="kn">import</span> <span class="n">funcion_sumamente_pesada</span>
+
+<span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="c">#...</span>
+    <span class="n">queue</span> <span class="o">=</span> <span class="n">django_rq</span><span class="o">.</span><span class="n">get_queue</span><span class="p">(</span><span class="s">&#39;high&#39;</span><span class="p">)</span> <span class="c"># si no indicamos una cola, retorna la cola &#39;default&#39;</span>
+    <span class="n">queue</span><span class="o">.</span><span class="n">enqueue</span><span class="p">(</span><span class="n">funcion_sumamente_pesada</span><span class="p">,</span> <span class="n">argumento</span><span class="p">)</span>
+</pre></div>
+<p>También decorar las funciones que queremos encolar, esto hace que el código se vea un poco más
+limpio, pero el efecto es el mismo:</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django_rq</span> <span class="kn">import</span> <span class="n">job</span>
+
+<span class="nd">@job</span><span class="p">(</span><span class="s">&#39;high&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">funcion_sumamente_pesada</span><span class="p">(</span><span class="n">argumentos</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+<p>Y luego, en la vista:</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="c">#...</span>
+    <span class="n">funcion_sumamente_pesada</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="n">argumento</span><span class="p">)</span>
+</pre></div>
+<p>Lo que rq hace es tomar el <em>objeto función</em>, serializarlo usando <em>pickle</em> y guardar ese objeto
+serializado en redis. Ahora que tenemos el trabajo encolado, necesitamos <em>algo</em> para leerlo de
+redis, des-serializarlo y ejecutarlo.</p>
+<p>RQ, viene con un worker que podemos ejecutar en un <em>dyno</em> aparte (recuerden agregar la entrada
+correspondiente en el <em>Procfile</em> de Heroku), simplemente corremos el siguiente comando
+en el terminal para probar localmente:</p>
+<div class="highlight"><pre>python manage.py rqworker high default
+</pre></div>
+<p>En la consola, podemos ver cómo los trabajos se van ejecutando, incluso, si apagamos el worker y
+mandamos a encolar algunos trabajos, al ejecutar de nuevo el worker de rq podemos ver como los
+va leyendo de redis y los ejecuta.</p>
+<div class="section" id="consideraciones-con-objetos-persistentes-en-base-de-datos">
+<h2>Consideraciones con objetos persistentes en base de datos</h2>
+<p>Bueno, ya sabemos que rq hace un <em>pickle</em> de la función y sus argumentos y envía esa información
+a <em>Redis</em> para luego ser leído por el worker, hacer el <em>unpickle</em> y ejecutar el trabajo.</p>
+<p>A menudo, necesitamos hacer <em>delay</em> de un trabajo que actúa sobre objetos que persisten en la base
+de datos, nuestra primera tentación es simplemente pasar los objetos como argumentos al trabajo.</p>
+<p>Ahora, veamos, analicemos qué ocurrirá. Al encolar el trabajo tanto la función como sus argumentos
+serán serializados, estos argumentos son objetos que pueden ser modificados. Luego de encolar, supongamos
+que modifico uno de los atributos del objeto y lo guardo en la base de datos, luego, al ejecutarse mi trabajo
+la función también modifica otro atributo y guarda el objeto en la base de datos.</p>
+<p>Lo que va a ocurrir es que, como la referencia que fue serializada al momento de encolar está desactualizada,
+la modificación que se hizo luego de encolar no estará reflejada en el objeto luego de ejecutar el trabajo.</p>
+<div class="section" id="la-solucion">
+<h3>La solución</h3>
+<p>Simplemente no pasar objetos persistentes como argumentos, es mucho mejor simplemente dar los
+<em>id</em> de base de dato al trabajo y que dentro de la función se ejecute un query para traerlos,
+de esta manera evitamos conflictos y dolores de cabeza como el antes descrito.</p>
+<p>Espero que esto sea de ayuda, es buena práctica trabajar con colas para trabajos pesados
+en cualquier proyecto web, no sólo si estamos corriendo nuestra app en Heroku.</p>
+</div>
+</div>
+<p>There are <a href="http://iferminmontilla.com/heroku-django-sin-morir-en-el-intento-parte-2.html#disqus_thread">comments</a>.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://iferminmontilla.com/heroku-django-sin-morir-en-el-intento-parte-1.html" rel="bookmark"
+                           title="Permalink to Heroku + Django sin morir en el intento (Parte 1)">Heroku + Django sin morir en el intento (Parte 1)</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-09-23T12:34:00">
+                Published: Mon 23 September 2013
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://iferminmontilla.com/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+        </address>
+<p>In <a href="http://iferminmontilla.com/category/blog.html">Blog</a>. </p>
+<p>tags: <a href="http://iferminmontilla.com/tag/heroku.html">heroku</a> <a href="http://iferminmontilla.com/tag/herramientas.html">herramientas</a> <a href="http://iferminmontilla.com/tag/tecnologia.html">tecnología</a> <a href="http://iferminmontilla.com/tag/programacion.html">programación</a> </p>
+</footer><!-- /.post-info -->                <p>Antes, para tener tu sistema web en línea, debías contratar
 un servicio de Servidor Dedicado o mínimo un VPS y administrarlo,
 si tenías más presupuesto, comprabas un servidor y lo acondicionabas
 o alquilabas un rack en algún centro de datos para tenerlo colocado allí.</p>
-<p>Ahora, con el boom de <em>Infraestructura como Servicio</em> (IaaS) y <em>Plataforma
-como Servicio</em> (PaaS), ya no es necesario tener servidores propios y, dependiendo
-del servicio, es decir, si es <em>IaaS</em> o <em>PaaS</em>, tampoco debes tener conocimientos de
-administración de servidores.</p>
-<div class="section" id="iaas-vs-paas">
-<h2>IAAS vs PAAS</h2>
-<p>En general, un proveedor de <em>IaaS</em> te da el hardware para que tú lo configures
-y ensambles el ambiente en el que va a correr tu aplicación, esto es instalar
-todos los paquetes de software necesarios par que el proyecto corra: servidor de
-base de datos, servidor web, intérpretes, bibliotecas, storages adicionales y un
-largo <em>end of thinking capacity</em> (etc). La ventaja de un proveedor de este tipo
-es que hacen que escalar tu infraestructura de manera horizontal es realmente fácil
-y no tienes que construir un centro de datos para albergar tu granja de servidores
-ni mucho menos configurar todo lo que eso implica, un ejemplo de servicios de este tipo
-es el <em>Elastic Compute Cloud</em> de <em>Amazon Web Services</em> (AWS EC-2).</p>
-<p>Por otra parte, un proveedor de <em>PaaS</em>, hace exactamente lo mismo, pero con un nivel más
-de abstracción, te proveen toda la infraestructura y el ambiente para que simplemente
-deposites tu código allí y pongas tu aplicación a correr con configuraciones mínimas y sin
-ser un experto en administración y configuración de servidores, de hecho, es transparente
-para ti toda la nube que hay por detrás. <a class="reference external" href="http://www.heroku.com/">Heroku</a> es un proveedor de este tipo de servicio
-que además cumple con el <a class="reference external" href="http://12factor.net/">12 factor app</a> por lo que además hace que sea súper fácil
-ajustar tu código para correr allí y que tome los parámetros de configuración que define
-la plataforma sin mucho problema.</p>
-</div>
-<div class="section" id="ahora-heroku">
-<h2>Ahora, Heroku</h2>
-<p>El modelo de trabajo en <em>Heroku</em> se basa en add-ons, que básicamente integran tu sistema con
-un DBMS, un sistema de alertas en caso de fallos o de monitoreo
-para ver el rendimiento, detectar cuellos de botella y tomar correctivos al respecto, todo esto
-con unos cuantos clicks (y una tarjeta de crédito), sin configurar absolutamente nada a nivel de
-servidores sino todo a nivel de aplicación.</p>
-<p>Todo esto suena como un sueño hecho realidad y, en muchos casos, lo es, pero nada es perfecto y
-<em>Heroku</em>, aunque facilita muchísimas cosas a nivel de despliegue, te complica muchas otras a nivel
-de desarrollo, esto puede ser bueno, te obliga a optimizar y a aprender, pero a veces, el esquema de
-plugins y addons puede volverse insostenible, sobre todo cuando debes pagar por varios y el presupuesto
-es limitado, además, desde el punto de vista de aplicación, <em>Heroku</em> impone varias limitaciones acerca
-de cómo debe comportarse, el tiempo en que debe responder, el tiempo que debe durar el deploy y
-cuánto debe pesar.</p>
-<div class="section" id="algunas-limitaciones">
-<h3>Algunas limitaciones</h3>
-<ul class="simple">
-<li><em>El app debe iniciar en 60 segundos o menos:</em> si este tiempo se excede, el deploy falla.</li>
-<li><em>Heroku duerme dynos cada cierto tiempo:</em> cada cierto tiempo Heroku reinicia los dynos, esto es un proceso
-totalmente aleatorio, por eso se recomienda tener al menos 2, si uno es reiniciado el otro sigue aceptando
-requests. Cuando esto ocurre, el proceso recibe un <em>SIGTERM</em>, al recibir la señal, se tienen 10 segundos de
-gracia para terminar lo que se estaba haciendo antes de recibir un <em>SIGKILL</em> y reiniciar.</li>
-<li><em>El app no puede pesar más de 300MB:</em> de lo contrario, el deploy falla, es recomendable usar el .slugignore
-para excluir archivos que sólo se usan para desarrollo y que no hacen falta en producción, lo mismo con las
-librerías para testing, no deberían incluirse en el requirements.txt que va a producción.</li>
-<li><em>El app debe responder a los requests en 30 segundos:</em> de lo contrario se levanta un error H12 (Worker Timeout)
-y la respectiva pantalla de <em>Application Error</em>.</li>
-<li><em>Heroku es stateless:</em> esto quiere decir que no guarda estado, para conservar estado del app es necesario valerse
-de otras herramientas, como una base de datos, memcached, y servicios de almacenamiento externos.</li>
-</ul>
-</div>
-<div class="section" id="algunos-de-los-golpes">
-<h3>Algunos de los golpes</h3>
-<p>Con esas limitaciones se puede vivir, pero hay que darle la vuelta para no desesperarse, hay algunas cosas que
-capaz son obvias, pero que uno no las ve sino hasta que empieza a trabajar y se consigue con un problema, basta
-con volver sobre las limitaciones antes expuestas y encontraremos una respuesta o al menos una posible razón.</p>
-<p>Ahora voy a empezar a listar los problemas que he tenido en <em>RingTu</em> y cómo los solucioné. Recuerden que
-estoy trabajando con <strong>Django</strong>, por lo que todo lo he resuelto utilizando herramientas para este framework.</p>
-<div class="section" id="no-es-bueno-para-servir-assets">
-<h4>No es bueno para servir assets</h4>
-<p>Cuando digo assets, me refiero a los archivos estáticos que dan forma a la interface web:
-css, js, imágenes, gradientes, ¿gifs animados?, tipografías y demás cosas bonitas que hacen los diseñadores
-por nosotros.</p>
-<p>Por defecto, nuestro dyno sirve todos estos archivos, además de servir nuestra aplicación, aceptando peticiones
-de nuestros clientes, procesándolas y decidiendo qué es lo que va a enviarse de vuelta.</p>
-<p>Servir los archivos estáticos o <em>static assets</em> resulta en requests adicionales que van a mantener ocupado nuestro
-dyno y esto nos cuesta tiempo y, si ya estamos pagando, dinero. Esos requests adicionales se podrían invertir en
-responder y procesar solicitudes nuevas y no en entregar archivos estáticos, además, la <strong>buena práctica</strong> con <em>django</em>
-es delegar la entrega de contenido estático a un <strong>servidor web</strong> como <em>Apache</em> o <em>NGinx</em> y así evitar procesamiento
-adicional a nivel de <em>views</em> (los <em>controladores</em> de <em>django</em>).</p>
-<p>La solución acá es, simplemente, almacenar los archivos estáticos <em>en otro lado</em>, puede ser incluso un <em>VPS</em> con <em>Apache</em>
-o <em>NGinx</em> instalado, pero hay varios servicios que pueden hacerlo mejor y optimizar la entrega de contenidos como <em>Cloudfile</em>
-de <strong>Rackspace</strong> y, el que opté por usar, <em>Simple Storage Service</em> de <strong>Amazon</strong>. Si ya tus assets no cambian mucho, lo mejor
-es servirlos a través de una <em>CDN</em> (Content Delivery Nerwork o Red de Entrega de Contenidos), como <em>Cloudfront</em>, también de
-<strong>Amazon</strong>.</p>
-<p>Ahora, <strong>¿Cómo se resuelve esto en django?</strong>, bueno, hay varias librerías que te permiten sincronizar los archivos estáticos
-con un servicio de almacenamiento remoto, la que decidí usar fue <a class="reference external" href="https://github.com/jamstooks/django-s3-folder-storage">django-s3-folder-storage</a>, una pequeña librería que se vale
-de otra más compleja (y completa, soporta múltiples servicios) llamada <a class="reference external" href="https://github.com/iserko/django-storages">django-storages</a> para organizar tu contenido en directorios
-dentro de un <em>bucket</em> de <em>S3</em>, es necesario agregar parámetros de configuración en nuestro <em>settings.py</em>, sería algo como esto:</p>
-<div class="highlight"><pre><span class="n">AWS_QUERYSTRING_AUTH</span> <span class="o">=</span> <span class="bp">False</span>
-<span class="n">AWS_ACCESS_KEY_ID</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">&#39;AWS_ACCESS_KEY_ID&#39;</span><span class="p">)</span>
-<span class="n">AWS_SECRET_ACCESS_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">&#39;AWS_SECRET_ACCESS_KEY&#39;</span><span class="p">)</span>
-<span class="n">AWS_STORAGE_BUCKET_NAME</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">&#39;AWS_STORAGE_BUCKET_NAME&#39;</span><span class="p">)</span>
-
-<span class="c"># Expires 20 years in the future at 8PM GMT</span>
-<span class="n">tenyrs</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">365</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">AWS_HEADERS</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">&#39;Expires&#39;</span><span class="p">:</span> <span class="n">tenyrs</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&#39;%a, </span><span class="si">%d</span><span class="s"> %b %Y 20:00:00 GMT&#39;</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="n">STATICFILES_STORAGE</span> <span class="o">=</span> <span class="s">&#39;s3_folder_storage.s3.StaticStorage&#39;</span>
-<span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s">&#39;http://</span><span class="si">%s</span><span class="s">.s3.amazonaws.com/static/&#39;</span> <span class="o">%</span> <span class="n">AWS_STORAGE_BUCKET_NAME</span>
-<span class="n">STATIC_S3_PATH</span> <span class="o">=</span> <span class="s">&#39;static/&#39;</span>
-</pre></div>
-<p>El parámetro de configuración AWS_QUERYSTRING_AUTH colocado en <em>False</em> es para que <em>S3</em> no nos genere urls firmadas
-para los assets sino que nos permita acceso público permanente. Si lo dejamos en <em>True</em>, su valor por defecto, nos va
-a generar un url válido por 5min y, como son archivos estáticos, esta url no se va a refrescar nunca, así que nuestra página
-se verá <strong>bien</strong>, con todos sus estilos y efectos sólo mientras duren las urls vigentes.</p>
-<p>Los demás son simplemente parámetros de configuración de S3, deben recordar añadir las variables de configuración en <em>Heroku</em>.</p>
-<div class="highlight"><pre>heroku config:add <span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span>EL_KEY_ID_DE_AWS_S3
-heroku config:add <span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span>EL_SECRET_KEY_ID_DE_AWS_S3
-heroku config:add <span class="nv">AWS_STORAGE_BUCKET_NAME</span><span class="o">=</span>EL_NOMBRE_DEL_BUCKET
-</pre></div>
-<p>Recuerden también colocar <em>s3_folder_storage</em> entre los <em>INSTALLED_APPS</em> del proyecto y activar la opción de <em>Heroku</em> para que
-reconozca las variables de configuración en tiempo de compilación, de otra manera, el deploy fallará.</p>
-<div class="highlight"><pre>heroku labs:enable user-env-compile
-</pre></div>
-<p>Con esto, ya deberíamos poder sincronizar los <em>assets</em> a <em>S3</em></p>
-<div class="highlight"><pre>heroku run python manage.py collectstatic
-</pre></div>
-<p>Dependiendo de qué tantos archivos estáticos tengamos, va a tardar más o menos, va a enviar todo lo que esté
-en nuestro <em>STATIC_ROOT</em> al <em>bucket S3</em> que configuramos anteriormente.</p>
-</div>
-<div class="section" id="no-puedes-utilizar-el-sistema-de-archivos">
-<h4>No puedes utilizar el sistema de archivos</h4>
-<p>Había dicho al principio que <em>Heroku</em> es <em>stateless</em>, es decir, no conserva el estado de tu aplicación. Entonces
-ellos implementaron algo llamado <em>Ephemeral Filesystem</em>, es decir, un sistema de archivos <em>efímero</em>, que se reinicia
-cada vez que los dynos son reiniciados por cualquier razón, sea un deploy o sea porque heroku los reinició.</p>
-<p><strong>¿Qué significa esto?</strong>, pues que <strong>no puedes escribir a disco</strong> como lo harías en cualquier servidor <em>normal</em>,
-si lo haces, debes saber que cuando tu app sea reiniciada, perderás todos los archivos, tiene un poco de sentido,
-cuando usas más de un dyno y escribes a disco, cuando el usuario quiera recuperar lo que subió, no tenemos manera de
-saber cuál dyno atendió aquella solicitud y no sabremos dónde buscar, así que, de una manera u otra, lo mejor es almacenar
-los archivos de nuestros usuarios en un lugar seguro y de donde podamos recuperarlos luego sin problemas.</p>
-<p>Nuevamente podemos utilizar <em>AWS-S3</em> para ello, con algunas configuraciones adicionales, podemos hacer que por defecto
-nuestros <em>media files</em>, para usar la terminología de <em>django</em>, sean almacenados en nuestro <em>bucket</em>.</p>
-<p>Es necesario agregar las siguientes líneas a nuestro <em>settings.py</em>:</p>
-<div class="highlight"><pre><span class="n">MEDIA_ROOT</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
-<span class="n">DEFAULT_FILE_STORAGE</span> <span class="o">=</span> <span class="s">&#39;s3_folder_storage.s3.DefaultStorage&#39;</span>
-<span class="n">DEFAULT_S3_PATH</span> <span class="o">=</span> <span class="s">&#39;media/&#39;</span>
-<span class="n">MEDIA_URL</span> <span class="o">=</span> <span class="s">&#39;http://</span><span class="si">%s</span><span class="s">.s3.amazonaws.com/media/&#39;</span> <span class="o">%</span> <span class="n">AWS_STORAGE_BUCKET_NAME</span>
-</pre></div>
-<p>Con esto, todo lo que suban nuestros usuarios irá a la carpeta <em>media/</em> de nuestro bucket.</p>
-<p>Hay que tener en cuenta que todo se está subiendo al mismo <em>bucket</em> y la política que se definió en principio para
-poder almacenar los archivos estáticos da acceso público a todo el contenido por defecto, por lo que hay que tomar
-previsiones <em>de alguna manera</em> para que no todo el mundo pueda ver los archivos de nuestros usuarios de manera directa.</p>
-<p>Acá expondré la estrategia que uso:</p>
-<ol class="arabic simple">
-<li><strong>Sobre-escritura del método save():</strong> en los modelos que tengan un <em>ImageField</em> o un <em>FileField</em>, la idea de esto es
-sobreescribir la política de control de acceso particular para el archivo una ves que fue subido. Para esto utilizaremos
-una librería llamada <a class="reference external" href="https://github.com/boto/boto">boto</a> que es un wrapper en Python para el API de <em>AWS</em></li>
-</ol>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
-<span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
-<span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
-
-<span class="k">class</span> <span class="nc">Video</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">)</span>
-    <span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">)</span>
-    <span class="n">video</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">FileField</span><span class="p">(</span><span class="n">upload_to</span><span class="o">=</span><span class="s">&#39;user_videos/&#39;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">boto.s3</span> <span class="kn">import</span> <span class="n">connection</span><span class="p">,</span> <span class="n">key</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">VoiceMessage</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-        <span class="n">conn</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">S3Connection</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">AWS_ACCESS_KEY_ID</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">AWS_SECRET_ACCESS_KEY</span><span class="p">)</span>
-        <span class="n">bucket</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">get_bucket</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">AWS_STORAGE_BUCKET_NAME</span><span class="p">)</span>
-        <span class="n">k</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">Key</span><span class="p">(</span><span class="n">bucket</span><span class="p">)</span>
-        <span class="n">k</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">DEFAULTS3_PATH</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">video</span><span class="p">)</span>
-        <span class="n">k</span><span class="o">.</span><span class="n">set_acl</span><span class="p">(</span><span class="s">&#39;private&#39;</span><span class="p">)</span>
-</pre></div>
-<p>Con esto tenemos el archivo privado en <em>S3</em>, ahora, necesitamos una manera de darle acceso al usuario que es propietario
-del archivo.</p>
-<ol class="arabic simple" start="2">
-<li><strong>Escribiendo una vista para acceder al archivo privado:</strong> la mejor manera que conseguí para darle acceso al usuario a su
-archivo fue escribiendo una vista de <em>django</em> que revisara que el usuario que origina el request es realmente el propietario
-del objeto y redirigirlo a la ubicación de su archivo en <em>S3</em>. Escribiremos un pequeño helper, además, para encapsular la
-generación del URL, como es un archivo privado, el url debe ir firmado y sólo será válido por el tiempo que nosotros indiquemos,
-en este caso, lo haremos por una hora.</li>
-</ol>
-<p>En el helper colocamos lo siguiente:</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
-
-
-<span class="k">def</span> <span class="nf">get_s3_redirect_url</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">60</span><span class="p">):</span>
-    <span class="kn">from</span> <span class="nn">boto.s3.connection</span> <span class="kn">import</span> <span class="n">S3Connection</span>
-
-    <span class="n">conn</span> <span class="o">=</span> <span class="n">S3Connection</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">AWS_ACCESS_KEY_ID</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">AWS_SECRET_ACCESS_KEY</span><span class="p">,</span> <span class="n">is_secure</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">conn</span><span class="o">.</span><span class="n">generate_url</span><span class="p">(</span><span class="n">ttl</span><span class="p">,</span> <span class="s">&#39;GET&#39;</span><span class="p">,</span> <span class="n">bucket</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">AWS_STORAGE_BUCKET_NAME</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">filepath</span><span class="p">,</span> <span class="n">force_http</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</pre></div>
-<p>y en la vista:</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span><span class="p">,</span> <span class="n">HttpResponseRedirect</span>
-<span class="kn">from</span> <span class="nn">django.contrib.auth.decorators</span> <span class="kn">import</span> <span class="n">login_required</span>
-<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Video</span>
-
-<span class="nd">@login_required</span>
-<span class="k">def</span> <span class="nf">get_user_video</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">video_id</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&#39;GET&#39;</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">.helpers</span> <span class="kn">import</span> <span class="n">get_s3_redirect_url</span>
-        <span class="n">user</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>
-        <span class="n">video</span> <span class="o">=</span> <span class="n">Video</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">video_id</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">user</span> <span class="o">==</span> <span class="n">video</span><span class="o">.</span><span class="n">user</span><span class="p">:</span>
-            <span class="n">filepath</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">settinga</span><span class="o">.</span><span class="n">DEFAULT_S3_PATH</span><span class="p">,</span> <span class="n">video</span><span class="o">.</span><span class="n">video</span><span class="p">)</span>
-            <span class="n">url</span> <span class="o">=</span> <span class="n">get_s3_redirect_url</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">3600</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="mi">403</span><span class="p">)</span>
-</pre></div>
-<p>Con esto generamos una url firmada y válida por 3600 segundos (una hora) si el usuario que origina la solicitud
-es el propietario del objeto que contiene el archivo (video) que se desea obtener, caso contrario retornamos
-403 ya que la persona no tiene permisos para ver ese contenido.</p>
-</div>
-</div>
-</div>
-<p>There are <a href="http://iferminmontilla.com/heroku-django-sin-morir-en-el-intento-parte-1.html#disqus_thread">comments</a>.</p>                </article>
-                                    <p class="paginator">
-        Page 1 / 1
-    </p>
-                            </aside><!-- /#featured -->
-                                                </ol><!-- /#posts-list -->
-                        </section><!-- /#content -->
-                    <section id="extras" class="body">
-                        <div class="blogroll">
+<p>Ahora, con el boom de <em>Infraestructura ...</em></p>
+                <a class="readmore" href="http://iferminmontilla.com/heroku-django-sin-morir-en-el-intento-parte-1.html">read more</a>
+<p>There are <a href="http://iferminmontilla.com/heroku-django-sin-morir-en-el-intento-parte-1.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 1
+</p>
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
                         <h2>blogroll</h2>
                         <ul>
-                                                    <li><a href="http://docs.notmyidea.org/alexis/pelican/">Pelican</a></li>
-                                                    <li><a href="http://python.org">Python.org</a></li>
-                                                    <li><a href="http://jinja.pocoo.org">Jinja2</a></li>
-                                                </ul>
+                            <li><a href="http://docs.notmyidea.org/alexis/pelican/">Pelican</a></li>
+                            <li><a href="http://python.org">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org">Jinja2</a></li>
+                        </ul>
                 </div><!-- /.blogroll -->
-                                <div class="social">
+                <div class="social">
                         <h2>social</h2>
                         <ul>
                             <li><a href="http://iferminmontilla.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-                            
-                                                    <li><a href="http://twitter.com/iferminm">Twitter</a></li>
-                                                    <li><a href="http://www.linkedin.com/profile/view?id=66587805&trk=tab_pro">LinkedIn</a></li>
-                                                    <li><a href="http://stackoverflow.com/users/1157389/israelord">StackOverflow</a></li>
-                                                    <li><a href="https://github.com/iferminm">GitHub</a></li>
-                                                </ul>
+
+                            <li><a href="http://twitter.com/iferminm">Twitter</a></li>
+                            <li><a href="http://www.linkedin.com/profile/view?id=66587805&trk=tab_pro">LinkedIn</a></li>
+                            <li><a href="http://stackoverflow.com/users/1157389/israelord">StackOverflow</a></li>
+                            <li><a href="https://github.com/iferminm">GitHub</a></li>
+                        </ul>
                 </div><!-- /.social -->
-                </section><!-- /#extras -->
+        </section><!-- /#extras -->
 
         <footer id="contentinfo" class="body">
                 <address id="about" class="vcard body">
@@ -288,7 +237,7 @@ es el propietario del objeto que contiene el archivo (video) que se desea obtene
     (function () {
         var s = document.createElement('script'); s.async = true;
         s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
     }());
 </script>

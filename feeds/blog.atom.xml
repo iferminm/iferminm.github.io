@@ -1,5 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>@#$%_</title><link href="http://iferminmontilla.com/" rel="alternate"></link><link href="http://iferminmontilla.com/feeds/blog.atom.xml" rel="self"></link><id>http://iferminmontilla.com/</id><updated>2013-09-23T12:34:00-05:30</updated><entry><title>Heroku + Django sin morir en el intento (Parte 1)</title><link href="http://iferminmontilla.com/heroku-django-sin-morir-en-el-intento-parte-1.html" rel="alternate"></link><updated>2013-09-23T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2013-09-23:heroku-django-sin-morir-en-el-intento-parte-1.html</id><summary type="html">&lt;p&gt;Antes, para tener tu sistema web en línea, debías contratar
+<feed xmlns="http://www.w3.org/2005/Atom"><title>@#$%_</title><link href="http://iferminmontilla.com/" rel="alternate"></link><link href="http://iferminmontilla.com/feeds/blog.atom.xml" rel="self"></link><id>http://iferminmontilla.com/</id><updated>2014-09-20T12:34:00-05:30</updated><entry><title>Heroku + Django sin morir en el intento (Parte 2)</title><link href="http://iferminmontilla.com/heroku-django-sin-morir-en-el-intento-parte-2.html" rel="alternate"></link><updated>2014-09-20T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2014-09-20:heroku-django-sin-morir-en-el-intento-parte-2.html</id><summary type="html">&lt;p&gt;En el artículo anterior, hablamos de IaaS y de PaaS y de cómo se diferencian
+concluímos que &lt;em&gt;Heroku&lt;/em&gt; es PaaS, además, expusimos algunas de las limitaciones
+que nos impone la plataforma para desplegar nuestras aplicaciones y cómo trabajar
+alrededor de ellas para hacer funcionar todo.&lt;/p&gt;
+&lt;p&gt;Muchas veces, quizás por inocentes o inexpertos, tendemos a hacer todo en la vista
+(y hablo de vistas de &lt;em&gt;django&lt;/em&gt;), por ejemplo, necesitamos enviar algo al servidor
+donde hosteamos las imágenes, simplemente hacemos ejecutamos ese request en la vista,
+necesitamos enviar un correo electrónico de confirmación, nada, lo enviamos en la vista,
+necesitamos procesar una imagen para reducir la calidad y que ocupe menos espacio en
+el servior donde la vamos a hostear, dale... en la vista.&lt;/p&gt;
+&lt;p&gt;Bueno, exagero un poco, quizás no en la vista, si somos estrictos con nuestro código,
+escribiremos una función que suba la foto al servidor, otra que envíe el correo y otra
+que procese la imagen para reducir el tamaño y llamaremos todo desde la vista. Este
+enfoque sigue estando errado y, a continuación, voy a explicar por qué.&lt;/p&gt;
+&lt;p&gt;Todos venimos de hacer proyectos en la universidad, algunos más difíciles que otros,
+en algún proyecto, seguramente nos tocó realizar llamadas a alguna &lt;em&gt;API REST&lt;/em&gt;, o
+enviar algún archivo a un servidor remoto, en todos los casos, estoy seguro de que
+todos hicimos lo mismo, una función que se ejecuta cuando enviamos el formulario y
+hace todo en línea: llamadas remotas, envío de archivos, envío de correos, etc.&lt;/p&gt;
+&lt;p&gt;No es incorrecto, funciona, pero ¿cuánto tardó la página siguiente en cargar?, la
+pregunta más adecuada sería ¿cuánto tiempo tardó la función en redirigirme a la
+siguiente página?, calculemos unos 3 a 5 segundos por llamada remota y unos 2 a 3
+segundos, total, alrededor de 15 segundos en redirigir, a eso hay que sumarle
+el tiempo de carga de la página siguiente.&lt;/p&gt;
+&lt;p&gt;Particularmente, mi primer trabajo fue en el mundo de los ERP, es una historia
+totalmente distinta, si una persona manda a generar un reporte que tarda 4 horas
+en ejecutarse y para ello el programa se bloquea y no le permite hacer más nada,
+simplemente no tiene otra opción más que esperar las 4 horas sentado en su escritorio,
+ir a tomarse un café, bajar a fumar un cigarrillo hasta que esté listo.&lt;/p&gt;
+&lt;p&gt;Cuando programas para web, debes tomar en cuanta que debes ser gentil con el usuario
+y no hacerlo esperar, tu página debe responder rápido, sino, hay muchas otras páginas
+que hacen lo mismo y el usuario simplemente tiene que regresar a la pestaña del navegador
+donde está su búsqueda en google y seleccionar otro resultado. Una buena &lt;em&gt;rule of thumb&lt;/em&gt;
+a la hora de ejecutar operaciones pesadas, como todas las que incluyan llamadas remotas
+o procesamiento de imágenes, es realizarlas de manera asíncrona, para ello debemos
+valernos de &lt;em&gt;algo&lt;/em&gt; que nos permita retrasar la ejecusión de una tarea.&lt;/p&gt;
+&lt;p&gt;Por un lado, necesitaremos algo que nos sirga para mantener una cola de tareas pendientes
+por ejecutar, por otro lado necesitamos algo que vaya leyendo esas tareas y ejecutándolas,
+la manera más simple de hacerlo en &lt;em&gt;Python&lt;/em&gt; es con una librería llamada &lt;em&gt;python-rq&lt;/em&gt; y
+usando &lt;em&gt;Redis&lt;/em&gt; como backend de tareas, es muy fácil de configurar y súper sencilla de usar
+para la mayoría de proyectos pequeños a medianos funcionará bastante bien. Para proyectos
+a mayor escala, quizás lo mejor sea utilizar &lt;em&gt;celery&lt;/em&gt; con &lt;em&gt;RabbitMQ&lt;/em&gt; como broker de mensajes.
+Hay muchas herramientas que podemos usar como backend de mensajes: Redis, RabbitMQ, ZeroMQ,
+Kafka, HornetQ... es cuestión de evaluarlas y ver cuál se ajusta más al proyecto en cuestión
+en el cual estamos trabajando.&lt;/p&gt;
+&lt;p&gt;Como todo en &lt;em&gt;django&lt;/em&gt;, tenemos un paquete llamado &lt;em&gt;django-rq&lt;/em&gt; que nos ayuda a organizar
+el código de una mejor manera y nos hace la vida más fácil, empecemos por descargar
+las librerías y paquetes necesarias:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;sudo aptitude install redis-server
+pip install django-rq django
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Si estamos en &lt;em&gt;Heroku&lt;/em&gt;, no es necesario instalar &lt;em&gt;redis&lt;/em&gt;, simplemente agregar los nuevos
+paquetes Python al &lt;em&gt;requirements.txt&lt;/em&gt; para que sean instalados al hacer &lt;em&gt;push&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Para poder agregar trabajos a las colas, debemos declararlas para que &lt;em&gt;django-rq&lt;/em&gt; las
+reconozca, simplemente agregamos una nueva variable en nuestro &lt;em&gt;settings.py&lt;/em&gt;. A continuación
+un ejemplo de configuración para &lt;em&gt;django_rq&lt;/em&gt;, la cola &lt;em&gt;default&lt;/em&gt; es un ejemplo para desarrollo,
+la cola &lt;em&gt;high&lt;/em&gt; es un ejemplo de configuración para Heroku si estamos usando el &lt;em&gt;add on&lt;/em&gt; de
+&lt;em&gt;Redis To Go&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;RQ_QUEUES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;default&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;HOST&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;PORT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;6379&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;DB&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;high&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;HOST&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getenv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;REDISTOGO_URL&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;PORT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;6379&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;DB&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ahora, las funciones sumamente pesadas pueden ser encoladas en cualquiera de las dos
+colas que hemos declarado en &lt;em&gt;settings.py&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;funcion_sumamente_pesada&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;argumento&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Lo que haremos en nuestra vista es, en vez de llamar a la función directamente, le diremos
+a &lt;em&gt;django_rq&lt;/em&gt; que agregue el trabajo en la cola que consideremos conveniente.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;django_rq&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;helpers&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;funcion_sumamente_pesada&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;view&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="c"&gt;#...&lt;/span&gt;
+    &lt;span class="n"&gt;queue&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;django_rq&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_queue&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;high&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;# si no indicamos una cola, retorna la cola &amp;#39;default&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;queue&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;enqueue&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;funcion_sumamente_pesada&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;argumento&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;También decorar las funciones que queremos encolar, esto hace que el código se vea un poco más
+limpio, pero el efecto es el mismo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django_rq&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;job&lt;/span&gt;
+
+&lt;span class="nd"&gt;@job&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;high&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;funcion_sumamente_pesada&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;argumentos&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Y luego, en la vista:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;view&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="c"&gt;#...&lt;/span&gt;
+    &lt;span class="n"&gt;funcion_sumamente_pesada&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;argumento&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Lo que rq hace es tomar el &lt;em&gt;objeto función&lt;/em&gt;, serializarlo usando &lt;em&gt;pickle&lt;/em&gt; y guardar ese objeto
+serializado en redis. Ahora que tenemos el trabajo encolado, necesitamos &lt;em&gt;algo&lt;/em&gt; para leerlo de
+redis, des-serializarlo y ejecutarlo.&lt;/p&gt;
+&lt;p&gt;RQ, viene con un worker que podemos ejecutar en un &lt;em&gt;dyno&lt;/em&gt; aparte (recuerden agregar la entrada
+correspondiente en el &lt;em&gt;Procfile&lt;/em&gt; de Heroku), simplemente corremos el siguiente comando
+en el terminal para probar localmente:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;python manage.py rqworker high default
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;En la consola, podemos ver cómo los trabajos se van ejecutando, incluso, si apagamos el worker y
+mandamos a encolar algunos trabajos, al ejecutar de nuevo el worker de rq podemos ver como los
+va leyendo de redis y los ejecuta.&lt;/p&gt;
+&lt;div class="section" id="consideraciones-con-objetos-persistentes-en-base-de-datos"&gt;
+&lt;h2&gt;Consideraciones con objetos persistentes en base de datos&lt;/h2&gt;
+&lt;p&gt;Bueno, ya sabemos que rq hace un &lt;em&gt;pickle&lt;/em&gt; de la función y sus argumentos y envía esa información
+a &lt;em&gt;Redis&lt;/em&gt; para luego ser leído por el worker, hacer el &lt;em&gt;unpickle&lt;/em&gt; y ejecutar el trabajo.&lt;/p&gt;
+&lt;p&gt;A menudo, necesitamos hacer &lt;em&gt;delay&lt;/em&gt; de un trabajo que actúa sobre objetos que persisten en la base
+de datos, nuestra primera tentación es simplemente pasar los objetos como argumentos al trabajo.&lt;/p&gt;
+&lt;p&gt;Ahora, veamos, analicemos qué ocurrirá. Al encolar el trabajo tanto la función como sus argumentos
+serán serializados, estos argumentos son objetos que pueden ser modificados. Luego de encolar, supongamos
+que modifico uno de los atributos del objeto y lo guardo en la base de datos, luego, al ejecutarse mi trabajo
+la función también modifica otro atributo y guarda el objeto en la base de datos.&lt;/p&gt;
+&lt;p&gt;Lo que va a ocurrir es que, como la referencia que fue serializada al momento de encolar está desactualizada,
+la modificación que se hizo luego de encolar no estará reflejada en el objeto luego de ejecutar el trabajo.&lt;/p&gt;
+&lt;div class="section" id="la-solucion"&gt;
+&lt;h3&gt;La solución&lt;/h3&gt;
+&lt;p&gt;Simplemente no pasar objetos persistentes como argumentos, es mucho mejor simplemente dar los
+&lt;em&gt;id&lt;/em&gt; de base de dato al trabajo y que dentro de la función se ejecute un query para traerlos,
+de esta manera evitamos conflictos y dolores de cabeza como el antes descrito.&lt;/p&gt;
+&lt;p&gt;Espero que esto sea de ayuda, es buena práctica trabajar con colas para trabajos pesados
+en cualquier proyecto web, no sólo si estamos corriendo nuestra app en Heroku.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="heroku"></category><category term="herramientas"></category><category term="tecnología"></category><category term="programación"></category></entry><entry><title>Heroku + Django sin morir en el intento (Parte 1)</title><link href="http://iferminmontilla.com/heroku-django-sin-morir-en-el-intento-parte-1.html" rel="alternate"></link><updated>2013-09-23T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2013-09-23:heroku-django-sin-morir-en-el-intento-parte-1.html</id><summary type="html">&lt;p&gt;Antes, para tener tu sistema web en línea, debías contratar
 un servicio de Servidor Dedicado o mínimo un VPS y administrarlo,
 si tenías más presupuesto, comprabas un servidor y lo acondicionabas
 o alquilabas un rack en algún centro de datos para tenerlo colocado allí.&lt;/p&gt;
