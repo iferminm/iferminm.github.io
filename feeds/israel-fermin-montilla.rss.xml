@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>@#$%_</title><link>http://iferminmontilla.com/</link><description></description><atom:link href="http://iferminmontilla.com/feeds/israel-fermin-montilla.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 20 Sep 2014 12:34:00 -0530</lastBuildDate><item><title>Heroku + Django sin morir en el intento (Parte 2)</title><link>http://iferminmontilla.com/heroku-django-sin-morir-en-el-intento-parte-2.html</link><description>&lt;p&gt;En el artículo anterior, hablamos de IaaS y de PaaS y de cómo se diferencian
-concluímos que &lt;em&gt;Heroku&lt;/em&gt; es PaaS, además, expusimos algunas de las limitaciones
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>@#$%_</title><link>http://iferminmontilla.com/</link><description></description><atom:link href="http://iferminmontilla.com/feeds/israel-fermin-montilla.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 28 Sep 2014 12:34:00 -0530</lastBuildDate><item><title>Reapareciendo luego de un año</title><link>http://iferminmontilla.com/reapareciendo-luego-de-un-ano.html</link><description>&lt;p&gt;Wow, la semana pasado publiqué la segunda parte del artículo sobre
+cómo desarrollar aplicaciones web sobre &lt;em&gt;Heroku&lt;/em&gt; y me di cuenta de
+que el primero lo publiqué hace ya poco más de un año, además
+esa fue la última vez que escribí en el blog.&lt;/p&gt;
+&lt;p&gt;Creo que es justo que les cuente un poco lo que ha pasado en un año
+de ausencia por estos lados.&lt;/p&gt;
+&lt;p&gt;Quienes me conocen, ya saben que emigré, las razones son varias y bien
+sabidas por todos, el hecho de si quería emigrar o no, pues, la verdad
+&lt;strong&gt;no&lt;/strong&gt;, nadie quiere estar lejos de casa y de sus seres queridos, cuando
+mucho uno espera estar al menos en la misma ciudad o en un estado vecino,
+nadie quiere irse a otro continente, solo, a hablar otro idioma y a
+tener choques con otra cultura, a tener que adaptarse y empezar de cero,
+hacer nuevos amigos, o tratar, pues seguramente en su mayoría serán inmigrantes
+también y llegado el momento regresarán a casa o se irán a otro país.&lt;/p&gt;
+&lt;p&gt;Bueno, a pesar de todo estoy bastante contento, me siento tranquilo, me
+encanta mi nuevo trabajo, la tecnología hoy día acorta las distancias
+y trato de hablar con mi familia lo más que puedo vía whatsapp y, aunque
+no es lo mismo, pues ayuda a mantener el contacto, trato también de llamar
+de vez en cuando para que no se olviden de mi y tampoco sientan que uno
+se olvida de ellos.&lt;/p&gt;
+&lt;p&gt;En lo personal, estoy bastante ansioso por que llegue diciembre, pues
+voy de visita a Venezuela, veré a mi familia y me casaré con mi prometida
+y novia de hace años ya, bueno, boda eclesiástica pues el civil ya fue.&lt;/p&gt;
+&lt;p&gt;En lo profesional, estoy súper contento también, siento que aprendo bastante
+en mi nuevo trabajo, estoy rodeado de programadores excelentes y gente que
+es realmente buena en lo que hace, sea marketing, finanzas o ingeniería de
+software, aún no he conocido al primer compañero de trabajo que no sea un duro
+en su área.&lt;/p&gt;
+&lt;p&gt;En mi lado geek, estoy feliz, al fin tengo tiempo para hacer contribuciones a
+proyectos open source, empezando por &lt;a class="reference external" href="http://turpial.org.ve/"&gt;libturpial&lt;/a&gt; que cloné el repo hace como año
+y medio y hace poco fue que empecé realmente a ojearlo y hacer las primeras contribuciones
+para familiarizarme con el código, estoy trabajando en un par de proyectos personales,
+uno que podría ser material de startup y otro simplemente para probar otros frameworks y
+experimentar con algoritmos y, además, no tiene precio la sensación de freelancear
+porque quieres y el proyecto te parece interesante y no porque estás urgido por dinero,
+realmente, ahora siento que trabajar es un placer más que una obligación,
+es raro cuando debo quedarme horas extra para terminar, sólo la última semana (en
+ya casi 5 meses) por una campaña para ganar un mercado emergente que era
+casi de vida o muerte.&lt;/p&gt;
+&lt;p&gt;Esta experiencia me ha hecho abrir un poco los ojos y darme cuenta de lo mucho
+que me falta por aprender en muchos aspectos, pero también me ha servido para
+crecer en muchos otros y, sobre todo, aprender a cocinar mi propia comida,
+sigo vivo, lo que quiere decir que no me ha salido tan mal.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Israel Fermín Montilla</dc:creator><pubDate>Sun, 28 Sep 2014 12:34:00 -0530</pubDate><guid>tag:iferminmontilla.com,2014-09-28:reapareciendo-luego-de-un-ano.html</guid><category>personal</category><category>emigrar</category><category>actitud</category></item><item><title>Heroku + Django sin morir en el intento (Parte 2)</title><link>http://iferminmontilla.com/heroku-django-sin-morir-en-el-intento-parte-2.html</link><description>&lt;p&gt;En el artículo anterior, hablamos de IaaS y de PaaS y de cómo se diferencian
+concluimos que &lt;em&gt;Heroku&lt;/em&gt; es PaaS, además, expusimos algunas de las limitaciones
 que nos impone la plataforma para desplegar nuestras aplicaciones y cómo trabajar
 alrededor de ellas para hacer funcionar todo.&lt;/p&gt;
 &lt;p&gt;Muchas veces, quizás por inocentes o inexpertos, tendemos a hacer todo en la vista
@@ -8,7 +51,7 @@ alrededor de ellas para hacer funcionar todo.&lt;/p&gt;
 donde hosteamos las imágenes, simplemente hacemos ejecutamos ese request en la vista,
 necesitamos enviar un correo electrónico de confirmación, nada, lo enviamos en la vista,
 necesitamos procesar una imagen para reducir la calidad y que ocupe menos espacio en
-el servior donde la vamos a hostear, dale... en la vista.&lt;/p&gt;
+el servidor donde la vamos a hostear, dale... en la vista.&lt;/p&gt;
 &lt;p&gt;Bueno, exagero un poco, quizás no en la vista, si somos estrictos con nuestro código,
 escribiremos una función que suba la foto al servidor, otra que envíe el correo y otra
 que procese la imagen para reducir el tamaño y llamaremos todo desde la vista. Este
@@ -34,7 +77,7 @@ que hacen lo mismo y el usuario simplemente tiene que regresar a la pestaña del
 donde está su búsqueda en google y seleccionar otro resultado. Una buena &lt;em&gt;rule of thumb&lt;/em&gt;
 a la hora de ejecutar operaciones pesadas, como todas las que incluyan llamadas remotas
 o procesamiento de imágenes, es realizarlas de manera asíncrona, para ello debemos
-valernos de &lt;em&gt;algo&lt;/em&gt; que nos permita retrasar la ejecusión de una tarea.&lt;/p&gt;
+valernos de &lt;em&gt;algo&lt;/em&gt; que nos permita retrasar la ejecución de una tarea.&lt;/p&gt;
 &lt;p&gt;Por un lado, necesitaremos algo que nos sirga para mantener una cola de tareas pendientes
 por ejecutar, por otro lado necesitamos algo que vaya leyendo esas tareas y ejecutándolas,
 la manera más simple de hacerlo en &lt;em&gt;Python&lt;/em&gt; es con una librería llamada &lt;em&gt;python-rq&lt;/em&gt; y

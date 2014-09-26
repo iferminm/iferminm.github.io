@@ -40,7 +40,7 @@
 <p>In <a href="http://iferminmontilla.com/category/blog.html">Blog</a>. </p>
 <p>tags: <a href="http://iferminmontilla.com/tag/heroku.html">heroku</a> <a href="http://iferminmontilla.com/tag/herramientas.html">herramientas</a> <a href="http://iferminmontilla.com/tag/tecnologia.html">tecnología</a> <a href="http://iferminmontilla.com/tag/programacion.html">programación</a> </p>
 </footer><!-- /.post-info -->      <p>En el artículo anterior, hablamos de IaaS y de PaaS y de cómo se diferencian
-concluímos que <em>Heroku</em> es PaaS, además, expusimos algunas de las limitaciones
+concluimos que <em>Heroku</em> es PaaS, además, expusimos algunas de las limitaciones
 que nos impone la plataforma para desplegar nuestras aplicaciones y cómo trabajar
 alrededor de ellas para hacer funcionar todo.</p>
 <p>Muchas veces, quizás por inocentes o inexpertos, tendemos a hacer todo en la vista
@@ -48,7 +48,7 @@ alrededor de ellas para hacer funcionar todo.</p>
 donde hosteamos las imágenes, simplemente hacemos ejecutamos ese request en la vista,
 necesitamos enviar un correo electrónico de confirmación, nada, lo enviamos en la vista,
 necesitamos procesar una imagen para reducir la calidad y que ocupe menos espacio en
-el servior donde la vamos a hostear, dale... en la vista.</p>
+el servidor donde la vamos a hostear, dale... en la vista.</p>
 <p>Bueno, exagero un poco, quizás no en la vista, si somos estrictos con nuestro código,
 escribiremos una función que suba la foto al servidor, otra que envíe el correo y otra
 que procese la imagen para reducir el tamaño y llamaremos todo desde la vista. Este
@@ -74,7 +74,7 @@ que hacen lo mismo y el usuario simplemente tiene que regresar a la pestaña del
 donde está su búsqueda en google y seleccionar otro resultado. Una buena <em>rule of thumb</em>
 a la hora de ejecutar operaciones pesadas, como todas las que incluyan llamadas remotas
 o procesamiento de imágenes, es realizarlas de manera asíncrona, para ello debemos
-valernos de <em>algo</em> que nos permita retrasar la ejecusión de una tarea.</p>
+valernos de <em>algo</em> que nos permita retrasar la ejecución de una tarea.</p>
 <p>Por un lado, necesitaremos algo que nos sirga para mantener una cola de tareas pendientes
 por ejecutar, por otro lado necesitamos algo que vaya leyendo esas tareas y ejecutándolas,
 la manera más simple de hacerlo en <em>Python</em> es con una librería llamada <em>python-rq</em> y
