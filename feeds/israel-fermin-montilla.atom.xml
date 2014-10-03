@@ -1,5 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>@#$%_</title><link href="http://iferminmontilla.com/" rel="alternate"></link><link href="http://iferminmontilla.com/feeds/israel-fermin-montilla.atom.xml" rel="self"></link><id>http://iferminmontilla.com/</id><updated>2014-09-30T12:34:00-05:30</updated><entry><title>En mi watchlist</title><link href="http://iferminmontilla.com/en-mi-watchlist.html" rel="alternate"></link><updated>2014-09-30T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2014-09-30:en-mi-watchlist.html</id><summary type="html">&lt;p&gt;Bueno, ya dije que estoy &lt;strong&gt;solo&lt;/strong&gt; en otro país, pero
+<feed xmlns="http://www.w3.org/2005/Atom"><title>@#$%_</title><link href="http://iferminmontilla.com/" rel="alternate"></link><link href="http://iferminmontilla.com/feeds/israel-fermin-montilla.atom.xml" rel="self"></link><id>http://iferminmontilla.com/</id><updated>2014-10-03T12:30:00-05:30</updated><entry><title>¿Y si me compro una Mac?</title><link href="http://iferminmontilla.com/y-si-me-compro-una-mac.html" rel="alternate"></link><updated>2014-10-03T12:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2014-10-03:y-si-me-compro-una-mac.html</id><summary type="html">&lt;p&gt;Llevo ya un par de meses considerando la posibilidad,
+sí, YO, Israel Fermín Montilla llevo un par de meses
+considerando la posibilidad de comprarme una &lt;em&gt;MacBook&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;No, no me hackearon github y subieron este artículo,
+tampoco estoy sufriendo de algún tipo de enfermedad
+mental, mucho menos considero que he aprendido todo
+lo que hay que aprender de Linux, tampoco me fastidié
+de Linux, simplemente estoy considerando la posibilidad.&lt;/p&gt;
+&lt;p&gt;En Venezuela era impensable e incomprable, pero acá, es algo
+que puedo hacer, podría fácilmente adquirir una MacBook Pro
+retina display, instalar homebrew y usarla también como máquina
+de desarrollo, ¿por qué no probar algo diferente?&lt;/p&gt;
+&lt;img alt="Problem?" src="images/comprarme-mac/thinkdifferent.jpg" /&gt;
+&lt;p&gt;Siempre he sido un crítico de &lt;em&gt;Apple&lt;/em&gt; y de todo lo que
+representa, siempre he dicho que es una fábrica de
+juguetes y que el único juguete que sirve es el iPod Classic,
+porque es fácil de usar, cumple su cometido muy bien y
+le cabe una cantidad grosera de música, el mío es de 160GB
+y tengo &lt;strong&gt;todos&lt;/strong&gt; mis discos allí metidos y aún le cabe
+más música. También siempre me he burlado de los fanáticos
+de &lt;em&gt;Apple&lt;/em&gt;, les digo &lt;em&gt;iSheeps&lt;/em&gt; porque, básicamente, así
+se comportan.&lt;/p&gt;
+&lt;img alt="iSheeps en formación" src="images/comprarme-mac/isheeps.jpg" /&gt;
+&lt;p&gt;Yo no soy una oveja, creo que soy mejor que eso, pero
+luego, pensando al respecto, tener una Mac, no me hace
+&lt;em&gt;iSheep&lt;/em&gt;, comprar todo lo que tenga la manzana mordida
+y ciegamente decir que es superior aunque técnicamente
+sea falso sí, al fin y al cabo, como Ingeniero y como
+programador, siento que debería aunque sea probar para
+definir si es bueno o malo.&lt;/p&gt;
+&lt;p&gt;Algunas de las ventajas que veo respecto de tener una
+Mac son:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;strong&gt;Software que funciona:&lt;/strong&gt; no es que Linux no funcione
+es sólo que a veces requiere de algunos pasos adicionales
+de configuración para que funcione como debe ser, en Mac
+simplemente instalas y ya, igual que en Windows.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sistema operativo estable:&lt;/strong&gt; no es que Linux no sea estable,
+es que Windows, la otra alternativa en cuanto a sistemas operativos
+&amp;quot;mainstream&amp;quot;, no lo es tanto, acá Linux y Mac, parecieran estar a
+la par pues ambos son sistemas Un*x (o eso es lo que nos hacen creer).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compatibilidad:&lt;/strong&gt; bueno, no es que en Linux haya problemas con drivers
+¿verdad?, uno siempre logra hacer funcionar las cosas, a veces
+cuesta un poco más de tiempo, pero no hablemos de drivers y software
+técnico, la mayoría de los entornos de desarrollo y servidores de base
+de datos, storage no-sql, etc funcionan perfecto en Linux, hablemos de
+software para uso diario, &lt;em&gt;Skype&lt;/em&gt;, el plugin de &lt;em&gt;Hangouts&lt;/em&gt; para &lt;em&gt;Chrome&lt;/em&gt;,
+estemos claros que &lt;em&gt;LibreOffice&lt;/em&gt; apesta, hay muchas alternativas para
+producir documentos, incluso de mayor calidad que con &lt;em&gt;Word&lt;/em&gt;, &lt;em&gt;PowerPoint&lt;/em&gt;
+o incluso &lt;em&gt;KeyNote&lt;/em&gt;, está LaTex, por ejemplo, y hay miles de librerías
+para producir presentaciones excelentes usando HTML, y JavaScript, pero
+muchas veces uno simplemente quiere hacer algo rápido, sin necesidad de
+escribir mucho código. Skype, por ejemplo, es imposible de instalar en
+&lt;em&gt;Debian&lt;/em&gt;, el paquete está corrupto, el de &lt;em&gt;Ubuntu&lt;/em&gt; y &lt;em&gt;Linux Mint&lt;/em&gt; funciona
+perfecto, lo mismo que con los plugins de &lt;em&gt;HangOuts&lt;/em&gt;, incluso el plugin
+de &lt;em&gt;Flash Player&lt;/em&gt; me ha dado problemas en &lt;em&gt;Ubuntu&lt;/em&gt; luego de un tiempo.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Software de grabación:&lt;/strong&gt; todos saben que toco guitarra, me gustaría empezar
+a grabar las cosas que compongo, &lt;em&gt;Audacity&lt;/em&gt; apesta y &lt;em&gt;Ubuntu Studio&lt;/em&gt; a veces
+me deja mal. He visto mucha gente trabajar con &lt;em&gt;Garage Band&lt;/em&gt; y hacer cosas
+geniales.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Esas son algunas de las razones que consigo como para una eventual migración,
+según tengo entendido, son geniales como máquinas personales y para realizar
+trabajos multimedia, bueno, me consta porque mi hermano es diseñador gráfico
+y todo lo hace allí, igual en varios estudios de grabación (claro, ellos usan
+&lt;em&gt;Pro Tools&lt;/em&gt;).&lt;/p&gt;
+&lt;p&gt;Mi mayor preocupación al respecto es la ausencia de un gestor de paquetes
+nativo, no puedo simplemente hacer &lt;em&gt;aptitude install&lt;/em&gt; y que todo funcione
+de maravilla. Todos los usuarios &lt;em&gt;Mac&lt;/em&gt; en la oficina me dicen que &lt;em&gt;homebrew&lt;/em&gt;
+hace el trabajo bastante bien, incluso, mi pana de &lt;a class="reference external" href="http://python.org.ve"&gt;PyVE&lt;/a&gt; &lt;a class="reference external" href="https://github.com/satanas"&gt;Wil Álvarez&lt;/a&gt; me
+dice que es algo que vale la pena probar y que está súper feliz programando
+en su &lt;em&gt;MacBook&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Simplemente lo estoy considerando, necesito leer más al respecto, quizás jugar
+un par de días con una a ver qué decido hacer.&lt;/p&gt;
+&lt;p&gt;Mientras... les dejo un video con los 66 comerciales de &lt;em&gt;Mac vs PC&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="youtube" align="center"&gt;&lt;iframe width="420" height="315" src="http://www.youtube.com/embed/0eEG5LVXdKo" frameborder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</summary><category term="mac"></category><category term="tecnología"></category><category term="laptops"></category></entry><entry><title>En mi watchlist</title><link href="http://iferminmontilla.com/en-mi-watchlist.html" rel="alternate"></link><updated>2014-09-30T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2014-09-30:en-mi-watchlist.html</id><summary type="html">&lt;p&gt;Bueno, ya dije que estoy &lt;strong&gt;solo&lt;/strong&gt; en otro país, pero
 no dije a dónde me fui, emigré a los Emiratos Árabes
 Unidos, estoy viviendo en Dubai y llevo ya casi cinco
 meses por estos lados.&lt;/p&gt;

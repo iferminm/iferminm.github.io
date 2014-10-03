@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Empezando a conocer la Web 3.0 (Parte II)</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog </a></h1>
+                <nav><ul>
+                    <li><a href="/category/acerca-de.html">Acerca de...</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/empezando-a-conocer-la-web-30-parte-ii.html" rel="bookmark"
+           title="Permalink to Empezando a conocer la Web 3.0 (Parte II)">Empezando a conocer la Web 3.0 (Parte II)</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-06-14T13:16:00">
+                Published: Tue 14 June 2011
+        </abbr>
+
+<p>In <a href="/category/blog.html">Blog</a>. </p>
+<p>tags: <a href="/tag/ontologias.html">ontologías</a> <a href="/tag/web-30.html">web 3.0</a> <a href="/tag/web-semantica.html">web semántica</a> </p>
+</footer><!-- /.post-info -->      <p>Hace un tiempo, publiqué el primero de una serie de
+artículos acerca de La Web Semántica, en el que daba una introducción y
+exponía la visión de la W3C sobre el rumbo que debería tomar la Web en
+su &quot;versión 3.0&quot;, si aún no lo has leido, <a class="reference external" href="http://codersvenezuela.com/post/empezando-a-conocer-la-web-3-0-parte-i/50">aún estás a tiempo</a>. En esta
+segunda entrega, expondré algunos conceptos que es necesario tener
+claros si deseas adentrarte en este nuevo mundo, así como también, daré
+una visión, un poco futurista (casi sacada de una película de Ciencia
+Ficción), de las cosas que serán posibles una vez se alcance a
+estandarizar todos los conceptos y tecnologías de la Web Semántica a lo
+ancho, largo y profundo de la World Wide Web.</p>
+<p>El primero de los conceptos que debemos tener claro es el de URI
+(Universal Resource Identifier) y URL (Universal Resource Locator), y
+las diferencias y similitudes que existen entre ellos pues, es de
+intuirse, que nos servirán más adelante. Luego de entender eso, podemos
+avanzar y adentrarnos en el mundo de las Ontologías, un concepto del
+campo de la Inteligencia Artificial adaptado a la Web Semántica. Una vez
+asimilado todo lo referente a las Ontologías, podemos irnos a estudiar
+algo de lógica y consultas sobre dichas ontologías para, después, ver
+algo acerca de Motores de Inferencia, que serán nuestro más grande
+aliado al desarrollar aplicaciones que implementen tecnologías de la Web
+Semántica. En este artículo, me concentraré en los dos primeros, es
+decir, URL, URI y Ontologías. Algo que parece causar mucha confusión en
+estudiantes, son los URI y los URL. Espero despejar cualquier duda en el
+siguiente párrafo: Un Identificador Universal de Recurso o URI, por sus
+siglas en inglés, es un elemento que nos permite simplemente saber
+&quot;quién&quot; es ese recurso. Si me permite identificar el recurso de manera
+inequívoca, quiere decir que debe ser único para cada uno. Por su parte,
+el Localizador Universal de Recurso, o URL por sus siglas en inglés, me
+permite saber la ubicación de ese recurso, debe resultar obvio que
+también debe ser único para cada uno pues dos recursos no pueden tener
+la misma ubicación. Si exportamos estos conceptos al mundo real y los
+aplicamos a personas, un URI podría ser su Cédula de Identidad, que no
+me da acceso al recurso, pero me permite saber quién es, un URL, podría
+ser su dirección postal + habitación en la que se encuentra (asumiendo
+que en Venezuela la gente vive tan cómoda que no necesita compartir
+cuarto con nadie) o, incluso, su número telefónico, ambos me dan acceso
+al recurso y, de alguna u otra manera, también me permiten conocer quién
+es. En pocas palabras, un URL es un URI que, además, me permite conocer
+la ubicación del sujeto.</p>
+<p>Es necesario tener claro todo lo anterior ya
+que en la Web Semántica no se habla de Páginas o Sitios Web, se busca
+generalizar un poco más ya que, en la Web, no sólo existen documentos
+HTML que dan forma a los Portales Web, sino también Videos, Fotos,
+documentos PDF, Música, Servicios Web, en fin, sería mucho más fácil
+decir qué es lo que no se encuentra en la Internet. Es por ello que la
+Web Semántica habla de Recursos, más allá de su tipo. Ahora bien, la Web
+Semántica se basa en modelos de conocimiento bien estructurado, estos
+modelos de conocimiento se conocen en el mundo de la Inteligencia
+Artificial como Ontologías.</p>
+<p>Una Ontología no es más que una
+representación estructurada del conocimiento de un área específica, de
+allí que muchos buscadores que implementan 100% tecnología de Web
+Semántica sean específicos para un tema dado. Estos modelos, en el
+ámbito que nos compete, se utilizan para describir recursos, a los
+cuales nos referimos mediante URI's, y, en cierta forma, darle al
+computador la capacidad de &quot;entender&quot; de qué habla dicho recurso y
+cuáles son sus recursos relacionados, de esta manera, comenzamos a
+construir nuestra infraestructura de meta-datos para realizar búsquedas
+contextualizadas y con más sentido para el usuario. La manera como una
+Ontología organiza el conocimiento, es a través de una estructura de
+meta-conocimiento. Esta estructura se construye a partir de un concepto
+con el cual la mayoría de los programadores estamos famimliarizados
+desde tempranos años de la carrera, las Clases, todo meta-conocimiento
+es modelable a través de Clases. Es de intuirse que se mantienen los
+conceptos de Herencia y Polimorfismo también dentro de las Ontologías.
+Por ejemplo, imaginemos una MICRO-Ontología de la Vida Salvaje de
+África[1]. Empezando a pensar al respecto, nos percatamos de que la
+sabia madre naturaleza ya nos facilitó con dos clases bien
+diferenciadas: &quot;Animales&quot; y &quot;Plantas&quot;. Una Ontología, también me permite
+crear relaciones entre clases, con propócitos didácticos, imaginemos las
+clases &quot;Tallo&quot;, &quot;Rama&quot; y &quot;Hoja&quot; que &quot;son parte&quot; de una &quot;Planta&quot;, creo
+que la relación es bastante obvia, nuestra estructura de composición
+para la clase &quot;Planta&quot; sería: &quot;Hoja&quot;, es parte de: &quot;Rama&quot;, es parte de:
+&quot;Tallo&quot;, es parte de: &quot;Planta&quot;. Podemos complicarlo aún más, podríamos
+definir clases de &quot;Forma&quot; (triángulo, rombo, etc) y relacionarlas a
+&quot;Hoja&quot; y crear la relación &quot;tiene forma de&quot; para describir cómo es la
+hoja de una Planta dada, pero, por ahora, dejémoslo así. Por otro lado,
+la clase &quot;Animal&quot;, tiene dos subclases muy fáciles de inferir:
+&quot;Carnívoro&quot; y &quot;Herbívoro&quot;, ambas sub-clases son también &quot;Animales&quot;, esto
+es una estructura de Herencia pues, una instancia de &quot;Herbívoro&quot; o de
+&quot;Carnívoro&quot; es también un &quot;Animal&quot;.</p>
+<p>Nuestra estructura de Herencia para
+&quot;Animal&quot; quedaría así: &quot;Carnívoro&quot;, es un: &quot;Animal&quot;. &quot;Herbívoro&quot;, es un:
+&quot;Animal&quot;. Pero, ahora, ¿cómo se relacionan todas nuestras clases entre
+sí?. Bueno, a través de una relación obviamente, pero, ¿Cuál?. Bueno, un
+animal debe comer ¿no?. Entonces, un &quot;Herbívoro&quot; come &quot;Planta&quot; y un
+&quot;Carnívoro&quot; come &quot;Herbívoro&quot;, también podría crear la relación inversa
+&quot;es comido por&quot;, por ejemplo. Hasta ahora sólo tenemos el
+Meta-Conocimiento, es decir, las descripciones de los recursos, ahora
+debo agregar recursos, por ejemplo, si digo: &quot;León&quot; es un &quot;Carnívoro&quot;;
+&quot;Arbusto&quot; es una &quot;Planta&quot; y &quot;Zebra&quot; es un &quot;Herbívoro&quot; Automáticamente,
+podríamos inferir que el &quot;Arbusto&quot; está conpuesto por &quot;Tallo&quot;, &quot;Rama&quot; y
+&quot;Hoja&quot;, es comido por &quot;Zebra&quot;, que a su vez es comido por &quot;León&quot;. Si
+hacemos una analogía con la Programación Orientada a Objetos, mis
+clases, seguirían siendo clases, pero los recursos a los que hacen
+referencia, serían los objetos que son instanciados en una clase
+determinada.</p>
+<p>Obviamente, pueden hacerse ontologías muy complejas, lo que
+aquí muestro a manera de ejemplo es sólo la punta del iceberg pues los
+lenguajes de ontologías para la Web Semántica son sumamente flexibles y
+potentes: RDF y OWL[2] (que no es más que una extensión de RDF),
+posteriormente dedicaré un artículo para profundizar más sobre ellos.
+Las clases RDF/OWL, definen y describen mis recursos, y las relaciones
+entre estas clases, definen ciertas reglas básicas de inferencia lógica
+que pueden ser aprovechadas en un nivel superior por un Motor de
+Inferencia[3] para resolver consultas sobre una ontología y, a partir de
+esas premisas básicas, deducir nuevo conocimiento no explícito
+directamente en el modelo de conocimiento.</p>
+<p>Imaginemos ahora una WWW
+totalmente enlazada, totalmente integrada con la Web Semántica, cuando
+esto ocurra, serán agentes[4] quienes nos ayuden a realizar búsquedas a
+través de la web, examinando ontologías, extrayendo información que se
+adapte a nuestra consulta e interpretando, a través de reglas de
+inferencia bien definidas, cuáles recursos cumplen mejor con nuestra
+solicitud. Supongamos que Alan, es un empresario muy ocupado y su madre
+lo llamó anoche porque siente dolor en la zona abdominal desde hace unos
+días y siente que debería visitar a un médico. Alan, consulta la
+Internet desde su TabletPC, a través de su agente, solicitando las
+clínicas que se encuentren en 10km a la redonda de la casa de su madre,
+organizadas según su reputación. El agente revisa la ubicación de la
+casa de su madre (almacenada en el Tablet gracias a la tecnología de
+GPS) y consulta una Ontología con las clínicas de la ciudad y, además,
+busca en el Servicio Web de la Sociedad Médica Venezolana (bajo las
+circunstancias descritas en el párrafo anterior, debería existir), la
+lista de las mejores clínicas para poder cumplir con el patrón de
+ordenamiento que Alan solicitó. Luego de revisar los resultados, Alan le
+pregunta al agente de dónde obtuvo la información, este le redirige al
+portal de la Sociedad Médica Venezolana. Alan revisa las primeras tres
+clínicas y, finalmente se decide por el Hospital de Clínicas Caracas
+(HCC), pues no queda muy lejos de la casa de su madre y figura de 3ero
+en la lista de resultados. El agente del HCC le pregunta qué síntomas
+presenta, Alan escribe &quot;Dolor Abdominal&quot;, el agente le recomienda
+visitar a un Gastroenterólogo y le devuelve una lista de los médicos de
+esa especialidad del Hospital. Alan se da cuenta de que el 2do en la
+lista, es un viejo amigo del Colegio y decide solicitar una cita con él
+lo más pronto posible, el agente del Hospital le informa que la cita más
+próxima es para dentro de dos días, entre las 14:00 y las 18:00, y su
+agente le recuerda que tiene un par de reuniones en ese intervalo de
+tiempo. Alan revisa su agenda y se da cuenta que son dos reuniones de
+prioridad menor, pide a su agente que las reprograme y solicite la cita
+médica. El agente de Alan, de manera automática, se comunica con los
+agentes de las personas involucradas en las reuniones para reprogramar
+las citas y, posteriormente se comunica con el agente del HCC para
+colocar la cita para dentro de dos días a la hora mencionada. Todo esto
+será posible si la información se encuentra totalmente enlazada y
+disponible en línea, los recursos son descritos de manera bien definida
+y las reglas de inferencia son bien explícitas, es por ello que es
+necesario que más personas se interesen en este tema de manera técnica
+pues, el futuro de la Internet, está tocando a nuestras puertas y, la
+Web Semántica, no puede quedarse enclaustrada dentro de la academia y
+ser dominado únicamente por grupos de investigación científica. Espero
+haber motivado a alguien más a estudiar dentro de este campo. Hasta un
+próximo artículo.</p>
+<p>[1] Digo Micro-Ontología porque si hacemos la ontología completa, creo
+que acabaríamos con todo el espacio disponible en este servidor.</p>
+<p>[2] Ambos lenguajes están en proceso de definición por el World Wide Web
+Consorcium (W3C), el avance puede ser seguido a través el sitio web del
+W3C.</p>
+<p>[3] JENA y Virtuoso son los que parecieran ser más utilizados.</p>
+<p>[4] Un agente, en informática, es una pieza de software que realiza una
+tarea específica de manera automática, es una espécie de &quot;robot&quot;.</p>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
