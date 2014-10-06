@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>@#$%_</title><link href="iferminmontilla.com/" rel="alternate"></link><link href="iferminmontilla.com/feeds/acerca-de.atom.xml" rel="self"></link><id>iferminmontilla.com/</id><updated>2011-05-10T03:25:00-05:30</updated><entry><title>Acerca de mi</title><link href="iferminmontilla.com/acerca-de-mi.html" rel="alternate"></link><updated>2011-05-10T03:25:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:,2011-05-10:iferminmontilla.com/acerca-de-mi.html</id><summary type="html">&lt;p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>@#$%_</title><link href="http://iferminmontilla.com/" rel="alternate"></link><link href="http://iferminmontilla.com/feeds/acerca-de.atom.xml" rel="self"></link><id>http://iferminmontilla.com/</id><updated>2011-05-10T03:25:00-05:30</updated><entry><title>Acerca de mi</title><link href="http://iferminmontilla.com/acerca-de-mi.html" rel="alternate"></link><updated>2011-05-10T03:25:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2011-05-10:acerca-de-mi.html</id><summary type="html">&lt;p&gt;
 
  "Geek de nacimiento, informático de formación y músico por
  diversión..."&lt;p&gt;Hola!, la verdad mientras escribía esto no pensé que alguien llegara a
@@ -22,7 +22,7 @@ Mendoza*&lt;/a&gt; y &lt;a class="reference external" href="http://www.youtube.c
 música nacional en todas sus presentaciones. Lector empedernido de
 cualquier tipo de libros (técnicos y literatura en general), aficionado
 al cine, filántropo y misántropo a veces... en fin, otro loco más...&lt;/p&gt;
-&lt;/p&gt;</summary></entry><entry><title>Acerca de este sitio</title><link href="iferminmontilla.com/acerca-de-este-sitio.html" rel="alternate"></link><updated>2011-05-10T01:06:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:,2011-05-10:iferminmontilla.com/acerca-de-este-sitio.html</id><summary type="html">&lt;p&gt;Hay algo muy valioso, mucho más que cualquier cosa en el mundo, y que
+&lt;/p&gt;</summary></entry><entry><title>Acerca de este sitio</title><link href="http://iferminmontilla.com/acerca-de-este-sitio.html" rel="alternate"></link><updated>2011-05-10T01:06:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2011-05-10:acerca-de-este-sitio.html</id><summary type="html">&lt;p&gt;Hay algo muy valioso, mucho más que cualquier cosa en el mundo, y que
 increiblemente muy poca gente comparte y, debido a ese egoismo, el mundo
 no avanza más rápido. Ese algo es el &lt;em&gt;conocimiento&lt;/em&gt;, el conocimiento en
 las manos correctas puede producir resultados increíbles. Este sitio es
