@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+        <meta charset="utf-8" />
+        <title>Usando Redis como backend de sesiones en php</title>
+        <link rel="stylesheet" href="http://iferminmontilla.com/theme/css/main.css" />
+        <link href="http://iferminmontilla.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="@#$%_ Atom Feed" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://iferminmontilla.com/">@#$%_ </a></h1>
+                <nav><ul>
+                    <li><a href="http://iferminmontilla.com/category/acerca-de.html">Acerca de...</a></li>
+                    <li class="active"><a href="http://iferminmontilla.com/category/blog.html">Blog</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://iferminmontilla.com/usando-redis-como-backend-de-sesiones-en-php.html" rel="bookmark"
+           title="Permalink to Usando Redis como backend de sesiones en php">Usando Redis como backend de sesiones en php</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-10-19T12:30:00">
+                Published: Sun 19 October 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://iferminmontilla.com/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+        </address>
+<p>In <a href="http://iferminmontilla.com/category/blog.html">Blog</a>. </p>
+<p>tags: <a href="http://iferminmontilla.com/tag/desarrollo.html">desarrollo</a> <a href="http://iferminmontilla.com/tag/web.html">web</a> <a href="http://iferminmontilla.com/tag/sesiones.html">sesiones</a> <a href="http://iferminmontilla.com/tag/redis.html">redis</a> <a href="http://iferminmontilla.com/tag/php.html">php</a> </p>
+</footer><!-- /.post-info -->      <p>Bueno, sí, leyeron bien el título, luego de años me tocó
+trabajar de nuevo con php en la oficina, dejen el escándalo.</p>
+<p>Siendo sincero, las cosas parecieran haber mejorado mucho desde
+la última vez que hice (o traté de hacer) algo con php, era php
+4.algo en aquel momento, jugaba con <em>Symfony</em> y fue una desgracia
+que no se la deseo ni a mi peor enemigo.</p>
+<p>Luego, más recientemente jugué con <em>Yii</em>, un framework para desarrollo
+web con php que me pareció bastante bueno y es una alternativa
+que le recomiendo a todo aquel que no tenga más remedio que
+desarrollar usando este lenguaje, algunos me dicen que pruebe
+<em>Lavarel</em> y seguramente me cambie a php, pero dudo mucho que
+algo me atrape tanto como <em>Python</em>, sin importar el framework,
+incluso <em>Web2Py</em> tiene muchas cosas rescatables.</p>
+<p>Bueno, manos a la obra:</p>
+<div class="section" id="la-historia">
+<h2>La historia:</h2>
+<p>En la oficina están en una onda de <em>intercambiar código</em> con nuestros
+aliados comerciales o &quot;páginas hermanas&quot;, el problema es que nosotros
+desarrollamos en <em>Python</em> + <em>django</em> y a veces <em>bottle</em> y todos los demás
+en php.</p>
+<p>Este proyecto en particular, fue desarrollado con un framework hecho en
+casa en php y es usado como una librería para autenticación utilizando
+servicios de 3eros, es decir, <em>OAuth</em>. Esto en un mundo ideal, donde todo
+lo programas con php y puedes simplemente hacer:</p>
+<pre class="code php literal-block">
+<span class="x">use project\module\submodule\file;</span>
+</pre>
+<p>y todo bien.</p>
+</div>
+<div class="section" id="el-problema">
+<h2>El problema:</h2>
+<p>Obviamente, no podemos importar código php en nuestro proyecto en <em>Python</em>,
+entonces, la solución fue simplemente, adaptar la librería provista
+por la otra gente para usarla como un servicio, la cosa salió bastante bien,
+pero al momento de poner todo en producción, nos dimos cuenta de algo.</p>
+<p>Se desplegaron dos instancias de este servicio detrás de un balanceador de carga,
+para autenticar usando <em>OAuth</em>, es necesario golpear más de una vez el servicio,
+entonces, estando dos (o más) instancias detrás de un balanceador de carga, no
+tienes manera de garantizar que quien atiende el primer <em>request</em>, es el mismo
+que atiende el segundo.</p>
+<p>A esto súmale que se guarda cierta información en la sesión para mantenerla
+durante todo el proceso de autenticación y php almacena las variables de sesión
+en un archivo local del servidor.</p>
+</div>
+<div class="section" id="la-solucion">
+<h2>La solución:</h2>
+<p>Sin pensarlo mucho, la solución es tener <em>algo</em> que todas las instancias
+compartan para escribir la información relacionada a las sesiones, puede
+ser una base de datos <em>MySQL</em>, un sistema de archivos compartido con <em>NFS</em>,
+lo que sea, nosotros optamos por <em>Redis</em> porque es lo más rápido y fácil de
+configurar, responde rápido porque mantiene ciertas cosas en memoria y es
+difícil que pierda datos, puede pasar, pero igual es información transitoria
+que no nos interesa conservar.</p>
+<div class="section" id="implementacion">
+<h3>Implementación:</h3>
+<p>Luego de investigar unos minutos, nos dimos cuenta de que no era nada del otro
+mundo, simplemente cambiar unos parámetros de configuración en los respectivos
+archivos <em>php.ini</em>, instalar un par de paquetes y listo.</p>
+<div class="section" id="instalacion-de-paquetes">
+<h4>Instalación de paquetes:</h4>
+<p>Descargamos <a class="reference external" href="https://github.com/nicolasff/phpredis">php-redis</a></p>
+<pre class="code literal-block">
+sudo aptitude install php5-dev
+cd php_redis/
+sudo phpize
+sudo ./configure
+sudo make
+sudo make install
+</pre>
+</div>
+<div class="section" id="php-ini">
+<h4>php.ini:</h4>
+<p>Simplemente debemos modificar las siguientes líneas:</p>
+<pre class="code literal-block">
+extension=redis.so
+[Session]
+session.save_handler=redis
+session.save_path=&quot;tcp://localhost:6379&quot;
+</pre>
+<p>El <em>save_path</em> debe tener la IP y el Puerto donde nuestra instancia de
+redis estará escuchando.</p>
+</div>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusión:</h2>
+<p>Ciertamente las cosas han mejorado sólo un poco en php desde la última vez que
+lo usé para algo más que un proyecto de juguete. Sin embargo no me veo programando
+en php a menos que sea estrictamente necesario por las características o restricciones
+de un proyecto en particular.</p>
+<p>Respecto al servicio de autenticación, ya está en producción, pareciera estar funcionando
+bastante bien, sin embargo hay muchas cosas con las que no estamos contentos, seguramente
+terminemos cambiándolo por una versión 2.0, seguramente en <em>Python</em> y desarrollado por
+nosotros pero, al menos por ahora, funciona y hace el trabajo.</p>
+</div>
+
+    </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'iferminmblog';
+        var disqus_identifier = 'usando-redis-como-backend-de-sesiones-en-php.html';
+        var disqus_url = 'http://iferminmontilla.com/usando-redis-como-backend-de-sesiones-en-php.html';
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//iferminmblog.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://docs.notmyidea.org/alexis/pelican/">Pelican</a></li>
+                            <li><a href="http://python.org">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org">Jinja2</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://iferminmontilla.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="http://twitter.com/iferminm">Twitter</a></li>
+                            <li><a href="http://www.linkedin.com/profile/view?id=66587805&trk=tab_pro">LinkedIn</a></li>
+                            <li><a href="http://stackoverflow.com/users/1157389/israelord">StackOverflow</a></li>
+                            <li><a href="https://github.com/iferminm">GitHub</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'iferminmblog';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>
