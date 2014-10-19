@@ -1,5 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>@#$%_</title><link href="http://iferminmontilla.com/" rel="alternate"></link><link href="http://iferminmontilla.com/feeds/all.atom.xml" rel="self"></link><id>http://iferminmontilla.com/</id><updated>2014-10-19T12:34:00-05:30</updated><entry><title>Reporte de películas, libros y series Octubre 2014</title><link href="http://iferminmontilla.com/reporte-de-peliculas-libros-y-series-octubre-2014.html" rel="alternate"></link><updated>2014-10-19T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2014-10-19:reporte-de-peliculas-libros-y-series-octubre-2014.html</id><summary type="html">&lt;p&gt;Bueno, octubre fue un mes no muy activo en cuanto
+<feed xmlns="http://www.w3.org/2005/Atom"><title>@#$%_</title><link href="http://iferminmontilla.com/" rel="alternate"></link><link href="http://iferminmontilla.com/feeds/all.atom.xml" rel="self"></link><id>http://iferminmontilla.com/</id><updated>2014-10-19T12:30:00-05:30</updated><entry><title>Usando Redis como backend de sesiones en php</title><link href="http://iferminmontilla.com/usando-redis-como-backend-de-sesiones-en-php.html" rel="alternate"></link><updated>2014-10-19T12:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2014-10-19:usando-redis-como-backend-de-sesiones-en-php.html</id><summary type="html">&lt;p&gt;Bueno, sí, leyeron bien el título, luego de años me tocó
+trabajar de nuevo con php en la oficina, dejen el escándalo.&lt;/p&gt;
+&lt;p&gt;Siendo sincero, las cosas parecieran haber mejorado mucho desde
+la última vez que hice (o traté de hacer) algo con php, era php
+4.algo en aquel momento, jugaba con &lt;em&gt;Symfony&lt;/em&gt; y fue una desgracia
+que no se la deseo ni a mi peor enemigo.&lt;/p&gt;
+&lt;p&gt;Luego, más recientemente jugué con &lt;em&gt;Yii&lt;/em&gt;, un framework para desarrollo
+web con php que me pareció bastante bueno y es una alternativa
+que le recomiendo a todo aquel que no tenga más remedio que
+desarrollar usando este lenguaje, algunos me dicen que pruebe
+&lt;em&gt;Lavarel&lt;/em&gt; y seguramente me cambie a php, pero dudo mucho que
+algo me atrape tanto como &lt;em&gt;Python&lt;/em&gt;, sin importar el framework,
+incluso &lt;em&gt;Web2Py&lt;/em&gt; tiene muchas cosas rescatables.&lt;/p&gt;
+&lt;p&gt;Bueno, manos a la obra:&lt;/p&gt;
+&lt;div class="section" id="la-historia"&gt;
+&lt;h2&gt;La historia:&lt;/h2&gt;
+&lt;p&gt;En la oficina están en una onda de &lt;em&gt;intercambiar código&lt;/em&gt; con nuestros
+aliados comerciales o &amp;quot;páginas hermanas&amp;quot;, el problema es que nosotros
+desarrollamos en &lt;em&gt;Python&lt;/em&gt; + &lt;em&gt;django&lt;/em&gt; y a veces &lt;em&gt;bottle&lt;/em&gt; y todos los demás
+en php.&lt;/p&gt;
+&lt;p&gt;Este proyecto en particular, fue desarrollado con un framework hecho en
+casa en php y es usado como una librería para autenticación utilizando
+servicios de 3eros, es decir, &lt;em&gt;OAuth&lt;/em&gt;. Esto en un mundo ideal, donde todo
+lo programas con php y puedes simplemente hacer:&lt;/p&gt;
+&lt;pre class="code php literal-block"&gt;
+&lt;span class="x"&gt;use project\module\submodule\file;&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;y todo bien.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="el-problema"&gt;
+&lt;h2&gt;El problema:&lt;/h2&gt;
+&lt;p&gt;Obviamente, no podemos importar código php en nuestro proyecto en &lt;em&gt;Python&lt;/em&gt;,
+entonces, la solución fue simplemente, adaptar la librería provista
+por la otra gente para usarla como un servicio, la cosa salió bastante bien,
+pero al momento de poner todo en producción, nos dimos cuenta de algo.&lt;/p&gt;
+&lt;p&gt;Se desplegaron dos instancias de este servicio detrás de un balanceador de carga,
+para autenticar usando &lt;em&gt;OAuth&lt;/em&gt;, es necesario golpear más de una vez el servicio,
+entonces, estando dos (o más) instancias detrás de un balanceador de carga, no
+tienes manera de garantizar que quien atiende el primer &lt;em&gt;request&lt;/em&gt;, es el mismo
+que atiende el segundo.&lt;/p&gt;
+&lt;p&gt;A esto súmale que se guarda cierta información en la sesión para mantenerla
+durante todo el proceso de autenticación y php almacena las variables de sesión
+en un archivo local del servidor.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="la-solucion"&gt;
+&lt;h2&gt;La solución:&lt;/h2&gt;
+&lt;p&gt;Sin pensarlo mucho, la solución es tener &lt;em&gt;algo&lt;/em&gt; que todas las instancias
+compartan para escribir la información relacionada a las sesiones, puede
+ser una base de datos &lt;em&gt;MySQL&lt;/em&gt;, un sistema de archivos compartido con &lt;em&gt;NFS&lt;/em&gt;,
+lo que sea, nosotros optamos por &lt;em&gt;Redis&lt;/em&gt; porque es lo más rápido y fácil de
+configurar, responde rápido porque mantiene ciertas cosas en memoria y es
+difícil que pierda datos, puede pasar, pero igual es información transitoria
+que no nos interesa conservar.&lt;/p&gt;
+&lt;div class="section" id="implementacion"&gt;
+&lt;h3&gt;Implementación:&lt;/h3&gt;
+&lt;p&gt;Luego de investigar unos minutos, nos dimos cuenta de que no era nada del otro
+mundo, simplemente cambiar unos parámetros de configuración en los respectivos
+archivos &lt;em&gt;php.ini&lt;/em&gt;, instalar un par de paquetes y listo.&lt;/p&gt;
+&lt;div class="section" id="instalacion-de-paquetes"&gt;
+&lt;h4&gt;Instalación de paquetes:&lt;/h4&gt;
+&lt;p&gt;Descargamos &lt;a class="reference external" href="https://github.com/nicolasff/phpredis"&gt;php-redis&lt;/a&gt;&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;
+sudo aptitude install php5-dev
+cd php_redis/
+sudo phpize
+sudo ./configure
+sudo make
+sudo make install
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="section" id="php-ini"&gt;
+&lt;h4&gt;php.ini:&lt;/h4&gt;
+&lt;p&gt;Simplemente debemos modificar las siguientes líneas:&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;
+extension=redis.so
+[Session]
+session.save_handler=redis
+session.save_path=&amp;quot;tcp://localhost:6379&amp;quot;
+&lt;/pre&gt;
+&lt;p&gt;El &lt;em&gt;save_path&lt;/em&gt; debe tener la IP y el Puerto donde nuestra instancia de
+redis estará escuchando.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="conclusion"&gt;
+&lt;h2&gt;Conclusión:&lt;/h2&gt;
+&lt;p&gt;Ciertamente las cosas han mejorado sólo un poco en php desde la última vez que
+lo usé para algo más que un proyecto de juguete. Sin embargo no me veo programando
+en php a menos que sea estrictamente necesario por las características o restricciones
+de un proyecto en particular.&lt;/p&gt;
+&lt;p&gt;Respecto al servicio de autenticación, ya está en producción, pareciera estar funcionando
+bastante bien, sin embargo hay muchas cosas con las que no estamos contentos, seguramente
+terminemos cambiándolo por una versión 2.0, seguramente en &lt;em&gt;Python&lt;/em&gt; y desarrollado por
+nosotros pero, al menos por ahora, funciona y hace el trabajo.&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="desarrollo"></category><category term="web"></category><category term="sesiones"></category><category term="redis"></category><category term="php"></category></entry><entry><title>Reporte de películas, libros y series Octubre 2014</title><link href="http://iferminmontilla.com/reporte-de-peliculas-libros-y-series-octubre-2014.html" rel="alternate"></link><updated>2014-10-18T00:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2014-10-18:reporte-de-peliculas-libros-y-series-octubre-2014.html</id><summary type="html">&lt;p&gt;Bueno, octubre fue un mes no muy activo en cuanto
 a películas, agregué unas nuevas al watchlist de las
 cuales vi algunas, pero no taché ninguna de las viejas.&lt;/p&gt;
 &lt;p&gt;A ver, la cosa va así&lt;/p&gt;
@@ -140,102 +235,7 @@ administrando mi propio dinero y, cuando estás viviendo solo,
 aprender a administrarte y masterizar ese arte es algo poco más
 que de vida o muerte.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="películas"></category><category term="cine"></category><category term="series"></category><category term="tv"></category><category term="libros"></category></entry><entry><title>Usando Redis como backend de sesiones en php</title><link href="http://iferminmontilla.com/usando-redis-como-backend-de-sesiones-en-php.html" rel="alternate"></link><updated>2014-10-19T12:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2014-10-19:usando-redis-como-backend-de-sesiones-en-php.html</id><summary type="html">&lt;p&gt;Bueno, sí, leyeron bien el título, luego de años me tocó
-trabajar de nuevo con php en la oficina, dejen el escándalo.&lt;/p&gt;
-&lt;p&gt;Siendo sincero, las cosas parecieran haber mejorado mucho desde
-la última vez que hice (o traté de hacer) algo con php, era php
-4.algo en aquel momento, jugaba con &lt;em&gt;Symfony&lt;/em&gt; y fue una desgracia
-que no se la deseo ni a mi peor enemigo.&lt;/p&gt;
-&lt;p&gt;Luego, más recientemente jugué con &lt;em&gt;Yii&lt;/em&gt;, un framework para desarrollo
-web con php que me pareció bastante bueno y es una alternativa
-que le recomiendo a todo aquel que no tenga más remedio que
-desarrollar usando este lenguaje, algunos me dicen que pruebe
-&lt;em&gt;Lavarel&lt;/em&gt; y seguramente me cambie a php, pero dudo mucho que
-algo me atrape tanto como &lt;em&gt;Python&lt;/em&gt;, sin importar el framework,
-incluso &lt;em&gt;Web2Py&lt;/em&gt; tiene muchas cosas rescatables.&lt;/p&gt;
-&lt;p&gt;Bueno, manos a la obra:&lt;/p&gt;
-&lt;div class="section" id="la-historia"&gt;
-&lt;h2&gt;La historia:&lt;/h2&gt;
-&lt;p&gt;En la oficina están en una onda de &lt;em&gt;intercambiar código&lt;/em&gt; con nuestros
-aliados comerciales o &amp;quot;páginas hermanas&amp;quot;, el problema es que nosotros
-desarrollamos en &lt;em&gt;Python&lt;/em&gt; + &lt;em&gt;django&lt;/em&gt; y a veces &lt;em&gt;bottle&lt;/em&gt; y todos los demás
-en php.&lt;/p&gt;
-&lt;p&gt;Este proyecto en particular, fue desarrollado con un framework hecho en
-casa en php y es usado como una librería para autenticación utilizando
-servicios de 3eros, es decir, &lt;em&gt;OAuth&lt;/em&gt;. Esto en un mundo ideal, donde todo
-lo programas con php y puedes simplemente hacer:&lt;/p&gt;
-&lt;pre class="code php literal-block"&gt;
-&lt;span class="x"&gt;use project\module\submodule\file;&lt;/span&gt;
-&lt;/pre&gt;
-&lt;p&gt;y todo bien.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="el-problema"&gt;
-&lt;h2&gt;El problema:&lt;/h2&gt;
-&lt;p&gt;Obviamente, no podemos importar código php en nuestro proyecto en &lt;em&gt;Python&lt;/em&gt;,
-entonces, la solución fue simplemente, adaptar la librería provista
-por la otra gente para usarla como un servicio, la cosa salió bastante bien,
-pero al momento de poner todo en producción, nos dimos cuenta de algo.&lt;/p&gt;
-&lt;p&gt;Se desplegaron dos instancias de este servicio detrás de un balanceador de carga,
-para autenticar usando &lt;em&gt;OAuth&lt;/em&gt;, es necesario golpear más de una vez el servicio,
-entonces, estando dos (o más) instancias detrás de un balanceador de carga, no
-tienes manera de garantizar que quien atiende el primer &lt;em&gt;request&lt;/em&gt;, es el mismo
-que atiende el segundo.&lt;/p&gt;
-&lt;p&gt;A esto súmale que se guarda cierta información en la sesión para mantenerla
-durante todo el proceso de autenticación y php almacena las variables de sesión
-en un archivo local del servidor.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="la-solucion"&gt;
-&lt;h2&gt;La solución:&lt;/h2&gt;
-&lt;p&gt;Sin pensarlo mucho, la solución es tener &lt;em&gt;algo&lt;/em&gt; que todas las instancias
-compartan para escribir la información relacionada a las sesiones, puede
-ser una base de datos &lt;em&gt;MySQL&lt;/em&gt;, un sistema de archivos compartido con &lt;em&gt;NFS&lt;/em&gt;,
-lo que sea, nosotros optamos por &lt;em&gt;Redis&lt;/em&gt; porque es lo más rápido y fácil de
-configurar, responde rápido porque mantiene ciertas cosas en memoria y es
-difícil que pierda datos, puede pasar, pero igual es información transitoria
-que no nos interesa conservar.&lt;/p&gt;
-&lt;div class="section" id="implementacion"&gt;
-&lt;h3&gt;Implementación:&lt;/h3&gt;
-&lt;p&gt;Luego de investigar unos minutos, nos dimos cuenta de que no era nada del otro
-mundo, simplemente cambiar unos parámetros de configuración en los respectivos
-archivos &lt;em&gt;php.ini&lt;/em&gt;, instalar un par de paquetes y listo.&lt;/p&gt;
-&lt;div class="section" id="instalacion-de-paquetes"&gt;
-&lt;h4&gt;Instalación de paquetes:&lt;/h4&gt;
-&lt;p&gt;Descargamos &lt;a class="reference external" href="https://github.com/nicolasff/phpredis"&gt;php-redis&lt;/a&gt;&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;
-sudo aptitude install php5-dev
-cd php_redis/
-sudo phpize
-sudo ./configure
-sudo make
-sudo make install
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class="section" id="php-ini"&gt;
-&lt;h4&gt;php.ini:&lt;/h4&gt;
-&lt;p&gt;Simplemente debemos modificar las siguientes líneas:&lt;/p&gt;
-&lt;pre class="code literal-block"&gt;
-extension=redis.so
-[Session]
-session.save_handler=redis
-session.save_path=&amp;quot;tcp://localhost:6379&amp;quot;
-&lt;/pre&gt;
-&lt;p&gt;El &lt;em&gt;save_path&lt;/em&gt; debe tener la IP y el Puerto donde nuestra instancia de
-redis estará escuchando.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="section" id="conclusion"&gt;
-&lt;h2&gt;Conclusión:&lt;/h2&gt;
-&lt;p&gt;Ciertamente las cosas han mejorado sólo un poco en php desde la última vez que
-lo usé para algo más que un proyecto de juguete. Sin embargo no me veo programando
-en php a menos que sea estrictamente necesario por las características o restricciones
-de un proyecto en particular.&lt;/p&gt;
-&lt;p&gt;Respecto al servicio de autenticación, ya está en producción, pareciera estar funcionando
-bastante bien, sin embargo hay muchas cosas con las que no estamos contentos, seguramente
-terminemos cambiándolo por una versión 2.0, seguramente en &lt;em&gt;Python&lt;/em&gt; y desarrollado por
-nosotros pero, al menos por ahora, funciona y hace el trabajo.&lt;/p&gt;
-&lt;/div&gt;
-</summary><category term="desarrollo"></category><category term="web"></category><category term="sesiones"></category><category term="redis"></category><category term="php"></category></entry><entry><title>Algo hemos hecho mal en Venezuela, ¿qué?</title><link href="http://iferminmontilla.com/algo-hemos-hecho-mal-en-venezuela-que.html" rel="alternate"></link><updated>2014-10-12T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2014-10-12:algo-hemos-hecho-mal-en-venezuela-que.html</id><summary type="html">&lt;p&gt;Voy ya para cinco meses viviendo fuera del país y
+</summary><category term="películas"></category><category term="cine"></category><category term="series"></category><category term="tv"></category><category term="libros"></category></entry><entry><title>Algo hemos hecho mal en Venezuela, ¿qué?</title><link href="http://iferminmontilla.com/algo-hemos-hecho-mal-en-venezuela-que.html" rel="alternate"></link><updated>2014-10-12T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2014-10-12:algo-hemos-hecho-mal-en-venezuela-que.html</id><summary type="html">&lt;p&gt;Voy ya para cinco meses viviendo fuera del país y
 empiezo a ver las cosas de otra manera, quizás estando
 en Venezuela todo estaba tan caótico que me impedía pensar
 &amp;quot;fuera de la caja&amp;quot;, quizás llegó el momento en el que
