@@ -1,176 +1,98 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-        <meta charset="utf-8" />
-        <title>@#$%_ - complejidad</title>
-        <link rel="stylesheet" href="http://iferminmontilla.com/theme/css/main.css" />
-        <link href="http://iferminmontilla.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="@#$%_ Atom Feed" />
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://iferminmontilla.com/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Israel Fermín Montilla">
+  <meta name="description" content="Posts and writings by Israel Fermín Montilla">
+
+  <link href="http://iferminmontilla.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="@#$%_ Atom" />
+
+
+  <title>
+    @#$%_
+&ndash; Tag: complejidad  </title>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-55459920-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 </head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://iferminmontilla.com/">@#$%_ </a></h1>
-                <nav><ul>
-                    <li><a href="http://iferminmontilla.com/category/acerca-de.html">Acerca de...</a></li>
-                    <li><a href="http://iferminmontilla.com/category/blog.html">Blog</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://iferminmontilla.com">
+        <img src="http://www.gravatar.com/avatar/d380e571e1a0012794af170fe48a5e65.png" alt="logo">
+      </a>
+      <h2><a href="http://iferminmontilla.com">Israel Fermín Montilla</a></h2>
+      <p>Programación y cuestiones humanas</p>
+      <ul>
+        <li><a href="http://twitter.com/iferminm" target="_blank">Twitter</a></li>
+        <li><a href="http://www.linkedin.com/profile/view?id=66587805&trk=tab_pro" target="_blank">LinkedIn</a></li>
+        <li><a href="http://stackoverflow.com/users/1157389/israelord" target="_blank">StackOverflow</a></li>
+        <li><a href="https://github.com/iferminm" target="_blank">GitHub</a></li>
+      </ul>
+    </div>
+  </aside>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://iferminmontilla.com/tomar-en-cuenta-la-herramienta-y-la-complejidad.html">Tomar en cuenta la Herramienta y la Complejidad</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2011-05-13T13:00:00">
-                Published: Fri 13 May 2011
-        </abbr>
+  <main>
+    <header>
+      <p>
+      <a href="http://iferminmontilla.com">Index</a> &brvbar; <a href="http://iferminmontilla.com/archives.html">Archives</a>
+      &brvbar; <a href="http://iferminmontilla.com/feeds/all.atom.xml">Atom</a>
+&gt; Tag: complejidad
+      </p>
+    </header>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://iferminmontilla.com/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
-        </address>
-<p>In <a href="http://iferminmontilla.com/category/blog.html">Blog</a>. </p>
-<p>tags: <a href="http://iferminmontilla.com/tag/algoritmos.html">Algoritmos</a> <a href="http://iferminmontilla.com/tag/complejidad.html">complejidad</a> <a href="http://iferminmontilla.com/tag/fibonacci.html">fibonacci</a> <a href="http://iferminmontilla.com/tag/informatica.html">informática</a> <a href="http://iferminmontilla.com/tag/matematicas.html">Matemáticas</a> <a href="http://iferminmontilla.com/tag/project-euler.html">Project Euler</a> </p>
-</footer><!-- /.post-info --><p>Un concepto que nos enseñan desde el inicio en la Universidad y que,
+<article>
+  <div class="article_title">
+    <h3><a href="http://iferminmontilla.com/tomar-en-cuenta-la-herramienta-y-la-complejidad.html">Tomar en cuenta la Herramienta y la Complejidad</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Un concepto que nos enseñan desde el inicio en la Universidad y que,
 muchas veces, el el mundo laboral olvidamos, es el de la Complejidad de
 un Algoritmo. Este es un concepto que tiene incidencia directa en el
-tiempo en el cual se ejecutará y los recursos que consumirá dicha serie
-de instrucciones, todo por la afirmación constante de &quot;dale que la
-máquina aguanta&quot;.</p>
-<p>Si, es cierto, acutualmente la capacidad de
-procesamiento de las computadoras es impresionante, pero también lo son
-los requerimientos a los que son sometidos día a día y, si hablamos de
-un programa que va a atender solicitudes concurrentes y debe funcionar
-en tiempo real... la complejidad cobra importancia. Traigo todo esto de
-vuelta desde mis clases de Algoritmos y Programación I pues, nuevamente
-jugando en <a class="reference external" href="http://projecteuler.net">ProjectEuler.net</a>, estuve resolviendo uno de los problemas
-matemáticos que proponen y, como en mi trabajo estoy trabajando con
-Python, ese fue el lenguaje que seleccioné para resolverlo. Esta vez, el
-problema a solucionar o el valor a encontrar era: La suma de todos los
-valores pares de la Secuencia de Fibonacci menores a 4.000.000 Pan
-comido ¿no?, pero con lo que me conseguí llamó mucho la atención: Luego
-de leer el enunciado desempolvé la vieja definición recursiva de la
-Serie de Fibonacci y pensé: <em>bien, esto dentro de in ciclo, con una
-validación y rompo cuando pase 4.000.000</em>. Manos a la obra, en
-<strong>Python</strong>todo quedó así:</p>
-<script src="http://pastebin.com/embed_js.php?i=qEXzM1Jv"></script><p>Excelente!, ya tengo mi algoritmo, lo pongo a correr desde un terminal y
-espero mi respuesta. Me impresionó lo mucho que se tardó en darme el
-resultado, alredecor de 20 segundos lo cual es demasiado tiempo, así que
-me puse a analizar mi algoritmo. Lo primero que hay que recordar es la
-notación O (&quot;o&quot; grande), nos mide el orden de complejidad de un
-algoritmo en la medida en que los valores que recibe van creciendo. Es
-decir, qué tan complejo se hace ejecutar un algoritmo con valores cada
-vez más grande. En esta función <em>fib</em>, para valores pequeños, el tiempo
-de respuesta es inmediato, pero conforme el valor fibonacci a calcular
-va creciendo, el tiempo de ejecusión se va haciendo cada vez más grande.
-Si nos fijamos, <em>fib</em>, es una función recursiva que, para calcular el
-<em>k-ésimo</em> valor de la serie, debe calcular los <em>k - 1</em>valores
-anteriores, lo cual implica realizar el mismo proceso para los
-anteriores hasta llegar a los casos base. Esto, no solo no es óptimo,
-pues estamos dando más vueltas de las necesarias para hallar un simple
-valor, además, esta función está dentro de un ciclo por lo que, por cada
-iteración, debe recalcular valores ya obtenidos con anterioridad. Vaya!,
-mi vieja definición resursiva hace que el orden de mi algoritmo se
-dispare a O(n!), si mi razonamiento no falla. Investigando un poco en
-Internet sobre la Serie de Fibonacci, me conseguí con la <a class="reference external" href="http://http://www.maths.surrey.ac.uk/hosted-sites/R.Knott/Fibonacci/fibFormula.html">Fórmula de
-Binet</a>, que define la serie en una forma cerrada, es decir, me da el
-<em>k-ésimo</em> valor de manera directa, sin definirlo en función de valores
-anteriores, luego de modificarlo y reescribir mi Función Fibonacci, la
-cosa quedó así:</p>
-<script src="http://pastebin.com/embed_js.php?i=jpFT6G7N"></script><p>Notemos que define cada valor en función de Phy (1,618...), un número
-irracional, por lo que el resultado habría que truncarlo, obervemos
-también que el programa principal no fue modificado. Luego de
-ejecutarlo, la respuesta fue inmediata. Este comportamiento era de
-esperarse pues, cambiamos la función con llamadas recursivas por
-operaciones aritméticas cuya complejidad es O(1), es decir, orden
-constante (a excepción de la potencia que es O(log(n)), pero asumamos
-que es constante también para no entrar en polémicas), lo que hace que
-nuestra nueva función tenca complejidad O(1) también. Si este ejemplo lo
-escalásemos a un sistema concurrente en tiempo real, es necesaria
-rapidez de procesamiento y de ejecusión y esto debe lograrse con una
-combinación de Hardware Potente y Software Eficiente con Algortimos
-Optimizados pues, nada hacemos con un Ferrari si va a manejarlo un niño
-de 5 años, por hacer una analogía graciosa. La otra parte que hay que
-tomar en cuenta es la herramienta que utilizamos para desarrollar
-nuestras soluciones, ya que distintas herramientas se comportan de
-manera diferente y cada una fue diseñada para llevar a cabo una tarea
-distinta: por ejemplo, si necesitas procesar grandes cantidades de texto
-usando Expresiones Regulares, seguramente tendrás que utilizar Perl, si
-quieres desarrollar una aplicación web estándar, que corra en cualquier
-servidor Apache sin mucha complicación, PHP es la respuesta (aunque no
-nos guste mucho), si quieres desarrollar un sistema empresarial que se
-conecte con 4 sucursales sobre una plataforma con soporte corporativo,
-Java o .NET, si lo que quieres es aprovechar hasta la última gota de tu
-procesador, pues programa en Assembler (o bueno, en C para no ser tan
-cochinos[1]). Siguiendo con el orden de ideas anterior, reescribí el
-programa con la definición recursiva de la Serie de Fibonacci, pero esta
-vez en <strong>Lenguaje C</strong>, sólo para ver lo que ocurría. El resultado fue
-que el tiempo de ejecusión se redujo a mucho menos de la mitad, respecto
-al de mismo programa escrito en Python. Aquí está el código en C por si
-lo quieren probar:</p>
-<script src="http://pastebin.com/embed_js.php?i=sxB0QC7Z"></script><p>Quiero finalizar, diciendo que, a veces, la mejor solución no es
-necesariamente codificar una aplicación completa utilizando un mismo
-lenguaje de programación. Por ejemplo, para el videojuego Nerverwinter
-Nights, todo el core fue escrito en C++, y sobre ese motor,
-implementaron un lenguaje propio (NWNScripts). Si desarrollas en Python
-y optimizas tus algoritmos varias veces pero no logras el tiempo de
-respuesta que quieres, quizás lo mejor sea recodificar toda tu lógica en
-C, y utilizar Bindings para invocarla desde Python.</p>
-</p><p>There are <a href="http://iferminmontilla.com/tomar-en-cuenta-la-herramienta-y-la-complejidad.html#disqus_thread">comments</a>.</p>                </article>
-<p class="paginator">
-    Page 1 / 1
-</p>
-            </aside><!-- /#featured -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://docs.notmyidea.org/alexis/pelican/">Pelican</a></li>
-                            <li><a href="http://python.org">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org">Jinja2</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-                            <li><a href="http://iferminmontilla.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+tiempo en el cual se ejecutará y los recursos que consumirá dicha ...</p>
+  </div>
+</article>
 
-                            <li><a href="http://twitter.com/iferminm">Twitter</a></li>
-                            <li><a href="http://www.linkedin.com/profile/view?id=66587805&trk=tab_pro">LinkedIn</a></li>
-                            <li><a href="http://stackoverflow.com/users/1157389/israelord">StackOverflow</a></li>
-                            <li><a href="https://github.com/iferminm">GitHub</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+<footer>
+<div id="paginator">
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
+</div>
+</footer>
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-55459920-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
+    <div id="ending_message">
+      <p>&copy; Israel Fermín Montilla. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. Member of the <a href="http://internetdefenseleague.org">Internet Defense League</a>.</p>
+    </div>
+  </main>
 <script type="text/javascript">
-    var disqus_shortname = 'iferminmblog';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
+  window._idl = {};
+  _idl.variant = "banner";
+  (function() {
+    var idl = document.createElement('script');
+    idl.type = 'text/javascript';
+    idl.async = true;
+    idl.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'members.internetdefenseleague.org/include/?url=' + (_idl.url || '') + '&campaign=' + (_idl.campaign || '') + '&variant=' + (_idl.variant || 'banner');
+    document.getElementsByTagName('body')[0].appendChild(idl);
+  })();
 </script>
 </body>
 </html>

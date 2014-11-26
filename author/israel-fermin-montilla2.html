@@ -1,346 +1,223 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-        <meta charset="utf-8" />
-        <title>@#$%_ - Israel Fermín Montilla</title>
-        <link rel="stylesheet" href="http://iferminmontilla.com/theme/css/main.css" />
-        <link href="http://iferminmontilla.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="@#$%_ Atom Feed" />
 
-        <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+<head>
+  <!-- ## for client-side less
+  <link rel="stylesheet/less" type="text/css" href="http://iferminmontilla.com/theme/css/style.less">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js" type="text/javascript"></script>
+  -->
+  <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/css/style.css">
+  <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/css/pygments.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif|PT+Mono">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Israel Fermín Montilla">
+  <meta name="description" content="Posts and writings by Israel Fermín Montilla">
+
+  <link href="http://iferminmontilla.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="@#$%_ Atom" />
+
+
+  <title>
+    @#$%_
+&ndash; Posts by: Israel Fermín Montilla  </title>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-55459920-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 </head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://iferminmontilla.com/">@#$%_ </a></h1>
-                <nav><ul>
-                    <li><a href="http://iferminmontilla.com/category/acerca-de.html">Acerca de...</a></li>
-                    <li><a href="http://iferminmontilla.com/category/blog.html">Blog</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="http://iferminmontilla.com">
+        <img src="http://www.gravatar.com/avatar/d380e571e1a0012794af170fe48a5e65.png" alt="logo">
+      </a>
+      <h2><a href="http://iferminmontilla.com">Israel Fermín Montilla</a></h2>
+      <p>Programación y cuestiones humanas</p>
+      <ul>
+        <li><a href="http://twitter.com/iferminm" target="_blank">Twitter</a></li>
+        <li><a href="http://www.linkedin.com/profile/view?id=66587805&trk=tab_pro" target="_blank">LinkedIn</a></li>
+        <li><a href="http://stackoverflow.com/users/1157389/israelord" target="_blank">StackOverflow</a></li>
+        <li><a href="https://github.com/iferminm" target="_blank">GitHub</a></li>
+      </ul>
+    </div>
+  </aside>
 
-                <section id="content" class="body">
-                    <ol id="posts-list" class="hfeed" start="9">
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://iferminmontilla.com/ahora-soy-lead-developer-y-no-tengo-mucha-idea-anecdotas-y-reflexion.html" rel="bookmark"
-                           title="Permalink to Ahora soy lead developer y no tengo mucha idea: anécdotas y reflexión">Ahora soy lead developer y no tengo mucha idea: anécdotas y reflexión</a></h1>
-                </header>
+  <main>
+    <header>
+      <p>
+      <a href="http://iferminmontilla.com">Index</a> &brvbar; <a href="http://iferminmontilla.com/archives.html">Archives</a>
+      &brvbar; <a href="http://iferminmontilla.com/feeds/all.atom.xml">Atom</a>
+&gt; Author: Israel Fermín Montilla
+      </p>
+    </header>
 
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-09-21T01:30:00">
-                Published: Sat 21 September 2013
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://iferminmontilla.com/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
-        </address>
-<p>In <a href="http://iferminmontilla.com/category/blog.html">Blog</a>. </p>
-<p>tags: <a href="http://iferminmontilla.com/tag/carrera.html">carrera</a> <a href="http://iferminmontilla.com/tag/actitud.html">actitud</a> <a href="http://iferminmontilla.com/tag/personal.html">personal</a> </p>
-</footer><!-- /.post-info -->                <p>Primero que nada, me gustaría pedir disculpas (o permiso xD) si
+<article>
+  <div class="article_title">
+    <h3><a href="http://iferminmontilla.com/heroku-django-sin-morir-en-el-intento-parte-1.html">Heroku + Django sin morir en el intento (Parte 1)</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Antes, para tener tu sistema web en línea, debías contratar
+un servicio de Servidor Dedicado o mínimo un VPS y administrarlo,
+si tenías más presupuesto, comprabas un servidor y lo acondicionabas
+o alquilabas un rack en algún centro de datos para tenerlo colocado allí.</p>
+<p>Ahora, con el boom de <em>Infraestructura ...</em></p>
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://iferminmontilla.com/ahora-soy-lead-developer-y-no-tengo-mucha-idea-anecdotas-y-reflexion.html">Ahora soy lead developer y no tengo mucha idea: anécdotas y reflexión</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Primero que nada, me gustaría pedir disculpas (o permiso xD) si
 cometo algún error ortográfico en este artículo, se me olvidó pasar
 el <a class="reference external" href="http://aspell.net/">aspell</a>, el hecho es que, para ponerlos un poco en contexto, vengo
 de un rato un poco etílico.</p>
 <p>Bueno, para empezar, quienes me conocen y están pendientes ...</p>
-                <a class="readmore" href="http://iferminmontilla.com/ahora-soy-lead-developer-y-no-tengo-mucha-idea-anecdotas-y-reflexion.html">read more</a>
-<p>There are <a href="http://iferminmontilla.com/ahora-soy-lead-developer-y-no-tengo-mucha-idea-anecdotas-y-reflexion.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://iferminmontilla.com/clientes-soap-en-python.html" rel="bookmark"
-                           title="Permalink to Clientes SOAP en Python">Clientes SOAP en Python</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-08-18T08:30:00">
-                Published: Sun 18 August 2013
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://iferminmontilla.com/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
-        </address>
-<p>In <a href="http://iferminmontilla.com/category/blog.html">Blog</a>. </p>
-<p>tags: <a href="http://iferminmontilla.com/tag/python.html">python</a> <a href="http://iferminmontilla.com/tag/web-services.html">web services</a> <a href="http://iferminmontilla.com/tag/soap.html">soap</a> </p>
-</footer><!-- /.post-info -->                <p>Como todos saben, y algunos me chalequean por eso, en la
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://iferminmontilla.com/clientes-soap-en-python.html">Clientes SOAP en Python</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Como todos saben, y algunos me chalequean por eso, en la
 primera mitad de 2013 cambié de trabajo dos veces, estaba
 algo aburrido en Metamax y decidí aceptar una oportunidad
 en 4geeks, junto con una serie de proyectos para una empresa
 en el extranjero que pintaban bastante bien, una vez ...</p>
-                <a class="readmore" href="http://iferminmontilla.com/clientes-soap-en-python.html">read more</a>
-<p>There are <a href="http://iferminmontilla.com/clientes-soap-en-python.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://iferminmontilla.com/y-al-fin-me-estrene-como-ponente.html" rel="bookmark"
-                           title="Permalink to Y al fin!, me estrené como ponente">Y al fin!, me estrené como ponente</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-08-10T21:00:00">
-                Published: Sat 10 August 2013
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://iferminmontilla.com/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
-        </address>
-<p>In <a href="http://iferminmontilla.com/category/blog.html">Blog</a>. </p>
-<p>tags: <a href="http://iferminmontilla.com/tag/personal.html">personal</a> <a href="http://iferminmontilla.com/tag/anecdota.html">anécdota</a> </p>
-</footer><!-- /.post-info -->                <p>Bueno, esto ya es tema viejo, pero no había tenido
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://iferminmontilla.com/y-al-fin-me-estrene-como-ponente.html">Y al fin!, me estrené como ponente</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Bueno, esto ya es tema viejo, pero no había tenido
 tiempo de escribir al respecto. Desde que organicé el
 <em>PyConVE2012</em> había tenido la idea de probar cómo me
 iba dando alguna ponencia o algún tutorial, ya en la
 Universidad era preparador y miembro del <em>Sun Team
 University</em>, una de las ...</p>
-                <a class="readmore" href="http://iferminmontilla.com/y-al-fin-me-estrene-como-ponente.html">read more</a>
-<p>There are <a href="http://iferminmontilla.com/y-al-fin-me-estrene-como-ponente.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://iferminmontilla.com/carta-abierta-al-diputado-leomagno-flores.html" rel="bookmark"
-                           title="Permalink to Carta abierta al DIPUTADO Leomagno Flores">Carta abierta al DIPUTADO Leomagno Flores</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-03-14T08:44:00">
-                Published: Thu 14 March 2013
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://iferminmontilla.com/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
-        </address>
-<p>In <a href="http://iferminmontilla.com/category/blog.html">Blog</a>. </p>
-<p>tags: <a href="http://iferminmontilla.com/tag/informatica.html">informática</a> <a href="http://iferminmontilla.com/tag/politica.html">política</a> <a href="http://iferminmontilla.com/tag/personal.html">personal</a> <a href="http://iferminmontilla.com/tag/opinion.html">opinión</a> </p>
-</footer><!-- /.post-info -->                <p>Quienes me conocen saben que llevo un buen rato alejado
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://iferminmontilla.com/carta-abierta-al-diputado-leomagno-flores.html">Carta abierta al DIPUTADO Leomagno Flores</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Quienes me conocen saben que llevo un buen rato alejado
 del oscuro mundo de la política o, más bien, politiquería
 venezolana. Las razones son muy diversas, pero luego de ver el
 video que coloco a continuación, simplemente no pude sino
 estallar en furia por motivos que expondré a lo largo ...</p>
-                <a class="readmore" href="http://iferminmontilla.com/carta-abierta-al-diputado-leomagno-flores.html">read more</a>
-<p>There are <a href="http://iferminmontilla.com/carta-abierta-al-diputado-leomagno-flores.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://iferminmontilla.com/querido-amigo-usuario.html" rel="bookmark"
-                           title="Permalink to Querido amigo usuario">Querido amigo usuario</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-02-03T23:39:00">
-                Published: Sun 03 February 2013
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://iferminmontilla.com/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
-        </address>
-<p>In <a href="http://iferminmontilla.com/category/blog.html">Blog</a>. </p>
-<p>tags: <a href="http://iferminmontilla.com/tag/personal.html">Personal</a> <a href="http://iferminmontilla.com/tag/carrera.html">Carrera</a> </p>
-</footer><!-- /.post-info -->                <p>En algunas carreras me llama muchísimo la atención el hecho de que
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://iferminmontilla.com/querido-amigo-usuario.html">Querido amigo usuario</a></h3>
+  </div>
+  <div class="article_text">
+    <p>En algunas carreras me llama muchísimo la atención el hecho de que
 todos tus amigos, familiares, vecinos e incluso gente que acaba de
 conocerte piensan que estudiaste para proveerles servicio gratis y que,
 además, debes saberlo todo de todo o no sirves.</p>
 <p>Si eres médico, nunca falta salga con cosas ...</p>
-                <a class="readmore" href="http://iferminmontilla.com/querido-amigo-usuario.html">read more</a>
-<p>There are <a href="http://iferminmontilla.com/querido-amigo-usuario.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://iferminmontilla.com/resumen-del-2012-y-propuestas-para-el-2013.html" rel="bookmark"
-                           title="Permalink to Resumen del 2012 (y propuestas para el 2013)">Resumen del 2012 (y propuestas para el 2013)</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-01-14T08:00:00">
-                Published: Mon 14 January 2013
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://iferminmontilla.com/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
-        </address>
-<p>In <a href="http://iferminmontilla.com/category/blog.html">Blog</a>. </p>
-<p>tags: <a href="http://iferminmontilla.com/tag/personal.html">personal</a> </p>
-</footer><!-- /.post-info -->                <p>Bueno, ya se nos fue otro año, un año en el que
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://iferminmontilla.com/resumen-del-2012-y-propuestas-para-el-2013.html">Resumen del 2012 (y propuestas para el 2013)</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Bueno, ya se nos fue otro año, un año en el que
 supuestamente se acababa el mundo pero no fue así
 (lo siento mayas y adventistas).</p>
 <p>Lo que realmente querían decir los mayas era que
 se completaba un ciclo, una era del universo,
 una etapa de la raza humana, en ...</p>
-                <a class="readmore" href="http://iferminmontilla.com/resumen-del-2012-y-propuestas-para-el-2013.html">read more</a>
-<p>There are <a href="http://iferminmontilla.com/resumen-del-2012-y-propuestas-para-el-2013.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://iferminmontilla.com/mi-experiencia-en-el-pyconve-2012-y-otros-cuentos.html" rel="bookmark"
-                           title="Permalink to Mi experiencia en el PyConVE 2012 y otros cuentos">Mi experiencia en el PyConVE 2012 y otros cuentos</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2012-11-18T08:58:00">
-                Published: Sun 18 November 2012
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://iferminmontilla.com/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
-        </address>
-<p>In <a href="http://iferminmontilla.com/category/blog.html">Blog</a>. </p>
-<p>tags: <a href="http://iferminmontilla.com/tag/pycon.html">PyCon</a> <a href="http://iferminmontilla.com/tag/comunidad.html">Comunidad</a> </p>
-</footer><!-- /.post-info -->                <p>Bueno, ya ha pasado una semana y alguito desde que terminó la
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://iferminmontilla.com/mi-experiencia-en-el-pyconve-2012-y-otros-cuentos.html">Mi experiencia en el PyConVE 2012 y otros cuentos</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Bueno, ya ha pasado una semana y alguito desde que terminó la
 primera Conferencia del Lenguaje Python de Venezuela
 (PyConVE), he tenido algo de tiempo para reflexionar
 y pensar acerca de varias cosas que me ocurrieron antes
 del evento, es decir, mientras se estaba organizando, durante
 el evento y después ...</p>
-                <a class="readmore" href="http://iferminmontilla.com/mi-experiencia-en-el-pyconve-2012-y-otros-cuentos.html">read more</a>
-<p>There are <a href="http://iferminmontilla.com/mi-experiencia-en-el-pyconve-2012-y-otros-cuentos.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://iferminmontilla.com/ehm-hola-de-nuevo.html" rel="bookmark"
-                           title="Permalink to Ehm, Hola de nuevo!">Ehm, Hola de nuevo!</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2012-11-10T23:39:00">
-                Published: Sat 10 November 2012
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://iferminmontilla.com/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
-        </address>
-<p>In <a href="http://iferminmontilla.com/category/blog.html">Blog</a>. </p>
-<p>tags: <a href="http://iferminmontilla.com/tag/personal.html">Personal</a> <a href="http://iferminmontilla.com/tag/blog.html">Blog</a> <a href="http://iferminmontilla.com/tag/retomando.html">Retomando</a> </p>
-</footer><!-- /.post-info -->                <p>Saludos a todos, había estado perdido de por estos lados.
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://iferminmontilla.com/ehm-hola-de-nuevo.html">Ehm, Hola de nuevo!</a></h3>
+  </div>
+  <div class="article_text">
+    <p>Saludos a todos, había estado perdido de por estos lados.
 Todo tiene una razón de ser, en este caso, fueron varias:</p>
 <ol class="arabic simple">
 <li>Por un lado, mi blog viejo, hecho en Wordpress, fue
 hackeado en repetidas oportunidades y, para ser sincero,
 me fastidié de que eso me ocurriera.</li>
 <li>Por otro lado, hace ...</li></ol>
-                <a class="readmore" href="http://iferminmontilla.com/ehm-hola-de-nuevo.html">read more</a>
-<p>There are <a href="http://iferminmontilla.com/ehm-hola-de-nuevo.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://iferminmontilla.com/testing-la-etapa-olvidada.html" rel="bookmark"
-                           title="Permalink to Testing: la etapa olvidada.">Testing: la etapa olvidada.</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2012-07-19T12:50:00">
-                Published: Thu 19 July 2012
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://iferminmontilla.com/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
-        </address>
-<p>In <a href="http://iferminmontilla.com/category/blog.html">Blog</a>. </p>
-<p>tags: <a href="http://iferminmontilla.com/tag/actitud-del-programador.html">Actitud del Programador</a> <a href="http://iferminmontilla.com/tag/desarrollo-de-software.html">desarrollo de software</a> <a href="http://iferminmontilla.com/tag/informatica.html">informática</a> <a href="http://iferminmontilla.com/tag/metodologia.html">metodología</a> <a href="http://iferminmontilla.com/tag/testing.html">testing</a> </p>
-</footer><!-- /.post-info -->                <p>En esta oportunidad, vengo a hablarles de una etapa del
+  </div>
+</article>
+<hr />
+<article>
+  <div class="article_title">
+    <h3><a href="http://iferminmontilla.com/testing-la-etapa-olvidada.html">Testing: la etapa olvidada.</a></h3>
+  </div>
+  <div class="article_text">
+    <p>En esta oportunidad, vengo a hablarles de una etapa del
 desarrollo que suele ser olvidada y marginada por la mayoría de los
 desarrolladores que conozco: las pruebas. En&nbsp;<a class="reference external" href="http://zava.com.ve">Zava</a>, la compañía en
 la que trabajo actualmente, llevamos un tiempo hablando acerca de
 usar&nbsp;<a class="reference external" href="http://es.wikipedia.org/wiki/Desarrollo_guiado_por_pruebas">TDD</a>&nbsp;(Test Driven Development o Desarrollo Guiado ...</p>
-                <a class="readmore" href="http://iferminmontilla.com/testing-la-etapa-olvidada.html">read more</a>
-<p>There are <a href="http://iferminmontilla.com/testing-la-etapa-olvidada.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
+  </div>
+</article>
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://iferminmontilla.com/del-comportamiento-en-publico-y-otros-males.html" rel="bookmark"
-                           title="Permalink to Del comportamiento en público y otros males">Del comportamiento en público y otros males</a></h1>
-                </header>
+<footer>
+<div id="paginator">
+<a href="http://iferminmontilla.com/author/israel-fermin-montilla3.html" class="button_accent">&larr; Older Posts</a>
 
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2012-07-18T19:57:00">
-                Published: Wed 18 July 2012
-        </abbr>
+<a href="http://iferminmontilla.com/author/israel-fermin-montilla.html" class="button_accent">Newer Posts &rarr;</a>
+</div>
+</footer>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://iferminmontilla.com/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
-        </address>
-<p>In <a href="http://iferminmontilla.com/category/blog.html">Blog</a>. </p>
-
-</footer><!-- /.post-info -->                <p>Mini entrada de desahogo pues estoy realmente molesto por lo que acá
-contaré. Lo siento, debía compartirlo. &nbsp;Hoy, viajando en el metro, una
-señora cuya mejor descripción es, por sus maneras es, de barrio (sin
-ánimos de sonar clasista o racista o algo parecido), iba con su hija,
-sentadas en ...</p>
-                <a class="readmore" href="http://iferminmontilla.com/del-comportamiento-en-publico-y-otros-males.html">read more</a>
-<p>There are <a href="http://iferminmontilla.com/del-comportamiento-en-publico-y-otros-males.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-<p class="paginator">
-        <a href="http://iferminmontilla.com/author/israel-fermin-montilla.html">&laquo;</a>
-    Page 2 / 5
-        <a href="http://iferminmontilla.com/author/israel-fermin-montilla3.html">&raquo;</a>
-</p>
-                </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://docs.notmyidea.org/alexis/pelican/">Pelican</a></li>
-                            <li><a href="http://python.org">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org">Jinja2</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-                            <li><a href="http://iferminmontilla.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
-
-                            <li><a href="http://twitter.com/iferminm">Twitter</a></li>
-                            <li><a href="http://www.linkedin.com/profile/view?id=66587805&trk=tab_pro">LinkedIn</a></li>
-                            <li><a href="http://stackoverflow.com/users/1157389/israelord">StackOverflow</a></li>
-                            <li><a href="https://github.com/iferminm">GitHub</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-55459920-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
+    <div id="ending_message">
+      <p>&copy; Israel Fermín Montilla. Built using <a href="http://getpelican.com" target="_blank">Pelican</a>. Theme by Giulio Fidente on <a href="https://github.com/gfidente/pelican-svbhack" target="_blank">github</a>. Member of the <a href="http://internetdefenseleague.org">Internet Defense League</a>.</p>
+    </div>
+  </main>
 <script type="text/javascript">
-    var disqus_shortname = 'iferminmblog';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
+  window._idl = {};
+  _idl.variant = "banner";
+  (function() {
+    var idl = document.createElement('script');
+    idl.type = 'text/javascript';
+    idl.async = true;
+    idl.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'members.internetdefenseleague.org/include/?url=' + (_idl.url || '') + '&campaign=' + (_idl.campaign || '') + '&variant=' + (_idl.variant || 'banner');
+    document.getElementsByTagName('body')[0].appendChild(idl);
+  })();
 </script>
 </body>
 </html>
