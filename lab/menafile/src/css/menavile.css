@@ -59,3 +59,13 @@ h1 {
 h4 {
     margin-top: 0px;
 }
+.thumbholder {
+    margin-top: 5px;
+    display: inline-block;
+    width: 350px;
+    height: 233px
+}
+#links {
+    width: 1065px;
+    margin: 0px auto;
+}
