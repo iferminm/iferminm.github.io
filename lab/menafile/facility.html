@@ -35,7 +35,7 @@
         <div class="row pad-left-30">
             <h1>Our Facility</h1>
         </div>
-        <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-use-bootstrap-modal="false">
+        <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls blueimp-image-carousel" data-use-bootstrap-modal="true">
             <div class="slides"></div>
             <h3 class="title"></h3>
             <a class="prev">‹</a>
@@ -43,27 +43,6 @@
             <a class="close">×</a>
             <a class="play-pause"></a>
             <ol class="indicator"></ol>
-            <div class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title"></h4>
-                        </div>
-                        <div class="modal-body next"></div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default pull-left prev">
-                                <i class="glyphicon glyphicon-chevron-left"></i>
-                                Previous
-                            </button>
-                            <button type="button" class="btn btn-primary next">
-                                Next
-                                <i class="glyphicon glyphicon-chevron-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div id="links">
             <div class="thumbholder">
@@ -136,15 +115,49 @@
                     <img src="img/warehouse/thumbnails/14.jpg" alt="">
                 </a>
             </div>
+            <div class="thumbholder">
+                <a href="img/warehouse/19.jpg" title="" data-gallery>
+                    <img src="img/warehouse/thumbnails/19.jpg" alt="">
+                </a>
+            </div>
+            <div class="thumbholder">
+                <a href="img/warehouse/15.jpg" title="" data-gallery>
+                    <img src="img/warehouse/thumbnails/15.jpg" alt="">
+                </a>
+            </div>
+            <div class="thumbholder">
+                <a href="img/warehouse/20.jpg" title="" data-gallery>
+                    <img src="img/warehouse/thumbnails/20.jpg" alt="">
+                </a>
+            </div>
+            <div class="thumbholder">
+                <a href="img/warehouse/16.jpg" title="" data-gallery>
+                    <img src="img/warehouse/thumbnails/16.jpg" alt="">
+                </a>
+            </div>
+            <div class="thumbholder">
+                <a href="img/warehouse/17.jpg" title="" data-gallery>
+                    <img src="img/warehouse/thumbnails/1.jpg" alt="">
+                </a>
+            </div>
+            <div class="thumbholder">
+                <a href="img/warehouse/18.jpg" title="" data-gallery>
+                    <img src="img/warehouse/thumbnails/18.jpg" alt="">
+                </a>
+            </div>
         </div>
     </div>
     <div class="footer bluebg">
         <p align="center">MenaFile 2015. All rights reserved</p>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
-    <script src="js/bootstrap-image-gallery.min.js"></script>
+    <script src="js/blueimp-helper.js"></script>
+    <script src="js/blueimp-gallery.js"></script>
+    <script src="js/blueimp-gallery-fullscreen.js"></script>
+    <script src="js/blueimp-gallery-indicator.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/jquery.blueimp-gallery.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/masonry/3.2.2/masonry.pkgd.min.js"></script>
     <script>
         document.getElementById('links').onclick = function (event) {
             event = event || window.event;
@@ -154,6 +167,13 @@
             links = this.getElementsByTagName('a');
             blueimp.Gallery(links, options);
         };
+        $(document).ready(function(){
+            var $masonized = $("#links");
+                $masonized.masonry({
+                    columnWidth: 355,
+                    itemSelector: ".thumbholder"
+            });
+        });
     </script>
 </body>
 </html>

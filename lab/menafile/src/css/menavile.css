@@ -5,6 +5,7 @@
 body {
     background-color: #cfd3d4;
     font-family: metrostyle;
+    overflow-y: scroll;
 }
 .logo {
     width: 622px;
@@ -63,7 +64,6 @@ h4 {
     margin-top: 5px;
     display: inline-block;
     width: 350px;
-    height: 233px
 }
 #links {
     width: 1065px;
