@@ -169,9 +169,11 @@
         };
         $(document).ready(function(){
             var $masonized = $("#links");
+            $masonized.imagesLoaded(function(){
                 $masonized.masonry({
                     columnWidth: 355,
                     itemSelector: ".thumbholder"
+                });
             });
         });
     </script>
