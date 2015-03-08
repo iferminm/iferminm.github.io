@@ -69,3 +69,7 @@ h4 {
     width: 1065px;
     margin: 0px auto;
 }
+.social {
+    display: inline;
+    float: right;
+}
