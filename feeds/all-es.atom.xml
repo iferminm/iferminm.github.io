@@ -28,57 +28,7 @@ en un futuro cercano o a mediano plazo pero es un proyecto interesante que
 pienso seguir a ver con qué features me sorprende la gente de github.&lt;/p&gt;
 &lt;p&gt;Hasta luego.&lt;/p&gt;
 &lt;p&gt;:wq!&lt;/p&gt;
-</summary><category term="programación"></category><category term="blog"></category><category term="cambios"></category><category term="editores"></category></entry><entry><title>Cosas que he aprendido: Descriptores</title><link href="http://iferminmontilla.com/cosas-que-he-aprendido-descriptores.html" rel="alternate"></link><updated>2014-12-05T12:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2014-12-05:cosas-que-he-aprendido-descriptores.html</id><summary type="html">&lt;p&gt;Bueno, llevo ya unos años dedicado casi 100% a desarrollo
-web con &lt;em&gt;Python&lt;/em&gt;, unos años en los que he aprendido muchas
-cosas sobre el lenguaje y, por un momento, pensé que sabía
-suficiente, pero cuando uno empieza a pensar eso es peligroso,
-al final, nunca se sabe suficiente y siempre hay mucho por
-aprender.&lt;/p&gt;
-</summary><category term="desarrollo"></category><category term="python"></category></entry><entry><title>Cosas que he aprendido: Mixins</title><link href="http://iferminmontilla.com/cosas-que-he-aprendido-mixins.html" rel="alternate"></link><updated>2014-12-05T12:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2014-12-05:cosas-que-he-aprendido-mixins.html</id><summary type="html">&lt;p&gt;A menudo nos ocurre que estamos programando
-y vemos que hay ciertos métodos que se repiten
-en varias clases, esto es una señal de que ese
-conjunto de métodos pueden abstraerse de alguna manera
-para no tener que duplicar esa lógica, entonces,
-escribimos una clase base, con esos métodos y
-luego simplemente la heredamos y todo cool.&lt;/p&gt;
-&lt;p&gt;Cuando esto ocurre por segunda vez en un conjunto
-de clases &lt;em&gt;hijas&lt;/em&gt;, pueden pasar dos cosas:&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
-&lt;li&gt;Ese conjunto de métodos pertenece al mismo
-dominio del problema, en cuyo caso, los
-colocamos en la clase padre que corresponda&lt;/li&gt;
-&lt;li&gt;Ese conjunto de métodos resuelve otro tipo de
-problemas o es más bien algún tipo de utilidad
-pero debe estar en esa clase por alguna razón.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;En el segundo caso lo que uno tiende a hacer con
-lenguajes que soportan herencia múltiple como Python
-es crear una nueva clase y agregarla a la lista de clases
-padre de la clase en cuestión.&lt;/p&gt;
-&lt;p&gt;Conforme nuestro programa va creciendo en complejidad,
-podemos enfrentarnos al famoso problema del diamante de
-la herencia múltiple, los mixins son una solución limpia
-y sencilla para evitar este tipo de inconvenientes que son
-un dolor de cabeza para depurar y agregan complicaciones
-innecesarias.&lt;/p&gt;
-&lt;div class="section" id="que-es-un-mixin"&gt;
-&lt;h2&gt;¿Qué es un Mixin?&lt;/h2&gt;
-&lt;p&gt;Un Mixin es una clase que hereda de la clase por defecto, &lt;em&gt;object&lt;/em&gt;
-en el caso de Python, y define un conjunto de métodos para agregar
-comportamiento a alguna otra entidad. Un mixin por sí solo puede
-resultar inútil, pero al combinarlos y agregarlos a una clase
-resultan ser una herramienta muy potente que ayuda a la reutilización
-de código sin ambiüedades y sin generar efectos colaterales.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="ejemplos"&gt;
-&lt;h2&gt;Ejemplos&lt;/h2&gt;
-&lt;p&gt;Bueno, basta de palabrería y manos al teclado.&lt;/p&gt;
-&lt;p&gt;Supongamos que tenemos la siguiente clase:&lt;/p&gt;
-&lt;pre class="code python literal-block"&gt;
-&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;MyAwesomeClass&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;/pre&gt;
-&lt;/div&gt;
-</summary><category term="desarrollo"></category><category term="mixins"></category><category term="programación"></category></entry><entry><title>Cosas que he aprendido: Ventajas de SOA</title><link href="http://iferminmontilla.com/cosas-que-he-aprendido-ventajas-de-soa.html" rel="alternate"></link><updated>2014-12-05T12:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2014-12-05:cosas-que-he-aprendido-ventajas-de-soa.html</id><summary type="html">&lt;p&gt;Luego de algún tiempo desarrollando software, sea para web
+</summary><category term="programación"></category><category term="blog"></category><category term="cambios"></category><category term="editores"></category></entry><entry><title>Cosas que he aprendido: Ventajas de SOA</title><link href="http://iferminmontilla.com/cosas-que-he-aprendido-ventajas-de-soa.html" rel="alternate"></link><updated>2014-12-05T12:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2014-12-05:cosas-que-he-aprendido-ventajas-de-soa.html</id><summary type="html">&lt;p&gt;Luego de algún tiempo desarrollando software, sea para web
 o escritorio, uno realmente termina de entender aquello que nos
 decían en &lt;em&gt;Algoritmos y Programación I&lt;/em&gt; de &lt;strong&gt;Divide y vencerás&lt;/strong&gt;,
 quizás en la Universidad uno no lo aplica mucho, tienes 8 proyectos
