@@ -13,7 +13,7 @@
 <meta name="keywords" content="desarrollo, web, sesiones, redis, php, Blog, " />
 
 <meta property="og:title" content="Usando Redis como backend de sesiones en php "/>
-<meta property="og:url" content="http://iferminmontilla.com/usando-redis-como-backend-de-sesiones-en-php.html" />
+<meta property="og:url" content="http://localhost:8000/usando-redis-como-backend-de-sesiones-en-php.html" />
 <meta property="og:description" content="Bueno, sí, leyeron bien el título, luego de años me tocó trabajar de nuevo con php en la oficina, dejen el escándalo. Siendo sincero, las cosas parecieran haber mejorado mucho desde la última vez que hice (o traté de hacer) algo con php, era php 4.algo en aquel momento ..." />
 <meta property="og:site_name" content="@#$%_" />
 <meta property="og:article:author" content="Israel Fermín Montilla" />
@@ -25,11 +25,11 @@
 </title>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/css/pygments.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/tipuesearch/tipuesearch.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/css/elegant.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/css/custom.css" media="screen">
-        <link href="http://iferminmontilla.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="@#$%_ - Full Atom Feed" />
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/custom.css" media="screen">
+        <link href="http://localhost:8000/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="@#$%_ - Full Atom Feed" />
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -49,14 +49,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="http://iferminmontilla.com/"><span class=site-name>@#$%_</span></a>
+                    <a class="brand" href="http://localhost:8000/"><span class=site-name>@#$%_</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href="http://iferminmontilla.com">Home</a></li>
-                            <li ><a href="http://iferminmontilla.com/categories.html">Categories</a></li>
-                            <li ><a href="http://iferminmontilla.com/tags.html">Tags</a></li>
-                            <li ><a href="http://iferminmontilla.com/archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="http://iferminmontilla.com/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="http://localhost:8000">Home</a></li>
+                            <li ><a href="http://localhost:8000/categories.html">Categories</a></li>
+                            <li ><a href="http://localhost:8000/tags.html">Tags</a></li>
+                            <li ><a href="http://localhost:8000/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://localhost:8000/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="http://iferminmontilla.com/usando-redis-como-backend-de-sesiones-en-php.html"> Usando Redis como backend de sesiones en php  </a></h1>
+    <h1><a href="http://localhost:8000/usando-redis-como-backend-de-sesiones-en-php.html"> Usando Redis como backend de sesiones en php  </a></h1>
     </header>
 </div>
 
@@ -176,13 +176,13 @@ nosotros pero, al menos por ahora, funciona y hace el trabajo.</p>
             <section>
     <p id="post-share-links">
     Compártelo
-    <a href="http://twitter.com/home?status=Usando%20Redis%20como%20backend%20de%20sesiones%20en%20php%20http%3A//iferminmontilla.com/usando-redis-como-backend-de-sesiones-en-php.html" target="_blank" title="Share on Twitter">Twitter</a>
+    <a href="http://twitter.com/home?status=Usando%20Redis%20como%20backend%20de%20sesiones%20en%20php%20http%3A//localhost%3A8000/usando-redis-como-backend-de-sesiones-en-php.html" target="_blank" title="Share on Twitter">Twitter</a>
     ❄
-    <a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A//iferminmontilla.com/usando-redis-como-backend-de-sesiones-en-php.html" target="_blank" title="Share on Facebook">Facebook</a>
+    <a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A//localhost%3A8000/usando-redis-como-backend-de-sesiones-en-php.html" target="_blank" title="Share on Facebook">Facebook</a>
     ❄
-    <a href="https://plus.google.com/share?url=http%3A//iferminmontilla.com/usando-redis-como-backend-de-sesiones-en-php.html" target="_blank" title="Share on Google Plus">Google+</a>
+    <a href="https://plus.google.com/share?url=http%3A//localhost%3A8000/usando-redis-como-backend-de-sesiones-en-php.html" target="_blank" title="Share on Google Plus">Google+</a>
     ❄
-    <a href="mailto:?subject=Usando%20Redis%20como%20backend%20de%20sesiones%20en%20php&amp;body=http%3A//iferminmontilla.com/usando-redis-como-backend-de-sesiones-en-php.html" target="_blank" title="Share via Email">Email</a>
+    <a href="mailto:?subject=Usando%20Redis%20como%20backend%20de%20sesiones%20en%20php&amp;body=http%3A//localhost%3A8000/usando-redis-como-backend-de-sesiones-en-php.html" target="_blank" title="Share via Email">Email</a>
     </p>
 </section>
 
@@ -192,7 +192,7 @@ nosotros pero, al menos por ahora, funciona y hace el trabajo.</p>
     <div class="accordion-group">
         <div class="accordion-heading">
             <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://iferminmontilla.com/usando-redis-como-backend-de-sesiones-en-php.html#disqus_thread">
+                href="http://localhost:8000/usando-redis-como-backend-de-sesiones-en-php.html#disqus_thread">
                 Comments
             </a>
         </div>
@@ -202,8 +202,8 @@ nosotros pero, al menos por ahora, funciona y hace el trabajo.</p>
                     <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'iferminmblog';
-        var disqus_identifier = 'http://iferminmontilla.com/usando-redis-como-backend-de-sesiones-en-php.html';
-    var disqus_url = 'http://iferminmontilla.com/usando-redis-como-backend-de-sesiones-en-php.html';
+        var disqus_identifier = 'http://localhost:8000/usando-redis-como-backend-de-sesiones-en-php.html';
+    var disqus_url = 'http://localhost:8000/usando-redis-como-backend-de-sesiones-en-php.html';
 
     (function() {
          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -228,22 +228,22 @@ nosotros pero, al menos por ahora, funciona y hace el trabajo.</p>
             <h4>Published</h4>
             <time pubdate="pubdate" datetime="2014-10-19T12:30:00">oct 19, 2014</time>
             <h4>Category</h4>
-            <a class="category-link" href="http://iferminmontilla.com/categories.html#blog-ref">Blog</a>
+            <a class="category-link" href="http://localhost:8000/categories.html#blog-ref">Blog</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="http://iferminmontilla.com/tags.html#desarrollo-ref">desarrollo
+                <li><a href="http://localhost:8000/tags.html#desarrollo-ref">desarrollo
                     <span>2</span>
 </a></li>
-                <li><a href="http://iferminmontilla.com/tags.html#php-ref">php
+                <li><a href="http://localhost:8000/tags.html#php-ref">php
                     <span>1</span>
 </a></li>
-                <li><a href="http://iferminmontilla.com/tags.html#redis-ref">redis
+                <li><a href="http://localhost:8000/tags.html#redis-ref">redis
                     <span>1</span>
 </a></li>
-                <li><a href="http://iferminmontilla.com/tags.html#sesiones-ref">sesiones
+                <li><a href="http://localhost:8000/tags.html#sesiones-ref">sesiones
                     <span>1</span>
 </a></li>
-                <li><a href="http://iferminmontilla.com/tags.html#web-ref">web
+                <li><a href="http://localhost:8000/tags.html#web-ref">web
                     <span>2</span>
 </a></li>
             </ul>

@@ -10,18 +10,18 @@
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary">
 
-<meta name="keywords" content="informática, Java, Software Libre, Blog, " />
+<meta name="keywords" content="cambio, herramientas, terminal, zsh, Blog, " />
 
-<meta property="og:title" content="Java: crónica de una muerte anunciada "/>
-<meta property="og:url" content="http://localhost:8000/java-cronica-de-una-muerte-anunciada.html" />
-<meta property="og:description" content="Bien, Oracle compró Sun hace un tiempo ya; todos los sabemos. Oracle tiene un esquema de negocios del tipo &#34;si no me genera ingresos, no lo hago&#34;, mientras que Sun tenía un esquema de negocios un poco más abierto: desarrollaban y mantenían, en colaboración con las comunidades de usuarios, muchos ..." />
+<meta property="og:title" content="Migré a ZSH  - y me encanta "/>
+<meta property="og:url" content="http://localhost:8000/migre-a-zsh.html" />
+<meta property="og:description" content="Es bien sabido por todos que en Linux y en el Open Source en general, uno es libre de elegir todas y cada una de las partes del sistema que va a configurar para su computadora personal o de trabajo, la línea de comandos no es excepción. Por defecto, viene ..." />
 <meta property="og:site_name" content="@#$%_" />
 <meta property="og:article:author" content="Israel Fermín Montilla" />
-<meta property="og:article:published_time" content="2011-09-05T07:30:00" />
-<meta name="twitter:title" content="Java: crónica de una muerte anunciada ">
-<meta name="twitter:description" content="Bien, Oracle compró Sun hace un tiempo ya; todos los sabemos. Oracle tiene un esquema de negocios del tipo &#34;si no me genera ingresos, no lo hago&#34;, mientras que Sun tenía un esquema de negocios un poco más abierto: desarrollaban y mantenían, en colaboración con las comunidades de usuarios, muchos ...">
+<meta property="og:article:published_time" content="2015-05-26T12:34:00" />
+<meta name="twitter:title" content="Migré a ZSH  - y me encanta ">
+<meta name="twitter:description" content="Es bien sabido por todos que en Linux y en el Open Source en general, uno es libre de elegir todas y cada una de las partes del sistema que va a configurar para su computadora personal o de trabajo, la línea de comandos no es excepción. Por defecto, viene ...">
 
-        <title>Java: crónica de una muerte anunciada  · @#$%_
+        <title>Migré a ZSH  - y me encanta  · @#$%_
 </title>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
@@ -69,7 +69,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="http://localhost:8000/java-cronica-de-una-muerte-anunciada.html"> Java: crónica de una muerte anunciada  </a></h1>
+    <h1><a href="http://localhost:8000/migre-a-zsh.html"> Migré a ZSH  <small> y me encanta </small>  </a></h1>
     </header>
 </div>
 
@@ -77,56 +77,105 @@
         <div class="span8 offset2 article-content">
 
             
-            <p>Bien, Oracle compró Sun hace un tiempo ya; todos los sabemos. Oracle
-tiene un esquema de negocios del tipo &quot;si no me genera ingresos, no lo
-hago&quot;, mientras que Sun tenía un esquema de negocios un poco más
-abierto: desarrollaban y mantenían, en colaboración con las comunidades
-de usuarios, muchos proyectos enfocados al Software Libre (MySQL,
-NetBeans IDE y Open Solaris son algunos de los ejemplos más conocidos,
-así como también el popular servidor de aplicaciones Glassfish para
-Java).</p>
-<p>Todos esperábamos que ocurriera lo que ha venido ocurriendo poco
-a poco entre Oracle y los proyectos libres que mantenía Sun
-Microsystems: los proyectos que aún son mantenidos por Oracle son el
-producto de acuerdos y compromisos adquiridos previamente por Sun; los
-demás fueron cerrados, como el caso de OpenSolaris, un Sistema Operativo
-que brindaba todas las bondades de Solaris al mundo libre: fue
-convertido en Solaris Express, también gratuito ---pero con una licencia
-más restrictiva, pues---. Mientras Open Solaris podía ser utilizado
-&quot;como uno quisiera&quot;, las ediciones Express de Oracle vienen con
-funcionalidad reducida y no pueden ser usadas en ambientes de
-producción. Desde el inicio, Oracle llegó &quot;cortando cabezas&quot;.</p>
-<p>A pocas
-semanas de concretarse la compra, todos los que seguíamos Java y éramos
-fieles programadores y usuarios de ese lenguaje, nos enteramos de la
-renuncia de James Gosling, su creador. Uno de los primeros indicios de
-que el futuro de Java era incierto. El JDK de Java tenía una licencia
-que permitía que cualquier empresa que desarrollara un Sistema Operativo
-pudiera empaquetarlo para el mismo sin ningún problema. Por ello, vemos
-implementaciones distintas de la máquina virtual y del JDK, como el
-OpenJDK y Dalvik (la máquina virtual de Java optimizada para móviles
-desarrollará para Android). Hace unos días, Oracle eliminó esa licencia,
-por lo que sistemas como Linux, tendrán ahora que utilizar únicamente el
-OpenJDK, que aún tiene algunos problemas con tipografías y Applets. Al
-paso que vamos, Oracle seguirá cerrando cada vez más las puertas al
-mundo libre, y quién sabe si algún día empiece a cobrar una tarifa por
-el uso de su Máquina Virtual. Muchos programadores Java, hemos migrado
-ya a otros lenguajes, en mi caso debido al futuro incierto del lenguaje
-y las herramientas. Todo parece estar dibujando un futuro no muy bueno
-para este lenguaje (que era uno de mis favoritos): si Oracle continúa
-cerrándolo cada vez más, parece estar destinado a desaparecer. Una
-verdadera lástima.</p>
+            <p>Es bien sabido por todos que en Linux y en el Open Source en general, uno es libre de elegir
+todas y cada una de las partes del sistema que va a configurar para su computadora personal
+o de trabajo, la línea de comandos no es excepción.</p>
+<p>Por defecto, viene configurado <a class="reference external" href="http://es.wikipedia.org/wiki/Bash">BASH</a> en todos los sistemas linux, sin embargo, es posible cambiarlo
+sin ningún tipo de problemas, en mi caso, luego de investigar un poquito, elegí una combinación que
+me ha resultado bastante bien durante las últimas dos semanas: <a class="reference external" href="http://es.wikipedia.org/wiki/Zsh">ZSH</a> + un plugin llamado <a class="reference external" href="https://github.com/robbyrussell/oh-my-zsh">oh my zsh</a>.</p>
+<p>Acá las razones por las cuales decidí migrar y por qué me ha parecido tan genial:</p>
+<div class="section" id="yolo">
+<h2>YOLO</h2>
+<p>Siempre digo que quiero probar herramientas nuevas, pero nunca pongo manos a la obra, en los últimos
+meses me he propuesto a organizarme y crear hábitos, utilizando distintos hacks, que me permitan
+llevar a cabo todo lo que me pasa por la mente sin descuidar cosas importantes como la familia
+y el trabajo. Así que, quise probar <em>ZSH</em> a ver qué tal, ¿qué mejor momento que ahora?</p>
+</div>
+<div class="section" id="no-es-un-cambio-muy-traumatico">
+<h2>No es un cambio muy traumático</h2>
+<p><em>BASH</em> nace en 1989, <em>ZSH</em> nace en 1990, mantiene compatibilidad con todos los comandos de <em>BASH</em>
+y agrega nuevas funcionalidades que vamos a ver en las razones siguientes :-).</p>
+<div class="section" id="el-autocompletado-de-zsh">
+<h3>El autocompletado de ZSH</h3>
+<p><em>ZSH</em> tiene una capacidad increíble de autocompletar, no sólo te muestra las posibles opciones,
+cosa que también hace <em>BASH</em>, sino que te permite seleccionarla de manera interactiva, cosa
+que <em>BASH</em> no hace de manera natural.</p>
+<img alt="Autocompletado interactivo" src="https://dl.dropboxusercontent.com/u/3437671/blog/zsh/foto1.png" />
+<p>Además, no sólo completa rutas y comandos básicos del sistema operativo, también tiene autocompletado para git,
+cosa que me resulta muy útil porque es una herramienta que uso todos los días en la oficina y para proyectos
+personales, este autocompletado incluye una pequeña descripción de lo que hace cada comando de git.</p>
+<img alt="git &lt;TAB&gt; y esto aparece" src="https://dl.dropboxusercontent.com/u/3437671/blog/zsh/foto2.png" />
+</div>
+<div class="section" id="completacion-de-rutas">
+<h3>Completación de rutas</h3>
+<p>No, no es lo mismo que la anterior, este es algo mucho más potente que no vi nunca en <em>BASH</em> supongamos que soy
+perezoso para escribir, y quiero ir a <em>/home/israelord/Work</em>, que es la ruta donde tengo todos mis proyectos,
+tanto de la oficina como freelance. Se que ese es el único patrón que coincide, simplemente escribo <em>/h/i/W</em> y al
+presionar tab, me autocompleta la ruta.</p>
+<p>En caso que haya ambigüedad, como por ejemplo, si quiero ir a <em>/usr/local/bin</em>, al escribir <em>/u/l/b</em>, hay dos opciones
+para la <em>l</em>, bajo el directorio <em>/user</em>: <em>lib</em> o <em>local</em>. En este caso, me permitirá seleccionar la opción correcta
+de manera interactiva, tal como en el ejemplo anterior, antes de terminar el autocompletado. Puedo resolver esto
+simplemente escribiendo <em>/u/lo/b</em> y me generará la ruta correcta de una vez, simplemente debo completar más
+la parte de la ruta que genera el conflicto para que sea única, aunque la selección interactiva no me disgusta para
+nada.</p>
+</div>
+<div class="section" id="cambios-de-directorio">
+<h3>Cambios de directorio</h3>
+<p>Sí, ya se, para eso está <em>cd</em>, pero este es un caso de uso de cd que no vi en <em>BASH</em>, supongamos que estoy en la ruta
+del ejemplo anterior <em>/usr/local/bin</em>, pero en realidad quería ir a <em>/usr/local/sbin</em>. En vez de hacer como en <em>BASH</em>
+<em>cd ../sbin</em>, puedo hacer <em>cd bin sbin</em> y me lleva allí. Funciona igual con sub rutas, puedo hacer <em>cd local/sbin games</em>
+y me lleva a <em>/usr/games</em>, por ejemplo.</p>
+<p>Esto es especialmente útil cuando tengo proyectos con la misma estructura, por ejemplo, estoy en
+<em>/home/israelord/proyecto1/auth/views/</em>, simplemente con hacer <em>cd proyecto1 proyecto2</em>, me lleva a
+<em>/home/israelord/proyecto1/auth/views/</em>. No más cd ../../../../</p>
+</div>
+<div class="section" id="autocorrector">
+<h3>Autocorrector</h3>
+<p>No mucho que decir, si me equivoco y escribo gut, me corrige y escribe git, por ejemplo, si hay más de un posible patrón,
+me muestra la selección interactiva que vimos antes.</p>
+</div>
+<div class="section" id="renombrado-de-archivos-en-batch">
+<h3>Renombrado de archivos en batch</h3>
+<p>Supongamos que tengo 700 fotos que y los nombres son cosas como IMG_2193192873198723.jpg, quiero renombrarlas
+a algo más manejable, como &quot;foto_1.jpg&quot;, &quot;foto_2.jpg&quot; y así.</p>
+<p>Bueno, simplemente escribo</p>
+<p>zmv '(*).jpg' 'foto_$1.jpg'</p>
+<p>Y listo!.</p>
+</div>
+</div>
+<div class="section" id="oh-my-zsh">
+<h2>Oh My ZSH</h2>
+<p>Es un plugin que extiende <em>ZSH</em> y, además, tiene varios addons, por ahora sólo estoy usando el de <em>git</em> porque
+tiene muchísimos alias útiles para las tareas de día a día con <em>git</em> que les dejaré de tarea revisar,
+pero la diferencia es abismal respeto a lo que escribirías normalmente, por ejemplo:</p>
+<p>En vez de git push origin master con Oh my zsh simplemente escribo ggpush ;-)</p>
+</div>
+<div class="section" id="instalando">
+<h2>Instalando</h2>
+<p><em>ZSH</em> normalmente está instalado, simplemente hay que modificar nuestro usuario para que sea el terminal por defecto</p>
+<pre class="code bash literal-block">
+chsh -s /bin/zsh
+</pre>
+<p>Para instalar el plugin <em>Oh my ZSH</em>, basta con ejecutar</p>
+<pre class="code bash literal-block">
+curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+</pre>
+<p>O, si preferimos usar <em>wget</em></p>
+<pre class="code bash literal-block">
+wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
+</pre>
+</div>
 
             <section>
     <p id="post-share-links">
     Compártelo
-    <a href="http://twitter.com/home?status=Java%3A%20cr%C3%B3nica%20de%20una%20muerte%20anunciada%20http%3A//localhost%3A8000/java-cronica-de-una-muerte-anunciada.html" target="_blank" title="Share on Twitter">Twitter</a>
+    <a href="http://twitter.com/home?status=Migr%C3%A9%20a%20ZSH%20y%20me%20encanta%20http%3A//localhost%3A8000/migre-a-zsh.html" target="_blank" title="Share on Twitter">Twitter</a>
     ❄
-    <a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A//localhost%3A8000/java-cronica-de-una-muerte-anunciada.html" target="_blank" title="Share on Facebook">Facebook</a>
+    <a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A//localhost%3A8000/migre-a-zsh.html" target="_blank" title="Share on Facebook">Facebook</a>
     ❄
-    <a href="https://plus.google.com/share?url=http%3A//localhost%3A8000/java-cronica-de-una-muerte-anunciada.html" target="_blank" title="Share on Google Plus">Google+</a>
+    <a href="https://plus.google.com/share?url=http%3A//localhost%3A8000/migre-a-zsh.html" target="_blank" title="Share on Google Plus">Google+</a>
     ❄
-    <a href="mailto:?subject=Java%3A%20cr%C3%B3nica%20de%20una%20muerte%20anunciada&amp;body=http%3A//localhost%3A8000/java-cronica-de-una-muerte-anunciada.html" target="_blank" title="Share via Email">Email</a>
+    <a href="mailto:?subject=Migr%C3%A9%20a%20ZSH%20y%20me%20encanta&amp;body=http%3A//localhost%3A8000/migre-a-zsh.html" target="_blank" title="Share via Email">Email</a>
     </p>
 </section>
 
@@ -136,7 +185,7 @@ verdadera lástima.</p>
     <div class="accordion-group">
         <div class="accordion-heading">
             <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://localhost:8000/java-cronica-de-una-muerte-anunciada.html#disqus_thread">
+                href="http://localhost:8000/migre-a-zsh.html#disqus_thread">
                 Comments
             </a>
         </div>
@@ -146,8 +195,8 @@ verdadera lástima.</p>
                     <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'iferminmblog';
-        var disqus_identifier = 'http://localhost:8000/java-cronica-de-una-muerte-anunciada.html';
-    var disqus_url = 'http://localhost:8000/java-cronica-de-una-muerte-anunciada.html';
+        var disqus_identifier = 'http://localhost:8000/migre-a-zsh.html';
+    var disqus_url = 'http://localhost:8000/migre-a-zsh.html';
 
     (function() {
          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -170,19 +219,22 @@ verdadera lástima.</p>
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2011-09-05T07:30:00">sep 5, 2011</time>
+            <time pubdate="pubdate" datetime="2015-05-26T12:34:00">may 26, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="http://localhost:8000/categories.html#blog-ref">Blog</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="http://localhost:8000/tags.html#informatica-ref">informática
-                    <span>9</span>
-</a></li>
-                <li><a href="http://localhost:8000/tags.html#java-ref">Java
+                <li><a href="http://localhost:8000/tags.html#cambio-ref">cambio
                     <span>1</span>
 </a></li>
-                <li><a href="http://localhost:8000/tags.html#software-libre-ref">Software Libre
-                    <span>7</span>
+                <li><a href="http://localhost:8000/tags.html#herramientas-ref">herramientas
+                    <span>3</span>
+</a></li>
+                <li><a href="http://localhost:8000/tags.html#terminal-ref">terminal
+                    <span>1</span>
+</a></li>
+                <li><a href="http://localhost:8000/tags.html#zsh-ref">zsh
+                    <span>1</span>
 </a></li>
             </ul>
 <h4>Sígueme!</h4>
