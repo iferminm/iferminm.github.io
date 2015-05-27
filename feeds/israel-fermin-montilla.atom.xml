@@ -23,7 +23,7 @@ y agrega nuevas funcionalidades que vamos a ver en las razones siguientes :-).&l
 cosa que también hace &lt;em&gt;BASH&lt;/em&gt;, sino que te permite seleccionarla de manera interactiva, cosa
 que &lt;em&gt;BASH&lt;/em&gt; no hace de manera natural.&lt;/p&gt;
 &lt;img alt="Autocompletado interactivo" src="https://dl.dropboxusercontent.com/u/3437671/blog/zsh/foto1.png" /&gt;
-&lt;p&gt;Además, no sólo completa rutas y comandos básicos del sistema operativo, también tiene autocompletado para git,
+&lt;p&gt;Además, no sólo completa rutas y comandos básicos del sistema operativo, con &lt;em&gt;Oh My ZSH&lt;/em&gt; también tiene autocompletado para git,
 cosa que me resulta muy útil porque es una herramienta que uso todos los días en la oficina y para proyectos
 personales, este autocompletado incluye una pequeña descripción de lo que hace cada comando de git.&lt;/p&gt;
 &lt;img alt="git &amp;lt;TAB&amp;gt; y esto aparece" src="https://dl.dropboxusercontent.com/u/3437671/blog/zsh/foto2.png" /&gt;
