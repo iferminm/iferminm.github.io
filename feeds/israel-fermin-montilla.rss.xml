@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>@#$%_</title><link>http://iferminmontilla.com/</link><description></description><atom:link href="http://iferminmontilla.com/feeds/israel-fermin-montilla.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 26 May 2015 12:34:00 -0530</lastBuildDate><item><title>Migré a ZSH</title><link>http://iferminmontilla.com/migre-a-zsh.html</link><description>&lt;p&gt;Es bien sabido por todos que en Linux y en el Open Source en general, uno es libre de elegir
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>@#$%_</title><link>http://iferminmontilla.com/</link><description></description><atom:link href="http://iferminmontilla.com/feeds/israel-fermin-montilla.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 27 May 2015 12:34:00 -0530</lastBuildDate><item><title>Migré a ZSH</title><link>http://iferminmontilla.com/migre-a-zsh.html</link><description>&lt;p&gt;Es bien sabido por todos que en Linux y en el Open Source en general, uno es libre de elegir
 todas y cada una de las partes del sistema que va a configurar para su computadora personal
 o de trabajo, la línea de comandos no es excepción.&lt;/p&gt;
 &lt;p&gt;Por defecto, viene configurado &lt;a class="reference external" href="http://es.wikipedia.org/wiki/Bash"&gt;BASH&lt;/a&gt; en todos los sistemas linux, sin embargo, es posible cambiarlo
@@ -87,7 +87,7 @@ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | 
 wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
 &lt;/pre&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Israel Fermín Montilla</dc:creator><pubDate>Tue, 26 May 2015 12:34:00 -0530</pubDate><guid>tag:iferminmontilla.com,2015-05-26:migre-a-zsh.html</guid><category>cambio</category><category>herramientas</category><category>terminal</category><category>zsh</category></item><item><title>Mi experiencia con ATOM</title><link>http://iferminmontilla.com/mi-experiencia-con-atom.html</link><description>&lt;p&gt;Desde hace varios años soy un usuario de vim, para todo. Desde escribir
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Israel Fermín Montilla</dc:creator><pubDate>Wed, 27 May 2015 12:34:00 -0530</pubDate><guid>tag:iferminmontilla.com,2015-05-26:migre-a-zsh.html</guid><category>cambio</category><category>herramientas</category><category>terminal</category><category>zsh</category></item><item><title>Mi experiencia con ATOM</title><link>http://iferminmontilla.com/mi-experiencia-con-atom.html</link><description>&lt;p&gt;Desde hace varios años soy un usuario de vim, para todo. Desde escribir
 código en Python o cualquier lenguaje de programación, pasando por documentos
 HTML o CSS e incluso mi tesis la escribí usando vim.&lt;/p&gt;
 &lt;p&gt;Recientemente he estado en una onda de probar nuevas cosas, lenguajes, herramientas
