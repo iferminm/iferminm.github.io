@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Israel Fermín Montilla" />
+        <meta name="copyright" content="Israel Fermín Montilla" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="heroku, herramientas, tecnología, programación, Blog, " />
+
+<meta property="og:title" content="Heroku + Django sin morir en el intento (Parte 1) "/>
+<meta property="og:url" content="http://iferminmontilla.com/heroku-django-sin-morir-en-el-intento-parte-1.html" />
+<meta property="og:description" content="Antes, para tener tu sistema web en línea, debías contratar un servicio de Servidor Dedicado o mínimo un VPS y administrarlo, si tenías más presupuesto, comprabas un servidor y lo acondicionabas o alquilabas un rack en algún centro de datos para tenerlo colocado allí. Ahora, con el boom de Infraestructura ..." />
+<meta property="og:site_name" content="@#$%_" />
+<meta property="og:article:author" content="Israel Fermín Montilla" />
+<meta property="og:article:published_time" content="2013-09-23T12:34:00" />
+<meta name="twitter:title" content="Heroku + Django sin morir en el intento (Parte 1) ">
+<meta name="twitter:description" content="Antes, para tener tu sistema web en línea, debías contratar un servicio de Servidor Dedicado o mínimo un VPS y administrarlo, si tenías más presupuesto, comprabas un servidor y lo acondicionabas o alquilabas un rack en algún centro de datos para tenerlo colocado allí. Ahora, con el boom de Infraestructura ...">
+
+        <title>Heroku + Django sin morir en el intento (Parte 1)  · @#$%_
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/css/custom.css" media="screen">
+        <link href="http://iferminmontilla.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="@#$%_ - Full Atom Feed" />
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-55459920-1', 'auto');
+    ga('send', 'pageview');
+</script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://iferminmontilla.com/"><span class=site-name>@#$%_</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://iferminmontilla.com">Home</a></li>
+                            <li ><a href="http://iferminmontilla.com/categories.html">Categories</a></li>
+                            <li ><a href="http://iferminmontilla.com/tags.html">Tags</a></li>
+                            <li ><a href="http://iferminmontilla.com/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://iferminmontilla.com/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="http://iferminmontilla.com/heroku-django-sin-morir-en-el-intento-parte-1.html"> Heroku + Django sin morir en el intento (Parte 1)  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            
+            <p>Antes, para tener tu sistema web en línea, debías contratar
+un servicio de Servidor Dedicado o mínimo un VPS y administrarlo,
+si tenías más presupuesto, comprabas un servidor y lo acondicionabas
+o alquilabas un rack en algún centro de datos para tenerlo colocado allí.</p>
+<p>Ahora, con el boom de <em>Infraestructura como Servicio</em> (IaaS) y <em>Plataforma
+como Servicio</em> (PaaS), ya no es necesario tener servidores propios y, dependiendo
+del servicio, es decir, si es <em>IaaS</em> o <em>PaaS</em>, tampoco debes tener conocimientos de
+administración de servidores.</p>
+<div class="section" id="iaas-vs-paas">
+<h2>IAAS vs PAAS</h2>
+<p>En general, un proveedor de <em>IaaS</em> te da el hardware para que tú lo configures
+y ensambles el ambiente en el que va a correr tu aplicación, esto es instalar
+todos los paquetes de software necesarios par que el proyecto corra: servidor de
+base de datos, servidor web, intérpretes, bibliotecas, storages adicionales y un
+largo <em>end of thinking capacity</em> (etc). La ventaja de un proveedor de este tipo
+es que hacen que escalar tu infraestructura de manera horizontal es realmente fácil
+y no tienes que construir un centro de datos para albergar tu granja de servidores
+ni mucho menos configurar todo lo que eso implica, un ejemplo de servicios de este tipo
+es el <em>Elastic Compute Cloud</em> de <em>Amazon Web Services</em> (AWS EC-2).</p>
+<p>Por otra parte, un proveedor de <em>PaaS</em>, hace exactamente lo mismo, pero con un nivel más
+de abstracción, te proveen toda la infraestructura y el ambiente para que simplemente
+deposites tu código allí y pongas tu aplicación a correr con configuraciones mínimas y sin
+ser un experto en administración y configuración de servidores, de hecho, es transparente
+para ti toda la nube que hay por detrás. <a class="reference external" href="http://www.heroku.com/">Heroku</a> es un proveedor de este tipo de servicio
+que además cumple con el <a class="reference external" href="http://12factor.net/">12 factor app</a> por lo que además hace que sea súper fácil
+ajustar tu código para correr allí y que tome los parámetros de configuración que define
+la plataforma sin mucho problema.</p>
+</div>
+<div class="section" id="ahora-heroku">
+<h2>Ahora, Heroku</h2>
+<p>El modelo de trabajo en <em>Heroku</em> se basa en add-ons, que básicamente integran tu sistema con
+un DBMS, un sistema de alertas en caso de fallos o de monitoreo
+para ver el rendimiento, detectar cuellos de botella y tomar correctivos al respecto, todo esto
+con unos cuantos clicks (y una tarjeta de crédito), sin configurar absolutamente nada a nivel de
+servidores sino todo a nivel de aplicación.</p>
+<p>Todo esto suena como un sueño hecho realidad y, en muchos casos, lo es, pero nada es perfecto y
+<em>Heroku</em>, aunque facilita muchísimas cosas a nivel de despliegue, te complica muchas otras a nivel
+de desarrollo, esto puede ser bueno, te obliga a optimizar y a aprender, pero a veces, el esquema de
+plugins y addons puede volverse insostenible, sobre todo cuando debes pagar por varios y el presupuesto
+es limitado, además, desde el punto de vista de aplicación, <em>Heroku</em> impone varias limitaciones acerca
+de cómo debe comportarse, el tiempo en que debe responder, el tiempo que debe durar el deploy y
+cuánto debe pesar.</p>
+<div class="section" id="algunas-limitaciones">
+<h3>Algunas limitaciones</h3>
+<ul class="simple">
+<li><em>El app debe iniciar en 60 segundos o menos:</em> si este tiempo se excede, el deploy falla.</li>
+<li><em>Heroku duerme dynos cada cierto tiempo:</em> cada cierto tiempo Heroku reinicia los dynos, esto es un proceso
+totalmente aleatorio, por eso se recomienda tener al menos 2, si uno es reiniciado el otro sigue aceptando
+requests. Cuando esto ocurre, el proceso recibe un <em>SIGTERM</em>, al recibir la señal, se tienen 10 segundos de
+gracia para terminar lo que se estaba haciendo antes de recibir un <em>SIGKILL</em> y reiniciar.</li>
+<li><em>El app no puede pesar más de 300MB:</em> de lo contrario, el deploy falla, es recomendable usar el .slugignore
+para excluir archivos que sólo se usan para desarrollo y que no hacen falta en producción, lo mismo con las
+librerías para testing, no deberían incluirse en el requirements.txt que va a producción.</li>
+<li><em>El app debe responder a los requests en 30 segundos:</em> de lo contrario se levanta un error H12 (Worker Timeout)
+y la respectiva pantalla de <em>Application Error</em>.</li>
+<li><em>Heroku es stateless:</em> esto quiere decir que no guarda estado, para conservar estado del app es necesario valerse
+de otras herramientas, como una base de datos, memcached, y servicios de almacenamiento externos.</li>
+</ul>
+</div>
+<div class="section" id="algunos-de-los-golpes">
+<h3>Algunos de los golpes</h3>
+<p>Con esas limitaciones se puede vivir, pero hay que darle la vuelta para no desesperarse, hay algunas cosas que
+capaz son obvias, pero que uno no las ve sino hasta que empieza a trabajar y se consigue con un problema, basta
+con volver sobre las limitaciones antes expuestas y encontraremos una respuesta o al menos una posible razón.</p>
+<p>Ahora voy a empezar a listar los problemas que he tenido en <em>RingTu</em> y cómo los solucioné. Recuerden que
+estoy trabajando con <strong>Django</strong>, por lo que todo lo he resuelto utilizando herramientas para este framework.</p>
+<div class="section" id="no-es-bueno-para-servir-assets">
+<h4>No es bueno para servir assets</h4>
+<p>Cuando digo assets, me refiero a los archivos estáticos que dan forma a la interface web:
+css, js, imágenes, gradientes, ¿gifs animados?, tipografías y demás cosas bonitas que hacen los diseñadores
+por nosotros.</p>
+<p>Por defecto, nuestro dyno sirve todos estos archivos, además de servir nuestra aplicación, aceptando peticiones
+de nuestros clientes, procesándolas y decidiendo qué es lo que va a enviarse de vuelta.</p>
+<p>Servir los archivos estáticos o <em>static assets</em> resulta en requests adicionales que van a mantener ocupado nuestro
+dyno y esto nos cuesta tiempo y, si ya estamos pagando, dinero. Esos requests adicionales se podrían invertir en
+responder y procesar solicitudes nuevas y no en entregar archivos estáticos, además, la <strong>buena práctica</strong> con <em>django</em>
+es delegar la entrega de contenido estático a un <strong>servidor web</strong> como <em>Apache</em> o <em>NGinx</em> y así evitar procesamiento
+adicional a nivel de <em>views</em> (los <em>controladores</em> de <em>django</em>).</p>
+<p>La solución acá es, simplemente, almacenar los archivos estáticos <em>en otro lado</em>, puede ser incluso un <em>VPS</em> con <em>Apache</em>
+o <em>NGinx</em> instalado, pero hay varios servicios que pueden hacerlo mejor y optimizar la entrega de contenidos como <em>Cloudfile</em>
+de <strong>Rackspace</strong> y, el que opté por usar, <em>Simple Storage Service</em> de <strong>Amazon</strong>. Si ya tus assets no cambian mucho, lo mejor
+es servirlos a través de una <em>CDN</em> (Content Delivery Nerwork o Red de Entrega de Contenidos), como <em>Cloudfront</em>, también de
+<strong>Amazon</strong>.</p>
+<p>Ahora, <strong>¿Cómo se resuelve esto en django?</strong>, bueno, hay varias librerías que te permiten sincronizar los archivos estáticos
+con un servicio de almacenamiento remoto, la que decidí usar fue <a class="reference external" href="https://github.com/jamstooks/django-s3-folder-storage">django-s3-folder-storage</a>, una pequeña librería que se vale
+de otra más compleja (y completa, soporta múltiples servicios) llamada <a class="reference external" href="https://github.com/iserko/django-storages">django-storages</a> para organizar tu contenido en directorios
+dentro de un <em>bucket</em> de <em>S3</em>, es necesario agregar parámetros de configuración en nuestro <em>settings.py</em>, sería algo como esto:</p>
+<div class="highlight"><pre><span class="n">AWS_QUERYSTRING_AUTH</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">AWS_ACCESS_KEY_ID</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">&#39;AWS_ACCESS_KEY_ID&#39;</span><span class="p">)</span>
+<span class="n">AWS_SECRET_ACCESS_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">&#39;AWS_SECRET_ACCESS_KEY&#39;</span><span class="p">)</span>
+<span class="n">AWS_STORAGE_BUCKET_NAME</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">&#39;AWS_STORAGE_BUCKET_NAME&#39;</span><span class="p">)</span>
+
+<span class="c"># Expires 20 years in the future at 8PM GMT</span>
+<span class="n">tenyrs</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">365</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">AWS_HEADERS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;Expires&#39;</span><span class="p">:</span> <span class="n">tenyrs</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&#39;%a, </span><span class="si">%d</span><span class="s"> %b %Y 20:00:00 GMT&#39;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">STATICFILES_STORAGE</span> <span class="o">=</span> <span class="s">&#39;s3_folder_storage.s3.StaticStorage&#39;</span>
+<span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s">&#39;http://</span><span class="si">%s</span><span class="s">.s3.amazonaws.com/static/&#39;</span> <span class="o">%</span> <span class="n">AWS_STORAGE_BUCKET_NAME</span>
+<span class="n">STATIC_S3_PATH</span> <span class="o">=</span> <span class="s">&#39;static/&#39;</span>
+</pre></div>
+<p>El parámetro de configuración AWS_QUERYSTRING_AUTH colocado en <em>False</em> es para que <em>S3</em> no nos genere urls firmadas
+para los assets sino que nos permita acceso público permanente. Si lo dejamos en <em>True</em>, su valor por defecto, nos va
+a generar un url válido por 5min y, como son archivos estáticos, esta url no se va a refrescar nunca, así que nuestra página
+se verá <strong>bien</strong>, con todos sus estilos y efectos sólo mientras duren las urls vigentes.</p>
+<p>Los demás son simplemente parámetros de configuración de S3, deben recordar añadir las variables de configuración en <em>Heroku</em>.</p>
+<div class="highlight"><pre>heroku config:add <span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span>EL_KEY_ID_DE_AWS_S3
+heroku config:add <span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span>EL_SECRET_KEY_ID_DE_AWS_S3
+heroku config:add <span class="nv">AWS_STORAGE_BUCKET_NAME</span><span class="o">=</span>EL_NOMBRE_DEL_BUCKET
+</pre></div>
+<p>Recuerden también colocar <em>s3_folder_storage</em> entre los <em>INSTALLED_APPS</em> del proyecto y activar la opción de <em>Heroku</em> para que
+reconozca las variables de configuración en tiempo de compilación, de otra manera, el deploy fallará.</p>
+<div class="highlight"><pre>heroku labs:enable user-env-compile
+</pre></div>
+<p>Con esto, ya deberíamos poder sincronizar los <em>assets</em> a <em>S3</em></p>
+<div class="highlight"><pre>heroku run python manage.py collectstatic
+</pre></div>
+<p>Dependiendo de qué tantos archivos estáticos tengamos, va a tardar más o menos, va a enviar todo lo que esté
+en nuestro <em>STATIC_ROOT</em> al <em>bucket S3</em> que configuramos anteriormente.</p>
+</div>
+<div class="section" id="no-puedes-utilizar-el-sistema-de-archivos">
+<h4>No puedes utilizar el sistema de archivos</h4>
+<p>Había dicho al principio que <em>Heroku</em> es <em>stateless</em>, es decir, no conserva el estado de tu aplicación. Entonces
+ellos implementaron algo llamado <em>Ephemeral Filesystem</em>, es decir, un sistema de archivos <em>efímero</em>, que se reinicia
+cada vez que los dynos son reiniciados por cualquier razón, sea un deploy o sea porque heroku los reinició.</p>
+<p><strong>¿Qué significa esto?</strong>, pues que <strong>no puedes escribir a disco</strong> como lo harías en cualquier servidor <em>normal</em>,
+si lo haces, debes saber que cuando tu app sea reiniciada, perderás todos los archivos, tiene un poco de sentido,
+cuando usas más de un dyno y escribes a disco, cuando el usuario quiera recuperar lo que subió, no tenemos manera de
+saber cuál dyno atendió aquella solicitud y no sabremos dónde buscar, así que, de una manera u otra, lo mejor es almacenar
+los archivos de nuestros usuarios en un lugar seguro y de donde podamos recuperarlos luego sin problemas.</p>
+<p>Nuevamente podemos utilizar <em>AWS-S3</em> para ello, con algunas configuraciones adicionales, podemos hacer que por defecto
+nuestros <em>media files</em>, para usar la terminología de <em>django</em>, sean almacenados en nuestro <em>bucket</em>.</p>
+<p>Es necesario agregar las siguientes líneas a nuestro <em>settings.py</em>:</p>
+<div class="highlight"><pre><span class="n">MEDIA_ROOT</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+<span class="n">DEFAULT_FILE_STORAGE</span> <span class="o">=</span> <span class="s">&#39;s3_folder_storage.s3.DefaultStorage&#39;</span>
+<span class="n">DEFAULT_S3_PATH</span> <span class="o">=</span> <span class="s">&#39;media/&#39;</span>
+<span class="n">MEDIA_URL</span> <span class="o">=</span> <span class="s">&#39;http://</span><span class="si">%s</span><span class="s">.s3.amazonaws.com/media/&#39;</span> <span class="o">%</span> <span class="n">AWS_STORAGE_BUCKET_NAME</span>
+</pre></div>
+<p>Con esto, todo lo que suban nuestros usuarios irá a la carpeta <em>media/</em> de nuestro bucket.</p>
+<p>Hay que tener en cuenta que todo se está subiendo al mismo <em>bucket</em> y la política que se definió en principio para
+poder almacenar los archivos estáticos da acceso público a todo el contenido por defecto, por lo que hay que tomar
+previsiones <em>de alguna manera</em> para que no todo el mundo pueda ver los archivos de nuestros usuarios de manera directa.</p>
+<p>Acá expondré la estrategia que uso:</p>
+<ol class="arabic simple">
+<li><strong>Sobre-escritura del método save():</strong> en los modelos que tengan un <em>ImageField</em> o un <em>FileField</em>, la idea de esto es
+sobreescribir la política de control de acceso particular para el archivo una ves que fue subido. Para esto utilizaremos
+una librería llamada <a class="reference external" href="https://github.com/boto/boto">boto</a> que es un wrapper en Python para el API de <em>AWS</em></li>
+</ol>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+
+<span class="k">class</span> <span class="nc">Video</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">)</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">)</span>
+    <span class="n">video</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">FileField</span><span class="p">(</span><span class="n">upload_to</span><span class="o">=</span><span class="s">&#39;user_videos/&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">boto.s3</span> <span class="kn">import</span> <span class="n">connection</span><span class="p">,</span> <span class="n">key</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">VoiceMessage</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="n">conn</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">S3Connection</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">AWS_ACCESS_KEY_ID</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">AWS_SECRET_ACCESS_KEY</span><span class="p">)</span>
+        <span class="n">bucket</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">get_bucket</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">AWS_STORAGE_BUCKET_NAME</span><span class="p">)</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">Key</span><span class="p">(</span><span class="n">bucket</span><span class="p">)</span>
+        <span class="n">k</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">DEFAULTS3_PATH</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">video</span><span class="p">)</span>
+        <span class="n">k</span><span class="o">.</span><span class="n">set_acl</span><span class="p">(</span><span class="s">&#39;private&#39;</span><span class="p">)</span>
+</pre></div>
+<p>Con esto tenemos el archivo privado en <em>S3</em>, ahora, necesitamos una manera de darle acceso al usuario que es propietario
+del archivo.</p>
+<ol class="arabic simple" start="2">
+<li><strong>Escribiendo una vista para acceder al archivo privado:</strong> la mejor manera que conseguí para darle acceso al usuario a su
+archivo fue escribiendo una vista de <em>django</em> que revisara que el usuario que origina el request es realmente el propietario
+del objeto y redirigirlo a la ubicación de su archivo en <em>S3</em>. Escribiremos un pequeño helper, además, para encapsular la
+generación del URL, como es un archivo privado, el url debe ir firmado y sólo será válido por el tiempo que nosotros indiquemos,
+en este caso, lo haremos por una hora.</li>
+</ol>
+<p>En el helper colocamos lo siguiente:</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+
+
+<span class="k">def</span> <span class="nf">get_s3_redirect_url</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">60</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">boto.s3.connection</span> <span class="kn">import</span> <span class="n">S3Connection</span>
+
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">S3Connection</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">AWS_ACCESS_KEY_ID</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">AWS_SECRET_ACCESS_KEY</span><span class="p">,</span> <span class="n">is_secure</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">conn</span><span class="o">.</span><span class="n">generate_url</span><span class="p">(</span><span class="n">ttl</span><span class="p">,</span> <span class="s">&#39;GET&#39;</span><span class="p">,</span> <span class="n">bucket</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">AWS_STORAGE_BUCKET_NAME</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">filepath</span><span class="p">,</span> <span class="n">force_http</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+<p>y en la vista:</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span><span class="p">,</span> <span class="n">HttpResponseRedirect</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.decorators</span> <span class="kn">import</span> <span class="n">login_required</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Video</span>
+
+<span class="nd">@login_required</span>
+<span class="k">def</span> <span class="nf">get_user_video</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">video_id</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&#39;GET&#39;</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">.helpers</span> <span class="kn">import</span> <span class="n">get_s3_redirect_url</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>
+        <span class="n">video</span> <span class="o">=</span> <span class="n">Video</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">video_id</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">user</span> <span class="o">==</span> <span class="n">video</span><span class="o">.</span><span class="n">user</span><span class="p">:</span>
+            <span class="n">filepath</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">settinga</span><span class="o">.</span><span class="n">DEFAULT_S3_PATH</span><span class="p">,</span> <span class="n">video</span><span class="o">.</span><span class="n">video</span><span class="p">)</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">get_s3_redirect_url</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">3600</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="mi">403</span><span class="p">)</span>
+</pre></div>
+<p>Con esto generamos una url firmada y válida por 3600 segundos (una hora) si el usuario que origina la solicitud
+es el propietario del objeto que contiene el archivo (video) que se desea obtener, caso contrario retornamos
+403 ya que la persona no tiene permisos para ver ese contenido.</p>
+</div>
+</div>
+</div>
+
+            <section>
+    <p id="post-share-links">
+    Compártelo
+    <a href="http://twitter.com/home?status=Heroku%20%2B%20Django%20sin%20morir%20en%20el%20intento%20%28Parte%201%29%20http%3A//iferminmontilla.com/heroku-django-sin-morir-en-el-intento-parte-1.html" target="_blank" title="Share on Twitter">Twitter</a>
+    ❄
+    <a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A//iferminmontilla.com/heroku-django-sin-morir-en-el-intento-parte-1.html" target="_blank" title="Share on Facebook">Facebook</a>
+    ❄
+    <a href="https://plus.google.com/share?url=http%3A//iferminmontilla.com/heroku-django-sin-morir-en-el-intento-parte-1.html" target="_blank" title="Share on Google Plus">Google+</a>
+    ❄
+    <a href="mailto:?subject=Heroku%20%2B%20Django%20sin%20morir%20en%20el%20intento%20%28Parte%201%29&amp;body=http%3A//iferminmontilla.com/heroku-django-sin-morir-en-el-intento-parte-1.html" target="_blank" title="Share via Email">Email</a>
+    </p>
+</section>
+
+            <section>
+<p id="comment-message">Preguntas, comentatios, chistes o sugerencias, por acá. </p>
+<div class="accordion" id="accordion2">
+    <div class="accordion-group">
+        <div class="accordion-heading">
+            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
+                href="http://iferminmontilla.com/heroku-django-sin-morir-en-el-intento-parte-1.html#disqus_thread">
+                Comments
+            </a>
+        </div>
+        <div id="disqus_thread" class="accordion-body collapse">
+            <div class="accordion-inner">
+                <div class="comments">
+                    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'iferminmblog';
+        var disqus_identifier = 'http://iferminmontilla.com/heroku-django-sin-morir-en-el-intento-parte-1.html';
+    var disqus_url = 'http://iferminmontilla.com/heroku-django-sin-morir-en-el-intento-parte-1.html';
+
+    (function() {
+         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+            <hr/>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2013-09-23T12:34:00">sep 23, 2013</time>
+            <h4>Category</h4>
+            <a class="category-link" href="http://iferminmontilla.com/categories.html#blog-ref">Blog</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="http://iferminmontilla.com/tags.html#heroku-ref">heroku
+                    <span>2</span>
+</a></li>
+                <li><a href="http://iferminmontilla.com/tags.html#herramientas-ref">herramientas
+                    <span>3</span>
+</a></li>
+                <li><a href="http://iferminmontilla.com/tags.html#programacion-ref">programación
+                    <span>8</span>
+</a></li>
+                <li><a href="http://iferminmontilla.com/tags.html#tecnologia-ref">tecnología
+                    <span>3</span>
+</a></li>
+            </ul>
+<h4>Sígueme!</h4>
+    <a href="http://twitter.com/iferminm" title="My Twitter Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-twitter sidebar-social-links"></i></a>
+    <a href="http://www.linkedin.com/profile/view?id=66587805&amp;trk=tab_pro" title="My LinkedIn Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-linkedin sidebar-social-links"></i></a>
+    <a href="https://github.com/iferminm" title="My GitHub Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-github sidebar-social-links"></i></a>
+    <a href="mailto:iferminmontilla@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-envelope sidebar-social-links"></i></a>
+<!-- Begin MailChimp Signup Form -->
+<div id="mc-embed-signup">
+<form action="http://iferminmontilla.us11.list-manage.com/subscribe/post?u=0d4b15ef6a90baa460d821dbc&id=8b51ac80b2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+<h4>Suscríbete</h4>
+<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Pasa tu correo pues..." required>
+<div class="clear"><input type="submit" value="Ok, pero sin spam" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+</form>
+</div>
+<!--End mc_embed_signup-->
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+            <script type="text/javascript">
+var disqus_shortname = 'iferminmblog';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+<script  language="javascript" type="text/javascript">
+function uncollapse() {
+    if (window.location.hash.match(/^#comment-\d+$/)) {
+        $('#disqus_thread').collapse('show');
+    }
+}
+</script>
+<script type="text/javascript" language="JavaScript">
+uncollapse();
+window.onhashchange=function(){
+    if (window.location.hash.match(/^#comment-\d+$/))
+        window.location.reload(true);
+}
+</script>
+<script>
+$('#disqus_thread').on('shown', function () {
+    var link = document.getElementsByClassName('accordion-toggle');
+    var old_innerHTML = link[0].innerHTML;
+    $(link[0]).fadeOut(500, function() {
+        $(this).text('Click here to hide comments').fadeIn(500);
+    });
+    $('#disqus_thread').on('hidden', function () {
+        $(link[0]).fadeOut(500, function() {
+            $(this).text(old_innerHTML).fadeIn(500);
+        });
+    })
+})
+</script>
+
+
+    </body>
+    <!-- Theme: Elegant built for Pelican
+    License : http://oncrashreboot.com/pelican-elegant -->
+</html>

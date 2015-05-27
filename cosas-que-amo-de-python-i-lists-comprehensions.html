@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Israel Fermín Montilla" />
+        <meta name="copyright" content="Israel Fermín Montilla" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="Lenguajes, Programación, python, Blog, " />
+
+<meta property="og:title" content="Cosas que amo de Python I: Lists Comprehensions "/>
+<meta property="og:url" content="http://iferminmontilla.com/cosas-que-amo-de-python-i-lists-comprehensions.html" />
+<meta property="og:description" content="Bueno, ya que estoy trabajando con Python, he podido ir, poco a poco, explorando las capacidades de ese lenguaje, es realmente poderoso y, tal como una droga, su uso excesivo produce adicción. No pretendo convertirlo en el único lenguaje que usarépero si me enfocaré en explorarlo y explotarlo por ..." />
+<meta property="og:site_name" content="@#$%_" />
+<meta property="og:article:author" content="Israel Fermín Montilla" />
+<meta property="og:article:published_time" content="2011-09-11T21:28:00" />
+<meta name="twitter:title" content="Cosas que amo de Python I: Lists Comprehensions ">
+<meta name="twitter:description" content="Bueno, ya que estoy trabajando con Python, he podido ir, poco a poco, explorando las capacidades de ese lenguaje, es realmente poderoso y, tal como una droga, su uso excesivo produce adicción. No pretendo convertirlo en el único lenguaje que usarépero si me enfocaré en explorarlo y explotarlo por ...">
+
+        <title>Cosas que amo de Python I: Lists Comprehensions  · @#$%_
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/css/custom.css" media="screen">
+        <link href="http://iferminmontilla.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="@#$%_ - Full Atom Feed" />
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-55459920-1', 'auto');
+    ga('send', 'pageview');
+</script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://iferminmontilla.com/"><span class=site-name>@#$%_</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://iferminmontilla.com">Home</a></li>
+                            <li ><a href="http://iferminmontilla.com/categories.html">Categories</a></li>
+                            <li ><a href="http://iferminmontilla.com/tags.html">Tags</a></li>
+                            <li ><a href="http://iferminmontilla.com/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://iferminmontilla.com/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="http://iferminmontilla.com/cosas-que-amo-de-python-i-lists-comprehensions.html"> Cosas que amo de Python I: Lists Comprehensions  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            
+            <p>Bueno, ya que estoy trabajando con Python, he podido ir, poco a poco,
+explorando las capacidades de ese lenguaje, es realmente poderoso y, tal
+como una droga, su uso excesivo produce adicción. No pretendo
+convertirlo en <em>el único lenguaje que usaré</em>pero si me enfocaré en
+explorarlo y explotarlo por un tiempo -- creo -- bastante largo. Haré
+una serie de artículos explicando algunas de las características que más
+me gustan de Python utilizando algunos ejemplos básicos. Una de las
+cosas que descubrí que existía cuando empecé a programar en Python, fue
+el concepto de List Comprehension que nunca lo llegué a ver y aunque
+puede llegar a implementarse, resulta un poco rebuscado y complicado. y
+<strong>nunca</strong>&nbsp;tan intuitivo como en Python. El concepto de Comprensión de
+Listas (Lists Comprehension en inglés) viene de la Programación
+Funcional y consiste en generar una lista a partir de filtros y una
+expresión generadora, tal cual como se definen, en Matemáticas, los
+Conjuntos por Comprensión. Empecemos con un ejemplo sencillo, supongamos
+que quiero generar una lista que contenga los números hasta el número
+300.000. En Java o en C, necesitaría iterar con un for, revisar si el
+número es par (número % 2 == 0) e incluirlo en la lista resultado para
+luego retornar, unas 5 o 6 líneas de código, podría hacerlo así también
+en Python, pero teniendo una característica <strong>tan poderosa</strong>como la
+comprensión de listas, no tiene mucho sentido. El mismo ejercicio en
+Python, utilizando Comprensión de listas, quedaría de la siguiente
+manera:</p>
+<script src="http://pastebin.com/embed_js.php?i=u57Rapqm"></script><p>No hace falta ser un experto en Programación Funcional, ni mucho menos
+haber programado en Haskell o Erlang para darse cuenta de lo que ocurre
+en esa simple línea de código. Simplemente <em>generamos</em>&nbsp;una lista de
+valores desde el 0 hasta el 300.000 e incluímos el valor en nuestra
+nueva lista sólo si es par. Ahora bien, en la Programación Funcional, un
+algoritmo deja de verse como una <em>sucesión de pasos</em> y empieza a verse
+como una <em>transformación sucesiva de datos</em>, es decir, las funciones
+hacen <em>mapping</em> de los los datos que manipula mi programa hacia otros,
+derivados de la manipulación de la información del programa a través de
+ciertas operaciones de cómputo. Lo que quiero decir con esto es que, a
+través de comprensión de listas, puedo también tomar los elementos de la
+lista que voy a generar y aplicarles una función antes de retornarlos.
+La función <em>map</em> en Python, aplica una función pasada como argumento a
+un conjunto de datos, pasado también como argumento:</p>
+<script src="http://pastebin.com/embed_js.php?i=budst575"></script><p>En este ejemplo, la lista <em>a</em> contendrá una nueva lista con las
+longitudes de las cadenas contenidas en <em>words</em>, mientras que la lista
+<em>b</em> contendrá las mismas cadenas pero con todos los caracteres en
+mayúscula sostenida. La manera de realizar ese ejercicio utilizando
+Comprensión de Listas, es la siguiente:</p>
+<script src="http://pastebin.com/embed_js.php?i=dPiGUE0u"></script><p>Es el mismo resultado, pero aplicando una función a una Comprensión de
+Listas. Finalmente, podemos generar Listas por Comprensión tan complejas
+como queramos, la imaginación es el límite, veamos este último ejemplo
+sencillo, utilizando todos los elementos que me permite una comprensión
+de listas (también puedo anidarlas): aplicar una función al retorno, una
+expresión generadora y una expresión filtro:</p>
+<script src="http://pastebin.com/embed_js.php?i=Afn0JFsK"></script><p>A manera de ejercicio, hagan lo mismo pero utilizando ciclos, verán que
+es mucho más complicado una vez que conocen ya la magia de la
+Comprensión de Listas.</p>
+</p>
+            <section>
+    <p id="post-share-links">
+    Compártelo
+    <a href="http://twitter.com/home?status=Cosas%20que%20amo%20de%20Python%20I%3A%20Lists%20Comprehensions%20http%3A//iferminmontilla.com/cosas-que-amo-de-python-i-lists-comprehensions.html" target="_blank" title="Share on Twitter">Twitter</a>
+    ❄
+    <a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A//iferminmontilla.com/cosas-que-amo-de-python-i-lists-comprehensions.html" target="_blank" title="Share on Facebook">Facebook</a>
+    ❄
+    <a href="https://plus.google.com/share?url=http%3A//iferminmontilla.com/cosas-que-amo-de-python-i-lists-comprehensions.html" target="_blank" title="Share on Google Plus">Google+</a>
+    ❄
+    <a href="mailto:?subject=Cosas%20que%20amo%20de%20Python%20I%3A%20Lists%20Comprehensions&amp;body=http%3A//iferminmontilla.com/cosas-que-amo-de-python-i-lists-comprehensions.html" target="_blank" title="Share via Email">Email</a>
+    </p>
+</section>
+
+            <section>
+<p id="comment-message">Preguntas, comentatios, chistes o sugerencias, por acá. </p>
+<div class="accordion" id="accordion2">
+    <div class="accordion-group">
+        <div class="accordion-heading">
+            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
+                href="http://iferminmontilla.com/cosas-que-amo-de-python-i-lists-comprehensions.html#disqus_thread">
+                Comments
+            </a>
+        </div>
+        <div id="disqus_thread" class="accordion-body collapse">
+            <div class="accordion-inner">
+                <div class="comments">
+                    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'iferminmblog';
+        var disqus_identifier = 'http://iferminmontilla.com/cosas-que-amo-de-python-i-lists-comprehensions.html';
+    var disqus_url = 'http://iferminmontilla.com/cosas-que-amo-de-python-i-lists-comprehensions.html';
+
+    (function() {
+         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+            <hr/>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2011-09-11T21:28:00">sep 11, 2011</time>
+            <h4>Category</h4>
+            <a class="category-link" href="http://iferminmontilla.com/categories.html#blog-ref">Blog</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="http://iferminmontilla.com/tags.html#lenguajes-ref">Lenguajes
+                    <span>6</span>
+</a></li>
+                <li><a href="http://iferminmontilla.com/tags.html#programacion-ref">Programación
+                    <span>8</span>
+</a></li>
+                <li><a href="http://iferminmontilla.com/tags.html#python-ref">python
+                    <span>6</span>
+</a></li>
+            </ul>
+<h4>Sígueme!</h4>
+    <a href="http://twitter.com/iferminm" title="My Twitter Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-twitter sidebar-social-links"></i></a>
+    <a href="http://www.linkedin.com/profile/view?id=66587805&amp;trk=tab_pro" title="My LinkedIn Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-linkedin sidebar-social-links"></i></a>
+    <a href="https://github.com/iferminm" title="My GitHub Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-github sidebar-social-links"></i></a>
+    <a href="mailto:iferminmontilla@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-envelope sidebar-social-links"></i></a>
+<!-- Begin MailChimp Signup Form -->
+<div id="mc-embed-signup">
+<form action="http://iferminmontilla.us11.list-manage.com/subscribe/post?u=0d4b15ef6a90baa460d821dbc&id=8b51ac80b2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+<h4>Suscríbete</h4>
+<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Pasa tu correo pues..." required>
+<div class="clear"><input type="submit" value="Ok, pero sin spam" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+</form>
+</div>
+<!--End mc_embed_signup-->
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+            <script type="text/javascript">
+var disqus_shortname = 'iferminmblog';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+<script  language="javascript" type="text/javascript">
+function uncollapse() {
+    if (window.location.hash.match(/^#comment-\d+$/)) {
+        $('#disqus_thread').collapse('show');
+    }
+}
+</script>
+<script type="text/javascript" language="JavaScript">
+uncollapse();
+window.onhashchange=function(){
+    if (window.location.hash.match(/^#comment-\d+$/))
+        window.location.reload(true);
+}
+</script>
+<script>
+$('#disqus_thread').on('shown', function () {
+    var link = document.getElementsByClassName('accordion-toggle');
+    var old_innerHTML = link[0].innerHTML;
+    $(link[0]).fadeOut(500, function() {
+        $(this).text('Click here to hide comments').fadeIn(500);
+    });
+    $('#disqus_thread').on('hidden', function () {
+        $(link[0]).fadeOut(500, function() {
+            $(this).text(old_innerHTML).fadeIn(500);
+        });
+    })
+})
+</script>
+
+
+    </body>
+    <!-- Theme: Elegant built for Pelican
+    License : http://oncrashreboot.com/pelican-elegant -->
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Israel Fermín Montilla" />
+        <meta name="copyright" content="Israel Fermín Montilla" />
+
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="ontologías, web 3.0, web semántica, Blog, " />
+
+<meta property="og:title" content="Empezando a conocer la Web 3.0 (Parte II) "/>
+<meta property="og:url" content="http://iferminmontilla.com/empezando-a-conocer-la-web-30-parte-ii.html" />
+<meta property="og:description" content="Hace un tiempo, publiqué el primero de una serie de artículos acerca de La Web Semántica, en el que daba una introducción y exponía la visión de la W3C sobre el rumbo que debería tomar la Web en su &#34;versión 3.0&#34;, si aún no lo has leido, aún estás ..." />
+<meta property="og:site_name" content="@#$%_" />
+<meta property="og:article:author" content="Israel Fermín Montilla" />
+<meta property="og:article:published_time" content="2011-06-14T13:16:00" />
+<meta name="twitter:title" content="Empezando a conocer la Web 3.0 (Parte II) ">
+<meta name="twitter:description" content="Hace un tiempo, publiqué el primero de una serie de artículos acerca de La Web Semántica, en el que daba una introducción y exponía la visión de la W3C sobre el rumbo que debería tomar la Web en su &#34;versión 3.0&#34;, si aún no lo has leido, aún estás ...">
+
+        <title>Empezando a conocer la Web 3.0 (Parte II)  · @#$%_
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/css/custom.css" media="screen">
+        <link href="http://iferminmontilla.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="@#$%_ - Full Atom Feed" />
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-55459920-1', 'auto');
+    ga('send', 'pageview');
+</script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="http://iferminmontilla.com/"><span class=site-name>@#$%_</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="http://iferminmontilla.com">Home</a></li>
+                            <li ><a href="http://iferminmontilla.com/categories.html">Categories</a></li>
+                            <li ><a href="http://iferminmontilla.com/tags.html">Tags</a></li>
+                            <li ><a href="http://iferminmontilla.com/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://iferminmontilla.com/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="http://iferminmontilla.com/empezando-a-conocer-la-web-30-parte-ii.html"> Empezando a conocer la Web 3.0 (Parte II)  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            
+            <p>Hace un tiempo, publiqué el primero de una serie de
+artículos acerca de La Web Semántica, en el que daba una introducción y
+exponía la visión de la W3C sobre el rumbo que debería tomar la Web en
+su &quot;versión 3.0&quot;, si aún no lo has leido, <a class="reference external" href="http://codersvenezuela.com/post/empezando-a-conocer-la-web-3-0-parte-i/50">aún estás a tiempo</a>. En esta
+segunda entrega, expondré algunos conceptos que es necesario tener
+claros si deseas adentrarte en este nuevo mundo, así como también, daré
+una visión, un poco futurista (casi sacada de una película de Ciencia
+Ficción), de las cosas que serán posibles una vez se alcance a
+estandarizar todos los conceptos y tecnologías de la Web Semántica a lo
+ancho, largo y profundo de la World Wide Web.</p>
+<p>El primero de los conceptos que debemos tener claro es el de URI
+(Universal Resource Identifier) y URL (Universal Resource Locator), y
+las diferencias y similitudes que existen entre ellos pues, es de
+intuirse, que nos servirán más adelante. Luego de entender eso, podemos
+avanzar y adentrarnos en el mundo de las Ontologías, un concepto del
+campo de la Inteligencia Artificial adaptado a la Web Semántica. Una vez
+asimilado todo lo referente a las Ontologías, podemos irnos a estudiar
+algo de lógica y consultas sobre dichas ontologías para, después, ver
+algo acerca de Motores de Inferencia, que serán nuestro más grande
+aliado al desarrollar aplicaciones que implementen tecnologías de la Web
+Semántica. En este artículo, me concentraré en los dos primeros, es
+decir, URL, URI y Ontologías. Algo que parece causar mucha confusión en
+estudiantes, son los URI y los URL. Espero despejar cualquier duda en el
+siguiente párrafo: Un Identificador Universal de Recurso o URI, por sus
+siglas en inglés, es un elemento que nos permite simplemente saber
+&quot;quién&quot; es ese recurso. Si me permite identificar el recurso de manera
+inequívoca, quiere decir que debe ser único para cada uno. Por su parte,
+el Localizador Universal de Recurso, o URL por sus siglas en inglés, me
+permite saber la ubicación de ese recurso, debe resultar obvio que
+también debe ser único para cada uno pues dos recursos no pueden tener
+la misma ubicación. Si exportamos estos conceptos al mundo real y los
+aplicamos a personas, un URI podría ser su Cédula de Identidad, que no
+me da acceso al recurso, pero me permite saber quién es, un URL, podría
+ser su dirección postal + habitación en la que se encuentra (asumiendo
+que en Venezuela la gente vive tan cómoda que no necesita compartir
+cuarto con nadie) o, incluso, su número telefónico, ambos me dan acceso
+al recurso y, de alguna u otra manera, también me permiten conocer quién
+es. En pocas palabras, un URL es un URI que, además, me permite conocer
+la ubicación del sujeto.</p>
+<p>Es necesario tener claro todo lo anterior ya
+que en la Web Semántica no se habla de Páginas o Sitios Web, se busca
+generalizar un poco más ya que, en la Web, no sólo existen documentos
+HTML que dan forma a los Portales Web, sino también Videos, Fotos,
+documentos PDF, Música, Servicios Web, en fin, sería mucho más fácil
+decir qué es lo que no se encuentra en la Internet. Es por ello que la
+Web Semántica habla de Recursos, más allá de su tipo. Ahora bien, la Web
+Semántica se basa en modelos de conocimiento bien estructurado, estos
+modelos de conocimiento se conocen en el mundo de la Inteligencia
+Artificial como Ontologías.</p>
+<p>Una Ontología no es más que una
+representación estructurada del conocimiento de un área específica, de
+allí que muchos buscadores que implementan 100% tecnología de Web
+Semántica sean específicos para un tema dado. Estos modelos, en el
+ámbito que nos compete, se utilizan para describir recursos, a los
+cuales nos referimos mediante URI's, y, en cierta forma, darle al
+computador la capacidad de &quot;entender&quot; de qué habla dicho recurso y
+cuáles son sus recursos relacionados, de esta manera, comenzamos a
+construir nuestra infraestructura de meta-datos para realizar búsquedas
+contextualizadas y con más sentido para el usuario. La manera como una
+Ontología organiza el conocimiento, es a través de una estructura de
+meta-conocimiento. Esta estructura se construye a partir de un concepto
+con el cual la mayoría de los programadores estamos famimliarizados
+desde tempranos años de la carrera, las Clases, todo meta-conocimiento
+es modelable a través de Clases. Es de intuirse que se mantienen los
+conceptos de Herencia y Polimorfismo también dentro de las Ontologías.
+Por ejemplo, imaginemos una MICRO-Ontología de la Vida Salvaje de
+África[1]. Empezando a pensar al respecto, nos percatamos de que la
+sabia madre naturaleza ya nos facilitó con dos clases bien
+diferenciadas: &quot;Animales&quot; y &quot;Plantas&quot;. Una Ontología, también me permite
+crear relaciones entre clases, con propócitos didácticos, imaginemos las
+clases &quot;Tallo&quot;, &quot;Rama&quot; y &quot;Hoja&quot; que &quot;son parte&quot; de una &quot;Planta&quot;, creo
+que la relación es bastante obvia, nuestra estructura de composición
+para la clase &quot;Planta&quot; sería: &quot;Hoja&quot;, es parte de: &quot;Rama&quot;, es parte de:
+&quot;Tallo&quot;, es parte de: &quot;Planta&quot;. Podemos complicarlo aún más, podríamos
+definir clases de &quot;Forma&quot; (triángulo, rombo, etc) y relacionarlas a
+&quot;Hoja&quot; y crear la relación &quot;tiene forma de&quot; para describir cómo es la
+hoja de una Planta dada, pero, por ahora, dejémoslo así. Por otro lado,
+la clase &quot;Animal&quot;, tiene dos subclases muy fáciles de inferir:
+&quot;Carnívoro&quot; y &quot;Herbívoro&quot;, ambas sub-clases son también &quot;Animales&quot;, esto
+es una estructura de Herencia pues, una instancia de &quot;Herbívoro&quot; o de
+&quot;Carnívoro&quot; es también un &quot;Animal&quot;.</p>
+<p>Nuestra estructura de Herencia para
+&quot;Animal&quot; quedaría así: &quot;Carnívoro&quot;, es un: &quot;Animal&quot;. &quot;Herbívoro&quot;, es un:
+&quot;Animal&quot;. Pero, ahora, ¿cómo se relacionan todas nuestras clases entre
+sí?. Bueno, a través de una relación obviamente, pero, ¿Cuál?. Bueno, un
+animal debe comer ¿no?. Entonces, un &quot;Herbívoro&quot; come &quot;Planta&quot; y un
+&quot;Carnívoro&quot; come &quot;Herbívoro&quot;, también podría crear la relación inversa
+&quot;es comido por&quot;, por ejemplo. Hasta ahora sólo tenemos el
+Meta-Conocimiento, es decir, las descripciones de los recursos, ahora
+debo agregar recursos, por ejemplo, si digo: &quot;León&quot; es un &quot;Carnívoro&quot;;
+&quot;Arbusto&quot; es una &quot;Planta&quot; y &quot;Zebra&quot; es un &quot;Herbívoro&quot; Automáticamente,
+podríamos inferir que el &quot;Arbusto&quot; está conpuesto por &quot;Tallo&quot;, &quot;Rama&quot; y
+&quot;Hoja&quot;, es comido por &quot;Zebra&quot;, que a su vez es comido por &quot;León&quot;. Si
+hacemos una analogía con la Programación Orientada a Objetos, mis
+clases, seguirían siendo clases, pero los recursos a los que hacen
+referencia, serían los objetos que son instanciados en una clase
+determinada.</p>
+<p>Obviamente, pueden hacerse ontologías muy complejas, lo que
+aquí muestro a manera de ejemplo es sólo la punta del iceberg pues los
+lenguajes de ontologías para la Web Semántica son sumamente flexibles y
+potentes: RDF y OWL[2] (que no es más que una extensión de RDF),
+posteriormente dedicaré un artículo para profundizar más sobre ellos.
+Las clases RDF/OWL, definen y describen mis recursos, y las relaciones
+entre estas clases, definen ciertas reglas básicas de inferencia lógica
+que pueden ser aprovechadas en un nivel superior por un Motor de
+Inferencia[3] para resolver consultas sobre una ontología y, a partir de
+esas premisas básicas, deducir nuevo conocimiento no explícito
+directamente en el modelo de conocimiento.</p>
+<p>Imaginemos ahora una WWW
+totalmente enlazada, totalmente integrada con la Web Semántica, cuando
+esto ocurra, serán agentes[4] quienes nos ayuden a realizar búsquedas a
+través de la web, examinando ontologías, extrayendo información que se
+adapte a nuestra consulta e interpretando, a través de reglas de
+inferencia bien definidas, cuáles recursos cumplen mejor con nuestra
+solicitud. Supongamos que Alan, es un empresario muy ocupado y su madre
+lo llamó anoche porque siente dolor en la zona abdominal desde hace unos
+días y siente que debería visitar a un médico. Alan, consulta la
+Internet desde su TabletPC, a través de su agente, solicitando las
+clínicas que se encuentren en 10km a la redonda de la casa de su madre,
+organizadas según su reputación. El agente revisa la ubicación de la
+casa de su madre (almacenada en el Tablet gracias a la tecnología de
+GPS) y consulta una Ontología con las clínicas de la ciudad y, además,
+busca en el Servicio Web de la Sociedad Médica Venezolana (bajo las
+circunstancias descritas en el párrafo anterior, debería existir), la
+lista de las mejores clínicas para poder cumplir con el patrón de
+ordenamiento que Alan solicitó. Luego de revisar los resultados, Alan le
+pregunta al agente de dónde obtuvo la información, este le redirige al
+portal de la Sociedad Médica Venezolana. Alan revisa las primeras tres
+clínicas y, finalmente se decide por el Hospital de Clínicas Caracas
+(HCC), pues no queda muy lejos de la casa de su madre y figura de 3ero
+en la lista de resultados. El agente del HCC le pregunta qué síntomas
+presenta, Alan escribe &quot;Dolor Abdominal&quot;, el agente le recomienda
+visitar a un Gastroenterólogo y le devuelve una lista de los médicos de
+esa especialidad del Hospital. Alan se da cuenta de que el 2do en la
+lista, es un viejo amigo del Colegio y decide solicitar una cita con él
+lo más pronto posible, el agente del Hospital le informa que la cita más
+próxima es para dentro de dos días, entre las 14:00 y las 18:00, y su
+agente le recuerda que tiene un par de reuniones en ese intervalo de
+tiempo. Alan revisa su agenda y se da cuenta que son dos reuniones de
+prioridad menor, pide a su agente que las reprograme y solicite la cita
+médica. El agente de Alan, de manera automática, se comunica con los
+agentes de las personas involucradas en las reuniones para reprogramar
+las citas y, posteriormente se comunica con el agente del HCC para
+colocar la cita para dentro de dos días a la hora mencionada. Todo esto
+será posible si la información se encuentra totalmente enlazada y
+disponible en línea, los recursos son descritos de manera bien definida
+y las reglas de inferencia son bien explícitas, es por ello que es
+necesario que más personas se interesen en este tema de manera técnica
+pues, el futuro de la Internet, está tocando a nuestras puertas y, la
+Web Semántica, no puede quedarse enclaustrada dentro de la academia y
+ser dominado únicamente por grupos de investigación científica. Espero
+haber motivado a alguien más a estudiar dentro de este campo. Hasta un
+próximo artículo.</p>
+<p>[1] Digo Micro-Ontología porque si hacemos la ontología completa, creo
+que acabaríamos con todo el espacio disponible en este servidor.</p>
+<p>[2] Ambos lenguajes están en proceso de definición por el World Wide Web
+Consorcium (W3C), el avance puede ser seguido a través el sitio web del
+W3C.</p>
+<p>[3] JENA y Virtuoso son los que parecieran ser más utilizados.</p>
+<p>[4] Un agente, en informática, es una pieza de software que realiza una
+tarea específica de manera automática, es una espécie de &quot;robot&quot;.</p>
+
+            <section>
+    <p id="post-share-links">
+    Compártelo
+    <a href="http://twitter.com/home?status=Empezando%20a%20conocer%20la%20Web%203.0%20%28Parte%20II%29%20http%3A//iferminmontilla.com/empezando-a-conocer-la-web-30-parte-ii.html" target="_blank" title="Share on Twitter">Twitter</a>
+    ❄
+    <a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A//iferminmontilla.com/empezando-a-conocer-la-web-30-parte-ii.html" target="_blank" title="Share on Facebook">Facebook</a>
+    ❄
+    <a href="https://plus.google.com/share?url=http%3A//iferminmontilla.com/empezando-a-conocer-la-web-30-parte-ii.html" target="_blank" title="Share on Google Plus">Google+</a>
+    ❄
+    <a href="mailto:?subject=Empezando%20a%20conocer%20la%20Web%203.0%20%28Parte%20II%29&amp;body=http%3A//iferminmontilla.com/empezando-a-conocer-la-web-30-parte-ii.html" target="_blank" title="Share via Email">Email</a>
+    </p>
+</section>
+
+            <section>
+<p id="comment-message">Preguntas, comentatios, chistes o sugerencias, por acá. </p>
+<div class="accordion" id="accordion2">
+    <div class="accordion-group">
+        <div class="accordion-heading">
+            <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
+                href="http://iferminmontilla.com/empezando-a-conocer-la-web-30-parte-ii.html#disqus_thread">
+                Comments
+            </a>
+        </div>
+        <div id="disqus_thread" class="accordion-body collapse">
+            <div class="accordion-inner">
+                <div class="comments">
+                    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'iferminmblog';
+        var disqus_identifier = 'http://iferminmontilla.com/empezando-a-conocer-la-web-30-parte-ii.html';
+    var disqus_url = 'http://iferminmontilla.com/empezando-a-conocer-la-web-30-parte-ii.html';
+
+    (function() {
+         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+            <hr/>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2011-06-14T13:16:00">jun 14, 2011</time>
+            <h4>Category</h4>
+            <a class="category-link" href="http://iferminmontilla.com/categories.html#blog-ref">Blog</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="http://iferminmontilla.com/tags.html#ontologias-ref">ontologías
+                    <span>1</span>
+</a></li>
+                <li><a href="http://iferminmontilla.com/tags.html#web-30-ref">web 3.0
+                    <span>2</span>
+</a></li>
+                <li><a href="http://iferminmontilla.com/tags.html#web-semantica-ref">web semántica
+                    <span>2</span>
+</a></li>
+            </ul>
+<h4>Sígueme!</h4>
+    <a href="http://twitter.com/iferminm" title="My Twitter Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-twitter sidebar-social-links"></i></a>
+    <a href="http://www.linkedin.com/profile/view?id=66587805&amp;trk=tab_pro" title="My LinkedIn Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-linkedin sidebar-social-links"></i></a>
+    <a href="https://github.com/iferminm" title="My GitHub Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-github sidebar-social-links"></i></a>
+    <a href="mailto:iferminmontilla@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-envelope sidebar-social-links"></i></a>
+<!-- Begin MailChimp Signup Form -->
+<div id="mc-embed-signup">
+<form action="http://iferminmontilla.us11.list-manage.com/subscribe/post?u=0d4b15ef6a90baa460d821dbc&id=8b51ac80b2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+<h4>Suscríbete</h4>
+<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Pasa tu correo pues..." required>
+<div class="clear"><input type="submit" value="Ok, pero sin spam" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+</form>
+</div>
+<!--End mc_embed_signup-->
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+            <script type="text/javascript">
+var disqus_shortname = 'iferminmblog';
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+<script  language="javascript" type="text/javascript">
+function uncollapse() {
+    if (window.location.hash.match(/^#comment-\d+$/)) {
+        $('#disqus_thread').collapse('show');
+    }
+}
+</script>
+<script type="text/javascript" language="JavaScript">
+uncollapse();
+window.onhashchange=function(){
+    if (window.location.hash.match(/^#comment-\d+$/))
+        window.location.reload(true);
+}
+</script>
+<script>
+$('#disqus_thread').on('shown', function () {
+    var link = document.getElementsByClassName('accordion-toggle');
+    var old_innerHTML = link[0].innerHTML;
+    $(link[0]).fadeOut(500, function() {
+        $(this).text('Click here to hide comments').fadeIn(500);
+    });
+    $('#disqus_thread').on('hidden', function () {
+        $(link[0]).fadeOut(500, function() {
+            $(this).text(old_innerHTML).fadeIn(500);
+        });
+    })
+})
+</script>
+
+
+    </body>
+    <!-- Theme: Elegant built for Pelican
+    License : http://oncrashreboot.com/pelican-elegant -->
+</html>
