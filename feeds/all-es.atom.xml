@@ -61,7 +61,9 @@ me muestra la selección interactiva que vimos antes.&lt;/p&gt;
 &lt;p&gt;Supongamos que tengo 700 fotos que y los nombres son cosas como IMG_2193192873198723.jpg, quiero renombrarlas
 a algo más manejable, como &amp;quot;foto_1.jpg&amp;quot;, &amp;quot;foto_2.jpg&amp;quot; y así.&lt;/p&gt;
 &lt;p&gt;Bueno, simplemente escribo&lt;/p&gt;
-&lt;p&gt;zmv '(*).jpg' 'foto_$1.jpg'&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+zmv &lt;span class="s1"&gt;'(*).jpg'&lt;/span&gt; &lt;span class="s1"&gt;'foto_$1.jpg'&lt;/span&gt;
+&lt;/pre&gt;
 &lt;p&gt;Y listo!.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
