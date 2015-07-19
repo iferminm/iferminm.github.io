@@ -1,5 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>@#$%_</title><link>http://iferminmontilla.com/</link><description></description><atom:link href="http://iferminmontilla.com/feeds/israel-fermin-montilla.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 27 May 2015 12:34:00 -0530</lastBuildDate><item><title>Migré a ZSH</title><link>http://iferminmontilla.com/migre-a-zsh.html</link><description>&lt;p&gt;Es bien sabido por todos que en Linux y en el Open Source en general, uno es libre de elegir
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>@#$%_</title><link>http://iferminmontilla.com/</link><description></description><atom:link href="http://iferminmontilla.com/feeds/israel-fermin-montilla.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 19 Jul 2015 12:30:00 -0530</lastBuildDate><item><title>Cosas que he aprendido: Mixins</title><link>http://iferminmontilla.com/cosas-que-he-aprendido-mixins.html</link><description>&lt;p&gt;A menudo nos ocurre que estamos programando
+y vemos que hay ciertos métodos que se repiten
+en varias clases, esto es una señal de que ese
+conjunto de métodos pueden abstraerse de alguna manera
+para no tener que duplicar esa lógica, entonces,
+escribimos una clase base, con esos métodos y
+luego simplemente la heredamos y todo cool.&lt;/p&gt;
+&lt;p&gt;Cuando esto ocurre por segunda vez en un subconjunto
+de las clases &lt;em&gt;hijas&lt;/em&gt;, pueden pasar dos cosas:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Ese conjunto de métodos pertenece al mismo
+dominio del problema, en cuyo caso, los
+colocamos en la clase padre que corresponda&lt;/li&gt;
+&lt;li&gt;Ese conjunto de métodos resuelve otro tipo de
+problemas o es más bien algún tipo de utilidad
+pero debe estar en esa clase por alguna razón.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;En el segundo caso lo que uno tiende a hacer con
+lenguajes que soportan herencia múltiple como Python
+es crear una nueva clase y agregarla a la lista de clases
+padre de la clase en cuestión.&lt;/p&gt;
+&lt;p&gt;Conforme nuestro programa va creciendo en complejidad,
+podemos enfrentarnos al famoso problema del diamante de
+la herencia múltiple, los mixins son una solución limpia
+y sencilla para evitar este tipo de inconvenientes que son
+un dolor de cabeza para depurar y agregan complicaciones
+innecesarias.&lt;/p&gt;
+&lt;div class="section" id="que-es-un-mixin"&gt;
+&lt;h2&gt;¿Qué es un Mixin?&lt;/h2&gt;
+&lt;p&gt;Un Mixin es una clase que hereda de la clase por defecto, &lt;em&gt;object&lt;/em&gt;
+en el caso de Python, y define un conjunto de métodos para agregar
+comportamiento a alguna otra entidad. Un mixin por sí solo puede
+resultar inútil, pero al combinarlos y agregarlos a una clase
+resultan ser una herramienta muy potente que ayuda a la reutilización
+de código sin ambigüedades y sin generar efectos colaterales.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="ejemplos"&gt;
+&lt;h2&gt;Ejemplos&lt;/h2&gt;
+&lt;p&gt;Bueno, basta de palabrería y manos al teclado.&lt;/p&gt;
+&lt;p&gt;Supongamos que estamos desarrollando algo en &lt;em&gt;django&lt;/em&gt; y necesitamos
+que el usuario sea capaz de dejar comentarios, esta vista debe ser
+invocable vía ajax. Debo hacerlo de manera que pueda reusar el código
+pues se que en el futuro habrá más vistas que deben ser &amp;quot;ajax friendly&amp;quot;&lt;/p&gt;
+&lt;pre class="code python literal-block"&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;CreateView&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.http&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;app.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Comment&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;app.forms&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;CommentForm&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;CommentCreateView&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;CreateView&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;JSONResponseMixin&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Comment&lt;/span&gt;
+    &lt;span class="n"&gt;form&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;CommentForm&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Como vemos, es la implementación de lo que vendría siendo una vista basada
+en clases normal y corriente para procesar un formulario, validarlo y crear
+un nuevo registro de &lt;em&gt;Comment&lt;/em&gt;, sólo una cosa salta a la vista: el &lt;em&gt;JSONResponseMixin&lt;/em&gt;.
+Veamos qué hace:&lt;/p&gt;
+&lt;pre class="code python literal-block"&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;JSONResponseMixin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;render_to_response&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_json_response&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_json_response&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dumps&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="n"&gt;content_type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;'application/json'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;
+        &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Y eso es todo, luego, si necesito hacer que alguna otra vista sea &amp;quot;ajax friendly&amp;quot;,
+simplemente tengo que hacer que herede del &lt;em&gt;JSONResponseMixin&lt;/em&gt;. Algo importante acá
+es que si necesito serializar objetos complejos, &lt;em&gt;json.dumps()&lt;/em&gt; no será suficiente,
+debería escribir mi propio método para convertirlo en &lt;em&gt;JSON&lt;/em&gt; y enviarlo.&lt;/p&gt;
+&lt;p&gt;Si te parece útil o interesante lo que escribo, suscríbete a mi lista de correos en
+la caja que está a la derecha, tengo algunas cosas en mente que estaré anunciando por
+esa vía. Gracias, de nuevo, por leerme.&lt;/p&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Israel Fermín Montilla</dc:creator><pubDate>Sun, 19 Jul 2015 12:30:00 -0530</pubDate><guid>tag:iferminmontilla.com,2015-07-19:cosas-que-he-aprendido-mixins.html</guid><category>desarrollo</category><category>mixins</category><category>programación</category></item><item><title>Migré a ZSH</title><link>http://iferminmontilla.com/migre-a-zsh.html</link><description>&lt;p&gt;Es bien sabido por todos que en Linux y en el Open Source en general, uno es libre de elegir
 todas y cada una de las partes del sistema que va a configurar para su computadora personal
 o de trabajo, la línea de comandos no es excepción.&lt;/p&gt;
 &lt;p&gt;Por defecto, viene configurado &lt;a class="reference external" href="http://es.wikipedia.org/wiki/Bash"&gt;BASH&lt;/a&gt; en todos los sistemas linux, sin embargo, es posible cambiarlo
@@ -82,11 +163,11 @@ chsh -s /bin/zsh
 &lt;/pre&gt;
 &lt;p&gt;Para instalar el plugin &lt;em&gt;Oh my ZSH&lt;/em&gt;, basta con ejecutar&lt;/p&gt;
 &lt;pre class="code bash literal-block"&gt;
-curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh &lt;span class="p"&gt;|&lt;/span&gt; sh
 &lt;/pre&gt;
 &lt;p&gt;O, si preferimos usar &lt;em&gt;wget&lt;/em&gt;&lt;/p&gt;
 &lt;pre class="code bash literal-block"&gt;
-wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
+wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - &lt;span class="p"&gt;|&lt;/span&gt; sh
 &lt;/pre&gt;
 &lt;/div&gt;
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Israel Fermín Montilla</dc:creator><pubDate>Wed, 27 May 2015 12:34:00 -0530</pubDate><guid>tag:iferminmontilla.com,2015-05-26:migre-a-zsh.html</guid><category>cambio</category><category>herramientas</category><category>terminal</category><category>zsh</category></item><item><title>Mi experiencia con ATOM</title><link>http://iferminmontilla.com/mi-experiencia-con-atom.html</link><description>&lt;p&gt;Desde hace varios años soy un usuario de vim, para todo. Desde escribir
@@ -771,7 +852,7 @@ en su &lt;em&gt;MacBook&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Simplemente lo estoy considerando, necesito leer más al respecto, quizás jugar
 un par de días con una a ver qué decido hacer.&lt;/p&gt;
 &lt;p&gt;Mientras... les dejo un video con los 66 comerciales de &lt;em&gt;Mac vs PC&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="youtube" align="center"&gt;&lt;iframe width="420" height="315" src="http://www.youtube.com/embed/0eEG5LVXdKo" frameborder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Israel Fermín Montilla</dc:creator><pubDate>Fri, 03 Oct 2014 12:30:00 -0530</pubDate><guid>tag:iferminmontilla.com,2014-10-03:y-si-me-compro-una-mac.html</guid><category>mac</category><category>tecnología</category><category>laptops</category></item><item><title>En mi watchlist</title><link>http://iferminmontilla.com/en-mi-watchlist.html</link><description>&lt;p&gt;Bueno, ya dije que estoy &lt;strong&gt;solo&lt;/strong&gt; en otro país, pero
+&lt;div class="youtube" align="center"&gt;&lt;iframe width="420" height="315" src="https://www.youtube.com/embed/0eEG5LVXdKo" frameborder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Israel Fermín Montilla</dc:creator><pubDate>Fri, 03 Oct 2014 12:30:00 -0530</pubDate><guid>tag:iferminmontilla.com,2014-10-03:y-si-me-compro-una-mac.html</guid><category>mac</category><category>tecnología</category><category>laptops</category></item><item><title>En mi watchlist</title><link>http://iferminmontilla.com/en-mi-watchlist.html</link><description>&lt;p&gt;Bueno, ya dije que estoy &lt;strong&gt;solo&lt;/strong&gt; en otro país, pero
 no dije a dónde me fui, emigré a los Emiratos Árabes
 Unidos, estoy viviendo en Dubai y llevo ya casi cinco
 meses por estos lados.&lt;/p&gt;
@@ -1664,7 +1745,7 @@ venezolana. Las razones son muy diversas, pero luego de ver el
 video que coloco a continuación, simplemente no pude sino
 estallar en furia por motivos que expondré a lo largo de
 este artículo:&lt;/p&gt;
-&lt;div class="youtube" align="left"&gt;&lt;iframe width="420" height="315" src="http://www.youtube.com/embed/KI5rYjd12iI" frameborder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;p&gt;Les ruego que ven al video anterior antes de continuar la lectura&lt;/p&gt;
+&lt;div class="youtube" align="left"&gt;&lt;iframe width="420" height="315" src="https://www.youtube.com/embed/KI5rYjd12iI" frameborder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;p&gt;Les ruego que ven al video anterior antes de continuar la lectura&lt;/p&gt;
 &lt;p&gt;Ahora bien, antes de continuar, quiero explicar un poco mi posición
 en cuando a la política. Todo aquel que me pregunta recibirá
 la misma respuesta: &lt;em&gt;me criaron con muchos valores como para ser
@@ -1788,7 +1869,7 @@ deberían ser consultados pues como hemos visto en la discusión intervienen ent
 por lo que han demostrado en los últimos años, mucho menos saben gobernar.&lt;/p&gt;
 &lt;p&gt;Los dejo ahora con una charla que dio Ernesto Hernández-Nóvich acerca del &lt;em&gt;Estado&lt;/em&gt; y el &lt;em&gt;Software Libre&lt;/em&gt;,
 &lt;strong&gt;La libertad no admite grises&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="youtube" align="left"&gt;&lt;iframe width="420" height="315" src="http://www.youtube.com/embed/Jukl9gBvSS8" frameborder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="youtube" align="left"&gt;&lt;iframe width="420" height="315" src="https://www.youtube.com/embed/Jukl9gBvSS8" frameborder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/div&gt;
 </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Israel Fermín Montilla</dc:creator><pubDate>Thu, 14 Mar 2013 08:44:00 -0530</pubDate><guid>tag:iferminmontilla.com,2013-03-14:carta-abierta-al-diputado-leomagno-flores.html</guid><category>informática</category><category>política</category><category>personal</category><category>opinión</category></item><item><title>Querido amigo usuario</title><link>http://iferminmontilla.com/querido-amigo-usuario.html</link><description>&lt;p&gt;En algunas carreras me llama muchísimo la atención el hecho de que
 todos tus amigos, familiares, vecinos e incluso gente que acaba de
 conocerte piensan que estudiaste para proveerles servicio gratis y que,
