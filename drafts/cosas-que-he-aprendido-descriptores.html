@@ -10,14 +10,14 @@
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary">
 
-<meta name="keywords" content="desarrollo, python, Blog, " />
+<meta name="keywords" content="desarrollo, python, descriptores, Blog, " />
 
 <meta property="og:title" content="Cosas que he aprendido: Descriptores "/>
-<meta property="og:url" content="http://iferminmontilla.com/drafts/cosas-que-he-aprendido-descriptores.html" />
+<meta property="og:url" content="http://localhost:8000/drafts/cosas-que-he-aprendido-descriptores.html" />
 <meta property="og:description" content="Bueno, llevo ya unos años dedicado casi 100% a desarrollo web con Python, unos años en los que he aprendido muchas cosas sobre el lenguaje y, por un momento, pensé que sabía suficiente, pero cuando uno empieza a pensar eso es peligroso, al final, nunca se sabe suficiente y siempre ..." />
 <meta property="og:site_name" content="@#$%_" />
 <meta property="og:article:author" content="Israel Fermín Montilla" />
-<meta property="og:article:published_time" content="2014-12-05T12:30:00-04:30" />
+<meta property="og:article:published_time" content="2015-07-19T12:30:00-04:30" />
 <meta name="twitter:title" content="Cosas que he aprendido: Descriptores ">
 <meta name="twitter:description" content="Bueno, llevo ya unos años dedicado casi 100% a desarrollo web con Python, unos años en los que he aprendido muchas cosas sobre el lenguaje y, por un momento, pensé que sabía suficiente, pero cuando uno empieza a pensar eso es peligroso, al final, nunca se sabe suficiente y siempre ...">
 
@@ -25,11 +25,11 @@
 </title>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/css/pygments.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/tipuesearch/tipuesearch.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/css/elegant.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="http://iferminmontilla.com/theme/css/custom.css" media="screen">
-        <link href="http://iferminmontilla.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="@#$%_ - Full Atom Feed" />
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/custom.css" media="screen">
+        <link href="http://localhost:8000/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="@#$%_ - Full Atom Feed" />
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -49,14 +49,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="http://iferminmontilla.com/"><span class=site-name>@#$%_</span></a>
+                    <a class="brand" href="http://localhost:8000/"><span class=site-name>@#$%_</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href="http://iferminmontilla.com">Home</a></li>
-                            <li ><a href="http://iferminmontilla.com/categories.html">Categories</a></li>
-                            <li ><a href="http://iferminmontilla.com/tags.html">Tags</a></li>
-                            <li ><a href="http://iferminmontilla.com/archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="http://iferminmontilla.com/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="http://localhost:8000">Home</a></li>
+                            <li ><a href="http://localhost:8000/categories.html">Categories</a></li>
+                            <li ><a href="http://localhost:8000/tags.html">Tags</a></li>
+                            <li ><a href="http://localhost:8000/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://localhost:8000/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="http://iferminmontilla.com/drafts/cosas-que-he-aprendido-descriptores.html"> Cosas que he aprendido: Descriptores  </a></h1>
+    <h1><a href="http://localhost:8000/drafts/cosas-que-he-aprendido-descriptores.html"> Cosas que he aprendido: Descriptores  </a></h1>
     </header>
 </div>
 
@@ -83,6 +83,185 @@ cosas sobre el lenguaje y, por un momento, pensé que sabía
 suficiente, pero cuando uno empieza a pensar eso es peligroso,
 al final, nunca se sabe suficiente y siempre hay mucho por
 aprender.</p>
+<p>El año pasado, durante mi entrevista para entrar en <a class="reference external" href="http://dubizzle.com">dubizzle</a>
+aprendí un concepto nuevo que incluye python y que es súper interesante,
+podría resultar útil para alguien y, sino, escribiendo sobre ello me
+ayudo a mi mismo a recordarlo y a entenderlo mejor.</p>
+<p>Python, incluye una cantidad enorme de características en su biblioteca
+estándar que nos ayudan a resolver problemas comúnes del día a día y
+ofrecer interfaces más intuitivas y pythónicas, tal el es caso de las
+propiedades o <em>properties</em>. Hablaré un poco de ellas porque son claves
+para entender el concepto de descriptores o <em>descriptors</em>.</p>
+<div class="section" id="properties">
+<h2>Properties</h2>
+<p>Básicamente, es una función que convierte en un <em>getter</em> un atributo
+que queremos que sea de sólo lectura, pero su uso más común es retornar
+manejar el acceso o controlar el valor de atributos que dependen del valor
+de otros atributos del mismo objeto y proveer una interface de acceso más
+pythónica a dicho atributo, por ejemplo:</p>
+<pre class="code python literal-block">
+<span class="kn">import</span> <span class="nn">datetime</span>
+
+
+<span class="k">class</span> <span class="nc">Subscription</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="c"># declaración de atributos</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c"># inicialización de lo que sea que haga falta</span>
+
+    <span class="nd">&#64;property</span>
+    <span class="k">def</span> <span class="nf">can_be_used</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_expired</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_consumed</span>
+
+    <span class="nd">&#64;property</span>
+    <span class="k">def</span> <span class="nf">is_expired</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">expiration_date</span> <span class="o">&lt;=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+
+    <span class="nd">&#64;property</span>
+    <span class="k">def</span> <span class="nf">is_consumed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">used_credits</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_credits</span>
+</pre>
+<p>Como vemos, se simplifica un poco el acceso a estos atributos, se encapsula
+la llamada a la función correspondiente y se da una interface como si se
+tratara de un atributo, escondiendo la complejidad &quot;tras bastidores&quot;, de otra
+manera, las llamadas a las funciones serían explícitas y el código se vería
+más complejo de lo que en realidad es.</p>
+<p>Veamos un ejemplo un poco más complejo y en el que los descriptores pudieran
+ayudar a simplificar la implementación manteniendo una interface simple.</p>
+<p>Digamos que necesitamos escribir una clase que representa una instancia de libro
+en una casa editorial, todo bajo las siguientes reglas:</p>
+<ol class="arabic simple">
+<li>Cada libro tiene un título, cuya longitud máxima y mínima son 500 y 10 respectivamente</li>
+<li>Cada libro tiene un precio, que debe ser mayor que cero</li>
+<li>Cada libro tiene un número de exitencias en inventario, que debe ser mayor que cero</li>
+<li>Cada libro tiene un año de publicación, que sebe ser un número mayor que 1300 (sí, ya se
+que hay mejores manera de hacer esto)</li>
+<li>Cada libro tiene un nombre de autor, cuya longitud máxima y mínima debe ser 50 y 10, respectivamente</li>
+</ol>
+<p>Esto puede implementarse fácilmente usando <em>properties</em> y <em>setters</em>, veamos como</p>
+<pre class="code python literal-block">
+<span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">TITLE_MAX</span> <span class="o">=</span> <span class="mi">500</span>
+    <span class="n">TITLE_MIN</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">AUTHOR_MAX</span> <span class="o">=</span> <span class="mi">50</span>
+    <span class="n">AUTHOR_MIN</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">PUB_YEAR_MIN</span> <span class="o">=</span> <span class="mi">1300</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">author</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">inventory</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_title</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_author</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_price</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_inventory</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_year</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="n">author</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">price</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inventory</span> <span class="o">=</span> <span class="n">inventory</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">year</span> <span class="o">=</span> <span class="n">year</span>
+
+
+    <span class="c"># cool</span>
+    <span class="nd">&#64;property</span>
+    <span class="k">def</span> <span class="nf">title</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_title</span>
+
+    <span class="nd">&#64;title.setter</span>
+    <span class="k">def</span> <span class="nf">title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">TITLE_MIN</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">TITLE_MAX</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">'Longitud inválida'</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_title</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="c"># otra vez...</span>
+    <span class="nd">&#64;property</span>
+    <span class="k">def</span> <span class="nf">author</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_author</span>
+
+    <span class="nd">&#64;author.setter</span>
+    <span class="k">def</span> <span class="nf">author</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">AUTHOR_MIN</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">AUTHOR_MAX</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">'Longitud inválida'</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_author</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="c"># Bueno, ya se hacen una idea</span>
+</pre>
+<p>Habría que hacer lo mismo para cada atributo/propiedad, la interface es simple, pero
+la implementación no es elegante, se ve un poco sucia y repetitiva, sin embargo, es válida.</p>
+</div>
+<div class="section" id="descriptores">
+<h2>Descriptores</h2>
+<p>Los descriptores vienen a resolver este problema, básicamente un descriptor es una <em>property</em>
+encapsulada en una clase que nos permite realizar las validaciones necesarias de manera
+simple. Algo así como un &quot;<em>property</em> con esteroides&quot;, veamos de qué se trata</p>
+<pre class="code python literal-block">
+<span class="k">class</span> <span class="nc">MinMaxLengthString</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_default</span><span class="p">,</span> <span class="n">max_default</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_default</span> <span class="o">=</span> <span class="n">max_default</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_default</span> <span class="o">=</span> <span class="n">min_default</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">owner</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_default</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_default</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">'Longitud Inválida'</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">instance</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+
+<span class="k">class</span> <span class="nc">MinIntegerValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_value</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_value</span> <span class="o">=</span> <span class="n">min_value</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">owner</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_value</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">'Valor menor de lo permitido'</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">instance</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+</pre>
+<p>Con esto, nuestra clase <em>Book</em> cambiaría de la siguiente manera:</p>
+<pre class="code python literal-block">
+<span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="c"># Los descriptores siempre se colocan al nivel de la clase</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">MinMaxLengthString</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+    <span class="n">author</span> <span class="o">=</span> <span class="n">MinMaxLengthString</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="n">year</span> <span class="o">=</span> <span class="n">MinIntegerValue</span><span class="p">(</span><span class="mi">1300</span><span class="p">)</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">MinIntegerValue</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">inventory</span> <span class="o">=</span> <span class="n">MinIntegerValue</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">author</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">inventory</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">author</span> <span class="o">=</span> <span class="n">author</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">price</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inventory</span> <span class="o">=</span> <span class="n">inventory</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">year</span> <span class="o">=</span> <span class="n">year</span>
+</pre>
+<p>Una implementación mucho más limpia y legible, veamos cómo funciona</p>
+<p>Supongamos que ya hemos hecho algo como</p>
+<pre class="code python literal-block">
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Book</span><span class="p">(</span><span class="s">'La Muerte de Honorio'</span><span class="p">,</span> <span class="s">'Miguel Otero Silva'</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1963</span><span class="p">)</span>
+</pre>
+<ol class="arabic simple">
+<li>Al ejecutar, por ejemplo <em>b.year = 1200</em>, se va a invocar realmente <em>b.year.__set__(b, 1200)</em>
+realizando las validaciones necesarias</li>
+<li>Al ejecutar, por ejemplo, <em>t = b.title</em>, se va a invocar realmente <em>b.title.__get__(m, Book)</em>
+retornando el valor solicitado</li>
+</ol>
+<p>Se puede hacer lo que sea en los métodos <em>__get__()</em> y <em>__set__()</em> y, además, se puede definir otro método
+<em>__delete__()</em> que es invocado cuando se borra el descriptor, por ejemplo <em>del(b.author)</em>.</p>
+<p>Espero haber ayudado a mejorar un poco sus prácticas de programación (o al menos las mías), si te parece que
+lo que escribo es útil, te invito suscribirte a mi lista de correos en la caja que está a la derecha,
+tengo varios proyectos en mente que estaré anunciando por esa vía y que quizás te podrían interesar.</p>
+<p>Muchas gracias por leerme.</p>
+<blockquote>
+Aprender a usar descriptores no sólo hace nuestro set de herramientas más grande, genera un entendimiento más profundo de cómo funciona Python y ayuda a apreciar la elegancia de su diseño.  -  Raymond Hettinger</blockquote>
+</div>
 
             
             
@@ -91,15 +270,17 @@ aprender.</p>
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2014-12-05T12:30:00-04:30">Dec 5, 2014</time>
+            <time pubdate="pubdate" datetime="2015-07-19T12:30:00-04:30">Jul 19, 2015</time>
             <h4>Category</h4>
-            <a class="category-link" href="http://iferminmontilla.com/categories.html#blog-ref">Blog</a>
+            <a class="category-link" href="http://localhost:8000/categories.html#blog-ref">Blog</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="http://iferminmontilla.com/tags.html#desarrollo-ref">desarrollo
+                <li><a href="http://localhost:8000/tags.html#desarrollo-ref">desarrollo
                     <span>3</span>
 </a></li>
-                <li><a href="http://iferminmontilla.com/tags.html#python-ref">python
+                <li><a href="http://localhost:8000/tags.html#descriptores-ref">descriptores
+</a></li>
+                <li><a href="http://localhost:8000/tags.html#python-ref">python
                     <span>6</span>
 </a></li>
             </ul>
