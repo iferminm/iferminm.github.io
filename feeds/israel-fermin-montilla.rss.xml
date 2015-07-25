@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>@#$%_</title><link>http://iferminmontilla.com/</link><description></description><atom:link href="http://iferminmontilla.com/feeds/israel-fermin-montilla.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 19 Jul 2015 12:30:00 -0530</lastBuildDate><item><title>Cosas que he aprendido (Parte II):</title><link>http://iferminmontilla.com/cosas-que-he-aprendido-parte-ii.html</link><description>&lt;p&gt;A menudo nos ocurre que estamos programando
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>@#$%_</title><link>http://iferminmontilla.com/</link><description></description><atom:link href="http://iferminmontilla.com/feeds/israel-fermin-montilla.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 25 Jul 2015 12:45:00 -0530</lastBuildDate><item><title>Django: vistas basadas en clases</title><link>http://iferminmontilla.com/django-vistas-basadas-en-clases.html</link><description>&lt;p&gt;Tenía pendiente escribir sobre esto desde hace tiempo,
+pero entre una cosa y otra siempre terminaba escribiendo
+sobre otra cosa y las vistas basadas en clases quedaban
+olvidadas.&lt;/p&gt;
+&lt;p&gt;Las vistas basadas en clases nos permiten simplificar muchísimo
+el código, reduciendo, para muchos casos, la escritura de vistas
+a simplemente heredar de usas vistas genéricas y agregar algunos
+&lt;a class="reference external" href="http://iferminmontilla.com/cosas-que-he-aprendido-parte-ii.html"&gt;mixins&lt;/a&gt;, son un recurso bastante potente y que deberíamos tomar
+en cuenta en los proyectos que estemos o vayamos a desarrollar y
+que además está allí desde django 1.3.&lt;/p&gt;
+&lt;p&gt;Cuando estaba empezando a escribir la introducción, me dió por
+revisar el blog de &lt;a class="reference external" href="http://alvarohurtado.es"&gt;Álvaro Hurtado&lt;/a&gt;, un compañero de trabajo en dubizzle,
+conseguí varios artículos que voy a compartir porque están bastante sencillos
+y fáciles de entender y, además, en perfecto español, es raro que la gente
+decida hacer un blog en español y mantenerse fiel sin escribir en inglés.&lt;/p&gt;
+&lt;p&gt;Acá los links:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://www.alvarohurtado.es/django-vistas-basadas-en-clases-i-introduccion/"&gt;Introducción&lt;/a&gt;: explicación breve acerca de las Vistas Basadas en Clases&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://www.alvarohurtado.es/django-vistas-basadas-en-clases-ii-detail-view/"&gt;DetailView&lt;/a&gt;: ejemplos sobre la vista de detalle&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://www.alvarohurtado.es/django-vistas-basadas-en-clases-iii-list-view/"&gt;ListView&lt;/a&gt;: ejemplos sobre la vista de lista&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Espero que sean de su agrado.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Israel Fermín Montilla</dc:creator><pubDate>Sat, 25 Jul 2015 12:45:00 -0530</pubDate><guid>tag:iferminmontilla.com,2015-07-25:django-vistas-basadas-en-clases.html</guid><category>django</category><category>vistas basadas en clases</category><category>programación</category></item><item><title>Cosas que he aprendido (Parte II):</title><link>http://iferminmontilla.com/cosas-que-he-aprendido-parte-ii.html</link><description>&lt;p&gt;A menudo nos ocurre que estamos programando
 y vemos que hay ciertos métodos que se repiten
 en varias clases, esto es una señal de que ese
 conjunto de métodos pueden abstraerse de alguna manera

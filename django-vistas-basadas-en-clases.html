@@ -10,18 +10,18 @@
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary">
 
-<meta name="keywords" content="Lenguajes, Programación, python, Blog, " />
+<meta name="keywords" content="django, vistas basadas en clases, programación, Blog, " />
 
-<meta property="og:title" content="Cosas que AMO de Python VI: Está en TODAS partes "/>
-<meta property="og:url" content="http://iferminmontilla.com/cosas-que-amo-de-python-vi-esta-en-todas-partes.html" />
-<meta property="og:description" content="Si, resistirse es inútil, donde sea que estés tendrás Python a la mano, menos en Windows que debes instalarlo, pero lo interesante es que puedes tenerlo de igual manera. Escogí el número 6 romano (VI) de manera intencional para esta entrada ya que, con Python, pasa igual que con el ..." />
+<meta property="og:title" content="Django: vistas basadas en clases  - simplemente compartiendo "/>
+<meta property="og:url" content="http://iferminmontilla.com/django-vistas-basadas-en-clases.html" />
+<meta property="og:description" content="Tenía pendiente escribir sobre esto desde hace tiempo, pero entre una cosa y otra siempre terminaba escribiendo sobre otra cosa y las vistas basadas en clases quedaban olvidadas. Las vistas basadas en clases nos permiten simplificar muchísimo el código, reduciendo, para muchos casos, la escritura de vistas a simplemente heredar ..." />
 <meta property="og:site_name" content="@#$%_" />
 <meta property="og:article:author" content="Israel Fermín Montilla" />
-<meta property="og:article:published_time" content="2011-11-30T07:40:00-04:30" />
-<meta name="twitter:title" content="Cosas que AMO de Python VI: Está en TODAS partes ">
-<meta name="twitter:description" content="Si, resistirse es inútil, donde sea que estés tendrás Python a la mano, menos en Windows que debes instalarlo, pero lo interesante es que puedes tenerlo de igual manera. Escogí el número 6 romano (VI) de manera intencional para esta entrada ya que, con Python, pasa igual que con el ...">
+<meta property="og:article:published_time" content="2015-07-25T12:45:00-04:30" />
+<meta name="twitter:title" content="Django: vistas basadas en clases  - simplemente compartiendo ">
+<meta name="twitter:description" content="Tenía pendiente escribir sobre esto desde hace tiempo, pero entre una cosa y otra siempre terminaba escribiendo sobre otra cosa y las vistas basadas en clases quedaban olvidadas. Las vistas basadas en clases nos permiten simplificar muchísimo el código, reduciendo, para muchos casos, la escritura de vistas a simplemente heredar ...">
 
-        <title>Cosas que AMO de Python VI: Está en TODAS partes  · @#$%_
+        <title>Django: vistas basadas en clases  - simplemente compartiendo  · @#$%_
 </title>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
@@ -69,7 +69,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="http://iferminmontilla.com/cosas-que-amo-de-python-vi-esta-en-todas-partes.html"> Cosas que AMO de Python VI: Está en TODAS partes  </a></h1>
+    <h1><a href="http://iferminmontilla.com/django-vistas-basadas-en-clases.html"> Django: vistas basadas en clases  <small> simplemente compartiendo </small>  </a></h1>
     </header>
 </div>
 
@@ -77,36 +77,39 @@
         <div class="span8 offset2 article-content">
 
             
-            <p>Si, resistirse es inútil, donde sea que estés tendrás Python a la mano,
-menos en Windows que debes instalarlo, pero lo interesante es que puedes
-tenerlo de igual manera.</p>
-<p>Escogí el número 6 romano (VI) de manera
-intencional para esta entrada ya que, con Python, pasa igual que con el
-editor VI (&quot;vi ai&quot;), lo consigues en todos los ambientes Linux, UNIX y
-GNU/Linux, desde Slackware hasta Linux Mint y desde FreeBSD hasta
-Solaris, pasando obviamente por el <strong>no-tan-libre</strong>, MacOS X que al
-tomar ciertas cosas de FreeBSD es un sistema UNIX-Like, por lo que
-contiente el editor VI y Python. No se resistan, programar en Python no
-puede ser más fácil, si usas algún sistema *UN*X , simplemente abre VI
-y programa en Python, luego ejecúta tu código utlizando el intérprete en
-un terminal. Espero que estas publicaciones acerca de Python básico les
-hayan parecido interesantes, hay muchas otras cosas que AMO de Python,
-pero es mejor dejar este tópico hasta aquí y que cada quien continúe, si
-así lo desea, con su investigación y aprendizaje particular, para
-convencerlos creo que 6 es perfecto (chiste geek). Más adelante espero
-tener nivel suficiente como para publicarles acerca de tópicos más
-avanzados del lenguaje.</p>
+            <p>Tenía pendiente escribir sobre esto desde hace tiempo,
+pero entre una cosa y otra siempre terminaba escribiendo
+sobre otra cosa y las vistas basadas en clases quedaban
+olvidadas.</p>
+<p>Las vistas basadas en clases nos permiten simplificar muchísimo
+el código, reduciendo, para muchos casos, la escritura de vistas
+a simplemente heredar de usas vistas genéricas y agregar algunos
+<a class="reference external" href="http://iferminmontilla.com/cosas-que-he-aprendido-parte-ii.html">mixins</a>, son un recurso bastante potente y que deberíamos tomar
+en cuenta en los proyectos que estemos o vayamos a desarrollar y
+que además está allí desde django 1.3.</p>
+<p>Cuando estaba empezando a escribir la introducción, me dió por
+revisar el blog de <a class="reference external" href="http://alvarohurtado.es">Álvaro Hurtado</a>, un compañero de trabajo en dubizzle,
+conseguí varios artículos que voy a compartir porque están bastante sencillos
+y fáciles de entender y, además, en perfecto español, es raro que la gente
+decida hacer un blog en español y mantenerse fiel sin escribir en inglés.</p>
+<p>Acá los links:</p>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://www.alvarohurtado.es/django-vistas-basadas-en-clases-i-introduccion/">Introducción</a>: explicación breve acerca de las Vistas Basadas en Clases</li>
+<li><a class="reference external" href="http://www.alvarohurtado.es/django-vistas-basadas-en-clases-ii-detail-view/">DetailView</a>: ejemplos sobre la vista de detalle</li>
+<li><a class="reference external" href="http://www.alvarohurtado.es/django-vistas-basadas-en-clases-iii-list-view/">ListView</a>: ejemplos sobre la vista de lista</li>
+</ol>
+<p>Espero que sean de su agrado.</p>
 
             <section>
     <p id="post-share-links">
     Compártelo
-    <a href="http://twitter.com/home?status=Cosas%20que%20AMO%20de%20Python%20VI%3A%20Est%C3%A1%20en%20TODAS%20partes%20http%3A//iferminmontilla.com/cosas-que-amo-de-python-vi-esta-en-todas-partes.html" target="_blank" title="Share on Twitter">Twitter</a>
+    <a href="http://twitter.com/home?status=Django%3A%20vistas%20basadas%20en%20clases%20simplemente%20compartiendo%20http%3A//iferminmontilla.com/django-vistas-basadas-en-clases.html" target="_blank" title="Share on Twitter">Twitter</a>
     ❄
-    <a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A//iferminmontilla.com/cosas-que-amo-de-python-vi-esta-en-todas-partes.html" target="_blank" title="Share on Facebook">Facebook</a>
+    <a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=http%3A//iferminmontilla.com/django-vistas-basadas-en-clases.html" target="_blank" title="Share on Facebook">Facebook</a>
     ❄
-    <a href="https://plus.google.com/share?url=http%3A//iferminmontilla.com/cosas-que-amo-de-python-vi-esta-en-todas-partes.html" target="_blank" title="Share on Google Plus">Google+</a>
+    <a href="https://plus.google.com/share?url=http%3A//iferminmontilla.com/django-vistas-basadas-en-clases.html" target="_blank" title="Share on Google Plus">Google+</a>
     ❄
-    <a href="mailto:?subject=Cosas%20que%20AMO%20de%20Python%20VI%3A%20Est%C3%A1%20en%20TODAS%20partes&amp;body=http%3A//iferminmontilla.com/cosas-que-amo-de-python-vi-esta-en-todas-partes.html" target="_blank" title="Share via Email">Email</a>
+    <a href="mailto:?subject=Django%3A%20vistas%20basadas%20en%20clases%20simplemente%20compartiendo&amp;body=http%3A//iferminmontilla.com/django-vistas-basadas-en-clases.html" target="_blank" title="Share via Email">Email</a>
     </p>
 </section>
 
@@ -116,7 +119,7 @@ avanzados del lenguaje.</p>
     <div class="accordion-group">
         <div class="accordion-heading">
             <a class="accordion-toggle disqus-comment-count" data-toggle="collapse" data-parent="#accordion2"
-                href="http://iferminmontilla.com/cosas-que-amo-de-python-vi-esta-en-todas-partes.html#disqus_thread">
+                href="http://iferminmontilla.com/django-vistas-basadas-en-clases.html#disqus_thread">
                 Comments
             </a>
         </div>
@@ -126,8 +129,8 @@ avanzados del lenguaje.</p>
                     <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'iferminmblog';
-        var disqus_identifier = 'http://iferminmontilla.com/cosas-que-amo-de-python-vi-esta-en-todas-partes.html';
-    var disqus_url = 'http://iferminmontilla.com/cosas-que-amo-de-python-vi-esta-en-todas-partes.html';
+        var disqus_identifier = 'http://iferminmontilla.com/django-vistas-basadas-en-clases.html';
+    var disqus_url = 'http://iferminmontilla.com/django-vistas-basadas-en-clases.html';
 
     (function() {
          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -150,19 +153,19 @@ avanzados del lenguaje.</p>
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">
             <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2011-11-30T07:40:00-04:30">Nov 30, 2011</time>
+            <time pubdate="pubdate" datetime="2015-07-25T12:45:00-04:30">Jul 25, 2015</time>
             <h4>Category</h4>
             <a class="category-link" href="http://iferminmontilla.com/categories.html#blog-ref">Blog</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="http://iferminmontilla.com/tags.html#lenguajes-ref">Lenguajes
-                    <span>6</span>
+                <li><a href="http://iferminmontilla.com/tags.html#django-ref">django
+                    <span>1</span>
 </a></li>
-                <li><a href="http://iferminmontilla.com/tags.html#programacion-ref">Programación
+                <li><a href="http://iferminmontilla.com/tags.html#programacion-ref">programación
                     <span>10</span>
 </a></li>
-                <li><a href="http://iferminmontilla.com/tags.html#python-ref">python
-                    <span>6</span>
+                <li><a href="http://iferminmontilla.com/tags.html#vistas-basadas-en-clases-ref">vistas basadas en clases
+                    <span>1</span>
 </a></li>
             </ul>
 <h4>Sígueme!</h4>
