@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>@#$%_</title><link href="http://iferminmontilla.com/" rel="alternate"></link><link href="http://iferminmontilla.com/feeds/blog.atom.xml" rel="self"></link><id>http://iferminmontilla.com/</id><updated>2015-07-26T12:30:00-05:30</updated><entry><title>Cosas que he aprendido (Parte III)</title><link href="http://iferminmontilla.com/cosas-que-he-aprendido-parte-iii.html" rel="alternate"></link><updated>2015-07-26T12:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2015-07-26:cosas-que-he-aprendido-parte-iii.html</id><summary type="html">&lt;p&gt;Bueno, llevo ya unos años dedicado casi 100% a desarrollo
+<feed xmlns="http://www.w3.org/2005/Atom"><title>@#$%_</title><link href="http://iferminmontilla.com/" rel="alternate"></link><link href="http://iferminmontilla.com/feeds/blog.atom.xml" rel="self"></link><id>http://iferminmontilla.com/</id><updated>2015-12-11T21:28:00-05:30</updated><entry><title>Instalé Ubuntu Mate</title><link href="http://iferminmontilla.com/instale-ubuntu-mate.html" rel="alternate"></link><updated>2015-12-11T21:28:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2015-12-11:instale-ubuntu-mate.html</id><summary type="html">&lt;p&gt;Por alguna razón que desconozco, en mi máquina de trabajo (la que me dieron en la oficina
+para el día a día) Unity dejó de &amp;quot;funcionar bien&amp;quot;, es decir, empezó a colgarse más seguido de
+lo usual, cosa que siempre es bastante molesta, al principio pensé en simplemente volarme la
+instalación de Ubuntu y cambiarla por una distro para hombres, quizás Debian. Luego recordé que
+en la oficina necesito actualizar paquetes muy seguido y Debian tiene ese fetiche con la estabilidad y,
+por ello, siempre tiene versiones viejas en los repos oficiales y se me pasó.&lt;/p&gt;
+&lt;p&gt;Lo bueno de Ubuntu para trabajar en un ambiente tan dinámico como dubizzle es que mantiene al día
+las versiones de los paquetes, por lo que si necesitas la última versión de un paquete puedes hacerlo
+sin problemas (o al menos una versión que no sea la de hace 3 años). Lo malo es que a veces las
+actualizaciones vienen chimbas, pero esto ha mejorado muchísimo desde la última vez que usé Ubuntu.&lt;/p&gt;
+&lt;p&gt;Para quienes no me conocen y nunca supieron lo que pasó, alguna actualización en Ubuntu 7.10 hizo que
+los fan coolers de mi laptop (una Dell Inspiron 5400 en aquel entonces) dejaran de funcionar, tuve
+que revertir la actualización. Luego, al hacer dist-upgrade a la 8.04 cuando salió, todo se rompió.
+El colmo fue cuando pusieron Unity como escritorio por defecto, simplemente se rompía por todos lados
+y estaba lleno de bugs, allí fue cuando migré a Debian nuevamente hasta el año pasado.&lt;/p&gt;
+&lt;p&gt;Cuando me uní a dubizzle, me dieron una Thinkpad E430s con Ubuntu 14.04 que, para mi agrado, venía con Unity.
+Bueno, tenía que hacer mi on-boarding project y no me iba a poner a cambiar el entorno de escritorio (la política
+es usar Ubuntu), así que simplemente aprendí a usarlo, para mi sorpresa funcionó bastante bien hasta hace unas
+semanas, es decir, durante más de un año), que empezó a colgarse, cerrar ventanas al azar y, básicamente,
+romperme las pelotas.&lt;/p&gt;
+&lt;p&gt;Un pana de la oficina me habló de &lt;strong&gt;Mate&lt;/strong&gt;, un escritorio mucho más liviano que Unity, Gnome o KDE e
+igual de funcional que el gnome viejo que recuerdo con tanto cariño de mis primeros días usando Linux
+asi que puse manos a la obra y lo instalé.&lt;/p&gt;
+&lt;p&gt;Acá los pasos que seguí.&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+sudo apt-add-repository ppa:ubuntu-mate-dev/ppa
+sudo apt-add-repository ppa:ubuntu-mate-dev/trusty-mate
+sudo apt-get update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo apt-get upgrade
+sudo apt-get install --no-install-recommends ubuntu-mate-core ubuntu-mate-desktop
+&lt;/pre&gt;
+&lt;p&gt;Llevo unos 4 meses con este setup y no se me ha quedado congelada la interfaz ni una sola vez&lt;/p&gt;
+&lt;p&gt;Suscríbete a mi lista de correos, no envío spam y de vez en cuando paso algo interesante por allí :-).&lt;/p&gt;
+</summary><category term="Lenguajes"></category><category term="Programación"></category><category term="python"></category></entry><entry><title>Cosas que he aprendido (Parte III)</title><link href="http://iferminmontilla.com/cosas-que-he-aprendido-parte-iii.html" rel="alternate"></link><updated>2015-07-26T12:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2015-07-26:cosas-que-he-aprendido-parte-iii.html</id><summary type="html">&lt;p&gt;Bueno, llevo ya unos años dedicado casi 100% a desarrollo
 web con &lt;em&gt;Python&lt;/em&gt;, unos años en los que he aprendido muchas
 cosas sobre el lenguaje y, por un momento, pensé que sabía
 suficiente, pero cuando uno empieza a pensar eso es peligroso,
@@ -1075,7 +1107,7 @@ en su &lt;em&gt;MacBook&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Simplemente lo estoy considerando, necesito leer más al respecto, quizás jugar
 un par de días con una a ver qué decido hacer.&lt;/p&gt;
 &lt;p&gt;Mientras... les dejo un video con los 66 comerciales de &lt;em&gt;Mac vs PC&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="youtube" align="center"&gt;&lt;iframe width="420" height="315" src="https://www.youtube.com/embed/0eEG5LVXdKo" frameborder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</summary><category term="mac"></category><category term="tecnología"></category><category term="laptops"></category></entry><entry><title>En mi watchlist</title><link href="http://iferminmontilla.com/en-mi-watchlist.html" rel="alternate"></link><updated>2014-09-30T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2014-09-30:en-mi-watchlist.html</id><summary type="html">&lt;p&gt;Bueno, ya dije que estoy &lt;strong&gt;solo&lt;/strong&gt; en otro país, pero
+&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube.com/embed/0eEG5LVXdKo" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</summary><category term="mac"></category><category term="tecnología"></category><category term="laptops"></category></entry><entry><title>En mi watchlist</title><link href="http://iferminmontilla.com/en-mi-watchlist.html" rel="alternate"></link><updated>2014-09-30T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2014-09-30:en-mi-watchlist.html</id><summary type="html">&lt;p&gt;Bueno, ya dije que estoy &lt;strong&gt;solo&lt;/strong&gt; en otro país, pero
 no dije a dónde me fui, emigré a los Emiratos Árabes
 Unidos, estoy viviendo en Dubai y llevo ya casi cinco
 meses por estos lados.&lt;/p&gt;
@@ -1968,7 +2000,7 @@ venezolana. Las razones son muy diversas, pero luego de ver el
 video que coloco a continuación, simplemente no pude sino
 estallar en furia por motivos que expondré a lo largo de
 este artículo:&lt;/p&gt;
-&lt;div class="youtube" align="left"&gt;&lt;iframe width="420" height="315" src="https://www.youtube.com/embed/KI5rYjd12iI" frameborder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;p&gt;Les ruego que ven al video anterior antes de continuar la lectura&lt;/p&gt;
+&lt;div class="youtube"&gt;&lt;iframe src="https://www.youtube.com/embed/KI5rYjd12iI" width="420" height="315" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;p&gt;Les ruego que ven al video anterior antes de continuar la lectura&lt;/p&gt;
 &lt;p&gt;Ahora bien, antes de continuar, quiero explicar un poco mi posición
 en cuando a la política. Todo aquel que me pregunta recibirá
 la misma respuesta: &lt;em&gt;me criaron con muchos valores como para ser
@@ -2092,7 +2124,7 @@ deberían ser consultados pues como hemos visto en la discusión intervienen ent
 por lo que han demostrado en los últimos años, mucho menos saben gobernar.&lt;/p&gt;
 &lt;p&gt;Los dejo ahora con una charla que dio Ernesto Hernández-Nóvich acerca del &lt;em&gt;Estado&lt;/em&gt; y el &lt;em&gt;Software Libre&lt;/em&gt;,
 &lt;strong&gt;La libertad no admite grises&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="youtube" align="left"&gt;&lt;iframe width="420" height="315" src="https://www.youtube.com/embed/Jukl9gBvSS8" frameborder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="youtube"&gt;&lt;iframe src="https://www.youtube.com/embed/Jukl9gBvSS8" width="420" height="315" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/div&gt;
 </summary><category term="informática"></category><category term="política"></category><category term="personal"></category><category term="opinión"></category></entry><entry><title>Querido amigo usuario</title><link href="http://iferminmontilla.com/querido-amigo-usuario.html" rel="alternate"></link><updated>2013-02-03T23:39:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2013-02-03:querido-amigo-usuario.html</id><summary type="html">&lt;p&gt;En algunas carreras me llama muchísimo la atención el hecho de que
 todos tus amigos, familiares, vecinos e incluso gente que acaba de
 conocerte piensan que estudiaste para proveerles servicio gratis y que,
