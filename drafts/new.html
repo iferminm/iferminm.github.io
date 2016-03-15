@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cosas que AMO de Python V: Introspección de objetos - Israel Fermín Montilla</title>
+    <title>New - Israel Fermín Montilla</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="http://iferminmontilla.com/theme/css/pygments.css">
@@ -36,73 +36,59 @@
         <div class="col-xs-9">
             <div id="main-content" class="ckontainer"> 
 <div class="article-header">
-    <h1>Cosas que AMO de Python V: Introspección de objetos</h1> 
-    by <a href="author/israel-fermin-montilla.html">Israel Fermín Montilla</a> on Tue 29 Nov, 2011
+    <h1>New</h1> 
+    by <a href="author/israel-fermin-montilla.html">Israel Fermín Montilla</a> on Sun 13 Mar, 2016
 </div>
 
-<p>Python, hace trivial lo que en otros lenguajes resulta complejo: la
-introspección o reflexión de objetos. La reflexión o introspección de
-objetos, es una técnica que permite a un programa cargar objetos que no
-conoce, examinarlos y determinar sus variables de instancia y métodos
-para trabajar con ellos.</p>
-<p>Python nos ofrece ciertas funciones para
-examinar objetos y conocer las variables y métodos que contiene. Una de
-ellas ya la he mencionado en un artículo anterior, la función
-<em>dir()</em>que nos devuelve todo lo que tiene expuesto el objeto que le
-demos como argumento.</p>
-<p>Recordemos también que, en Python, todo,
-absolutamente todo, es un objeto, por lo que el argumento de la función
-puede ser, literalmente, cualquier cosa. Adicionalmente, Python cuenta
-con funciones para conocer de qué tipo es un objeto y si un objeto es
-&quot;llamable&quot; o no, mediante las funciones <em>type()</em>y
-<em>callable(),</em>también con el atributo <em>__class__</em>&nbsp;podemos conocer a
-cuál clase pertenece,&nbsp;de manera que podemos llevar a cabo ciertas
-acciones si un objeto es de cierto tipo, si contiene una función con
-cierto nombre o incluso si alguna variable de instancia contiene cierto
-valor, podemos llegar a tal nivel de detalle que podríamos evaluar si el
-objeto contiene un método de nombre &quot;x&quot;, es del tipo &quot;y&quot; y tiene una
-variable de instancia llamada &quot;z&quot; y tiene el valor &quot;casa&quot; y, en base a
-eso, llevar a cabo cierta secuencia de acciones con ese objeto
-particular. Ahora bien, hasta ahora, con Python, hemos visto que la
-manera de acceder a los atributos y métodos de un objeto es, al igual
-que en muchos lenguajes, de la forma
-<em>objeto.atributo</em>u<em>&nbsp;objeto.función(),</em>entonces, ¿cómo puedo llamar
-métodos o evaluar variables de instancia si no las conozco previamente?,
-que no cunda el pánico, Python me ofrece una función para extraer
-atributos de un objeto, simplemente conociendo el nombre e indicándolo
-como una cadena de caracteres, la función <em>getattr()</em> a través de la
-función <em>dir()</em>&nbsp;puedo obtener esa cadena de caracteres y utilizarla.
-Pero, ¿qué ocurre con los métodos?, pues repito lo de siempre: <strong>en
-Python, todo es un objeto</strong>, así que puedo utilizar <em>getattr()</em>para
-obtener métodos también y llamarlos, tal como hicimos en un artículo
-anterior. Obviamente, no puede ser todo tan caótico, usualmente se
-establecen acuerdos de implementación para, posteriormente, hacer que el
-programa sea capaz de manejar un dominio acotado de objetos que pueden
-ser cargados de manera aleatoria, cada uno, con características
-previamente conocidas pero con comportamientos totalmente diferentes,
-expliquemos todo esto con un ejemplo simple, tal como hemos venido
-haciendo en entradas anteriores.</p>
-<p>Hagamos un ejemplo, programemos un
-dispatcher (despachador) sencillo, supongamos que tengo una serie de
-objetos que me interesa que, al ser recibidos, realicen cierta acción
-determinada, por ejemplo, recibo un objeto y, si puede correr, que corra
-sino, reviso si puede caminar y, si puede, que camine, caso contrario,
-simplemente imprimo el <em>dir()</em> del objeto para ver qué puedo hacer con
-él.</p>
-<script src="http://pastebin.com/embed_js.php?i=fFSta6aA"></script><p>En el ejemplo, creamos tres clases muy sencillas, obviamente, en el
-mundo real, las clases serán mucho más complejas. Mi clase <em>Dispatcher</em>,
-será la encargada de revisar los objetos y &quot;si pueden correr&quot;, entonces
-ponerlos a correr, sino, simplemente informarme qué puedo hacer con ese
-objeto. Fíjense en la línea 26, que incluso puedo asegurarme de que el
-atributo al que se hace referencia sea una función, lo cual me permite
-evitar errores en tiempo de ejecusión al intentar invocar una cadena de
-caracteres, por ejemplo, como si fuera un objeto &quot;llamable&quot;. Todo esto
-es especialmente útil si estamos desarrollando herramientas que trabajan
-bajo el principio de &quot;Convention over Configuration&quot;.</p>
+<p>Ok, ok... I'm sorry, I lied on the title, but please, don't stop reading. I know... I know,
+we started bad our relationship already but, I can explain it, I swear.</p>
+<p>Yes, it says &quot;survival guide&quot;, but it's not like that, I'm not going to tell you a recipe to get the
+job you want, in the company you like and the country you dream, that's impossible, as programmer
+we all know there is no silver bullet, and it applies not only on software, also in day by day life problems.</p>
+<p>What I'm going to share with you, is what worked and still working for me, let me give you some context.
+I'm a 29 years old Computer Engineer from Venezuela, yes, I know... we're famous for good baseball players,
+beautiful women and, most recently and sadly, thanks to this guy.</p>
+<p>chavez</p>
+<p>And this other guy...</p>
+<p>Maduro</p>
+<p>My country is, obviously, a 3rd world country, we're facing huge and very serious economic and political
+issues, my family is not rich so I couldn't travel or go to another country to study until things get better
+and, by now, I'm living in Dubai, paying my rent and brought my wife abroad so we have some hope of having
+the quality of life we dreamed together, how I did it?, my job is my flight ticket and my passport.</p>
+<p>I managed to get out of Caracas, one of the most violent and dangerous cities in the world and come to Dubai,
+obviously this wasn't with money from my own pocket, a local company hired me and covered my relocation expenses.
+I'm going to share with you some things I did and still doing, this is not guaranteed to give you the job you want,
+but certainly will help you increase your chances.</p>
+<ul class="simple">
+<li><em>Set up a decent LinkedIn profile:</em> no joke, this helps, a lot of recruiters and companies in LinkedIn, don't underestimate that
+tool, it's really powerful and you don't need to pay for the pro or premium version. A good LinkedIn profile includes a picture,
+a description of each job you had, and by description I mean responsibilities and key achievements and responsibilities in that position.</li>
+<li><em>Have a public GitHub account:</em> and actually <em>use it!</em>, I'm not telling you to contribute to a lot of open source
+projects or to start yet another social auth library, just experiment with new tools, build some cool hello-world
+style projects and upload the code to GitHub, this will show that you're actively learning new stuff all the time.</li>
+<li><em>Have a StackOverflow account:</em> and, again,  <em>use it</em>, answer some questions and ask some questions, it's useful and it will help you, trust me.</li>
+<li><em>Be passionate:</em> love your career, you studied it for a reason. Learn new stuff, experiment with a new language or
+framework, show everybody the cool stuff you're working on, get ideas from other people and learn from them.</li>
+<li><em>Be pragmatic:</em> yes, when it comes to work, you have to let your knowledge and logic guide your decisions, not your emotions.</li>
+<li><em>Choose your weapon:</em> and do it early, it's good to be versatile, you're a programmer, not a user of a programming language.
+But you need a battle ax, the one that helps you solve any problem faster and you feel more comfortable with.</li>
+</ul>
+<p>And finally, the one I consider the most important.</p>
+<ul class="simple">
+<li><em>Choose your first job carefully:</em> yes, I mean it, don't let the job choose you, you have to enjoy your job
+because it's where you will spend most of the day and, trust me, your first job will define your career.
+If you start developing J2EE applications, people will hire you to do so, because that's the experience you have.
+Don't be afraid to say no to an offer you're not totally convinced of taking. In my case, when I was looking for an
+internship, I turned down an offer from Microsoft in Venezuela because I've always been an Open Source enthusiast and a
+Linux user, I didn't found myself programming in ASP.NET, I decided to take an offer from Vauxoo, a local small company
+that developed open source modules for OpenERP (now Odoo) and I'm very happy I took that road, I learned Python in that job,
+which is my battle ax and my main tool by today.</li>
+</ul>
+<p>So... yeah!, not a recipe, but some tips I hope will help you on your first years as a professional.</p>
 
 
 <div class="article-footer">
-    <p><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> <a href="tag/lenguajes.html">Lenguajes</a> <a href="tag/programacion.html">Programación</a> <a href="tag/python.html">python</a> </p>
+    <p><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> <a href="tag/career-advice.html">career advice</a> <a href="tag/personal.html">personal</a> </p>
 
     <p>Thank you for reading!, don't forget to subscribe to my mailing list!, I don't send any spam and sometimes I do share interesting stuff</p>
 
