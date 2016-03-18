@@ -3155,8 +3155,8 @@ es especialmente útil si estamos desarrollando herramientas que trabajan
 bajo el principio de &amp;quot;Convention over Configuration&amp;quot;.&lt;/p&gt;
 </summary><category term="Lenguajes"></category><category term="Programación"></category><category term="python"></category></entry><entry><title>Configurando réplicas Maestro-Esclavo con Postgres</title><link href="http://iferminmontilla.com/configurando-replicas-maestro-esclavo-con-postgres.html" rel="alternate"></link><updated>2011-11-10T08:44:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2011-11-10:configurando-replicas-maestro-esclavo-con-postgres.html</id><summary type="html">&lt;p&gt;Muchas veces, por alguna razón, hacemos desde la capa de
 aplicación cientos de validaciones y procesos que, si sabemos cómo,
-podríamos delegar en el manejador de base de datos. Las validaciones de
-reglas de negocio son un ejemplo muy frecuente de ello, tendemos, por
+podríamos delegar en el manejador de base de datos.&lt;/p&gt;
+&lt;p&gt;Las validaciones de reglas de negocio son un ejemplo muy frecuente de ello, tendemos, por
 ejemplo, a implementar validaciones redundantes (en el caso de entornos
 web) del lado del cliente, utilizando AJAX, y del lado del servidor,
 utilizando el lenguaje de programación que más nos agrade. Esto, añade
@@ -3165,8 +3165,8 @@ podríamos delegar esa validación en nuestro manejador de base de datos a
 través de un Trigger, con la ventaja de que si algún día, otro sistema
 necesita conectarse a la base de datos, las reglas de negocio están
 implementadas directamente en el manejador y, como ya estamos
-acostumbrados, todo corre más rápido en el nivel más bajo. Ahora bien,
-¿por qué empiezo diciendo todo eso?, simplemente por hacer referencia a
+acostumbrados, todo corre más rápido en el nivel más bajo.&lt;/p&gt;
+&lt;p&gt;Ahora bien, ¿por qué empiezo diciendo todo eso?, simplemente por hacer referencia a
 un ejemplo bastante común, en el que nosotros, programadores,
 desarrolladores, ingenieros, o como quieran llamarnos, hacemos uso (o
 quizás sub-uso) de un software muy sofisticado, como lo es un Manejador
@@ -3180,12 +3180,12 @@ fuertemente acoplado con la arquitectura física (hardware) del sistema
 implementado, si el número de servidores a sincronizar cambia, será
 necesario también realizar modificaciones a nivel de código o de
 configuración del programa y, además, desaprovechamos la potencia que
-nos ofrece un manejador de base de datos. PostgresSQL nos ofrece la
-posibilidad de sincronizar dos servidores de base de datos mediante
-Replicación. Existen distintos tipos de replicación de servidores, en
+nos ofrece un manejador de base de datos.&lt;/p&gt;
+&lt;p&gt;PostgresSQL nos ofrece la posibilidad de sincronizar dos servidores de base de datos mediante
+Replicación de manera nativa. Existen distintos tipos de replicación de servidores, en
 este caso, configuraremos un esquema Maestro-Esclavo, en el que mi
 servidor Maestro, recibe y ejecuta todas las transacciones y, además,
-actualiza a mi servidor Esclavo, que, únicamente, realiza consultas.
+actualiza a mi servidor Esclavo, que, únicamente, utilizo para realizar consultas.
 Empezamos por instalar la última versión disponible de Postgres,
 utilizando el gestor de paquetes de nuestra distribución de Linux
 favorita, para este ejemplo, utilicé Debian Wheezy (Testing) y Postgres
@@ -3197,50 +3197,69 @@ datos, digamos que puede realizar todas las operaciones CRUD. Empecemos
 por establecer ciertos valores de configuración para el manejador en el
 archivo /etc/postgresql/9.1/main/postgresql.conf. Debemos configurar los
 siguientes valores:&lt;/p&gt;
-&lt;p&gt;`` listen_addresses = '*' wal_level = hot_standby wal_sync_method = fsync max_wal_senders = 2 wal_keep_segments = 8``&lt;/p&gt;
-&lt;p&gt;El parámetro &lt;em&gt;listen_addresses&lt;/em&gt; establece las direcciones IP de donde
+&lt;pre class="code bash literal-block"&gt;
+&lt;span class="nv"&gt;listen_addresses&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'*'&lt;/span&gt;
+&lt;span class="nv"&gt;wal_level&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; hot_standby
+&lt;span class="nv"&gt;wal_sync_method&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; fsync
+&lt;span class="nv"&gt;max_wal_senders&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; 2
+&lt;span class="nv"&gt;wal_keep_segments&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; 8
+&lt;/pre&gt;
+&lt;p&gt;Ahora bien, analicemos este segmento de configuración:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;em&gt;listen_addresses:&lt;/em&gt; establece las direcciones IP de donde
 mi servidor va a aceptar peticiones, este parámetro acepta valores
 separados por coma o el caracter asterisco, como en este caso, para
 especificar que va a aceptar peticiones de cualquier host, de no ser
-así, sólo las IP listadas podrían sincronizar la base de datos. El valor
-de &lt;em&gt;wal_level&lt;/em&gt;, donde &amp;quot;wal&amp;quot; quiere decir &amp;quot;Write Ahead Log&amp;quot; y es una
+así, sólo las IP listadas podrían sincronizar la base de datos.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;wal_level:&lt;/em&gt; donde &lt;strong&gt;wal&lt;/strong&gt; quiere decir &lt;strong&gt;Write Ahead Log&lt;/strong&gt; y es una
 estrategia que implementan los manejadores para cumplir con las
 propiedades de Atomicidad y Durabilidad de las transacciones (¿recuerdan
 la regla ACID?) y consiste en escribir en un archivo de bitácora todas
 las modificaciones realizadas a la base de datos. En Postgres existen
-tres: &lt;em&gt;minimal&lt;/em&gt;, que omite algunas operaciones de escritura para hacer
+tres: &lt;strong&gt;minimal&lt;/strong&gt;, que omite algunas operaciones de escritura para hacer
 las operacionas más rápido, pero no guarda información suficiente para
 reconstruir la base de datos a partir de un archivo inicial y logs de
-este tipo, &lt;em&gt;hot_standby&lt;/em&gt; y &lt;em&gt;archive&lt;/em&gt;, almacenan toda la información
+este tipo, &lt;strong&gt;hot_standby&lt;/strong&gt; y &lt;strong&gt;archive&lt;/strong&gt;, almacenan toda la información
 necesaria para hacer la reconstrucción completa de los datos, pero
-únicamente &lt;em&gt;hot_standby&lt;/em&gt; permite implementar replicación de base de
-datos hacia servidores remotos. La opción &lt;em&gt;wal_sync_method&lt;/em&gt; es el
-método que utilizará el manejador para forzar las actualizaciones
-utilizando WAL. En este caso, utilizamos &lt;em&gt;fsync&lt;/em&gt; que se asegura de que
+únicamente &lt;strong&gt;hot_standby&lt;/strong&gt; permite implementar replicación de base de
+datos hacia servidores remotos.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;wal_sync_method:&lt;/em&gt; es el método que utilizará el manejador para forzar las actualizaciones
+utilizando &lt;strong&gt;WAL&lt;/strong&gt;. En este caso, utilizamos &lt;strong&gt;fsync&lt;/strong&gt; que se asegura de que
 los cambios sean escritos físicamente en la base de datos copia, más
 información sobre los métodos de sincronización disponibles puede
-conseguirse en [1]. El parámetro &lt;em&gt;max_wal_senders&lt;/em&gt; establece el número
-de sincronizaciones concurrentes que puede ejecutar el servidor.
-Finalmente, &lt;em&gt;wal_keep_segments&lt;/em&gt;, establece el número de WAL LOGS que
-el servidor guardará en el directorio pg_xlog, estos logs son
-utilizados para realizar el las actualizaciones vía streaming. Una vez
+conseguirse en [1].&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;max_wal_senders:&lt;/em&gt; establece el número
+de sincronizaciones concurrentes que puede ejecutar el servidor.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;wal_keep_segments&lt;/em&gt;, establece el número de &lt;em&gt;WAL&lt;/em&gt; logs que
+el servidor guardará en el directorio &lt;strong&gt;pg_xlog&lt;/strong&gt;, estos logs son
+utilizados para realizar las actualizaciones vía streaming. Una vez
 hecho lo anterior, tenemos la configuración básica de Postgres para
-hacer replicación Maestro-Esclavo vía streaming. Ahora, debemos agregar
-una regla más de acceso al pg_hba.conf, para permitir a los esclavos
-conectarse al servidor maestro:&lt;/p&gt;
-&lt;p&gt;`` host replication all 10.1.1.8/32 trust``&lt;/p&gt;
-&lt;p&gt;Con esa línea, estamos
-configurando el servidor para que permita conexiones a todos los
-usuarios con permiso de replicación desde la sub-red 10.1.1.8/32. Ahora,
-generamos los WAL, para ello, ejecutamos lo siguiente:
-`` postgres# SELECT pg_start_backup('1')`` Mientras eso esté ocurriendo,
-en otro terminal, hacemos lo siguiente:
-`` # cd /var/lib/postgresql/9.1 # tar czvf backup.tgz main`` Con esto,
-estamos comprimiendo el directorio de datos de Postgres. Una vez hecho
-esto, detenemos la generación de WAL:
-`` postgres# SELECT pg_stop_backup()`` El asunto general se resume con
-la siguiente ecuación: backup inconsistente + WAL = restauración a
-estado consistente. Estos WAL, se generan en el directorio pg_xlog, y
+hacer replicación Maestro-Esclavo vía streaming.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Ahora, debemos agregar una regla más de acceso al &lt;strong&gt;pg_hba.conf&lt;/strong&gt;, para
+permitir a los esclavos conectarse al servidor maestro:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+host replication all 10.1.1.8/32 trust
+&lt;/pre&gt;
+&lt;p&gt;Con esa línea, estamos configurando el servidor para que permita conexiones a todos los
+usuarios con permiso de replicación desde la sub-red &lt;strong&gt;10.1.1.8/32&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Ahora, generamos los &lt;strong&gt;WAL&lt;/strong&gt;, para ello, ejecutamos lo siguiente en el terminal SQL de
+Postgres:&lt;/p&gt;
+&lt;pre class="code sql literal-block"&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;pg_start_backup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'1'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Mientras eso esté ocurriendo, en otro terminal, ejecutamos lo siguiente:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+&lt;span class="nb"&gt;cd&lt;/span&gt; /var/lib/postgresql/9.1 &lt;span class="c1"&gt;# tar czvf backup.tgz main&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Con esto estamos comprimiendo el directorio de datos de Postgres.
+Una vez hecho esto, detenemos la generación de WAL:&lt;/p&gt;
+&lt;pre class="code sql literal-block"&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;pg_stop_backup&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;El asunto general se resume con la siguiente ecuación:&lt;/p&gt;
+&lt;p&gt;backup inconsistente + WAL = restauración a estado consistente.&lt;/p&gt;
+&lt;p&gt;Estos WAL, se generan en el directorio &lt;strong&gt;pg_xlog&lt;/strong&gt;, y
 debemos tomar el último que fue escrito.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="configurando-el-esclavo"&gt;
@@ -3250,25 +3269,35 @@ instancia de Postgres por el directorio de datos del Maestro. Luego,
 creamos un directorio &lt;em&gt;recovery&lt;/em&gt;, donde copiaremos el último WAL del
 directorio pg_xlog. Adicionalmente, debemos modificar el
 postgresql.conf con las siguientes variables:&lt;/p&gt;
-&lt;p&gt;`` hot_standby = on wal_level = hot_standby``&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+&lt;span class="nv"&gt;hot_standby&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; on &lt;span class="nv"&gt;wal_level&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; hot_standby&lt;span class="sb"&gt;``&lt;/span&gt;
+&lt;/pre&gt;
 &lt;p&gt;Ahora, creamos un archivo
-de configuración en la raíz del directorio de datos establecer las
+de configuración en la raíz del directorio de datos para establecer las
 siguientes opciones:&lt;/p&gt;
-&lt;p&gt;`` standby_mode = 'on' primary_conninfo = 'host=[host_ip] port=5432 user=root password=[some_password]' restore_command = 'cp /var/lib/postgresql/9.1/main/recovery/%f %p'``&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+&lt;span class="nv"&gt;standby_mode&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'on'&lt;/span&gt;
+&lt;span class="nv"&gt;primary_conninfo&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'host=[host_ip] port=5432 user=root password=[some_password]'&lt;/span&gt;
+&lt;span class="nv"&gt;restore_command&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'cp /var/lib/postgresql/9.1/main/recovery/%f %p'&lt;/span&gt;
+&lt;/pre&gt;
 &lt;p&gt;Con esto le decimos al servidor que va a esperar réplicas de
-&lt;em&gt;primary_conninfo&lt;/em&gt;, además, el &lt;em&gt;restore_command&lt;/em&gt; indica dónde se
+&lt;strong&gt;primary_conninfo&lt;/strong&gt;, además, el &lt;strong&gt;restore_command&lt;/strong&gt; indica dónde se
 encuentra el respaldo inicial inconsistente. Finalmente, nos aseguramos
 de que los roles tengan permiso de replicación:&lt;/p&gt;
-&lt;p&gt;`` postgres# SELECT * FROM pg_roles``&lt;/p&gt;
+&lt;pre class="code sql literal-block"&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;pg_roles&lt;/span&gt;
+&lt;/pre&gt;
 &lt;p&gt;y, de no tener permisos de
 replicación, alteramos los roles necesarios para ello:&lt;/p&gt;
-&lt;p&gt;`` postgres# ALTER ROLE nombre WITH REPLICATION``&lt;/p&gt;
+&lt;pre class="code sql literal-block"&gt;
+&lt;span class="k"&gt;ALTER&lt;/span&gt; &lt;span class="k"&gt;ROLE&lt;/span&gt; &lt;span class="n"&gt;nombre&lt;/span&gt; &lt;span class="k"&gt;WITH&lt;/span&gt; &lt;span class="n"&gt;REPLICATION&lt;/span&gt;
+&lt;/pre&gt;
 &lt;p&gt;Una vez hecho todo
 esto, ya hemos configurado un sistema de replicación Maestro-Esclavo
 utilizando Postgres como sistema manejador de base de datos, y no hizo
 falta una toalla para eso. Fácil ¿no?.&lt;/p&gt;
 &lt;p&gt;[1] &lt;a class="reference external" href="http://developer.postgresql.org/pgdocs/postgres/runtime-config-wal.html"&gt;http://developer.postgresql.org/pgdocs/postgres/runtime-config-wal.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;[2]`http://developer.postgresql.org/pgdocs/postgres/runtime-config-replication.html#GUC-HOT-STANDBY`_&lt;/p&gt;
+&lt;p&gt;[2] &lt;a class="reference external" href="http://developer.postgresql.org/pgdocs/postgres/runtime-config-replication.html#GUC-HOT-STANDBY"&gt;http://developer.postgresql.org/pgdocs/postgres/runtime-config-replication.html#GUC-HOT-STANDBY&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 </summary><category term="Bases de Datos"></category><category term="informática"></category><category term="Postgres"></category><category term="Software Libre"></category></entry><entry><title>Algo sobre Dennis Ritchie</title><link href="http://iferminmontilla.com/algo-sobre-dennis-ritchie.html" rel="alternate"></link><updated>2011-10-18T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iferminmontilla.com,2011-10-18:algo-sobre-dennis-ritchie.html</id><summary type="html">&lt;p&gt;Quizás no sepas de quien se trata, es probable que hayas escuchado su
 nombre alguna vez si (¿y sólo si?) estudias o estudiaste computación,
