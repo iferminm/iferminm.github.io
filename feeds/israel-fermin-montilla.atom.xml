@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Israel Fermín Montilla / Blog</title><link href="http://iffm.org/" rel="alternate"></link><link href="http://iffm.org/feeds/israel-fermin-montilla.atom.xml" rel="self"></link><id>http://iffm.org/</id><updated>2016-03-25T00:00:00-05:30</updated><entry><title>New Grads Survival Guide</title><link href="http://iffm.org/new-grads-survival-guide.html" rel="alternate"></link><updated>2016-03-25T00:00:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2016-03-25:new-grads-survival-guide.html</id><summary type="html">&lt;p&gt;OK, OK... I'm sorry, I lied on the title, but please, don't stop reading. I know... I know,
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Israel Fermín Montilla / Blog</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://iffm.me/feeds/israel-fermin-montilla.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2016-03-25T00:00:00-05:30</updated><entry><title>New Grads Survival Guide</title><link href="http://iffm.me/new-grads-survival-guide.html" rel="alternate"></link><updated>2016-03-25T00:00:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2016-03-25:new-grads-survival-guide.html</id><summary type="html">&lt;p&gt;OK, OK... I'm sorry, I lied on the title, but please, don't stop reading. I know... I know,
 we started bad our relationship already but, I can explain it, I swear.&lt;/p&gt;
 &lt;p&gt;Yes, it says &amp;quot;survival guide&amp;quot;, but it's not like that, I'm not going to tell you a recipe to get the
 job you want, in the company you like and the country you dream, that's impossible, as programmer
@@ -45,7 +45,7 @@ that developed open source modules for OpenERP (now Odoo) and I'm very happy I t
 which is my battle ax and my main tool by today.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;So... yeah!, not a recipe, but some tips I hope will help you on your first years as a professional.&lt;/p&gt;
-</summary><category term="personal"></category><category term="career advice"></category></entry><entry><title>Sip... ahora tengo un iPhone</title><link href="http://iffm.org/sip-ahora-tengo-un-iphone.html" rel="alternate"></link><updated>2016-03-13T00:00:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2016-03-13:sip-ahora-tengo-un-iphone.html</id><summary type="html">&lt;p&gt;Bueno, uno nunca debe decir &amp;quot;de esta agua no beberé&amp;quot;, contaré la historia antes de decir lo que me agrada y
+</summary><category term="personal"></category><category term="career advice"></category></entry><entry><title>Sip... ahora tengo un iPhone</title><link href="http://iffm.me/sip-ahora-tengo-un-iphone.html" rel="alternate"></link><updated>2016-03-13T00:00:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2016-03-13:sip-ahora-tengo-un-iphone.html</id><summary type="html">&lt;p&gt;Bueno, uno nunca debe decir &amp;quot;de esta agua no beberé&amp;quot;, contaré la historia antes de decir lo que me agrada y
 lo que me desagrada y las cosas que extraño de Android.&lt;/p&gt;
 &lt;p&gt;Cuando me mudé a Dubai, cambié mi Samsung Galaxy S por un HTC One M8, cosa que al principio me funcionó
 bastante bien, pero que con el tiempo terminé arrepintiendome de no comprarme un Nexus. La cosa es que
@@ -120,7 +120,7 @@ de que no sera un iPhone.&lt;/p&gt;
 es algo muy subjetivo e inherente al usuario.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="personal"></category><category term="tech"></category></entry><entry><title>Instalé Ubuntu Mate</title><link href="http://iffm.org/instale-ubuntu-mate.html" rel="alternate"></link><updated>2015-12-11T21:28:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2015-12-11:instale-ubuntu-mate.html</id><summary type="html">&lt;p&gt;Por alguna razón que desconozco, en mi máquina de trabajo (la que me dieron en la oficina
+</summary><category term="personal"></category><category term="tech"></category></entry><entry><title>Instalé Ubuntu Mate</title><link href="http://iffm.me/instale-ubuntu-mate.html" rel="alternate"></link><updated>2015-12-11T21:28:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2015-12-11:instale-ubuntu-mate.html</id><summary type="html">&lt;p&gt;Por alguna razón que desconozco, en mi máquina de trabajo (la que me dieron en la oficina
 para el día a día) Unity dejó de &amp;quot;funcionar bien&amp;quot;, es decir, empezó a colgarse más seguido de
 lo usual, cosa que siempre es bastante molesta, al principio pensé en simplemente volarme la
 instalación de Ubuntu y cambiarla por una distro para hombres, quizás Debian. Luego recordé que
@@ -152,7 +152,7 @@ sudo apt-get install --no-install-recommends ubuntu-mate-core ubuntu-mate-deskto
 &lt;/pre&gt;
 &lt;p&gt;Llevo unos 4 meses con este setup y no se me ha quedado congelada la interfaz ni una sola vez&lt;/p&gt;
 &lt;p&gt;Suscríbete a mi lista de correos, no envío spam y de vez en cuando paso algo interesante por allí :-).&lt;/p&gt;
-</summary><category term="linux"></category><category term="ubuntu"></category></entry><entry><title>Cosas que he aprendido (Parte III)</title><link href="http://iffm.org/cosas-que-he-aprendido-parte-iii.html" rel="alternate"></link><updated>2015-07-26T12:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2015-07-26:cosas-que-he-aprendido-parte-iii.html</id><summary type="html">&lt;p&gt;Bueno, llevo ya unos años dedicado casi 100% a desarrollo
+</summary><category term="linux"></category><category term="ubuntu"></category></entry><entry><title>Cosas que he aprendido (Parte III)</title><link href="http://iffm.me/cosas-que-he-aprendido-parte-iii.html" rel="alternate"></link><updated>2015-07-26T12:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2015-07-26:cosas-que-he-aprendido-parte-iii.html</id><summary type="html">&lt;p&gt;Bueno, llevo ya unos años dedicado casi 100% a desarrollo
 web con &lt;em&gt;Python&lt;/em&gt;, unos años en los que he aprendido muchas
 cosas sobre el lenguaje y, por un momento, pensé que sabía
 suficiente, pero cuando uno empieza a pensar eso es peligroso,
@@ -353,14 +353,14 @@ Aprender a usar descriptores no sólo hace nuestro set de herramientas más gran
 &lt;p&gt;Muchas gracias por leerme, no olviden suscribirse y seguirme, estaré publicando más cosas sobre desarrollo y programación por esas vías.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="desarrollo"></category><category term="python"></category><category term="descriptores"></category></entry><entry><title>Django: vistas basadas en clases</title><link href="http://iffm.org/django-vistas-basadas-en-clases.html" rel="alternate"></link><updated>2015-07-25T12:45:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2015-07-25:django-vistas-basadas-en-clases.html</id><summary type="html">&lt;p&gt;Tenía pendiente escribir sobre esto desde hace tiempo,
+</summary><category term="desarrollo"></category><category term="python"></category><category term="descriptores"></category></entry><entry><title>Django: vistas basadas en clases</title><link href="http://iffm.me/django-vistas-basadas-en-clases.html" rel="alternate"></link><updated>2015-07-25T12:45:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2015-07-25:django-vistas-basadas-en-clases.html</id><summary type="html">&lt;p&gt;Tenía pendiente escribir sobre esto desde hace tiempo,
 pero entre una cosa y otra siempre terminaba escribiendo
 sobre otra cosa y las vistas basadas en clases quedaban
 olvidadas.&lt;/p&gt;
 &lt;p&gt;Las vistas basadas en clases nos permiten simplificar muchísimo
 el código, reduciendo, para muchos casos, la escritura de vistas
 a simplemente heredar de usas vistas genéricas y agregar algunos
-&lt;a class="reference external" href="http://iffm.org/cosas-que-he-aprendido-parte-ii.html"&gt;mixins&lt;/a&gt;, son un recurso bastante potente y que deberíamos tomar
+&lt;a class="reference external" href="http://iffm.me/cosas-que-he-aprendido-parte-ii.html"&gt;mixins&lt;/a&gt;, son un recurso bastante potente y que deberíamos tomar
 en cuenta en los proyectos que estemos o vayamos a desarrollar y
 que además está allí desde django 1.3.&lt;/p&gt;
 &lt;p&gt;Cuando estaba empezando a escribir la introducción, me dió por
@@ -375,7 +375,7 @@ decida hacer un blog en español y mantenerse fiel sin escribir en inglés.&lt;/
 &lt;li&gt;&lt;a class="reference external" href="http://www.alvarohurtado.es/django-vistas-basadas-en-clases-iii-list-view/"&gt;ListView&lt;/a&gt;: ejemplos sobre la vista de lista&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Espero que sean de su agrado.&lt;/p&gt;
-</summary><category term="django"></category><category term="vistas basadas en clases"></category><category term="programación"></category></entry><entry><title>Cosas que he aprendido (Parte II):</title><link href="http://iffm.org/cosas-que-he-aprendido-parte-ii.html" rel="alternate"></link><updated>2015-07-19T12:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2015-07-19:cosas-que-he-aprendido-parte-ii.html</id><summary type="html">&lt;p&gt;A menudo nos ocurre que estamos programando
+</summary><category term="django"></category><category term="vistas basadas en clases"></category><category term="programación"></category></entry><entry><title>Cosas que he aprendido (Parte II):</title><link href="http://iffm.me/cosas-que-he-aprendido-parte-ii.html" rel="alternate"></link><updated>2015-07-19T12:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2015-07-19:cosas-que-he-aprendido-parte-ii.html</id><summary type="html">&lt;p&gt;A menudo nos ocurre que estamos programando
 y vemos que hay ciertos métodos que se repiten
 en varias clases, esto es una señal de que ese
 conjunto de métodos pueden abstraerse de alguna manera
@@ -456,7 +456,7 @@ debería escribir mi propio método para convertirlo en &lt;em&gt;JSON&lt;/em&gt
 la caja que está a la derecha, tengo algunas cosas en mente que estaré anunciando por
 esa vía. Gracias, de nuevo, por leerme.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="desarrollo"></category><category term="mixins"></category><category term="programación"></category></entry><entry><title>Migré a ZSH</title><link href="http://iffm.org/migre-a-zsh.html" rel="alternate"></link><updated>2015-05-27T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2015-05-26:migre-a-zsh.html</id><summary type="html">&lt;p&gt;Es bien sabido por todos que en Linux y en el Open Source en general, uno es libre de elegir
+</summary><category term="desarrollo"></category><category term="mixins"></category><category term="programación"></category></entry><entry><title>Migré a ZSH</title><link href="http://iffm.me/migre-a-zsh.html" rel="alternate"></link><updated>2015-05-27T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2015-05-26:migre-a-zsh.html</id><summary type="html">&lt;p&gt;Es bien sabido por todos que en Linux y en el Open Source en general, uno es libre de elegir
 todas y cada una de las partes del sistema que va a configurar para su computadora personal
 o de trabajo, la línea de comandos no es excepción.&lt;/p&gt;
 &lt;p&gt;Por defecto, viene configurado &lt;a class="reference external" href="http://es.wikipedia.org/wiki/Bash"&gt;BASH&lt;/a&gt; en todos los sistemas linux, sin embargo, es posible cambiarlo
@@ -546,11 +546,11 @@ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh &l
 wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - &lt;span class="p"&gt;|&lt;/span&gt; sh
 &lt;/pre&gt;
 &lt;/div&gt;
-</summary><category term="cambio"></category><category term="herramientas"></category><category term="terminal"></category><category term="zsh"></category></entry><entry><title>Mi experiencia con ATOM</title><link href="http://iffm.org/mi-experiencia-con-atom.html" rel="alternate"></link><updated>2015-05-10T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2015-05-10:mi-experiencia-con-atom.html</id><summary type="html">&lt;p&gt;Desde hace varios años soy un usuario de vim, para todo. Desde escribir
+</summary><category term="cambio"></category><category term="herramientas"></category><category term="terminal"></category><category term="zsh"></category></entry><entry><title>Mi experiencia con ATOM</title><link href="http://iffm.me/mi-experiencia-con-atom.html" rel="alternate"></link><updated>2015-05-10T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2015-05-10:mi-experiencia-con-atom.html</id><summary type="html">&lt;p&gt;Desde hace varios años soy un usuario de vim, para todo. Desde escribir
 código en Python o cualquier lenguaje de programación, pasando por documentos
 HTML o CSS e incluso mi tesis la escribí usando vim.&lt;/p&gt;
 &lt;p&gt;Recientemente he estado en una onda de probar nuevas cosas, lenguajes, herramientas
-e incluso editores para programar, hasta he estado &lt;a class="reference external" href="http://iffm.org/y-si-me-compro-una-mac.html"&gt;considerando la posibilidad de comprarme una
+e incluso editores para programar, hasta he estado &lt;a class="reference external" href="http://iffm.me/y-si-me-compro-una-mac.html"&gt;considerando la posibilidad de comprarme una
 MacBook&lt;/a&gt;. Hace ya varios meses me enteré de que GitHub está trabajando en el
 desarrollo de un &lt;a class="reference external" href="https://atom.io/"&gt;editor para programadores&lt;/a&gt;, cuando leí la noticia no había una versión para Linux,
 únicamente para Mac, cosa que me irritó un poco (bueno, bastante).&lt;/p&gt;
@@ -575,7 +575,7 @@ en un futuro cercano o a mediano plazo pero es un proyecto interesante que
 pienso seguir a ver con qué features me sorprende la gente de github.&lt;/p&gt;
 &lt;p&gt;Hasta luego.&lt;/p&gt;
 &lt;p&gt;:wq!&lt;/p&gt;
-</summary><category term="programación"></category><category term="blog"></category><category term="cambios"></category><category term="editores"></category></entry><entry><title>Cosas que he aprendido:</title><link href="http://iffm.org/cosas-que-he-aprendido.html" rel="alternate"></link><updated>2014-12-05T12:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2014-12-05:cosas-que-he-aprendido.html</id><summary type="html">&lt;p&gt;Luego de algún tiempo desarrollando software, sea para web
+</summary><category term="programación"></category><category term="blog"></category><category term="cambios"></category><category term="editores"></category></entry><entry><title>Cosas que he aprendido:</title><link href="http://iffm.me/cosas-que-he-aprendido.html" rel="alternate"></link><updated>2014-12-05T12:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-12-05:cosas-que-he-aprendido.html</id><summary type="html">&lt;p&gt;Luego de algún tiempo desarrollando software, sea para web
 o escritorio, uno realmente termina de entender aquello que nos
 decían en &lt;em&gt;Algoritmos y Programación I&lt;/em&gt; de &lt;strong&gt;Divide y vencerás&lt;/strong&gt;,
 quizás en la Universidad uno no lo aplica mucho, tienes 8 proyectos
@@ -711,7 +711,7 @@ un servicio está caído antes de que los usuarios empiecen a quejarse.&lt;/li&g
 sistemas y todas son correctas dependiendo de las condiciones y el contexto que las rodean.&lt;/p&gt;
 &lt;p&gt;Acá dejo &lt;a class="reference external" href="http://queue.acm.org/detail.cfm?id=1142065"&gt;una entrevista&lt;/a&gt; a uno de mis héroes personales sobre este tema, Werner Vogels, CEO de Amazon.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="desarrollo"></category><category term="soa"></category><category term="servicios"></category><category term="web"></category></entry><entry><title>Algunos cambios por estos lados</title><link href="http://iffm.org/algunos-cambios-por-estos-lados.html" rel="alternate"></link><updated>2014-11-26T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2014-11-26:algunos-cambios-por-estos-lados.html</id><summary type="html">&lt;p&gt;Bueno, no se si se habrán dado cuenta de un par
+</summary><category term="desarrollo"></category><category term="soa"></category><category term="servicios"></category><category term="web"></category></entry><entry><title>Algunos cambios por estos lados</title><link href="http://iffm.me/algunos-cambios-por-estos-lados.html" rel="alternate"></link><updated>2014-11-26T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-11-26:algunos-cambios-por-estos-lados.html</id><summary type="html">&lt;p&gt;Bueno, no se si se habrán dado cuenta de un par
 de cambios por acá, sino, pues bueno, se los diré&lt;/p&gt;
 &lt;p&gt;El primero de ellos es que decidí quitar mi CV de
 acá, no tiene sentido tenerlo junto con el blog,
@@ -731,7 +731,7 @@ el punto de vista medio nerd que me caracteriza&lt;/p&gt;
 &lt;p&gt;Hay varios cambios que no son visibles en el blog,
 más que todo respecto a mi manera de ver las cosas
 y filosofía de vida, por ejemplo, he estado considerando
-seriamente &lt;a class="reference external" href="http://iffm.org/y-si-me-compro-una-mac.html"&gt;comprarme una mac&lt;/a&gt;, cosa que hace poco
+seriamente &lt;a class="reference external" href="http://iffm.me/y-si-me-compro-una-mac.html"&gt;comprarme una mac&lt;/a&gt;, cosa que hace poco
 más de un año era impensable, también he estado reconciliándome
 con temas y tecnologías que no eran de mi agrado para salir
 un poco de mi zona de confort, empezando por desarrollo de
@@ -751,7 +751,7 @@ diseñando un nuevo tema para el blog, para tener algo hecho
 por mi y poner el práctica lo que aprenda de front, como
 ya dije, he estado jugando con bootstrap, jQuery, HTML5 y CSS3,
 saliendo de la zona de confort, veamos qué sale de todo esto.&lt;/p&gt;
-</summary><category term="personal"></category><category term="blog"></category><category term="cambios"></category></entry><entry><title>Reflexión del día que me fui del país</title><link href="http://iffm.org/reflexion-del-dia-que-me-fui-del-pais.html" rel="alternate"></link><updated>2014-11-21T12:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2014-11-21:reflexion-del-dia-que-me-fui-del-pais.html</id><summary type="html">&lt;p&gt;Bueno, no se si estoy intenso ya con el tema de las reflexiones
+</summary><category term="personal"></category><category term="blog"></category><category term="cambios"></category></entry><entry><title>Reflexión del día que me fui del país</title><link href="http://iffm.me/reflexion-del-dia-que-me-fui-del-pais.html" rel="alternate"></link><updated>2014-11-21T12:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-11-21:reflexion-del-dia-que-me-fui-del-pais.html</id><summary type="html">&lt;p&gt;Bueno, no se si estoy intenso ya con el tema de las reflexiones
 pero esta será la última al menos por un buen tiempo, lo que ocurre
 es que hace poco conseguí un par de escritos que pensé que había perdido
 cuando formateé la computadora acá en Dubai apenas llegué.&lt;/p&gt;
@@ -770,7 +770,7 @@ que estaba emigrando.&lt;/p&gt;
 &lt;p&gt;En la cola para retirar el pedido, de nuevo, haciéndose cada vez más larga porque no repartían, informan que la máquina de refrescos está dañada y que no hay refrescos y que no entregarían los pedidos hasta que la arreglaran, allí solté mi tradicional “coño de la madre, qué peo” (perdonen si leen y no esperan malas palabras en un blog), al final, molesto, pido mis hamburguesas, mis papas o que me regresen mi plata, así que me dan mis hamburguesas (frías... además de pequeñas), al finalizar mi delicioso almuerzo (esto sí es sarcasmo), abordé el avión.&lt;/p&gt;
 &lt;p&gt;Lo que más me impresionó del episodio de Burger King, no fue el hecho de que no hubiera nada, ni el mal servicio, sino que yo era el único que estaba molesto y que estaba reclamando algo, los demás estaban resignados a esperar quien sabe cuánto tiempo a que arreglaran la máquina de refrescos, les dieran hamburguesas heladas y, seguramente, un refresco que sabe a pura soda. Esa misma actitud de “cállate que sino te van a joder” es la que nos tiene con el agua hasta el cuello y, también, esa actitud de “si puedo jodo al que me cae mal, me mire o me hable feo” es la que sigue echándole agua a la piscina en la que, si seguimos como vamos, nos ahogaremos todos, mi pregunta es, ¿hasta cuándo vamos a vivir en la mierda?, ¿hasta cuando vamos a aceptar un “no hay” por respuesta?.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="reflexión"></category><category term="personal"></category><category term="emigrado"></category></entry><entry><title>Algo que escribí antes de emigrar</title><link href="http://iffm.org/algo-que-escribi-antes-de-emigrar.html" rel="alternate"></link><updated>2014-11-20T12:45:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2014-11-20:algo-que-escribi-antes-de-emigrar.html</id><summary type="html">&lt;p&gt;Revisando archivos viejos luego de que migré a
+</summary><category term="reflexión"></category><category term="personal"></category><category term="emigrado"></category></entry><entry><title>Algo que escribí antes de emigrar</title><link href="http://iffm.me/algo-que-escribi-antes-de-emigrar.html" rel="alternate"></link><updated>2014-11-20T12:45:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-11-20:algo-que-escribi-antes-de-emigrar.html</id><summary type="html">&lt;p&gt;Revisando archivos viejos luego de que migré a
 &lt;em&gt;Linux Mint&lt;/em&gt;, conseguí algo que escribí unos 3 días
 antes de emigrar, recuerdo haberme sentado en mi
 escritorio, aún sin poder creer que me iba de casa,
@@ -794,7 +794,7 @@ con la ansiedad del viaje que me esperaba.&lt;/p&gt;
 Hasta siempre!!&lt;/p&gt;
 &lt;p&gt;-- Israel.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="personal"></category><category term="reflexión"></category><category term="emigrado"></category></entry><entry><title>Usando Redis como backend de sesiones en php</title><link href="http://iffm.org/usando-redis-como-backend-de-sesiones-en-php.html" rel="alternate"></link><updated>2014-10-19T12:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2014-10-19:usando-redis-como-backend-de-sesiones-en-php.html</id><summary type="html">&lt;p&gt;Bueno, sí, leyeron bien el título, luego de años me tocó
+</summary><category term="personal"></category><category term="reflexión"></category><category term="emigrado"></category></entry><entry><title>Usando Redis como backend de sesiones en php</title><link href="http://iffm.me/usando-redis-como-backend-de-sesiones-en-php.html" rel="alternate"></link><updated>2014-10-19T12:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-10-19:usando-redis-como-backend-de-sesiones-en-php.html</id><summary type="html">&lt;p&gt;Bueno, sí, leyeron bien el título, luego de años me tocó
 trabajar de nuevo con php en la oficina, dejen el escándalo.&lt;/p&gt;
 &lt;p&gt;Siendo sincero, las cosas parecieran haber mejorado mucho desde
 la última vez que hice (o traté de hacer) algo con php, era php
@@ -889,7 +889,7 @@ bastante bien, sin embargo hay muchas cosas con las que no estamos contentos, se
 terminemos cambiándolo por una versión 2.0, seguramente en &lt;em&gt;Python&lt;/em&gt; y desarrollado por
 nosotros pero, al menos por ahora, funciona y hace el trabajo.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="desarrollo"></category><category term="web"></category><category term="sesiones"></category><category term="redis"></category><category term="php"></category></entry><entry><title>Reporte de películas, libros y series Octubre 2014</title><link href="http://iffm.org/reporte-de-peliculas-libros-y-series-octubre-2014.html" rel="alternate"></link><updated>2014-10-18T00:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2014-10-18:reporte-de-peliculas-libros-y-series-octubre-2014.html</id><summary type="html">&lt;p&gt;Bueno, octubre fue un mes no muy activo en cuanto
+</summary><category term="desarrollo"></category><category term="web"></category><category term="sesiones"></category><category term="redis"></category><category term="php"></category></entry><entry><title>Reporte de películas, libros y series Octubre 2014</title><link href="http://iffm.me/reporte-de-peliculas-libros-y-series-octubre-2014.html" rel="alternate"></link><updated>2014-10-18T00:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-10-18:reporte-de-peliculas-libros-y-series-octubre-2014.html</id><summary type="html">&lt;p&gt;Bueno, octubre fue un mes no muy activo en cuanto
 a películas, agregué unas nuevas al watchlist de las
 cuales vi algunas, pero no taché ninguna de las viejas.&lt;/p&gt;
 &lt;p&gt;A ver, la cosa va así&lt;/p&gt;
@@ -1030,7 +1030,7 @@ administrando mi propio dinero y, cuando estás viviendo solo,
 aprender a administrarte y masterizar ese arte es algo poco más
 que de vida o muerte.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="películas"></category><category term="cine"></category><category term="series"></category><category term="tv"></category><category term="libros"></category></entry><entry><title>Algo hemos hecho mal en Venezuela, ¿qué?</title><link href="http://iffm.org/algo-hemos-hecho-mal-en-venezuela-que.html" rel="alternate"></link><updated>2014-10-12T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2014-10-12:algo-hemos-hecho-mal-en-venezuela-que.html</id><summary type="html">&lt;p&gt;Voy ya para cinco meses viviendo fuera del país y
+</summary><category term="películas"></category><category term="cine"></category><category term="series"></category><category term="tv"></category><category term="libros"></category></entry><entry><title>Algo hemos hecho mal en Venezuela, ¿qué?</title><link href="http://iffm.me/algo-hemos-hecho-mal-en-venezuela-que.html" rel="alternate"></link><updated>2014-10-12T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-10-12:algo-hemos-hecho-mal-en-venezuela-que.html</id><summary type="html">&lt;p&gt;Voy ya para cinco meses viviendo fuera del país y
 empiezo a ver las cosas de otra manera, quizás estando
 en Venezuela todo estaba tan caótico que me impedía pensar
 &amp;quot;fuera de la caja&amp;quot;, quizás llegó el momento en el que
@@ -1153,7 +1153,7 @@ es pura arena y es muy difícil hacer crecer plantas, hicieron crecer edificios.
 &lt;p&gt;¿Alguien me puede explicar?&lt;/p&gt;
 &lt;img alt="dafuq?" src="https://dl.dropboxusercontent.com/u/3437671/blog/vedubai/jackie-chan-meme.jpg" /&gt;
 &lt;p&gt;[1] Hoy, Follador de libertades&lt;/p&gt;
-</summary><category term="reflexion"></category><category term="política"></category><category term="personal"></category></entry><entry><title>¿Y si me compro una Mac?</title><link href="http://iffm.org/y-si-me-compro-una-mac.html" rel="alternate"></link><updated>2014-10-03T12:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2014-10-03:y-si-me-compro-una-mac.html</id><summary type="html">&lt;p&gt;Llevo ya un par de meses considerando la posibilidad,
+</summary><category term="reflexion"></category><category term="política"></category><category term="personal"></category></entry><entry><title>¿Y si me compro una Mac?</title><link href="http://iffm.me/y-si-me-compro-una-mac.html" rel="alternate"></link><updated>2014-10-03T12:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-10-03:y-si-me-compro-una-mac.html</id><summary type="html">&lt;p&gt;Llevo ya un par de meses considerando la posibilidad,
 sí, YO, Israel Fermín Montilla llevo un par de meses
 considerando la posibilidad de comprarme una &lt;em&gt;MacBook&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;No, no me hackearon github y subieron este artículo,
@@ -1228,7 +1228,7 @@ en su &lt;em&gt;MacBook&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Simplemente lo estoy considerando, necesito leer más al respecto, quizás jugar
 un par de días con una a ver qué decido hacer.&lt;/p&gt;
 &lt;p&gt;Mientras... les dejo un video con los 66 comerciales de &lt;em&gt;Mac vs PC&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube.com/embed/0eEG5LVXdKo" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</summary><category term="mac"></category><category term="tecnología"></category><category term="laptops"></category></entry><entry><title>En mi watchlist</title><link href="http://iffm.org/en-mi-watchlist.html" rel="alternate"></link><updated>2014-09-30T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2014-09-30:en-mi-watchlist.html</id><summary type="html">&lt;p&gt;Bueno, ya dije que estoy &lt;strong&gt;solo&lt;/strong&gt; en otro país, pero
+&lt;div class="youtube youtube-16x9"&gt;&lt;iframe src="https://www.youtube.com/embed/0eEG5LVXdKo" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;</summary><category term="mac"></category><category term="tecnología"></category><category term="laptops"></category></entry><entry><title>En mi watchlist</title><link href="http://iffm.me/en-mi-watchlist.html" rel="alternate"></link><updated>2014-09-30T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-09-30:en-mi-watchlist.html</id><summary type="html">&lt;p&gt;Bueno, ya dije que estoy &lt;strong&gt;solo&lt;/strong&gt; en otro país, pero
 no dije a dónde me fui, emigré a los Emiratos Árabes
 Unidos, estoy viviendo en Dubai y llevo ya casi cinco
 meses por estos lados.&lt;/p&gt;
@@ -1379,7 +1379,7 @@ tiempo escuchando &lt;em&gt;Blues&lt;/em&gt; y rock de los 60 y 70.&lt;/p&gt;
 &lt;p&gt;[1] Venezolanismo para &amp;quot;resaca&amp;quot;.&lt;/p&gt;
 &lt;p&gt;[2] Venezolanismo para algo que es extremadamente bueno. También se usa para indicar molestia.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="películas"></category><category term="emigrado"></category><category term="cine"></category><category term="series"></category><category term="tv"></category></entry><entry><title>Reapareciendo luego de un año</title><link href="http://iffm.org/reapareciendo-luego-de-un-ano.html" rel="alternate"></link><updated>2014-09-28T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2014-09-28:reapareciendo-luego-de-un-ano.html</id><summary type="html">&lt;p&gt;Wow, la semana pasado publiqué la segunda parte del artículo sobre
+</summary><category term="películas"></category><category term="emigrado"></category><category term="cine"></category><category term="series"></category><category term="tv"></category></entry><entry><title>Reapareciendo luego de un año</title><link href="http://iffm.me/reapareciendo-luego-de-un-ano.html" rel="alternate"></link><updated>2014-09-28T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-09-28:reapareciendo-luego-de-un-ano.html</id><summary type="html">&lt;p&gt;Wow, la semana pasado publiqué la segunda parte del artículo sobre
 cómo desarrollar aplicaciones web sobre &lt;em&gt;Heroku&lt;/em&gt; y me di cuenta de
 que el primero lo publiqué hace ya poco más de un año, además
 esa fue la última vez que escribí en el blog.&lt;/p&gt;
@@ -1422,7 +1422,7 @@ casi de vida o muerte.&lt;/p&gt;
 que me falta por aprender en muchos aspectos, pero también me ha servido para
 crecer en muchos otros y, sobre todo, aprender a cocinar mi propia comida,
 sigo vivo, lo que quiere decir que no me ha salido tan mal.&lt;/p&gt;
-</summary><category term="personal"></category><category term="emigrar"></category><category term="actitud"></category></entry><entry><title>Heroku + Django sin morir en el intento (Parte 2)</title><link href="http://iffm.org/heroku-django-sin-morir-en-el-intento-parte-2.html" rel="alternate"></link><updated>2014-09-20T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2014-09-20:heroku-django-sin-morir-en-el-intento-parte-2.html</id><summary type="html">&lt;p&gt;En el artículo anterior, hablamos de IaaS y de PaaS y de cómo se diferencian
+</summary><category term="personal"></category><category term="emigrar"></category><category term="actitud"></category></entry><entry><title>Heroku + Django sin morir en el intento (Parte 2)</title><link href="http://iffm.me/heroku-django-sin-morir-en-el-intento-parte-2.html" rel="alternate"></link><updated>2014-09-20T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-09-20:heroku-django-sin-morir-en-el-intento-parte-2.html</id><summary type="html">&lt;p&gt;En el artículo anterior, hablamos de IaaS y de PaaS y de cómo se diferencian
 concluimos que &lt;em&gt;Heroku&lt;/em&gt; es PaaS, además, expusimos algunas de las limitaciones
 que nos impone la plataforma para desplegar nuestras aplicaciones y cómo trabajar
 alrededor de ellas para hacer funcionar todo.&lt;/p&gt;
@@ -1553,7 +1553,7 @@ de esta manera evitamos conflictos y dolores de cabeza como el antes descrito.&l
 en cualquier proyecto web, no sólo si estamos corriendo nuestra app en Heroku.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="heroku"></category><category term="herramientas"></category><category term="tecnología"></category><category term="programación"></category></entry><entry><title>Heroku + Django sin morir en el intento (Parte 1)</title><link href="http://iffm.org/heroku-django-sin-morir-en-el-intento-parte-1.html" rel="alternate"></link><updated>2013-09-23T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2013-09-23:heroku-django-sin-morir-en-el-intento-parte-1.html</id><summary type="html">&lt;p&gt;Antes, para tener tu sistema web en línea, debías contratar
+</summary><category term="heroku"></category><category term="herramientas"></category><category term="tecnología"></category><category term="programación"></category></entry><entry><title>Heroku + Django sin morir en el intento (Parte 1)</title><link href="http://iffm.me/heroku-django-sin-morir-en-el-intento-parte-1.html" rel="alternate"></link><updated>2013-09-23T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2013-09-23:heroku-django-sin-morir-en-el-intento-parte-1.html</id><summary type="html">&lt;p&gt;Antes, para tener tu sistema web en línea, debías contratar
 un servicio de Servidor Dedicado o mínimo un VPS y administrarlo,
 si tenías más presupuesto, comprabas un servidor y lo acondicionabas
 o alquilabas un rack en algún centro de datos para tenerlo colocado allí.&lt;/p&gt;
@@ -1763,7 +1763,7 @@ es el propietario del objeto que contiene el archivo (video) que se desea obtene
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="heroku"></category><category term="herramientas"></category><category term="tecnología"></category><category term="programación"></category></entry><entry><title>Ahora soy lead developer y no tengo mucha idea: anécdotas y reflexión</title><link href="http://iffm.org/ahora-soy-lead-developer-y-no-tengo-mucha-idea-anecdotas-y-reflexion.html" rel="alternate"></link><updated>2013-09-21T01:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2013-09-21:ahora-soy-lead-developer-y-no-tengo-mucha-idea-anecdotas-y-reflexion.html</id><summary type="html">&lt;p&gt;Primero que nada, me gustaría pedir disculpas (o permiso xD) si
+</summary><category term="heroku"></category><category term="herramientas"></category><category term="tecnología"></category><category term="programación"></category></entry><entry><title>Ahora soy lead developer y no tengo mucha idea: anécdotas y reflexión</title><link href="http://iffm.me/ahora-soy-lead-developer-y-no-tengo-mucha-idea-anecdotas-y-reflexion.html" rel="alternate"></link><updated>2013-09-21T01:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2013-09-21:ahora-soy-lead-developer-y-no-tengo-mucha-idea-anecdotas-y-reflexion.html</id><summary type="html">&lt;p&gt;Primero que nada, me gustaría pedir disculpas (o permiso xD) si
 cometo algún error ortográfico en este artículo, se me olvidó pasar
 el &lt;a class="reference external" href="http://aspell.net/"&gt;aspell&lt;/a&gt;, el hecho es que, para ponerlos un poco en contexto, vengo
 de un rato un poco etílico.&lt;/p&gt;
@@ -1833,7 +1833,7 @@ que, reflexionando, capaz producto de las bebidas espirituosas de hoy, he empeza
 para asumir responsabilidades de este calibre aún, quizás sea algo de actitud o quizás sea algo de aptitud. Ustedes, ¿qué
 piensan?.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="carrera"></category><category term="actitud"></category><category term="personal"></category></entry><entry><title>Clientes SOAP en Python</title><link href="http://iffm.org/clientes-soap-en-python.html" rel="alternate"></link><updated>2013-08-18T08:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2013-08-18:clientes-soap-en-python.html</id><summary type="html">&lt;p&gt;Como todos saben, y algunos me chalequean por eso, en la
+</summary><category term="carrera"></category><category term="actitud"></category><category term="personal"></category></entry><entry><title>Clientes SOAP en Python</title><link href="http://iffm.me/clientes-soap-en-python.html" rel="alternate"></link><updated>2013-08-18T08:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2013-08-18:clientes-soap-en-python.html</id><summary type="html">&lt;p&gt;Como todos saben, y algunos me chalequean por eso, en la
 primera mitad de 2013 cambié de trabajo dos veces, estaba
 algo aburrido en Metamax y decidí aceptar una oportunidad
 en 4geeks, junto con una serie de proyectos para una empresa
@@ -2073,7 +2073,7 @@ punto de conexión al servicio web especificado en el WSDL.&lt;/p&gt;
 vía SOAP.&lt;/p&gt;
 &lt;p&gt;Para más información recomiendo revisar la documentación de la librería &lt;a class="reference external" href="https://fedorahosted.org/suds/wiki/Documentation"&gt;acá&lt;/a&gt;, sin embargo, para
 hacer clientes para servicios SOAP básicos, con este tutorial debería ser suficiente.&lt;/p&gt;
-</summary><category term="python"></category><category term="web services"></category><category term="soap"></category></entry><entry><title>Y al fin!, me estrené como ponente</title><link href="http://iffm.org/y-al-fin-me-estrene-como-ponente.html" rel="alternate"></link><updated>2013-08-10T21:00:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2013-08-10:y-al-fin-me-estrene-como-ponente.html</id><summary type="html">&lt;p&gt;Bueno, esto ya es tema viejo, pero no había tenido
+</summary><category term="python"></category><category term="web services"></category><category term="soap"></category></entry><entry><title>Y al fin!, me estrené como ponente</title><link href="http://iffm.me/y-al-fin-me-estrene-como-ponente.html" rel="alternate"></link><updated>2013-08-10T21:00:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2013-08-10:y-al-fin-me-estrene-como-ponente.html</id><summary type="html">&lt;p&gt;Bueno, esto ya es tema viejo, pero no había tenido
 tiempo de escribir al respecto. Desde que organicé el
 &lt;em&gt;PyConVE2012&lt;/em&gt; había tenido la idea de probar cómo me
 iba dando alguna ponencia o algún tutorial, ya en la
@@ -2115,7 +2115,7 @@ dar a conocer algo de Python en ambos eventos.&lt;/p&gt;
 &lt;a class="reference external" href="http://www.slideshare.net/iferminm/testing-etapa-olvidada"&gt;http://www.slideshare.net/iferminm/testing-etapa-olvidada&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Iniciación a las artes marciales con Python&lt;/em&gt;
 &lt;a class="reference external" href="http://www.slideshare.net/iferminm/iniciacin-a-las-artes-marciales-con-python"&gt;http://www.slideshare.net/iferminm/iniciacin-a-las-artes-marciales-con-python&lt;/a&gt;&lt;/p&gt;
-</summary><category term="personal"></category><category term="anécdota"></category></entry><entry><title>Carta abierta al DIPUTADO Leomagno Flores</title><link href="http://iffm.org/carta-abierta-al-diputado-leomagno-flores.html" rel="alternate"></link><updated>2013-03-14T08:44:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2013-03-14:carta-abierta-al-diputado-leomagno-flores.html</id><summary type="html">&lt;p&gt;Quienes me conocen saben que llevo un buen rato alejado
+</summary><category term="personal"></category><category term="anécdota"></category></entry><entry><title>Carta abierta al DIPUTADO Leomagno Flores</title><link href="http://iffm.me/carta-abierta-al-diputado-leomagno-flores.html" rel="alternate"></link><updated>2013-03-14T08:44:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2013-03-14:carta-abierta-al-diputado-leomagno-flores.html</id><summary type="html">&lt;p&gt;Quienes me conocen saben que llevo un buen rato alejado
 del oscuro mundo de la política o, más bien, politiquería
 venezolana. Las razones son muy diversas, pero luego de ver el
 video que coloco a continuación, simplemente no pude sino
@@ -2246,7 +2246,7 @@ por lo que han demostrado en los últimos años, mucho menos saben gobernar.&lt;
 &lt;p&gt;Los dejo ahora con una charla que dio Ernesto Hernández-Nóvich acerca del &lt;em&gt;Estado&lt;/em&gt; y el &lt;em&gt;Software Libre&lt;/em&gt;,
 &lt;strong&gt;La libertad no admite grises&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="youtube"&gt;&lt;iframe src="https://www.youtube.com/embed/Jukl9gBvSS8" width="420" height="315" allowfullscreen seamless frameBorder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;/div&gt;
-</summary><category term="informática"></category><category term="política"></category><category term="personal"></category><category term="opinión"></category></entry><entry><title>Querido amigo usuario</title><link href="http://iffm.org/querido-amigo-usuario.html" rel="alternate"></link><updated>2013-02-03T23:39:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2013-02-03:querido-amigo-usuario.html</id><summary type="html">&lt;p&gt;En algunas carreras me llama muchísimo la atención el hecho de que
+</summary><category term="informática"></category><category term="política"></category><category term="personal"></category><category term="opinión"></category></entry><entry><title>Querido amigo usuario</title><link href="http://iffm.me/querido-amigo-usuario.html" rel="alternate"></link><updated>2013-02-03T23:39:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2013-02-03:querido-amigo-usuario.html</id><summary type="html">&lt;p&gt;En algunas carreras me llama muchísimo la atención el hecho de que
 todos tus amigos, familiares, vecinos e incluso gente que acaba de
 conocerte piensan que estudiaste para proveerles servicio gratis y que,
 además, debes saberlo todo de todo o no sirves.&lt;/p&gt;
@@ -2278,7 +2278,7 @@ BlackBerry&lt;/em&gt;.&lt;/p&gt;
 tus necesidades tecnológicas de vez en cuando, pero &lt;strong&gt;no abuses&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Con cariño
 Israel.&lt;/p&gt;
-</summary><category term="Personal"></category><category term="Carrera"></category></entry><entry><title>Resumen del 2012 (y propuestas para el 2013)</title><link href="http://iffm.org/resumen-del-2012-y-propuestas-para-el-2013.html" rel="alternate"></link><updated>2013-01-14T08:00:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2013-01-14:resumen-del-2012-y-propuestas-para-el-2013.html</id><summary type="html">&lt;p&gt;Bueno, ya se nos fue otro año, un año en el que
+</summary><category term="Personal"></category><category term="Carrera"></category></entry><entry><title>Resumen del 2012 (y propuestas para el 2013)</title><link href="http://iffm.me/resumen-del-2012-y-propuestas-para-el-2013.html" rel="alternate"></link><updated>2013-01-14T08:00:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2013-01-14:resumen-del-2012-y-propuestas-para-el-2013.html</id><summary type="html">&lt;p&gt;Bueno, ya se nos fue otro año, un año en el que
 supuestamente se acababa el mundo pero no fue así
 (lo siento mayas y adventistas).&lt;/p&gt;
 &lt;p&gt;Lo que realmente querían decir los mayas era que
@@ -2372,7 +2372,7 @@ a la vez.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="personal"></category></entry><entry><title>Mi experiencia en el PyConVE 2012 y otros cuentos</title><link href="http://iffm.org/mi-experiencia-en-el-pyconve-2012-y-otros-cuentos.html" rel="alternate"></link><updated>2012-11-18T08:58:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2012-11-18:mi-experiencia-en-el-pyconve-2012-y-otros-cuentos.html</id><summary type="html">&lt;p&gt;Bueno, ya ha pasado una semana y alguito desde que terminó la
+</summary><category term="personal"></category></entry><entry><title>Mi experiencia en el PyConVE 2012 y otros cuentos</title><link href="http://iffm.me/mi-experiencia-en-el-pyconve-2012-y-otros-cuentos.html" rel="alternate"></link><updated>2012-11-18T08:58:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2012-11-18:mi-experiencia-en-el-pyconve-2012-y-otros-cuentos.html</id><summary type="html">&lt;p&gt;Bueno, ya ha pasado una semana y alguito desde que terminó la
 primera Conferencia del Lenguaje Python de Venezuela
 (PyConVE), he tenido algo de tiempo para reflexionar
 y pensar acerca de varias cosas que me ocurrieron antes
@@ -2567,7 +2567,7 @@ a &lt;strong&gt;todos&lt;/strong&gt; los ponentes nacionales por apartar esos tr
 nuestro &lt;strong&gt;primer&lt;/strong&gt; &lt;em&gt;PyCon&lt;/em&gt;, a mi novia por apoyarme en mis locuras y a todos quienes asistieron de Caracas y,
 sobre todo, del interior del país, GRACIAS TOTALES!.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="PyCon"></category><category term="Comunidad"></category></entry><entry><title>Ehm, Hola de nuevo!</title><link href="http://iffm.org/ehm-hola-de-nuevo.html" rel="alternate"></link><updated>2012-11-10T23:39:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2012-11-10:ehm-hola-de-nuevo.html</id><summary type="html">&lt;p&gt;Saludos a todos, había estado perdido de por estos lados.
+</summary><category term="PyCon"></category><category term="Comunidad"></category></entry><entry><title>Ehm, Hola de nuevo!</title><link href="http://iffm.me/ehm-hola-de-nuevo.html" rel="alternate"></link><updated>2012-11-10T23:39:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2012-11-10:ehm-hola-de-nuevo.html</id><summary type="html">&lt;p&gt;Saludos a todos, había estado perdido de por estos lados.
 Todo tiene una razón de ser, en este caso, fueron varias:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;Por un lado, mi blog viejo, hecho en Wordpress, fue
@@ -2627,7 +2627,7 @@ con la misma carga y espacio disponible en disco.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Creo que es todo, realmente gracias Carlos por tu recomendación&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="Personal"></category><category term="Blog"></category><category term="Retomando"></category></entry><entry><title>Testing: la etapa olvidada.</title><link href="http://iffm.org/testing-la-etapa-olvidada.html" rel="alternate"></link><updated>2012-07-19T12:50:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2012-07-19:testing-la-etapa-olvidada.html</id><summary type="html">&lt;p&gt;En esta oportunidad, vengo a hablarles de una etapa del
+</summary><category term="Personal"></category><category term="Blog"></category><category term="Retomando"></category></entry><entry><title>Testing: la etapa olvidada.</title><link href="http://iffm.me/testing-la-etapa-olvidada.html" rel="alternate"></link><updated>2012-07-19T12:50:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2012-07-19:testing-la-etapa-olvidada.html</id><summary type="html">&lt;p&gt;En esta oportunidad, vengo a hablarles de una etapa del
 desarrollo que suele ser olvidada y marginada por la mayoría de los
 desarrolladores que conozco: las pruebas. En&amp;nbsp;&lt;a class="reference external" href="http://zava.com.ve"&gt;Zava&lt;/a&gt;, la compañía en
 la que trabajo actualmente, llevamos un tiempo hablando acerca de
@@ -2742,7 +2742,7 @@ tomar un poco más en serio las pruebas de software pues, aunque en la
 universidad las mencionan como una etapa importante en algunos cursos,
 muy pocas personas en la calle toman realmente en serio este recurso tan
 útil.&lt;/p&gt;
-&lt;/p&gt;</summary><category term="Actitud del Programador"></category><category term="desarrollo de software"></category><category term="informática"></category><category term="metodología"></category><category term="testing"></category></entry><entry><title>Del comportamiento en público y otros males</title><link href="http://iffm.org/del-comportamiento-en-publico-y-otros-males.html" rel="alternate"></link><updated>2012-07-18T19:57:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2012-07-18:del-comportamiento-en-publico-y-otros-males.html</id><summary type="html">&lt;p&gt;Mini entrada de desahogo pues estoy realmente molesto por lo que acá
+&lt;/p&gt;</summary><category term="Actitud del Programador"></category><category term="desarrollo de software"></category><category term="informática"></category><category term="metodología"></category><category term="testing"></category></entry><entry><title>Del comportamiento en público y otros males</title><link href="http://iffm.me/del-comportamiento-en-publico-y-otros-males.html" rel="alternate"></link><updated>2012-07-18T19:57:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2012-07-18:del-comportamiento-en-publico-y-otros-males.html</id><summary type="html">&lt;p&gt;Mini entrada de desahogo pues estoy realmente molesto por lo que acá
 contaré. Lo siento, debía compartirlo. &amp;nbsp;Hoy, viajando en el metro, una
 señora cuya mejor descripción es, por sus maneras es, de barrio (sin
 ánimos de sonar clasista o racista o algo parecido), iba con su hija,
@@ -2757,7 +2757,7 @@ del brazo y le dice &amp;quot;no mija, deje eso ahí...&amp;quot;. Realmente est
 palabras, no conforme con que comes en el metro, que no está permitido,
 ¿botas basura y no la recoges?, definitivamente el rancho se lleva en la
 cabeza.&lt;/p&gt;
-</summary></entry><entry><title>Graduado, ¿y ahora?</title><link href="http://iffm.org/graduado-y-ahora.html" rel="alternate"></link><updated>2012-06-27T10:59:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2012-06-27:graduado-y-ahora.html</id><summary type="html">&lt;p&gt;Bueno, vengo con otra reflexión respecto a qué ocurre al culminar la
+</summary></entry><entry><title>Graduado, ¿y ahora?</title><link href="http://iffm.me/graduado-y-ahora.html" rel="alternate"></link><updated>2012-06-27T10:59:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2012-06-27:graduado-y-ahora.html</id><summary type="html">&lt;p&gt;Bueno, vengo con otra reflexión respecto a qué ocurre al culminar la
 carrera a nivel universitario, quiero empezar aclarando que acá expondré
 mi (¿poca?) experiencia personal y este artículo estará marcado por mi
 manera particular de ver las cosas que no necesariamente resulta ser la
@@ -2843,7 +2843,7 @@ hay que especializarse y ser excepcionalmente bueno en algo, yo elegí
 Desarrollo en Python, y estoy trabajando en ello, también programo en
 PHP, Java, Perl y C/C++ si es necesario, pero mi principal herramienta
 es Python y, aún así, tengo intenciones de aprender Ruby.&lt;/p&gt;
-</summary><category term="Actitud del Programador"></category><category term="carrera"></category><category term="opinión"></category><category term="personal"></category></entry><entry><title>Una nueva etapa se cierra</title><link href="http://iffm.org/una-nueva-etapa-se-cierra.html" rel="alternate"></link><updated>2012-06-23T01:10:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2012-06-23:una-nueva-etapa-se-cierra.html</id><summary type="html">&lt;p&gt;He tenido un poco abandonado el&amp;nbsp;blog&amp;nbsp;debido a mi trabajo
+</summary><category term="Actitud del Programador"></category><category term="carrera"></category><category term="opinión"></category><category term="personal"></category></entry><entry><title>Una nueva etapa se cierra</title><link href="http://iffm.me/una-nueva-etapa-se-cierra.html" rel="alternate"></link><updated>2012-06-23T01:10:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2012-06-23:una-nueva-etapa-se-cierra.html</id><summary type="html">&lt;p&gt;He tenido un poco abandonado el&amp;nbsp;blog&amp;nbsp;debido a mi trabajo
 especial de grado (TEG) y a mi nuevo trabajo en&amp;nbsp;Zava, pero poco a poco
 he ido adelantando cosas y hoy conseguí algo de tiempo para escribir las
 últimas cosas sobre las que he estado reflexionando las últimas semanas
@@ -2935,7 +2935,7 @@ veces pareciera vivir en su propio mundo.&lt;/li&gt;
 &lt;p&gt;Sus lecciones académicas y personales son muy valiosas, no puedo más que
 decirles: MUCHAS GRACIAS!, espero llegar a ser al menos la mitad de
 buenos de lo que ustedes son.&lt;/p&gt;
-</summary><category term="opinión"></category><category term="universidad"></category></entry><entry><title>¿Por qué flashear un teléfono Android?</title><link href="http://iffm.org/por-que-flashear-un-telefono-android.html" rel="alternate"></link><updated>2011-12-21T08:00:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-12-21:por-que-flashear-un-telefono-android.html</id><summary type="html">&lt;p&gt;Todo el tiempo escuchamos a los fanáticos de Android (entre los que me
+</summary><category term="opinión"></category><category term="universidad"></category></entry><entry><title>¿Por qué flashear un teléfono Android?</title><link href="http://iffm.me/por-que-flashear-un-telefono-android.html" rel="alternate"></link><updated>2011-12-21T08:00:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-12-21:por-que-flashear-un-telefono-android.html</id><summary type="html">&lt;p&gt;Todo el tiempo escuchamos a los fanáticos de Android (entre los que me
 incluyo) diciendo lo bueno que es el sistema operativo, todo lo que
 permite, las libertades y potencialidades que ofrece, todo un conjunto
 de benefinios y cosas &amp;quot;chéveres&amp;quot; que pueden hacerse con Android,
@@ -2997,7 +2997,7 @@ no deja de ser simplemente unsueño.&lt;/li&gt;
 &lt;p&gt;[1] Quadrant es una aplicación que corre pruebas de estrés sobre
 nuestro equipo, mide los resultados y nos muestra un gráfico
 posicionando el dispositivo en comparación con otros.&lt;/p&gt;
-</summary><category term="Android"></category><category term="informática"></category><category term="Software Libre"></category></entry><entry><title>Limpiando la torta e instalando Cyanogenmod 7</title><link href="http://iffm.org/limpiando-la-torta-e-instalando-cyanogenmod-7.html" rel="alternate"></link><updated>2011-12-20T10:20:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-12-20:limpiando-la-torta-e-instalando-cyanogenmod-7.html</id><summary type="html">&lt;p&gt;Ya en la entrada anterior expliqué cómo hice para,
+</summary><category term="Android"></category><category term="informática"></category><category term="Software Libre"></category></entry><entry><title>Limpiando la torta e instalando Cyanogenmod 7</title><link href="http://iffm.me/limpiando-la-torta-e-instalando-cyanogenmod-7.html" rel="alternate"></link><updated>2011-12-20T10:20:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-12-20:limpiando-la-torta-e-instalando-cyanogenmod-7.html</id><summary type="html">&lt;p&gt;Ya en la entrada anterior expliqué cómo hice para,
 &amp;quot;inocentemente&amp;quot;, poner la torta mientras instalaba Cyanogenmod, ahora
 explicaré paso a paso cómo lo reparé, luego de eso, explicaré cómo
 procedí a instalar Cyanogenmod 7 en mi Samsung Captivate (AT&amp;amp;T Galaxy
@@ -3070,7 +3070,7 @@ deseamos instalarlo. Al reiniciar el teléfono, empezará a arrancar
 Cyanogen, es importante que el teléfono &lt;strong&gt;no se apague&lt;/strong&gt;&amp;nbsp;durante este
 proceso, lo digo por experiencia ;-), el primer arranque siempre tardará
 un poco así que hay que tener algo de paciencia.&lt;/p&gt;
-</summary><category term="Android"></category><category term="Sistemas Operativos"></category><category term="Software Libre"></category></entry><entry><title>Cómo NO instalar un nuevo ROM (Brickeando tu cel)</title><link href="http://iffm.org/como-no-instalar-un-nuevo-rom-brickeando-tu-cel.html" rel="alternate"></link><updated>2011-12-19T10:20:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-12-19:como-no-instalar-un-nuevo-rom-brickeando-tu-cel.html</id><summary type="html">&lt;p&gt;Bien, en este post pretendo resumir mi primera metida de
+</summary><category term="Android"></category><category term="Sistemas Operativos"></category><category term="Software Libre"></category></entry><entry><title>Cómo NO instalar un nuevo ROM (Brickeando tu cel)</title><link href="http://iffm.me/como-no-instalar-un-nuevo-rom-brickeando-tu-cel.html" rel="alternate"></link><updated>2011-12-19T10:20:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-12-19:como-no-instalar-un-nuevo-rom-brickeando-tu-cel.html</id><summary type="html">&lt;p&gt;Bien, en este post pretendo resumir mi primera metida de
 pata flasheando mi Samsung Captivate (Galaxy S versión AT&amp;amp;T) con
 Cyanogenmod 7.&lt;/p&gt;
 &lt;p&gt;Vale destacar, que este es el primero de una serie de
@@ -3121,7 +3121,7 @@ luego &amp;quot;hacer&amp;quot;, ese tiempo no se es productivo como tal, por lo
 pueden llamarse &amp;quot;horas hombre&amp;quot;, y como uno pasa mucho tiempo sentado
 leyendo y probando diversas maneras de resolver el problema, quienes
 sufren son las posaderas.&lt;/p&gt;
-</summary><category term="Android"></category><category term="Sistemas Operativos"></category><category term="Software Libre"></category></entry><entry><title>Cosas que AMO de Python VI: Está en TODAS partes</title><link href="http://iffm.org/cosas-que-amo-de-python-vi-esta-en-todas-partes.html" rel="alternate"></link><updated>2011-11-30T07:40:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-11-30:cosas-que-amo-de-python-vi-esta-en-todas-partes.html</id><summary type="html">&lt;p&gt;Si, resistirse es inútil, donde sea que estés tendrás Python a la mano,
+</summary><category term="Android"></category><category term="Sistemas Operativos"></category><category term="Software Libre"></category></entry><entry><title>Cosas que AMO de Python VI: Está en TODAS partes</title><link href="http://iffm.me/cosas-que-amo-de-python-vi-esta-en-todas-partes.html" rel="alternate"></link><updated>2011-11-30T07:40:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-11-30:cosas-que-amo-de-python-vi-esta-en-todas-partes.html</id><summary type="html">&lt;p&gt;Si, resistirse es inútil, donde sea que estés tendrás Python a la mano,
 menos en Windows que debes instalarlo, pero lo interesante es que puedes
 tenerlo de igual manera.&lt;/p&gt;
 &lt;p&gt;Escogí el número 6 romano (VI) de manera
@@ -3140,7 +3140,7 @@ así lo desea, con su investigación y aprendizaje particular, para
 convencerlos creo que 6 es perfecto (chiste geek). Más adelante espero
 tener nivel suficiente como para publicarles acerca de tópicos más
 avanzados del lenguaje.&lt;/p&gt;
-</summary><category term="Lenguajes"></category><category term="Programación"></category><category term="python"></category></entry><entry><title>Cosas que AMO de Python V: Introspección de objetos</title><link href="http://iffm.org/cosas-que-amo-de-python-v-introspeccion-de-objetos.html" rel="alternate"></link><updated>2011-11-29T08:31:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-11-29:cosas-que-amo-de-python-v-introspeccion-de-objetos.html</id><summary type="html">&lt;p&gt;Python, hace trivial lo que en otros lenguajes resulta complejo: la
+</summary><category term="Lenguajes"></category><category term="Programación"></category><category term="python"></category></entry><entry><title>Cosas que AMO de Python V: Introspección de objetos</title><link href="http://iffm.me/cosas-que-amo-de-python-v-introspeccion-de-objetos.html" rel="alternate"></link><updated>2011-11-29T08:31:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-11-29:cosas-que-amo-de-python-v-introspeccion-de-objetos.html</id><summary type="html">&lt;p&gt;Python, hace trivial lo que en otros lenguajes resulta complejo: la
 introspección o reflexión de objetos. La reflexión o introspección de
 objetos, es una técnica que permite a un programa cargar objetos que no
 conoce, examinarlos y determinar sus variables de instancia y métodos
@@ -3199,7 +3199,7 @@ evitar errores en tiempo de ejecusión al intentar invocar una cadena de
 caracteres, por ejemplo, como si fuera un objeto &amp;quot;llamable&amp;quot;. Todo esto
 es especialmente útil si estamos desarrollando herramientas que trabajan
 bajo el principio de &amp;quot;Convention over Configuration&amp;quot;.&lt;/p&gt;
-</summary><category term="Lenguajes"></category><category term="Programación"></category><category term="python"></category></entry><entry><title>Configurando réplicas Maestro-Esclavo con Postgres</title><link href="http://iffm.org/configurando-replicas-maestro-esclavo-con-postgres.html" rel="alternate"></link><updated>2011-11-10T08:44:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-11-10:configurando-replicas-maestro-esclavo-con-postgres.html</id><summary type="html">&lt;p&gt;Muchas veces, por alguna razón, hacemos desde la capa de
+</summary><category term="Lenguajes"></category><category term="Programación"></category><category term="python"></category></entry><entry><title>Configurando réplicas Maestro-Esclavo con Postgres</title><link href="http://iffm.me/configurando-replicas-maestro-esclavo-con-postgres.html" rel="alternate"></link><updated>2011-11-10T08:44:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-11-10:configurando-replicas-maestro-esclavo-con-postgres.html</id><summary type="html">&lt;p&gt;Muchas veces, por alguna razón, hacemos desde la capa de
 aplicación cientos de validaciones y procesos que, si sabemos cómo,
 podríamos delegar en el manejador de base de datos.&lt;/p&gt;
 &lt;p&gt;Las validaciones de reglas de negocio son un ejemplo muy frecuente de ello, tendemos, por
@@ -3345,7 +3345,7 @@ falta una toalla para eso. Fácil ¿no?.&lt;/p&gt;
 &lt;p&gt;[1] &lt;a class="reference external" href="http://developer.postgresql.org/pgdocs/postgres/runtime-config-wal.html"&gt;http://developer.postgresql.org/pgdocs/postgres/runtime-config-wal.html&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;[2] &lt;a class="reference external" href="http://developer.postgresql.org/pgdocs/postgres/runtime-config-replication.html#GUC-HOT-STANDBY"&gt;http://developer.postgresql.org/pgdocs/postgres/runtime-config-replication.html#GUC-HOT-STANDBY&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="Bases de Datos"></category><category term="informática"></category><category term="Postgres"></category><category term="Software Libre"></category></entry><entry><title>Algo sobre Dennis Ritchie</title><link href="http://iffm.org/algo-sobre-dennis-ritchie.html" rel="alternate"></link><updated>2011-10-18T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-10-18:algo-sobre-dennis-ritchie.html</id><summary type="html">&lt;p&gt;Quizás no sepas de quien se trata, es probable que hayas escuchado su
+</summary><category term="Bases de Datos"></category><category term="informática"></category><category term="Postgres"></category><category term="Software Libre"></category></entry><entry><title>Algo sobre Dennis Ritchie</title><link href="http://iffm.me/algo-sobre-dennis-ritchie.html" rel="alternate"></link><updated>2011-10-18T12:34:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-10-18:algo-sobre-dennis-ritchie.html</id><summary type="html">&lt;p&gt;Quizás no sepas de quien se trata, es probable que hayas escuchado su
 nombre alguna vez si (¿y sólo si?) estudias o estudiaste computación,
 informática o alguna carrera similar.&lt;/p&gt;
 &lt;p&gt;Aún así, si no eres computista,
@@ -3366,7 +3366,7 @@ de múltiples publicaciones en el campo de los Lenguajes de Programación
 y las Ciencias de la Computación en general, investigador como forma de
 vida, realmente hemos perdido a una de las mentes más brillantes del
 siglo XX.&lt;/p&gt;
-</summary><category term="opinión"></category></entry><entry><title>Cosas que AMO de Python IV: es autodocumentado</title><link href="http://iffm.org/cosas-que-amo-de-python-iv-es-autodocumentado.html" rel="alternate"></link><updated>2011-09-15T07:54:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-09-15:cosas-que-amo-de-python-iv-es-autodocumentado.html</id><summary type="html">&lt;p&gt;Confieso, confiésense, confesemos todos, todos somos adictos a Internet,
+</summary><category term="opinión"></category></entry><entry><title>Cosas que AMO de Python IV: es autodocumentado</title><link href="http://iffm.me/cosas-que-amo-de-python-iv-es-autodocumentado.html" rel="alternate"></link><updated>2011-09-15T07:54:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-09-15:cosas-que-amo-de-python-iv-es-autodocumentado.html</id><summary type="html">&lt;p&gt;Confieso, confiésense, confesemos todos, todos somos adictos a Internet,
 hasta un punto casi enfermizo. No se ustedes, pero si estoy en un lugar
 sin Internet, o conexión de datos vía 3G, es como si me faltara el aire,
 incluso, cuando se cae el servicio en mi casa o en la oficina, se me
@@ -3531,7 +3531,7 @@ es un lenguaje &lt;em&gt;Precompilado/Semi-interpretado&lt;/em&gt;. Python funci
 manera similar, cada archivo .py, al invocar el intérprete genera un
 archivo .pyc, que contiene un &lt;em&gt;bytecode&lt;/em&gt; que es lo que realmente ejecuta
 el intérprete.&lt;/p&gt;
-</summary><category term="Lenguajes"></category><category term="Programación"></category><category term="python"></category></entry><entry><title>Cosas que AMO de Python III: todo es un objeto</title><link href="http://iffm.org/cosas-que-amo-de-python-iii-todo-es-un-objeto.html" rel="alternate"></link><updated>2011-09-14T15:50:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-09-14:cosas-que-amo-de-python-iii-todo-es-un-objeto.html</id><summary type="html">&lt;p&gt;Python, al igual que Java, es un lenguaje que soporta Orientación a
+</summary><category term="Lenguajes"></category><category term="Programación"></category><category term="python"></category></entry><entry><title>Cosas que AMO de Python III: todo es un objeto</title><link href="http://iffm.me/cosas-que-amo-de-python-iii-todo-es-un-objeto.html" rel="alternate"></link><updated>2011-09-14T15:50:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-09-14:cosas-que-amo-de-python-iii-todo-es-un-objeto.html</id><summary type="html">&lt;p&gt;Python, al igual que Java, es un lenguaje que soporta Orientación a
 Objetos. Con la diferencia de que en Java, aún tenemos tipos primitivos
 (bool, int, float, double) y sus respectivas clases envoltorio (Integer,
 Float...). En Python, no existe tal cosa como &amp;quot;clases envoltorio&amp;quot;,
@@ -3552,7 +3552,7 @@ internalizamos el hecho de que, para Python, &lt;strong&gt;todo&lt;/strong&gt; e
 ganamos un poder increíble a la hora de escribir nuestros programas y
 tratamos de darle a las cosas un enfoque diferente. ¿Para qué puede
 servir eso?, en otro artículo les cuento ;-)&lt;/p&gt;
-</summary><category term="Lenguajes"></category><category term="python"></category></entry><entry><title>Cosas que amo de Python II: Su Filosofía</title><link href="http://iffm.org/cosas-que-amo-de-python-ii-su-filosofia.html" rel="alternate"></link><updated>2011-09-13T09:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-09-13:cosas-que-amo-de-python-ii-su-filosofia.html</id><summary type="html">&lt;p&gt;Cada lenguaje y cada herramienta vienen con una filosofía y, al parecer,
+</summary><category term="Lenguajes"></category><category term="python"></category></entry><entry><title>Cosas que amo de Python II: Su Filosofía</title><link href="http://iffm.me/cosas-que-amo-de-python-ii-su-filosofia.html" rel="alternate"></link><updated>2011-09-13T09:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-09-13:cosas-que-amo-de-python-ii-su-filosofia.html</id><summary type="html">&lt;p&gt;Cada lenguaje y cada herramienta vienen con una filosofía y, al parecer,
 con una manera de pensar. Los que usamos Linux pensamos de una manera,
 por ejemplo, estamos muy orientados al software libre.&lt;/p&gt;
 &lt;p&gt;Quienes usan
@@ -3610,7 +3610,7 @@ internalizas, tu código cambia de manera radical. Mi recomendación es:
 tómenla como forma de vida y traten de aplicarlo en todo y piensen en
 eso mientras programan. Háganlo su propio mantra y ténganlo siempre en
 cuenta, no sólo a la hora de &amp;quot;echar código&amp;quot;.&lt;/p&gt;
-</summary><category term="Actitud del Programador"></category><category term="Lenguajes"></category><category term="Programación"></category></entry><entry><title>Cosas que amo de Python I: Lists Comprehensions</title><link href="http://iffm.org/cosas-que-amo-de-python-i-lists-comprehensions.html" rel="alternate"></link><updated>2011-09-11T21:28:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-09-11:cosas-que-amo-de-python-i-lists-comprehensions.html</id><summary type="html">&lt;p&gt;Bueno, ya que estoy trabajando con Python, he podido ir, poco a poco,
+</summary><category term="Actitud del Programador"></category><category term="Lenguajes"></category><category term="Programación"></category></entry><entry><title>Cosas que amo de Python I: Lists Comprehensions</title><link href="http://iffm.me/cosas-que-amo-de-python-i-lists-comprehensions.html" rel="alternate"></link><updated>2011-09-11T21:28:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-09-11:cosas-que-amo-de-python-i-lists-comprehensions.html</id><summary type="html">&lt;p&gt;Bueno, ya que estoy trabajando con Python, he podido ir, poco a poco,
 explorando las capacidades de ese lenguaje, es realmente poderoso y, tal
 como una droga, su uso excesivo produce adicción. No pretendo
 convertirlo en &lt;em&gt;el único lenguaje que usaré&lt;/em&gt;pero si me enfocaré en
@@ -3661,7 +3661,7 @@ expresión generadora y una expresión filtro:&lt;/p&gt;
 &lt;script src="http://pastebin.com/embed_js.php?i=Afn0JFsK"&gt;&lt;/script&gt;&lt;p&gt;A manera de ejercicio, hagan lo mismo pero utilizando ciclos, verán que
 es mucho más complicado una vez que conocen ya la magia de la
 Comprensión de Listas.&lt;/p&gt;
-&lt;/p&gt;</summary><category term="Lenguajes"></category><category term="Programación"></category><category term="python"></category></entry><entry><title>¿Por qué aprender un nuevo lenguaje?</title><link href="http://iffm.org/por-que-aprender-un-nuevo-lenguaje.html" rel="alternate"></link><updated>2011-09-11T20:56:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-09-11:por-que-aprender-un-nuevo-lenguaje.html</id><summary type="html">&lt;p&gt;Java, C, C#, ,C++, PHP, Perl, Ruby, SQL, SmallTalk, Erlang, Python,
+&lt;/p&gt;</summary><category term="Lenguajes"></category><category term="Programación"></category><category term="python"></category></entry><entry><title>¿Por qué aprender un nuevo lenguaje?</title><link href="http://iffm.me/por-que-aprender-un-nuevo-lenguaje.html" rel="alternate"></link><updated>2011-09-11T20:56:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-09-11:por-que-aprender-un-nuevo-lenguaje.html</id><summary type="html">&lt;p&gt;Java, C, C#, ,C++, PHP, Perl, Ruby, SQL, SmallTalk, Erlang, Python,
 Haskell... Existen muchísimos lenguajes de programación, cada uno con
 sus fortalezas y debilidades, ya aprendí Java en la Universidad, también
 C, he hecho uno que otro proyecto web en PHP, &amp;quot;¡con JQuery y todo!&amp;quot;.
@@ -3702,7 +3702,7 @@ desarrollador, debe ser curioso y no sólo aprender a utilizar la
 herramienta, también explorarla y ver realmente cómo funciona por
 dentro. Sólo así, sabremos cuán óptima y realmente qué tan buena es
 dicha herramienta.&lt;/p&gt;
-</summary><category term="Actitud del Programador"></category><category term="carrera"></category><category term="informática"></category><category term="opinión"></category></entry><entry><title>Java: crónica de una muerte anunciada</title><link href="http://iffm.org/java-cronica-de-una-muerte-anunciada.html" rel="alternate"></link><updated>2011-09-05T07:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-09-05:java-cronica-de-una-muerte-anunciada.html</id><summary type="html">&lt;p&gt;Bien, Oracle compró Sun hace un tiempo ya; todos los sabemos. Oracle
+</summary><category term="Actitud del Programador"></category><category term="carrera"></category><category term="informática"></category><category term="opinión"></category></entry><entry><title>Java: crónica de una muerte anunciada</title><link href="http://iffm.me/java-cronica-de-una-muerte-anunciada.html" rel="alternate"></link><updated>2011-09-05T07:30:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-09-05:java-cronica-de-una-muerte-anunciada.html</id><summary type="html">&lt;p&gt;Bien, Oracle compró Sun hace un tiempo ya; todos los sabemos. Oracle
 tiene un esquema de negocios del tipo &amp;quot;si no me genera ingresos, no lo
 hago&amp;quot;, mientras que Sun tenía un esquema de negocios un poco más
 abierto: desarrollaban y mantenían, en colaboración con las comunidades
@@ -3741,7 +3741,7 @@ y las herramientas. Todo parece estar dibujando un futuro no muy bueno
 para este lenguaje (que era uno de mis favoritos): si Oracle continúa
 cerrándolo cada vez más, parece estar destinado a desaparecer. Una
 verdadera lástima.&lt;/p&gt;
-</summary><category term="informática"></category><category term="Java"></category><category term="Software Libre"></category></entry><entry><title>Sobreviviendo a la Carrera: algunos consejos</title><link href="http://iffm.org/sobreviviendo-a-la-carrera-algunos-consejos.html" rel="alternate"></link><updated>2011-09-02T08:23:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-09-02:sobreviviendo-a-la-carrera-algunos-consejos.html</id><summary type="html">&lt;p&gt;Bien, si estás en los últimos semestres de Ingeniería
+</summary><category term="informática"></category><category term="Java"></category><category term="Software Libre"></category></entry><entry><title>Sobreviviendo a la Carrera: algunos consejos</title><link href="http://iffm.me/sobreviviendo-a-la-carrera-algunos-consejos.html" rel="alternate"></link><updated>2011-09-02T08:23:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-09-02:sobreviviendo-a-la-carrera-algunos-consejos.html</id><summary type="html">&lt;p&gt;Bien, si estás en los últimos semestres de Ingeniería
 Informática, eso significa que has sobrevivido al ataque de los
 cálculos, lograste controlar la rebelión de las físicas, dominaste con
 experticia el asedio de los algoritmos, batallaste arduamente y, ahora,
@@ -3906,7 +3906,7 @@ la pasantía y, si esto es así, que la empresa pueda ofrecerles la
 oportunidad de quedarse trabajando si consideran que su trabajo es de
 calidad y siempre llevar una toalla, uno no sabe si el mundo se acaba
 antes que la carrera.&lt;/p&gt;
-</summary><category term="carrera"></category><category term="estudiante"></category><category term="informática"></category><category term="universidad"></category><category term="opinión"></category></entry><entry><title>Patentes... ¿hasta cuándo?</title><link href="http://iffm.org/patentes-hasta-cuando.html" rel="alternate"></link><updated>2011-08-17T20:28:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-08-17:patentes-hasta-cuando.html</id><summary type="html">&lt;p&gt;Parecieran estar de moda las demandas por &amp;quot;violación de patentes&amp;quot; en el
+</summary><category term="carrera"></category><category term="estudiante"></category><category term="informática"></category><category term="universidad"></category><category term="opinión"></category></entry><entry><title>Patentes... ¿hasta cuándo?</title><link href="http://iffm.me/patentes-hasta-cuando.html" rel="alternate"></link><updated>2011-08-17T20:28:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-08-17:patentes-hasta-cuando.html</id><summary type="html">&lt;p&gt;Parecieran estar de moda las demandas por &amp;quot;violación de patentes&amp;quot; en el
 mundo de la tecnología. Corres el riesgo de ser demandado por las cosas
 más inverosímiles, como por ejemplo &amp;quot;la manera de hacer click en tu
 producto es muy parecida a como es en el mío&amp;quot;, por temas de diseño,
@@ -3982,7 +3982,7 @@ claramente mucho pero, en igual medida, estas patentes perjudican a
 investigadores en el área y el avance en materia tecnológica, dentro de
 poco veremos demandas &amp;quot;porque tu producto también tiene botones y usa
 una pantalla táctil&amp;quot;, así que... FUCK OFF patent trolls.&lt;/p&gt;
-</summary><category term="opinión"></category></entry><entry><title>Virtudes del buen programador</title><link href="http://iffm.org/virtudes-del-buen-programador.html" rel="alternate"></link><updated>2011-07-03T14:11:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-07-03:virtudes-del-buen-programador.html</id><summary type="html">&lt;p&gt;Bueno, llevaba tiempo formándome una imagen mental de cómo sería un buen
+</summary><category term="opinión"></category></entry><entry><title>Virtudes del buen programador</title><link href="http://iffm.me/virtudes-del-buen-programador.html" rel="alternate"></link><updated>2011-07-03T14:11:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-07-03:virtudes-del-buen-programador.html</id><summary type="html">&lt;p&gt;Bueno, llevaba tiempo formándome una imagen mental de cómo sería un buen
 programador, pensé en estupideces como paciencia, constancia,
 perseverancia, espíritu de equipo, empatía. Lo cierto es que ninguno de
 los buenos programadores que conozco son así. En fin, en estos días,
@@ -4014,7 +4014,7 @@ programa rápido y que funcione pronto. Soberbia, hazlo bien para que,
 lejos de criticarte, te elogien. Parece funcionar bien en el ámbito
 profesional, en el ámbito personal, existimos mortales que, a veces, no
 sabemos controlar estas virtudes. ;-)&lt;/p&gt;
-&lt;/p&gt;</summary><category term="Actitud del Programador"></category><category term="opinión"></category></entry><entry><title>Software Libre: La Quinta Libertad</title><link href="http://iffm.org/software-libre-la-quinta-libertad.html" rel="alternate"></link><updated>2011-07-03T12:47:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-07-03:software-libre-la-quinta-libertad.html</id><summary type="html">&lt;p&gt;Esta entrada será corta. En el artículo anterior, nombré las 4
+&lt;/p&gt;</summary><category term="Actitud del Programador"></category><category term="opinión"></category></entry><entry><title>Software Libre: La Quinta Libertad</title><link href="http://iffm.me/software-libre-la-quinta-libertad.html" rel="alternate"></link><updated>2011-07-03T12:47:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-07-03:software-libre-la-quinta-libertad.html</id><summary type="html">&lt;p&gt;Esta entrada será corta. En el artículo anterior, nombré las 4
 libertades fundamentales de las que gozamos los felices usuarios del
 Software Libre, desde la libertad 0 hasta ha libertad 3.&lt;/p&gt;
 &lt;p&gt;Pero olvidé una
@@ -4031,7 +4031,7 @@ repite desde para seleccionar un reproductor multimedia (Rythmbox, VLC,
 MPlayer, Amarok), hasta para seleccionar algo tan simple como un editor
 de texto plano (gedit, kate, emacs, vim), tenemos cientos de opciones de
 donde poder escoger, eso es Software Libre.&lt;/p&gt;
-</summary><category term="Software Libre"></category></entry><entry><title>Software Libre: Teoría y Práctica</title><link href="http://iffm.org/software-libre-teoria-y-practica.html" rel="alternate"></link><updated>2011-07-02T17:38:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-07-02:software-libre-teoria-y-practica.html</id><summary type="html">&lt;p&gt;Muchas veces, hablando de computación y tecnología, mis
+</summary><category term="Software Libre"></category></entry><entry><title>Software Libre: Teoría y Práctica</title><link href="http://iffm.me/software-libre-teoria-y-practica.html" rel="alternate"></link><updated>2011-07-02T17:38:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-07-02:software-libre-teoria-y-practica.html</id><summary type="html">&lt;p&gt;Muchas veces, hablando de computación y tecnología, mis
 amigos y familiares me preguntan qué tengo yo en contra de Windows
 específicamente, y siempre respondo &amp;quot;nada&amp;quot;, y es verdad, no tengo nada
 en contra de Windows o Microsoft, sino del esquema de negocios basado en
@@ -4110,7 +4110,7 @@ lo mismo ocurre con Linux, si bien existen distros para usuarios
 técnicos (como Gentoo, Slackware y CentOS), también existen muchas
 enfocadas al usuario final (como la familia *buntu, Fedora y Simplis),
 simplemente es cuestión de decidirse, probarlo y usarlo sin miedo.&lt;/p&gt;
-</summary><category term="Software Libre"></category></entry><entry><title>iPad vs Galaxy Tab: Mi humilde opinión</title><link href="http://iffm.org/ipad-vs-galaxy-tab-mi-humilde-opinion.html" rel="alternate"></link><updated>2011-06-18T23:26:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-06-18:ipad-vs-galaxy-tab-mi-humilde-opinion.html</id><summary type="html">&lt;p&gt;No me considero un experto en el área de Sistemas
+</summary><category term="Software Libre"></category></entry><entry><title>iPad vs Galaxy Tab: Mi humilde opinión</title><link href="http://iffm.me/ipad-vs-galaxy-tab-mi-humilde-opinion.html" rel="alternate"></link><updated>2011-06-18T23:26:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-06-18:ipad-vs-galaxy-tab-mi-humilde-opinion.html</id><summary type="html">&lt;p&gt;No me considero un experto en el área de Sistemas
 Operativos, mucho menos en el área de Sistemas Operativos para
 dispositivos móviles, es por ello que titulo y aclaro que este post
 expresa mi &lt;strong&gt;humilde&lt;/strong&gt; opinión acerca de un tópico que pareciera estar
@@ -4232,7 +4232,7 @@ de que tienes un &lt;strong&gt;jueguete costoso&lt;/strong&gt;, poderoso eso sí
 fin, el &lt;em&gt;iPad&lt;/em&gt; es tu opción.&amp;nbsp;&amp;nbsp; ;-)&lt;/p&gt;
 &lt;p&gt;Nota: Opinión basada en mi
 experiencia con mi Galaxy Tab y el iPad de mi pana Ricardo Casanova.&lt;/p&gt;
-</summary><category term="Android"></category><category term="Galaxy Tab"></category><category term="iOS"></category><category term="iPad"></category><category term="opinión"></category></entry><entry><title>Empezando a conocer la Web 3.0 (Parte II)</title><link href="http://iffm.org/empezando-a-conocer-la-web-30-parte-ii.html" rel="alternate"></link><updated>2011-06-14T13:16:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-06-14:empezando-a-conocer-la-web-30-parte-ii.html</id><summary type="html">&lt;p&gt;Hace un tiempo, publiqué el primero de una serie de
+</summary><category term="Android"></category><category term="Galaxy Tab"></category><category term="iOS"></category><category term="iPad"></category><category term="opinión"></category></entry><entry><title>Empezando a conocer la Web 3.0 (Parte II)</title><link href="http://iffm.me/empezando-a-conocer-la-web-30-parte-ii.html" rel="alternate"></link><updated>2011-06-14T13:16:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-06-14:empezando-a-conocer-la-web-30-parte-ii.html</id><summary type="html">&lt;p&gt;Hace un tiempo, publiqué el primero de una serie de
 artículos acerca de La Web Semántica, en el que daba una introducción y
 exponía la visión de la W3C sobre el rumbo que debería tomar la Web en
 su &amp;quot;versión 3.0&amp;quot;, si aún no lo has leido, &lt;a class="reference external" href="http://codersvenezuela.com/post/empezando-a-conocer-la-web-3-0-parte-i/50"&gt;aún estás a tiempo&lt;/a&gt;. En esta
@@ -4393,7 +4393,7 @@ W3C.&lt;/p&gt;
 &lt;p&gt;[3] JENA y Virtuoso son los que parecieran ser más utilizados.&lt;/p&gt;
 &lt;p&gt;[4] Un agente, en informática, es una pieza de software que realiza una
 tarea específica de manera automática, es una espécie de &amp;quot;robot&amp;quot;.&lt;/p&gt;
-</summary><category term="ontologías"></category><category term="web 3.0"></category><category term="web semántica"></category></entry><entry><title>Tomar en cuenta la Herramienta y la Complejidad</title><link href="http://iffm.org/tomar-en-cuenta-la-herramienta-y-la-complejidad.html" rel="alternate"></link><updated>2011-05-13T13:00:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-05-13:tomar-en-cuenta-la-herramienta-y-la-complejidad.html</id><summary type="html">&lt;p&gt;Un concepto que nos enseñan desde el inicio en la Universidad y que,
+</summary><category term="ontologías"></category><category term="web 3.0"></category><category term="web semántica"></category></entry><entry><title>Tomar en cuenta la Herramienta y la Complejidad</title><link href="http://iffm.me/tomar-en-cuenta-la-herramienta-y-la-complejidad.html" rel="alternate"></link><updated>2011-05-13T13:00:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-05-13:tomar-en-cuenta-la-herramienta-y-la-complejidad.html</id><summary type="html">&lt;p&gt;Un concepto que nos enseñan desde el inicio en la Universidad y que,
 muchas veces, el el mundo laboral olvidamos, es el de la Complejidad de
 un Algoritmo. Este es un concepto que tiene incidencia directa en el
 tiempo en el cual se ejecutará y los recursos que consumirá dicha serie
@@ -4478,7 +4478,7 @@ implementaron un lenguaje propio (NWNScripts). Si desarrollas en Python
 y optimizas tus algoritmos varias veces pero no logras el tiempo de
 respuesta que quieres, quizás lo mejor sea recodificar toda tu lógica en
 C, y utilizar Bindings para invocarla desde Python.&lt;/p&gt;
-&lt;/p&gt;</summary><category term="Algoritmos"></category><category term="complejidad"></category><category term="fibonacci"></category><category term="informática"></category><category term="Matemáticas"></category><category term="Project Euler"></category></entry><entry><title>Y Microsoft compró Skype</title><link href="http://iffm.org/y-microsoft-compro-skype.html" rel="alternate"></link><updated>2011-05-12T15:45:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-05-12:y-microsoft-compro-skype.html</id><summary type="html">&lt;p&gt;Para muchos, como yo, esto es una total desgracia, sobre todo si somos
+&lt;/p&gt;</summary><category term="Algoritmos"></category><category term="complejidad"></category><category term="fibonacci"></category><category term="informática"></category><category term="Matemáticas"></category><category term="Project Euler"></category></entry><entry><title>Y Microsoft compró Skype</title><link href="http://iffm.me/y-microsoft-compro-skype.html" rel="alternate"></link><updated>2011-05-12T15:45:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-05-12:y-microsoft-compro-skype.html</id><summary type="html">&lt;p&gt;Para muchos, como yo, esto es una total desgracia, sobre todo si somos
 del mundo del Software Libre. Yo utilizaba muchísimo Skype en el
 trabajo: para hablar con clientes, para conversar con mi jefe cuando me
 quedaba trabajando en casa, para hablar con amigos de otras partes del
@@ -4501,7 +4501,7 @@ a pasar, yo particularmente he ido revisando algunas alternativas libres
 para utilizar servicio de Voz sobre IP (VoIP), los que parecieran ser
 las mejores opciones son: &lt;a class="reference external" href="http://ekiga.org/"&gt;Ekiga&lt;/a&gt; (disponible para Windows también) y
 &lt;a class="reference external" href="http://live.gnome.org/Empathy"&gt;Empathy&lt;/a&gt; para Linux y &lt;a class="reference external" href="http://sipdroid.org/"&gt;SipDroid&lt;/a&gt; si eres usuario de Android.&lt;/p&gt;
-&lt;/p&gt;</summary><category term="Alternativas libres"></category><category term="Microsoft"></category><category term="Skype"></category><category term="opinión"></category></entry><entry><title>Jugando en ProjectEuler.net</title><link href="http://iffm.org/jugando-en-projecteulernet.html" rel="alternate"></link><updated>2011-05-11T11:55:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-05-11:jugando-en-projecteulernet.html</id><summary type="html">&lt;p&gt;Hace un par de días, alguien publicó en la &lt;a class="reference external" href="http://groups.google.com/group/python-venezuela?hl=en"&gt;lista de correos
+&lt;/p&gt;</summary><category term="Alternativas libres"></category><category term="Microsoft"></category><category term="Skype"></category><category term="opinión"></category></entry><entry><title>Jugando en ProjectEuler.net</title><link href="http://iffm.me/jugando-en-projecteulernet.html" rel="alternate"></link><updated>2011-05-11T11:55:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-05-11:jugando-en-projecteulernet.html</id><summary type="html">&lt;p&gt;Hace un par de días, alguien publicó en la &lt;a class="reference external" href="http://groups.google.com/group/python-venezuela?hl=en"&gt;lista de correos
 venezolana&lt;/a&gt; de Python &lt;a class="reference external" href="http://projecteuler.net"&gt;este&lt;/a&gt; sitio web que tiene una serie de
 ejercicios matemáticos y de lógica propuestos para ser resueltos
 utilizando programación y lógica algorítmica. Me pareció súper
@@ -4536,7 +4536,7 @@ resultado. Antes de culminar esta entrada, quiero dejarles, a los
 entusiastas del &amp;quot;código que corre rápido&amp;quot;, una solución en &lt;strong&gt;Assembler&lt;/strong&gt;
 que conseguí en el foro que les mencioné al principio, sólo en caso de
 que alguien quiera probarla. Hasta la próxima!:&lt;/p&gt;
-&lt;script src="http://pastebin.com/embed_js.php?i=ALR8X6JF"&gt;&lt;/script&gt;&lt;/p&gt;</summary><category term="Algoritmos"></category><category term="Matemáticas"></category><category term="Project Euler"></category></entry><entry><title>Empezando a conocer la Web Semántica (Parte I)</title><link href="http://iffm.org/empezando-a-conocer-la-web-semantica-parte-i.html" rel="alternate"></link><updated>2011-05-10T11:17:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.org,2011-05-10:empezando-a-conocer-la-web-semantica-parte-i.html</id><summary type="html">&lt;p&gt;Mucho hablamos hoy día de lo &amp;quot;dos punto cero&amp;quot;: en internet,
+&lt;script src="http://pastebin.com/embed_js.php?i=ALR8X6JF"&gt;&lt;/script&gt;&lt;/p&gt;</summary><category term="Algoritmos"></category><category term="Matemáticas"></category><category term="Project Euler"></category></entry><entry><title>Empezando a conocer la Web Semántica (Parte I)</title><link href="http://iffm.me/empezando-a-conocer-la-web-semantica-parte-i.html" rel="alternate"></link><updated>2011-05-10T11:17:00-05:30</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-05-10:empezando-a-conocer-la-web-semantica-parte-i.html</id><summary type="html">&lt;p&gt;Mucho hablamos hoy día de lo &amp;quot;dos punto cero&amp;quot;: en internet,
 en la radio, en la televisión, se habla incluso de programas y empresas
 &amp;quot;dos punto cero&amp;quot; que se apoyan en estas tecnologías de la web para
 comunicarse con su audiencia o bien para ser transmitidos (podcasts,
