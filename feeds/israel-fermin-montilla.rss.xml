@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Israel Fermín Montilla / Blog</title><link>http://localhost:8000/</link><description></description><lastBuildDate>Mon, 04 Oct 2010 18:40:00 +0400</lastBuildDate><item><title>Starting Over</title><link>http://localhost:8000/starting-over.html</link><description>&lt;p&gt;I've been struggling for some time to find a correct structure for my blog,
+<rss version="2.0"><channel><title>Israel Fermín Montilla / Blog</title><link>http://iffm.me/</link><description></description><lastBuildDate>Mon, 04 Oct 2010 18:40:00 +0400</lastBuildDate><item><title>Starting Over</title><link>http://iffm.me/starting-over.html</link><description>&lt;p&gt;I've been struggling for some time to find a correct structure for my blog,
 even considered, and still considering, to try a blogging platform.&lt;/p&gt;
 &lt;p&gt;So, I decided to start over for two reasons:&lt;/p&gt;
 &lt;p&gt;1.- I will now blog in english
@@ -7,4 +7,4 @@ even considered, and still considering, to try a blogging platform.&lt;/p&gt;
 &lt;p&gt;With some time, I'll make the ones I like available again, in english, so, I'll
 have to find some time to translate, until then, I hope you enjoy my new empty blog.&lt;/p&gt;
 &lt;p&gt;Cheers!&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Israel Fermín Montilla</dc:creator><pubDate>Mon, 04 Oct 2010 18:40:00 +0400</pubDate><guid isPermaLink="false">tag:localhost:8000,2010-10-03:starting-over.html</guid><category>personal</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Israel Fermín Montilla</dc:creator><pubDate>Mon, 04 Oct 2010 18:40:00 +0400</pubDate><guid isPermaLink="false">tag:iffm.me,2010-10-03:starting-over.html</guid><category>personal</category></item></channel></rss>
