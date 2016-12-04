@@ -314,7 +314,7 @@ olvidadas.&lt;/p&gt;
 &lt;p&gt;Las vistas basadas en clases nos permiten simplificar muchísimo
 el código, reduciendo, para muchos casos, la escritura de vistas
 a simplemente heredar de usas vistas genéricas y agregar algunos
-&lt;a class="reference external" href="http://iferminmontilla.com/cosas-que-he-aprendido-parte-ii.html"&gt;mixins&lt;/a&gt;, son un recurso bastante potente y que deberíamos tomar
+&lt;a class="reference external" href="http://iffm.org/cosas-que-he-aprendido-parte-ii.html"&gt;mixins&lt;/a&gt;, son un recurso bastante potente y que deberíamos tomar
 en cuenta en los proyectos que estemos o vayamos a desarrollar y
 que además está allí desde django 1.3.&lt;/p&gt;
 &lt;p&gt;Cuando estaba empezando a escribir la introducción, me dió por
@@ -504,7 +504,7 @@ wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - 
 código en Python o cualquier lenguaje de programación, pasando por documentos
 HTML o CSS e incluso mi tesis la escribí usando vim.&lt;/p&gt;
 &lt;p&gt;Recientemente he estado en una onda de probar nuevas cosas, lenguajes, herramientas
-e incluso editores para programar, hasta he estado &lt;a class="reference external" href="http://iferminmontilla.com/y-si-me-compro-una-mac.html"&gt;considerando la posibilidad de comprarme una
+e incluso editores para programar, hasta he estado &lt;a class="reference external" href="http://iffm.org/y-si-me-compro-una-mac.html"&gt;considerando la posibilidad de comprarme una
 MacBook&lt;/a&gt;. Hace ya varios meses me enteré de que GitHub está trabajando en el
 desarrollo de un &lt;a class="reference external" href="https://atom.io/"&gt;editor para programadores&lt;/a&gt;, cuando leí la noticia no había una versión para Linux,
 únicamente para Mac, cosa que me irritó un poco (bueno, bastante).&lt;/p&gt;
@@ -685,7 +685,7 @@ el punto de vista medio nerd que me caracteriza&lt;/p&gt;
 &lt;p&gt;Hay varios cambios que no son visibles en el blog,
 más que todo respecto a mi manera de ver las cosas
 y filosofía de vida, por ejemplo, he estado considerando
-seriamente &lt;a class="reference external" href="http://iferminmontilla.com/y-si-me-compro-una-mac.html"&gt;comprarme una mac&lt;/a&gt;, cosa que hace poco
+seriamente &lt;a class="reference external" href="http://iffm.org/y-si-me-compro-una-mac.html"&gt;comprarme una mac&lt;/a&gt;, cosa que hace poco
 más de un año era impensable, también he estado reconciliándome
 con temas y tecnologías que no eran de mi agrado para salir
 un poco de mi zona de confort, empezando por desarrollo de
