@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Israel Fermín Montilla / Blog</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://iffm.me/feeds/all.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2016-12-04T23:40:10Z</updated></feed>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Israel Fermín Montilla / Blog</title><link href="http://localhost:8000/" rel="alternate"></link><link href="http://localhost:8000/feeds/all.atom.xml" rel="self"></link><id>http://localhost:8000/</id><updated>2010-10-04T18:40:00+04:00</updated><entry><title>Starting Over</title><link href="http://localhost:8000/starting-over.html" rel="alternate"></link><published>2010-10-04T18:40:00+04:00</published><updated>2010-10-04T18:40:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:localhost:8000,2010-10-03:starting-over.html</id><summary type="html">&lt;p&gt;I've been struggling for some time to find a correct structure for my blog,
+even considered, and still considering, to try a blogging platform.&lt;/p&gt;
+&lt;p&gt;So, I decided to start over for two reasons:&lt;/p&gt;
+&lt;p&gt;1.- I will now blog in english
+2.- I don't like some of my old articles anymore&lt;/p&gt;
+&lt;p&gt;With some time, I'll make the ones I like available again, in english, so, I'll
+have to find some time to translate, until then, I hope you enjoy my new empty blog.&lt;/p&gt;
+&lt;p&gt;Cheers!&lt;/p&gt;
+</summary><category term="personal"></category></entry></feed>
