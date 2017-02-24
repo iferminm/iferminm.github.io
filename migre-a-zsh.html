@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Migré a ZSH - Israel Fermín Montilla</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://localhost:8000/theme/css/pygments.css">
+    <link rel="stylesheet" href="http://localhost:8000/theme/css/iferminm.css">
+<script type="text/javascript">
+    var disqus_identifier = "migre-a-zsh.html";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://iferminmblog.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+</head>
+<body>
+    <div id="header">
+        <div id="header-logo-holder">
+            <a href="http://localhost:8000"><img src="http://localhost:8000/theme/images/header-logo.png" alt=""></a>    
+        </div>
+        <div id="logo-text">
+            <span><b>Israel Fermín Montilla</b></span>
+            <span>Software Engineer</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2">
+            <div class="collapse navbar-collapse" id="nav-elements">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="http://localhost:8000">Blog</a></li>
+                <li><a href="/author/israel-fermin-montilla.html">About me</a></li>
+                <li><a href="/pages/now.html">Now</a></li>
+                </ul>
+            </div>
+            <div class="under-menu-ad">
+                <script src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Blog under menu -->
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9066997121369275" data-ad-slot="3361083144" data-ad-format="auto"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </div>
+        <div class="col-xs-9">
+            <div id="main-content" class="ckontainer"> 
+<div class="article-header">
+    <h1>Migré a ZSH</h1> 
+    by <a href="author/israel-fermin-montilla.html">Israel Fermín Montilla</a> on Tue 26 May, 2015
+</div>
+
+<p>Es bien sabido por todos que en Linux y en el Open Source en general,
+uno es libre de elegir todas y cada una de las partes del sistema que va
+a configurar para su computadora personal o de trabajo, la línea de
+comandos no es excepción.</p>
+<p>Por defecto, viene configurado
+<a href="http://es.wikipedia.org/wiki/Bash">BASH</a> en todos
+los sistemas linux, sin embargo, es posible cambiarlo sin ningún tipo de
+problemas, en mi caso, luego de investigar un poquito, elegí una
+combinación que me ha resultado bastante bien durante las últimas dos
+semanas: <a href="http://es.wikipedia.org/wiki/Zsh">ZSH</a> +
+un plugin llamado <a href="https://github.com/robbyrussell/oh-my-zsh">oh my
+zsh</a>.</p>
+<p>Acá las razones por las cuales decidí migrar y por qué me ha parecido
+tan genial:</p>
+<h2>YOLO</h2>
+<p>Siempre digo que quiero probar herramientas nuevas, pero nunca pongo
+manos a la obra, en los últimos meses me he propuesto a organizarme y
+crear hábitos, utilizando distintos hacks, que me permitan llevar a cabo
+todo lo que me pasa por la mente sin descuidar cosas importantes como la
+familia y el trabajo. Así que, quise probar <em>ZSH</em> a ver qué tal, ¿qué
+mejor momento que ahora?</p>
+<h2>No es un cambio muy traumático</h2>
+<p><em>BASH</em> nace en 1989, <em>ZSH</em> nace en 1990, mantiene compatibilidad con
+todos los comandos de <em>BASH</em> y agrega nuevas funcionalidades que vamos a
+ver en las razones siguientes :-).</p>
+<h2>El autocompletado de ZSH</h2>
+<p><em>ZSH</em> tiene una capacidad increíble de autocompletar, no sólo te muestra
+las posibles opciones, cosa que también hace <em>BASH</em>, sino que te permite
+seleccionarla de manera interactiva, cosa que <em>BASH</em> no hace de manera
+natural.</p>
+<p><img alt="Autocompletado
+interactivo" src="https://dl.dropboxusercontent.com/u/3437671/blog/zsh/foto1.png">
+Además, no sólo completa rutas y comandos básicos del sistema operativo,
+con <em>Oh My ZSH</em> también tiene autocompletado para git, cosa que me
+resulta muy útil porque es una herramienta que uso todos los días en la
+oficina y para proyectos personales, este autocompletado incluye una
+pequeña descripción de lo que hace cada comando de git.</p>
+<p><img alt="git &amp;lt;TAB&amp;gt; y esto
+aparece" src="https://dl.dropboxusercontent.com/u/3437671/blog/zsh/foto2.png"></p>
+<h3>Completación de rutas</h3>
+<p>No, no es lo mismo que la anterior, este es algo mucho más potente que
+no vi nunca en <em>BASH</em> supongamos que soy perezoso para escribir, y
+quiero ir a <em>/home/israelord/Work</em>, que es la ruta donde tengo todos mis
+proyectos, tanto de la oficina como freelance. Se que ese es el único
+patrón que coincide, simplemente escribo <em>/h/i/W</em> y al presionar tab, me
+autocompleta la ruta.</p>
+<p>En caso que haya ambigüedad, como por ejemplo, si quiero ir a
+<em>/usr/local/bin</em>, al escribir <em>/u/l/b</em>, hay dos opciones para la <em>l</em>,
+bajo el directorio <em>/user</em>: <em>lib</em> o <em>local</em>. En este caso, me permitirá
+seleccionar la opción correcta de manera interactiva, tal como en el
+ejemplo anterior, antes de terminar el autocompletado. Puedo resolver
+esto simplemente escribiendo <em>/u/lo/b</em> y me generará la ruta correcta de
+una vez, simplemente debo completar más la parte de la ruta que genera
+el conflicto para que sea única, aunque la selección interactiva no me
+disgusta para nada.</p>
+<h3>Cambios de directorio</h3>
+<p>Sí, ya se, para eso está <em>cd</em>, pero este es un caso de uso de cd que no
+vi en <em>BASH</em>, supongamos que estoy en la ruta del ejemplo anterior
+<em>/usr/local/bin</em>, pero en realidad quería ir a <em>/usr/local/sbin</em>. En vez
+de hacer como en <em>BASH</em> <em>cd ../sbin</em>, puedo hacer <em>cd bin sbin</em> y me
+lleva allí. Funciona igual con sub rutas, puedo hacer <em>cd local/sbin
+games</em> y me lleva a <em>/usr/games</em>, por ejemplo.</p>
+<p>Esto es especialmente útil cuando tengo proyectos con la misma
+estructura, por ejemplo, estoy en
+<em>/home/israelord/proyecto1/auth/views/</em>, simplemente con hacer <em>cd
+proyecto1 proyecto2</em>, me lleva a
+<em>/home/israelord/proyecto1/auth/views/</em>. No más cd ../../../../</p>
+<h3>Autocorrector</h3>
+<p>No mucho que decir, si me equivoco y escribo gut, me corrige y escribe
+git, por ejemplo, si hay más de un posible patrón, me muestra la
+selección interactiva que vimos antes.</p>
+<h3>Renombrado de archivos en batch</h3>
+<p>Supongamos que tengo 700 fotos que y los nombres son cosas como
+IMG_2193192873198723.jpg, quiero renombrarlas a algo más manejable,
+como "foto_1.jpg", "foto_2.jpg" y así.</p>
+<p>Bueno, simplemente escribo</p>
+<div class="highlight"><pre><span></span>zmv <span class="s1">&#39;(*).jpg&#39;</span> <span class="s1">&#39;foto_$1.jpg&#39;</span>
+</pre></div>
+
+
+<p>Y listo!.</p>
+<h2>Oh My ZSH</h2>
+<p>Es un plugin que extiende <em>ZSH</em> y, además, tiene varios addons, por
+ahora sólo estoy usando el de <em>git</em> porque tiene muchísimos alias útiles
+para las tareas de día a día con <em>git</em> que les dejaré de tarea revisar,
+pero la diferencia es abismal respeto a lo que escribirías normalmente,
+por ejemplo:</p>
+<p>En vez de git push origin master con Oh my zsh simplemente escribo
+ggpush ;-)</p>
+<h3>Instalando</h3>
+<p><em>ZSH</em> normalmente está instalado, simplemente hay que modificar nuestro
+usuario para que sea el terminal por defecto</p>
+<div class="highlight"><pre><span></span>chsh -s /bin/zsh
+</pre></div>
+
+
+<p>Para instalar el plugin <em>Oh my ZSH</em>, basta con ejecutar</p>
+<div class="highlight"><pre><span></span>curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh <span class="p">|</span> sh
+</pre></div>
+
+
+<p>O, si preferimos usar <em>wget</em></p>
+<div class="highlight"><pre><span></span>wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - <span class="p">|</span> sh
+</pre></div>
+
+<div class="article-footer">
+    <p><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> <a href="tag/herramientas.html">herramientas</a> <a href="tag/shell.html">shell</a> <a href="tag/zsh.html">zsh</a> </p>
+
+       <div class="social-buttoms">
+            <div class="social-link">
+                <a href="https://twitter.com/share" class="twitter-share-button" data-via="iferminm" data-size="large" data-dnt="true">Tweet</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+            
+            <div class="social-link">
+                <div class="fb-share-button" data-href="http://localhost:8000/migre-a-zsh.html" data-layout="button"></div>
+                <div id="fb-root"></div>
+                <script>
+                    (function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s); js.id = id;
+                        js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=457325330963820";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));
+                </script>
+            </div>
+        </div>
+
+    <p>Thank you for reading!, don't forget to subscribe to my mailing list!, I don't send any spam and sometimes I do share interesting stuff</p>
+
+
+<!-- Begin MailChimp Signup Form -->
+    <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+        /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+           We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+    </style>
+    <div id="mc_embed_signup">
+    <form action="//iferminmontilla.us11.list-manage.com/subscribe/post?u=0d4b15ef6a90baa460d821dbc&amp;id=8b51ac80b2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+        <div id="mc_embed_signup_scroll">
+        
+    <div class="mc-field-group">
+        <label for="mce-EMAIL">Email Address </label>
+        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+    </div>
+        <div id="mce-responses" class="clear">
+            <div class="response" id="mce-error-response" style="display:none"></div>
+            <div class="response" id="mce-success-response" style="display:none"></div>
+        </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_0d4b15ef6a90baa460d821dbc_8b51ac80b2" tabindex="-1" value=""></div>
+        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+        </div>
+    </form>
+    </div>
+    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+    <!--End mc_embed_signup-->
+
+</div>
+
+<div id="disqus_thread"></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-8">
+                    Created by <a href="http://iferminmontilla.com">Israel Fermín Montilla</a> using <a href="http://getpelican.com" target="_blank">Pelican</a> and <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>.
+                    All content here is under <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en_US" target="_blank">Attribution-ShareAlike 3.0 Unported</a> license. Logo designed by <a href="https://about.me/andresfermin" target="_blank">Andrés Fermín</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <script>
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-55459920-1', 'auto');
+       ga('send', 'pageview');
+    </script>
+
+</body>
+</html>

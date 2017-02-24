@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testing: la etapa olvidada. - Israel Fermín Montilla</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://localhost:8000/theme/css/pygments.css">
+    <link rel="stylesheet" href="http://localhost:8000/theme/css/iferminm.css">
+<script type="text/javascript">
+    var disqus_identifier = "testing-la-etapa-olvidada.html";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://iferminmblog.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+</head>
+<body>
+    <div id="header">
+        <div id="header-logo-holder">
+            <a href="http://localhost:8000"><img src="http://localhost:8000/theme/images/header-logo.png" alt=""></a>    
+        </div>
+        <div id="logo-text">
+            <span><b>Israel Fermín Montilla</b></span>
+            <span>Software Engineer</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2">
+            <div class="collapse navbar-collapse" id="nav-elements">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="http://localhost:8000">Blog</a></li>
+                <li><a href="/author/israel-fermin-montilla.html">About me</a></li>
+                <li><a href="/pages/now.html">Now</a></li>
+                </ul>
+            </div>
+            <div class="under-menu-ad">
+                <script src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Blog under menu -->
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9066997121369275" data-ad-slot="3361083144" data-ad-format="auto"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </div>
+        <div class="col-xs-9">
+            <div id="main-content" class="ckontainer"> 
+<div class="article-header">
+    <h1>Testing: la etapa olvidada.</h1> 
+    by <a href="author/israel-fermin-montilla.html">Israel Fermín Montilla</a> on Thu 19 Jul, 2012
+</div>
+
+<p>by <a href="author/israel-fermin-montilla.html">Israel Fermín Montilla</a> on Thu
+19 Jul, 2012</p>
+<p>En esta oportunidad, vengo a hablarles de una etapa del desarrollo que
+suele ser olvidada y marginada por la mayoría de los desarrolladores que
+conozco: las pruebas. En <a href="http://zava.com.ve">Zava</a>,
+la compañía en la que trabajo actualmente, llevamos un
+tiempo hablando acerca de
+usar <a href="http://es.wikipedia.org/wiki/Desarrollo_guiado_por_pruebas">TDD</a>
+(Test Driven Development o Desarrollo Guiado por Pruebas)
+como metodología de desarrollo, en esta metodología, las pruebas
+unitarias juegan un papel principal, incluso hasta protagónico, pues son
+el motor del desarrollo del proyecto. Aún cuando no es oficial el hecho
+de que desarrollaremos utilizando esta metodología, personalmente me
+tomé en serio el hecho de probar suerte ejecutando mis tareas de
+programación guiadas por pruebas. En general, el flujo de trabajo en TDD
+es el siguiente:</p>
+<ol>
+<li><strong>Elegir un requerimiento: </strong>dependiendo de la metodología de
+    gestión de proyecto, será distinto este proceso, en nuestro caso,
+    implementamos una versión modificada de SCRUM, por lo que lo primero
+    que se hace es tomar uno de los requerimientos seleccionados para el
+    sprint que está en desarrollo.</li>
+<li><strong>Escribir las pruebas unitarias: </strong>normalmente, el requerimiento
+    tiene unas características que deben ser cumplidas, estas pruebas
+    deben asegurarse de que dichas condiciones sean cumplidas. Es decir,
+    una pieza de código lleva el programa de un estado A, a un estado B,
+    la prueba deba asegurarse de que el estado B sea
+    alcanzado completamente.</li>
+<li><strong>Escribir la implementación: </strong>lógicamente, si ejecutamos las
+    pruebas sin la implementación, todas van a fallar. En este paso "se
+    le pone carne al esqueleto", es decir, de le agrega cuerpo a las
+    funcionalidades cuyas pruebas fueron escritas.</li>
+<li><strong>Ejecutar las pruebas automatizadas: </strong>una vez codificado, se
+    corren las pruebas y se realizan ajustas hasta asegurarse de que
+    todas las pruebas pasan de manera satisfactoria.</li>
+<li><strong>Refactor: </strong>se realizan ajustes para eliminar la duplicación,
+    reducir el acoplamiento y aumentar la cohesión.</li>
+<li><strong>Actualizar la lista de requerimientos: </strong>se marca el requerimiento
+    como terminado.</li>
+</ol>
+<p>Usualmente el proceso de desarrollo se lleva a cabo al revés, es decir,
+primero se escribe la funcionalidad y luego se prueba. El problema de
+este enfoque es el siguiente:</p>
+<ol>
+<li>Muchas veces por cuestiones de tiempo y prisa por entregar,
+    simplemente se codifica la funcionalidad y se prueba de manera
+    empírica y no se deja alguna garantía de que esa pieza de software
+    funciona de manera correcta.</li>
+<li>No se validan todos los casos de prueba, ya sea que se pruebe
+    utilizando la funcionalidad o escribiendo pruebas unitarias una vez
+    codificada la pieza que se desea probar.</li>
+<li>Quien codifica la funcionalidad sabe lo que está bien y lo que está
+    mal y, por la prisa de entregar, no validará los casos en los que
+    sabe que falla pues, dependiendo de la metodología, cuando algo
+    falle puede retomarse por mantenimiento y bug-fixing.</li>
+<li>En equipos de desarrollo pequeños, es el mismo desarrollador quien
+    escribe las pruebas y si la carga de trabajo es muy alta, no se
+    prueba de manera correcta.</li>
+</ol>
+<p>Personalmente me ha ocurrido que al desarrollar primero y escribir las
+pruebas después, termino validando únicamente mis casos base, que es lo
+que debería ocurrir la mayor parte del tiempo, pero los casos borde
+quedan sin ser validados y, cuando llega el momento en que algún usuario
+cae dentro de estos casos y el software falla, debo volver sobre esa
+funcionalidad que, usualmente, está poco documentada (la documentación
+es otra de las etapas olvidadas por nosotros los desarrolladores), la
+escribí hace algún tiempo y no recuerdo bien cuál fue la lógica o, peor
+aún, la escribió otro desarrollador y no tengo ni la más remota idea de
+qué fue lo que hizo y, además, tengo otras cosas que hacer en el
+momento, por lo que simplemente terminaba escribiendo un parche
+específico para validar lo que estaba ocurriendo en el momento y
+solventar el problema particular. Si existía más de un caso borde sin
+validar, este proceso se podía repetir N veces. En el poco tiempo que
+tengo probando seguir el esquema que propone TDD, mi manera de
+enfrentarme a los problemas de desarrollo ha experimentado varios
+cambios y he visto las siguientes ventajas:</p>
+<ol>
+<li>El escribir las pruebas primero, requiere que tenga muy claro el
+    requerimiento y las condiciones que deben ser satisfechas, por lo
+    tanto, empiezo a codificar la funcionalidad con una idea más clara
+    de lo que debo hacer.</li>
+<li>A medida que voy escribiendo las pruebas unitarias y validando los
+    casos de prueba, surgen casos borde que, quizás, al principio no
+    había considerado. Al final, tengo una validación completa de mi
+    código y una mayor seguridad en que lo que hice está bien
+    y funciona.</li>
+<li>Al desarrollar la funcionalidad como tal con una idea más clara de
+    lo que cubre el requerimiento, puedo separar el código en módulos
+    que ejecuten cada uno de los pasos necesarios para cubrirlo de
+    manera satisfactoria.</li>
+<li>Al tener todos los casos de prueba definidos y, con ello, el
+    requerimiento bien claro y definido, no escribo código de más,
+    simplemente me concentro en cubrir la funcionalidad y todo el código
+    que escribí se utiliza para ello.</li>
+<li>La cantidad de bugs en el código que produzco ha
+    reducido considerablemente.</li>
+<li>A la hora de alguna falla, las mismas pruebas me ayudan a cercar
+    el error.</li>
+<li>Si agrego código que rompe una funcionalidad previa, las mismas
+    pruebas me indican qué está fallando y dónde, por lo que puedo hacer
+    refactor inmediatamente y  hacer mis módulos más ortogonales
+    entre sí.</li>
+<li>Si otro desarrollador debe utilizar lo que yo desarrollé, el código
+    lo entrego con una garantía de que lo que hace, lo hace bien.</li>
+<li>Cumplo con todas las etapas del desarrollo de software y ninguna
+    queda incompleta.</li>
+</ol>
+<p>En lo personal, la manera de trabajar que propone TDD me ha funcionado
+bastante bien, la única desventaja fue que al inicio de mi experimento
+no tenía mucha experiencia con frameworks o librerías para el desarrollo
+de pruebas, más allá de algunas pruebas unitarias que hice durante la
+universidad en los cursos de Ingeniería del Software utilizando JUnit en
+Java, por lo que debí cubrir una curva de aprendizaje. Una vez hecho
+esto, todo fluyó mucho más rápido y siento que soy más productivo.
+Trataré de publicar un par de tutoriales de las herramientas que he
+usado recientemente para ver si motivo a alguien más a utilizarlas y a
+tomar un poco más en serio las pruebas de software pues, aunque en la
+universidad las mencionan como una etapa importante en algunos cursos,
+muy pocas personas en la calle toman realmente en serio este recurso tan
+útil.</p>
+
+<div class="article-footer">
+    <p><span class="glyphicon glyphicon-tags" aria-hidden="true"></span> <a href="tag/programacion.html">programación</a> <a href="tag/tdd.html">TDD</a> <a href="tag/testing.html">testing</a> </p>
+
+       <div class="social-buttoms">
+            <div class="social-link">
+                <a href="https://twitter.com/share" class="twitter-share-button" data-via="iferminm" data-size="large" data-dnt="true">Tweet</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+            
+            <div class="social-link">
+                <div class="fb-share-button" data-href="http://localhost:8000/testing-la-etapa-olvidada.html" data-layout="button"></div>
+                <div id="fb-root"></div>
+                <script>
+                    (function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s); js.id = id;
+                        js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=457325330963820";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));
+                </script>
+            </div>
+        </div>
+
+    <p>Thank you for reading!, don't forget to subscribe to my mailing list!, I don't send any spam and sometimes I do share interesting stuff</p>
+
+
+<!-- Begin MailChimp Signup Form -->
+    <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+        /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+           We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+    </style>
+    <div id="mc_embed_signup">
+    <form action="//iferminmontilla.us11.list-manage.com/subscribe/post?u=0d4b15ef6a90baa460d821dbc&amp;id=8b51ac80b2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+        <div id="mc_embed_signup_scroll">
+        
+    <div class="mc-field-group">
+        <label for="mce-EMAIL">Email Address </label>
+        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+    </div>
+        <div id="mce-responses" class="clear">
+            <div class="response" id="mce-error-response" style="display:none"></div>
+            <div class="response" id="mce-success-response" style="display:none"></div>
+        </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_0d4b15ef6a90baa460d821dbc_8b51ac80b2" tabindex="-1" value=""></div>
+        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+        </div>
+    </form>
+    </div>
+    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+    <!--End mc_embed_signup-->
+
+</div>
+
+<div id="disqus_thread"></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-8">
+                    Created by <a href="http://iferminmontilla.com">Israel Fermín Montilla</a> using <a href="http://getpelican.com" target="_blank">Pelican</a> and <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>.
+                    All content here is under <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en_US" target="_blank">Attribution-ShareAlike 3.0 Unported</a> license. Logo designed by <a href="https://about.me/andresfermin" target="_blank">Andrés Fermín</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <script>
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+       ga('create', 'UA-55459920-1', 'auto');
+       ga('send', 'pageview');
+    </script>
+
+</body>
+</html>
