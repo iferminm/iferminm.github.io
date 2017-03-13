@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>The evilness of None!</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="http://localhost:8000/theme/css/main.css" />
+        <link href="http://localhost:8000/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="/dev/isra/blog/* Full Atom Feed" />
+        <link href="http://localhost:8000/feeds/blog.atom.xml" type="application/atom+xml" rel="alternate" title="/dev/isra/blog/* Categories Atom Feed" />
+</head>
+<body>
+
+    <div class="main-nav-container">
+
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-lg-2-3">
+                <div class="main-nav">
+                    <ul class="main-nav-list">
+                        <li class="main-nav-item"><a href="http://localhost:8000/" class="pure-menu-link">/dev/isra/blog/*</a></li>
+
+                        <li class="main-nav-item active"><a href="http://localhost:8000/category/blog.html" class="pure-menu-link">Blog</a></li>
+                        <li class="main-nav-item"><a href="http://localhost:8000/category/espanol.html" class="pure-menu-link">Español</a></li>
+                    </ul>
+                </div>
+             </div>
+
+             <div class="pure-u-1 pure-u-lg-1-3"></div>
+        </div>
+
+    </div>
+
+
+<div class="page-container">
+    <div class="entry-content">
+        <div class="post-meta pure-g">
+            <div class="pure-u-3-4 meta-data">
+                <a href="http://localhost:8000/category/blog.html" class="category">Blog</a><br />
+
+                <a class="author" href="http://localhost:8000/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+                &mdash; <abbr title="2017-03-13T00:00:00+04:00">Mon 13 March 2017</abbr>
+            </div>
+        </div>
+    </div>
+
+    <div class="article-header-container">
+        <div class="background-image-container">
+
+            <div class="background-image-small">
+                <div class="title-container">
+                    <h1>The evilness of None!</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="entry-content">
+        <p>Recently at work, i was solving one bug on one of our services, it was popping up in newrelic at least 9 times a week, this is one of the services we use in the monetization process at the office, so, it's a critical one, the least errors we 
+see in newrelic for this service, the better.</p>
+<p>The error looked a bit like a nonsense, basically some user's subscriptions were coming as <code>null</code> values or <code>None</code>, in Python.</p>
+<p>Debugging the code and tracing the logs I found the like where it was failing and it looked something like this:</p>
+<div class="highlight"><pre><span></span><span class="n">subscription</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">get_oldest_subscription_for_addon</span><span class="p">(</span><span class="n">addon_id</span><span class="p">)</span>
+<span class="n">package</span> <span class="o">=</span> <span class="n">subscription</span><span class="o">.</span><span class="n">package</span>  <span class="c1"># This was the failing line</span>
+</pre></div>
+
+
+<p>The method says it returns a <code>subscription</code> object, but it's returning <code>None</code>, why?</p>
+<p>I digged deeper and opened the <code>models.py</code> file I searched for the method's name and bingo! I got it!</p>
+<div class="highlight"><pre><span></span>    <span class="c1"># ...</span>
+    <span class="k">def</span> <span class="nf">get_oldest_subscription_for_addon</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">addon_id</span><span class="p">):</span>
+        <span class="n">subscriptions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_active_subscriptions</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;created&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">subscription</span> <span class="ow">in</span> <span class="n">subscriptions</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">subscription</span><span class="o">.</span><span class="n">addon_credits_left</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">addon_id</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">subscription</span>
+        <span class="k">return</span> <span class="bp">None</span>
+</pre></div>
+
+
+<p>And... that's where the <code>None</code> is coming from...</p>
+<h2>What's wrong about this?</h2>
+<p>I'm sure we all have written similar pieces of code, search for something meeting certain conditions and, if we get nothing, <code>return null</code> or, <code>nil</code> or <code>None</code> or whatever you call it in your language of choice. And it's wrong in so many ways.</p>
+<p>Truth is, <a href="https://en.wikipedia.org/wiki/Tony_Hoare">Tony Hoare</a> , the creator of the Null instance while he was developing the type system for ALGOL, called it his <em>billion-dollar mistake</em>. I'm sure this bug affected our revenue in some way, maybe the impact wasn't that much because it was in some cases when a user was going to highlight his publication (feature an ad, in dubizzle lingo) and... yes, we were giving away free highlights because of this bug.</p>
+<p>Returning <code>null</code> or <code>None</code> is usually a way to handle a case when we didn't find what we were looking for and it leads us to check for the result after calling the function which causes a bifurcation in the program flow, yes, it generates a different execution path which gives us one more place to introduce bugs or to check for errors. And we have to do this every time we call that function or method.</p>
+<p>Now, imagine we call that function 500 times within the program, it will generate 1000 branches, 500 when we found what we were looking for and other 500 where we returned <code>None</code>.</p>
+<p>Since i read <em>Clean Code</em> by Robert Martin, I try to keep in mind the key principles of what we call <strong>clean code</strong>. Everything from naming to design patterns, single responsibility principle, the newspaper principle, keeping things as short and simple as possible, doing one thing and one thing only on every entity of our program (classes, functions, variables, etc) and also the <a href="https://www.python.org/dev/peps/pep-0020/">Zen of Python</a>.</p>
+<h2>How can we make it right?</h2>
+<p>One of the principles shown in <em>Clean Code</em> has to do with naming. All names should be intuitive, it should describe in few words what the <code>class</code> is, what the method does or what the attribute or variable holds. No matter how long the name is, with some limits and without exaggerating or being too verbose, which takes me to the second principle I'm going to talk about, <em>A function must perform one and only one action</em>, so, if a method should return a <code>subscription</code> object, it must always return a <code>subscription</code> object. If we stick to these two rules, the name of our functions should intuitive, because it will describe the action, and short enough because it will do only one thing.</p>
+<p>This is also a good way to diagnose if I'm writing good code, whenever I'm naming a function and I'm being forced by rule number 1 to add an <em>and</em> or an <em>or</em> to the name of the function, I'm probably breaking rule number 2.</p>
+<p>With some exceptions, for example, some functions could take a different course of action under certain conditions for a very good reason, for example, django's <code>get_object_or_404()</code> shortcut, and also manager methods <code>get_or_create()</code> and <code>update_or_create()</code> are keeping us from taking care of very common web  application and databases flows like returning 404 if we don't find an object, creating an object if it's not there yet and it has to be or performing an upsert operation.</p>
+<p>This could lead to long names sometimes but nowadays we have auto-completion tools and flexible line length rules (even PEP8 is flexible about the 79 characters line length) so i don't think it's too much of a big deal.</p>
+<h2>How can we avoid this?</h2>
+<p>There are several ways we could have avoided this, some of them cleaner than others, let's see.</p>
+<p>1.- <strong>Docstring:</strong> nowadays we use integrated development environments (IDE) and all of them provide some meta information about the objects in our code by hovering over the name, there are also plugins for most of the editors out there... vim, Emacs, sublime, atom you name it. By writing a proper docstring for that method, it will be picked up and shown as a tooltip by one of these tools, no matter which editor we use, if we have one of those code completion plugins, it will show up. This isn't too intuitive, and doesn't provide the information right away, you have to read the docstring somehow and, if you don't have a good code completion tool, you will still need to open the <code>models.py</code> file and read what the code does. This option is probably the easiest one also the least clean one. </p>
+<p>2.- <strong>Correct naming:</strong> Function should had been called <code>get_oldest_subscription_for_addon_or_none()</code>, yes, name is too long, but at least the programmer using that function would be aware of the <code>return None</code> behavior  while using that function without having to open the file that defines it. The length of the function name is not an issue if we have an auto-completion tool, but the main issue remains, the fact that we are returning <code>None</code>, we shouldn't do that, still cleaner than option 1.</p>
+<p>3.- <strong>Raise an exception:</strong>  the right way to handle this is to <code>raise</code> an unchecked exception and and handle it. The method should return a <code>subscription</code> object and it assumes it will find one and not being able to return one is an anomaly, so, we could raise an unchecked exception and handle it in the upper levels.</p>
+<p>4.- <strong>Null Object Pattern:</strong> I don't know if it makes sense to implement such thing in Python, but there's a design pattern to take care of this kind of cases. Basically, you define an object that meets the same interface of the object you are expecting only that it's empty, this helps you continue with the same execution flow without any problem, you can read about it <a href="https://en.wikipedia.org/wiki/Null_Object_pattern">here</a>.</p>
+<h2>What did I do?</h2>
+<p>I opted for option 2, although is not the cleanest one, because of the way the code was written it was the one that supposed less changes to the code. To be honest, the right refactor would be option 3.</p>
+<p>I just renamed the function and changed all of the invocations and moved that <code>package = subscription.package</code> line below a check for the <code>subscription</code> to exist that was already there. Committed, pushed and released the bug-fix and that was it. After that, i got curious about who wrote that code, so, i went back on git's history and ran a git blame.</p>
+<p>Surprise :) it was me :).</p>
+<p>I'll refactor it the right way soon.</p>
+    </div>
+
+    <footer>
+        <div class="tags">
+            <a href="http://localhost:8000/tag/programming.html">programming</a>
+            <a href="http://localhost:8000/tag/python.html">python</a>
+        </div>
+        <div class="pure-g post-footer">
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div class="pure-g poster-info">
+                    <div class="pure-u-3-4">
+                        <h3 class="author-name"><a href="http://localhost:8000/author/israel-fermin-montilla.html">Israel Fermín Montilla</a></h3>
+                        <p class="author-description">
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+    </footer>
+
+    <div class="entry-content">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'iferminmblog';
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+
+</div>
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-55459920-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+</body>
+</html>
