@@ -1,5 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - Israel Fermín Montilla</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://iffm.me/feeds/israel-fermin-montilla.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2017-03-13T00:00:00+04:00</updated><entry><title>The evilness of None!</title><link href="http://iffm.me/the-evilness-of-none.html" rel="alternate"></link><published>2017-03-13T00:00:00+04:00</published><updated>2017-03-13T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-03-13:/the-evilness-of-none.html</id><summary type="html">&lt;p&gt;Recently at work, i was solving one bug on one of our services, it was popping up in newrelic at least 9 times a week, this is one of the services we use in the monetization process at the office, so, it's a critical one, the least errors we 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - Israel Fermín Montilla</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://iffm.me/feeds/israel-fermin-montilla.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2017-03-23T00:00:00+04:00</updated><entry><title>Classy Tasks with Celery</title><link href="http://iffm.me/classy-tasks-with-celery.html" rel="alternate"></link><published>2017-03-23T00:00:00+04:00</published><updated>2017-03-23T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-03-23:/classy-tasks-with-celery.html</id><summary type="html">&lt;p&gt;This will be a short article, I just want to share something I learned this week.&lt;/p&gt;
+&lt;p&gt;If you work with &lt;em&gt;Python&lt;/em&gt; and chances are you've ran into &lt;em&gt;celery&lt;/em&gt; at least once, hopefully more than once, depending on how complex the projects
+you've worked on are.&lt;/p&gt;
+&lt;p&gt;If you don't know it …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This will be a short article, I just want to share something I learned this week.&lt;/p&gt;
+&lt;p&gt;If you work with &lt;em&gt;Python&lt;/em&gt; and chances are you've ran into &lt;em&gt;celery&lt;/em&gt; at least once, hopefully more than once, depending on how complex the projects
+you've worked on are.&lt;/p&gt;
+&lt;p&gt;If you don't know it yet, &lt;em&gt;Celery&lt;/em&gt; is a task scheduling library that lets you schedule heavy tasks to be ran later, for example, resizing an image, sending an email or posting data to a 3rd party service, those are things that can be done &lt;em&gt;later&lt;/em&gt; so you don't have to keep your users waiting online for something to finish and could actually fail.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Celery&lt;/em&gt; lets you &lt;code&gt;delay&lt;/code&gt; the execution of those tasks and put retry policies in place so you can re-run them after a given time under certain conditions, for example, a 3rd party service returned &lt;code&gt;500&lt;/code&gt; or &lt;code&gt;502&lt;/code&gt;, you might want to retry after, let's say, 20min to see if the issue is gone.&lt;/p&gt;
+&lt;p&gt;This won't be an in depth tutorial, you can check &lt;em&gt;Celery&lt;/em&gt; &lt;a href="http://docs.celeryproject.org/en"&gt;here&lt;/a&gt; if you don't know it yet.&lt;/p&gt;
+&lt;p&gt;Let's see this example in &lt;em&gt;Flask&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;process_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;image&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;download_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;resized&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;resize_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;upload_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;resized&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="ne"&gt;Exception&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Failure, please try again&amp;#39;&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Success&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This is a very basic example, full of bad practices and code like this shouldn't be pushed to production but it serves to illustrate what I need to explain.&lt;/p&gt;
+&lt;p&gt;Normally, what you might do is just call those three functions inside a task and just call the &lt;code&gt;task.delay()&lt;/code&gt; from the request handler, something like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;process_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;tasks&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;process_image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Success&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# tasks.py&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;celery.task&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt;
+
+&lt;span class="nd"&gt;@task&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;process_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;image&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;download_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;resized&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;resize_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;upload_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;resized&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;But, those three functions are not supposed to be called synchronously, so, I don't want them laying in some module waiting for someone to call them outside a task. Reason being that, as said before, these are heavy processes that might keep my web server busy and prevent it from taking new requests for a while and also keep my users waiting on a &lt;em&gt;loading&lt;/em&gt; screen for a long time, which isn't a good user experience.&lt;/p&gt;
+&lt;p&gt;I could delete them and copy all the code in my task function but it will lead to a potentially long function which will do a lot of things, it will be difficult to read and difficult to maintain, so... bad idea.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Celery&lt;/em&gt;'s &lt;code&gt;@task&lt;/code&gt; decorator, actually works as an object factory of &lt;code&gt;Task&lt;/code&gt; objects, and what it does is, it puts the decorated function in the &lt;code&gt;run()&lt;/code&gt; method, so, I could take advantage of the object oriented paradigm to encapsulate all that logic inside a task avoiding the risk of having those functions called synchronously.&lt;/p&gt;
+&lt;p&gt;It would look something like this&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;celery&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Task&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ProcessImage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Task&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;ignore_result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;image&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;download_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;resized&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;resize_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upload_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;resized&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;download_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="c1"&gt;# Code to download the image from a given url&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;resize_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="c1"&gt;# Code to resize the image&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;upload_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="c1"&gt;# Code to upload an image to a certain location&lt;/span&gt;
+
+
+&lt;span class="c1"&gt;# We need an instance we can call delay() on&lt;/span&gt;
+&lt;span class="n"&gt;process_image&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ProcessImage&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And done, we can implement also a notification logic to inform the user if there's any issue processing the image after retrying and that kind of
+things, but I'll leave that for another post.&lt;/p&gt;
+&lt;p&gt;By doing a &lt;em&gt;class based task&lt;/em&gt; for complex background jobs, we can produce cleaner code which is easier to maintain and to read and keep those heavy tasks encapsulated so no one calls them directly from a controller or a django view.&lt;/p&gt;
+&lt;p&gt;I know this is not the best way to implement this use case, we could have done it with a &lt;code&gt;TaskTree&lt;/code&gt; or with callbacks, but I wanted to show how to use classes to define tasks. I'll explain those approaches in future posts. :-)&lt;/p&gt;</content><category term="python"></category><category term="programming"></category><category term="celery"></category></entry><entry><title>The evilness of None!</title><link href="http://iffm.me/the-evilness-of-none.html" rel="alternate"></link><published>2017-03-13T00:00:00+04:00</published><updated>2017-03-13T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-03-13:/the-evilness-of-none.html</id><summary type="html">&lt;p&gt;Recently at work, i was solving one bug on one of our services, it was popping up in newrelic at least 9 times a week, this is one of the services we use in the monetization process at the office, so, it's a critical one, the least errors we 
 see …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Recently at work, i was solving one bug on one of our services, it was popping up in newrelic at least 9 times a week, this is one of the services we use in the monetization process at the office, so, it's a critical one, the least errors we 
 see in newrelic for this service, the better.&lt;/p&gt;
 &lt;p&gt;The error looked a bit like a nonsense, basically some user's subscriptions were coming as &lt;code&gt;null&lt;/code&gt; values or &lt;code&gt;None&lt;/code&gt;, in Python.&lt;/p&gt;
