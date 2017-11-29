@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - Blog</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://iffm.me/feeds/blog.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2017-09-24T00:00:00+04:00</updated><entry><title>Making django scale Pt.1</title><link href="http://iffm.me/making-django-scale-pt1.html" rel="alternate"></link><published>2017-09-24T00:00:00+04:00</published><updated>2017-09-24T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-09-24:/making-django-scale-pt1.html</id><summary type="html">&lt;p&gt;I gave a talk on PyConPL this year about scaling django, obviously on a 35min talk you don't have enough
+time to outline all the strategies and go deeper, so I thought it might be a cool idea to write a series
+of blog posts  about this topic, not only …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I gave a talk on PyConPL this year about scaling django, obviously on a 35min talk you don't have enough
+time to outline all the strategies and go deeper, so I thought it might be a cool idea to write a series
+of blog posts  about this topic, not only to help someone who needs to optimize his django app, but also
+to help myself have it for future reference.&lt;/p&gt;
+&lt;p&gt;There are a lot of django apps out there, in most cases the default setup and basic deployment strategy
+would be fine, and your application will perform OK, but in some cases you will need to make it scale
+to serve thousands or millions of requests per day. There's no recipe for optimization or scalability,
+but there are a lot of technology or stack agnostic strategies you can use to make your systems scale
+well, here I'll show how to implement them with django.&lt;/p&gt;
+&lt;h2&gt;Basic concepts&lt;/h2&gt;
+&lt;p&gt;First things first, we need to have clear and solid concepts in mind, we use these words on a daily basis
+if we're Software Engineers but when we need to say what they mean we sometimes struggle, so, I'll write
+them down here for future reference.&lt;/p&gt;
+&lt;h3&gt;Scalability&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Scalability is the capability of a system or process to handle a growing amount of work or its potential
+to be enlarged to accommodate it
+- Wikipedia&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;What this means is the amount of work processed by a system must grow in proportion to how much it is enlarged,
+for example, if I have a cashier at a bank, and that cashier is able to serve 10 people per minute, if I add one
+more cashier to my system, it should be able to serve rightly 20 people per minute depending on the training of
+the other cashier and some other conditions. Luckily, servers are more homogenize than people's abilities, 
+for servers or applications, if I have a service that handles 1000 requests per minute, if I add another 
+instance of the same service I should be able to handle 2000 requests per minute.&lt;/p&gt;
+&lt;h3&gt;Performance&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Computer performance&lt;/em&gt; is the amount of work accomplished by a computer system.
+- Wikipedia&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You usually want to measure performance by some metric, for example:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Response time:&lt;/em&gt; which you want to minimize&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Throughput:&lt;/em&gt; throughput is the rate of processing work, this one you want to maximize&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Resource utilization:&lt;/em&gt; which you want to minimize, you want to accomplish more with less&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Availability:&lt;/em&gt; you want to maximize your uptime&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The performance metrics are relative to the type of system you're building, for web applications
+you usually go for low response time and high throughput.&lt;/p&gt;
+&lt;h3&gt;Pareto principle&lt;/h3&gt;
+&lt;p&gt;This isn't actually a concept, but it is incredible how things always turn out like this. The Pareto
+principle states what follows:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For many events, roughly 80% of the effects come from 20% of the causes&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;For example, 80% of the work will be done in 20% of the time, the other 80% will be spent on small issues
+or small tangential work not directly related to the main objective. 80% of the bugs is caused by 20% of the
+code and, in this case, 80% of the performance impact is caused by 20% of the issues.&lt;/p&gt;
+&lt;p&gt;This is interesting because it makes you see that not all issues affect your system's performance the same way,
+there are some issues that are more serious and not necessarily the same issue on a different project will impact
+it the same way. Find that 20% and gain an 80% on performance, sounds easy, right?, but it isn't.&lt;/p&gt;
+&lt;h3&gt;Takeaways&lt;/h3&gt;
+&lt;p&gt;As a Software Engineer, sometimes I become so obsessed about performance I sometimes write things &lt;em&gt;already optimized&lt;/em&gt;,
+this is a big fallacy and a huge mistake, premature optimization is bad because you don't know if what you're doing
+is actually going to have a significative impact on your system's performance, blind optimization is worse, because
+you might have some ways to get data or an insight on how your program is running but you're just too naive or lazy
+to go get it.&lt;/p&gt;
+&lt;p&gt;In the following posts, I'll recommend some tools to measure and later on some strategies to make your django site scale,
+so, what you'll see in part 2 will be a set of tools to monitor your app's health.&lt;/p&gt;
+&lt;p&gt;Don't forget to subscribe! I rarely send emails but when I do, It's interesting, I promise.&lt;/p&gt;</content><category term="python"></category><category term="django"></category><category term="scaling"></category></entry><entry><title>Making django scale Pt.2</title><link href="http://iffm.me/making-django-scale-pt2.html" rel="alternate"></link><published>2017-09-24T00:00:00+04:00</published><updated>2017-09-24T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-09-24:/making-django-scale-pt2.html</id><summary type="html">&lt;p&gt;In a previous article, I spoke about the basic concepts when it comes to performance
+tuning, those were basic concepts we use everyday but always struggle to define what
+they mean when we are asked to. In that article I also spoke about the Pareto Principle,&lt;/p&gt;</summary><content type="html">&lt;p&gt;In a previous article, I spoke about the basic concepts when it comes to performance
+tuning, those were basic concepts we use everyday but always struggle to define what
+they mean when we are asked to. In that article I also spoke about the Pareto Principle,&lt;/p&gt;</content><category term="python"></category><category term="django"></category><category term="scaling"></category></entry><entry><title>PyConPL 2017</title><link href="http://iffm.me/pyconpl-2017.html" rel="alternate"></link><published>2017-09-01T00:00:00+04:00</published><updated>2017-09-01T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-09-01:/pyconpl-2017.html</id><summary type="html">&lt;p&gt;Two of my personal goals for this year were:&lt;/p&gt;
+&lt;p&gt;1.- To speak at a local meetup here in Dubai&lt;/p&gt;
+&lt;p&gt;2.- To speak at a bigger conference, anywhere&lt;/p&gt;
+&lt;p&gt;Thanks to my wife, who is always supporting me much more than I support her, I could do
+both, first one was at …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Two of my personal goals for this year were:&lt;/p&gt;
+&lt;p&gt;1.- To speak at a local meetup here in Dubai&lt;/p&gt;
+&lt;p&gt;2.- To speak at a bigger conference, anywhere&lt;/p&gt;
+&lt;p&gt;Thanks to my wife, who is always supporting me much more than I support her, I could do
+both, first one was at &lt;a href="https://www.meetup.com/Dubytes/"&gt;Dubytes&lt;/a&gt;, also, thanks to my colleague
+&lt;a href="https://twitter.com/dareenalhiyari?lang=en"&gt;Dareen Alhiyari&lt;/a&gt; who runs that meetup group.&lt;/p&gt;
+&lt;p&gt;The second one was at &lt;a href="https://pl.pycon.org/2017/index_en.html"&gt;PyCon Poland&lt;/a&gt;, this year (2017),
+my talk &lt;a href="https://speakerdeck.com/iferminm/django-in-the-real-world"&gt;django in the real world&lt;/a&gt; was
+accepted and my employer, &lt;a href="https://uae.dubizzle.com/"&gt;dubizzle&lt;/a&gt;, sponsored my trip there.&lt;/p&gt;
+&lt;p&gt;My experience in Poland was great so far, the conference was at &lt;a href="http://www.hotelossa.pl/en/"&gt;huge beautiful venue&lt;/a&gt; 
+one hour away from Warsaw, so I arrived one day before so I could walk around Warsaw and see some
+historic and touristic places, &lt;a href="https://goo.gl/photos/pyRveSzZ6wAQQwnE6"&gt;the old town is beautiful&lt;/a&gt;,
+and that was pretty much all I could see, didn't have time to do any museum before
+going to &lt;a href="https://en.wikipedia.org/wiki/Arkadia_(shopping_mall)"&gt;Arkadia&lt;/a&gt; do to some shopping,
+for my wife and my daughter.&lt;/p&gt;
+&lt;p&gt;Public transportation is quite straightforward, the only issue is you have to ask people to write down
+things if you ask for directions, everything is in Polish and it's not pronounced the same way as
+written, with some time you get it, but I ended up asking people to write it for me the first day.
+People were really helpful, every time I struggled with any of the ticket vending machines, someone
+jumped in and helped, even if they didn't speak too much English, they did their best to understand
+and help.&lt;/p&gt;
+&lt;p&gt;I finished all my shopping and touristing by 22:30, so I headed to the hotel, which was just in front
+of the airport, at the other side of Warsaw, I took the Tram, walked a bit to the main bus station
+(I think) and waited for the 175 bus heading to Chopin Airport, at the station I had to use my
+Latino defensive skills, some drunk guy tried to steal my wallet, I was carrying a lot of bags, I
+was obviously a tourist, but you just don't try to steal something from a South American without at 
+least a knife.&lt;/p&gt;
+&lt;p&gt;I arrived at the Hotel by 23:30, tired, took a bath and went to sleep.&lt;/p&gt;
+&lt;h2&gt;Getting to the conference&lt;/h2&gt;
+&lt;p&gt;I packed all my stuff, checked out from the hotel after breakfast and headed to the meeting point
+at Chopin Airport, conference attendees started to crowd and I started to talk to random people, 
+dubizzle asked me to recruit so, I started to try out my skills talking to people, asking what
+they do with Python and speaking about what we do and how we do it at dubizzle, some people looked
+excited when I talked about employment opportunities, some others not so much, apparently the hot
+weather in summer is a deal breaker, the bus arrived, I checked in with the organizers and
+boarded, it was a roughly 1hr trip to the venue.&lt;/p&gt;
+&lt;h2&gt;The Conference&lt;/h2&gt;
+&lt;p&gt;Experiencing a conference as a speaker and as a normal attendee, is almost the same, as a speaker
+people asks you much more questions about what you do and about what you will talk about, I spoke
+to a lot of people with the intention of recruiting them, I was impressed about how well prepared
+most people were, they had master degrees or pursuing PhD studies, academic titles mean nothing nowadays,
+but they do tell you that the person takes care and time on improving himself and gaining more knowledge.&lt;/p&gt;
+&lt;p&gt;It was very well organized, and there was always someone from the organizing team available to help
+and to answer questions. People were also impressed about the fact that I went all the way from Dubai
+to speak at their conference, I was humbled and honored to be there to be honest.&lt;/p&gt;
+&lt;p&gt;During the conference I was more into talking to people, I did attend to some talks, but my main
+focus was networking and getting people into applying to work at dubizzle or sending me their CV.&lt;/p&gt;
+&lt;h2&gt;My Talk&lt;/h2&gt;
+&lt;p&gt;I'd say it was great, I got a lot of questions, which is a good sign, if you get no questions it means
+that people were either not listening or did not understand a single word.&lt;/p&gt;
+&lt;p&gt;I'm waiting for them to upload the videos from the talks to watch how I really did and some other talks
+I was interested in but couldn't attend.&lt;/p&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;I really liked the experience, I would definitely encourage everyone to apply to speak at this kind of
+conferences, I'll apply to speak at PyConPL next year for sure and will take my family as well, Warsaw
+is a beautiful city, full of history and nice people. Will come back for sure!.&lt;/p&gt;
+&lt;p&gt;Also, if you're looking for a job and would like to relocate to Dubai, have a look &lt;a href="http://blog.dubizzle.com/uae/job-vacancies/"&gt;here&lt;/a&gt;
+at the open positions and leave me a comment, we can talk about it.&lt;/p&gt;</content><category term="personal"></category><category term="speaking"></category><category term="pycon"></category></entry><entry><title>Working at dubizzle</title><link href="http://iffm.me/working-at-dubizzle.html" rel="alternate"></link><published>2017-08-16T00:00:00+04:00</published><updated>2017-08-16T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-08-16:/working-at-dubizzle.html</id><summary type="html">&lt;p&gt;About 4 years ago I got an email through StackOverflow Careers from a woman called
+Claudia Verlinden, a very nice Belgian lady who happened to be an HR Manager at a company
+in the middle east and she was looking for Software Engineers with experience in Python and
+django, so …&lt;/p&gt;</summary><content type="html">&lt;p&gt;About 4 years ago I got an email through StackOverflow Careers from a woman called
+Claudia Verlinden, a very nice Belgian lady who happened to be an HR Manager at a company
+in the middle east and she was looking for Software Engineers with experience in Python and
+django, so, she asked me if I was interested in applying to one of their open positions
+in their Engineering team, I said yes and 2 months later I was boarding a plane and landing
+in Dubai, yes Dubai.&lt;/p&gt;
+&lt;h2&gt;My Dubai experience&lt;/h2&gt;
+&lt;p&gt;There is a lot of taboo in the west side of the world about the Middle East region, specially
+about Arabs, Muslims and Islam in general, they speak a lot about terrorism and how everyone
+in the Middle East is a potential terrorist, how Arabs have no sense of humor and they're angry
+all the time. Well, I'm here to tell you that none of that is true.&lt;/p&gt;
+&lt;p&gt;So far, after living almost 4 years in Dubai, a Muslim country, my experience had been nothing
+but positive from almost every perspective (still don't like the weather in August), there's
+people from everywhere in the world, from countries I didn't know were countries and you get
+to see people whose countries had been in war, working together like the best friends in the world.&lt;/p&gt;
+&lt;p&gt;Dubai is one of the safest cities in the world and for me, coming from Caracas, one of the
+most violent cities in the world, that's very important. You'll never see a gun if it isn't on
+a Policeman's belt, no one will break into your house or car to take that cellphone you left there
+or that purse with your documents in the back seat, more important, if you leave something at some
+place, even in the street, there's a high chance it will still be there when you're back. &lt;/p&gt;
+&lt;p&gt;My wife has left her iPhone in restaurants, hospitals and stores more times than I can remember and each and
+every time we got it back the same day, they even called me once to tell me "hey, I believe someone you
+know left her phone in my store, it's a pink iPhone, anyone you know has a pink iPhone with a Hello Kitty
+cover?", yes... that's my wife's.&lt;/p&gt;
+&lt;p&gt;Despite the heat in summer, which can reach over 50C by August, there are a lot of things to do as a single
+or with your family, museums, restaurants, bars, beaches, hiking, desert camping and BBQ, you name it, even
+indoors Skying at Sky Dubai in Mall of the Emirates. I'm a declared foodie (I married a chef), and one of
+the things I like the most is the huge variety of gastronomy you can find, from Arabic to Russian food, American
+burger joints, Asian Cuisine and even Latin restaurants, some Peruvian, Colombian, Argentinean and there's even a Food Truck
+serving Arepas and a lot of Venezuelan stuff.&lt;/p&gt;
+&lt;p&gt;Arabs have such an amazing sense of humor, they even joke about bombs and having terrorist cousins,
+they get American jokes and they like Jeff Dunham!, they're pretty much like Latinos, they like to
+laugh a lot and they're loyal friends, if they can help you in any way, you can be certain they will.
+But it needs to work the other way around as well, if they need your help, they will expect you to
+help them if it's on your hands, but that's what friendship should be about, right?, relying on each
+other.&lt;/p&gt;
+&lt;p&gt;Something I realized when I moved here is that not all Arabs are Muslims and not all Muslims are Arabs,
+Islam is a wide spread religion in this region, so most Pakistanis, some Indians, also some Filipinos,
+Bosnian, and people from the *stan countries are Muslims and they're not Arabs, but also there are a lot
+of Catholics and Christians in Lebanon, which is an Arab country, and also in India and Egypt.&lt;/p&gt;
+&lt;p&gt;UAE, and specially Dubai is super liberal to be an Islamic country, you get to see everything, from women
+wearing the traditional Abaya and Niqab or Hijab, to women wearing &lt;em&gt;almost&lt;/em&gt; nothing and people is ok with
+that. Alcohol is forbidden in Islam, so, it's a bit harder to get, which doesn't mean is hard. Only Muslims
+are not allowed to drink, rest of people can get an Alcohol License which will allow you to purchase anything
+you want in the authorized stores, if you don't want to get into the (easy) paperwork to get the license, you
+can always go have some drinks at a bar or restaurant in a hotel. This was the most shocking change for me as
+a Latino, I can't buy beers or rum freely at the supermarket.&lt;/p&gt;
+&lt;p&gt;One last thing I love about Dubai, it's getting more and more like a science fiction movie, seriously,
+I don't know why, but these guys ruling the country have a very futuristic vision. Tallest building
+in the world (Burj Khalifa), artificial islands (Palm Jumeirah and the one Burj Al-Arab hotel is built on top
+of), biggest shopping mall in the world (The Dubai Mall), they are testing flying taxis already and
+there's a project to build a Hyperloop train, that will take you
+from Dubai to Abu Dhabi in less than 20min, by bus or car it almost 2hr.&lt;/p&gt;
+&lt;h2&gt;Working at dubizzle&lt;/h2&gt;
+&lt;p&gt;Working at a UAE based company, like dubizzle, comes with some perks. But working at one of the most
+visited and recognized brands in the country is even better. First of all over 30 different nationalities
+converge in the same workplace, different cultural backgrounds. British, Latinos, Indians, Arabs, Pakistanis,
+Asians, Europeans, you name it, I sometimes joke with HR everytime I recommend someone from a country we don't have
+yet saying "he's a new nationality for out list, we should just hire him to show off" so far we have people from
+all of the 5 continents working at dubizzle.&lt;/p&gt;
+&lt;p&gt;To have an idea of how big dubizzle is, we are now part of the OLX group and dubizzle was the only site within
+the region that wasn't re-branded to OLX, we got to keep our name and identity because it was a so well established
+brand that it would have been more expensive to re-brand it and rebuild it rather that just keep the same brand
+as it is, also, we are the only company running a different stack, all of the OLX sites run on PHP, we run in
+python and mostly django.&lt;/p&gt;
+&lt;p&gt;Working at a place at this scale is great!, you get to solve very complex and interesting problems, such as optimizing
+a service to reduce the response time, might be a caching problem or a database issue, you'll have to look
+at the data and make a decision on where to start and you'll have complete freedom to get it done within
+reasonable deadlines, of course. This is a very data-driven process, before we do anything we look at numbers,
+either from an A/B test or one of our monitoring tools like newrelic and we start analyzing what's happening and
+thinking how to approach the problem at hand, we sometimes need to build several proof of concepts and measure
+to see what would be the best way to proceed.&lt;/p&gt;
+&lt;p&gt;One thing I like the most is how everyone is involved on product decisions, like new features, design or workflow
+changes, every idea needs to be presented as a spec, with some sort of numbers backing it, either an A/B test or
+a market research, results from a poll, anything to back it idea, all the company is involved in these spec reviews:
+Engineering, Customer Support, Sales, Finance, Marketing, Management, literally everyone who wants to attend can
+do it. The specs are presented and everyone is encouraged to talk, criticize (in a constructive way), make suggestions,
+agree, disagree, the idea is to improve the idea and take it from good to awesome or prevent us from building it
+if someone finds a good point that proves the spec wrong or too expensive. Everyone has a voice and everyone's voice
+is heard. Anyone can have an idea, spec it and take it to spec review, some of the features in our website came from
+some engineer who thought it could work and wrote the spec along with the Product Manager and made it live.&lt;/p&gt;
+&lt;p&gt;Also, as a new parent, flexibility is very important to me, dubizzle is by far one of the most flexible companies
+I've worked at, working hours are from 9:00 to 18:00, but you don't need to be in at 9:00 sharp, strictly, if you
+can't make it, either because of traffic or because life happened at home, dubizzle is a very goal-oriented workplace,
+so, as long as you're in for your daily team stand-up (which starts by 9:45 - 10:00 in my case) or you message in advance
+if you're going to be late, it's ok. But, you need to keep in mind that, sometimes, you'll need to make up some time if
+your project is getting late and will miss the deadline. I've had to leave early because my wife or my daughter were not
+feeling well, had to take one week off in the middle of a sprint because all of us were sick, in bed, had to come in
+late because I had to run some errands or take a whole day off to go to the Venezuelan Embassy in Abu Dhabi and I've never
+got a no by an answer from my manager, they all know that unplanned issues happen, but, you need to plan for the ones
+you know will happen, like visa or passport renewals, medical appointments and that kind of things so your team adds some
+buffer time in the sprint, accounting for your time off.&lt;/p&gt;
+&lt;p&gt;Being a dubizzler, also comes with some unexpected perks, as you might imagine already, my name is Israel, and it's
+a FAQ in immigration all the time. So, first time I went out of the country and came back, I got a weird look from the
+immigration officer and a "please, go to office number 2" as he handed me my passport back. And there I was, with a lot
+of long bearded guys waiting for my turn and and Arab guy just calls my name "Israiil?" (which is Arabic for my name),
+I approach the counter and the guy starts throwing Arabic to me, and I speak no Arabic, I don't know what he said, but
+to me it sounded something like &lt;em&gt;hala mahala hammdulleh hamdu affek hal&lt;/em&gt; I replied with one of the few phrases I know in
+Arabic &lt;em&gt;ana la atakalam al-arabiia&lt;/em&gt; which means "I don't speak Arabic", the guy laughed and continued his Arabic monologue,
+I had to interrupt him by saying "No, seriously, I don't speak Arabic". So, he started making a lot of routine questions,
+"what's your full name?", "where are you from?", "how long are you planning to stay in the UAE?", "how long have you been
+living in the UAE?", "where do you live?", "where do you work?", and then, the surprise came. "oh! you work at dubizzle,
+it's ok, it's ok, I like dubizzle very much, take you passport, khalas... go, go go... it's ok". Everytime I say I work
+at dubizzle, feels like I'm a rockstar and I didn't knew about it, at each and every hackathon or conference I've been to
+in the UAE, working at dubizzle inspires some kind of respect, and I'm humbled every time it happens.&lt;/p&gt;
+&lt;h3&gt;A day in the life&lt;/h3&gt;
+&lt;p&gt;Working at dubizzle, a platform that operates at a huge scale, presents a lot of challenges as a Software Engineer. Everything
+we write and deploy to production needs to be extensively tested, it needs to scale well and have proper monitoring and
+alerting in place so in case something fails, we are informed by our systems and not by the Customer Support calling the 
+on-call number saying an angry user is yelling because something is not working, we have a &lt;em&gt;users comes first&lt;/em&gt; kind of principles,
+so everything we do is to give more value to the users and most of out tests are to research how the users are using
+our platform and see how we can deliver more value to them.&lt;/p&gt;
+&lt;p&gt;Nowadays, we are migrating the whole platform to a microservices oriented architecture, so, most of today's challenges
+are in two fronts:&lt;/p&gt;
+&lt;p&gt;1.- Breaking out a legacy monolith into independent, scalable, deployable, and testable services&lt;/p&gt;
+&lt;p&gt;2.- Building those microservices while keeping a rollback option in case of something horrible happening&lt;/p&gt;
+&lt;p&gt;Now, we are not facing that dilemma of "should this be a different package?", now it's more "where should I build this?",
+we try to keep our services from doing more than one thing, simplicity is the main value now, so far, we've deployed over 70
+services and we continue to break the monolith into smaller units, all powered by python and django for our backends and react for
+our frontend, running on top of AWS. Does this sound like a place you would like to work at? leave me a comment! and we can talk about it.&lt;/p&gt;</content><category term="personal"></category><category term="career"></category><category term="middle east"></category><category term="dubizzle"></category></entry><entry><title>PyCon: Challenge Accepted</title><link href="http://iffm.me/pycon-challenge-accepted.html" rel="alternate"></link><published>2017-08-01T00:00:00+04:00</published><updated>2017-08-01T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-08-01:/pycon-challenge-accepted.html</id><summary type="html">&lt;p&gt;Everyone who has known me long enough, knows that I'm a huge fan of Python programming language,
+for several reasons, ease of use, ease of learning, the huge amount of libraries, frameworks and
+packages in general available in PyPI, it's not perfect but it has become my tool of choice …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Everyone who has known me long enough, knows that I'm a huge fan of Python programming language,
+for several reasons, ease of use, ease of learning, the huge amount of libraries, frameworks and
+packages in general available in PyPI, it's not perfect but it has become my tool of choice for
+most of my problem solving writing software and career choice, I've been working writing python
+code ever since my internship in 2011 and even organized the first and, so far, only PyCon edition
+in my home country (Venezuela)&lt;/p&gt;
+&lt;p&gt;Ever since I organized PyConVE 2012, I was a bit disappointed I had so much stuff to do and handle
+for the conference that I didn't have time to speak myself, give a talk or a workshop at the conference
+I organized, so, it was on my checklist to speak at a PyCon as a personal goal and kind of a dream,
+that's the biggest Python event a local community organizes in their country so it's quite a big deal
+for Pythonistas.&lt;/p&gt;
+&lt;p&gt;This year, I applied to speak at several Pycons, first I applies to PyCon Australia, I got denied but
+they provided a great feedback on how to properly write talk proposals to PyCon (thanks a lot guys!).
+So, I decided to apply to PyCon Poland, PyCon Spain and PyCon South Africa.&lt;/p&gt;
+&lt;p&gt;I'm honored and pleased that my talk &lt;strong&gt;django in the real world&lt;/strong&gt; was accepted in PyCon Poland and also
+in PyCon Spain. I'm still waiting for news from South Africa. I will for sure share my experience in both
+conferences, I'm so excited and thankful with my employer, dubizzle, for sponsoring my trip to the conference,
+with the organizers for this huge opportunity and specially with my wife because she won't be able to go
+with me and she's spending almost one week alone with our baby.&lt;/p&gt;</content><category term="personal"></category><category term="speaking"></category><category term="pycon"></category></entry><entry><title>Classy Tasks with Celery</title><link href="http://iffm.me/classy-tasks-with-celery.html" rel="alternate"></link><published>2017-03-23T00:00:00+04:00</published><updated>2017-03-23T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-03-23:/classy-tasks-with-celery.html</id><summary type="html">&lt;p&gt;This will be a short article, I just want to share something I learned this week.&lt;/p&gt;
+&lt;p&gt;If you work with &lt;em&gt;Python&lt;/em&gt; and chances are you've ran into &lt;em&gt;celery&lt;/em&gt; at least once, hopefully more than once, depending on how complex the projects
+you've worked on are.&lt;/p&gt;
+&lt;p&gt;If you don't know it …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This will be a short article, I just want to share something I learned this week.&lt;/p&gt;
+&lt;p&gt;If you work with &lt;em&gt;Python&lt;/em&gt; and chances are you've ran into &lt;em&gt;celery&lt;/em&gt; at least once, hopefully more than once, depending on how complex the projects
+you've worked on are.&lt;/p&gt;
+&lt;p&gt;If you don't know it yet, &lt;em&gt;Celery&lt;/em&gt; is a task scheduling library that lets you schedule heavy tasks to be ran later, for example, resizing an image, sending an email or posting data to a 3rd party service, those are things that can be done &lt;em&gt;later&lt;/em&gt; so you don't have to keep your users waiting online for something to finish and could actually fail.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Celery&lt;/em&gt; lets you &lt;code&gt;delay&lt;/code&gt; the execution of those tasks and put retry policies in place so you can re-run them after a given time under certain conditions, for example, a 3rd party service returned &lt;code&gt;500&lt;/code&gt; or &lt;code&gt;502&lt;/code&gt;, you might want to retry after, let's say, 20min to see if the issue is gone.&lt;/p&gt;
+&lt;p&gt;This won't be an in depth tutorial, you can check &lt;em&gt;Celery&lt;/em&gt; &lt;a href="http://docs.celeryproject.org/en"&gt;here&lt;/a&gt; if you don't know it yet.&lt;/p&gt;
+&lt;p&gt;Let's see this example in &lt;em&gt;Flask&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;process_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;image&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;download_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;resized&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;resize_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;upload_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;resized&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="ne"&gt;Exception&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Failure, please try again&amp;#39;&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Success&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This is a very basic example, full of bad practices and code like this shouldn't be pushed to production but it serves to illustrate what I need to explain.&lt;/p&gt;
+&lt;p&gt;Normally, what you might do is just call those three functions inside a task and just call the &lt;code&gt;task.delay()&lt;/code&gt; from the request handler, something like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;process_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;tasks&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;process_image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Success&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# tasks.py&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;celery.task&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt;
+
+&lt;span class="nd"&gt;@task&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;process_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;image&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;download_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;resized&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;resize_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;upload_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;resized&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;But, those three functions are not supposed to be called synchronously, so, I don't want them laying in some module waiting for someone to call them outside a task. Reason being that, as said before, these are heavy processes that might keep my web server busy and prevent it from taking new requests for a while and also keep my users waiting on a &lt;em&gt;loading&lt;/em&gt; screen for a long time, which isn't a good user experience.&lt;/p&gt;
+&lt;p&gt;I could delete them and copy all the code in my task function but it will lead to a potentially long function which will do a lot of things, it will be difficult to read and difficult to maintain, so... bad idea.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Celery&lt;/em&gt;'s &lt;code&gt;@task&lt;/code&gt; decorator, actually works as an object factory of &lt;code&gt;Task&lt;/code&gt; objects, and what it does is, it puts the decorated function in the &lt;code&gt;run()&lt;/code&gt; method, so, I could take advantage of the object oriented paradigm to encapsulate all that logic inside a task avoiding the risk of having those functions called synchronously.&lt;/p&gt;
+&lt;p&gt;It would look something like this&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;celery&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Task&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ProcessImage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Task&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;ignore_result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;image&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;download_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;resized&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;resize_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upload_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;resized&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;download_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="c1"&gt;# Code to download the image from a given url&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;resize_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="c1"&gt;# Code to resize the image&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;upload_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="c1"&gt;# Code to upload an image to a certain location&lt;/span&gt;
+
+
+&lt;span class="c1"&gt;# We need an instance we can call delay() on&lt;/span&gt;
+&lt;span class="n"&gt;process_image&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ProcessImage&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And done, we can implement also a notification logic to inform the user if there's any issue processing the image after retrying and that kind of
+things, but I'll leave that for another post.&lt;/p&gt;
+&lt;p&gt;By doing a &lt;em&gt;class based task&lt;/em&gt; for complex background jobs, we can produce cleaner code which is easier to maintain and to read and keep those heavy tasks encapsulated so no one calls them directly from a controller or a django view.&lt;/p&gt;
+&lt;p&gt;I know this is not the best way to implement this use case, we could have done it with a &lt;code&gt;TaskTree&lt;/code&gt; or with callbacks, but I wanted to show how to use classes to define tasks. I'll explain those approaches in future posts. :-)&lt;/p&gt;</content><category term="python"></category><category term="programming"></category><category term="celery"></category></entry><entry><title>The evilness of None!</title><link href="http://iffm.me/the-evilness-of-none.html" rel="alternate"></link><published>2017-03-13T00:00:00+04:00</published><updated>2017-03-13T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-03-13:/the-evilness-of-none.html</id><summary type="html">&lt;p&gt;Recently at work, i was solving one bug on one of our services, it was popping up in newrelic at least 9 times a week, this is one of the services we use in the monetization process at the office, so, it's a critical one, the least errors we 
+see …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Recently at work, i was solving one bug on one of our services, it was popping up in newrelic at least 9 times a week, this is one of the services we use in the monetization process at the office, so, it's a critical one, the least errors we 
+see in newrelic for this service, the better.&lt;/p&gt;
+&lt;p&gt;The error looked a bit like a nonsense, basically some user's subscriptions were coming as &lt;code&gt;null&lt;/code&gt; values or &lt;code&gt;None&lt;/code&gt;, in Python.&lt;/p&gt;
+&lt;p&gt;Debugging the code and tracing the logs I found the like where it was failing and it looked something like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;subscription&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_oldest_subscription_for_addon&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;addon_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;package&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;subscription&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;package&lt;/span&gt;  &lt;span class="c1"&gt;# This was the failing line&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The method says it returns a &lt;code&gt;subscription&lt;/code&gt; object, but it's returning &lt;code&gt;None&lt;/code&gt;, why?&lt;/p&gt;
+&lt;p&gt;I digged deeper and opened the &lt;code&gt;models.py&lt;/code&gt; file I searched for the method's name and bingo! I got it!&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="c1"&gt;# ...&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_oldest_subscription_for_addon&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;addon_id&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;subscriptions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_active_subscriptions&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;order_by&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;created&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;subscription&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;subscriptions&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;subscription&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;addon_credits_left&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;addon_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+                &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;subscription&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And... that's where the &lt;code&gt;None&lt;/code&gt; is coming from...&lt;/p&gt;
+&lt;h2&gt;What's wrong about this?&lt;/h2&gt;
+&lt;p&gt;I'm sure we all have written similar pieces of code, search for something meeting certain conditions and, if we get nothing, &lt;code&gt;return null&lt;/code&gt; or, &lt;code&gt;nil&lt;/code&gt; or &lt;code&gt;None&lt;/code&gt; or whatever you call it in your language of choice. And it's wrong in so many ways.&lt;/p&gt;
+&lt;p&gt;Truth is, &lt;a href="https://en.wikipedia.org/wiki/Tony_Hoare"&gt;Tony Hoare&lt;/a&gt; , the creator of the Null instance while he was developing the type system for ALGOL, called it his &lt;em&gt;billion-dollar mistake&lt;/em&gt;. I'm sure this bug affected our revenue in some way, maybe the impact wasn't that much because it was in some cases when a user was going to highlight his publication (feature an ad, in dubizzle lingo) and... yes, we were giving away free highlights because of this bug.&lt;/p&gt;
+&lt;p&gt;Returning &lt;code&gt;null&lt;/code&gt; or &lt;code&gt;None&lt;/code&gt; is usually a way to handle a case when we didn't find what we were looking for and it leads us to check for the result after calling the function which causes a bifurcation in the program flow, yes, it generates a different execution path which gives us one more place to introduce bugs or to check for errors. And we have to do this every time we call that function or method.&lt;/p&gt;
+&lt;p&gt;Now, imagine we call that function 500 times within the program, it will generate 1000 branches, 500 when we found what we were looking for and other 500 where we returned &lt;code&gt;None&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Since i read &lt;em&gt;Clean Code&lt;/em&gt; by Robert Martin, I try to keep in mind the key principles of what we call &lt;strong&gt;clean code&lt;/strong&gt;. Everything from naming to design patterns, single responsibility principle, the newspaper principle, keeping things as short and simple as possible, doing one thing and one thing only on every entity of our program (classes, functions, variables, etc) and also the &lt;a href="https://www.python.org/dev/peps/pep-0020/"&gt;Zen of Python&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;How can we make it right?&lt;/h2&gt;
+&lt;p&gt;One of the principles shown in &lt;em&gt;Clean Code&lt;/em&gt; has to do with naming. All names should be intuitive, it should describe in few words what the &lt;code&gt;class&lt;/code&gt; is, what the method does or what the attribute or variable holds. No matter how long the name is, with some limits and without exaggerating or being too verbose, which takes me to the second principle I'm going to talk about, &lt;em&gt;A function must perform one and only one action&lt;/em&gt;, so, if a method should return a &lt;code&gt;subscription&lt;/code&gt; object, it must always return a &lt;code&gt;subscription&lt;/code&gt; object. If we stick to these two rules, the name of our functions should intuitive, because it will describe the action, and short enough because it will do only one thing.&lt;/p&gt;
+&lt;p&gt;This is also a good way to diagnose if I'm writing good code, whenever I'm naming a function and I'm being forced by rule number 1 to add an &lt;em&gt;and&lt;/em&gt; or an &lt;em&gt;or&lt;/em&gt; to the name of the function, I'm probably breaking rule number 2.&lt;/p&gt;
+&lt;p&gt;With some exceptions, for example, some functions could take a different course of action under certain conditions for a very good reason, for example, django's &lt;code&gt;get_object_or_404()&lt;/code&gt; shortcut, and also manager methods &lt;code&gt;get_or_create()&lt;/code&gt; and &lt;code&gt;update_or_create()&lt;/code&gt; are keeping us from taking care of very common web  application and databases flows like returning 404 if we don't find an object, creating an object if it's not there yet and it has to be or performing an upsert operation.&lt;/p&gt;
+&lt;p&gt;This could lead to long names sometimes but nowadays we have auto-completion tools and flexible line length rules (even PEP8 is flexible about the 79 characters line length) so i don't think it's too much of a big deal.&lt;/p&gt;
+&lt;h2&gt;How can we avoid this?&lt;/h2&gt;
+&lt;p&gt;There are several ways we could have avoided this, some of them cleaner than others, let's see.&lt;/p&gt;
+&lt;p&gt;1.- &lt;strong&gt;Docstring:&lt;/strong&gt; nowadays we use integrated development environments (IDE) and all of them provide some meta information about the objects in our code by hovering over the name, there are also plugins for most of the editors out there... vim, Emacs, sublime, atom you name it. By writing a proper docstring for that method, it will be picked up and shown as a tooltip by one of these tools, no matter which editor we use, if we have one of those code completion plugins, it will show up. This isn't too intuitive, and doesn't provide the information right away, you have to read the docstring somehow and, if you don't have a good code completion tool, you will still need to open the &lt;code&gt;models.py&lt;/code&gt; file and read what the code does. This option is probably the easiest one also the least clean one. &lt;/p&gt;
+&lt;p&gt;2.- &lt;strong&gt;Correct naming:&lt;/strong&gt; Function should had been called &lt;code&gt;get_oldest_subscription_for_addon_or_none()&lt;/code&gt;, yes, name is too long, but at least the programmer using that function would be aware of the &lt;code&gt;return None&lt;/code&gt; behavior  while using that function without having to open the file that defines it. The length of the function name is not an issue if we have an auto-completion tool, but the main issue remains, the fact that we are returning &lt;code&gt;None&lt;/code&gt;, we shouldn't do that, still cleaner than option 1.&lt;/p&gt;
+&lt;p&gt;3.- &lt;strong&gt;Raise an exception:&lt;/strong&gt;  the right way to handle this is to &lt;code&gt;raise&lt;/code&gt; an unchecked exception and and handle it. The method should return a &lt;code&gt;subscription&lt;/code&gt; object and it assumes it will find one and not being able to return one is an anomaly, so, we could raise an unchecked exception and handle it in the upper levels.&lt;/p&gt;
+&lt;p&gt;4.- &lt;strong&gt;Null Object Pattern:&lt;/strong&gt; I don't know if it makes sense to implement such thing in Python, but there's a design pattern to take care of this kind of cases. Basically, you define an object that meets the same interface of the object you are expecting only that it's empty, this helps you continue with the same execution flow without any problem, you can read about it &lt;a href="https://en.wikipedia.org/wiki/Null_Object_pattern"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;What did I do?&lt;/h2&gt;
+&lt;p&gt;I opted for option 2, although is not the cleanest one, because of the way the code was written it was the one that supposed less changes to the code. To be honest, the right refactor would be option 3.&lt;/p&gt;
+&lt;p&gt;I just renamed the function and changed all of the invocations and moved that &lt;code&gt;package = subscription.package&lt;/code&gt; line below a check for the &lt;code&gt;subscription&lt;/code&gt; to exist that was already there. Committed, pushed and released the bug-fix and that was it. After that, i got curious about who wrote that code, so, i went back on git's history and ran a git blame.&lt;/p&gt;
+&lt;p&gt;Surprise :) it was me :).&lt;/p&gt;
+&lt;p&gt;I'll refactor it the right way soon.&lt;/p&gt;</content><category term="programming"></category><category term="python"></category></entry><entry><title>New Grads Survival Guide</title><link href="http://iffm.me/new-grads-survival-guide.html" rel="alternate"></link><published>2016-03-25T00:00:00+04:00</published><updated>2016-03-25T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2016-03-25:/new-grads-survival-guide.html</id><summary type="html">&lt;p&gt;OK, OK... I'm sorry, I lied on the title, but please, don't stop
+reading. I know... I know, we started bad our relationship already but,
+I can explain it, I swear.&lt;/p&gt;
+&lt;p&gt;Yes, it says "survival guide", but it's not like that, I'm not going to
+tell you a recipe to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;OK, OK... I'm sorry, I lied on the title, but please, don't stop
+reading. I know... I know, we started bad our relationship already but,
+I can explain it, I swear.&lt;/p&gt;
+&lt;p&gt;Yes, it says "survival guide", but it's not like that, I'm not going to
+tell you a recipe to get the job you want, in the company you like and
+the country you dream, that's impossible, as programmer we all know
+there is no silver bullet, and it applies not only on software, also in
+day by day life problems.&lt;/p&gt;
+&lt;p&gt;What I'm going to share with you, is what worked and still working for
+me, let me give you some context. I'm a 29 years old Computer Engineer
+from Venezuela, yes, I know... we're famous for good baseball players,
+beautiful women and, most recently and sadly, thanks to this guy.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Hugo Chávez, worst Venezuelan
+president..." src="https://dl.dropboxusercontent.com/s/8v0mswsxcdii5pd/chavez.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;And this other guy...&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Nicolás Maduro... even worse that
+Chávez" src="https://dl.dropboxusercontent.com/s/2yqy0xbwldnwth4/maduro.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;My country is, obviously, a 3rd world country, we're facing huge and
+very serious economic and political issues and it's quickly getting
+worse thanks to those guys, my family is not rich so I couldn't travel
+or go to another country to study until things get better and, by now,
+I'm living in Dubai, paying my rent and brought my wife abroad so we
+have some hope of having the quality of life we dreamed together, how I
+did it?, my job is my flight ticket and my passport.&lt;/p&gt;
+&lt;p&gt;I managed to get out of Caracas, one of the most violent and dangerous
+cities in the world, and come to Dubai 2 years ago. Obviously this
+wasn't with money from my own pocket, a local company hired me and
+covered my relocation expenses. I'm going to share with you some things
+I did and still doing, this is not guaranteed to give you the job you
+want, but certainly will help you increase your chances.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Set up a decent LinkedIn profile:&lt;/em&gt; no joke, this helps, a lot of
+    recruiters and companies in LinkedIn, don't underestimate that tool,
+    it's really powerful and you don't need to pay for the pro or
+    premium version. A good LinkedIn profile includes a picture, a
+    description of each job you had, and by description I mean
+    responsibilities and key achievements and responsibilities in
+    that position.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Have a public GitHub account:&lt;/em&gt; and actually &lt;em&gt;use it!&lt;/em&gt;, I'm not
+    telling you to contribute to a lot of open source projects or to
+    start yet another social auth library, just experiment with new
+    tools, build some cool hello-world style projects and upload the
+    code to GitHub, this will show that you're actively learning new
+    stuff all the time.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Have a StackOverflow account:&lt;/em&gt; and, again, &lt;em&gt;use it&lt;/em&gt;, answer some
+    questions and ask some questions, it's useful and it will help you,
+    trust me.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Be passionate:&lt;/em&gt; love your career, you studied it for a reason.
+    Learn new stuff, experiment with a new language or framework, show
+    everybody the cool stuff you're working on, get ideas from other
+    people and learn from them.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Be pragmatic:&lt;/em&gt; yes, when it comes to work, you have to let your
+    knowledge and logic guide your decisions, not your emotions.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Choose your weapon:&lt;/em&gt; and do it early, it's good to be versatile,
+    you're a programmer, not a user of a programming language. But you
+    need a battle ax, the one that helps you solve any problem faster
+    and you feel more comfortable with.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And finally, the one I consider the most important.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Choose your first job carefully:&lt;/em&gt; yes, I mean it, don't let the job
+    choose you, you have to enjoy your job because it's where you will
+    spend most of the day and, trust me, your first job will define your
+    career. If you start developing J2EE applications, people will hire
+    you to do so, because that's the experience you have. Don't be
+    afraid to say no to an offer you're not totally convinced of taking.
+    In my case, when I was looking for an internship, I turned down an
+    offer from Microsoft in Venezuela because I've always been an Open
+    Source enthusiast and a Linux user, I didn't found myself
+    programming in ASP.NET, I decided to take an offer from Vauxoo, a
+    local small company that developed open source modules for OpenERP
+    (now Odoo) and I'm very happy I took that road, I learned Python in
+    that job, which is my battle ax and my main tool by today.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So... yeah!, not a recipe, but some tips I hope will help you on your
+first years as a professional.&lt;/p&gt;</content><category term="career"></category></entry></feed>
