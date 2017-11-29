@@ -1,0 +1,47 @@
+Title: ¿Por qué aprender un nuevo lenguaje?
+Date: 2011-09-11
+Author: Israel Fermín Montilla
+Tags: programación, lenguajes, carrera
+
+Java, C, C\#, ,C++, PHP, Perl, Ruby, SQL, SmallTalk, Erlang, Python,
+Haskell... Existen muchísimos lenguajes de programación, cada uno con
+sus fortalezas y debilidades, ya aprendí Java en la Universidad, también
+C, he hecho uno que otro proyecto web en PHP, "¡con JQuery y todo!".
+¿Por qué debería aprender un lenguaje nuevo?, todos hacen lo mismo al
+final, ¿o no?.
+
+Ciertamente, lo que puedes hacer en Java, puedes hacerlo en C\# o C++,
+por ejemplo. De igual manera, lo que puedes hacer utilizando PHP, puedes
+hacerlo programando en Ruby o en Perl o en Python. El detalle está en
+que al pasar mucho tiempo programando en un mismo lenguaje, dejamos de
+ser programadores y empezamos a convertirnos en "usuarios de un
+lenguaje", y pretendemos solucionar todo utilizándolo, aún cuando,
+quizás, existe una herramienta que nos permitiría hacer exactamente lo
+mismo, pero con la mitad del esfuerzo y la cuarta parte de las líneas de
+código. Debo dejar claro que "Qué tan buén programador eres" no es algo
+que se mida por la cantidad de lenguajes que sabes o, al menos, conoces
+y en los que puedes defenderte, sino en la capacidad que tengas de
+seleccionar el que más se adapte a la solución del problema que tienes
+en frente actualmente y en tu habilidad de llevar conceptos de un
+lenguaje a otro sin mucho problema.
+
+Siempre he dicho que sólo hay una cosa peor que un mal programador, y es
+un programador que sólo conoce un lenguaje y no es capaz de adaptarse a
+nuevas herramientas. A la hora de desarrollar un sistema, siempre es
+deseable tener un repertorio amplio de opciones para seleccionar la
+herramienta que más nos guste para atacarlo y empezar a programar.
+Muchas veces, las mismas características del problema nos obligan a
+trabajar con una herramienta, por ejemplo, si vamos a desarrollar un
+driver para una impresora o una tarjeta de sonido, no hay más opción que
+C. Pero si el problema es más flexible, tenemos una gama más ámplia de
+pinturas para empezar a colorear nuestra obra de arte. Si es web, puede
+que salga bien con PHP, ¿por qué no usar un Framework para hacernos la
+vida más fácil?: PHP + Symfony o Python + Django o Web2py, Perl +
+Catalyst (¿alguien?), si es una aplicación de escritorio, ¿por qué no
+utilizar Java?, o quizás Python + PyGTK o PyQt. Nuevas herramientas y
+nuevas maneras de hacer las cosas, si las entendemos y las asimilamos de
+manera correcta, nos hacen mejores programadores, uno como
+desarrollador, debe ser curioso y no sólo aprender a utilizar la
+herramienta, también explorarla y ver realmente cómo funciona por
+dentro. Sólo así, sabremos cuán óptima y realmente qué tan buena es
+dicha herramienta.
