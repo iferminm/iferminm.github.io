@@ -1,0 +1,3 @@
+[submodule "mymedius"]
+	path = mymedius
+	url = git@github.com:iferminm/medius.git
