@@ -63,7 +63,7 @@ Libertades\[1\], en Carabobo. O eso es lo que dicen los textos de
 historia que estudié en el liceo.
 
 ![La famosa escena del 19 de
-abril](https://dl.dropboxusercontent.com/u/3437671/blog/vedubai/emparan.jpg)
+abril](https://dl.dropboxusercontent.com/s/0rqe0kwn4yxeubp/emparan.jpg)
 
 Por su parte, UAE logró su independencia del Reino Unido en 1971 no he
 leído mucho de su historia aún, pero lo que sí se es que hasta
@@ -82,9 +82,9 @@ contruido en una isla artificial ([Burj al
 Arab](http://es.wikipedia.org/wiki/Burj_Al_Arab){.reference .external}).
 
 ![Dubai en
-1990](https://dl.dropboxusercontent.com/u/3437671/blog/vedubai/dubai-desierto.jpg)
+1990](https://dl.dropboxusercontent.com/s/1uhz4nqv925vc0e/dubai-desierto.jpg)
 ![Misma calle en
-2003](https://dl.dropboxusercontent.com/u/3437671/blog/vedubai/dubai2003.jpg)
+2003](https://dl.dropboxusercontent.com/s/1unk24ambjrj6tt/dubai2003.jpg)
 
 Ahora bien, todo esto fue a punta de petróleo, acá no hay bellezas ni
 muchos recursos naturales, sí, hay playas muy bonitas, pero ¿montañas?,
@@ -112,7 +112,7 @@ en el otro tardan **años** para reparar una torre quemada de Parque
 Central.
 
 ![Parque central en
-2004](https://dl.dropboxusercontent.com/u/3437671/blog/vedubai/parque-central-quemado.jpg)
+2004](https://dl.dropboxusercontent.com/s/542kzmo8bzzqox1/parque-central-quemado.jpg)
 
 Y eso que Venezuela tiene más tiempo en el mercado petrolero que UAE,
 Venezuela es uno de los países fundadores de la OPEP (Organización de
@@ -172,6 +172,7 @@ difícil hacer crecer plantas, hicieron crecer edificios.
 
 ¿Alguien me puede explicar?
 
-![dafuq?](https://dl.dropboxusercontent.com/u/3437671/blog/vedubai/jackie-chan-meme.jpg)
+![dafuq?](https://dl.dropboxusercontent.com/s/bkk53ile2u1jlrs/jackie-chan-meme.jpg)
+
 
 \[1\] Hoy, Follador de libertades

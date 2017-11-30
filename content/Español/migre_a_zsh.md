@@ -2,6 +2,8 @@ Title: Migré a ZSH
 Date: 2015-05-26
 Author: Israel Fermín Montilla
 Tags: zsh, shell, herramientas
+Cover: https://dl.dropboxusercontent.com/s/q8wl01sq5tlxwv0/oh-my-zsh.png
+Thumbnail: https://dl.dropboxusercontent.com/s/q8wl01sq5tlxwv0/oh-my-zsh.png
 
 Es bien sabido por todos que en Linux y en el Open Source en general,
 uno es libre de elegir todas y cada una de las partes del sistema que va

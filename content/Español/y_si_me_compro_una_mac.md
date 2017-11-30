@@ -17,7 +17,7 @@ hacer, podría fácilmente adquirir una MacBook Pro retina display,
 instalar homebrew y usarla también como máquina de desarrollo, ¿por qué
 no probar algo diferente?
 
-![Problem?](https://dl.dropboxusercontent.com/u/3437671/blog/comprarme-mac/thinkdifferent.jpg)
+![Problem?](https://dl.dropboxusercontent.com/s/aeyb7a5txzkqw2d/thinkdifferent.jpg)
 
 Siempre he sido un crítico de *Apple* y de todo lo que representa,
 siempre he dicho que es una fábrica de juguetes y que el único juguete
@@ -28,7 +28,7 @@ música. También siempre me he burlado de los fanáticos de *Apple*, les
 digo *iSheeps* porque, básicamente, así se comportan.
 
 ![iSheeps en
-formación](https://dl.dropboxusercontent.com/u/3437671/blog/comprarme-mac/isheeps.jpg)
+formación](https://dl.dropboxusercontent.com/s/2eygv1qqyzjf7h2/isheeps.jpg)
 
 Yo no soy una oveja, creo que soy mejor que eso, pero luego, pensando al
 respecto, tener una Mac, no me hace *iSheep*, comprar todo lo que tenga
