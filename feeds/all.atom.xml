@@ -1,5 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/*</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://iffm.me/feeds/all.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2017-09-24T00:00:00+04:00</updated><entry><title>Making django scale Pt.1</title><link href="http://iffm.me/making-django-scale-pt1.html" rel="alternate"></link><published>2017-09-24T00:00:00+04:00</published><updated>2017-09-24T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-09-24:/making-django-scale-pt1.html</id><summary type="html">&lt;p&gt;I gave a talk on PyConPL this year about scaling django, obviously on a 35min talk you don't have enough
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/*</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://iffm.me/feeds/all.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2017-11-30T00:00:00+04:00</updated><entry><title>My take on microservices</title><link href="http://iffm.me/my-take-on-microservices.html" rel="alternate"></link><published>2017-11-30T00:00:00+04:00</published><updated>2017-11-30T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-11-30:/my-take-on-microservices.html</id><summary type="html">&lt;p&gt;There's been a lot of stuff going on these days on &lt;em&gt;Software Engineering&lt;/em&gt;, it's hard to catch up on everything 
+I would like to. I try to go one topic at a time and now, also because we are working with this at the office,
+I'm hooked into microservices.&lt;/p&gt;
+&lt;p&gt;Microservices …&lt;/p&gt;</summary><content type="html">&lt;p&gt;There's been a lot of stuff going on these days on &lt;em&gt;Software Engineering&lt;/em&gt;, it's hard to catch up on everything 
+I would like to. I try to go one topic at a time and now, also because we are working with this at the office,
+I'm hooked into microservices.&lt;/p&gt;
+&lt;p&gt;Microservices is a new word for an old concept, a concept I thought I will never see or play with in real life 
+back in my University years, I remember my &lt;em&gt;Software Engineering&lt;/em&gt; and &lt;em&gt;Distributed Systems&lt;/em&gt; professors talking
+about web services and &lt;em&gt;API&lt;/em&gt;s and huge systems at IBM,
+Sun Microsystems and Oracle, SOAP and REST interfaces and how they interacted with each other and, also, the mighty
+Enterprise Service Bus with producers and consumers in Java, BPEL and C#, a very abstract
+concept for me to grasp at that time and I thought &lt;strong&gt;the only place&lt;/strong&gt; you could see that was working at &lt;strong&gt;huge&lt;/strong&gt;, corporate
+companies like the ones I mentioned above.&lt;/p&gt;
+&lt;p&gt;Nowadays, &lt;strong&gt;any&lt;/strong&gt; internet &lt;em&gt;startup&lt;/em&gt; can grow at a &lt;strong&gt;huge scale&lt;/strong&gt; and you can play around with this kind of technologies 
+if you're lucky enough to be part of one of those projects.&lt;/p&gt;
+&lt;p&gt;I was lucky to be part of the &lt;em&gt;dubizzle&lt;/em&gt; team, a classifieds website that operates at a &lt;strong&gt;massive scale&lt;/strong&gt; here in the middle east,
+the architecture is a huge legacy &lt;strong&gt;monolithic application&lt;/strong&gt; with all of the core functionality and several services surrounding this legacy app.
+These services are, in my opinion, mostly &lt;strong&gt;poorly integrated&lt;/strong&gt; and fault tolerance &lt;strong&gt;is not the rule&lt;/strong&gt;, sometimes error responses
+are silenced and bypassed which is quite bad. Also, the integration goes over &lt;em&gt;HTTP&lt;/em&gt;, which could be very unreliable
+even within the internal network and gives you a lot of headaches when you need to
+integrate more and more services. But the whole point of migrating to &lt;em&gt;microservices&lt;/em&gt; is to solve all those issues and have a better
+engineered platform to keep both product and tech as happy as possible and be able to move faster at the same time.&lt;/p&gt;
+&lt;p&gt;We dedicated some time now to study &lt;strong&gt;best practices&lt;/strong&gt; for implementing a microservices based architecture and built some proof of concepts and
+deployed one of them to production here are some of my key learning and good practices taken from what I've read and personal experience actually
+building stuff at &lt;em&gt;dubizzle&lt;/em&gt; and playing around with technology on my personal projects.&lt;/p&gt;
+&lt;h2&gt;APIs should be business bounded&lt;/h2&gt;
+&lt;p&gt;It's a common mistake to build &lt;em&gt;API&lt;/em&gt;s as simple &lt;em&gt;CRUD&lt;/em&gt; interfaces for &lt;em&gt;domain entities&lt;/em&gt;.
+This means, all the &lt;em&gt;business logic&lt;/em&gt; must be written and rewritten in the &lt;em&gt;clients&lt;/em&gt;, so, if you have, for instance, a &lt;em&gt;web client&lt;/em&gt;,
+a &lt;em&gt;desktop application&lt;/em&gt;, an &lt;em&gt;Android&lt;/em&gt; and an &lt;em&gt;iPhone&lt;/em&gt; mobile apps, well, you can count yourself
+how many times you'll have to write the &lt;em&gt;business logic&lt;/em&gt; surrounding those &lt;em&gt;data models&lt;/em&gt; with a &lt;em&gt;CRUD API&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;You have to build your API to encapsulate business processes, not just the objects creation and manipulation, so a single &lt;em&gt;API&lt;/em&gt; call,
+triggers all the needed processes to fulfill the request or the query the client just gave to the server.&lt;/p&gt;
+&lt;h2&gt;Services must be independent units&lt;/h2&gt;
+&lt;p&gt;This means, &lt;strong&gt;you must think&lt;/strong&gt; of each &lt;em&gt;microservice&lt;/em&gt; as a project or a &lt;em&gt;product&lt;/em&gt; on its own, this means each &lt;em&gt;service&lt;/em&gt; 
+has its own &lt;em&gt;box&lt;/em&gt; and its own &lt;em&gt;release pipeline&lt;/em&gt; and its own &lt;em&gt;life cycle&lt;/em&gt;, but also, they don't rely on each other to function.
+This means, if your &lt;em&gt;invoicing service&lt;/em&gt; is down, your &lt;em&gt;payment service&lt;/em&gt;
+&lt;strong&gt;don't need to suffer&lt;/strong&gt; because of this, you can always accept payments from your users and send the invoices later,
+when your &lt;em&gt;invoicing service&lt;/em&gt; comes up again.&lt;/p&gt;
+&lt;h2&gt;Rely on data, not services&lt;/h2&gt;
+&lt;p&gt;In the previous example you might be thinking "dude, but if the &lt;em&gt;invoicing service&lt;/em&gt; is down when the &lt;em&gt;payment service&lt;/em&gt; hits it, how will it know
+it needs to send an invoice to a user?". Well, you need some way to let it know once it wakes up, some &lt;em&gt;data sharing&lt;/em&gt; mechanism like a shared
+database (which is in general a bad idea because it creates &lt;em&gt;coupling&lt;/em&gt; between our services) or some sort of &lt;em&gt;caching&lt;/em&gt; on the services that needs
+to &lt;em&gt;consume&lt;/em&gt; that data.&lt;/p&gt;
+&lt;p&gt;In our example, we could make the &lt;em&gt;payment service&lt;/em&gt; and the &lt;em&gt;invoicing service&lt;/em&gt; share the same database, or, have a good separation of
+concerns and lower the &lt;em&gt;coupling&lt;/em&gt; and, since &lt;em&gt;invoicing&lt;/em&gt; needs to know about &lt;em&gt;payments&lt;/em&gt; but, &lt;em&gt;payments&lt;/em&gt; have no need to know about &lt;em&gt;invoicing&lt;/em&gt;,
+we can just have a &lt;em&gt;caching&lt;/em&gt; mechanism in place in our &lt;em&gt;invoicing service&lt;/em&gt; and have a copy of the needed data about &lt;em&gt;payments&lt;/em&gt; in order
+to generate &lt;em&gt;invoices&lt;/em&gt;, of course, this will add some complexity to our system because we need to be fault tolerant and make sure the data
+still reaches the &lt;em&gt;cache&lt;/em&gt; if the &lt;em&gt;invoicing service&lt;/em&gt; is down and we need to put some cache update processes in order to keep it up to date.&lt;/p&gt;
+&lt;h2&gt;High cohesion, low coupling&lt;/h2&gt;
+&lt;p&gt;This is a principle borrowed from &lt;em&gt;Object Oriented Programming&lt;/em&gt;, let's remember what they mean&lt;/p&gt;
+&lt;h3&gt;Coupling&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;coupling&lt;/strong&gt; is the degree of interdependence between software modules.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Wikipedia&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This means, if two &lt;em&gt;modules&lt;/em&gt;, &lt;em&gt;functions&lt;/em&gt; or &lt;em&gt;services&lt;/em&gt; rely too much on each other, chances are if I make a change on one, I'll have to make
+a change on the other one to compensate, this makes our code and architecture less orthogonal, which means exactly that, a change in one
+part of the system, will affect other unrelated parts, just like driving a helicopter.&lt;/p&gt;
+&lt;h3&gt;Cohesion&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;cohesion&lt;/strong&gt; refers to the degree to which the elements inside a module belong together.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Wikipedia&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This means, it's a measure of how much the &lt;em&gt;elements&lt;/em&gt; inside a &lt;em&gt;module&lt;/em&gt; belong together, not necessarily they rely on each other, but they
+all &lt;strong&gt;work together&lt;/strong&gt; towards a common objective.&lt;/p&gt;
+&lt;p&gt;In general &lt;em&gt;cohesion&lt;/em&gt; is increased if:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;All the &lt;em&gt;elements&lt;/em&gt; in the &lt;em&gt;module&lt;/em&gt; have much in common. This means, access the same set of data, for example.&lt;/li&gt;
+&lt;li&gt;The &lt;em&gt;elements&lt;/em&gt; in the &lt;em&gt;module&lt;/em&gt; carry out a &lt;strong&gt;small&lt;/strong&gt; number of &lt;strong&gt;related&lt;/strong&gt; activities. This means, each member of the
+module does one and only one thing related to the task without side effects  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;By keeping &lt;strong&gt;related functionality&lt;/strong&gt; together, we are automatically increasing &lt;em&gt;cohesion&lt;/em&gt; and lowering &lt;em&gt;coupling&lt;/em&gt;, and this is exactly
+what we want.&lt;/p&gt;
+&lt;h3&gt;What does this mean in microservices?&lt;/h3&gt;
+&lt;p&gt;Well, it's easy to think of &lt;em&gt;coupling&lt;/em&gt; and &lt;em&gt;cohesion&lt;/em&gt; withing the same computer program or the same code base, but in &lt;em&gt;microservices&lt;/em&gt; this
+means exactly the same, &lt;strong&gt;keep related functionality together&lt;/strong&gt; so you don't have that logic spread all over the place and duplicated
+in more than one service. This also mean, keep services using similar or related data together, either logically or physically.&lt;/p&gt;
+&lt;h2&gt;One hit, one transaction&lt;/h2&gt;
+&lt;p&gt;This means, avoid distributed transaction at all costs, they are difficult to implement and even more difficult to debug if something
+goes wrong, ideally one &lt;em&gt;write&lt;/em&gt; operation to your system should directly affect &lt;strong&gt;one&lt;/strong&gt; service, what happens &lt;em&gt;offline&lt;/em&gt; could be a different
+story. For example, we could have our &lt;em&gt;payments service&lt;/em&gt; which deals with a third party payment gateway to charge our users' credit cards,
+to keep things under &lt;em&gt;Single Responsibility Pattern&lt;/em&gt; (SRP), we will have a separate &lt;em&gt;invoicing service&lt;/em&gt; which handles generating and
+sending invoices to the users (I know, we could separate things even more by having a separate &lt;em&gt;notification service&lt;/em&gt; that handles
+sending the emails but let's keep it at this level for the sake of simplicity). &lt;/p&gt;
+&lt;p&gt;So, the only thing my client needs to know is &lt;em&gt;I need to make a payment&lt;/em&gt;, whatever happens afterwards it's not my client's problem, it
+only needs to hit the &lt;em&gt;payments service&lt;/em&gt; with the needed &lt;em&gt;payload&lt;/em&gt; and get the response to show it to the user. What happens under the hood
+is my &lt;em&gt;payments service&lt;/em&gt;'s problem, it needs to &lt;em&gt;somehow&lt;/em&gt; notify the &lt;em&gt;invoicing service&lt;/em&gt; that it needs to email an invoice to a specific
+user, this has to happen &lt;em&gt;offline&lt;/em&gt;, either we start a separate &lt;em&gt;thread&lt;/em&gt; or use a message queue for it and we notify either generating an
+&lt;em&gt;event&lt;/em&gt; or via an &lt;em&gt;HTTP&lt;/em&gt; call, but this needs to happen offline and be fault tolerant so we don't keep the &lt;em&gt;client&lt;/em&gt; waiting for something
+that is &lt;em&gt;our&lt;/em&gt; internal process, as well as updating the inventory, generating accounting ledger entries, etc.&lt;/p&gt;
+&lt;h2&gt;Choreography over orchestration&lt;/h2&gt;
+&lt;p&gt;This is, to me, one of the most important best practices I've learned then it comes to microservices oriented architecture, when we think of
+distributed transactions we often have some sort of &lt;em&gt;director&lt;/em&gt; or &lt;em&gt;conductor&lt;/em&gt;, which is the service that initiated the transaction, it will
+know, what needs to happen and in which order, also, it will be the responsible to roll everything back if any part of the transaction fails,
+transactions need to be &lt;em&gt;Atomic&lt;/em&gt;, right?. This is a very dangerous approach because, if something goes wrong while performing the transaction,
+nothing can guarantee something won't happen while rolling it back, leaving the system in an inconsistent state and giving us lots of
+headaches down the road when having to debug some weird behavior in our system.&lt;/p&gt;
+&lt;p&gt;The best way to implement these kind of &lt;em&gt;distributed&lt;/em&gt; transactions, i.e., business processes that need to update more than one service
+is through &lt;em&gt;Choreography&lt;/em&gt;, if you think about a &lt;em&gt;choreography&lt;/em&gt;, there's no &lt;em&gt;conductor&lt;/em&gt;, everyone knows what they need to do, where they
+need to go, the only signal is the music. This means, in &lt;em&gt;microservices&lt;/em&gt;, we just need to &lt;em&gt;notify&lt;/em&gt; everyone &lt;em&gt;something&lt;/em&gt; happened, and
+the concerning &lt;em&gt;services&lt;/em&gt; will react accordingly, either updating their database, emitting another &lt;em&gt;event&lt;/em&gt; or sending a notification to
+the user.&lt;/p&gt;
+&lt;p&gt;In order to properly implement &lt;em&gt;choreography&lt;/em&gt; we need to build &lt;em&gt;resilient&lt;/em&gt; services by putting in place fault tolerance logic or processes
+so, if some service fails to react, it can heal itself or someone gets notified.&lt;/p&gt;
+&lt;h2&gt;Don't rely on HTTP&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/L._Peter_Deutsch"&gt;Peter Deutsch&lt;/a&gt; and &lt;a href="https://en.wikipedia.org/wiki/James_Gosling"&gt;James Gosling&lt;/a&gt; wrote about the
+&lt;em&gt;8 fallacies of distributed computing&lt;/em&gt; and the first one was&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The network is reliable&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A million things can happen when you rely on the network, maybe the requests times out, maybe there's a broken link, maybe subnet permissions
+were changed maybe the host we are trying to reach is unavailable, maybe a rat ate a network cable, lots of things can happen and we are
+not in control of all of them, even withing our own private network.&lt;/p&gt;
+&lt;p&gt;What I'd recommend instead is to have a &lt;em&gt;communication layer&lt;/em&gt; in the form of a &lt;em&gt;message bus&lt;/em&gt;, it can be a &lt;em&gt;queue&lt;/em&gt; like 
+&lt;a href="https://www.rabbitmq.com/"&gt;RabbitMQ&lt;/a&gt; or a &lt;em&gt;data streaming pipeline&lt;/em&gt; like &lt;a href="https://kafka.apache.org/"&gt;Apache Kafka&lt;/a&gt;
+of course there will be a bit of network communication between your services and the communication
+layer, or your services and the database system, but that's being taken care of by the corresponding drivers or libraries or deal with those,
+so, you can assume they're fault tolerant and the data will reach its destination.&lt;/p&gt;
+&lt;p&gt;There will be cases where you can't avoid rely on &lt;em&gt;HTTP&lt;/em&gt; or any network protocol, for example, you need to serve your website somehow, and
+you need to query your services somehow too, so, in this case I'd recommend to go for a &lt;em&gt;REST API&lt;/em&gt; or whatever protocol you prefer for external
+communication (third party services and &lt;em&gt;client-server&lt;/em&gt;) and using a &lt;em&gt;message bus&lt;/em&gt; for inter-service communication.&lt;/p&gt;
+&lt;h3&gt;A note about the fallacies&lt;/h3&gt;
+&lt;p&gt;Some people will say that the &lt;em&gt;8 fallacies of distributed computing&lt;/em&gt; are obsolete nowadays because there are tools already that handle
+everything for us, replication, secure networking, authentication, networks are sophisticated so, latency is not a problem anymore but,
+just because &lt;em&gt;someone&lt;/em&gt; is taking care of &lt;em&gt;something&lt;/em&gt; for us, doesn't mean that &lt;em&gt;something&lt;/em&gt; isn't there, imagine building a system without
+these tools, you'll have to face them anyways, besides, there are countries where the computer networks are not as good as in the US or
+Europe for example, so, I wouldn't say these &lt;em&gt;fallacies&lt;/em&gt; are becoming irrelevant. Even if you're not implementing replication or security
+yourself, you need to think about it and use &lt;em&gt;something&lt;/em&gt; that handles that for you.&lt;/p&gt;
+&lt;h2&gt;Recommended readings&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://amzn.to/2AkhBdU"&gt;Building Microservices&lt;/a&gt; by &lt;a href="http://samnewman.io/"&gt;Sam Newman&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://amzn.to/2Am0eZW"&gt;RESTful API Design: Best Practices in API Design with REST&lt;/a&gt; by &lt;a href="https://twitter.com/mattbiehl"&gt;Matthias Biehl&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://amzn.to/2ngI1dI"&gt;The Pragmatic Programmer&lt;/a&gt; by &lt;a href="https://en.wikipedia.org/wiki/Dave_Thomas_(programmer)"&gt;David Thomas&lt;/a&gt; and 
+&lt;a href="https://en.wikipedia.org/wiki/Andy_Hunt_(author)"&gt;Andrew Hunt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Coupling_(computer_programming)"&gt;Coupling (computer programming)&lt;/a&gt; (Wikipedia article)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Cohesion_(computer_science)"&gt;Cohesion (computer science)&lt;/a&gt; (Wikipedia article)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing"&gt;Fallacies of distributed computing&lt;/a&gt; (Wikipedia article)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.infoworld.com/article/3114195/system-management/the-8-fallacies-of-distributed-computing-are-becoming-irrelevant.html"&gt;The 8 fallacies of distributed computing are becoming irrelevant&lt;/a&gt; build your own opinion, are they?, comment!.&lt;/li&gt;
+&lt;/ul&gt;</content><category term="software engineering"></category><category term="microservices"></category></entry><entry><title>Making django scale Pt.1</title><link href="http://iffm.me/making-django-scale-pt1.html" rel="alternate"></link><published>2017-09-24T00:00:00+04:00</published><updated>2017-09-24T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-09-24:/making-django-scale-pt1.html</id><summary type="html">&lt;p&gt;I gave a talk on PyConPL this year about scaling django, obviously on a 35min talk you don't have enough
 time to outline all the strategies and go deeper, so I thought it might be a cool idea to write a series
 of blog posts  about this topic, not only …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I gave a talk on PyConPL this year about scaling django, obviously on a 35min talk you don't have enough
 time to outline all the strategies and go deeper, so I thought it might be a cool idea to write a series
@@ -60,11 +202,7 @@ you might have some ways to get data or an insight on how your program is runnin
 to go get it.&lt;/p&gt;
 &lt;p&gt;In the following posts, I'll recommend some tools to measure and later on some strategies to make your django site scale,
 so, what you'll see in part 2 will be a set of tools to monitor your app's health.&lt;/p&gt;
-&lt;p&gt;Don't forget to subscribe! I rarely send emails but when I do, It's interesting, I promise.&lt;/p&gt;</content><category term="python"></category><category term="django"></category><category term="scaling"></category></entry><entry><title>Making django scale Pt.2</title><link href="http://iffm.me/making-django-scale-pt2.html" rel="alternate"></link><published>2017-09-24T00:00:00+04:00</published><updated>2017-09-24T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-09-24:/making-django-scale-pt2.html</id><summary type="html">&lt;p&gt;In a previous article, I spoke about the basic concepts when it comes to performance
-tuning, those were basic concepts we use everyday but always struggle to define what
-they mean when we are asked to. In that article I also spoke about the Pareto Principle,&lt;/p&gt;</summary><content type="html">&lt;p&gt;In a previous article, I spoke about the basic concepts when it comes to performance
-tuning, those were basic concepts we use everyday but always struggle to define what
-they mean when we are asked to. In that article I also spoke about the Pareto Principle,&lt;/p&gt;</content><category term="python"></category><category term="django"></category><category term="scaling"></category></entry><entry><title>PyConPL 2017</title><link href="http://iffm.me/pyconpl-2017.html" rel="alternate"></link><published>2017-09-01T00:00:00+04:00</published><updated>2017-09-01T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-09-01:/pyconpl-2017.html</id><summary type="html">&lt;p&gt;Two of my personal goals for this year were:&lt;/p&gt;
+&lt;p&gt;Don't forget to subscribe! I rarely send emails but when I do, It's interesting, I promise.&lt;/p&gt;</content><category term="python"></category><category term="django"></category><category term="scaling"></category></entry><entry><title>PyConPL 2017</title><link href="http://iffm.me/pyconpl-2017.html" rel="alternate"></link><published>2017-09-01T00:00:00+04:00</published><updated>2017-09-01T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-09-01:/pyconpl-2017.html</id><summary type="html">&lt;p&gt;Two of my personal goals for this year were:&lt;/p&gt;
 &lt;p&gt;1.- To speak at a local meetup here in Dubai&lt;/p&gt;
 &lt;p&gt;2.- To speak at a bigger conference, anywhere&lt;/p&gt;
 &lt;p&gt;Thanks to my wife, who is always supporting me much more than I support her, I could do
