@@ -1,8 +1,9 @@
 Title: My take on microservices
-Status: draft
 Author: Israel Fermín Montilla
 Date: 2017-11-30
 Tags: software engineering, microservices
+Cover: https://dl.dropboxusercontent.com/s/atrbesdhbsz2jpx/microservices.png
+Thumbnail: https://dl.dropboxusercontent.com/s/atrbesdhbsz2jpx/microservices.png
 
 There's been a lot of stuff going on these days on *Software Engineering*, it's hard to catch up on everything 
 I would like to. I try to go one topic at a time and now, also because we are working with this at the office,
@@ -10,7 +11,7 @@ I'm hooked into microservices.
 
 Microservices is a new word for an old concept, a concept I thought I will never see or play with in real life 
 back in my University years, I remember my *Software Engineering* and *Distributed Systems* professors talking
-about web services and APIs and huge systems at IBM,
+about web services and *API*s and huge systems at IBM,
 Sun Microsystems and Oracle, SOAP and REST interfaces and how they interacted with each other and, also, the mighty
 Enterprise Service Bus with producers and consumers in Java, BPEL and C#, a very abstract
 concept for me to grasp at that time and I thought **the only place** you could see that was working at **huge**, corporate
@@ -24,7 +25,8 @@ the architecture is a huge legacy **monolithic application** with all of the cor
 These services are, in my opinion, mostly **poorly integrated** and fault tolerance **is not the rule**, sometimes error responses
 are silenced and bypassed which is quite bad. Also, the integration goes over *HTTP*, which could be very unreliable
 even within the internal network and gives you a lot of headaches when you need to
-integrate more and more services.
+integrate more and more services. But the whole point of migrating to *microservices* is to solve all those issues and have a better
+engineered platform to keep both product and tech as happy as possible and be able to move faster at the same time.
 
 We dedicated some time now to study **best practices** for implementing a microservices based architecture and built some proof of concepts and
 deployed one of them to production here are some of my key learning and good practices taken from what I've read and personal experience actually
@@ -132,8 +134,9 @@ A million things can happen when you rely on the network, maybe the requests tim
 were changed maybe the host we are trying to reach is unavailable, maybe a rat ate a network cable, lots of things can happen and we are
 not in control of all of them, even withing our own private network.
 
-What I'd recommend instead is to have a *communication layer* in the form of a *message bus*, it can be a *queue* like RabbitMQ or a
-*data streaming* pipeline like Apache Kafka, of course there will be a bit of network communication between your services and the communication
+What I'd recommend instead is to have a *communication layer* in the form of a *message bus*, it can be a *queue* like 
+[RabbitMQ](https://www.rabbitmq.com/) or a *data streaming pipeline* like [Apache Kafka](https://kafka.apache.org/)
+of course there will be a bit of network communication between your services and the communication
 layer, or your services and the database system, but that's being taken care of by the corresponding drivers or libraries or deal with those,
 so, you can assume they're fault tolerant and the data will reach its destination.
 
