@@ -1,3 +1,6 @@
 [submodule "mymedius"]
 	path = mymedius
 	url = git@github.com:iferminm/medius.git
+[submodule "output"]
+	path = output
+	url = git@github.com:iferminm/iferminm.github.io.git
