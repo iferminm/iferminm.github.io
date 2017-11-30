@@ -43,7 +43,8 @@ seleccionarla de manera interactiva, cosa que *BASH* no hace de manera
 natural.
 
 ![Autocompletado
-interactivo](https://dl.dropboxusercontent.com/u/3437671/blog/zsh/foto1.png)
+interactivo](https://dl.dropboxusercontent.com/s/4b7jmr0humceyyk/foto1.png)
+
 Además, no sólo completa rutas y comandos básicos del sistema operativo,
 con *Oh My ZSH* también tiene autocompletado para git, cosa que me
 resulta muy útil porque es una herramienta que uso todos los días en la
@@ -51,7 +52,7 @@ oficina y para proyectos personales, este autocompletado incluye una
 pequeña descripción de lo que hace cada comando de git.
 
 ![git &lt;TAB&gt; y esto
-aparece](https://dl.dropboxusercontent.com/u/3437671/blog/zsh/foto2.png)
+aparece](https://dl.dropboxusercontent.com/s/4sqyl17x60dsnk8/foto2.png)
 
 ### Completación de rutas
 
