@@ -1,7 +1,7 @@
 Title: We always evolve
 Subtitle: Don't look back unless it is to fix important stuff
 Author: Israel Fermín Montilla
-Date: 2017-11-30
+Date: 2017-12-11
 Tags: software engineering, career, personal
 Cover: https://dl.dropboxusercontent.com/s/atrbesdhbsz2jpx/microservices.png
 Thumbnail: https://dl.dropboxusercontent.com/s/atrbesdhbsz2jpx/microservices.png
@@ -25,7 +25,8 @@ pains in your development, testing or deploy process, perhaps your company's or 
 learning and gaining knowledge and then putting it in practice you will gain experience and know what works, what doesn't
 work and what work betters under some condittions.
 
-> Knowledge is nothing if you don't apply it in the real world.
+> Knowledge is of no value unless you put it into practice.
+> — Anton Chekhov
 
 You might be asking what casused me to reflect on this, well, some time ago I wrote about *The evilness of None* and
 how it is a bad practice to `return None` or `return null` from functions when you're expecting the output to meet
