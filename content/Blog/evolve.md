@@ -1,7 +1,7 @@
 Title: We always evolve
 Subtitle: Don't look back unless it is to fix important stuff
 Author: Israel Fermín Montilla
-Date: 2017-12-11
+Date: 2017-12-14
 Tags: software engineering, career, personal
 Cover: https://dl.dropboxusercontent.com/s/d97lkag2ysfdqrc/evolve.jpg
 Thumbnail: https://dl.dropboxusercontent.com/s/d97lkag2ysfdqrc/evolve.jpg
