@@ -2,6 +2,8 @@ Title: Working at dubizzle
 Author: Israel Fermín Montilla
 Date: 2017-08-16
 Tags: personal, career, middle east, dubizzle
+Cover: https://dl.dropboxusercontent.com/s/vb19lcpqs8obi0n/dubizzle.png
+Thumbnail: https://dl.dropboxusercontent.com/s/vb19lcpqs8obi0n/dubizzle.png
 
 
 About 4 years ago I got an email through StackOverflow Careers from a woman called
