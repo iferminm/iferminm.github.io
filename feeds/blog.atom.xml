@@ -1,5 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - Blog</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://iffm.me/feeds/blog.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2017-12-14T00:00:00+04:00</updated><entry><title>We always evolve</title><link href="http://iffm.me/we-always-evolve.html" rel="alternate"></link><published>2017-12-14T00:00:00+04:00</published><updated>2017-12-14T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-12-14:/we-always-evolve.html</id><summary type="html">&lt;p&gt;I've been going through code I wrote about two or maybe three years ago while cleaning up my working directory
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - Blog</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://iffm.me/feeds/blog.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2017-12-24T00:00:00+04:00</updated><entry><title>Making django scale Pt.2</title><link href="http://iffm.me/making-django-scale-pt2.html" rel="alternate"></link><published>2017-12-24T00:00:00+04:00</published><updated>2017-12-24T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-12-24:/making-django-scale-pt2.html</id><summary type="html">&lt;p&gt;It's been a while since the &lt;a href="/making-django-scale-pt1.html"&gt;first post&lt;/a&gt; about scaling web applications using &lt;em&gt;django&lt;/em&gt;, last time we
+spoke about some basic concepts about scalability, buzz words we hear everyday and we also use but
+always struggle when we need to give a formal definition to someone.&lt;/p&gt;
+&lt;p&gt;Once we have clear …&lt;/p&gt;</summary><content type="html">&lt;p&gt;It's been a while since the &lt;a href="/making-django-scale-pt1.html"&gt;first post&lt;/a&gt; about scaling web applications using &lt;em&gt;django&lt;/em&gt;, last time we
+spoke about some basic concepts about scalability, buzz words we hear everyday and we also use but
+always struggle when we need to give a formal definition to someone.&lt;/p&gt;
+&lt;p&gt;Once we have clear basic concepts about scalability, performance and we are familiar with the Pareto
+Principle, we are ready to start optimizing and improving our system's performance, right?. Not so fast
+cowboy!, if you remember the Pareto Principle most of the negative performance impact is coming for 20%
+of the negative impacters. We need to manage somehow to solve that 20% so we are sure we are making a
+significant improvement.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;You can't manage what you don't measure&lt;/em&gt; - Peter Ducker&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This means, we need to gain visibility inside our system to be able to detect those bottlenecks and 
+work on solving or easing them. For that, we will need a set of tools to monitor and profile our
+application.&lt;/p&gt;
+&lt;h2&gt;The tools&lt;/h2&gt;
+&lt;p&gt;There are a lot of monitoring tools for Linux and for &lt;em&gt;django&lt;/em&gt; out there, you can use the ones you like
+the most, but I'm going to showcase some here as a starting point. I'm not going to go deep into how to
+install them and set them up or customize them because it's out of the scope of this post, but I might
+post some individual howtos later, here I'll just point you to the corresponding documentation.&lt;/p&gt;
+&lt;h3&gt;django debug toolbar&lt;/h3&gt;
+&lt;p&gt;This is my all time favorite, it's a pip-installable module for &lt;em&gt;django&lt;/em&gt; and you'll need to add some
+settings variables and a template tag and you're done.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Image of django-debug-toolbar" src="https://dl.dropboxusercontent.com/s/bykbb9iryv1m6io/django_debug_toolbar.png"&gt;&lt;/p&gt;
+&lt;p&gt;As you can see on the screenshot it will give you a lot of relevant information about what happened under
+the hood to serve that request, it will tell you the missed cache hits, which static files and templates
+are being served, the current request headers and request parameters but my favorite feature is the SQL viewer,
+it will show you the queries that ran on that view, with a timeline and their run time so you get to see
+which ones are taking long time and take action, it gives you also the option to see an &lt;code&gt;EXPLAIN&lt;/code&gt; of the query
+to check what the query planner did.&lt;/p&gt;
+&lt;p&gt;To install it and use it, you can refer to the &lt;a href="https://django-debug-toolbar.readthedocs.io/en/stable/"&gt;official docs&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;vprof&lt;/h3&gt;
+&lt;p&gt;This is a visual profiler for &lt;em&gt;Python&lt;/em&gt;, although it isn't made for &lt;em&gt;django&lt;/em&gt;, you can plug it in and take advantage
+of all the cool graphs it will draw for you out of the box.&lt;/p&gt;
+&lt;p&gt;A profiler will measure how your code is behaving and tell you where the hot points are as well as your call
+stack, vprof will give you an insight also on how much memory your program is consuming so it's easier to detect
+memory leaks.&lt;/p&gt;
+&lt;p&gt;Here are some of the graphs &lt;em&gt;vprof&lt;/em&gt; will produce for you&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Flame diagram to allow you see your function call stack
+&lt;img alt="*vprof* flame diagram" src="https://dl.dropboxusercontent.com/s/lvi3sxxhgmjccax/vprof_flame_diagram.png"&gt;&lt;/li&gt;
+&lt;li&gt;Memory profiler
+&lt;img alt="*vprof* memory profiler" src="https://dl.dropboxusercontent.com/s/zv1o87ebms7humr/vprof_mem_profiler.png"&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To set it up you can refer to the &lt;a href="https://github.com/nvdv/vprof"&gt;official docs&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;CProfile&lt;/h3&gt;
+&lt;p&gt;Setting up &lt;em&gt;vprof&lt;/em&gt; for &lt;em&gt;django&lt;/em&gt; might be tricky depending of your application architecture and setup, &lt;em&gt;CProfile&lt;/em&gt; is
+pretty much the defacto standard on &lt;em&gt;Python&lt;/em&gt; profilers, it will produce an output on an standard format you can plug into
+any profiling reporting tool such as &lt;em&gt;SnakeViz&lt;/em&gt; to produce cool graphs that will help you understand what's going on.&lt;/p&gt;
+&lt;p&gt;You can easily set it up in &lt;em&gt;django&lt;/em&gt; by using &lt;em&gt;&lt;a href="https://github.com/omarish/django-cprofile-middleware"&gt;django-cprofile-middleware&lt;/a&gt;&lt;/em&gt; 
+this app will also add one endpoint any
+&lt;em&gt;staff&lt;/em&gt; user can hit to get data about the performance and, also, &lt;em&gt;CProfile&lt;/em&gt; can produce an output file you can
+pipe into &lt;em&gt;&lt;a href="http://jiffyclub.github.io/snakeviz/"&gt;SnakeViz&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This is how &lt;em&gt;SnakeViz&lt;/em&gt; graphs would look like:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="*SnakeViz* list view" src="https://dl.dropboxusercontent.com/s/0uxf12rxx562t6z/snake_list_view.png"&gt;
+&lt;img alt="*SnakeViz* sunburst diagram" src="https://dl.dropboxusercontent.com/s/hx9cfdxvn1dqq4o/snake_sun_diagram.png"&gt;&lt;/p&gt;
+&lt;h3&gt;StatsD&lt;/h3&gt;
+&lt;p&gt;This is an external stats collecting system built by &lt;em&gt;Etsy&lt;/em&gt;, they &lt;a href="https://codeascraft.com/2011/02/15/measure-anything-measure-everything/"&gt;blogged&lt;/a&gt;
+about it and how it works and it's also &lt;a href="https://github.com/etsy/statsd"&gt;open source&lt;/a&gt;, you can set it up in &lt;em&gt;django&lt;/em&gt; through a third
+party app called &lt;a href="http://django-statsd.readthedocs.io/en/latest/"&gt;django-statsd&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Using this is a bit manual, you will need to send out your stats the same way you use log statements to add entries
+with messages about what your system is going. In this case what StatsD will do is keep a log on counts and timing
+of the events you are sending stats about.&lt;/p&gt;
+&lt;p&gt;The coolest thing about &lt;em&gt;StatsD&lt;/em&gt; is that you can set it up to periodically flush data to &lt;a href="http://graphiteapp.org/"&gt;&lt;em&gt;Graphite&lt;/em&gt;&lt;/a&gt;
+where you can then produce this kind of graphs on top of &lt;em&gt;StatsD&lt;/em&gt;'s data&lt;/p&gt;
+&lt;p&gt;&lt;img alt="*Graphite* dashboard" src="https://dl.dropboxusercontent.com/s/mns9m1htvqvxr5k/graphite.jpg"&gt;&lt;/p&gt;
+&lt;h3&gt;Use the logging subsystem&lt;/h3&gt;
+&lt;p&gt;Logging can save you a lot of time if you do it right, it can also clutter your code with &lt;code&gt;logger.info()&lt;/code&gt; statements everywhere
+if you over do it, you need to log everything so you know what your app is doing at each step of the different processes it performs,
+but log even more on the critical ones.&lt;/p&gt;
+&lt;p&gt;These log files need to go somewhere, maybe you're familiar with &lt;a href="https://syslog-ng.org/"&gt;syslog&lt;/a&gt; to concentrate your logs in a single server so you
+have only one place to go when you need to do some text-processing-fu with &lt;code&gt;sed&lt;/code&gt;, &lt;code&gt;awk&lt;/code&gt;, &lt;code&gt;sort&lt;/code&gt; and &lt;code&gt;grep&lt;/code&gt;, but as your system grows
+and also the amount of different loggers storing messages, it will get trickier and trickier to keep track of every action across
+all the different modules of your system, an &lt;em&gt;ELK&lt;/em&gt; system can help you to ease the search through your log files and also generate
+reports and graphs on top of your log data using &lt;em&gt;Kibana&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;You can read more about the &lt;em&gt;ELK&lt;/em&gt; or &lt;em&gt;Elastic&lt;/em&gt; stack &lt;a href="https://www.elastic.co/webinars/introduction-elk-stack"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;newrelic&lt;/h3&gt;
+&lt;p&gt;If you have some budget to invest on this, &lt;a href="http://newrelic.com"&gt;&lt;em&gt;newrelic&lt;/em&gt;&lt;/a&gt; will give you most of these features
+out of the box just by installing and setting up their &lt;em&gt;Python&lt;/em&gt; tracker, it will start pushing data to &lt;em&gt;newrelic&lt;/em&gt; and
+you can see your system's performance in real time, it will show you data such as the average response time as well as
+response time in percentiles, average throughput, average error rate, error data and even transaction data like the one
+you get from &lt;em&gt;django-debug-toolbar&lt;/em&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;newrelic&lt;/em&gt;'s main dashboard
+&lt;img alt="*newrelic* main dashboard" src="https://dl.dropboxusercontent.com/s/zs0m9ozgktnhl1n/newrelic_main.png"&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Transactions dashboard
+&lt;img alt="*newrelic* transactions dashboard" src="https://dl.dropboxusercontent.com/s/vuxlqnexow0srj8/newrelic_transactions.png"&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Errors dashboard
+&lt;img alt="*newrelic* errors dashboard" src="https://dl.dropboxusercontent.com/s/iw0zhoum8hv60xw/newrelic_errors.png"&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you have the budget, &lt;em&gt;newrelic&lt;/em&gt; is a &lt;em&gt;no-brainer&lt;/em&gt; it will be a valuable tool for you and your team and save you
+a lot of time when you need to debug a live issue.&lt;/p&gt;
+&lt;h2&gt;Final words&lt;/h2&gt;
+&lt;p&gt;Before you even think of optimizing anything, you need to measure, there is no point in blindly going through the
+code and, for example, indexing fields in your models if you don't know the impact of that, if any at all. The tools
+mentioned here are not a definitive guide to profiling &lt;em&gt;django&lt;/em&gt; applications but they provide a nice starting point
+to begging playing with them and choosing which ones work for you and which ones doesn't so you can improve your
+tool belt, your stack and the quality of the products you're building.&lt;/p&gt;
+&lt;p&gt;Monitoring and measuring shouldn't be an optional thing, it should be there if not since day one, at least added within
+the first months of life of your project, that's the only way you get to see inside your application, detect bottlenecks
+and potential bugs, debug them, measure their impact, prioritize them and be sure that by rolling out the optimizations
+you will have an improvement of ~X percent in your performance.&lt;/p&gt;</content><category term="Python"></category><category term="django"></category><category term="scaling"></category></entry><entry><title>We always evolve</title><link href="http://iffm.me/we-always-evolve.html" rel="alternate"></link><published>2017-12-14T00:00:00+04:00</published><updated>2017-12-14T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-12-14:/we-always-evolve.html</id><summary type="html">&lt;p&gt;I've been going through code I wrote about two or maybe three years ago while cleaning up my working directory
 and archiving old stuff and, I must say: what the hell did I have in my head by that time?, for real, there are
 things that are over-engineered, very complicated …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I've been going through code I wrote about two or maybe three years ago while cleaning up my working directory
 and archiving old stuff and, I must say: what the hell did I have in my head by that time?, for real, there are
