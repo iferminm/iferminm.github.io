@@ -3,7 +3,8 @@ Subtitle: Getting the basic concepts
 Author: Israel Fermín Montilla
 Date: 2017-09-24
 Tags: python, django, scaling
-
+Cover: https://dl.dropboxusercontent.com/s/qfuis9ownkf3g2t/django-logo-positive.png
+Thumbnail: https://dl.dropboxusercontent.com/s/qfuis9ownkf3g2t/django-logo-positive.png
 
 I gave a talk on PyConPL this year about scaling django, obviously on a 35min talk you don't have enough
 time to outline all the strategies and go deeper, so I thought it might be a cool idea to write a series
