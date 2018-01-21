@@ -26,7 +26,7 @@ CLOUDFILES_CONTAINER=my_cloudfiles_container
 DROPBOX_DIR=~/Dropbox/Public/
 
 GITHUB_PAGES_BRANCH=master
-GITHUB_MESSAGE="New Article"
+GH_MESSAGE="New Article"
 
 DEBUG ?= 0
 ifeq ($(DEBUG), 1)
@@ -120,7 +120,7 @@ cf_upload: publish
 
 github: publish
 	cd $(OUTPUTDIR) && git add .
-	cd $(OUTPUTDIR) && git commit -a -m "$(GITHUB_MESSAGE)"
+	cd $(OUTPUTDIR) && git commit -a -m "$(GH_MESSAGE)"
 	cd $(OUTPUTDIR) && git push origin $(GITHUB_PAGES_BRANCH)
 
 .PHONY: html help clean regenerate serve serve-global devserver stopserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github
