@@ -1,7 +1,7 @@
 Title: Django registration in no time!
 Subtitle: Getting it done quick!
 Author: Israel Fermín Montilla
-Date: 2018-01-24
+Date: 2018-01-23
 Tags: python, django, tutorial, registration
 Cover: https://dl.dropboxusercontent.com/s/h4co8r0y2yz7j9l/user-registration.jpg
 Thumbnail: https://dl.dropboxusercontent.com/s/h4co8r0y2yz7j9l/user-registration.jpg
