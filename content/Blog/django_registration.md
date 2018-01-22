@@ -2,9 +2,9 @@ Title: Django registration in no time!
 Subtitle: Getting it done quick!
 Author: Israel Fermín Montilla
 Date: 2018-01-24
-Tags: python, django, tutorial
-Cover: https://dl.dropboxusercontent.com/s/d97lkag2ysfdqrc/evolve.jpg
-Thumbnail: https://dl.dropboxusercontent.com/s/d97lkag2ysfdqrc/evolve.jpg
+Tags: python, django, tutorial, registration
+Cover: https://dl.dropboxusercontent.com/s/h4co8r0y2yz7j9l/user-registration.jpg
+Thumbnail: https://dl.dropboxusercontent.com/s/h4co8r0y2yz7j9l/user-registration.jpg
 
 
 What does 99% of the projects we work on have in common?, what's usually the first or the last
@@ -91,12 +91,33 @@ urlpatterns = [
 
 2.- Set `REGISTRATION_OPEN = True`, this is the default value, but *better explicit than implicit*
 
-3.- By default, after successful registration the user will be redirected to `/`, so I had to customize this behavior by
-subclassing `registration.backends.simple.views.RegistrationView` and overriding the method `get_success_url()`
+3.- By default, after successful registration the user will be redirected to `/`, but you can customize this behavior by
+subclassing `registration.backends.simple.views.RegistrationView` and overriding the method `get_success_url()`, in my case,
+redirecting to `/` is fine.
 
 4.- By default, *django-registration* will use `registration.forms.RegistrationForm`, this can be overridden by supplying your
-own `form_class` argument when instantiating the default `RegistationView` or by subclassing it and setting the `form_class`
-attribute or implementing `get_form_class()`.
+own `form_class` argument when adding the default `RegistationView` to the `urlpatterns` or by subclassing it and setting the `form_class`
+attribute or implementing `get_form_class()`. In my case, I opted for passing an argument to the `as_view()` method when addind the
+corresponding `url`.
+
+```
+from registration.backends.simple.views import RegistrationView
+
+from django.conf.urls import url
+from django.conf.urls import include
+
+from .forms import UserRegistrationForm
+
+
+urlpatterns = [
+    # Some url patterns
+    url(r'accounts/register/$', RegistrationView.as_view(
+        form_class=UserRegistrationForm
+    ),
+    url(r'accounts/', include('registration.backends.simple.urls')),
+    # More url patterns
+]
+```
 
 5.- Customize the registration template, this flow only needs one template called `registration/registration_form.html` and it will
 pick it up automatically, the `RegistrationView` will add the `form` variable to the `context` and it will contain a `RegistrationForm` instance,
