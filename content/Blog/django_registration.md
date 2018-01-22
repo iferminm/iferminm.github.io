@@ -1,7 +1,7 @@
 Title: Django registration in no time!
 Subtitle: Getting it done quick!
 Author: Israel Fermín Montilla
-Date: 2017-12-20
+Date: 2018-01-24
 Tags: python, django, tutorial
 Cover: https://dl.dropboxusercontent.com/s/d97lkag2ysfdqrc/evolve.jpg
 Thumbnail: https://dl.dropboxusercontent.com/s/d97lkag2ysfdqrc/evolve.jpg
@@ -105,6 +105,3 @@ all for free.
 ## Recommended readings
 * [*django registration* docs](https://django-registration.readthedocs.io/en/2.4.1/index.html)
 * Django docs on [class based views](https://docs.djangoproject.com/en/2.0/topics/class-based-views/)
-
-
-
