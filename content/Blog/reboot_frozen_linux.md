@@ -22,7 +22,7 @@ and while pressing that combination, you need to write *REISUB*, each letter has
 * **E** sends *SIGTERM* to all processes, allowing them to terminate gracefully
 * **I** sends *SIGKILL* to all remaining processes, forcing them to terminate right away
 * **S** flushes data to disk
-* **U** remounts all filesystems in *read-only* mode
+* **U** remounts all file systems in *read-only* mode
 * **B** reboot!
 
 That way your system won't suffer any damage and it will gracefully **R**eboot **E**ven
@@ -32,4 +32,4 @@ If you need to turn off your computer instead of reboot, you
 can switch **B** for **O**. You're welcome.
 
 ## Recommended readings
-* [THIS](https://en.wikipedia.org/wiki/Magic_SysRq_key) wikipedia article
+* [THIS](https://en.wikipedia.org/wiki/Magic_SysRq_key) Wikipedia article
