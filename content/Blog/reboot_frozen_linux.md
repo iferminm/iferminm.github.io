@@ -30,3 +30,6 @@ That way your system won't suffer any damage and it will gracefully **R**eboot *
 
 If you need to turn off your computer instead of reboot, you
 can switch **B** for **O**. You're welcome.
+
+## Recommended readings
+* [THIS](https://en.wikipedia.org/wiki/Magic_SysRq_key) wikipedia article
