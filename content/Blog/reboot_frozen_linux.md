@@ -1,10 +1,10 @@
 Title: What to do when linux freezes?
 Subtitle: don't press the shutdown button
 Author: Israel Fermín Montilla
-Date: 2017-12-24
+Date: 2018-01-30
 Tags: linux
-Cover: https://dl.dropboxusercontent.com/s/nofhzatwj098ntz/measure.jpg
-Thumbnail: https://dl.dropboxusercontent.com/s/nofhzatwj098ntz/measure.jpg
+Cover: https://dl.dropboxusercontent.com/s/6or45x7pvtdwufm/pic.jpg.png
+Thumbnail: https://dl.dropboxusercontent.com/s/6or45x7pvtdwufm/pic.jpg.png
 
 
 Well, we all know that nothing is perfect, not even linux, it sometimes freezes.
