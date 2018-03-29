@@ -11,6 +11,11 @@ Well, I'm mostly focusing on few stuff right now in no particular order.
 * Being the best dad I can be
 * Blogging at least twice a month
 * Reading about *Microservices*, *Software Architecture*, *Software Engineering* and *CI/CD*
-* Working on launching a personal project
+* Working on improving my mentoring tool
+* Speaking at meetups and conferences
+* Taking [PyMena](http://pymena.org) initiative forward
 * Being part of the backend Tigers team @ [Careem](http://careem.com)
 * Online mentoring @ [Code Institute](http://codeinstitute.net)
+
+
+*Last update:* 2018-03-27
