@@ -1,10 +1,9 @@
 Title: Bye bye dubizzle, hello Careem!
 Author: Israel Fermín Montilla
-Date: 2017-12-14
+Date: 2018-03-30
 Tags: career, personal
-Cover: https://dl.dropboxusercontent.com/s/d97lkag2ysfdqrc/evolve.jpg
-Thumbnail: https://dl.dropboxusercontent.com/s/d97lkag2ysfdqrc/evolve.jpg
-
+Cover: https://dl.dropboxusercontent.com/s/y7hf2p40crdu19y/careem.jpeg
+Thumbnail: https://dl.dropboxusercontent.com/s/y7hf2p40crdu19y/careem.jpeg
 
 I've been quiet for the last two months, I was a bit busy switching jobs, yes,
 after more than three years I decided to leave *dubizzle*, part of the *OLX*
