@@ -80,7 +80,8 @@ the other services and returning an error, there are ways to solve this, but usu
 
 ## Rely on data, not services
 We spoke about *low coupling and high cohession* in *microservices* in a previous article, relying on
-a service to be up so 
+a service to be up in order for some other service to be able to do what it's supposed to do is some
+form of *coupling*, you are letting an independent system 
 
 
 ### Eventual consistency
