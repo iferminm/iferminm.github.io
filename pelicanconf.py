@@ -43,8 +43,9 @@ THEME = os.path.join(os.path.dirname(__file__), 'mymedius/')
 DEFAULT_CAT = 'Blog'
 MEDIUS_AUTHORS = {
     'Israel Fermín Montilla': {
+        'image': 'https://dl.dropboxusercontent.com/s/1bvnowsfke4rs2k/isra.jpg',
         'description':  {
-            ''' Full time husband and dad who loves technology and and programming. Software Engineer @ dubizzle / Online Mentor @ codeinstitute.net'''
+            ''' Full time husband and dad who loves technology and programming. Software Engineer @ Careem / Online Mentor @ codeinstitute.net'''
         }
     }
 }
