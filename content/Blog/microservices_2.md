@@ -7,7 +7,7 @@ Cover: https://dl.dropboxusercontent.com/s/atrbesdhbsz2jpx/microservices.png
 Thumbnail: https://dl.dropboxusercontent.com/s/atrbesdhbsz2jpx/microservices.png
 
 
-On a previous article on *microservices* **external link**, we went through the best practices I've seen,
+On a [previous article](http://iffm.me/my-take-on-microservices.html) on *microservices*, we went through the best practices I've seen,
 which doesn't mean those are the only ones, it only means that those are the ones I've seen work for me
 and the ones I've tried.
 
@@ -141,7 +141,7 @@ For building reports though, you should always query from your sources of truth,
 system where your source of truth varies depending on the information you're looking for and it's not a single database
 where you can run a SQL query and join everything together. You could rely also on *internal events* to build a reporting
 database while the relevant events are happening instead of querying everything when a report is requested, this way you'll
-always have relevant business data to produce reports on top of,
+always have relevant business data to produce reports on top of.
 
 
 ## Conclusion
@@ -158,3 +158,4 @@ microservices in.
 * [Introduction to Microservices](https://specify.io/concepts/microservices) by Oliver Wolf 
 * [Why Microservices Should be Event Driven](http://blog.christianposta.com/microservices/why-microservices-should-be-event-driven-autonomy-vs-authority/) by Christian Posta 
 * [Event command transformation in microservice architectures and DDD](https://blog.bernd-ruecker.com/event-command-transformation-in-microservice-architectures-and-ddd-dd07d5eb9656) by Bernd Rücker  
+* [My take on Microservices](http://iffm.me/my-take-on-microservices.html) by me :-)
