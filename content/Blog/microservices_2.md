@@ -3,8 +3,8 @@ Subtitle: Avoiding sync calls when possible
 Author: Israel Fermín Montilla
 Date: 2018-05-10
 Tags: software engineering, microservices
-Cover: https://dl.dropboxusercontent.com/s/atrbesdhbsz2jpx/microservices.png
-Thumbnail: https://dl.dropboxusercontent.com/s/atrbesdhbsz2jpx/microservices.png
+Cover: https://dl.dropboxusercontent.com/s/r9nq4k8fg4brsug/choreography.jpg
+Thumbnail: https://dl.dropboxusercontent.com/s/r9nq4k8fg4brsug/choreography.jpg
 
 
 On a [previous article](http://iffm.me/my-take-on-microservices.html) on *microservices*, we went through the best practices I've seen,
@@ -28,7 +28,7 @@ and, **always** remember, *if something can fail, it will fail*.
 ### Increases overall response time
 Take a look at the following figure: 
 
-![Services map](https://dl.dropboxusercontent.com/s/k261ik209fporvr/service_down.png?dl=0)
+![Services map](https://dl.dropboxusercontent.com/s/k261ik209fporvr/service_down.png)
 
 Response times are not taking into account the wait time while the downstream services
 respond. This means, *service 1* queries *service 2*, it does *something* and takes 10ms to respond. Also, *Service 1* queries
