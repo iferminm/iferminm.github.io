@@ -1,5 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/*</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://iffm.me/feeds/all.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2018-03-30T00:00:00+04:00</updated><entry><title>Bye bye dubizzle, hello Careem!</title><link href="http://iffm.me/bye-bye-dubizzle-hello-careem.html" rel="alternate"></link><published>2018-03-30T00:00:00+04:00</published><updated>2018-03-30T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2018-03-30:/bye-bye-dubizzle-hello-careem.html</id><summary type="html">&lt;p&gt;I've been quiet for the last two months, I was a bit busy switching jobs, yes,
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/*</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://iffm.me/feeds/all.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2018-05-10T00:00:00+04:00</updated><entry><title>Choreography and Orchestration</title><link href="http://iffm.me/choreography-and-orchestration.html" rel="alternate"></link><published>2018-05-10T00:00:00+04:00</published><updated>2018-05-10T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2018-05-10:/choreography-and-orchestration.html</id><summary type="html">&lt;p&gt;On a &lt;a href="http://iffm.me/my-take-on-microservices.html"&gt;previous article&lt;/a&gt; on &lt;em&gt;microservices&lt;/em&gt;, we went through the best practices I've seen,
+which doesn't mean those are the only ones, it only means that those are the ones I've seen work for me
+and the ones I've tried.&lt;/p&gt;
+&lt;p&gt;This time, I would like to focus on &lt;strong&gt;Choreography over …&lt;/strong&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;On a &lt;a href="http://iffm.me/my-take-on-microservices.html"&gt;previous article&lt;/a&gt; on &lt;em&gt;microservices&lt;/em&gt;, we went through the best practices I've seen,
+which doesn't mean those are the only ones, it only means that those are the ones I've seen work for me
+and the ones I've tried.&lt;/p&gt;
+&lt;p&gt;This time, I would like to focus on &lt;strong&gt;Choreography over Orchestration&lt;/strong&gt; and &lt;strong&gt;Rely on data, not services&lt;/strong&gt; because
+I feel I didn't develop enough on these ones and those are really important these are also the two &lt;em&gt;principles&lt;/em&gt; 
+that will help you &lt;em&gt;avoid sync calls&lt;/em&gt;, which is usually a good practice for inter-service communication.&lt;/p&gt;
+&lt;p&gt;But first:&lt;/p&gt;
+&lt;h2&gt;Internal &lt;em&gt;REST&lt;/em&gt; services, why not?&lt;/h2&gt;
+&lt;p&gt;Don't get me wrong, I love &lt;em&gt;REST&lt;/em&gt;, I like building &lt;em&gt;API&lt;/em&gt;s and I enjoy using a well designed one for sure, but for internal
+communication I prefer to avoid it unless the communication &lt;strong&gt;needs&lt;/strong&gt; to be synchronous, there are some cases where you can't
+help it and it's not always because of a bad design, sometimes the use case itself enforces that restriction.&lt;/p&gt;
+&lt;p&gt;If you find yourself using network calls most of the time, something will most likely go wrong. Network is not 100% reliable
+and, &lt;strong&gt;always&lt;/strong&gt; remember, &lt;em&gt;if something can fail, it will fail&lt;/em&gt;.&lt;/p&gt;
+&lt;h3&gt;Increases overall response time&lt;/h3&gt;
+&lt;p&gt;Take a look at the following figure: &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Services map" src="https://dl.dropboxusercontent.com/s/k261ik209fporvr/service_down.png?dl=0"&gt;&lt;/p&gt;
+&lt;p&gt;Response times are not taking into account the wait time while the downstream services
+respond. This means, &lt;em&gt;service 1&lt;/em&gt; queries &lt;em&gt;service 2&lt;/em&gt;, it does &lt;em&gt;something&lt;/em&gt; and takes 10ms to respond. Also, &lt;em&gt;Service 1&lt;/em&gt; queries
+&lt;em&gt;Service 3&lt;/em&gt; which queries &lt;em&gt;Service 4&lt;/em&gt; and &lt;em&gt;Service 5&lt;/em&gt;. &lt;em&gt;Service 4&lt;/em&gt; does &lt;em&gt;something&lt;/em&gt; and takes 300ms to respond and &lt;em&gt;Service 5&lt;/em&gt;
+queries &lt;em&gt;Service 6&lt;/em&gt; which takes 1000ms to respond, then &lt;em&gt;Service 5&lt;/em&gt; does &lt;em&gt;something&lt;/em&gt; and takes another 1200ms to come back to
+&lt;em&gt;Service 3&lt;/em&gt;, which has been waiting 2200ms to get all the data it needs to do &lt;em&gt;some stuff&lt;/em&gt; which takes 300ms. By this time,
+&lt;em&gt;Service 1&lt;/em&gt; has been waiting 2500ms for all the data it needs to do a 120ms &lt;em&gt;something&lt;/em&gt; and return back to the upstream caller,
+which could be another service waiting or the end user. &lt;/p&gt;
+&lt;p&gt;Note that the above flow paralelizes all the needed downstream calls per service, so in this case, the total response time will be
+constrained by the slowest call chain. If you were using a stack where doing multiprocessing or async programming is not an easy
+option, you'll have to add up the response time for all of the downstream calls because in reality the service in question
+is being blocked while waiting for the network call to finish and, only then, making the second call and blocking until it comes back
+and so on.&lt;/p&gt;
+&lt;p&gt;There are several ways you can keep the same setup, you can add several levels of cache in between services, you can add a timeout
+to the network calls but everything comes at a cost. If you're keeping a synchronous approach to answer certain questions it's because
+you need your data as fresh as possible, so, the more cache you add the more stale your data could be. You could also add a timeout to
+your calls but, if one of them times out, you'll fail in responding to the upstream caller and it will look like the system is down.&lt;/p&gt;
+&lt;h3&gt;What if someone is down?&lt;/h3&gt;
+&lt;p&gt;Let imagine &lt;em&gt;Service 6&lt;/em&gt; is down because we had a buggy release.&lt;/p&gt;
+&lt;p&gt;This means, &lt;em&gt;Service 1&lt;/em&gt; will have to wait 1500ms before returning an error upstream, you can mitigate this
+with a &lt;a href="https://www.martinfowler.com/bliki/CircuitBreaker.html"&gt;circuit breaker&lt;/a&gt; approach or returning a 
+cached response for the query you're trying to answer but,
+again, unless you really need this to be synchronous, you'd be adding more complexity to an already complex
+system.&lt;/p&gt;
+&lt;p&gt;Also, what if it isn't a &lt;em&gt;read&lt;/em&gt; operation, what if we're actually &lt;em&gt;writing&lt;/em&gt; downstream and the last write fails
+because of &lt;em&gt;reasons&lt;/em&gt;. You'll be half way a transaction and you'll have to deal with it somehow, either queuing that
+last write and hoping &lt;em&gt;Service 6&lt;/em&gt; comes back soon or rolling back the whole transaction which would mean deleting from
+the other services and returning an error, there are ways to solve this, but usually it doesn't need to be this hard.&lt;/p&gt;
+&lt;h3&gt;When should I go synchronous?&lt;/h3&gt;
+&lt;p&gt;In my opinion, it will depend on the use case you're implementing and how critical it is to
+return the exact data at the moment the request was done, usually there's some tolerance to
+return slightly stale data, but things like &lt;em&gt;credit accounting&lt;/em&gt;, &lt;em&gt;warehouse availability&lt;/em&gt; or
+anything that was to do with resources being consumed in real time are good candidates for
+sync calls and all the complexity they involve.&lt;/p&gt;
+&lt;h2&gt;Choreography vs Orchestration&lt;/h2&gt;
+&lt;p&gt;There's a good analogy in the &lt;em&gt;microservices&lt;/em&gt; world and how they handle &lt;em&gt;things&lt;/em&gt; happening
+within the system, let's call those things &lt;em&gt;events&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Let's say there are two types of &lt;em&gt;events&lt;/em&gt;, those which make the system &lt;em&gt;do&lt;/em&gt; something, for example,
+in an e-commerce website it could be a user bought something, and those which make the system &lt;em&gt;change&lt;/em&gt;
+its status, for example, update some records in the database o send a request to another service. The
+first ones, let's call them &lt;em&gt;external events&lt;/em&gt; because they're triggered by an external actor, maybe the
+user or an external system consuming our API, these &lt;em&gt;external events&lt;/em&gt; are the ones triggering the second
+ones, let's call them &lt;em&gt;internal events&lt;/em&gt; because it's the system updating itself. So, &lt;em&gt;external events&lt;/em&gt; trigger
+&lt;em&gt;internal events&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Now, there are two ways of handling &lt;em&gt;events&lt;/em&gt;, we can either do it via &lt;em&gt;orchestration&lt;/em&gt;, where we have
+a service which acts as the &lt;em&gt;master&lt;/em&gt; of the transaction, telling all the other services involved in it
+what to do, what to update. Just like a Conductor does in an Orchestra, it tells all the other musicians
+(services) when to play they part, how to play it and so on. The other way is more like a &lt;em&gt;choreography&lt;/em&gt;,
+where given an &lt;em&gt;event&lt;/em&gt; every service knows how to handle it and how to react to it, just like dancers who
+know how and where to move or what do do when a certain part of the song is played.&lt;/p&gt;
+&lt;p&gt;Good architectures are a mix of both approaches and good architects know when to use either of those
+depending on the business needs and the use case they're modeling. Unfortunately there's no recipe
+to decide, gaining experience designing systems and making mistakes are the only way to learn, although
+reading about others experience, having clear concepts on how distributed systems and networks work and
+a good understanding of the problem at hand we're solving are a good starting point.&lt;/p&gt;
+&lt;h2&gt;Rely on data, not services&lt;/h2&gt;
+&lt;p&gt;We spoke about &lt;em&gt;low coupling and high cohesion&lt;/em&gt; in &lt;em&gt;microservices&lt;/em&gt; in a previous article, relying on
+a service to be up in order for some other service to be able to do what it's supposed to do is some
+form of &lt;em&gt;coupling&lt;/em&gt;, you are letting an independent system fail because another is feeling unwell.&lt;/p&gt;
+&lt;p&gt;For services to be independent, every service should have a copy of the data they need to answer at least
+basic queries, this doesn't mean you'll directly update the copies, you need to define which service is going
+to be your &lt;em&gt;source of truth&lt;/em&gt; for a specific piece of data and perform all the write operations for it to &lt;strong&gt;that&lt;/strong&gt;
+service and then, somehow, update the copies. You can rely on &lt;em&gt;internal events&lt;/em&gt; to do this, every time an
+&lt;em&gt;external event&lt;/em&gt; triggers an update on the &lt;em&gt;source of truth&lt;/em&gt; for a give piece of data, you can fire up
+an &lt;em&gt;internal event&lt;/em&gt; to make the services keeping a copy update their local copies.&lt;/p&gt;
+&lt;p&gt;By doing this you can still serve a read-only version of the data for some use cases even if the source of
+truth is down, if it's, for example, an e-commerce and the source of truth for the catalog is, for example,
+the &lt;em&gt;Inventory Service&lt;/em&gt;, you can still serve the catalog even though the users won't be able to purchase
+anything, they still can save them to their &lt;em&gt;wishlist&lt;/em&gt; and browse the website, this lets you gracefully
+degrade your system if there are problems with some services, you just show an error message or hide the options
+or have alternate workflows until the systems supporting the degraded use case are back up and running.&lt;/p&gt;
+&lt;p&gt;What if a service is down and misses some updates from the source of truth?, well, depending on how you propagate
+the updates, you can do several things. You can use a queuing system like &lt;em&gt;ZeroMQ&lt;/em&gt; or &lt;em&gt;RabbitMQ&lt;/em&gt; to propagate
+the updates, so, if a service is down, the updates will be waiting on the queue to be consumed once the service
+is up, if you're using HTTP calls, you can have your worker retry the failed requests after a &lt;em&gt;back-off&lt;/em&gt; time or
+write the payload to a given location so, when the other service comes up, an &lt;em&gt;init&lt;/em&gt; script checks that location,
+reads whatever is there and marks those messages as &lt;em&gt;consumed&lt;/em&gt;, there are multiple ways to deal with this problem,
+most of them will depend on the technology you're using.&lt;/p&gt;
+&lt;h3&gt;Eventual consistency&lt;/h3&gt;
+&lt;p&gt;When you deal with distributed systems and distributed information, chances are, some copies will be stalled
+for a period of time, this means, information will always be flowing through the &lt;em&gt;pipes&lt;/em&gt; of your system, the only
+way you will have total consistency is if you stop writing and wait some time. Even in monolithic systems, what you
+show to the user is stale most of the time, let's say, for example, a website listing used articles for sale, when
+the search page is served to the user, depending on the traffic, there will be probably 10ths or hundreds of new
+articles the user won't see unless they refresh the page or we have a pushing mechanism in place. So, how important is
+it really to show the most updated information available to the user?, truth is, is not that critical in most cases.&lt;/p&gt;
+&lt;p&gt;For building reports though, you should always query from your sources of truth, this could be tricky on a distributed
+system where your source of truth varies depending on the information you're looking for and it's not a single database
+where you can run a SQL query and join everything together. You could rely also on &lt;em&gt;internal events&lt;/em&gt; to build a reporting
+database while the relevant events are happening instead of querying everything when a report is requested, this way you'll
+always have relevant business data to produce reports on top of.&lt;/p&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;There's no silver bullet to solve the problems that come with distributed computing, however, there are strategies
+to help you discover the best way to deal with certain problems for your specific use case, try to use choreography
+where possible and orchestrate the flows that need to be completely synchronous, always try to find the easiest solution,
+keep in mind that sometimes the easiest way to solve a problem is the hardest to implement, but benefits will be seen
+in the future, when you need to debug a failure or scale, or even extend your system with more features or plugging more
+microservices in.&lt;/p&gt;
+&lt;p&gt;Also, always prefer choreography and async communication when possible instead of orchestration and sync calls between
+services, this doesn't mean you should avoid it at all cost as there are use cases that need that approach. A good architect
+knows that the best way to solve a problem is not following strictly one and only one approach, it's combining different
+concepts and ways around it and adapting them to the specific problem to achieve an efficient and elegant solution. &lt;/p&gt;
+&lt;h2&gt;Recommended readings&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/2KgY6qh"&gt;Building Microservices&lt;/a&gt; by &lt;a href="https://samnewman.io/"&gt;Sam Newman&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.martinfowler.com/bliki/CircuitBreaker.html"&gt;Circuit Breaker&lt;/a&gt; by Martin Fowler &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://specify.io/concepts/microservices"&gt;Introduction to Microservices&lt;/a&gt; by Oliver Wolf &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://blog.christianposta.com/microservices/why-microservices-should-be-event-driven-autonomy-vs-authority/"&gt;Why Microservices Should be Event Driven&lt;/a&gt; by Christian Posta &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.bernd-ruecker.com/event-command-transformation-in-microservice-architectures-and-ddd-dd07d5eb9656"&gt;Event command transformation in microservice architectures and DDD&lt;/a&gt; by Bernd Rücker  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://iffm.me/my-take-on-microservices.html"&gt;My take on Microservices&lt;/a&gt; by me :-)&lt;/li&gt;
+&lt;/ul&gt;</content><category term="software engineering"></category><category term="microservices"></category></entry><entry><title>Bye bye dubizzle, hello Careem!</title><link href="http://iffm.me/bye-bye-dubizzle-hello-careem.html" rel="alternate"></link><published>2018-03-30T00:00:00+04:00</published><updated>2018-03-30T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2018-03-30:/bye-bye-dubizzle-hello-careem.html</id><summary type="html">&lt;p&gt;I've been quiet for the last two months, I was a bit busy switching jobs, yes,
 after more than three years I decided to leave &lt;em&gt;dubizzle&lt;/em&gt;, part of the &lt;em&gt;OLX&lt;/em&gt;
 group and one of the biggest brands here in the United Arab Emirates, for reasons
 I won't discuss in this …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I've been quiet for the last two months, I was a bit busy switching jobs, yes,
