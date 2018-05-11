@@ -1,5 +1,5 @@
-Title: My take on microservices 2
-Subtitle: Avoiding the network
+Title: Choreography and Orchestration
+Subtitle: Avoiding sync calls when possible
 Author: Israel Fermín Montilla
 Date: 2018-05-10
 Tags: software engineering, microservices
@@ -12,10 +12,8 @@ which doesn't mean those are the only ones, it only means that those are the one
 and the ones I've tried.
 
 This time, I would like to focus on **Choreography over Orchestration** and **Rely on data, not services** because
-I feed I didn't develop enough on these ones and those are really import and for my approach on *microservices*, if
-you paid attention to the subtitle, these are also the two *principles* that will help you *avoid the network*, well,
-not 100% true because you still need to communicate with your clients and that involves network calls but, at least,
-it will help you take them to a minimum on internal communication or *message passing*.
+I feel I didn't develop enough on these ones and those are really important these are also the two *principles* 
+that will help you *avoid sync calls*, which is usually a good practice for inter-service communication.
 
 But first:
 
@@ -83,7 +81,7 @@ Let's say there are two types of *events*, those which make the system *do* some
 in an e-commerce website it could be a user bought something, and those which make the system *change*
 its status, for example, update some records in the database o send a request to another service. The
 first ones, let's call them *external events* because they're triggered by an external actor, maybe the
-user or an external system consuming out API, these *external events* are the ones triggering the second
+user or an external system consuming our API, these *external events* are the ones triggering the second
 ones, let's call them *internal events* because it's the system updating itself. So, *external events* trigger
 *internal events*.
 
@@ -113,7 +111,7 @@ service and then, somehow, update the copies. You can rely on *internal events* 
 *external event* triggers an update on the *source of truth* for a give piece of data, you can fire up
 an *internal event* to make the services keeping a copy update their local copies.
 
-By doing this you can still serve a real-only version of the data for some use cases even if the source of
+By doing this you can still serve a read-only version of the data for some use cases even if the source of
 truth is down, if it's, for example, an e-commerce and the source of truth for the catalog is, for example,
 the *Inventory Service*, you can still serve the catalog even though the users won't be able to purchase
 anything, they still can save them to their *wishlist* and browse the website, this lets you gracefully
@@ -149,8 +147,14 @@ There's no silver bullet to solve the problems that come with distributed comput
 to help you discover the best way to deal with certain problems for your specific use case, try to use choreography
 where possible and orchestrate the flows that need to be completely synchronous, always try to find the easiest solution,
 keep in mind that sometimes the easiest way to solve a problem is the hardest to implement, but benefits will be seen
-in the future, when you need to debug a failure or scale, or even extend your system with more features or plugin more
+in the future, when you need to debug a failure or scale, or even extend your system with more features or plugging more
 microservices in.
+
+Also, always prefer choreography and async communication when possible instead of orchestration and sync calls between
+services, this doesn't mean you should avoid it at all cost as there are use cases that need that approach. A good architect
+knows that the best way to solve a problem is not following strictly one and only one approach, it's combining different
+concepts and ways around it and adapting them to the specific problem to achieve an efficient and elegant solution. 
+
 
 ## Recommended readings
 * [Building Microservices](https://amzn.to/2KgY6qh) by [Sam Newman](https://samnewman.io/)
