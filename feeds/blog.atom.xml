@@ -17,7 +17,7 @@ help it and it's not always because of a bad design, sometimes the use case itse
 and, &lt;strong&gt;always&lt;/strong&gt; remember, &lt;em&gt;if something can fail, it will fail&lt;/em&gt;.&lt;/p&gt;
 &lt;h3&gt;Increases overall response time&lt;/h3&gt;
 &lt;p&gt;Take a look at the following figure: &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Services map" src="https://dl.dropboxusercontent.com/s/k261ik209fporvr/service_down.png?dl=0"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Services map" src="https://dl.dropboxusercontent.com/s/k261ik209fporvr/service_down.png"&gt;&lt;/p&gt;
 &lt;p&gt;Response times are not taking into account the wait time while the downstream services
 respond. This means, &lt;em&gt;service 1&lt;/em&gt; queries &lt;em&gt;service 2&lt;/em&gt;, it does &lt;em&gt;something&lt;/em&gt; and takes 10ms to respond. Also, &lt;em&gt;Service 1&lt;/em&gt; queries
 &lt;em&gt;Service 3&lt;/em&gt; which queries &lt;em&gt;Service 4&lt;/em&gt; and &lt;em&gt;Service 5&lt;/em&gt;. &lt;em&gt;Service 4&lt;/em&gt; does &lt;em&gt;something&lt;/em&gt; and takes 300ms to respond and &lt;em&gt;Service 5&lt;/em&gt;

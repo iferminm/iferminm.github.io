@@ -41,8 +41,8 @@
     <div class="article-header-container">
         <div class="background-image-container">
 
-            <div class="background-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://dl.dropboxusercontent.com/s/atrbesdhbsz2jpx/microservices.png);">
-                <img src="https://dl.dropboxusercontent.com/s/atrbesdhbsz2jpx/microservices.png" alt="Choreography and Orchestration">
+            <div class="background-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://dl.dropboxusercontent.com/s/r9nq4k8fg4brsug/choreography.jpg);">
+                <img src="https://dl.dropboxusercontent.com/s/r9nq4k8fg4brsug/choreography.jpg" alt="Choreography and Orchestration">
                 <div class="title">
                 <h1>
                     Choreography and Orchestration
@@ -71,7 +71,7 @@ help it and it's not always because of a bad design, sometimes the use case itse
 and, <strong>always</strong> remember, <em>if something can fail, it will fail</em>.</p>
 <h3>Increases overall response time</h3>
 <p>Take a look at the following figure: </p>
-<p><img alt="Services map" src="https://dl.dropboxusercontent.com/s/k261ik209fporvr/service_down.png?dl=0"></p>
+<p><img alt="Services map" src="https://dl.dropboxusercontent.com/s/k261ik209fporvr/service_down.png"></p>
 <p>Response times are not taking into account the wait time while the downstream services
 respond. This means, <em>service 1</em> queries <em>service 2</em>, it does <em>something</em> and takes 10ms to respond. Also, <em>Service 1</em> queries
 <em>Service 3</em> which queries <em>Service 4</em> and <em>Service 5</em>. <em>Service 4</em> does <em>something</em> and takes 300ms to respond and <em>Service 5</em>
