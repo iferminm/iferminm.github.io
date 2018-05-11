@@ -1,7 +1,7 @@
-Title: My take on microservices
+Title: My take on microservices 2
 Subtitle: Avoiding the network
 Author: Israel Fermín Montilla
-Date: 2017-11-30
+Date: 2018-05-10
 Tags: software engineering, microservices
 Cover: https://dl.dropboxusercontent.com/s/atrbesdhbsz2jpx/microservices.png
 Thumbnail: https://dl.dropboxusercontent.com/s/atrbesdhbsz2jpx/microservices.png
@@ -12,7 +12,7 @@ which doesn't mean those are the only ones, it only means that those are the one
 and the ones I've tried.
 
 This time, I would like to focus on **Choreography over Orchestration** and **Rely on data, not services** because
-I feed I didn't develop enough on these ones and those are really importand for my approach on *microservices*, if
+I feed I didn't develop enough on these ones and those are really import and for my approach on *microservices*, if
 you paid attention to the subtitle, these are also the two *principles* that will help you *avoid the network*, well,
 not 100% true because you still need to communicate with your clients and that involves network calls but, at least,
 it will help you take them to a minimum on internal communication or *message passing*.
@@ -30,6 +30,7 @@ and, **always** remember, *if something can fail, it will fail*.
 ### Increases overall response time
 Take a look at the following figure: 
 
+![Services map](https://dl.dropboxusercontent.com/s/k261ik209fporvr/service_down.png?dl=0)
 
 Response times are not taking into account the wait time while the downstream services
 respond. This means, *service 1* queries *service 2*, it does *something* and takes 10ms to respond. Also, *Service 1* queries
@@ -41,7 +42,7 @@ which could be another service waiting or the end user.
 
 Note that the above flow paralelizes all the needed downstream calls per service, so in this case, the total response time will be
 constrained by the slowest call chain. If you were using a stack where doing multiprocessing or async programming is not an easy
-option, you'll have to add up the response time for all of the downstram calls because in reallity the service in question
+option, you'll have to add up the response time for all of the downstream calls because in reality the service in question
 is being blocked while waiting for the network call to finish and, only then, making the second call and blocking until it comes back
 and so on.
 
@@ -56,32 +57,104 @@ Let imagine *Service 6* is down because we had a buggy release.
 
 
 This means, *Service 1* will have to wait 1500ms before returning an error upstream, you can mitigate this
-with a [short circuit]() approach or returning a cached response for the query you're trying to answer but,
+with a [circuit breaker](https://www.martinfowler.com/bliki/CircuitBreaker.html) approach or returning a 
+cached response for the query you're trying to answer but,
 again, unless you really need this to be synchronous, you'd be adding more complexity to an already complex
 system.
 
 Also, what if it isn't a *read* operation, what if we're actually *writing* downstream and the last write fails
-because of *reasons*. You'll be half way a transaction and you'll have to deal with it somehow, wither queuing that
+because of *reasons*. You'll be half way a transaction and you'll have to deal with it somehow, either queuing that
 last write and hoping *Service 6* comes back soon or rolling back the whole transaction which would mean deleting from
 the other services and returning an error, there are ways to solve this, but usually it doesn't need to be this hard.
 
+
 ### When should I go synchronous?
-**cases when I need the latest available information**
-* Credit counts
-* Warehouse availability
+In my opinion, it will depend on the use case you're implementing and how critical it is to
+return the exact data at the moment the request was done, usually there's some tolerance to
+return slightly stale data, but things like *credit accounting*, *warehouse availability* or
+anything that was to do with resources being consumed in real time are good candidates for
+sync calls and all the complexity they involve.
 
+## Choreography vs Orchestration
+There's a good analogy in the *microservices* world and how they handle *things* happening
+within the system, let's call those things *events*.
 
-## Choreography over Orchestration
-**Director vs Music**
+Let's say there are two types of *events*, those which make the system *do* something, for example,
+in an e-commerce website it could be a user bought something, and those which make the system *change*
+its status, for example, update some records in the database o send a request to another service. The
+first ones, let's call them *external events* because they're triggered by an external actor, maybe the
+user or an external system consuming out API, these *external events* are the ones triggering the second
+ones, let's call them *internal events* because it's the system updating itself. So, *external events* trigger
+*internal events*.
 
-### An example
-**step by step an event triggering other stuff**
+Now, there are two ways of handling *events*, we can either do it via *orchestration*, where we have
+a service which acts as the *master* of the transaction, telling all the other services involved in it
+what to do, what to update. Just like a Conductor does in an Orchestra, it tells all the other musicians
+(services) when to play they part, how to play it and so on. The other way is more like a *choreography*,
+where given an *event* every service knows how to handle it and how to react to it, just like dancers who
+know how and where to move or what do do when a certain part of the song is played.
+
+Good architectures are a mix of both approaches and good architects know when to use either of those
+depending on the business needs and the use case they're modeling. Unfortunately there's no recipe
+to decide, gaining experience designing systems and making mistakes are the only way to learn, although
+reading about others experience, having clear concepts on how distributed systems and networks work and
+a good understanding of the problem at hand we're solving are a good starting point.
 
 
 ## Rely on data, not services
-We spoke about *low coupling and high cohession* in *microservices* in a previous article, relying on
+We spoke about *low coupling and high cohesion* in *microservices* in a previous article, relying on
 a service to be up in order for some other service to be able to do what it's supposed to do is some
-form of *coupling*, you are letting an independent system 
+form of *coupling*, you are letting an independent system fail because another is feeling unwell.
 
+For services to be independent, every service should have a copy of the data they need to answer at least
+basic queries, this doesn't mean you'll directly update the copies, you need to define which service is going
+to be your *source of truth* for a specific piece of data and perform all the write operations for it to **that**
+service and then, somehow, update the copies. You can rely on *internal events* to do this, every time an
+*external event* triggers an update on the *source of truth* for a give piece of data, you can fire up
+an *internal event* to make the services keeping a copy update their local copies.
+
+By doing this you can still serve a real-only version of the data for some use cases even if the source of
+truth is down, if it's, for example, an e-commerce and the source of truth for the catalog is, for example,
+the *Inventory Service*, you can still serve the catalog even though the users won't be able to purchase
+anything, they still can save them to their *wishlist* and browse the website, this lets you gracefully
+degrade your system if there are problems with some services, you just show an error message or hide the options
+or have alternate workflows until the systems supporting the degraded use case are back up and running.
+
+What if a service is down and misses some updates from the source of truth?, well, depending on how you propagate
+the updates, you can do several things. You can use a queuing system like *ZeroMQ* or *RabbitMQ* to propagate
+the updates, so, if a service is down, the updates will be waiting on the queue to be consumed once the service
+is up, if you're using HTTP calls, you can have your worker retry the failed requests after a *back-off* time or
+write the payload to a given location so, when the other service comes up, an *init* script checks that location,
+reads whatever is there and marks those messages as *consumed*, there are multiple ways to deal with this problem,
+most of them will depend on the technology you're using.
 
 ### Eventual consistency
+When you deal with distributed systems and distributed information, chances are, some copies will be stalled
+for a period of time, this means, information will always be flowing through the *pipes* of your system, the only
+way you will have total consistency is if you stop writing and wait some time. Even in monolithic systems, what you
+show to the user is stale most of the time, let's say, for example, a website listing used articles for sale, when
+the search page is served to the user, depending on the traffic, there will be probably 10ths or hundreds of new
+articles the user won't see unless they refresh the page or we have a pushing mechanism in place. So, how important is
+it really to show the most updated information available to the user?, truth is, is not that critical in most cases.
+
+For building reports though, you should always query from your sources of truth, this could be tricky on a distributed
+system where your source of truth varies depending on the information you're looking for and it's not a single database
+where you can run a SQL query and join everything together. You could rely also on *internal events* to build a reporting
+database while the relevant events are happening instead of querying everything when a report is requested, this way you'll
+always have relevant business data to produce reports on top of,
+
+
+## Conclusion
+There's no silver bullet to solve the problems that come with distributed computing, however, there are strategies
+to help you discover the best way to deal with certain problems for your specific use case, try to use choreography
+where possible and orchestrate the flows that need to be completely synchronous, always try to find the easiest solution,
+keep in mind that sometimes the easiest way to solve a problem is the hardest to implement, but benefits will be seen
+in the future, when you need to debug a failure or scale, or even extend your system with more features or plugin more
+microservices in.
+
+## Recommended readings
+* [Building Microservices](https://amzn.to/2KgY6qh) by [Sam Newman](https://samnewman.io/)
+* [Circuit Breaker](https://www.martinfowler.com/bliki/CircuitBreaker.html) by Martin Fowler 
+* [Introduction to Microservices](https://specify.io/concepts/microservices) by Oliver Wolf 
+* [Why Microservices Should be Event Driven](http://blog.christianposta.com/microservices/why-microservices-should-be-event-driven-autonomy-vs-authority/) by Christian Posta 
+* [Event command transformation in microservice architectures and DDD](https://blog.bernd-ruecker.com/event-command-transformation-in-microservice-architectures-and-ddd-dd07d5eb9656) by Bernd Rücker  
