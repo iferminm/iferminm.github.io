@@ -70,7 +70,7 @@ con &lt;em&gt;Oh My ZSH&lt;/em&gt; también tiene autocompletado para git, cosa 
 resulta muy útil porque es una herramienta que uso todos los días en la
 oficina y para proyectos personales, este autocompletado incluye una
 pequeña descripción de lo que hace cada comando de git.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="git &amp;amp;lt;TAB&amp;amp;gt; y esto
+&lt;p&gt;&lt;img alt="git &amp;lt;TAB&amp;gt; y esto
 aparece" src="https://dl.dropboxusercontent.com/s/4sqyl17x60dsnk8/foto2.png"&gt;&lt;/p&gt;
 &lt;h3&gt;Completación de rutas&lt;/h3&gt;
 &lt;p&gt;No, no es lo mismo que la anterior, este es algo mucho más potente que
@@ -842,10 +842,10 @@ sudo make install
 
 &lt;h4&gt;php.ini:&lt;/h4&gt;
 &lt;p&gt;Simplemente debemos modificar las siguientes líneas:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;extension=redis.so
-[Session]
-session.save_handler=redis
-session.save_path=&amp;quot;tcp://localhost:6379&amp;quot;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;extension&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;redis&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;so&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Session&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;session&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save_handler&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;redis&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;session&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save_path&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;tcp://localhost:6379&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1153,8 +1153,8 @@ proyecto en cuestión en el cual estamos trabajando.&lt;/p&gt;
 &lt;p&gt;Como todo en &lt;em&gt;django&lt;/em&gt;, tenemos un paquete llamado &lt;em&gt;django-rq&lt;/em&gt; que nos
 ayuda a organizar el código de una mejor manera y nos hace la vida más
 fácil, empecemos por descargar las librerías y paquetes necesarias:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    sudo aptitude install redis-server
-    pip install django-rq django
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;aptitude&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;redis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;server&lt;/span&gt;
+    &lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rq&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1227,7 +1227,7 @@ des-serializarlo y ejecutarlo.&lt;/p&gt;
 (recuerden agregar la entrada correspondiente en el &lt;em&gt;Procfile&lt;/em&gt; de
 Heroku), simplemente corremos el siguiente comando en el terminal para
 probar localmente:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    python manage.py rqworker high default
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;rqworker&lt;/span&gt; &lt;span class="n"&gt;high&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1469,20 +1469,20 @@ completa, soporta múltiples servicios) llamada
 .external} para organizar tu contenido en directorios dentro de un
 &lt;em&gt;bucket&lt;/em&gt; de &lt;em&gt;S3&lt;/em&gt;, es necesario agregar parámetros de configuración en
 nuestro &lt;em&gt;settings.py&lt;/em&gt;, sería algo como esto:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    AWS_QUERYSTRING_AUTH = False
-    AWS_ACCESS_KEY_ID = os.getenv(&amp;#39;AWS_ACCESS_KEY_ID&amp;#39;)
-    AWS_SECRET_ACCESS_KEY = os.getenv(&amp;#39;AWS_SECRET_ACCESS_KEY&amp;#39;)
-    AWS_STORAGE_BUCKET_NAME = os.getenv(&amp;#39;AWS_STORAGE_BUCKET_NAME&amp;#39;)
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="nv"&gt;AWS_QUERYSTRING_AUTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;False&lt;/span&gt;
+    &lt;span class="nv"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;os&lt;/span&gt;.&lt;span class="k"&gt;getenv&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
+    &lt;span class="nv"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;os&lt;/span&gt;.&lt;span class="k"&gt;getenv&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
+    &lt;span class="nv"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;os&lt;/span&gt;.&lt;span class="k"&gt;getenv&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
 
-    # Expires 20 years in the future at 8PM GMT
-    tenyrs = date.today() + timedelta(days=365*10)
-    AWS_HEADERS = {
-        &amp;#39;Expires&amp;#39;: tenyrs.strftime(&amp;#39;%a, %d %b %Y 20:00:00 GMT&amp;#39;)
+    # &lt;span class="nv"&gt;Expires&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="nv"&gt;years&lt;/span&gt; &lt;span class="nv"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;the&lt;/span&gt; &lt;span class="nv"&gt;future&lt;/span&gt; &lt;span class="nv"&gt;at&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="nv"&gt;PM&lt;/span&gt; &lt;span class="nv"&gt;GMT&lt;/span&gt;
+    &lt;span class="nv"&gt;tenyrs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;date&lt;/span&gt;.&lt;span class="nv"&gt;today&lt;/span&gt;&lt;span class="ss"&gt;()&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nv"&gt;timedelta&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;days&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;365&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
+    &lt;span class="nv"&gt;AWS_HEADERS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; {
+        &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;Expires&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;: &lt;span class="nv"&gt;tenyrs&lt;/span&gt;.&lt;span class="nv"&gt;strftime&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;%a, %d %b %Y 20:00:00 GMT&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
     }
 
-    STATICFILES_STORAGE = &amp;#39;s3_folder_storage.s3.StaticStorage&amp;#39;
-    STATIC_URL = &amp;#39;http://%s.s3.amazonaws.com/static/&amp;#39; % AWS_STORAGE_BUCKET_NAME
-    STATIC_S3_PATH = &amp;#39;static/&amp;#39;
+    &lt;span class="nv"&gt;STATICFILES_STORAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;s3_folder_storage.s3.StaticStorage&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;
+    &lt;span class="nv"&gt;STATIC_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;http://%s.s3.amazonaws.com/static/&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nv"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt;
+    &lt;span class="nv"&gt;STATIC_S3_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;static/&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1495,9 +1495,9 @@ página se verá &lt;strong&gt;bien&lt;/strong&gt;, con todos sus estilos y efec
 duren las urls vigentes.&lt;/p&gt;
 &lt;p&gt;Los demás son simplemente parámetros de configuración de S3, deben
 recordar añadir las variables de configuración en &lt;em&gt;Heroku&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    heroku config:add AWS_ACCESS_KEY_ID=EL_KEY_ID_DE_AWS_S3
-    heroku config:add AWS_SECRET_ACCESS_KEY=EL_SECRET_KEY_ID_DE_AWS_S3
-    heroku config:add AWS_STORAGE_BUCKET_NAME=EL_NOMBRE_DEL_BUCKET
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="n"&gt;heroku&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;add&lt;/span&gt; &lt;span class="n"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;EL_KEY_ID_DE_AWS_S3&lt;/span&gt;
+    &lt;span class="n"&gt;heroku&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;add&lt;/span&gt; &lt;span class="n"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;EL_SECRET_KEY_ID_DE_AWS_S3&lt;/span&gt;
+    &lt;span class="n"&gt;heroku&lt;/span&gt; &lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;add&lt;/span&gt; &lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;EL_NOMBRE_DEL_BUCKET&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1505,12 +1505,12 @@ recordar añadir las variables de configuración en &lt;em&gt;Heroku&lt;/em&gt;.
 &lt;em&gt;INSTALLED_APPS&lt;/em&gt; del proyecto y activar la opción de &lt;em&gt;Heroku&lt;/em&gt; para que
 reconozca las variables de configuración en tiempo de compilación, de
 otra manera, el deploy fallará.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    heroku labs:enable user-env-compile
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="n"&gt;heroku&lt;/span&gt; &lt;span class="n"&gt;labs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;enable&lt;/span&gt; &lt;span class="k"&gt;user&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;compile&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Con esto, ya deberíamos poder sincronizar los &lt;em&gt;assets&lt;/em&gt; a &lt;em&gt;S3&lt;/em&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    heroku run python manage.py collectstatic
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="n"&gt;heroku&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="n"&gt;manage&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;collectstatic&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1537,10 +1537,10 @@ configuraciones adicionales, podemos hacer que por defecto nuestros
 &lt;em&gt;media files&lt;/em&gt;, para usar la terminología de &lt;em&gt;django&lt;/em&gt;, sean almacenados
 en nuestro &lt;em&gt;bucket&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Es necesario agregar las siguientes líneas a nuestro &lt;em&gt;settings.py&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    MEDIA_ROOT = &amp;#39;&amp;#39;
-    DEFAULT_FILE_STORAGE = &amp;#39;s3_folder_storage.s3.DefaultStorage&amp;#39;
-    DEFAULT_S3_PATH = &amp;#39;media/&amp;#39;
-    MEDIA_URL = &amp;#39;http://%s.s3.amazonaws.com/media/&amp;#39; % AWS_STORAGE_BUCKET_NAME
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="n"&gt;MEDIA_ROOT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;DEFAULT_FILE_STORAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;s3_folder_storage.s3.DefaultStorage&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;DEFAULT_S3_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;media/&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;MEDIA_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://%s.s3.amazonaws.com/media/&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2767,11 +2767,11 @@ datos, digamos que puede realizar todas las operaciones CRUD. Empecemos
 por establecer ciertos valores de configuración para el manejador en el
 archivo /etc/postgresql/9.1/main/postgresql.conf. Debemos configurar los
 siguientes valores:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;listen_addresses = &amp;#39;*&amp;#39;
-wal_level = hot_standby
-wal_sync_method = fsync
-max_wal_senders = 2
-wal_keep_segments = 8
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;listen_addresses&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;*&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;wal_level&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;hot_standby&lt;/span&gt;
+&lt;span class="n"&gt;wal_sync_method&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;fsync&lt;/span&gt;
+&lt;span class="n"&gt;max_wal_senders&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;span class="n"&gt;wal_keep_segments&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2810,7 +2810,7 @@ wal_keep_segments = 8
 &lt;/ul&gt;
 &lt;p&gt;Ahora, debemos agregar una regla más de acceso al &lt;strong&gt;pg_hba.conf&lt;/strong&gt;, para
 permitir a los esclavos conectarse al servidor maestro:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;host replication all 10.1.1.8/32 trust
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;host&lt;/span&gt; &lt;span class="n"&gt;replication&lt;/span&gt; &lt;span class="k"&gt;all&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;32&lt;/span&gt; &lt;span class="n"&gt;trust&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2824,7 +2824,7 @@ terminal SQL de Postgres:&lt;/p&gt;
 
 
 &lt;p&gt;Mientras eso esté ocurriendo, en otro terminal, ejecutamos lo siguiente:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cd /var/lib/postgresql/9.1 # tar czvf backup.tgz main
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;postgresql&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;tar&lt;/span&gt; &lt;span class="n"&gt;czvf&lt;/span&gt; &lt;span class="n"&gt;backup&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tgz&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2844,15 +2844,15 @@ instancia de Postgres por el directorio de datos del Maestro. Luego,
 creamos un directorio &lt;em&gt;recovery&lt;/em&gt;, donde copiaremos el último WAL del
 directorio pg_xlog. Adicionalmente, debemos modificar el
 postgresql.conf con las siguientes variables:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;hot_standby = on wal_level = hot_standby``
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;hot_standby&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;on&lt;/span&gt; &lt;span class="n"&gt;wal_level&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;hot_standby&lt;/span&gt;&lt;span class="o"&gt;``&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Ahora, creamos un archivo de configuración en la raíz del directorio de
 datos para establecer las siguientes opciones:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;standby_mode = &amp;#39;on&amp;#39;
-primary_conninfo = &amp;#39;host=[host_ip] port=5432 user=root password=[some_password]&amp;#39;
-restore_command = &amp;#39;cp /var/lib/postgresql/9.1/main/recovery/%f %p&amp;#39;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;standby_mode&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;on&amp;#39;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;primary_conninfo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;host=[host_ip] port=5432 user=root password=[some_password]&amp;#39;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;restore_command&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;cp /var/lib/postgresql/9.1/main/recovery/%f %p&amp;#39;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
