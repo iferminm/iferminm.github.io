@@ -44,10 +44,8 @@ on some of our services and how we solved them with real life examples.
 
 **Duration:** 30 to 40 minutes
 
-Given at:
-* PyConPL 2017
-* PyCokPK 2017 (vis Zoom)
-* [PyConBalkan 2018](https://www.youtube.com/watch?v=k520PnB-xHo)
+**Given at:** PyConPL 2017 (Ossa, Poland), PyConPK 2017 (Lahore, Pakistan) (via Zoom), [PyConBalkan 2018](https://www.youtube.com/watch?v=k520PnB-xHo)
+(Belgrade, Serbia)
 
 #### Code review the right way
 Sometimes, as Software Engineers, we are so hooked into the process and overwhelmed by deadlines and so focussed on writing code that we
@@ -73,13 +71,12 @@ possible way, we only need to know the right keywords.
 
 **Duration:** 30 to 40 minutes
 
-Given at:
-* [PyCon Balkan 2018](https://www.youtube.com/watch?v=3WEUsO9wSBY)
+**Given at:** [PyCon Balkan 2018](https://www.youtube.com/watch?v=3WEUsO9wSBY) (Belgrade, Serbia)
 
 
 ### Español
 
-#### Introducción a las arter marciales con Python
+#### Introducción a las artes marciales con Python
 Es una charla de *advocacy* en el uso de Python como lenguaje para principiantes
 con conocimientos de programación o que quieren iniciarse en ello y ya han realizado
 algún tipo de investigación previa y aún no deciden con cuál lenguaje empezar. 
@@ -106,8 +103,7 @@ pruebas. Al final, se muestra un ejemplo usando varias de las herramientas menci
 
 **Duración:** 30 a 40 minutos
 
-Dada en:
-* [PyDay Aragua](https://www.youtube.com/watch?v=qtgBpA8-Als&list=PLe_-7MJlIjxRm-Z8WhBmS2pII4rtBGPQh&index=2&t=0s)
+**Dada en:** [PyDay Aragua](https://www.youtube.com/watch?v=qtgBpA8-Als&list=PLe_-7MJlIjxRm-Z8WhBmS2pII4rtBGPQh&index=2&t=0s) (Maracay, Venezuela)
 
 #### Comunidad: orden dentro del caos, caos dentro del orden
 La unidad básica de organización en el mundo del Software Libre es la Comunidad
