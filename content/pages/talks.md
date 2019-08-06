@@ -44,6 +44,11 @@ on some of our services and how we solved them with real life examples.
 
 **Duration:** 30 to 40 minutes
 
+Given at:
+* PyConPL 2017
+* PyCokPK 2017 (vis Zoom)
+* [PyConBalkan 2018](https://www.youtube.com/watch?v=k520PnB-xHo)
+
 #### Code review the right way
 Sometimes, as Software Engineers, we are so hooked into the process and overwhelmed by deadlines and so focussed on writing code that we
 forget the quality of that code is not only measured on a green build, it's also measured on how much other developers can understand it.
@@ -67,6 +72,10 @@ retrieve all the information we need from the database when we need it and in th
 possible way, we only need to know the right keywords.
 
 **Duration:** 30 to 40 minutes
+
+Given at:
+* [PyCon Balkan 2018](https://www.youtube.com/watch?v=3WEUsO9wSBY)
+
 
 ### Español
 
@@ -96,6 +105,9 @@ herramientas basadas en Python para solventar varios de los problemas comunes a 
 pruebas. Al final, se muestra un ejemplo usando varias de las herramientas mencionadas.
 
 **Duración:** 30 a 40 minutos
+
+Dada en:
+* [PyDay Aragua](https://www.youtube.com/watch?v=qtgBpA8-Als&list=PLe_-7MJlIjxRm-Z8WhBmS2pII4rtBGPQh&index=2&t=0s)
 
 #### Comunidad: orden dentro del caos, caos dentro del orden
 La unidad básica de organización en el mundo del Software Libre es la Comunidad
