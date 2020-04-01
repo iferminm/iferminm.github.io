@@ -7,20 +7,20 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://iffm.me/theme/css/main.css" />
 </head>
 <body>
 
     <div class="navigation pure-menu pure-menu-horizontal">
-        <a href="/" class="pure-menu-heading  pure-menu-link">/dev/isra/blog/*</a>
+        <a href="http://iffm.me/" class="pure-menu-heading  pure-menu-link">/dev/isra/blog/*</a>
         <ul class="pure-menu-list">
             <li class="pure-menu-item"></li>
 
-            <li class="pure-menu-item"><a href="/pages/about-me.html" class="pure-menu-link">About me...</a></li>
-            <li class="pure-menu-item"><a href="/pages/now.html" class="pure-menu-link">Now</a></li>
-            <li class="pure-menu-item"><a href="/pages/talks.html" class="pure-menu-link">Talks</a></li>
-            <li class="pure-menu-item"><a href="/category/blog.html" class="pure-menu-link">Blog</a></li>
-            <li class="pure-menu-item pure-menu-selected"><a href="/category/espanol.html" class="pure-menu-link">Español</a></li>
+            <li class="pure-menu-item"><a href="http://iffm.me/pages/about-me.html" class="pure-menu-link">About me...</a></li>
+            <li class="pure-menu-item"><a href="http://iffm.me/pages/now.html" class="pure-menu-link">Now</a></li>
+            <li class="pure-menu-item"><a href="http://iffm.me/pages/talks.html" class="pure-menu-link">Talks</a></li>
+            <li class="pure-menu-item"><a href="http://iffm.me/category/blog.html" class="pure-menu-link">Blog</a></li>
+            <li class="pure-menu-item pure-menu-selected"><a href="http://iffm.me/category/espanol.html" class="pure-menu-link">Español</a></li>
         </ul>
     </div>
 
@@ -29,9 +29,9 @@
     <div class="entry-content">
         <div class="post-meta pure-g">
 <div class="pure-u-3-4 meta-data">
-    <a href="/category/espanol.html" class="category">Español</a><br />
+    <a href="http://iffm.me/category/espanol.html" class="category">Español</a><br />
 
-    <a class="author" href="/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+    <a class="author" href="http://iffm.me/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
     &mdash; <abbr title="2013-08-18T00:00:00+04:00">Sun 18 August 2013</abbr>
 </div>        </div>
     </div>
@@ -83,8 +83,8 @@ buena librería que me facilitara el trabajo.</p>
 era la mejor opción, no se veía tan abandonada y, comparada a las demás
 opciones, tenía una documentación decente.</p>
 <p>Lo primero es, obviamente, instalarla:</p>
-<div class="highlight"><pre><span></span>pip install suds
-</pre></div>
+<div class="highlight"><pre><span></span><code>pip install suds
+</code></pre></div>
 
 
 <p>Recuerden que siempre es buena práctica trabajar con virtualenvs y,
@@ -105,7 +105,7 @@ expone para ser consumido por sus clientes. De igual manera, el pase de
 mensajes (soap messages) entre el cliente y el servidor, se hace en
 formato XML.</p>
 <p>A continuación un ejemplo de documento WSDL:</p>
-<div class="highlight"><pre><span></span>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<div class="highlight"><pre><span></span><code>    <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
     <span class="nt">&lt;description</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/ns/wsdl&quot;</span>
                  <span class="na">xmlns:tns=</span><span class="s">&quot;http://www.tmsws.com/wsdl20sample&quot;</span>
                  <span class="na">xmlns:whttp=</span><span class="s">&quot;http://schemas.xmlsoap.org/wsdl/http/&quot;</span>
@@ -157,7 +157,7 @@ formato XML.</p>
                     <span class="na">address=</span><span class="s">&quot;http://www.example.com/soap/&quot;</span><span class="nt">/&gt;</span>
        <span class="nt">&lt;/service&gt;</span>
     <span class="nt">&lt;/description&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>La sección <em>types</em> describe los tipos de dato a los que da soporte el
@@ -169,7 +169,7 @@ mensajes e incluso el protocolo que debe ser utilizado para el
 transporte. Finalmente, los <em>endpoints</em>, definen los puntos de conexión
 con el servicio web.</p>
 <p>Por otra parte, un mensaje SOAP debería verse de la siguiente manera:</p>
-<div class="highlight"><pre><span></span>    POST /InStock HTTP/1.1
+<div class="highlight"><pre><span></span><code>    POST /InStock HTTP/1.1
     Host: www.example.org
     Content-Type: application/soap+xml; charset=utf-8
     Content-Length: 299
@@ -185,7 +185,7 @@ con el servicio web.</p>
             <span class="nt">&lt;/m:GetStockPrice&gt;</span>
         <span class="nt">&lt;/soap:Body&gt;</span>
     <span class="nt">&lt;/soap:Envelope&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>En un mensaje, el <em>envelope</em> es lo que identifica el XML como un mensaje
@@ -212,10 +212,10 @@ humano :-).</p>
 <p>Lo primero es, en nuestro caso, construir una instancia de
 suds.client.Client que tenga conocimiento del WSDL que describe el
 servicio que vamos a usar:</p>
-<div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">suds.client</span> <span class="kn">import</span> <span class="n">Client</span>
+<div class="highlight"><pre><span></span><code>    <span class="kn">from</span> <span class="nn">suds.client</span> <span class="kn">import</span> <span class="n">Client</span>
 
     <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s1">&#39;http://www.webservicex.com/globalweather.asmx?WSDL&#39;</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Listo, ya tenemos un cliente SOAP listo para consumir el servicio desde
@@ -225,12 +225,12 @@ hay, el WSDL para ver cuáles objetos pueden ser pasados como mensajes,
 construir el request e invocar el método remoto, para ello nos
 interesan: Client.factory y Client.service.</p>
 <p>Por ejemplo, obtengamos el tiempo para Caracas - Venezuela:</p>
-<div class="highlight"><pre><span></span>    <span class="n">request</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s1">&#39;tns:GetWeather&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code>    <span class="n">request</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s1">&#39;tns:GetWeather&#39;</span><span class="p">)</span>
     <span class="n">request</span><span class="o">.</span><span class="n">CityName</span> <span class="o">=</span> <span class="s1">&#39;Caracas&#39;</span>
     <span class="n">request</span><span class="o">.</span><span class="n">CountryName</span> <span class="o">=</span> <span class="s1">&#39;Venezuela&#39;</span>
 
     <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">GetWeather</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Listo, así de fácil, explorando la documentación o el WSDL veremos que
@@ -239,20 +239,20 @@ objeto tiene dos campos <em>string</em>: <em>CityName</em> y <em>CountryName</em
 si vemos la definición de la respuesta en el WSDL, podremos observar que
 es un texto plano (es decir, viene un objeto primitivo <em>string</em> como
 SOAPResponse). Vamos a ver cómo maneja suds ambos casos:</p>
-<div class="highlight"><pre><span></span>    <span class="nb">type</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code>    <span class="nb">type</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
     <span class="n">instance</span>
-    <span class="k">print</span> <span class="n">request</span>
+    <span class="nb">print</span> <span class="n">request</span>
     <span class="p">(</span><span class="n">GetWeather</span><span class="p">){</span>
        <span class="n">CityName</span> <span class="o">=</span> <span class="s2">&quot;Caracas&quot;</span>
        <span class="n">CountryName</span> <span class="o">=</span> <span class="s2">&quot;Venezuela&quot;</span>
     <span class="p">}</span>
     <span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
     <span class="n">suds</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">Text</span>
-    <span class="k">print</span> <span class="n">response</span>
+    <span class="nb">print</span> <span class="n">response</span>
     <span class="o">&lt;</span><span class="err">?</span><span class="n">xml</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-16&quot;</span><span class="err">?</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="n">CurrentWeather</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;</span><span class="n">Caracas</span> <span class="o">/</span> <span class="n">Maiquetia</span> <span class="n">Aerop</span><span class="o">.</span> <span class="n">Intl</span><span class="o">.</span> <span class="n">Simon</span> <span class="n">Bolivar</span><span class="p">,</span> <span class="n">Venezuela</span> <span class="p">(</span><span class="n">SVMI</span><span class="p">)</span> <span class="mi">10</span><span class="o">-</span><span class="mi">36</span><span class="n">N</span> <span class="mo">066</span><span class="o">-</span><span class="mi">59</span><span class="n">W</span> <span class="mi">48</span><span class="n">M</span><span class="o">&lt;/</span><span class="n">Location</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="n">Time</span><span class="o">&gt;</span><span class="n">Aug</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">2013</span> <span class="o">-</span> <span class="mi">09</span><span class="p">:</span><span class="mo">00</span> <span class="n">PM</span> <span class="n">EDT</span> <span class="o">/</span> <span class="mf">2013.08</span><span class="o">.</span><span class="mi">19</span> <span class="mo">0100</span> <span class="n">UTC</span><span class="o">&lt;/</span><span class="n">Time</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;</span><span class="n">Caracas</span> <span class="o">/</span> <span class="n">Maiquetia</span> <span class="n">Aerop</span><span class="o">.</span> <span class="n">Intl</span><span class="o">.</span> <span class="n">Simon</span> <span class="n">Bolivar</span><span class="p">,</span> <span class="n">Venezuela</span> <span class="p">(</span><span class="n">SVMI</span><span class="p">)</span> <span class="mi">10</span><span class="o">-</span><span class="mi">36</span><span class="n">N</span> <span class="mi">066</span><span class="o">-</span><span class="mi">59</span><span class="n">W</span> <span class="mi">48</span><span class="n">M</span><span class="o">&lt;/</span><span class="n">Location</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">Time</span><span class="o">&gt;</span><span class="n">Aug</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">2013</span> <span class="o">-</span> <span class="mi">09</span><span class="p">:</span><span class="mi">00</span> <span class="n">PM</span> <span class="n">EDT</span> <span class="o">/</span> <span class="mf">2013.08</span><span class="o">.</span><span class="mi">19</span> <span class="mi">0100</span> <span class="n">UTC</span><span class="o">&lt;/</span><span class="n">Time</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">Wind</span><span class="o">&gt;</span> <span class="n">Calm</span><span class="p">:</span><span class="mi">0</span><span class="o">&lt;/</span><span class="n">Wind</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">Visibility</span><span class="o">&gt;</span> <span class="n">greater</span> <span class="n">than</span> <span class="mi">7</span> <span class="n">mile</span><span class="p">(</span><span class="n">s</span><span class="p">):</span><span class="mi">0</span><span class="o">&lt;/</span><span class="n">Visibility</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">SkyConditions</span><span class="o">&gt;</span> <span class="n">partly</span> <span class="n">cloudy</span><span class="o">&lt;/</span><span class="n">SkyConditions</span><span class="o">&gt;</span>
@@ -262,7 +262,7 @@ SOAPResponse). Vamos a ver cómo maneja suds ambos casos:</p>
         <span class="o">&lt;</span><span class="n">Pressure</span><span class="o">&gt;</span> <span class="mf">29.88</span> <span class="ow">in</span><span class="o">.</span> <span class="n">Hg</span> <span class="p">(</span><span class="mi">1012</span> <span class="n">hPa</span><span class="p">)</span><span class="o">&lt;/</span><span class="n">Pressure</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="n">Status</span><span class="o">&gt;</span><span class="n">Success</span><span class="o">&lt;/</span><span class="n">Status</span><span class="o">&gt;</span>
     <span class="o">&lt;/</span><span class="n">CurrentWeather</span><span class="o">&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Como veremos, suds nos crea un objeto Python a partir de la definición
@@ -283,7 +283,7 @@ el header de los requests que van dirigidos a los métodos privados.</p>
 <p>Debido a que no conseguí ningún servicio web que me permitiera hacer un
 ejemplo de esto, simplemente haré un ejemplo <em>dummy</em> de cómo sería en
 código:</p>
-<div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">suds.client</span> <span class="kn">import</span> <span class="n">Client</span>
+<div class="highlight"><pre><span></span><code>    <span class="kn">from</span> <span class="nn">suds.client</span> <span class="kn">import</span> <span class="n">Client</span>
 
     <span class="n">auth_client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="s1">&#39;http://www.servicio.com/authservice.wsdl&#39;</span><span class="p">)</span>
     <span class="n">request</span> <span class="o">=</span> <span class="n">auth_client</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s1">&#39;ns:AuthObjectRequest&#39;</span><span class="p">)</span>
@@ -294,7 +294,7 @@ código:</p>
 
     <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="s1">&#39;https://www.servicio.com/otras_cosas.wsdl&#39;</span><span class="p">)</span>
     <span class="n">client</span><span class="o">.</span><span class="n">set_options</span><span class="p">(</span><span class="n">soapheaders</span><span class="o">=</span><span class="n">auth_object</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Algunas veces, basta sólo con un objeto que contenga el usuario y el
@@ -306,7 +306,7 @@ añadir esta funcionalidad en <a class="reference external" href="https://gist.g
 gist</a>
 podemos ver el código para hacerlo.</p>
 <p>La manera de utilizarlo es la siguiente:</p>
-<div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">suds.client</span> <span class="kn">import</span> <span class="n">Client</span>
+<div class="highlight"><pre><span></span><code>    <span class="kn">from</span> <span class="nn">suds.client</span> <span class="kn">import</span> <span class="n">Client</span>
     <span class="kn">from</span> <span class="nn">soap_attachments</span> <span class="kn">import</span> <span class="n">with_soap_attachment</span>
 
     <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s1">&#39;http://www.servicio.com/wsdl/servicio.wsdl&#39;</span><span class="p">)</span>
@@ -319,7 +319,7 @@ podemos ver el código para hacerlo.</p>
     <span class="n">request</span><span class="o">.</span><span class="n">nombre_audio</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">name</span>
 
     <span class="n">response</span> <span class="o">=</span> <span class="n">with_soap_attachment</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">subir_pista</span><span class="p">,</span> <span class="n">bin_param</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Básicamente lo que se hace es leer los bytes que conforman el archivo y
@@ -338,19 +338,19 @@ básicos, con este tutorial debería ser suficiente.</p>
 
     <footer>
         <div class="tags">
-            <a href="/tag/python.html">python</a>
-            <a href="/tag/soap.html">soap</a>
-            <a href="/tag/soa.html">soa</a>
-            <a href="/tag/suds.html">suds</a>
+            <a href="http://iffm.me/tag/python.html">python</a>
+            <a href="http://iffm.me/tag/soap.html">soap</a>
+            <a href="http://iffm.me/tag/soa.html">soa</a>
+            <a href="http://iffm.me/tag/suds.html">suds</a>
         </div>
         <div class="pure-g post-footer">
             <div class="pure-u-1 pure-u-md-1-2">
                 <div class="pure-g poster-info">
                     <div class="pure-u">
-                        <a href="/author/israel-fermin-montilla.html"><img src="https://dl.dropboxusercontent.com/s/1bvnowsfke4rs2k/isra.jpg" alt=""></a>
+                        <a href="http://iffm.me/author/israel-fermin-montilla.html"><img src="https://dl.dropboxusercontent.com/s/1bvnowsfke4rs2k/isra.jpg" alt=""></a>
                     </div>
                     <div class="pure-u-3-4">
-                        <h3 class="author-name"><a href="/author/israel-fermin-montilla.html">Israel Fermín Montilla</a></h3>
+                        <h3 class="author-name"><a href="http://iffm.me/author/israel-fermin-montilla.html">Israel Fermín Montilla</a></h3>
                         <p class="author-description">
                           {' Full time husband and dad who loves technology and programming. Software Engineer @ Careem / Online Mentor @ codeinstitute.net'}
                         </p>
@@ -423,6 +423,18 @@ básicos, con este tutorial debería ser suficiente.</p>
 
     </footer>
 
+    <div class="entry-content">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'iferminmblog';
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
 
 </div>
 
@@ -430,14 +442,24 @@ básicos, con este tutorial debería ser suficiente.</p>
 
     <footer class="index-footer">
 
-        <a href="/" title="/dev/isra/blog/*">/dev/isra/blog/*</a>
-        <a href="/category/blog.html">Blog</a>
-        <a href="/category/espanol.html">Español</a>
+        <a href="http://iffm.me/" title="/dev/isra/blog/*">/dev/isra/blog/*</a>
+        <a href="http://iffm.me/category/blog.html">Blog</a>
+        <a href="http://iffm.me/category/espanol.html">Español</a>
         <a href="http://getpelican.com/">Pelican</a>
         <a href="http://python.org/">Python.org</a>
         <a href="http://jinja.pocoo.org/">Jinja2</a>
 
     </footer>
 
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-96148260-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
 </body>
 </html>

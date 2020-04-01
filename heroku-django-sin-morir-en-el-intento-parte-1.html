@@ -7,20 +7,20 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://iffm.me/theme/css/main.css" />
 </head>
 <body>
 
     <div class="navigation pure-menu pure-menu-horizontal">
-        <a href="/" class="pure-menu-heading  pure-menu-link">/dev/isra/blog/*</a>
+        <a href="http://iffm.me/" class="pure-menu-heading  pure-menu-link">/dev/isra/blog/*</a>
         <ul class="pure-menu-list">
             <li class="pure-menu-item"></li>
 
-            <li class="pure-menu-item"><a href="/pages/about-me.html" class="pure-menu-link">About me...</a></li>
-            <li class="pure-menu-item"><a href="/pages/now.html" class="pure-menu-link">Now</a></li>
-            <li class="pure-menu-item"><a href="/pages/talks.html" class="pure-menu-link">Talks</a></li>
-            <li class="pure-menu-item"><a href="/category/blog.html" class="pure-menu-link">Blog</a></li>
-            <li class="pure-menu-item pure-menu-selected"><a href="/category/espanol.html" class="pure-menu-link">Español</a></li>
+            <li class="pure-menu-item"><a href="http://iffm.me/pages/about-me.html" class="pure-menu-link">About me...</a></li>
+            <li class="pure-menu-item"><a href="http://iffm.me/pages/now.html" class="pure-menu-link">Now</a></li>
+            <li class="pure-menu-item"><a href="http://iffm.me/pages/talks.html" class="pure-menu-link">Talks</a></li>
+            <li class="pure-menu-item"><a href="http://iffm.me/category/blog.html" class="pure-menu-link">Blog</a></li>
+            <li class="pure-menu-item pure-menu-selected"><a href="http://iffm.me/category/espanol.html" class="pure-menu-link">Español</a></li>
         </ul>
     </div>
 
@@ -29,9 +29,9 @@
     <div class="entry-content">
         <div class="post-meta pure-g">
 <div class="pure-u-3-4 meta-data">
-    <a href="/category/espanol.html" class="category">Español</a><br />
+    <a href="http://iffm.me/category/espanol.html" class="category">Español</a><br />
 
-    <a class="author" href="/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+    <a class="author" href="http://iffm.me/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
     &mdash; <abbr title="2013-09-23T00:00:00+04:00">Mon 23 September 2013</abbr>
 </div>        </div>
     </div>
@@ -162,21 +162,21 @@ completa, soporta múltiples servicios) llamada
 .external} para organizar tu contenido en directorios dentro de un
 <em>bucket</em> de <em>S3</em>, es necesario agregar parámetros de configuración en
 nuestro <em>settings.py</em>, sería algo como esto:</p>
-<div class="highlight"><pre><span></span>    <span class="nv">AWS_QUERYSTRING_AUTH</span> <span class="o">=</span> <span class="nv">False</span>
-    <span class="nv">AWS_ACCESS_KEY_ID</span> <span class="o">=</span> <span class="nv">os</span>.<span class="k">getenv</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">AWS_ACCESS_KEY_ID</span><span class="s1">&#39;</span><span class="ss">)</span>
-    <span class="nv">AWS_SECRET_ACCESS_KEY</span> <span class="o">=</span> <span class="nv">os</span>.<span class="k">getenv</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">AWS_SECRET_ACCESS_KEY</span><span class="s1">&#39;</span><span class="ss">)</span>
-    <span class="nv">AWS_STORAGE_BUCKET_NAME</span> <span class="o">=</span> <span class="nv">os</span>.<span class="k">getenv</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">AWS_STORAGE_BUCKET_NAME</span><span class="s1">&#39;</span><span class="ss">)</span>
+<div class="highlight"><pre><span></span><code>    <span class="n">AWS_QUERYSTRING_AUTH</span> <span class="o">=</span> <span class="k">False</span>
+    <span class="n">AWS_ACCESS_KEY_ID</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;AWS_ACCESS_KEY_ID&#39;</span><span class="p">)</span>
+    <span class="n">AWS_SECRET_ACCESS_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;AWS_SECRET_ACCESS_KEY&#39;</span><span class="p">)</span>
+    <span class="n">AWS_STORAGE_BUCKET_NAME</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;AWS_STORAGE_BUCKET_NAME&#39;</span><span class="p">)</span>
 
-    # <span class="nv">Expires</span> <span class="mi">20</span> <span class="nv">years</span> <span class="nv">in</span> <span class="nv">the</span> <span class="nv">future</span> <span class="nv">at</span> <span class="mi">8</span><span class="nv">PM</span> <span class="nv">GMT</span>
-    <span class="nv">tenyrs</span> <span class="o">=</span> <span class="nv">date</span>.<span class="nv">today</span><span class="ss">()</span> <span class="o">+</span> <span class="nv">timedelta</span><span class="ss">(</span><span class="nv">days</span><span class="o">=</span><span class="mi">365</span><span class="o">*</span><span class="mi">10</span><span class="ss">)</span>
-    <span class="nv">AWS_HEADERS</span> <span class="o">=</span> {
-        <span class="s1">&#39;</span><span class="s">Expires</span><span class="s1">&#39;</span>: <span class="nv">tenyrs</span>.<span class="nv">strftime</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">%a, %d %b %Y 20:00:00 GMT</span><span class="s1">&#39;</span><span class="ss">)</span>
-    }
+    <span class="o">#</span> <span class="n">Expires</span> <span class="mi">20</span> <span class="n">years</span> <span class="k">in</span> <span class="n">the</span> <span class="n">future</span> <span class="k">at</span> <span class="mi">8</span><span class="n">PM</span> <span class="n">GMT</span>
+    <span class="n">tenyrs</span> <span class="o">=</span> <span class="nb">date</span><span class="p">.</span><span class="n">today</span><span class="p">()</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">365</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">AWS_HEADERS</span> <span class="o">=</span> <span class="err">{</span>
+        <span class="s1">&#39;Expires&#39;</span><span class="p">:</span> <span class="n">tenyrs</span><span class="p">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%a, %d %b %Y 20:00:00 GMT&#39;</span><span class="p">)</span>
+    <span class="err">}</span>
 
-    <span class="nv">STATICFILES_STORAGE</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">s3_folder_storage.s3.StaticStorage</span><span class="s1">&#39;</span>
-    <span class="nv">STATIC_URL</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">http://%s.s3.amazonaws.com/static/</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nv">AWS_STORAGE_BUCKET_NAME</span>
-    <span class="nv">STATIC_S3_PATH</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">static/</span><span class="s1">&#39;</span>
-</pre></div>
+    <span class="n">STATICFILES_STORAGE</span> <span class="o">=</span> <span class="s1">&#39;s3_folder_storage.s3.StaticStorage&#39;</span>
+    <span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s1">&#39;http://%s.s3.amazonaws.com/static/&#39;</span> <span class="o">%</span> <span class="n">AWS_STORAGE_BUCKET_NAME</span>
+    <span class="n">STATIC_S3_PATH</span> <span class="o">=</span> <span class="s1">&#39;static/&#39;</span>
+</code></pre></div>
 
 
 <p>El parámetro de configuración AWS_QUERYSTRING_AUTH colocado en <em>False</em>
@@ -188,23 +188,23 @@ página se verá <strong>bien</strong>, con todos sus estilos y efectos sólo mi
 duren las urls vigentes.</p>
 <p>Los demás son simplemente parámetros de configuración de S3, deben
 recordar añadir las variables de configuración en <em>Heroku</em>.</p>
-<div class="highlight"><pre><span></span>    <span class="n">heroku</span> <span class="n">config</span><span class="p">:</span><span class="k">add</span> <span class="n">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="n">EL_KEY_ID_DE_AWS_S3</span>
-    <span class="n">heroku</span> <span class="n">config</span><span class="p">:</span><span class="k">add</span> <span class="n">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span><span class="n">EL_SECRET_KEY_ID_DE_AWS_S3</span>
-    <span class="n">heroku</span> <span class="n">config</span><span class="p">:</span><span class="k">add</span> <span class="n">AWS_STORAGE_BUCKET_NAME</span><span class="o">=</span><span class="n">EL_NOMBRE_DEL_BUCKET</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">    heroku config:add AWS_ACCESS_KEY_ID=EL_KEY_ID_DE_AWS_S3</span>
+<span class="err">    heroku config:add AWS_SECRET_ACCESS_KEY=EL_SECRET_KEY_ID_DE_AWS_S3</span>
+<span class="err">    heroku config:add AWS_STORAGE_BUCKET_NAME=EL_NOMBRE_DEL_BUCKET</span>
+</code></pre></div>
 
 
 <p>Recuerden también colocar <em>s3_folder_storage</em> entre los
 <em>INSTALLED_APPS</em> del proyecto y activar la opción de <em>Heroku</em> para que
 reconozca las variables de configuración en tiempo de compilación, de
 otra manera, el deploy fallará.</p>
-<div class="highlight"><pre><span></span>    <span class="n">heroku</span> <span class="n">labs</span><span class="p">:</span><span class="n">enable</span> <span class="k">user</span><span class="o">-</span><span class="n">env</span><span class="o">-</span><span class="n">compile</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">    heroku labs:enable user-env-compile</span>
+</code></pre></div>
 
 
 <p>Con esto, ya deberíamos poder sincronizar los <em>assets</em> a <em>S3</em></p>
-<div class="highlight"><pre><span></span>    <span class="n">heroku</span> <span class="n">run</span> <span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">collectstatic</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">    heroku run python manage.py collectstatic</span>
+</code></pre></div>
 
 
 <p>Dependiendo de qué tantos archivos estáticos tengamos, va a tardar más o
@@ -230,11 +230,11 @@ configuraciones adicionales, podemos hacer que por defecto nuestros
 <em>media files</em>, para usar la terminología de <em>django</em>, sean almacenados
 en nuestro <em>bucket</em>.</p>
 <p>Es necesario agregar las siguientes líneas a nuestro <em>settings.py</em>:</p>
-<div class="highlight"><pre><span></span>    <span class="n">MEDIA_ROOT</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-    <span class="n">DEFAULT_FILE_STORAGE</span> <span class="o">=</span> <span class="s1">&#39;s3_folder_storage.s3.DefaultStorage&#39;</span>
-    <span class="n">DEFAULT_S3_PATH</span> <span class="o">=</span> <span class="s1">&#39;media/&#39;</span>
-    <span class="n">MEDIA_URL</span> <span class="o">=</span> <span class="s1">&#39;http://%s.s3.amazonaws.com/media/&#39;</span> <span class="o">%</span> <span class="n">AWS_STORAGE_BUCKET_NAME</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">    MEDIA_ROOT = &#39;&#39;</span>
+<span class="err">    DEFAULT_FILE_STORAGE = &#39;s3_folder_storage.s3.DefaultStorage&#39;</span>
+<span class="err">    DEFAULT_S3_PATH = &#39;media/&#39;</span>
+<span class="err">    MEDIA_URL = &#39;http://%s.s3.amazonaws.com/media/&#39; % AWS_STORAGE_BUCKET_NAME</span>
+</code></pre></div>
 
 
 <p>Con esto, todo lo que suban nuestros usuarios irá a la carpeta <em>media/</em>
@@ -253,7 +253,7 @@ pueda ver los archivos de nuestros usuarios de manera directa.</p>
     <a class="reference external" href="https://github.com/boto/boto">boto</a> que es un
     wrapper en Python para el API de <em>AWS</em></li>
 </ol>
-<div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<div class="highlight"><pre><span></span><code>    <span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
     <span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
     <span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
 
@@ -270,7 +270,7 @@ pueda ver los archivos de nuestros usuarios de manera directa.</p>
             <span class="n">k</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">Key</span><span class="p">(</span><span class="n">bucket</span><span class="p">)</span>
             <span class="n">k</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">DEFAULTS3_PATH</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">video</span><span class="p">)</span>
             <span class="n">k</span><span class="o">.</span><span class="n">set_acl</span><span class="p">(</span><span class="s1">&#39;private&#39;</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Con esto tenemos el archivo privado en <em>S3</em>, ahora, necesitamos una
@@ -287,19 +287,19 @@ manera de darle acceso al usuario que es propietario del archivo.</p>
     una hora.</li>
 </ol>
 <p>En el helper colocamos lo siguiente:</p>
-<div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+<div class="highlight"><pre><span></span><code>    <span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
 
 
     <span class="k">def</span> <span class="nf">get_s3_redirect_url</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">60</span><span class="p">):</span>
         <span class="kn">from</span> <span class="nn">boto.s3.connection</span> <span class="kn">import</span> <span class="n">S3Connection</span>
 
-        <span class="n">conn</span> <span class="o">=</span> <span class="n">S3Connection</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">AWS_ACCESS_KEY_ID</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">AWS_SECRET_ACCESS_KEY</span><span class="p">,</span> <span class="n">is_secure</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">conn</span><span class="o">.</span><span class="n">generate_url</span><span class="p">(</span><span class="n">ttl</span><span class="p">,</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="n">bucket</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">AWS_STORAGE_BUCKET_NAME</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">filepath</span><span class="p">,</span> <span class="n">force_http</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</pre></div>
+        <span class="n">conn</span> <span class="o">=</span> <span class="n">S3Connection</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">AWS_ACCESS_KEY_ID</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">AWS_SECRET_ACCESS_KEY</span><span class="p">,</span> <span class="n">is_secure</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">conn</span><span class="o">.</span><span class="n">generate_url</span><span class="p">(</span><span class="n">ttl</span><span class="p">,</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="n">bucket</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">AWS_STORAGE_BUCKET_NAME</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">filepath</span><span class="p">,</span> <span class="n">force_http</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
 
 
 <p>y en la vista:</p>
-<div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span><span class="p">,</span> <span class="n">HttpResponseRedirect</span>
+<div class="highlight"><pre><span></span><code>    <span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span><span class="p">,</span> <span class="n">HttpResponseRedirect</span>
     <span class="kn">from</span> <span class="nn">django.contrib.auth.decorators</span> <span class="kn">import</span> <span class="n">login_required</span>
     <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Video</span>
 
@@ -315,7 +315,7 @@ manera de darle acceso al usuario que es propietario del archivo.</p>
                 <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="mi">403</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Con esto generamos una url firmada y válida por 3600 segundos (una hora)
@@ -327,19 +327,19 @@ contenido.</p>
 
     <footer>
         <div class="tags">
-            <a href="/tag/heroku.html">heroku</a>
-            <a href="/tag/django.html">django</a>
-            <a href="/tag/python.html">python</a>
-            <a href="/tag/paas.html">PAAS</a>
+            <a href="http://iffm.me/tag/heroku.html">heroku</a>
+            <a href="http://iffm.me/tag/django.html">django</a>
+            <a href="http://iffm.me/tag/python.html">python</a>
+            <a href="http://iffm.me/tag/paas.html">PAAS</a>
         </div>
         <div class="pure-g post-footer">
             <div class="pure-u-1 pure-u-md-1-2">
                 <div class="pure-g poster-info">
                     <div class="pure-u">
-                        <a href="/author/israel-fermin-montilla.html"><img src="https://dl.dropboxusercontent.com/s/1bvnowsfke4rs2k/isra.jpg" alt=""></a>
+                        <a href="http://iffm.me/author/israel-fermin-montilla.html"><img src="https://dl.dropboxusercontent.com/s/1bvnowsfke4rs2k/isra.jpg" alt=""></a>
                     </div>
                     <div class="pure-u-3-4">
-                        <h3 class="author-name"><a href="/author/israel-fermin-montilla.html">Israel Fermín Montilla</a></h3>
+                        <h3 class="author-name"><a href="http://iffm.me/author/israel-fermin-montilla.html">Israel Fermín Montilla</a></h3>
                         <p class="author-description">
                           {' Full time husband and dad who loves technology and programming. Software Engineer @ Careem / Online Mentor @ codeinstitute.net'}
                         </p>
@@ -412,6 +412,18 @@ contenido.</p>
 
     </footer>
 
+    <div class="entry-content">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'iferminmblog';
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
 
 </div>
 
@@ -419,14 +431,24 @@ contenido.</p>
 
     <footer class="index-footer">
 
-        <a href="/" title="/dev/isra/blog/*">/dev/isra/blog/*</a>
-        <a href="/category/blog.html">Blog</a>
-        <a href="/category/espanol.html">Español</a>
+        <a href="http://iffm.me/" title="/dev/isra/blog/*">/dev/isra/blog/*</a>
+        <a href="http://iffm.me/category/blog.html">Blog</a>
+        <a href="http://iffm.me/category/espanol.html">Español</a>
         <a href="http://getpelican.com/">Pelican</a>
         <a href="http://python.org/">Python.org</a>
         <a href="http://jinja.pocoo.org/">Jinja2</a>
 
     </footer>
 
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-96148260-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
 </body>
 </html>

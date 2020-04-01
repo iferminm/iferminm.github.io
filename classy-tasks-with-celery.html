@@ -7,20 +7,20 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="http://iffm.me/theme/css/main.css" />
 </head>
 <body>
 
     <div class="navigation pure-menu pure-menu-horizontal">
-        <a href="/" class="pure-menu-heading  pure-menu-link">/dev/isra/blog/*</a>
+        <a href="http://iffm.me/" class="pure-menu-heading  pure-menu-link">/dev/isra/blog/*</a>
         <ul class="pure-menu-list">
             <li class="pure-menu-item"></li>
 
-            <li class="pure-menu-item"><a href="/pages/about-me.html" class="pure-menu-link">About me...</a></li>
-            <li class="pure-menu-item"><a href="/pages/now.html" class="pure-menu-link">Now</a></li>
-            <li class="pure-menu-item"><a href="/pages/talks.html" class="pure-menu-link">Talks</a></li>
-            <li class="pure-menu-item pure-menu-selected"><a href="/category/blog.html" class="pure-menu-link">Blog</a></li>
-            <li class="pure-menu-item"><a href="/category/espanol.html" class="pure-menu-link">Español</a></li>
+            <li class="pure-menu-item"><a href="http://iffm.me/pages/about-me.html" class="pure-menu-link">About me...</a></li>
+            <li class="pure-menu-item"><a href="http://iffm.me/pages/now.html" class="pure-menu-link">Now</a></li>
+            <li class="pure-menu-item"><a href="http://iffm.me/pages/talks.html" class="pure-menu-link">Talks</a></li>
+            <li class="pure-menu-item pure-menu-selected"><a href="http://iffm.me/category/blog.html" class="pure-menu-link">Blog</a></li>
+            <li class="pure-menu-item"><a href="http://iffm.me/category/espanol.html" class="pure-menu-link">Español</a></li>
         </ul>
     </div>
 
@@ -29,9 +29,9 @@
     <div class="entry-content">
         <div class="post-meta pure-g">
 <div class="pure-u-3-4 meta-data">
-    <a href="/category/blog.html" class="category">Blog</a><br />
+    <a href="http://iffm.me/category/blog.html" class="category">Blog</a><br />
 
-    <a class="author" href="/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+    <a class="author" href="http://iffm.me/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
     &mdash; <abbr title="2017-03-23T00:00:00+04:00">Thu 23 March 2017</abbr>
 </div>        </div>
     </div>
@@ -55,7 +55,7 @@ you've worked on are.</p>
 <p><em>Celery</em> lets you <code>delay</code> the execution of those tasks and put retry policies in place so you can re-run them after a given time under certain conditions, for example, a 3rd party service returned <code>500</code> or <code>502</code>, you might want to retry after, let's say, 20min to see if the issue is gone.</p>
 <p>This won't be an in depth tutorial, you can check <em>Celery</em> <a href="http://docs.celeryproject.org/en">here</a> if you don't know it yet.</p>
 <p>Let's see this example in <em>Flask</em></p>
-<div class="highlight"><pre><span></span><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">process_image</span><span class="p">(</span><span class="n">image_url</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">image</span> <span class="o">=</span> <span class="n">download_image</span><span class="p">(</span><span class="n">image_url</span><span class="p">)</span>
@@ -64,12 +64,12 @@ you've worked on are.</p>
     <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
         <span class="k">return</span> <span class="s1">&#39;Failure, please try again&#39;</span>
     <span class="k">return</span> <span class="s1">&#39;Success&#39;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>This is a very basic example, full of bad practices and code like this shouldn't be pushed to production but it serves to illustrate what I need to explain.</p>
 <p>Normally, what you might do is just call those three functions inside a task and just call the <code>task.delay()</code> from the request handler, something like:</p>
-<div class="highlight"><pre><span></span><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">process_image</span><span class="p">(</span><span class="n">image_url</span><span class="p">):</span>
     <span class="n">tasks</span><span class="o">.</span><span class="n">process_image</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="n">image_url</span><span class="p">)</span>
     <span class="k">return</span> <span class="s1">&#39;Success&#39;</span>
@@ -82,18 +82,18 @@ you've worked on are.</p>
     <span class="n">image</span> <span class="o">=</span> <span class="n">download_image</span><span class="p">(</span><span class="n">image_url</span><span class="p">)</span>
     <span class="n">resized</span> <span class="o">=</span> <span class="n">resize_image</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
     <span class="n">upload_image</span><span class="p">(</span><span class="n">resized</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>But, those three functions are not supposed to be called synchronously, so, I don't want them laying in some module waiting for someone to call them outside a task. Reason being that, as said before, these are heavy processes that might keep my web server busy and prevent it from taking new requests for a while and also keep my users waiting on a <em>loading</em> screen for a long time, which isn't a good user experience.</p>
 <p>I could delete them and copy all the code in my task function but it will lead to a potentially long function which will do a lot of things, it will be difficult to read and difficult to maintain, so... bad idea.</p>
 <p><em>Celery</em>'s <code>@task</code> decorator, actually works as an object factory of <code>Task</code> objects, and what it does is, it puts the decorated function in the <code>run()</code> method, so, I could take advantage of the object oriented paradigm to encapsulate all that logic inside a task avoiding the risk of having those functions called synchronously.</p>
 <p>It would look something like this</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Task</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Task</span>
 
 
 <span class="k">class</span> <span class="nc">ProcessImage</span><span class="p">(</span><span class="n">Task</span><span class="p">):</span>
-    <span class="n">ignore_result</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">ignore_result</span> <span class="o">=</span> <span class="kc">True</span>
 
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_url</span><span class="p">):</span>
         <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">download_image</span><span class="p">(</span><span class="n">image_url</span><span class="p">)</span>
@@ -112,7 +112,7 @@ you've worked on are.</p>
 
 <span class="c1"># We need an instance we can call delay() on</span>
 <span class="n">process_image</span> <span class="o">=</span> <span class="n">ProcessImage</span><span class="p">()</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>And done, we can implement also a notification logic to inform the user if there's any issue processing the image after retrying and that kind of
@@ -123,18 +123,18 @@ things, but I'll leave that for another post.</p>
 
     <footer>
         <div class="tags">
-            <a href="/tag/python.html">python</a>
-            <a href="/tag/programming.html">programming</a>
-            <a href="/tag/celery.html">celery</a>
+            <a href="http://iffm.me/tag/python.html">python</a>
+            <a href="http://iffm.me/tag/programming.html">programming</a>
+            <a href="http://iffm.me/tag/celery.html">celery</a>
         </div>
         <div class="pure-g post-footer">
             <div class="pure-u-1 pure-u-md-1-2">
                 <div class="pure-g poster-info">
                     <div class="pure-u">
-                        <a href="/author/israel-fermin-montilla.html"><img src="https://dl.dropboxusercontent.com/s/1bvnowsfke4rs2k/isra.jpg" alt=""></a>
+                        <a href="http://iffm.me/author/israel-fermin-montilla.html"><img src="https://dl.dropboxusercontent.com/s/1bvnowsfke4rs2k/isra.jpg" alt=""></a>
                     </div>
                     <div class="pure-u-3-4">
-                        <h3 class="author-name"><a href="/author/israel-fermin-montilla.html">Israel Fermín Montilla</a></h3>
+                        <h3 class="author-name"><a href="http://iffm.me/author/israel-fermin-montilla.html">Israel Fermín Montilla</a></h3>
                         <p class="author-description">
                           {' Full time husband and dad who loves technology and programming. Software Engineer @ Careem / Online Mentor @ codeinstitute.net'}
                         </p>
@@ -207,6 +207,18 @@ things, but I'll leave that for another post.</p>
 
     </footer>
 
+    <div class="entry-content">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'iferminmblog';
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
 
 </div>
 
@@ -214,14 +226,24 @@ things, but I'll leave that for another post.</p>
 
     <footer class="index-footer">
 
-        <a href="/" title="/dev/isra/blog/*">/dev/isra/blog/*</a>
-        <a href="/category/blog.html">Blog</a>
-        <a href="/category/espanol.html">Español</a>
+        <a href="http://iffm.me/" title="/dev/isra/blog/*">/dev/isra/blog/*</a>
+        <a href="http://iffm.me/category/blog.html">Blog</a>
+        <a href="http://iffm.me/category/espanol.html">Español</a>
         <a href="http://getpelican.com/">Pelican</a>
         <a href="http://python.org/">Python.org</a>
         <a href="http://jinja.pocoo.org/">Jinja2</a>
 
     </footer>
 
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-96148260-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
 </body>
 </html>

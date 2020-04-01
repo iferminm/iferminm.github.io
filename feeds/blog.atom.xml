@@ -1,5 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - Blog</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://iffm.me/feeds/blog.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2019-08-10T00:00:00+04:00</updated><entry><title>Internal OpenSource</title><link href="http://iffm.me/internal-opensource.html" rel="alternate"></link><published>2019-08-10T00:00:00+04:00</published><updated>2019-08-10T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2019-08-10:/internal-opensource.html</id><content type="html"></content><category term="opensource"></category><category term="projects"></category></entry><entry><title>Choreography and Orchestration</title><link href="http://iffm.me/choreography-and-orchestration.html" rel="alternate"></link><published>2018-05-10T00:00:00+04:00</published><updated>2018-05-10T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2018-05-10:/choreography-and-orchestration.html</id><summary type="html">&lt;p&gt;On a &lt;a href="http://iffm.me/my-take-on-microservices.html"&gt;previous article&lt;/a&gt; on &lt;em&gt;microservices&lt;/em&gt;, we went through the best practices I've seen,
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - Blog</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://iffm.me/feeds/blog.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2020-04-01T00:00:00+04:00</updated><entry><title>Working with databases easier</title><link href="http://iffm.me/working-with-databases-easier.html" rel="alternate"></link><published>2020-04-01T00:00:00+04:00</published><updated>2020-04-01T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2020-04-01:/working-with-databases-easier.html</id><summary type="html">&lt;p&gt;This will be a short article, recently at work I had to build few reports on
+top of two legacy databases, to be honest, the whole architecture and the way
+the data is stored, in my opinion, is not optimal, a lot of things need to change
+but, as usual …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This will be a short article, recently at work I had to build few reports on
+top of two legacy databases, to be honest, the whole architecture and the way
+the data is stored, in my opinion, is not optimal, a lot of things need to change
+but, as usual, features and business take precedence over tech debt.&lt;/p&gt;
+&lt;p&gt;The whole stack is based on nodejs on top of typescript, which makes a bit more
+enjoyable the fact that I'm now working in JavaScript. All the databases were
+generated using knexjs so, these databases were there already and I only had to
+connect to them.&lt;/p&gt;
+&lt;p&gt;I didn't want to spend too much time on the connection and mapping part, so
+I wanted to see if an ORM would be of use here&lt;/p&gt;
+&lt;h2&gt;The overall idea&lt;/h2&gt;
+&lt;p&gt;Since we will be integrating with other internal tools to generate these reports
+the implementation I came up with is temporary, so I wanted to make as few changes
+as possible in the current codebase for several reasons:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Once you add something temporary, it will be difficult to clean it up
+after it's not needed anymore, the chances of someone building on top of it 
+is high.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I don't like working with typescript, or JavaScript in general so if I could
+get away with writing in some other language it could be more fun&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The current application is a monolith and the logic is complex,
+adding more would take longer than implementing something from scratch&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;So, I decided to implement the report generating logic in a Lambda function
+which will be executed periodically, this meant I had to setup the connections
+to the databases from scratch and map to my domain classes and types in order
+to have a clean architecture.&lt;/p&gt;
+&lt;h2&gt;Enter Sqlalchemy&lt;/h2&gt;
+&lt;p&gt;Sqlalchemy is the database Swiss army knife in python, it makes it very
+easy to work with databases by mapping tables to domain classes, but it also
+works the other way around by introspecting the database's schema metadata and
+generating stub classes to deal with them in Python.&lt;/p&gt;
+&lt;h3&gt;Automap&lt;/h3&gt;
+&lt;p&gt;Sqlalchemy has an Automap extension, which lets you connect to an existing database
+and generate a domain model from the existing database schema and operate with it
+from Python, trigger queries and use Sqlalchemy normally as if the schema was generated
+by you.&lt;/p&gt;
+&lt;p&gt;It's very easy and it doesn't take 30 lines of code&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sqlalchemy.ext.automap&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;automap_base&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sqlalchemy.orm&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Session&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sqlalchemy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;create_engine&lt;/span&gt;
+
+
+&lt;span class="n"&gt;DATABASE_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getenv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;DB_URL&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;Base&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;automap_base&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;engine&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;create_engine&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;DATABASE_URL&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;session&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Session&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bind&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;engine&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;Base&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;prepare&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;engine&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reflect&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then you can access the classes with the table name as it is in the database let's say you have a
+&lt;code&gt;user_profile&lt;/code&gt; database, then you can access it as&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;Base&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;classes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;user_profile&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Trigger queries as&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;UserProfile&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Base&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;classes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;user_profile&lt;/span&gt;
+
+&lt;span class="n"&gt;profile&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;UserProfile&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;UserProfile&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;user_id&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;123123&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fist&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And you're good to go.&lt;/p&gt;
+&lt;p&gt;Of course, code conventions in SQL and Python are different, if you want your code to look more pythonic
+and have &lt;code&gt;Base.classes.*&lt;/code&gt; to be in PascalCase as well, you can write a function to override the table naming
+when the automap is performed, it will add few lines but still below 20 lines in general&lt;/p&gt;
+&lt;p&gt;It looks something like this&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;snake_to_pascal&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;base&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tablename&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;table&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;w&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;capitalize&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;w&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;tablename&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;_&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)])&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Of course, that assumes your tables are named as &lt;code&gt;this_is_a_table&lt;/code&gt; and will be converted to &lt;code&gt;ThisIsATable&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;You can use that function when you call &lt;code&gt;Base.prepare&lt;/code&gt; as follows&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;Base&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;prepare&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;engine&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reflect&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;classname_for_table&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;snake_to_pascal&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And that's it. :-)&lt;/p&gt;</content><category term="Blog"></category><category term="python"></category><category term="databases"></category><category term="sqlalchemy"></category><category term="orm"></category></entry><entry><title>Choreography and Orchestration</title><link href="http://iffm.me/choreography-and-orchestration.html" rel="alternate"></link><published>2018-05-10T00:00:00+04:00</published><updated>2018-05-10T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2018-05-10:/choreography-and-orchestration.html</id><summary type="html">&lt;p&gt;On a &lt;a href="http://iffm.me/my-take-on-microservices.html"&gt;previous article&lt;/a&gt; on &lt;em&gt;microservices&lt;/em&gt;, we went through the best practices I've seen,
 which doesn't mean those are the only ones, it only means that those are the ones I've seen work for me
 and the ones I've tried.&lt;/p&gt;
 &lt;p&gt;This time, I would like to focus on &lt;strong&gt;Choreography over …&lt;/strong&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;On a &lt;a href="http://iffm.me/my-take-on-microservices.html"&gt;previous article&lt;/a&gt; on &lt;em&gt;microservices&lt;/em&gt;, we went through the best practices I've seen,
@@ -127,7 +220,7 @@ concepts and ways around it and adapting them to the specific problem to achieve
 &lt;li&gt;&lt;a href="http://blog.christianposta.com/microservices/why-microservices-should-be-event-driven-autonomy-vs-authority/"&gt;Why Microservices Should be Event Driven&lt;/a&gt; by Christian Posta &lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.bernd-ruecker.com/event-command-transformation-in-microservice-architectures-and-ddd-dd07d5eb9656"&gt;Event command transformation in microservice architectures and DDD&lt;/a&gt; by Bernd Rücker  &lt;/li&gt;
 &lt;li&gt;&lt;a href="http://iffm.me/my-take-on-microservices.html"&gt;My take on Microservices&lt;/a&gt; by me :-)&lt;/li&gt;
-&lt;/ul&gt;</content><category term="software engineering"></category><category term="microservices"></category></entry><entry><title>Bye bye dubizzle, hello Careem!</title><link href="http://iffm.me/bye-bye-dubizzle-hello-careem.html" rel="alternate"></link><published>2018-03-30T00:00:00+04:00</published><updated>2018-03-30T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2018-03-30:/bye-bye-dubizzle-hello-careem.html</id><summary type="html">&lt;p&gt;I've been quiet for the last two months, I was a bit busy switching jobs, yes,
+&lt;/ul&gt;</content><category term="Blog"></category><category term="software engineering"></category><category term="microservices"></category></entry><entry><title>Bye bye dubizzle, hello Careem!</title><link href="http://iffm.me/bye-bye-dubizzle-hello-careem.html" rel="alternate"></link><published>2018-03-30T00:00:00+04:00</published><updated>2018-03-30T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2018-03-30:/bye-bye-dubizzle-hello-careem.html</id><summary type="html">&lt;p&gt;I've been quiet for the last two months, I was a bit busy switching jobs, yes,
 after more than three years I decided to leave &lt;em&gt;dubizzle&lt;/em&gt;, part of the &lt;em&gt;OLX&lt;/em&gt;
 group and one of the biggest brands here in the United Arab Emirates, for reasons
 I won't discuss in this …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I've been quiet for the last two months, I was a bit busy switching jobs, yes,
@@ -170,7 +263,7 @@ build an organization that inspires&lt;/em&gt; one line at a time.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=HrSYYmaKmmo"&gt;The video&lt;/a&gt; that made me join &lt;a href="https://careem.com"&gt;Careem&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.glassdoor.com/Overview/Working-at-Dubizzle-EI_IE670451.11,19.htm"&gt;dubizzle in Glassdoor&lt;/a&gt; looks like a lot of people are not happy, I hope they course correct before it's too late&lt;/li&gt;
-&lt;/ul&gt;</content><category term="career"></category><category term="personal"></category></entry><entry><title>What to do when linux freezes?</title><link href="http://iffm.me/what-to-do-when-linux-freezes.html" rel="alternate"></link><published>2018-01-30T00:00:00+04:00</published><updated>2018-01-30T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2018-01-30:/what-to-do-when-linux-freezes.html</id><summary type="html">&lt;p&gt;Well, we all know that nothing is perfect, not even linux, it sometimes freezes.
+&lt;/ul&gt;</content><category term="Blog"></category><category term="career"></category><category term="personal"></category></entry><entry><title>What to do when linux freezes?</title><link href="http://iffm.me/what-to-do-when-linux-freezes.html" rel="alternate"></link><published>2018-01-30T00:00:00+04:00</published><updated>2018-01-30T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2018-01-30:/what-to-do-when-linux-freezes.html</id><summary type="html">&lt;p&gt;Well, we all know that nothing is perfect, not even linux, it sometimes freezes.
 It has happened to me several times,
 my solution? well, press and hold the power button and hope for the best. &lt;/p&gt;
 &lt;p&gt;Well, I was thinking &lt;em&gt;there must be a better way to do it&lt;/em&gt; and, like …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Well, we all know that nothing is perfect, not even linux, it sometimes freezes.
@@ -196,7 +289,7 @@ can switch &lt;strong&gt;B&lt;/strong&gt; for &lt;strong&gt;O&lt;/strong&gt;. Yo
 &lt;h2&gt;Recommended readings&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Magic_SysRq_key"&gt;THIS&lt;/a&gt; Wikipedia article&lt;/li&gt;
-&lt;/ul&gt;</content><category term="linux"></category></entry><entry><title>Django registration in no time!</title><link href="http://iffm.me/django-registration-in-no-time.html" rel="alternate"></link><published>2018-01-23T00:00:00+04:00</published><updated>2018-01-23T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2018-01-23:/django-registration-in-no-time.html</id><summary type="html">&lt;p&gt;What does 99% of the projects we work on have in common?, what's usually the first or the last
+&lt;/ul&gt;</content><category term="Blog"></category><category term="linux"></category></entry><entry><title>Django registration in no time!</title><link href="http://iffm.me/django-registration-in-no-time.html" rel="alternate"></link><published>2018-01-23T00:00:00+04:00</published><updated>2018-01-23T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2018-01-23:/django-registration-in-no-time.html</id><summary type="html">&lt;p&gt;What does 99% of the projects we work on have in common?, what's usually the first or the last
 thing we start working on when building something, a personal project perhaps?. If you said
 &lt;em&gt;dealing with users&lt;/em&gt;, that's right. On each and every project we find ourselves writing different
 registration …&lt;/p&gt;</summary><content type="html">&lt;p&gt;What does 99% of the projects we work on have in common?, what's usually the first or the last
@@ -227,8 +320,8 @@ in almost no time.&lt;/p&gt;
 &lt;p&gt;Let's get started&lt;/p&gt;
 &lt;h3&gt;Installation&lt;/h3&gt;
 &lt;p&gt;To install it, you just need to &lt;code&gt;pip&lt;/code&gt; it as any usual &lt;em&gt;Python&lt;/em&gt; module&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;registration&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;pip install django-registration&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;For the simple &lt;em&gt;one step&lt;/em&gt; registration flow or the &lt;em&gt;HMAC Based&lt;/em&gt; workflow, you don't need to do anything else.&lt;/p&gt;
@@ -257,7 +350,7 @@ you'll most probably end up customizing some behavior, but it's really easy to d
 of creating the registration workflow is done for you and works out of the box.&lt;/p&gt;
 &lt;p&gt;In this case, for the &lt;em&gt;one step&lt;/em&gt; all I had to do was the following:&lt;/p&gt;
 &lt;p&gt;1.- Include &lt;code&gt;registration.backends.simple.urls&lt;/code&gt; in my urls configuration&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;
 
 &lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
@@ -265,7 +358,7 @@ of creating the registration workflow is done for you and works out of the box.&
     &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;accounts/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;registration.backends.simple.urls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
     &lt;span class="c1"&gt;# More url patterns&lt;/span&gt;
 &lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;2.- Set &lt;code&gt;REGISTRATION_OPEN = True&lt;/code&gt;, this is the default value, but &lt;em&gt;better explicit than implicit&lt;/em&gt;&lt;/p&gt;
@@ -276,7 +369,7 @@ redirecting to &lt;code&gt;/&lt;/code&gt; is fine.&lt;/p&gt;
 own &lt;code&gt;form_class&lt;/code&gt; argument when adding the default &lt;code&gt;RegistationView&lt;/code&gt; to the &lt;code&gt;urlpatterns&lt;/code&gt; or by subclassing it and setting the &lt;code&gt;form_class&lt;/code&gt;
 attribute or implementing &lt;code&gt;get_form_class()&lt;/code&gt;. In my case, I opted for passing an argument to the &lt;code&gt;as_view()&lt;/code&gt; method when addind the
 corresponding &lt;code&gt;url&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;registration.backends.simple.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;RegistrationView&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;registration.backends.simple.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;RegistrationView&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;
@@ -292,7 +385,7 @@ corresponding &lt;code&gt;url&lt;/code&gt;.&lt;/p&gt;
     &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;accounts/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;registration.backends.simple.urls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
     &lt;span class="c1"&gt;# More url patterns&lt;/span&gt;
 &lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;5.- Customize the registration template, this flow only needs one template called &lt;code&gt;registration/registration_form.html&lt;/code&gt; and it will
@@ -302,7 +395,7 @@ all for free.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://django-registration.readthedocs.io/en/2.4.1/index.html"&gt;&lt;em&gt;django registration&lt;/em&gt; docs&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Django docs on &lt;a href="https://docs.djangoproject.com/en/2.0/topics/class-based-views/"&gt;class based views&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><category term="python"></category><category term="django"></category><category term="tutorial"></category><category term="registration"></category></entry><entry><title>Making django scale Pt.2</title><link href="http://iffm.me/making-django-scale-pt2.html" rel="alternate"></link><published>2017-12-24T00:00:00+04:00</published><updated>2017-12-24T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-12-24:/making-django-scale-pt2.html</id><summary type="html">&lt;p&gt;It's been a while since the &lt;a href="/making-django-scale-pt1.html"&gt;first post&lt;/a&gt; about scaling web applications using &lt;em&gt;django&lt;/em&gt;, last time we
+&lt;/ul&gt;</content><category term="Blog"></category><category term="python"></category><category term="django"></category><category term="tutorial"></category><category term="registration"></category></entry><entry><title>Making django scale Pt.2</title><link href="http://iffm.me/making-django-scale-pt2.html" rel="alternate"></link><published>2017-12-24T00:00:00+04:00</published><updated>2017-12-24T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-12-24:/making-django-scale-pt2.html</id><summary type="html">&lt;p&gt;It's been a while since the &lt;a href="/making-django-scale-pt1.html"&gt;first post&lt;/a&gt; about scaling web applications using &lt;em&gt;django&lt;/em&gt;, last time we
 spoke about some basic concepts about scalability, buzz words we hear everyday and we also use but
 always struggle when we need to give a formal definition to someone.&lt;/p&gt;
 &lt;p&gt;Once we have clear …&lt;/p&gt;</summary><content type="html">&lt;p&gt;It's been a while since the &lt;a href="/making-django-scale-pt1.html"&gt;first post&lt;/a&gt; about scaling web applications using &lt;em&gt;django&lt;/em&gt;, last time we
@@ -411,7 +504,7 @@ tool belt, your stack and the quality of the products you're building.&lt;/p&gt;
 &lt;p&gt;Monitoring and measuring shouldn't be an optional thing, it should be there if not since day one, at least added within
 the first months of life of your project, that's the only way you get to see inside your application, detect bottlenecks
 and potential bugs, debug them, measure their impact, prioritize them and be sure that by rolling out the optimizations
-you will have an improvement of ~X percent in your performance.&lt;/p&gt;</content><category term="Python"></category><category term="django"></category><category term="scaling"></category></entry><entry><title>We always evolve</title><link href="http://iffm.me/we-always-evolve.html" rel="alternate"></link><published>2017-12-14T00:00:00+04:00</published><updated>2017-12-14T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-12-14:/we-always-evolve.html</id><summary type="html">&lt;p&gt;I've been going through code I wrote about two or maybe three years ago while cleaning up my working directory
+you will have an improvement of ~X percent in your performance.&lt;/p&gt;</content><category term="Blog"></category><category term="Python"></category><category term="django"></category><category term="scaling"></category></entry><entry><title>We always evolve</title><link href="http://iffm.me/we-always-evolve.html" rel="alternate"></link><published>2017-12-14T00:00:00+04:00</published><updated>2017-12-14T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-12-14:/we-always-evolve.html</id><summary type="html">&lt;p&gt;I've been going through code I wrote about two or maybe three years ago while cleaning up my working directory
 and archiving old stuff and, I must say: what the hell did I have in my head by that time?, for real, there are
 things that are over-engineered, very complicated …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I've been going through code I wrote about two or maybe three years ago while cleaning up my working directory
 and archiving old stuff and, I must say: what the hell did I have in my head by that time?, for real, there are
@@ -438,7 +531,7 @@ this pattern was on my code and, unsurprisingly, I found some other bad practice
 &lt;p&gt;So, if checking old code and surprising myself with &lt;em&gt;how stupid I was&lt;/em&gt; is something that happens often, it is a good
 thing, it means I've learned something I didn't know by the time I wrote that code. So, always move forward but,
 from time to time, check backwards not to adopt bad old habits, but to see how much you've learned and also if there's
-anything you need to fix on a project you're maintaining.&lt;/p&gt;</content><category term="software engineering"></category><category term="career"></category><category term="personal"></category></entry><entry><title>My take on microservices</title><link href="http://iffm.me/my-take-on-microservices.html" rel="alternate"></link><published>2017-11-30T00:00:00+04:00</published><updated>2017-11-30T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-11-30:/my-take-on-microservices.html</id><summary type="html">&lt;p&gt;There's been a lot of stuff going on these days on &lt;em&gt;Software Engineering&lt;/em&gt;, it's hard to catch up on everything 
+anything you need to fix on a project you're maintaining.&lt;/p&gt;</content><category term="Blog"></category><category term="software engineering"></category><category term="career"></category><category term="personal"></category></entry><entry><title>My take on microservices</title><link href="http://iffm.me/my-take-on-microservices.html" rel="alternate"></link><published>2017-11-30T00:00:00+04:00</published><updated>2017-11-30T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-11-30:/my-take-on-microservices.html</id><summary type="html">&lt;p&gt;There's been a lot of stuff going on these days on &lt;em&gt;Software Engineering&lt;/em&gt;, it's hard to catch up on everything 
 I would like to. I try to go one topic at a time and now, also because we are working with this at the office,
 I'm hooked into microservices.&lt;/p&gt;
 &lt;p&gt;Microservices …&lt;/p&gt;</summary><content type="html">&lt;p&gt;There's been a lot of stuff going on these days on &lt;em&gt;Software Engineering&lt;/em&gt;, it's hard to catch up on everything 
@@ -580,7 +673,7 @@ yourself, you need to think about it and use &lt;em&gt;something&lt;/em&gt; that
 &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Cohesion_(computer_science)"&gt;Cohesion (computer science)&lt;/a&gt; (Wikipedia article)&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing"&gt;Fallacies of distributed computing&lt;/a&gt; (Wikipedia article)&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.infoworld.com/article/3114195/system-management/the-8-fallacies-of-distributed-computing-are-becoming-irrelevant.html"&gt;The 8 fallacies of distributed computing are becoming irrelevant&lt;/a&gt; build your own opinion, are they?, comment!.&lt;/li&gt;
-&lt;/ul&gt;</content><category term="software engineering"></category><category term="microservices"></category></entry><entry><title>Making django scale Pt.1</title><link href="http://iffm.me/making-django-scale-pt1.html" rel="alternate"></link><published>2017-09-24T00:00:00+04:00</published><updated>2017-09-24T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-09-24:/making-django-scale-pt1.html</id><summary type="html">&lt;p&gt;I gave a talk on PyConPL this year about scaling django, obviously on a 35min talk you don't have enough
+&lt;/ul&gt;</content><category term="Blog"></category><category term="software engineering"></category><category term="microservices"></category></entry><entry><title>Making django scale Pt.1</title><link href="http://iffm.me/making-django-scale-pt1.html" rel="alternate"></link><published>2017-09-24T00:00:00+04:00</published><updated>2017-09-24T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-09-24:/making-django-scale-pt1.html</id><summary type="html">&lt;p&gt;I gave a talk on PyConPL this year about scaling django, obviously on a 35min talk you don't have enough
 time to outline all the strategies and go deeper, so I thought it might be a cool idea to write a series
 of blog posts  about this topic, not only …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I gave a talk on PyConPL this year about scaling django, obviously on a 35min talk you don't have enough
 time to outline all the strategies and go deeper, so I thought it might be a cool idea to write a series
@@ -641,7 +734,7 @@ you might have some ways to get data or an insight on how your program is runnin
 to go get it.&lt;/p&gt;
 &lt;p&gt;In the following posts, I'll recommend some tools to measure and later on some strategies to make your django site scale,
 so, what you'll see in part 2 will be a set of tools to monitor your app's health.&lt;/p&gt;
-&lt;p&gt;Don't forget to subscribe! I rarely send emails but when I do, It's interesting, I promise.&lt;/p&gt;</content><category term="python"></category><category term="django"></category><category term="scaling"></category></entry><entry><title>PyConPL 2017</title><link href="http://iffm.me/pyconpl-2017.html" rel="alternate"></link><published>2017-09-01T00:00:00+04:00</published><updated>2017-09-01T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-09-01:/pyconpl-2017.html</id><summary type="html">&lt;p&gt;Two of my personal goals for this year were:&lt;/p&gt;
+&lt;p&gt;Don't forget to subscribe! I rarely send emails but when I do, It's interesting, I promise.&lt;/p&gt;</content><category term="Blog"></category><category term="python"></category><category term="django"></category><category term="scaling"></category></entry><entry><title>PyConPL 2017</title><link href="http://iffm.me/pyconpl-2017.html" rel="alternate"></link><published>2017-09-01T00:00:00+04:00</published><updated>2017-09-01T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-09-01:/pyconpl-2017.html</id><summary type="html">&lt;p&gt;Two of my personal goals for this year were:&lt;/p&gt;
 &lt;p&gt;1.- To speak at a local meetup here in Dubai&lt;/p&gt;
 &lt;p&gt;2.- To speak at a bigger conference, anywhere&lt;/p&gt;
 &lt;p&gt;Thanks to my wife, who is always supporting me much more than I support her, I could do
@@ -702,7 +795,7 @@ I was interested in but couldn't attend.&lt;/p&gt;
 conferences, I'll apply to speak at PyConPL next year for sure and will take my family as well, Warsaw
 is a beautiful city, full of history and nice people. Will come back for sure!.&lt;/p&gt;
 &lt;p&gt;Also, if you're looking for a job and would like to relocate to Dubai, have a look &lt;a href="http://blog.dubizzle.com/uae/job-vacancies/"&gt;here&lt;/a&gt;
-at the open positions and leave me a comment, we can talk about it.&lt;/p&gt;</content><category term="personal"></category><category term="speaking"></category><category term="pycon"></category></entry><entry><title>Working at dubizzle</title><link href="http://iffm.me/working-at-dubizzle.html" rel="alternate"></link><published>2017-08-16T00:00:00+04:00</published><updated>2017-08-16T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-08-16:/working-at-dubizzle.html</id><summary type="html">&lt;p&gt;About 4 years ago I got an email through StackOverflow Careers from a woman called
+at the open positions and leave me a comment, we can talk about it.&lt;/p&gt;</content><category term="Blog"></category><category term="personal"></category><category term="speaking"></category><category term="pycon"></category></entry><entry><title>Working at dubizzle</title><link href="http://iffm.me/working-at-dubizzle.html" rel="alternate"></link><published>2017-08-16T00:00:00+04:00</published><updated>2017-08-16T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-08-16:/working-at-dubizzle.html</id><summary type="html">&lt;p&gt;About 4 years ago I got an email through StackOverflow Careers from a woman called
 Claudia Verlinden, a very nice Belgian lady who happened to be an HR Manager at a company
 in the middle east and she was looking for Software Engineers with experience in Python and
 django, so …&lt;/p&gt;</summary><content type="html">&lt;p&gt;About 4 years ago I got an email through StackOverflow Careers from a woman called
@@ -824,7 +917,7 @@ are in two fronts:&lt;/p&gt;
 &lt;p&gt;Now, we are not facing that dilemma of "should this be a different package?", now it's more "where should I build this?",
 we try to keep our services from doing more than one thing, simplicity is the main value now, so far, we've deployed over 70
 services and we continue to break the monolith into smaller units, all powered by python and django for our backends and react for
-our frontend, running on top of AWS. Does this sound like a place you would like to work at? leave me a comment! and we can talk about it.&lt;/p&gt;</content><category term="personal"></category><category term="career"></category><category term="middle east"></category><category term="dubizzle"></category></entry><entry><title>PyCon: Challenge Accepted</title><link href="http://iffm.me/pycon-challenge-accepted.html" rel="alternate"></link><published>2017-08-01T00:00:00+04:00</published><updated>2017-08-01T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-08-01:/pycon-challenge-accepted.html</id><summary type="html">&lt;p&gt;Everyone who has known me long enough, knows that I'm a huge fan of Python programming language,
+our frontend, running on top of AWS. Does this sound like a place you would like to work at? leave me a comment! and we can talk about it.&lt;/p&gt;</content><category term="Blog"></category><category term="personal"></category><category term="career"></category><category term="middle east"></category><category term="dubizzle"></category></entry><entry><title>PyCon: Challenge Accepted</title><link href="http://iffm.me/pycon-challenge-accepted.html" rel="alternate"></link><published>2017-08-01T00:00:00+04:00</published><updated>2017-08-01T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-08-01:/pycon-challenge-accepted.html</id><summary type="html">&lt;p&gt;Everyone who has known me long enough, knows that I'm a huge fan of Python programming language,
 for several reasons, ease of use, ease of learning, the huge amount of libraries, frameworks and
 packages in general available in PyPI, it's not perfect but it has become my tool of choice …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Everyone who has known me long enough, knows that I'm a huge fan of Python programming language,
 for several reasons, ease of use, ease of learning, the huge amount of libraries, frameworks and
@@ -844,7 +937,7 @@ So, I decided to apply to PyCon Poland, PyCon Spain and PyCon South Africa.&lt;/
 in PyCon Spain. I'm still waiting for news from South Africa. I will for sure share my experience in both
 conferences, I'm so excited and thankful with my employer, dubizzle, for sponsoring my trip to the conference,
 with the organizers for this huge opportunity and specially with my wife because she won't be able to go
-with me and she's spending almost one week alone with our baby.&lt;/p&gt;</content><category term="personal"></category><category term="speaking"></category><category term="pycon"></category></entry><entry><title>Classy Tasks with Celery</title><link href="http://iffm.me/classy-tasks-with-celery.html" rel="alternate"></link><published>2017-03-23T00:00:00+04:00</published><updated>2017-03-23T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-03-23:/classy-tasks-with-celery.html</id><summary type="html">&lt;p&gt;This will be a short article, I just want to share something I learned this week.&lt;/p&gt;
+with me and she's spending almost one week alone with our baby.&lt;/p&gt;</content><category term="Blog"></category><category term="personal"></category><category term="speaking"></category><category term="pycon"></category></entry><entry><title>Classy Tasks with Celery</title><link href="http://iffm.me/classy-tasks-with-celery.html" rel="alternate"></link><published>2017-03-23T00:00:00+04:00</published><updated>2017-03-23T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-03-23:/classy-tasks-with-celery.html</id><summary type="html">&lt;p&gt;This will be a short article, I just want to share something I learned this week.&lt;/p&gt;
 &lt;p&gt;If you work with &lt;em&gt;Python&lt;/em&gt; and chances are you've ran into &lt;em&gt;celery&lt;/em&gt; at least once, hopefully more than once, depending on how complex the projects
 you've worked on are.&lt;/p&gt;
 &lt;p&gt;If you don't know it …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This will be a short article, I just want to share something I learned this week.&lt;/p&gt;
@@ -854,7 +947,7 @@ you've worked on are.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Celery&lt;/em&gt; lets you &lt;code&gt;delay&lt;/code&gt; the execution of those tasks and put retry policies in place so you can re-run them after a given time under certain conditions, for example, a 3rd party service returned &lt;code&gt;500&lt;/code&gt; or &lt;code&gt;502&lt;/code&gt;, you might want to retry after, let's say, 20min to see if the issue is gone.&lt;/p&gt;
 &lt;p&gt;This won't be an in depth tutorial, you can check &lt;em&gt;Celery&lt;/em&gt; &lt;a href="http://docs.celeryproject.org/en"&gt;here&lt;/a&gt; if you don't know it yet.&lt;/p&gt;
 &lt;p&gt;Let's see this example in &lt;em&gt;Flask&lt;/em&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nd"&gt;@app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;process_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="n"&gt;image&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;download_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -863,12 +956,12 @@ you've worked on are.&lt;/p&gt;
     &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="ne"&gt;Exception&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Failure, please try again&amp;#39;&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Success&amp;#39;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;This is a very basic example, full of bad practices and code like this shouldn't be pushed to production but it serves to illustrate what I need to explain.&lt;/p&gt;
 &lt;p&gt;Normally, what you might do is just call those three functions inside a task and just call the &lt;code&gt;task.delay()&lt;/code&gt; from the request handler, something like:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nd"&gt;@app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;process_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;tasks&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;process_image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Success&amp;#39;&lt;/span&gt;
@@ -881,18 +974,18 @@ you've worked on are.&lt;/p&gt;
     &lt;span class="n"&gt;image&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;download_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;resized&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;resize_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;upload_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;resized&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;But, those three functions are not supposed to be called synchronously, so, I don't want them laying in some module waiting for someone to call them outside a task. Reason being that, as said before, these are heavy processes that might keep my web server busy and prevent it from taking new requests for a while and also keep my users waiting on a &lt;em&gt;loading&lt;/em&gt; screen for a long time, which isn't a good user experience.&lt;/p&gt;
 &lt;p&gt;I could delete them and copy all the code in my task function but it will lead to a potentially long function which will do a lot of things, it will be difficult to read and difficult to maintain, so... bad idea.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Celery&lt;/em&gt;'s &lt;code&gt;@task&lt;/code&gt; decorator, actually works as an object factory of &lt;code&gt;Task&lt;/code&gt; objects, and what it does is, it puts the decorated function in the &lt;code&gt;run()&lt;/code&gt; method, so, I could take advantage of the object oriented paradigm to encapsulate all that logic inside a task avoiding the risk of having those functions called synchronously.&lt;/p&gt;
 &lt;p&gt;It would look something like this&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;celery&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Task&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;celery&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Task&lt;/span&gt;
 
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ProcessImage&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Task&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;ignore_result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+    &lt;span class="n"&gt;ignore_result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="n"&gt;image&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;download_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image_url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -911,32 +1004,32 @@ you've worked on are.&lt;/p&gt;
 
 &lt;span class="c1"&gt;# We need an instance we can call delay() on&lt;/span&gt;
 &lt;span class="n"&gt;process_image&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ProcessImage&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;And done, we can implement also a notification logic to inform the user if there's any issue processing the image after retrying and that kind of
 things, but I'll leave that for another post.&lt;/p&gt;
 &lt;p&gt;By doing a &lt;em&gt;class based task&lt;/em&gt; for complex background jobs, we can produce cleaner code which is easier to maintain and to read and keep those heavy tasks encapsulated so no one calls them directly from a controller or a django view.&lt;/p&gt;
-&lt;p&gt;I know this is not the best way to implement this use case, we could have done it with a &lt;code&gt;TaskTree&lt;/code&gt; or with callbacks, but I wanted to show how to use classes to define tasks. I'll explain those approaches in future posts. :-)&lt;/p&gt;</content><category term="python"></category><category term="programming"></category><category term="celery"></category></entry><entry><title>The evilness of None!</title><link href="http://iffm.me/the-evilness-of-none.html" rel="alternate"></link><published>2017-03-13T00:00:00+04:00</published><updated>2017-03-13T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-03-13:/the-evilness-of-none.html</id><summary type="html">&lt;p&gt;Recently at work, i was solving one bug on one of our services, it was popping up in newrelic at least 9 times a week, this is one of the services we use in the monetization process at the office, so, it's a critical one, the least errors we 
+&lt;p&gt;I know this is not the best way to implement this use case, we could have done it with a &lt;code&gt;TaskTree&lt;/code&gt; or with callbacks, but I wanted to show how to use classes to define tasks. I'll explain those approaches in future posts. :-)&lt;/p&gt;</content><category term="Blog"></category><category term="python"></category><category term="programming"></category><category term="celery"></category></entry><entry><title>The evilness of None!</title><link href="http://iffm.me/the-evilness-of-none.html" rel="alternate"></link><published>2017-03-13T00:00:00+04:00</published><updated>2017-03-13T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-03-13:/the-evilness-of-none.html</id><summary type="html">&lt;p&gt;Recently at work, i was solving one bug on one of our services, it was popping up in newrelic at least 9 times a week, this is one of the services we use in the monetization process at the office, so, it's a critical one, the least errors we 
 see …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Recently at work, i was solving one bug on one of our services, it was popping up in newrelic at least 9 times a week, this is one of the services we use in the monetization process at the office, so, it's a critical one, the least errors we 
 see in newrelic for this service, the better.&lt;/p&gt;
 &lt;p&gt;The error looked a bit like a nonsense, basically some user's subscriptions were coming as &lt;code&gt;null&lt;/code&gt; values or &lt;code&gt;None&lt;/code&gt;, in Python.&lt;/p&gt;
 &lt;p&gt;Debugging the code and tracing the logs I found the like where it was failing and it looked something like this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;subscription&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_oldest_subscription_for_addon&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;addon_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;subscription&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_oldest_subscription_for_addon&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;addon_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;package&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;subscription&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;package&lt;/span&gt;  &lt;span class="c1"&gt;# This was the failing line&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The method says it returns a &lt;code&gt;subscription&lt;/code&gt; object, but it's returning &lt;code&gt;None&lt;/code&gt;, why?&lt;/p&gt;
 &lt;p&gt;I digged deeper and opened the &lt;code&gt;models.py&lt;/code&gt; file I searched for the method's name and bingo! I got it!&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="c1"&gt;# ...&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="c1"&gt;# ...&lt;/span&gt;
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_oldest_subscription_for_addon&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;addon_id&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="n"&gt;subscriptions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_active_subscriptions&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;order_by&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;created&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;subscription&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;subscriptions&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
             &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;subscription&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;addon_credits_left&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;addon_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
                 &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;subscription&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;And... that's where the &lt;code&gt;None&lt;/code&gt; is coming from...&lt;/p&gt;
@@ -961,7 +1054,7 @@ see in newrelic for this service, the better.&lt;/p&gt;
 &lt;p&gt;I opted for option 2, although is not the cleanest one, because of the way the code was written it was the one that supposed less changes to the code. To be honest, the right refactor would be option 3.&lt;/p&gt;
 &lt;p&gt;I just renamed the function and changed all of the invocations and moved that &lt;code&gt;package = subscription.package&lt;/code&gt; line below a check for the &lt;code&gt;subscription&lt;/code&gt; to exist that was already there. Committed, pushed and released the bug-fix and that was it. After that, i got curious about who wrote that code, so, i went back on git's history and ran a git blame.&lt;/p&gt;
 &lt;p&gt;Surprise :) it was me :).&lt;/p&gt;
-&lt;p&gt;I'll refactor it the right way soon.&lt;/p&gt;</content><category term="programming"></category><category term="python"></category></entry><entry><title>New Grads Survival Guide</title><link href="http://iffm.me/new-grads-survival-guide.html" rel="alternate"></link><published>2016-03-25T00:00:00+04:00</published><updated>2016-03-25T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2016-03-25:/new-grads-survival-guide.html</id><summary type="html">&lt;p&gt;OK, OK... I'm sorry, I lied on the title, but please, don't stop
+&lt;p&gt;I'll refactor it the right way soon.&lt;/p&gt;</content><category term="Blog"></category><category term="programming"></category><category term="python"></category></entry><entry><title>New Grads Survival Guide</title><link href="http://iffm.me/new-grads-survival-guide.html" rel="alternate"></link><published>2016-03-25T00:00:00+04:00</published><updated>2016-03-25T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2016-03-25:/new-grads-survival-guide.html</id><summary type="html">&lt;p&gt;OK, OK... I'm sorry, I lied on the title, but please, don't stop
 reading. I know... I know, we started bad our relationship already but,
 I can explain it, I swear.&lt;/p&gt;
 &lt;p&gt;Yes, it says "survival guide", but it's not like that, I'm not going to
@@ -1040,4 +1133,4 @@ want, but certainly will help you increase your chances.&lt;/p&gt;
     that job, which is my battle ax and my main tool by today.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;So... yeah!, not a recipe, but some tips I hope will help you on your
-first years as a professional.&lt;/p&gt;</content><category term="career"></category></entry></feed>
+first years as a professional.&lt;/p&gt;</content><category term="Blog"></category><category term="career"></category></entry></feed>
