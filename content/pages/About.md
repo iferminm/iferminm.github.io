@@ -15,9 +15,10 @@ performance and testing / verification. You can check my now page if you want a 
 
 I love to read, and I'm always open to get good books recommendation, you can add me on
 [goodreads](http://www.goodreads.com/user/show/43392734-israel-ferm-n-montilla) follow me on [twitter](http://twitter.com/iferminm) where I sometimes
-say something interesting or add me on [LinkedIn](https://www.linkedin.com/in/israel-ferm%C3%ADn-montilla-7393721a/) if you wanna get in touch.
+say something interesting or add me on [LinkedIn](https://www.linkedin.com/in/israel-ferm%C3%ADn-montilla-7393721a/) if you wanna get in touch. Or,
+[buy me a coffee](https://www.buymeacoffee.com/iferminm) if you think anything I write is interesting.
 
-You can also send me an <a href="mailto:iferminmontilla@gmail.com">email</a> I'm always open to meet new people and hear about nice opportunities though I'm not
+You can also send me an <a href="mailto:ferminster@gmail.com">email</a> I'm always open to meet new people and hear about nice opportunities even though I'm not
 actively looking for a career change right now.
 
 You can contact me to:
@@ -26,6 +27,7 @@ You can contact me to:
 * Go out for a beer or coffee
 * Mentor you or your startup
 * Advise your company
+* Consulting
 * Speak on your event
 
-Thank you for taking the time to read this page, if you got this far, <a href="mailto:iferminmontilla@gmail.com">let's talk</a>
+Thank you for taking the time to read this page, if you got this far, <a href="mailto:ferminster@gmail.com">let's talk</a>
