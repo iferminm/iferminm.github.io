@@ -17,6 +17,6 @@ The fields I cover are:
 * Performance optimization
 * Requirements analysis
 
-I also enjoy advising non-technical startup founders.
+I also enjoy advising non-technical startup founders scoping and building their MVP..
 
-Give me a shout if you'd like us to talk.
+[Give me a shout](mailto:ferminster@gmail.com) if you'd like us to talk.
