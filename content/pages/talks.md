@@ -16,19 +16,31 @@ to other conferences in Spain and South Africa.
 
 I have a set of talks already prepared I've given at different conferences
 and I'm preparing many more. If you're looking for speakers for your event
-and anything here calls your attention, [drop me a line](mailto:iferminm@gmail.com)
+and anything here calls your attention, [drop me a line](mailto:ferminster@gmail.com)
 so we can talk and coordinate how I can speak at your event. If you think
 there's something you'd like me to talk about and it's not here yet,
-[let's talk](mailto:iferminm@gmail.com)
+[let's talk](mailto:ferminster@gmail.com)
 
 ## Talks
 
 ### English
 
+#### Software Engineering: more than writing code
+We, as software engineers, are so focused on getting better and better at writing code
+we forget about other aspects of the software engineering role, we do (and have to do) many
+other things in and around software than we realize, in this talk I go through the difference
+between a programmer, a software developer and a software engineer, stressing on few soft skills
+which are needed to be successful in this career.
+
+**Duration:** 45 to 60 minutes
+
+**Given at:** Private event
+
+
 #### Django in the real world
 There are a lot of projects and systems out there built on top of django. From complex 
 high profile systems and intranets to simple websites and personal blogs. Truth is, 
-in most of the cases the out of the box django setup will sufice, but in some cases, 
+in most of the cases the out of the box django setup will suffice, but in some cases, 
 if you're lucky enough, the team will need to make the project scale to serve 
 thousands of requests per minute.
 
@@ -48,7 +60,7 @@ on some of our services and how we solved them with real life examples.
 (Belgrade, Serbia)
 
 #### Code review the right way
-Sometimes, as Software Engineers, we are so hooked into the process and overwhelmed by deadlines and so focussed on writing code that we
+Sometimes, as Software Engineers, we are so hooked into the process and overwhelmed by deadlines and so focused on writing code that we
 forget the quality of that code is not only measured on a green build, it's also measured on how much other developers can understand it.
 
 Nowadays, developer's time is more expensive than machine's time, so, the amount of time an engineer takes to understand a piece of code
@@ -58,7 +70,7 @@ there, you need to enforce them somehow.
 
 In this talk we go through the process of automating repetitive and obvious things to enforce standards and good practices
 through all the codebase in a distributed team, by using a set of tools such as linters, static analysis and processes like
-Continous Integration, as well as examples and good practides for *manual* code review, how to do it properly and in an
+Continuous Integration, as well as examples and good practices for *manual* code review, how to do it properly and in an
 efficient manner and how to receive it the right way
 
 **Duration:** 30 to 40 minutes

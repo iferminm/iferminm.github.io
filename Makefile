@@ -120,7 +120,7 @@ cf_upload: publish
 
 github: publish
 	cd $(OUTPUTDIR) && git add .
-	cd $(OUTPUTDIR) && git commit -a -m "$(GH_MESSAGE)"
+	cd $(OUTPUTDIR) && git commit -am $(GH_MESSAGE)
 	cd $(OUTPUTDIR) && git push origin $(GITHUB_PAGES_BRANCH)
 
 .PHONY: html help clean regenerate serve serve-global devserver stopserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github
