@@ -16,14 +16,17 @@ to other conferences in Spain and South Africa.
 
 I have a set of talks already prepared I've given at different conferences
 and I'm preparing many more. If you're looking for speakers for your event
-and anything here calls your attention, [drop me a line](mailto:iferminm@gmail.com)
+and anything here calls your attention, [drop me a line](mailto:ferminster@gmail.com)
 so we can talk and coordinate how I can speak at your event. If you think
 there's something you'd like me to talk about and it's not here yet,
-[let's talk](mailto:iferminm@gmail.com)
+[let's talk](mailto:ferminster@gmail.com)
 
 ## Talks
 
 ### English
+
+#### Software Engineering: more than writing code
+
 
 #### Django in the real world
 There are a lot of projects and systems out there built on top of django. From complex 
