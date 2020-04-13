@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>A Pelican Blog - postgres</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog</a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About me...</a></li>
+                    <li><a href="/pages/consulting.html">Consulting</a></li>
+                    <li><a href="/pages/now.html">Now</a></li>
+                    <li><a href="/pages/talks.html">Talks</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                    <li><a href="/category/espanol.html">Español</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/configurando-replicas-maestro-esclavo-con-postgres.html">Configurando réplicas Maestro-Esclavo con Postgres</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2011-11-10T00:00:00+00:00">
+                Published: Thu 10 November 2011
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+        </address>
+<p>In <a href="/category/espanol.html">Español</a>.</p>
+<p>tags: <a href="/tag/bases-de-dato.html">bases de dato</a> <a href="/tag/replicacion.html">replicación</a> <a href="/tag/postgres.html">postgres</a> </p>
+</footer><!-- /.post-info --><p>Muchas veces, por alguna razón, hacemos desde la capa de aplicación
+cientos de validaciones y procesos que, si sabemos cómo, podríamos
+delegar en el manejador de base de datos.</p>
+<p>Las validaciones de reglas de negocio son un ejemplo muy frecuente de
+ello, tendemos, por ejemplo, a implementar validaciones redundantes (en
+el caso de entornos web) del lado del cliente, utilizando AJAX, y del
+lado del servidor, utilizando el lenguaje de programación que más nos
+agrade. Esto, añade un nivel de complejidad a nuestro sistema, cuando,
+muy tranquilamente, podríamos delegar esa validación en nuestro
+manejador de base de datos a través de un Trigger, con la ventaja de que
+si algún día, otro sistema necesita conectarse a la base de datos, las
+reglas de negocio están implementadas directamente en el manejador y,
+como ya estamos acostumbrados, todo corre más rápido en el nivel más
+bajo.</p>
+<p>Ahora bien, ¿por qué empiezo diciendo todo eso?, simplemente por hacer
+referencia a un ejemplo bastante común, en el que nosotros,
+programadores, desarrolladores, ingenieros, o como quieran llamarnos,
+hacemos uso (o quizás sub-uso) de un software muy sofisticado, como lo
+es un Manejador de Base de Datos y, tendemos a pensar, que es sólo un
+pote para guardar datos que, además, habla un lenguaje extraño llamado
+SQL. Otra de las cosas que, algunas veces, hacemos y nos hacen parecer
+novatos es actualizar dos servidores de base de datos distintos
+disparando sentencias hacia los dos, o tres, o cuantos sean. Esto añade
+un nivel de complejidad innecesario a nuestra aplicación, además de
+estar fuertemente acoplado con la arquitectura física (hardware) del
+sistema implementado, si el número de servidores a sincronizar cambia,
+será necesario también realizar modificaciones a nivel de código o de
+configuración del programa y, además, desaprovechamos la potencia que
+nos ofrece un manejador de base de datos.</p>
+<p>PostgresSQL nos ofrece la posibilidad de sincronizar dos servidores de
+base de datos mediante Replicación de manera nativa. Existen distintos
+tipos de replicación de servidores, en este caso, configuraremos un
+esquema Maestro-Esclavo, en el que mi servidor Maestro, recibe y ejecuta
+todas las transacciones y, además, actualiza a mi servidor Esclavo, que,
+únicamente, utilizo para realizar consultas. Empezamos por instalar la
+última versión disponible de Postgres, utilizando el gestor de paquetes
+de nuestra distribución de Linux favorita, para este ejemplo, utilicé
+Debian Wheezy (Testing) y Postgres 9.1.</p>
+<h2>Configurando el Maestro</h2>
+<p>El maestro, es el nodo que ejecuta todas las transacciones de base de
+datos, digamos que puede realizar todas las operaciones CRUD. Empecemos
+por establecer ciertos valores de configuración para el manejador en el
+archivo /etc/postgresql/9.1/main/postgresql.conf. Debemos configurar los
+siguientes valores:</p>
+<div class="highlight"><pre><span></span><code><span class="err">listen_addresses = &#39;*&#39;</span>
+<span class="err">wal_level = hot_standby</span>
+<span class="err">wal_sync_method = fsync</span>
+<span class="err">max_wal_senders = 2</span>
+<span class="err">wal_keep_segments = 8</span>
+</code></pre></div>
+
+
+<p>Ahora bien, analicemos este segmento de configuración:</p>
+<ul>
+<li><em>listen_addresses:</em> establece las direcciones IP de donde mi
+    servidor va a aceptar peticiones, este parámetro acepta valores
+    separados por coma o el caracter asterisco, como en este caso, para
+    especificar que va a aceptar peticiones de cualquier host, de no ser
+    así, sólo las IP listadas podrían sincronizar la base de datos.</li>
+<li><em>wal_level:</em> donde <strong>wal</strong> quiere decir <strong>Write Ahead Log</strong> y es
+    una estrategia que implementan los manejadores para cumplir con las
+    propiedades de Atomicidad y Durabilidad de las transacciones
+    (¿recuerdan la regla ACID?) y consiste en escribir en un archivo de
+    bitácora todas las modificaciones realizadas a la base de datos. En
+    Postgres existen tres: <strong>minimal</strong>, que omite algunas operaciones de
+    escritura para hacer las operacionas más rápido, pero no guarda
+    información suficiente para reconstruir la base de datos a partir de
+    un archivo inicial y logs de este tipo, <strong>hot_standby</strong> y
+    <strong>archive</strong>, almacenan toda la información necesaria para hacer la
+    reconstrucción completa de los datos, pero únicamente
+    <strong>hot_standby</strong> permite implementar replicación de base de datos
+    hacia servidores remotos.</li>
+<li><em>wal_sync_method:</em> es el método que utilizará el manejador para
+    forzar las actualizaciones utilizando <strong>WAL</strong>. En este caso,
+    utilizamos <strong>fsync</strong> que se asegura de que los cambios sean escritos
+    físicamente en la base de datos copia, más información sobre los
+    métodos de sincronización disponibles puede conseguirse en [1].</li>
+<li><em>max_wal_senders:</em> establece el número de sincronizaciones
+    concurrentes que puede ejecutar el servidor.</li>
+<li><em>wal_keep_segments</em>, establece el número de <em>WAL</em> logs que el
+    servidor guardará en el directorio <strong>pg_xlog</strong>, estos logs son
+    utilizados para realizar las actualizaciones vía streaming. Una vez
+    hecho lo anterior, tenemos la configuración básica de Postgres para
+    hacer replicación Maestro-Esclavo vía streaming.</li>
+</ul>
+<p>Ahora, debemos agregar una regla más de acceso al <strong>pg_hba.conf</strong>, para
+permitir a los esclavos conectarse al servidor maestro:</p>
+<div class="highlight"><pre><span></span><code><span class="err">host replication all 10.1.1.8/32 trust</span>
+</code></pre></div>
+
+
+<p>Con esa línea, estamos configurando el servidor para que permita
+conexiones a todos los usuarios con permiso de replicación desde la
+sub-red <strong>10.1.1.8/32</strong>.</p>
+<p>Ahora, generamos los <strong>WAL</strong>, para ello, ejecutamos lo siguiente en el
+terminal SQL de Postgres:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">pg_start_backup</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>Mientras eso esté ocurriendo, en otro terminal, ejecutamos lo siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="err">cd /var/lib/postgresql/9.1 # tar czvf backup.tgz main</span>
+</code></pre></div>
+
+
+<p>Con esto estamos comprimiendo el directorio de datos de Postgres. Una
+vez hecho esto, detenemos la generación de WAL:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">pg_stop_backup</span><span class="p">()</span>
+</code></pre></div>
+
+
+<p>El asunto general se resume con la siguiente ecuación:</p>
+<p>backup inconsistente + WAL = restauración a estado consistente.</p>
+<p>Estos WAL, se generan en el directorio <strong>pg_xlog</strong>, y debemos tomar el
+último que fue escrito.</p>
+<h2>Configurando el Esclavo</h2>
+<p>Lo primero que debemos hacer es sustituir el directorio de datos de esta
+instancia de Postgres por el directorio de datos del Maestro. Luego,
+creamos un directorio <em>recovery</em>, donde copiaremos el último WAL del
+directorio pg_xlog. Adicionalmente, debemos modificar el
+postgresql.conf con las siguientes variables:</p>
+<div class="highlight"><pre><span></span><code><span class="err">hot_standby = on wal_level = hot_standby``</span>
+</code></pre></div>
+
+
+<p>Ahora, creamos un archivo de configuración en la raíz del directorio de
+datos para establecer las siguientes opciones:</p>
+<div class="highlight"><pre><span></span><code><span class="n">standby_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;on&#39;</span><span class="w"></span>
+<span class="n">primary_conninfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;host=[host_ip] port=5432 user=root password=[some_password]&#39;</span><span class="w"></span>
+<span class="n">restore_command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;cp /var/lib/postgresql/9.1/main/recovery/%f %p&#39;</span><span class="w"></span>
+</code></pre></div>
+
+
+<p>Con esto le decimos al servidor que va a esperar réplicas de
+<strong>primary_conninfo</strong>, además, el <strong>restore_command</strong> indica dónde se
+encuentra el respaldo inicial inconsistente. Finalmente, nos aseguramos
+de que los roles tengan permiso de replicación:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pg_roles</span>
+</code></pre></div>
+
+
+<p>y, de no tener permisos de replicación, alteramos los roles necesarios
+para ello:</p>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span> <span class="k">ROLE</span> <span class="n">nombre</span> <span class="k">WITH</span> <span class="n">REPLICATION</span>
+</code></pre></div>
+
+
+<p>Una vez hecho todo esto, ya hemos configurado un sistema de replicación
+Maestro-Esclavo utilizando Postgres como sistema manejador de base de
+datos, y no hizo falta una toalla para eso. Fácil ¿no?.</p>
+<p>[1]
+<a href="http://developer.postgresql.org/pgdocs/postgres/runtime-config-wal.html">http://developer.postgresql.org/pgdocs/postgres/runtime-config-wal.html</a></p>
+<p>[2]
+<a href="http://developer.postgresql.org/pgdocs/postgres/runtime-config-replication.html#GUC-HOT-STANDBY">http://developer.postgresql.org/pgdocs/postgres/runtime-config-replication.html#GUC-HOT-STANDBY</a></p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

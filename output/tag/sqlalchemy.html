@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>A Pelican Blog - sqlalchemy</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog</a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About me...</a></li>
+                    <li><a href="/pages/consulting.html">Consulting</a></li>
+                    <li><a href="/pages/now.html">Now</a></li>
+                    <li><a href="/pages/talks.html">Talks</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                    <li><a href="/category/espanol.html">Español</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/working-with-databases-easier.html">Working with databases easier</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2020-04-01T00:00:00+00:00">
+                Published: Wed 01 April 2020
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/python.html">python</a> <a href="/tag/databases.html">databases</a> <a href="/tag/sqlalchemy.html">sqlalchemy</a> <a href="/tag/orm.html">orm</a> </p>
+</footer><!-- /.post-info --><p>This will be a short article, recently at work I had to build few reports on
+top of two legacy databases, to be honest, the whole architecture and the way
+the data is stored, in my opinion, is not optimal, a lot of things need to change
+but, as usual, features and business take precedence over tech debt.</p>
+<p>The whole stack is based on nodejs on top of typescript, which makes a bit more
+enjoyable the fact that I'm now working in JavaScript. All the databases were
+generated using knexjs so, these databases were there already and I only had to
+connect to them.</p>
+<p>I didn't want to spend too much time on the connection and mapping part, so
+I wanted to see if an ORM would be of use here</p>
+<h2>The overall idea</h2>
+<p>Since we will be integrating with other internal tools to generate these reports
+the implementation I came up with is temporary, so I wanted to make as few changes
+as possible in the current codebase for several reasons:</p>
+<ol>
+<li>
+<p>Once you add something temporary, it will be difficult to clean it up
+after it's not needed anymore, the chances of someone building on top of it 
+is high.</p>
+</li>
+<li>
+<p>I don't like working with typescript, or JavaScript in general so if I could
+get away with writing in some other language it could be more fun</p>
+</li>
+<li>
+<p>The current application is a monolith and the logic is complex,
+adding more would take longer than implementing something from scratch</p>
+</li>
+</ol>
+<p>So, I decided to implement the report generating logic in a Lambda function
+which will be executed periodically, this meant I had to setup the connections
+to the databases from scratch and map to my domain classes and types in order
+to have a clean architecture.</p>
+<h2>Enter Sqlalchemy</h2>
+<p>Sqlalchemy is the database Swiss army knife in python, it makes it very
+easy to work with databases by mapping tables to domain classes, but it also
+works the other way around by introspecting the database's schema metadata and
+generating stub classes to deal with them in Python.</p>
+<h3>Automap</h3>
+<p>Sqlalchemy has an Automap extension, which lets you connect to an existing database
+and generate a domain model from the existing database schema and operate with it
+from Python, trigger queries and use Sqlalchemy normally as if the schema was generated
+by you.</p>
+<p>It's very easy and it doesn't take 30 lines of code</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">sqlalchemy.ext.automap</span> <span class="kn">import</span> <span class="n">automap_base</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">Session</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+
+
+<span class="n">DATABASE_URL</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;DB_URL&#39;</span><span class="p">)</span>
+
+<span class="n">Base</span> <span class="o">=</span> <span class="n">automap_base</span><span class="p">()</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">DATABASE_URL</span><span class="p">)</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="n">Base</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="n">engine</span><span class="p">,</span> <span class="n">reflect</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>Then you can access the classes with the table name as it is in the database let's say you have a
+<code>user_profile</code> database, then you can access it as</p>
+<div class="highlight"><pre><span></span><code><span class="n">Base</span><span class="o">.</span><span class="n">classes</span><span class="o">.</span><span class="n">user_profile</span>
+</code></pre></div>
+
+
+<p>Trigger queries as</p>
+<div class="highlight"><pre><span></span><code><span class="n">UserProfile</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">classes</span><span class="o">.</span><span class="n">user_profile</span>
+
+<span class="n">profile</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">UserProfile</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">UserProfile</span><span class="o">.</span><span class="n">user_id</span> <span class="o">==</span> <span class="mi">123123</span><span class="p">)</span><span class="o">.</span><span class="n">fist</span><span class="p">()</span>
+</code></pre></div>
+
+
+<p>And you're good to go.</p>
+<p>Of course, code conventions in SQL and Python are different, if you want your code to look more pythonic
+and have <code>Base.classes.*</code> to be in PascalCase as well, you can write a function to override the table naming
+when the automap is performed, it will add few lines but still below 20 lines in general</p>
+<p>It looks something like this</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">snake_to_pascal</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">tablename</span><span class="p">,</span> <span class="n">table</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">w</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">tablename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)])</span>
+</code></pre></div>
+
+
+<p>Of course, that assumes your tables are named as <code>this_is_a_table</code> and will be converted to <code>ThisIsATable</code></p>
+<p>You can use that function when you call <code>Base.prepare</code> as follows</p>
+<div class="highlight"><pre><span></span><code><span class="n">Base</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="n">engine</span><span class="p">,</span> <span class="n">reflect</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">classname_for_table</span><span class="o">=</span><span class="n">snake_to_pascal</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>And that's it. :-)</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

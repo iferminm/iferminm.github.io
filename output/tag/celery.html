@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>A Pelican Blog - celery</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog</a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About me...</a></li>
+                    <li><a href="/pages/consulting.html">Consulting</a></li>
+                    <li><a href="/pages/now.html">Now</a></li>
+                    <li><a href="/pages/talks.html">Talks</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                    <li><a href="/category/espanol.html">Español</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/classy-tasks-with-celery.html">Classy Tasks with Celery</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2017-03-23T00:00:00+00:00">
+                Published: Thu 23 March 2017
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/python.html">python</a> <a href="/tag/programming.html">programming</a> <a href="/tag/celery.html">celery</a> </p>
+</footer><!-- /.post-info --><p>This will be a short article, I just want to share something I learned this week.</p>
+<p>If you work with <em>Python</em> and chances are you've ran into <em>celery</em> at least once, hopefully more than once, depending on how complex the projects
+you've worked on are.</p>
+<p>If you don't know it yet, <em>Celery</em> is a task scheduling library that lets you schedule heavy tasks to be ran later, for example, resizing an image, sending an email or posting data to a 3rd party service, those are things that can be done <em>later</em> so you don't have to keep your users waiting online for something to finish and could actually fail.</p>
+<p><em>Celery</em> lets you <code>delay</code> the execution of those tasks and put retry policies in place so you can re-run them after a given time under certain conditions, for example, a 3rd party service returned <code>500</code> or <code>502</code>, you might want to retry after, let's say, 20min to see if the issue is gone.</p>
+<p>This won't be an in depth tutorial, you can check <em>Celery</em> <a href="http://docs.celeryproject.org/en">here</a> if you don't know it yet.</p>
+<p>Let's see this example in <em>Flask</em></p>
+<div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">process_image</span><span class="p">(</span><span class="n">image_url</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">download_image</span><span class="p">(</span><span class="n">image_url</span><span class="p">)</span>
+        <span class="n">resized</span> <span class="o">=</span> <span class="n">resize_image</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+        <span class="n">upload_image</span><span class="p">(</span><span class="n">resized</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Failure, please try again&#39;</span>
+    <span class="k">return</span> <span class="s1">&#39;Success&#39;</span>
+</code></pre></div>
+
+
+<p>This is a very basic example, full of bad practices and code like this shouldn't be pushed to production but it serves to illustrate what I need to explain.</p>
+<p>Normally, what you might do is just call those three functions inside a task and just call the <code>task.delay()</code> from the request handler, something like:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">process_image</span><span class="p">(</span><span class="n">image_url</span><span class="p">):</span>
+    <span class="n">tasks</span><span class="o">.</span><span class="n">process_image</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="n">image_url</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;Success&#39;</span>
+
+<span class="c1"># tasks.py</span>
+<span class="kn">from</span> <span class="nn">celery.task</span> <span class="kn">import</span> <span class="n">task</span>
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">process_image</span><span class="p">(</span><span class="n">image_url</span><span class="p">):</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">download_image</span><span class="p">(</span><span class="n">image_url</span><span class="p">)</span>
+    <span class="n">resized</span> <span class="o">=</span> <span class="n">resize_image</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">upload_image</span><span class="p">(</span><span class="n">resized</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>But, those three functions are not supposed to be called synchronously, so, I don't want them laying in some module waiting for someone to call them outside a task. Reason being that, as said before, these are heavy processes that might keep my web server busy and prevent it from taking new requests for a while and also keep my users waiting on a <em>loading</em> screen for a long time, which isn't a good user experience.</p>
+<p>I could delete them and copy all the code in my task function but it will lead to a potentially long function which will do a lot of things, it will be difficult to read and difficult to maintain, so... bad idea.</p>
+<p><em>Celery</em>'s <code>@task</code> decorator, actually works as an object factory of <code>Task</code> objects, and what it does is, it puts the decorated function in the <code>run()</code> method, so, I could take advantage of the object oriented paradigm to encapsulate all that logic inside a task avoiding the risk of having those functions called synchronously.</p>
+<p>It would look something like this</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Task</span>
+
+
+<span class="k">class</span> <span class="nc">ProcessImage</span><span class="p">(</span><span class="n">Task</span><span class="p">):</span>
+    <span class="n">ignore_result</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_url</span><span class="p">):</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">download_image</span><span class="p">(</span><span class="n">image_url</span><span class="p">)</span>
+        <span class="n">resized</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resize_image</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">upload_image</span><span class="p">(</span><span class="n">resized</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">download_image</span><span class="p">(</span><span class="n">image_url</span><span class="p">):</span>
+        <span class="c1"># Code to download the image from a given url</span>
+
+    <span class="k">def</span> <span class="nf">resize_image</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
+        <span class="c1"># Code to resize the image</span>
+
+    <span class="k">def</span> <span class="nf">upload_image</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
+        <span class="c1"># Code to upload an image to a certain location</span>
+
+
+<span class="c1"># We need an instance we can call delay() on</span>
+<span class="n">process_image</span> <span class="o">=</span> <span class="n">ProcessImage</span><span class="p">()</span>
+</code></pre></div>
+
+
+<p>And done, we can implement also a notification logic to inform the user if there's any issue processing the image after retrying and that kind of
+things, but I'll leave that for another post.</p>
+<p>By doing a <em>class based task</em> for complex background jobs, we can produce cleaner code which is easier to maintain and to read and keep those heavy tasks encapsulated so no one calls them directly from a controller or a django view.</p>
+<p>I know this is not the best way to implement this use case, we could have done it with a <code>TaskTree</code> or with callbacks, but I wanted to show how to use classes to define tasks. I'll explain those approaches in future posts. :-)</p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

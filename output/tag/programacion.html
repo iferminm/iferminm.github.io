@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>A Pelican Blog - programación</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog</a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About me...</a></li>
+                    <li><a href="/pages/consulting.html">Consulting</a></li>
+                    <li><a href="/pages/now.html">Now</a></li>
+                    <li><a href="/pages/talks.html">Talks</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                    <li><a href="/category/espanol.html">Español</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/cosas-que-he-aprendido-mixins.html">Cosas que he aprendido, Mixins</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-12-19T00:00:00+00:00">
+                Published: Fri 19 December 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+        </address>
+<p>In <a href="/category/espanol.html">Español</a>.</p>
+<p>tags: <a href="/tag/programacion.html">programación</a> <a href="/tag/mixins.html">mixins</a> </p>
+</footer><!-- /.post-info --><p>A menudo nos ocurre que estamos programando y vemos que hay ciertos
+métodos que se repiten en varias clases, esto es una señal de que ese
+conjunto de métodos pueden abstraerse de alguna manera para no tener que
+duplicar esa lógica, entonces, escribimos una clase base, con esos
+métodos y luego simplemente la heredamos y todo cool.</p>
+<p>Cuando esto ocurre por segunda vez en un subconjunto de las clases
+<em>hijas</em>, pueden pasar dos cosas:</p>
+<ol>
+<li>Ese conjunto de métodos pertenece al mismo dominio del problema, en
+    cuyo caso, los colocamos en la clase padre que corresponda</li>
+<li>Ese conjunto de métodos resuelve otro tipo de problemas o es más
+    bien algún tipo de utilidad pero debe estar en esa clase por
+    alguna razón.</li>
+</ol>
+<p>En el segundo caso lo que uno tiende a hacer con lenguajes que soportan
+herencia múltiple como Python es crear una nueva clase y agregarla a la
+lista de clases padre de la clase en cuestión.</p>
+<p>Conforme nuestro programa va creciendo en complejidad, podemos
+enfrentarnos al famoso problema del diamante de la herencia múltiple,
+los mixins son una solución limpia y sencilla para evitar este tipo de
+inconvenientes que son un dolor de cabeza para depurar y agregan
+complicaciones innecesarias.</p>
+<h2>¿Qué es un Mixin?</h2>
+<p>Un Mixin es una clase que hereda de la clase por defecto, <em>object</em> en el
+caso de Python, y define un conjunto de métodos para agregar
+comportamiento a alguna otra entidad. Un mixin por sí solo puede
+resultar inútil, pero al combinarlos y agregarlos a una clase resultan
+ser una herramienta muy potente que ayuda a la reutilización de código
+sin ambigüedades y sin generar efectos colaterales.</p>
+<h2>Ejemplos</h2>
+<p>Bueno, basta de palabrería y manos al teclado.</p>
+<p>Supongamos que estamos desarrollando algo en <em>django</em> y necesitamos que
+el usuario sea capaz de dejar comentarios, esta vista debe ser invocable
+vía ajax. Debo hacerlo de manera que pueda reusar el código pues se que
+en el futuro habrá más vistas que deben ser "ajax friendly"</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">CreateView</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+
+<span class="kn">from</span> <span class="nn">app.models</span> <span class="kn">import</span> <span class="n">Comment</span>
+<span class="kn">from</span> <span class="nn">app.forms</span> <span class="kn">import</span> <span class="n">CommentForm</span>
+
+
+<span class="k">class</span> <span class="nc">CommentCreateView</span><span class="p">(</span><span class="n">CreateView</span><span class="p">,</span> <span class="n">JSONResponseMixin</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Comment</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="n">CommentForm</span>
+</code></pre></div>
+
+
+<p>Como vemos, es la implementación de lo que vendría siendo una vista
+basada en clases normal y corriente para procesar un formulario,
+validarlo y crear un nuevo registro de <em>Comment</em>, sólo una cosa salta a
+la vista: el <em>JSONResponseMixin</em>. Veamos qué hace:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">JSONResponseMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">render_to_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_json_response</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_json_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
+            <span class="n">content_type</span><span class="o">=</span><span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+</code></pre></div>
+
+
+<p>Y eso es todo, luego, si necesito hacer que alguna otra vista sea "ajax
+friendly", simplemente tengo que hacer que herede del
+<em>JSONResponseMixin</em>. Algo importante acá es que si necesito serializar
+objetos complejos, <em>json.dumps()</em> no será suficiente, debería escribir
+mi propio método para convertirlo en <em>JSON</em> y enviarlo.</p>
+<p>Si te parece útil o interesante lo que escribo, suscríbete a mi lista de
+correos en la caja que está a la derecha, tengo algunas cosas en mente
+que estaré anunciando por esa vía. Gracias, de nuevo, por leerme.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/cosas-que-he-aprendido-soa.html" rel="bookmark"
+                           title="Permalink to Cosas que he aprendido, SOA">Cosas que he aprendido, SOA</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-12-06T00:00:00+00:00">
+                Published: Sat 06 December 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+        </address>
+<p>In <a href="/category/espanol.html">Español</a>.</p>
+<p>tags: <a href="/tag/programacion.html">programacion</a> <a href="/tag/buenas-practicas.html">buenas prácticas</a> </p>
+</footer><!-- /.post-info -->                <p>Luego de algún tiempo desarrollando software, sea para web o escritorio,
+uno realmente termina de entender aquello que nos decían en <em>Algoritmos
+y Programación I</em> de <strong>Divide y vencerás</strong>, quizás en la Universidad uno
+no lo aplica mucho, tienes 8 proyectos y 14 parciales en una semana y
+tienes que …</p>
+                <a class="readmore" href="/cosas-que-he-aprendido-soa.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/cosas-que-he-aprendido-descriptores.html" rel="bookmark"
+                           title="Permalink to Cosas que he aprendido: Descriptores">Cosas que he aprendido: Descriptores</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-12-01T00:00:00+00:00">
+                Published: Mon 01 December 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+        </address>
+<p>In <a href="/category/espanol.html">Español</a>.</p>
+<p>tags: <a href="/tag/python.html">python</a> <a href="/tag/programacion.html">programación</a> <a href="/tag/descriptores.html">descriptores</a> </p>
+</footer><!-- /.post-info -->                <p>Bueno, llevo ya unos años dedicado casi 100% a desarrollo web con
+<em>Python</em>, unos años en los que he aprendido muchas cosas sobre el
+lenguaje y, por un momento, pensé que sabía suficiente, pero cuando uno
+empieza a pensar eso es peligroso, al final, nunca se sabe suficiente y
+siempre …</p>
+                <a class="readmore" href="/cosas-que-he-aprendido-descriptores.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/usando-redis-como-backend-de-sesiones-en-php.html" rel="bookmark"
+                           title="Permalink to Usando Redis como backend de sesiones en php">Usando Redis como backend de sesiones en php</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-10-19T00:00:00+00:00">
+                Published: Sun 19 October 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+        </address>
+<p>In <a href="/category/espanol.html">Español</a>.</p>
+<p>tags: <a href="/tag/programacion.html">programación</a> <a href="/tag/redis.html">redis</a> <a href="/tag/web.html">web</a> <a href="/tag/php.html">php</a> </p>
+</footer><!-- /.post-info -->                <p>Bueno, sí, leyeron bien el título, luego de años me tocó trabajar de
+nuevo con php en la oficina, dejen el escándalo.</p>
+<p>Siendo sincero, las cosas parecieran haber mejorado mucho desde la
+última vez que hice (o traté de hacer) algo con php, era php 4.algo en
+aquel momento …</p>
+                <a class="readmore" href="/usando-redis-como-backend-de-sesiones-en-php.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/testing-la-etapa-olvidada.html" rel="bookmark"
+                           title="Permalink to Testing: la etapa olvidada.">Testing: la etapa olvidada.</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-07-19T00:00:00+00:00">
+                Published: Thu 19 July 2012
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+        </address>
+<p>In <a href="/category/espanol.html">Español</a>.</p>
+<p>tags: <a href="/tag/programacion.html">programación</a> <a href="/tag/testing.html">testing</a> <a href="/tag/tdd.html">TDD</a> </p>
+</footer><!-- /.post-info -->                <p>by <a href="author/israel-fermin-montilla.html">Israel Fermín Montilla</a> on Thu
+19 Jul, 2012</p>
+<p>En esta oportunidad, vengo a hablarles de una etapa del desarrollo que
+suele ser olvidada y marginada por la mayoría de los desarrolladores que
+conozco: las pruebas. En <a href="http://zava.com.ve">Zava</a>,
+la compañía en la que trabajo actualmente, llevamos un
+tiempo hablando acerca …</p>
+                <a class="readmore" href="/testing-la-etapa-olvidada.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/por-que-aprender-un-nuevo-lenguaje.html" rel="bookmark"
+                           title="Permalink to ¿Por qué aprender un nuevo lenguaje?">¿Por qué aprender un nuevo lenguaje?</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2011-09-11T00:00:00+00:00">
+                Published: Sun 11 September 2011
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+        </address>
+<p>In <a href="/category/espanol.html">Español</a>.</p>
+<p>tags: <a href="/tag/programacion.html">programación</a> <a href="/tag/lenguajes.html">lenguajes</a> <a href="/tag/carrera.html">carrera</a> </p>
+</footer><!-- /.post-info -->                <p>Java, C, C#, ,C++, PHP, Perl, Ruby, SQL, SmallTalk, Erlang, Python,
+Haskell... Existen muchísimos lenguajes de programación, cada uno con
+sus fortalezas y debilidades, ya aprendí Java en la Universidad, también
+C, he hecho uno que otro proyecto web en PHP, "¡con JQuery y todo!".
+¿Por qué debería aprender un …</p>
+                <a class="readmore" href="/por-que-aprender-un-nuevo-lenguaje.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
+                </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

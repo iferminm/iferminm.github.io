@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>What to do when linux freezes?</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog</a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About me...</a></li>
+                    <li><a href="/pages/consulting.html">Consulting</a></li>
+                    <li><a href="/pages/now.html">Now</a></li>
+                    <li><a href="/pages/talks.html">Talks</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                    <li><a href="/category/espanol.html">Español</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/what-to-do-when-linux-freezes.html" rel="bookmark"
+           title="Permalink to What to do when linux freezes?">What to do when linux freezes?</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-01-30T00:00:00+00:00">
+                Published: Tue 30 January 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/linux.html">linux</a> </p>
+</footer><!-- /.post-info -->      <p>Well, we all know that nothing is perfect, not even linux, it sometimes freezes.
+It has happened to me several times,
+my solution? well, press and hold the power button and hope for the best. </p>
+<p>Well, I was thinking <em>there must be a better way to do it</em> and, like most of the times, <strong>there is</strong>. 
+It's called <em>SysRq</em> keys and it's a key combination only understood by the Linux kernel that lets you
+perform some low level operations no matter the state of the system, think of it like a safe reset button.</p>
+<p>The key combination is <em>Ctrl + Alt + PrtSc + REISUB</em>, this means, you need to press and hold <em>Ctrl + Alt + PrtSc</em>
+and while pressing that combination, you need to write <em>REISUB</em>, each letter has one function</p>
+<ul>
+<li><strong>R</strong> gives the kernel back the control of the keyboard from X</li>
+<li><strong>E</strong> sends <em>SIGTERM</em> to all processes, allowing them to terminate gracefully</li>
+<li><strong>I</strong> sends <em>SIGKILL</em> to all remaining processes, forcing them to terminate right away</li>
+<li><strong>S</strong> flushes data to disk</li>
+<li><strong>U</strong> remounts all file systems in <em>read-only</em> mode</li>
+<li><strong>B</strong> reboot!</li>
+</ul>
+<p>That way your system won't suffer any damage and it will gracefully <strong>R</strong>eboot <strong>E</strong>ven
+<strong>I</strong>f <strong>S</strong>ystem <strong>U</strong>tterly <strong>B</strong>roken.</p>
+<p>If you need to turn off your computer instead of reboot, you
+can switch <strong>B</strong> for <strong>O</strong>. You're welcome.</p>
+<h2>Recommended readings</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Magic_SysRq_key">THIS</a> Wikipedia article</li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

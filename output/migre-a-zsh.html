@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Migré a ZSH</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog</a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About me...</a></li>
+                    <li><a href="/pages/consulting.html">Consulting</a></li>
+                    <li><a href="/pages/now.html">Now</a></li>
+                    <li><a href="/pages/talks.html">Talks</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
+                    <li class="active"><a href="/category/espanol.html">Español</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/migre-a-zsh.html" rel="bookmark"
+           title="Permalink to Migré a ZSH">Migré a ZSH</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-05-26T00:00:00+00:00">
+                Published: Tue 26 May 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+        </address>
+<p>In <a href="/category/espanol.html">Español</a>.</p>
+<p>tags: <a href="/tag/zsh.html">zsh</a> <a href="/tag/shell.html">shell</a> <a href="/tag/herramientas.html">herramientas</a> </p>
+</footer><!-- /.post-info -->      <p>Es bien sabido por todos que en Linux y en el Open Source en general,
+uno es libre de elegir todas y cada una de las partes del sistema que va
+a configurar para su computadora personal o de trabajo, la línea de
+comandos no es excepción.</p>
+<p>Por defecto, viene configurado
+<a href="http://es.wikipedia.org/wiki/Bash">BASH</a> en todos
+los sistemas linux, sin embargo, es posible cambiarlo sin ningún tipo de
+problemas, en mi caso, luego de investigar un poquito, elegí una
+combinación que me ha resultado bastante bien durante las últimas dos
+semanas: <a href="http://es.wikipedia.org/wiki/Zsh">ZSH</a> +
+un plugin llamado <a href="https://github.com/robbyrussell/oh-my-zsh">oh my
+zsh</a>.</p>
+<p>Acá las razones por las cuales decidí migrar y por qué me ha parecido
+tan genial:</p>
+<h2>YOLO</h2>
+<p>Siempre digo que quiero probar herramientas nuevas, pero nunca pongo
+manos a la obra, en los últimos meses me he propuesto a organizarme y
+crear hábitos, utilizando distintos hacks, que me permitan llevar a cabo
+todo lo que me pasa por la mente sin descuidar cosas importantes como la
+familia y el trabajo. Así que, quise probar <em>ZSH</em> a ver qué tal, ¿qué
+mejor momento que ahora?</p>
+<h2>No es un cambio muy traumático</h2>
+<p><em>BASH</em> nace en 1989, <em>ZSH</em> nace en 1990, mantiene compatibilidad con
+todos los comandos de <em>BASH</em> y agrega nuevas funcionalidades que vamos a
+ver en las razones siguientes :-).</p>
+<h2>El autocompletado de ZSH</h2>
+<p><em>ZSH</em> tiene una capacidad increíble de autocompletar, no sólo te muestra
+las posibles opciones, cosa que también hace <em>BASH</em>, sino que te permite
+seleccionarla de manera interactiva, cosa que <em>BASH</em> no hace de manera
+natural.</p>
+<p><img alt="Autocompletado
+interactivo" src="https://dl.dropboxusercontent.com/s/4b7jmr0humceyyk/foto1.png"></p>
+<p>Además, no sólo completa rutas y comandos básicos del sistema operativo,
+con <em>Oh My ZSH</em> también tiene autocompletado para git, cosa que me
+resulta muy útil porque es una herramienta que uso todos los días en la
+oficina y para proyectos personales, este autocompletado incluye una
+pequeña descripción de lo que hace cada comando de git.</p>
+<p><img alt="git &lt;TAB&gt; y esto
+aparece" src="https://dl.dropboxusercontent.com/s/4sqyl17x60dsnk8/foto2.png"></p>
+<h3>Completación de rutas</h3>
+<p>No, no es lo mismo que la anterior, este es algo mucho más potente que
+no vi nunca en <em>BASH</em> supongamos que soy perezoso para escribir, y
+quiero ir a <em>/home/israelord/Work</em>, que es la ruta donde tengo todos mis
+proyectos, tanto de la oficina como freelance. Se que ese es el único
+patrón que coincide, simplemente escribo <em>/h/i/W</em> y al presionar tab, me
+autocompleta la ruta.</p>
+<p>En caso que haya ambigüedad, como por ejemplo, si quiero ir a
+<em>/usr/local/bin</em>, al escribir <em>/u/l/b</em>, hay dos opciones para la <em>l</em>,
+bajo el directorio <em>/user</em>: <em>lib</em> o <em>local</em>. En este caso, me permitirá
+seleccionar la opción correcta de manera interactiva, tal como en el
+ejemplo anterior, antes de terminar el autocompletado. Puedo resolver
+esto simplemente escribiendo <em>/u/lo/b</em> y me generará la ruta correcta de
+una vez, simplemente debo completar más la parte de la ruta que genera
+el conflicto para que sea única, aunque la selección interactiva no me
+disgusta para nada.</p>
+<h3>Cambios de directorio</h3>
+<p>Sí, ya se, para eso está <em>cd</em>, pero este es un caso de uso de cd que no
+vi en <em>BASH</em>, supongamos que estoy en la ruta del ejemplo anterior
+<em>/usr/local/bin</em>, pero en realidad quería ir a <em>/usr/local/sbin</em>. En vez
+de hacer como en <em>BASH</em> <em>cd ../sbin</em>, puedo hacer <em>cd bin sbin</em> y me
+lleva allí. Funciona igual con sub rutas, puedo hacer <em>cd local/sbin
+games</em> y me lleva a <em>/usr/games</em>, por ejemplo.</p>
+<p>Esto es especialmente útil cuando tengo proyectos con la misma
+estructura, por ejemplo, estoy en
+<em>/home/israelord/proyecto1/auth/views/</em>, simplemente con hacer <em>cd
+proyecto1 proyecto2</em>, me lleva a
+<em>/home/israelord/proyecto1/auth/views/</em>. No más cd ../../../../</p>
+<h3>Autocorrector</h3>
+<p>No mucho que decir, si me equivoco y escribo gut, me corrige y escribe
+git, por ejemplo, si hay más de un posible patrón, me muestra la
+selección interactiva que vimos antes.</p>
+<h3>Renombrado de archivos en batch</h3>
+<p>Supongamos que tengo 700 fotos que y los nombres son cosas como
+IMG_2193192873198723.jpg, quiero renombrarlas a algo más manejable,
+como "foto_1.jpg", "foto_2.jpg" y así.</p>
+<p>Bueno, simplemente escribo</p>
+<div class="highlight"><pre><span></span><code>zmv <span class="s1">&#39;(*).jpg&#39;</span> <span class="s1">&#39;foto_$1.jpg&#39;</span>
+</code></pre></div>
+
+
+<p>Y listo!.</p>
+<h2>Oh My ZSH</h2>
+<p>Es un plugin que extiende <em>ZSH</em> y, además, tiene varios addons, por
+ahora sólo estoy usando el de <em>git</em> porque tiene muchísimos alias útiles
+para las tareas de día a día con <em>git</em> que les dejaré de tarea revisar,
+pero la diferencia es abismal respeto a lo que escribirías normalmente,
+por ejemplo:</p>
+<p>En vez de git push origin master con Oh my zsh simplemente escribo
+ggpush ;-)</p>
+<h3>Instalando</h3>
+<p><em>ZSH</em> normalmente está instalado, simplemente hay que modificar nuestro
+usuario para que sea el terminal por defecto</p>
+<div class="highlight"><pre><span></span><code>chsh -s /bin/zsh
+</code></pre></div>
+
+
+<p>Para instalar el plugin <em>Oh my ZSH</em>, basta con ejecutar</p>
+<div class="highlight"><pre><span></span><code>curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh <span class="p">|</span> sh
+</code></pre></div>
+
+
+<p>O, si preferimos usar <em>wget</em></p>
+<div class="highlight"><pre><span></span><code>wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - <span class="p">|</span> sh
+</code></pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

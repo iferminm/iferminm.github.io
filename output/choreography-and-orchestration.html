@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Choreography and Orchestration</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="A Pelican Blog Atom Feed" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">A Pelican Blog</a></h1>
+                <nav><ul>
+                    <li><a href="/pages/about-me.html">About me...</a></li>
+                    <li><a href="/pages/consulting.html">Consulting</a></li>
+                    <li><a href="/pages/now.html">Now</a></li>
+                    <li><a href="/pages/talks.html">Talks</a></li>
+                    <li class="active"><a href="/category/blog.html">Blog</a></li>
+                    <li><a href="/category/espanol.html">Español</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/choreography-and-orchestration.html" rel="bookmark"
+           title="Permalink to Choreography and Orchestration">Choreography and Orchestration</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-10T00:00:00+00:00">
+                Published: Thu 10 May 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+<p>tags: <a href="/tag/software-engineering.html">software engineering</a> <a href="/tag/microservices.html">microservices</a> </p>
+</footer><!-- /.post-info -->      <p>On a <a href="http://iffm.me/my-take-on-microservices.html">previous article</a> on <em>microservices</em>, we went through the best practices I've seen,
+which doesn't mean those are the only ones, it only means that those are the ones I've seen work for me
+and the ones I've tried.</p>
+<p>This time, I would like to focus on <strong>Choreography over Orchestration</strong> and <strong>Rely on data, not services</strong> because
+I feel I didn't develop enough on these ones and those are really important these are also the two <em>principles</em> 
+that will help you <em>avoid sync calls</em>, which is usually a good practice for inter-service communication.</p>
+<p>But first:</p>
+<h2>Internal <em>REST</em> services, why not?</h2>
+<p>Don't get me wrong, I love <em>REST</em>, I like building <em>API</em>s and I enjoy using a well designed one for sure, but for internal
+communication I prefer to avoid it unless the communication <strong>needs</strong> to be synchronous, there are some cases where you can't
+help it and it's not always because of a bad design, sometimes the use case itself enforces that restriction.</p>
+<p>If you find yourself using network calls most of the time, something will most likely go wrong. Network is not 100% reliable
+and, <strong>always</strong> remember, <em>if something can fail, it will fail</em>.</p>
+<h3>Increases overall response time</h3>
+<p>Take a look at the following figure: </p>
+<p><img alt="Services map" src="https://dl.dropboxusercontent.com/s/k261ik209fporvr/service_down.png"></p>
+<p>Response times are not taking into account the wait time while the downstream services
+respond. This means, <em>service 1</em> queries <em>service 2</em>, it does <em>something</em> and takes 10ms to respond. Also, <em>Service 1</em> queries
+<em>Service 3</em> which queries <em>Service 4</em> and <em>Service 5</em>. <em>Service 4</em> does <em>something</em> and takes 300ms to respond and <em>Service 5</em>
+queries <em>Service 6</em> which takes 1000ms to respond, then <em>Service 5</em> does <em>something</em> and takes another 1200ms to come back to
+<em>Service 3</em>, which has been waiting 2200ms to get all the data it needs to do <em>some stuff</em> which takes 300ms. By this time,
+<em>Service 1</em> has been waiting 2500ms for all the data it needs to do a 120ms <em>something</em> and return back to the upstream caller,
+which could be another service waiting or the end user. </p>
+<p>Note that the above flow paralelizes all the needed downstream calls per service, so in this case, the total response time will be
+constrained by the slowest call chain. If you were using a stack where doing multiprocessing or async programming is not an easy
+option, you'll have to add up the response time for all of the downstream calls because in reality the service in question
+is being blocked while waiting for the network call to finish and, only then, making the second call and blocking until it comes back
+and so on.</p>
+<p>There are several ways you can keep the same setup, you can add several levels of cache in between services, you can add a timeout
+to the network calls but everything comes at a cost. If you're keeping a synchronous approach to answer certain questions it's because
+you need your data as fresh as possible, so, the more cache you add the more stale your data could be. You could also add a timeout to
+your calls but, if one of them times out, you'll fail in responding to the upstream caller and it will look like the system is down.</p>
+<h3>What if someone is down?</h3>
+<p>Let imagine <em>Service 6</em> is down because we had a buggy release.</p>
+<p>This means, <em>Service 1</em> will have to wait 1500ms before returning an error upstream, you can mitigate this
+with a <a href="https://www.martinfowler.com/bliki/CircuitBreaker.html">circuit breaker</a> approach or returning a 
+cached response for the query you're trying to answer but,
+again, unless you really need this to be synchronous, you'd be adding more complexity to an already complex
+system.</p>
+<p>Also, what if it isn't a <em>read</em> operation, what if we're actually <em>writing</em> downstream and the last write fails
+because of <em>reasons</em>. You'll be half way a transaction and you'll have to deal with it somehow, either queuing that
+last write and hoping <em>Service 6</em> comes back soon or rolling back the whole transaction which would mean deleting from
+the other services and returning an error, there are ways to solve this, but usually it doesn't need to be this hard.</p>
+<h3>When should I go synchronous?</h3>
+<p>In my opinion, it will depend on the use case you're implementing and how critical it is to
+return the exact data at the moment the request was done, usually there's some tolerance to
+return slightly stale data, but things like <em>credit accounting</em>, <em>warehouse availability</em> or
+anything that was to do with resources being consumed in real time are good candidates for
+sync calls and all the complexity they involve.</p>
+<h2>Choreography vs Orchestration</h2>
+<p>There's a good analogy in the <em>microservices</em> world and how they handle <em>things</em> happening
+within the system, let's call those things <em>events</em>.</p>
+<p>Let's say there are two types of <em>events</em>, those which make the system <em>do</em> something, for example,
+in an e-commerce website it could be a user bought something, and those which make the system <em>change</em>
+its status, for example, update some records in the database o send a request to another service. The
+first ones, let's call them <em>external events</em> because they're triggered by an external actor, maybe the
+user or an external system consuming our API, these <em>external events</em> are the ones triggering the second
+ones, let's call them <em>internal events</em> because it's the system updating itself. So, <em>external events</em> trigger
+<em>internal events</em>.</p>
+<p>Now, there are two ways of handling <em>events</em>, we can either do it via <em>orchestration</em>, where we have
+a service which acts as the <em>master</em> of the transaction, telling all the other services involved in it
+what to do, what to update. Just like a Conductor does in an Orchestra, it tells all the other musicians
+(services) when to play they part, how to play it and so on. The other way is more like a <em>choreography</em>,
+where given an <em>event</em> every service knows how to handle it and how to react to it, just like dancers who
+know how and where to move or what do do when a certain part of the song is played.</p>
+<p>Good architectures are a mix of both approaches and good architects know when to use either of those
+depending on the business needs and the use case they're modeling. Unfortunately there's no recipe
+to decide, gaining experience designing systems and making mistakes are the only way to learn, although
+reading about others experience, having clear concepts on how distributed systems and networks work and
+a good understanding of the problem at hand we're solving are a good starting point.</p>
+<h2>Rely on data, not services</h2>
+<p>We spoke about <em>low coupling and high cohesion</em> in <em>microservices</em> in a previous article, relying on
+a service to be up in order for some other service to be able to do what it's supposed to do is some
+form of <em>coupling</em>, you are letting an independent system fail because another is feeling unwell.</p>
+<p>For services to be independent, every service should have a copy of the data they need to answer at least
+basic queries, this doesn't mean you'll directly update the copies, you need to define which service is going
+to be your <em>source of truth</em> for a specific piece of data and perform all the write operations for it to <strong>that</strong>
+service and then, somehow, update the copies. You can rely on <em>internal events</em> to do this, every time an
+<em>external event</em> triggers an update on the <em>source of truth</em> for a give piece of data, you can fire up
+an <em>internal event</em> to make the services keeping a copy update their local copies.</p>
+<p>By doing this you can still serve a read-only version of the data for some use cases even if the source of
+truth is down, if it's, for example, an e-commerce and the source of truth for the catalog is, for example,
+the <em>Inventory Service</em>, you can still serve the catalog even though the users won't be able to purchase
+anything, they still can save them to their <em>wishlist</em> and browse the website, this lets you gracefully
+degrade your system if there are problems with some services, you just show an error message or hide the options
+or have alternate workflows until the systems supporting the degraded use case are back up and running.</p>
+<p>What if a service is down and misses some updates from the source of truth?, well, depending on how you propagate
+the updates, you can do several things. You can use a queuing system like <em>ZeroMQ</em> or <em>RabbitMQ</em> to propagate
+the updates, so, if a service is down, the updates will be waiting on the queue to be consumed once the service
+is up, if you're using HTTP calls, you can have your worker retry the failed requests after a <em>back-off</em> time or
+write the payload to a given location so, when the other service comes up, an <em>init</em> script checks that location,
+reads whatever is there and marks those messages as <em>consumed</em>, there are multiple ways to deal with this problem,
+most of them will depend on the technology you're using.</p>
+<h3>Eventual consistency</h3>
+<p>When you deal with distributed systems and distributed information, chances are, some copies will be stalled
+for a period of time, this means, information will always be flowing through the <em>pipes</em> of your system, the only
+way you will have total consistency is if you stop writing and wait some time. Even in monolithic systems, what you
+show to the user is stale most of the time, let's say, for example, a website listing used articles for sale, when
+the search page is served to the user, depending on the traffic, there will be probably 10ths or hundreds of new
+articles the user won't see unless they refresh the page or we have a pushing mechanism in place. So, how important is
+it really to show the most updated information available to the user?, truth is, is not that critical in most cases.</p>
+<p>For building reports though, you should always query from your sources of truth, this could be tricky on a distributed
+system where your source of truth varies depending on the information you're looking for and it's not a single database
+where you can run a SQL query and join everything together. You could rely also on <em>internal events</em> to build a reporting
+database while the relevant events are happening instead of querying everything when a report is requested, this way you'll
+always have relevant business data to produce reports on top of.</p>
+<h2>Conclusion</h2>
+<p>There's no silver bullet to solve the problems that come with distributed computing, however, there are strategies
+to help you discover the best way to deal with certain problems for your specific use case, try to use choreography
+where possible and orchestrate the flows that need to be completely synchronous, always try to find the easiest solution,
+keep in mind that sometimes the easiest way to solve a problem is the hardest to implement, but benefits will be seen
+in the future, when you need to debug a failure or scale, or even extend your system with more features or plugging more
+microservices in.</p>
+<p>Also, always prefer choreography and async communication when possible instead of orchestration and sync calls between
+services, this doesn't mean you should avoid it at all cost as there are use cases that need that approach. A good architect
+knows that the best way to solve a problem is not following strictly one and only one approach, it's combining different
+concepts and ways around it and adapting them to the specific problem to achieve an efficient and elegant solution. </p>
+<h2>Recommended readings</h2>
+<ul>
+<li><a href="https://amzn.to/2KgY6qh">Building Microservices</a> by <a href="https://samnewman.io/">Sam Newman</a></li>
+<li><a href="https://www.martinfowler.com/bliki/CircuitBreaker.html">Circuit Breaker</a> by Martin Fowler </li>
+<li><a href="https://specify.io/concepts/microservices">Introduction to Microservices</a> by Oliver Wolf </li>
+<li><a href="http://blog.christianposta.com/microservices/why-microservices-should-be-event-driven-autonomy-vs-authority/">Why Microservices Should be Event Driven</a> by Christian Posta </li>
+<li><a href="https://blog.bernd-ruecker.com/event-command-transformation-in-microservice-architectures-and-ddd-dd07d5eb9656">Event command transformation in microservice architectures and DDD</a> by Bernd Rücker  </li>
+<li><a href="http://iffm.me/my-take-on-microservices.html">My take on Microservices</a> by me :-)</li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
