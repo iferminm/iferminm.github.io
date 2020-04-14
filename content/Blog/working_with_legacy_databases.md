@@ -2,6 +2,8 @@ Title: Working with databases easier
 Author: Israel Fermín Montilla
 Date: 2020-04-01
 Tags: python, databases, sqlalchemy, orm
+Cover: https://dl.dropboxusercontent.com/s/e5f7as0ghmihdxn/header.jpg
+Thumbnail: https://dl.dropboxusercontent.com/s/e5f7as0ghmihdxn/header.jpg
 
 This will be a short article, recently at work I had to build few reports on
 top of two legacy databases, to be honest, the whole architecture and the way
