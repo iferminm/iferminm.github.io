@@ -3,8 +3,9 @@ Subtitle: More than writing code
 Author: Israel Fermín Montilla
 Date: 2020-05-01
 Tags: career, software engineering
-Cover: https://dl.dropboxusercontent.com/s/e5f7as0ghmihdxn/header.jpg
-Thumbnail: https://dl.dropboxusercontent.com/s/e5f7as0ghmihdxn/header.jpg
+Cover: https://dl.dropboxusercontent.com/s/dhdgzfv84k6o4iy/swe.jpg
+Thumbnail: https://dl.dropboxusercontent.com/s/dhdgzfv84k6o4iy/swe.jpg
+
 
 
 At work, my Engineering Manager asked me to start sharing my knowledge
