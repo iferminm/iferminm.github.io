@@ -27,7 +27,7 @@ else's life or the latest comment on something we posted or, in my case,
 what's the latest instant message on my slack workspace. 
 
 # Always distracted
-Seems like we are unable to focus on doing a single thing and geting it done
+Seems like we are unable to focus on doing a single thing and getting it done
 in one sit, the ability to focus for a large span of time is lost, no matter
 what it is, whenever we get a notification or feel the phone vibrating inside 
 our pocket, we dump whatever it is we're doing and check what happened, then
@@ -37,7 +37,7 @@ it didn't beep!, why? why does a tiny device have such power over ourselves?
 # Change!
 My daughter's statement made me realize I do that, I have that tendency to always
 check my phone, even if I don't have any notification, it made me feel so bad about
-myself, I don't want to be dominated by a device, I felt like Pavlov's dog, conditianated
+myself, I don't want to be dominated by a device, I felt like Pavlov's dog, hardwired
 to change my behavior whenever I hear a beep from my phone. So, I decided to change.
 
 ## Take action
@@ -46,13 +46,13 @@ except for whatsapp and telegram, the only reason to keep those is my family, if
 write I want to reply, but I muted all the groups, I'll check them only when I want to,
 same for social media apps.
 
-I quied facebook and instagram about a year ago and I don't miss them at all, I'm only
+I quit Facebook and Instagram about a year ago and I don't miss them at all, I'm only
 on twitter, reddit and linkedin, all of them muted on my phone and I only check them when
 I want to, not when they tell me *hey, you have a message* or *hey, someone liked something*
 same goes for gmail, I check it only when I want to, usually on my laptop.
 
 On my corporate phone I have notifications for almost everything, that is basically slack, gmail
-and victorops, but I have silent hours for slack so I don't get bothered at all times, specially
+and VictorOps, but I have silent hours for slack so I don't get bothered at all times, specially
 over the weekend.
 
 ### The most important thing
