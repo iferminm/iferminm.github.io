@@ -1,9 +1,9 @@
 Title: Engage!
 Author: Israel Fermín Montilla
-Date: 2020-03-30
+Date: 2020-05-20
 Tags: career, personal
-Cover: https://dl.dropboxusercontent.com/s/y7hf2p40crdu19y/careem.jpeg
-Thumbnail: https://dl.dropboxusercontent.com/s/y7hf2p40crdu19y/careem.jpeg
+Cover: https://dl.dropboxusercontent.com/s7bf8tb6hyh6r39/engage.jpg
+Thumbnail: https://dl.dropboxusercontent.com/s7bf8tb6hyh6r39/engage.jpg
 
 
 I was playing with my daughter the other day, I had work to do but I take breaks
