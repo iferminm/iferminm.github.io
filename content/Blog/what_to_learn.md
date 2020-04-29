@@ -8,14 +8,14 @@ Thumbnail: https://dl.dropboxusercontent.com/s/d97lkag2ysfdqrc/evolve.jpg
 
 There are millions of articles and blog posts out there trying to
 tell you what to learn next or which language or technologies are 
-worth your attention, thinkgs like *Top 10 programming languages* or
-*Learn one of these languages and you'll be done* with some statistivs
+worth your attention, things like *Top 10 programming languages* or
+*Learn one of these languages and you'll be done* with some statistics
 about language popularity but the truth is, none of those make sense
 no one can tell you what to learn and you don't need to study whatever
 is popular out there all the time.
 
 Truth is, while popular languages are widely used, also, supply is high,
-hence, salaries will tend to be lower, on the onther hand, if you learn
+hence, salaries will tend to be lower, on the other hand, if you learn
 the not-so-popular ones, salaries would be higher but you'll end up
 most likely having a hard time finding a job.
 
@@ -38,7 +38,7 @@ few years back, for example, Python was the one paying my bills and it happened 
 be the first language I worked with after graduating, I became passionate about it,
 to the point that I organized meetups and conferences back home in Caracas - Venezuela
 and after that, I only looked for jobs in Python, it was gaining popularity and growing
-a lot, I know, I was lucky, but it also makes a point, I was focussed on becoming
+a lot, I know, I was lucky, but it also makes a point, I was focused on becoming
 better on a single thing which were the technologies I was working with at that point
 in time, the full stack was Python, Postgres and OpenERP (now it goes by Odoo).
 
@@ -55,7 +55,7 @@ Once you master whatever is helping you pay your bills, you can use your spare
 time to learn whatever you want, in my opinion you need to know at least one
 of those popular languages just to make sure if something unexpected happens 
 to your current job, you can find a new one quick. In my case, maybe I've been
-just lucky, I know Python, Java and Javascript and those are three of the most
+just lucky, I know Python, Java and JavaScript and those are three of the most
 popular languages out there today. But I also know their popularity won't last forever
 and that some less popular languages might pay better salaries because supply is
 less and the skills are more rare.
@@ -90,3 +90,11 @@ Once you cover that, you can explore other paradigms and incorporate more patter
 and practices from those paradigms and other languages into your every day programming
 style, by learning, understanding and practicing is the only way we become better
 software engineers.
+
+In my case, as I know JavaScript/Typescript, Python and Java because of previous jobs,
+I'm focusing on learning Rust, it's a language which is growing and implements interesting
+concepts and I've toyed around with Smalltalk and Haskell to see what's there to learn and 
+incorporate new practices into my coding. 
+
+What's currently on your learning list? let me know on the comments box.
+
