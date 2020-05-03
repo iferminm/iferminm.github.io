@@ -1,7 +1,7 @@
 Title: Software Engineering
 Subtitle: More than writing code
 Author: Israel Fermín Montilla
-Date: 2020-05-01
+Date: 2020-05-03
 Tags: career, software engineering
 Cover: https://dl.dropboxusercontent.com/s/dhdgzfv84k6o4iy/swe.jpg
 Thumbnail: https://dl.dropboxusercontent.com/s/dhdgzfv84k6o4iy/swe.jpg
