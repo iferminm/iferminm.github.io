@@ -6,7 +6,7 @@ import os
 AUTHOR = u'Israel Fermin Montilla'
 SITENAME = u'/dev/isra/blog/*'
 DATE_FORMAT = '%a %d %b, %Y'
-SITEURL = ''
+SITEURL = 'http://127.0.0.1:8000'
 
 PATH = 'content'
 
@@ -15,11 +15,9 @@ TIMEZONE = 'Asia/Dubai'
 DEFAULT_LANG = u'en'
 
 # Feed generation is usually not desired when developing
-FEED_ALL_ATOM = None
-CATEGORY_FEED_ATOM = None
-TRANSLATION_FEED_ATOM = None
-AUTHOR_FEED_ATOM = None
-AUTHOR_FEED_RSS = None
+FEED_ALL_ATOM = 'feeds/all.atom.xml'
+TAG_FEED_ATOM = 'feeds/{slug}.tag.atom.xml'
+CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
 
 # Blogroll
 LINKS = (
