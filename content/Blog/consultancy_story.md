@@ -71,3 +71,5 @@ tradeoff and you need to choose your balance.
 Whatever is good and pretty, is not cheap. Whatever is good and cheap, is not pretty and whatever is
 pretty and cheap is not good and will break sooner than you think and you'll have to get another one
 or call someone in to fix it, maybe the expensive freelance consultant you spoke to some time ago.
+
+Have you ever had a similar experience with a potential client? how did you handle it?
