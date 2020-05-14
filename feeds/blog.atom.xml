@@ -1,5 +1,255 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - Blog</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://iffm.me/feeds/blog.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2020-04-01T00:00:00+04:00</updated><entry><title>Working with databases easier</title><link href="http://iffm.me/working-with-databases-easier.html" rel="alternate"></link><published>2020-04-01T00:00:00+04:00</published><updated>2020-04-01T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2020-04-01:/working-with-databases-easier.html</id><summary type="html">&lt;p&gt;This will be a short article, recently at work I had to build few reports on
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - Blog</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://127.0.0.1:8000/feeds/blog.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2020-05-03T00:00:00+04:00</updated><entry><title>Software Engineering</title><link href="http://iffm.me/software-engineering.html" rel="alternate"></link><published>2020-05-03T00:00:00+04:00</published><updated>2020-05-03T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2020-05-03:/software-engineering.html</id><summary type="html">&lt;p&gt;At work, my Engineering Manager asked me to start sharing my knowledge
+with the rest of the team more often. Of course, we do code reviews and
+we have some other ways to get the knowledge spread across the team, we have
+a wiki on confluence, we have tech meetings …&lt;/p&gt;</summary><content type="html">&lt;p&gt;At work, my Engineering Manager asked me to start sharing my knowledge
+with the rest of the team more often. Of course, we do code reviews and
+we have some other ways to get the knowledge spread across the team, we have
+a wiki on confluence, we have tech meetings where we talk about how we will
+solve the problems at hand, those are good opportunities for very specific
+knowledge sharing, which would be in the form of advice or guidance on the
+approach to follow to implement something, but it would be nice to have
+some other kind of sessions to keep the team motivated, active and seeing
+each other while the lockdown lasts.&lt;/p&gt;
+&lt;p&gt;I thought of several topics I could talk about, all technical ones:
+DevOps, Distributed Systems, Functional Programming, very exciting ones
+but then I realized, the team is very very good technically, everyone is
+a very capable &lt;em&gt;programmer&lt;/em&gt;, and then I stopped. See, I said &lt;em&gt;programmer&lt;/em&gt;,
+is that what we are?, nope, definitely not. The job title says &lt;strong&gt;Software
+Engineer&lt;/strong&gt;, is that all we do? write code?, I don't think so. I started writing
+my thoughts and put them together in the form of a talk I'll summarize in this blog
+post. Thinking about it, most of us don't realize the complexity around
+&lt;strong&gt;Software Engineering&lt;/strong&gt; and we minimize our work to &lt;em&gt;yeah, I write code and
+stuff&lt;/em&gt; or &lt;em&gt;I maintain and implement new features&lt;/em&gt; but everything is much more
+complex than that.&lt;/p&gt;
+&lt;h1&gt;Programmer vs Developer vs Engineer&lt;/h1&gt;
+&lt;p&gt;Don't misunderstand me, there are plenty of roles our there and we call ourselves
+in many ways: &lt;em&gt;Software Engineer&lt;/em&gt;, &lt;em&gt;Software Developer&lt;/em&gt;, &lt;em&gt;Programmer&lt;/em&gt;, &lt;em&gt;Computer
+Programmer&lt;/em&gt; but words have an impact and everything has a meaning, I believe
+we should name things correctly. I'm not asking everyone to think or name things the same
+as I do, but I do think we should separate things and roles in a better way and with
+different expectations.&lt;/p&gt;
+&lt;h2&gt;Programmer&lt;/h2&gt;
+&lt;p&gt;A programmer is someone who writes code, that's it, a programmer wouldn't care
+too much about Software Architecture or Design, neither about the whole lifestyle.
+A programmer gets the full spec of what they need to implement, they write the code
+and they deliver it, not much thoughts about how it's going to be deployed, where it's
+going to run or how it's going to be used.&lt;/p&gt;
+&lt;h2&gt;Developer&lt;/h2&gt;
+&lt;p&gt;A software developer will care about the software, a bit of design and architecture
+but that's it, not much interest in where it's going to be deployed, how it's going to
+run or how it's going to be used.&lt;/p&gt;
+&lt;p&gt;I'm not saying all programmer or developers are like that, I'm just saying these should be
+the concerns of those roles. If you consider yourself a Programmer or a Developer and you go
+beyond that, great!, now, the whole point of this article is to share my views and definition
+about the &lt;strong&gt;Software Engineer&lt;/strong&gt; role.&lt;/p&gt;
+&lt;h1&gt;Software Engineer&lt;/h1&gt;
+&lt;p&gt;A Software Engineer, just like a Programmer and Developer, they care about Software,
+they also write code and make sure it works as expected but also worry about design,
+architecture and implementing best practices on every aspect about software&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Building:&lt;/strong&gt; as a Software Engineer, we worry about building good software, not only
+about the software itself, we worry about the building blocks, choosing (or building) the 
+correct ones, implementing the right levels of abstraction so that maintainability is
+easier.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Operating:&lt;/strong&gt; as a Software Engineer, we know we don't have to always build something
+new, we can just run existing software and operate it, monitor, manage and make sure
+it runs smoothly so that every user can accomplish their goals with it. Also, we know that
+the software we build needs to be operated by someone (sometimes ourselves) so we need to build
+ways to interface and interact with it from an admin perspective.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Documentation:&lt;/strong&gt; this is a usually forgotten one, we read ridiculous amounts of manuals and
+other types of documentation and interpret them in order to use third party software, but we also
+need to write docs in order for other to use our software or understand and contribute to our code.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;We know about software&lt;/h2&gt;
+&lt;p&gt;And we need to know a lot about it, not only to write it, but also to use it effectively, when building
+it:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;We know it has to be well done:&lt;/strong&gt; so we worry about architecture, design and making the right decisions
+from the ground up: choosing the right stack, building the right abstractions and applying the best
+practices we know.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;We know it has to be operable:&lt;/strong&gt; so we worry about things like CICD, monitoring, logging. Building it
+in a way so that it is easy to debug and find issues while running on production as well as building ways
+to interact with it to gather information, metrics or reports via command line if needed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;We know it has to work:&lt;/strong&gt; so we worry about testing and verification so that the behavior of the systems
+we build is predictable, injective and idempotent. For a set of inputs, the output is something we expect.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;We know around software&lt;/h2&gt;
+&lt;p&gt;We not only know how to build software, we also know many things around it.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;We know it has to run somewhere:&lt;/strong&gt; so we know about infrastructure and operating systems, but we're not
+sysadmins.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;We know it talks to other software:&lt;/strong&gt; so we know about network and communication protocols as well as
+distributed systems, but we're not network engineers.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;We know it has to store data somewhere:&lt;/strong&gt; so we know about databases and data modeling, we have to do it
+efficiently and we have to know how to tune performance if needed, but we're not sysadmins.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;We know it has to function in a certain way:&lt;/strong&gt; so we worry about testing at several levels and of different kind:
+performance, unit testing, integration, UX and UI testing, API tests. But we're not QA engineers&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;We are part of a team&lt;/h2&gt;
+&lt;p&gt;All I mentioned before is very difficult and complex and, to add to that, we need to work with other humans,
+we are part of a team which usually has people from diverse backgrounds and specialties, a (sometimes non technical)
+Product or Project Manager, an Engineering Manager, some front end engineers, QA specialists and so on, we need to
+communicate in different ways and keep everyone aligned on the same page.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Meetings:&lt;/strong&gt; we need to attend meetings in order to brief about the technicalities if the work being done
+and unblock if someone needs help with something we know.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Documentation:&lt;/strong&gt; this comes in many forms, technical specs, API documentation, all of this is, at the end of the day,
+communication that needs to flow constantly, just that we choose to store it in the form of text to that we don't have
+to repeat ourselves every time when someone needs to use the API or go through how something was implemented and the thought
+process behind it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Code Review:&lt;/strong&gt; this is a good one, this is when we get to mentor people and help them get their work into a better shape,
+also when we get help to improve ours and learn from others, this is also another form of communication.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Communication is everything&lt;/h3&gt;
+&lt;p&gt;If you're not taking anything from this post, the only thing I'd like you to think about is that, yes, hard skills are very important
+for the Software Engineering role, we need to think about how we write code that performs better, but none of that is useful if we are unable
+to work with others. To work with others, communication is everything.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Don't assume the people you're talking to knows or has the same context you have, always start by sharing the contextual information
+needed to understand the problem at hand or the solution you'll present&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Know your audience, it's not like you're performing a stand-up comedy routine but, when you're communicating, you do have an audience,
+setting the tone and language is important, it's not the same talking (or writing for) API users than writing (or talking) to someone
+whose code you're reviewing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Always ask, you never know if the others are assuming some context, the only way to find out is asking. When something is not clear
+or you find yourself assuming something, that's when you need to ask. You can ask a question because you don't know something or a
+clarifying question, which might seem redundant, just to make sure everyone is on the same page and getting the same understanding.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Once you realize you don't know it all and you don't have to know everything, you also realize the rest of the people
+also don't know everything, and they also don't have to know it all, everyone comes from different backgrounds and knows some things
+they've been exposed to or studied and ignore some others. Only by talking to each other, communicating and sharing knowledge we all
+become stronger engineers.&lt;/p&gt;</content><category term="Blog"></category><category term="career"></category><category term="software engineering"></category></entry><entry><title>Working from home with kids</title><link href="http://iffm.me/working-from-home-with-kids.html" rel="alternate"></link><published>2020-04-20T00:00:00+04:00</published><updated>2020-04-20T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2020-04-20:/working-from-home-with-kids.html</id><summary type="html">&lt;p&gt;I've been hearing and reading about &lt;a href="https://en.wikipedia.org/wiki/Coronavirus_disease_2019"&gt;COVID-19&lt;/a&gt; since January 2020, this is the event that
+changed many people lives, all of a sudden, companies were closed, people were requested to
+stay at home, many businesses broke and many more are about to. I think one of the most impacted
+roles …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I've been hearing and reading about &lt;a href="https://en.wikipedia.org/wiki/Coronavirus_disease_2019"&gt;COVID-19&lt;/a&gt; since January 2020, this is the event that
+changed many people lives, all of a sudden, companies were closed, people were requested to
+stay at home, many businesses broke and many more are about to. I think one of the most impacted
+roles are the ones that require people to be on-site in order to do their job, for instance, hospitality
+is taking a huge hit because of the lack of business and hospitality employees are taking a 
+huge risk by going to work too.&lt;/p&gt;
+&lt;p&gt;Tech people such as Software Engineers, Product Managers and everyone who works in the tech industry
+building software products running in the cloud are very lucky because all we need is an internet
+connection and a laptop, in some cases a VPN setup to access the company resources and that's it, we
+can work from anywhere in the planet, in many cases, people are very used to work remotely, nowadays
+technology allows you to keep communicated, there's email, cellphones, chat, video-conferencing tools
+to keep everyone in touch and, again, all you need is a decent laptop (usually company-provided) and
+an internet connection.&lt;/p&gt;
+&lt;h1&gt;The current situation&lt;/h1&gt;
+&lt;p&gt;When &lt;a href="https://en.wikipedia.org/wiki/Coronavirus_disease_2019"&gt;COVID-19&lt;/a&gt; cases started to spike 
+&lt;a href="https://www.worldometers.info/coronavirus/"&gt;worldwide&lt;/a&gt; many governments started asking people to stay
+home to keep people from getting infected, then, it was not an optional thing, it became mandatory in
+many countries, here in the UAE, specifically in the Emirate of Dubai, people are not allowed to go
+out, only for essential reasons or emergencies. Buying food, medicines or a medical appointment are
+valid reasons to go out and a permit needs to be obtained from Dubai Police, this is done online
+and it's usually approved, takes only 15min. &lt;/p&gt;
+&lt;p&gt;The issue is, almost everyone in the tech industry is working from home, schools are closed
+so, kids are also required to stay home. Usually, when you work from home, kids are at school
+so you can just be at home and get things done without any distraction if you're disciplined enough.
+But, in this case, people might have kids asking them to play with them, demanding attention, siblings
+fighting over a toy and, a worried parent, trying to get things done, most companies have understood
+that and organized online activities with a focus on kids, Careem is one of these and I'm very proud
+and happy to work for a company like this which is willing to, not only give me the flexibility to
+care for my daughter when I need to, but also help me entertain her with online activities carried out
+voluntarily by my colleagues.&lt;/p&gt;
+&lt;h1&gt;My personal story&lt;/h1&gt;
+&lt;p&gt;I've worked remotely before, I'm very used to it, for over a year at Careem, even though I was on-site 
+at Basecamp here in Dubai, I was the only team member here, the rest of my team was located in Karachi,
+Pakistan, so, online communication was the only way to stay in touch, back home in Caracas, I used to work from
+home as well at times, but in both cases, I didn't have a 3yo at home wandering around and taking my attention
+away from work. &lt;/p&gt;
+&lt;p&gt;I love my daughter, I love sitting and playing with her, showing her stuff and her look when
+she draws something and comes very excited to show me and explain the drawing for me, but I also have to
+work, my boss and my team understand the challenges of working from home with kids and are very flexible,
+but, my daughter, and most 3yo kids, have a hard time understanding that daddy (or mommy) needs to 
+sit for a long time in front of their computer and do things, so, we need to look for other strategies&lt;/p&gt;
+&lt;h1&gt;What has worked for me&lt;/h1&gt;
+&lt;p&gt;My daughter is 3 years old, this means she has a lot of energy and wants to play all the time. I've been reading
+a great book on parenting called &lt;a href="https://www.goodreads.com/book/show/29430725-how-to-talk-so-little-kids-will-listen"&gt;How to talk so little kids listen&lt;/a&gt;. It more like "How to not be a jerk to your kids
+when they don't want to listen", it gives few strategies to make them be more collaborative without the punishment/reward
+technique which backfires after some time and, sometimes, it just doesn't work.&lt;/p&gt;
+&lt;h2&gt;I want to work with you daddy!&lt;/h2&gt;
+&lt;p&gt;Yes, she actually says that, I can't get her in front of the computer and have her write code, but what I can do
+is give her few assignments or fun stuff to do while I work, I ask her to paint something and give her
+some brushes and markers, or a coloring book and ask her to finish few pages or draw some letters or numbers, 
+and that I'll come back and review her work when she's done. My mom is a pre-school teacher and she sent me
+a lot of activity sheets for her (all in Spanish so that she also learns the language).&lt;/p&gt;
+&lt;h2&gt;I don't want to paint&lt;/h2&gt;
+&lt;p&gt;Well... kids are people too, if someone imposes something to you, chances are you won't like to do it, just like grown
+ups, they like to be in control of what they do, so, I give her options "oh, ok, you don't want to paint, then you can
+do some playdoh figures or play a game in the iPad" (a carefully chosen educational game), that usually helps.&lt;/p&gt;
+&lt;h2&gt;I don't want to do anything, I want to play with you&lt;/h2&gt;
+&lt;p&gt;Ok, this has been a tough one, but what I've found was that putting her in charge again works. I've been using the
+&lt;a href="https://en.wikipedia.org/wiki/Pomodoro_Technique"&gt;pomodoro technique&lt;/a&gt; to manage work time and break time, so, I fully focus for 1hr and then I take a 15 to 20 minutes
+break. The way this works is, I tell my daughter to remind me to take breaks, I give her a timer and I tell her
+"please, come pick me up when the alarm rings" and then, while playing I tell her "please, remind me to go back to work
+when the alarm rings", this has worked so well we've started using it for timing other things &lt;/p&gt;
+&lt;h2&gt;When she just doesn't want to collaborate&lt;/h2&gt;
+&lt;p&gt;It happens from time to time, specially when she's sleepy and in a very cranky mood, what I try to do in these cases
+is go into problem solving mode (if she's not cranky) I tell her "ok, you want to play but daddy needs to work, what
+can we do?" sometimes she says "no, no, no work!" when this happens and if I can't manage to convince her, I just
+take a break if I don't have any meetings. Sometimes, when it works, she says "ok, ok, let's put the alarm" or
+"I'll cook you something in my kitchen while you work", and she brings me a delicious plastic omelet. &lt;/p&gt;
+&lt;h2&gt;I keep my word&lt;/h2&gt;
+&lt;p&gt;If I tell her, "we will do X" we do it, kids are kids but they're not stupid, they remember things and they will
+hold you accountable, so, if it's in my control, I hold my promises, if not (because the place I promised to take
+her is closed or the item I was ordering for her is not available) I resort to something else like giving her a
+handwritten ticket valid for the same thing the next day, she's usually happy about that and reminds me the next
+day, ticket in hand.&lt;/p&gt;
+&lt;h2&gt;We eat together&lt;/h2&gt;
+&lt;p&gt;Yes, breakfast, lunch and dinner, we share and we spend those eating breaks together, having fun while cooking
+(or reheating leftovers) and then making the food disappear&lt;/p&gt;
+&lt;h1&gt;Things to remember&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;I've been reading everywhere "This pandemic is not a productivity contest", while this is true, it is also true
+that we need to do our best to be as productive as we can, we have other colleagues relying on the work we do and,
+more importantly, people relying on the services or apps we build and maintain.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Remember that kids are kids, you were a kid some time ago, so, try not to explode when things are not going the way you'd like
+the best thing to do is to have a deep breath and adapt&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Remember that you're not actually working from home, we all are in a pandemic, locked at home and trying to get
+work done. Don't push it too hard, you can always catch up after hours, over night or by waking up earlier than everyone
+and working while everyone is asleep&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The more you apply certain techniques, the more they will tend to work in future, so be patient and persistent&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Blog"></category><category term="time management"></category><category term="remote"></category><category term="parenting"></category></entry><entry><title>Working with databases easier</title><link href="http://iffm.me/working-with-databases-easier.html" rel="alternate"></link><published>2020-04-01T00:00:00+04:00</published><updated>2020-04-01T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2020-04-01:/working-with-databases-easier.html</id><summary type="html">&lt;p&gt;This will be a short article, recently at work I had to build few reports on
 top of two legacy databases, to be honest, the whole architecture and the way
 the data is stored, in my opinion, is not optimal, a lot of things need to change
 but, as usual …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This will be a short article, recently at work I had to build few reports on

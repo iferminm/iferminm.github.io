@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - microservices</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://127.0.0.1:8000/feeds/microservices.tag.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2018-05-10T00:00:00+04:00</updated><entry><title>Choreography and Orchestration</title><link href="http://iffm.me/choreography-and-orchestration.html" rel="alternate"></link><published>2018-05-10T00:00:00+04:00</published><updated>2018-05-10T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2018-05-10:/choreography-and-orchestration.html</id><summary type="html">&lt;p&gt;On a &lt;a href="http://iffm.me/my-take-on-microservices.html"&gt;previous article&lt;/a&gt; on &lt;em&gt;microservices&lt;/em&gt;, we went through the best practices I've seen,
+which doesn't mean those are the only ones, it only means that those are the ones I've seen work for me
+and the ones I've tried.&lt;/p&gt;
+&lt;p&gt;This time, I would like to focus on &lt;strong&gt;Choreography over …&lt;/strong&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;On a &lt;a href="http://iffm.me/my-take-on-microservices.html"&gt;previous article&lt;/a&gt; on &lt;em&gt;microservices&lt;/em&gt;, we went through the best practices I've seen,
+which doesn't mean those are the only ones, it only means that those are the ones I've seen work for me
+and the ones I've tried.&lt;/p&gt;
+&lt;p&gt;This time, I would like to focus on &lt;strong&gt;Choreography over Orchestration&lt;/strong&gt; and &lt;strong&gt;Rely on data, not services&lt;/strong&gt; because
+I feel I didn't develop enough on these ones and those are really important these are also the two &lt;em&gt;principles&lt;/em&gt; 
+that will help you &lt;em&gt;avoid sync calls&lt;/em&gt;, which is usually a good practice for inter-service communication.&lt;/p&gt;
+&lt;p&gt;But first:&lt;/p&gt;
+&lt;h2&gt;Internal &lt;em&gt;REST&lt;/em&gt; services, why not?&lt;/h2&gt;
+&lt;p&gt;Don't get me wrong, I love &lt;em&gt;REST&lt;/em&gt;, I like building &lt;em&gt;API&lt;/em&gt;s and I enjoy using a well designed one for sure, but for internal
+communication I prefer to avoid it unless the communication &lt;strong&gt;needs&lt;/strong&gt; to be synchronous, there are some cases where you can't
+help it and it's not always because of a bad design, sometimes the use case itself enforces that restriction.&lt;/p&gt;
+&lt;p&gt;If you find yourself using network calls most of the time, something will most likely go wrong. Network is not 100% reliable
+and, &lt;strong&gt;always&lt;/strong&gt; remember, &lt;em&gt;if something can fail, it will fail&lt;/em&gt;.&lt;/p&gt;
+&lt;h3&gt;Increases overall response time&lt;/h3&gt;
+&lt;p&gt;Take a look at the following figure: &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Services map" src="https://dl.dropboxusercontent.com/s/k261ik209fporvr/service_down.png"&gt;&lt;/p&gt;
+&lt;p&gt;Response times are not taking into account the wait time while the downstream services
+respond. This means, &lt;em&gt;service 1&lt;/em&gt; queries &lt;em&gt;service 2&lt;/em&gt;, it does &lt;em&gt;something&lt;/em&gt; and takes 10ms to respond. Also, &lt;em&gt;Service 1&lt;/em&gt; queries
+&lt;em&gt;Service 3&lt;/em&gt; which queries &lt;em&gt;Service 4&lt;/em&gt; and &lt;em&gt;Service 5&lt;/em&gt;. &lt;em&gt;Service 4&lt;/em&gt; does &lt;em&gt;something&lt;/em&gt; and takes 300ms to respond and &lt;em&gt;Service 5&lt;/em&gt;
+queries &lt;em&gt;Service 6&lt;/em&gt; which takes 1000ms to respond, then &lt;em&gt;Service 5&lt;/em&gt; does &lt;em&gt;something&lt;/em&gt; and takes another 1200ms to come back to
+&lt;em&gt;Service 3&lt;/em&gt;, which has been waiting 2200ms to get all the data it needs to do &lt;em&gt;some stuff&lt;/em&gt; which takes 300ms. By this time,
+&lt;em&gt;Service 1&lt;/em&gt; has been waiting 2500ms for all the data it needs to do a 120ms &lt;em&gt;something&lt;/em&gt; and return back to the upstream caller,
+which could be another service waiting or the end user. &lt;/p&gt;
+&lt;p&gt;Note that the above flow paralelizes all the needed downstream calls per service, so in this case, the total response time will be
+constrained by the slowest call chain. If you were using a stack where doing multiprocessing or async programming is not an easy
+option, you'll have to add up the response time for all of the downstream calls because in reality the service in question
+is being blocked while waiting for the network call to finish and, only then, making the second call and blocking until it comes back
+and so on.&lt;/p&gt;
+&lt;p&gt;There are several ways you can keep the same setup, you can add several levels of cache in between services, you can add a timeout
+to the network calls but everything comes at a cost. If you're keeping a synchronous approach to answer certain questions it's because
+you need your data as fresh as possible, so, the more cache you add the more stale your data could be. You could also add a timeout to
+your calls but, if one of them times out, you'll fail in responding to the upstream caller and it will look like the system is down.&lt;/p&gt;
+&lt;h3&gt;What if someone is down?&lt;/h3&gt;
+&lt;p&gt;Let imagine &lt;em&gt;Service 6&lt;/em&gt; is down because we had a buggy release.&lt;/p&gt;
+&lt;p&gt;This means, &lt;em&gt;Service 1&lt;/em&gt; will have to wait 1500ms before returning an error upstream, you can mitigate this
+with a &lt;a href="https://www.martinfowler.com/bliki/CircuitBreaker.html"&gt;circuit breaker&lt;/a&gt; approach or returning a 
+cached response for the query you're trying to answer but,
+again, unless you really need this to be synchronous, you'd be adding more complexity to an already complex
+system.&lt;/p&gt;
+&lt;p&gt;Also, what if it isn't a &lt;em&gt;read&lt;/em&gt; operation, what if we're actually &lt;em&gt;writing&lt;/em&gt; downstream and the last write fails
+because of &lt;em&gt;reasons&lt;/em&gt;. You'll be half way a transaction and you'll have to deal with it somehow, either queuing that
+last write and hoping &lt;em&gt;Service 6&lt;/em&gt; comes back soon or rolling back the whole transaction which would mean deleting from
+the other services and returning an error, there are ways to solve this, but usually it doesn't need to be this hard.&lt;/p&gt;
+&lt;h3&gt;When should I go synchronous?&lt;/h3&gt;
+&lt;p&gt;In my opinion, it will depend on the use case you're implementing and how critical it is to
+return the exact data at the moment the request was done, usually there's some tolerance to
+return slightly stale data, but things like &lt;em&gt;credit accounting&lt;/em&gt;, &lt;em&gt;warehouse availability&lt;/em&gt; or
+anything that was to do with resources being consumed in real time are good candidates for
+sync calls and all the complexity they involve.&lt;/p&gt;
+&lt;h2&gt;Choreography vs Orchestration&lt;/h2&gt;
+&lt;p&gt;There's a good analogy in the &lt;em&gt;microservices&lt;/em&gt; world and how they handle &lt;em&gt;things&lt;/em&gt; happening
+within the system, let's call those things &lt;em&gt;events&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Let's say there are two types of &lt;em&gt;events&lt;/em&gt;, those which make the system &lt;em&gt;do&lt;/em&gt; something, for example,
+in an e-commerce website it could be a user bought something, and those which make the system &lt;em&gt;change&lt;/em&gt;
+its status, for example, update some records in the database o send a request to another service. The
+first ones, let's call them &lt;em&gt;external events&lt;/em&gt; because they're triggered by an external actor, maybe the
+user or an external system consuming our API, these &lt;em&gt;external events&lt;/em&gt; are the ones triggering the second
+ones, let's call them &lt;em&gt;internal events&lt;/em&gt; because it's the system updating itself. So, &lt;em&gt;external events&lt;/em&gt; trigger
+&lt;em&gt;internal events&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Now, there are two ways of handling &lt;em&gt;events&lt;/em&gt;, we can either do it via &lt;em&gt;orchestration&lt;/em&gt;, where we have
+a service which acts as the &lt;em&gt;master&lt;/em&gt; of the transaction, telling all the other services involved in it
+what to do, what to update. Just like a Conductor does in an Orchestra, it tells all the other musicians
+(services) when to play they part, how to play it and so on. The other way is more like a &lt;em&gt;choreography&lt;/em&gt;,
+where given an &lt;em&gt;event&lt;/em&gt; every service knows how to handle it and how to react to it, just like dancers who
+know how and where to move or what do do when a certain part of the song is played.&lt;/p&gt;
+&lt;p&gt;Good architectures are a mix of both approaches and good architects know when to use either of those
+depending on the business needs and the use case they're modeling. Unfortunately there's no recipe
+to decide, gaining experience designing systems and making mistakes are the only way to learn, although
+reading about others experience, having clear concepts on how distributed systems and networks work and
+a good understanding of the problem at hand we're solving are a good starting point.&lt;/p&gt;
+&lt;h2&gt;Rely on data, not services&lt;/h2&gt;
+&lt;p&gt;We spoke about &lt;em&gt;low coupling and high cohesion&lt;/em&gt; in &lt;em&gt;microservices&lt;/em&gt; in a previous article, relying on
+a service to be up in order for some other service to be able to do what it's supposed to do is some
+form of &lt;em&gt;coupling&lt;/em&gt;, you are letting an independent system fail because another is feeling unwell.&lt;/p&gt;
+&lt;p&gt;For services to be independent, every service should have a copy of the data they need to answer at least
+basic queries, this doesn't mean you'll directly update the copies, you need to define which service is going
+to be your &lt;em&gt;source of truth&lt;/em&gt; for a specific piece of data and perform all the write operations for it to &lt;strong&gt;that&lt;/strong&gt;
+service and then, somehow, update the copies. You can rely on &lt;em&gt;internal events&lt;/em&gt; to do this, every time an
+&lt;em&gt;external event&lt;/em&gt; triggers an update on the &lt;em&gt;source of truth&lt;/em&gt; for a give piece of data, you can fire up
+an &lt;em&gt;internal event&lt;/em&gt; to make the services keeping a copy update their local copies.&lt;/p&gt;
+&lt;p&gt;By doing this you can still serve a read-only version of the data for some use cases even if the source of
+truth is down, if it's, for example, an e-commerce and the source of truth for the catalog is, for example,
+the &lt;em&gt;Inventory Service&lt;/em&gt;, you can still serve the catalog even though the users won't be able to purchase
+anything, they still can save them to their &lt;em&gt;wishlist&lt;/em&gt; and browse the website, this lets you gracefully
+degrade your system if there are problems with some services, you just show an error message or hide the options
+or have alternate workflows until the systems supporting the degraded use case are back up and running.&lt;/p&gt;
+&lt;p&gt;What if a service is down and misses some updates from the source of truth?, well, depending on how you propagate
+the updates, you can do several things. You can use a queuing system like &lt;em&gt;ZeroMQ&lt;/em&gt; or &lt;em&gt;RabbitMQ&lt;/em&gt; to propagate
+the updates, so, if a service is down, the updates will be waiting on the queue to be consumed once the service
+is up, if you're using HTTP calls, you can have your worker retry the failed requests after a &lt;em&gt;back-off&lt;/em&gt; time or
+write the payload to a given location so, when the other service comes up, an &lt;em&gt;init&lt;/em&gt; script checks that location,
+reads whatever is there and marks those messages as &lt;em&gt;consumed&lt;/em&gt;, there are multiple ways to deal with this problem,
+most of them will depend on the technology you're using.&lt;/p&gt;
+&lt;h3&gt;Eventual consistency&lt;/h3&gt;
+&lt;p&gt;When you deal with distributed systems and distributed information, chances are, some copies will be stalled
+for a period of time, this means, information will always be flowing through the &lt;em&gt;pipes&lt;/em&gt; of your system, the only
+way you will have total consistency is if you stop writing and wait some time. Even in monolithic systems, what you
+show to the user is stale most of the time, let's say, for example, a website listing used articles for sale, when
+the search page is served to the user, depending on the traffic, there will be probably 10ths or hundreds of new
+articles the user won't see unless they refresh the page or we have a pushing mechanism in place. So, how important is
+it really to show the most updated information available to the user?, truth is, is not that critical in most cases.&lt;/p&gt;
+&lt;p&gt;For building reports though, you should always query from your sources of truth, this could be tricky on a distributed
+system where your source of truth varies depending on the information you're looking for and it's not a single database
+where you can run a SQL query and join everything together. You could rely also on &lt;em&gt;internal events&lt;/em&gt; to build a reporting
+database while the relevant events are happening instead of querying everything when a report is requested, this way you'll
+always have relevant business data to produce reports on top of.&lt;/p&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;There's no silver bullet to solve the problems that come with distributed computing, however, there are strategies
+to help you discover the best way to deal with certain problems for your specific use case, try to use choreography
+where possible and orchestrate the flows that need to be completely synchronous, always try to find the easiest solution,
+keep in mind that sometimes the easiest way to solve a problem is the hardest to implement, but benefits will be seen
+in the future, when you need to debug a failure or scale, or even extend your system with more features or plugging more
+microservices in.&lt;/p&gt;
+&lt;p&gt;Also, always prefer choreography and async communication when possible instead of orchestration and sync calls between
+services, this doesn't mean you should avoid it at all cost as there are use cases that need that approach. A good architect
+knows that the best way to solve a problem is not following strictly one and only one approach, it's combining different
+concepts and ways around it and adapting them to the specific problem to achieve an efficient and elegant solution. &lt;/p&gt;
+&lt;h2&gt;Recommended readings&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/2KgY6qh"&gt;Building Microservices&lt;/a&gt; by &lt;a href="https://samnewman.io/"&gt;Sam Newman&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.martinfowler.com/bliki/CircuitBreaker.html"&gt;Circuit Breaker&lt;/a&gt; by Martin Fowler &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://specify.io/concepts/microservices"&gt;Introduction to Microservices&lt;/a&gt; by Oliver Wolf &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://blog.christianposta.com/microservices/why-microservices-should-be-event-driven-autonomy-vs-authority/"&gt;Why Microservices Should be Event Driven&lt;/a&gt; by Christian Posta &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.bernd-ruecker.com/event-command-transformation-in-microservice-architectures-and-ddd-dd07d5eb9656"&gt;Event command transformation in microservice architectures and DDD&lt;/a&gt; by Bernd Rücker  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://iffm.me/my-take-on-microservices.html"&gt;My take on Microservices&lt;/a&gt; by me :-)&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Blog"></category><category term="software engineering"></category><category term="microservices"></category></entry><entry><title>My take on microservices</title><link href="http://iffm.me/my-take-on-microservices.html" rel="alternate"></link><published>2017-11-30T00:00:00+04:00</published><updated>2017-11-30T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-11-30:/my-take-on-microservices.html</id><summary type="html">&lt;p&gt;There's been a lot of stuff going on these days on &lt;em&gt;Software Engineering&lt;/em&gt;, it's hard to catch up on everything 
+I would like to. I try to go one topic at a time and now, also because we are working with this at the office,
+I'm hooked into microservices.&lt;/p&gt;
+&lt;p&gt;Microservices …&lt;/p&gt;</summary><content type="html">&lt;p&gt;There's been a lot of stuff going on these days on &lt;em&gt;Software Engineering&lt;/em&gt;, it's hard to catch up on everything 
+I would like to. I try to go one topic at a time and now, also because we are working with this at the office,
+I'm hooked into microservices.&lt;/p&gt;
+&lt;p&gt;Microservices is a new word for an old concept, a concept I thought I will never see or play with in real life 
+back in my University years, I remember my &lt;em&gt;Software Engineering&lt;/em&gt; and &lt;em&gt;Distributed Systems&lt;/em&gt; professors talking
+about web services and &lt;em&gt;API&lt;/em&gt;s and huge systems at IBM,
+Sun Microsystems and Oracle, SOAP and REST interfaces and how they interacted with each other and, also, the mighty
+Enterprise Service Bus with producers and consumers in Java, BPEL and C#, a very abstract
+concept for me to grasp at that time and I thought &lt;strong&gt;the only place&lt;/strong&gt; you could see that was working at &lt;strong&gt;huge&lt;/strong&gt;, corporate
+companies like the ones I mentioned above.&lt;/p&gt;
+&lt;p&gt;Nowadays, &lt;strong&gt;any&lt;/strong&gt; internet &lt;em&gt;startup&lt;/em&gt; can grow at a &lt;strong&gt;huge scale&lt;/strong&gt; and you can play around with this kind of technologies 
+if you're lucky enough to be part of one of those projects.&lt;/p&gt;
+&lt;p&gt;I was lucky to be part of the &lt;em&gt;dubizzle&lt;/em&gt; team, a classifieds website that operates at a &lt;strong&gt;massive scale&lt;/strong&gt; here in the middle east,
+the architecture is a huge legacy &lt;strong&gt;monolithic application&lt;/strong&gt; with all of the core functionality and several services surrounding this legacy app.
+These services are, in my opinion, mostly &lt;strong&gt;poorly integrated&lt;/strong&gt; and fault tolerance &lt;strong&gt;is not the rule&lt;/strong&gt;, sometimes error responses
+are silenced and bypassed which is quite bad. Also, the integration goes over &lt;em&gt;HTTP&lt;/em&gt;, which could be very unreliable
+even within the internal network and gives you a lot of headaches when you need to
+integrate more and more services. But the whole point of migrating to &lt;em&gt;microservices&lt;/em&gt; is to solve all those issues and have a better
+engineered platform to keep both product and tech as happy as possible and be able to move faster at the same time.&lt;/p&gt;
+&lt;p&gt;We dedicated some time now to study &lt;strong&gt;best practices&lt;/strong&gt; for implementing a microservices based architecture and built some proof of concepts and
+deployed one of them to production here are some of my key learning and good practices taken from what I've read and personal experience actually
+building stuff at &lt;em&gt;dubizzle&lt;/em&gt; and playing around with technology on my personal projects.&lt;/p&gt;
+&lt;h2&gt;APIs should be business bounded&lt;/h2&gt;
+&lt;p&gt;It's a common mistake to build &lt;em&gt;API&lt;/em&gt;s as simple &lt;em&gt;CRUD&lt;/em&gt; interfaces for &lt;em&gt;domain entities&lt;/em&gt;.
+This means, all the &lt;em&gt;business logic&lt;/em&gt; must be written and rewritten in the &lt;em&gt;clients&lt;/em&gt;, so, if you have, for instance, a &lt;em&gt;web client&lt;/em&gt;,
+a &lt;em&gt;desktop application&lt;/em&gt;, an &lt;em&gt;Android&lt;/em&gt; and an &lt;em&gt;iPhone&lt;/em&gt; mobile apps, well, you can count yourself
+how many times you'll have to write the &lt;em&gt;business logic&lt;/em&gt; surrounding those &lt;em&gt;data models&lt;/em&gt; with a &lt;em&gt;CRUD API&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;You have to build your API to encapsulate business processes, not just the objects creation and manipulation, so a single &lt;em&gt;API&lt;/em&gt; call,
+triggers all the needed processes to fulfill the request or the query the client just gave to the server.&lt;/p&gt;
+&lt;h2&gt;Services must be independent units&lt;/h2&gt;
+&lt;p&gt;This means, &lt;strong&gt;you must think&lt;/strong&gt; of each &lt;em&gt;microservice&lt;/em&gt; as a project or a &lt;em&gt;product&lt;/em&gt; on its own, this means each &lt;em&gt;service&lt;/em&gt; 
+has its own &lt;em&gt;box&lt;/em&gt; and its own &lt;em&gt;release pipeline&lt;/em&gt; and its own &lt;em&gt;life cycle&lt;/em&gt;, but also, they don't rely on each other to function.
+This means, if your &lt;em&gt;invoicing service&lt;/em&gt; is down, your &lt;em&gt;payment service&lt;/em&gt;
+&lt;strong&gt;don't need to suffer&lt;/strong&gt; because of this, you can always accept payments from your users and send the invoices later,
+when your &lt;em&gt;invoicing service&lt;/em&gt; comes up again.&lt;/p&gt;
+&lt;h2&gt;Rely on data, not services&lt;/h2&gt;
+&lt;p&gt;In the previous example you might be thinking "dude, but if the &lt;em&gt;invoicing service&lt;/em&gt; is down when the &lt;em&gt;payment service&lt;/em&gt; hits it, how will it know
+it needs to send an invoice to a user?". Well, you need some way to let it know once it wakes up, some &lt;em&gt;data sharing&lt;/em&gt; mechanism like a shared
+database (which is in general a bad idea because it creates &lt;em&gt;coupling&lt;/em&gt; between our services) or some sort of &lt;em&gt;caching&lt;/em&gt; on the services that needs
+to &lt;em&gt;consume&lt;/em&gt; that data.&lt;/p&gt;
+&lt;p&gt;In our example, we could make the &lt;em&gt;payment service&lt;/em&gt; and the &lt;em&gt;invoicing service&lt;/em&gt; share the same database, or, have a good separation of
+concerns and lower the &lt;em&gt;coupling&lt;/em&gt; and, since &lt;em&gt;invoicing&lt;/em&gt; needs to know about &lt;em&gt;payments&lt;/em&gt; but, &lt;em&gt;payments&lt;/em&gt; have no need to know about &lt;em&gt;invoicing&lt;/em&gt;,
+we can just have a &lt;em&gt;caching&lt;/em&gt; mechanism in place in our &lt;em&gt;invoicing service&lt;/em&gt; and have a copy of the needed data about &lt;em&gt;payments&lt;/em&gt; in order
+to generate &lt;em&gt;invoices&lt;/em&gt;, of course, this will add some complexity to our system because we need to be fault tolerant and make sure the data
+still reaches the &lt;em&gt;cache&lt;/em&gt; if the &lt;em&gt;invoicing service&lt;/em&gt; is down and we need to put some cache update processes in order to keep it up to date.&lt;/p&gt;
+&lt;h2&gt;High cohesion, low coupling&lt;/h2&gt;
+&lt;p&gt;This is a principle borrowed from &lt;em&gt;Object Oriented Programming&lt;/em&gt;, let's remember what they mean&lt;/p&gt;
+&lt;h3&gt;Coupling&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;coupling&lt;/strong&gt; is the degree of interdependence between software modules.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Wikipedia&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This means, if two &lt;em&gt;modules&lt;/em&gt;, &lt;em&gt;functions&lt;/em&gt; or &lt;em&gt;services&lt;/em&gt; rely too much on each other, chances are if I make a change on one, I'll have to make
+a change on the other one to compensate, this makes our code and architecture less orthogonal, which means exactly that, a change in one
+part of the system, will affect other unrelated parts, just like driving a helicopter.&lt;/p&gt;
+&lt;h3&gt;Cohesion&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;cohesion&lt;/strong&gt; refers to the degree to which the elements inside a module belong together.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Wikipedia&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This means, it's a measure of how much the &lt;em&gt;elements&lt;/em&gt; inside a &lt;em&gt;module&lt;/em&gt; belong together, not necessarily they rely on each other, but they
+all &lt;strong&gt;work together&lt;/strong&gt; towards a common objective.&lt;/p&gt;
+&lt;p&gt;In general &lt;em&gt;cohesion&lt;/em&gt; is increased if:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;All the &lt;em&gt;elements&lt;/em&gt; in the &lt;em&gt;module&lt;/em&gt; have much in common. This means, access the same set of data, for example.&lt;/li&gt;
+&lt;li&gt;The &lt;em&gt;elements&lt;/em&gt; in the &lt;em&gt;module&lt;/em&gt; carry out a &lt;strong&gt;small&lt;/strong&gt; number of &lt;strong&gt;related&lt;/strong&gt; activities. This means, each member of the
+module does one and only one thing related to the task without side effects  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;By keeping &lt;strong&gt;related functionality&lt;/strong&gt; together, we are automatically increasing &lt;em&gt;cohesion&lt;/em&gt; and lowering &lt;em&gt;coupling&lt;/em&gt;, and this is exactly
+what we want.&lt;/p&gt;
+&lt;h3&gt;What does this mean in microservices?&lt;/h3&gt;
+&lt;p&gt;Well, it's easy to think of &lt;em&gt;coupling&lt;/em&gt; and &lt;em&gt;cohesion&lt;/em&gt; withing the same computer program or the same code base, but in &lt;em&gt;microservices&lt;/em&gt; this
+means exactly the same, &lt;strong&gt;keep related functionality together&lt;/strong&gt; so you don't have that logic spread all over the place and duplicated
+in more than one service. This also mean, keep services using similar or related data together, either logically or physically.&lt;/p&gt;
+&lt;h2&gt;One hit, one transaction&lt;/h2&gt;
+&lt;p&gt;This means, avoid distributed transaction at all costs, they are difficult to implement and even more difficult to debug if something
+goes wrong, ideally one &lt;em&gt;write&lt;/em&gt; operation to your system should directly affect &lt;strong&gt;one&lt;/strong&gt; service, what happens &lt;em&gt;offline&lt;/em&gt; could be a different
+story. For example, we could have our &lt;em&gt;payments service&lt;/em&gt; which deals with a third party payment gateway to charge our users' credit cards,
+to keep things under &lt;em&gt;Single Responsibility Pattern&lt;/em&gt; (SRP), we will have a separate &lt;em&gt;invoicing service&lt;/em&gt; which handles generating and
+sending invoices to the users (I know, we could separate things even more by having a separate &lt;em&gt;notification service&lt;/em&gt; that handles
+sending the emails but let's keep it at this level for the sake of simplicity). &lt;/p&gt;
+&lt;p&gt;So, the only thing my client needs to know is &lt;em&gt;I need to make a payment&lt;/em&gt;, whatever happens afterwards it's not my client's problem, it
+only needs to hit the &lt;em&gt;payments service&lt;/em&gt; with the needed &lt;em&gt;payload&lt;/em&gt; and get the response to show it to the user. What happens under the hood
+is my &lt;em&gt;payments service&lt;/em&gt;'s problem, it needs to &lt;em&gt;somehow&lt;/em&gt; notify the &lt;em&gt;invoicing service&lt;/em&gt; that it needs to email an invoice to a specific
+user, this has to happen &lt;em&gt;offline&lt;/em&gt;, either we start a separate &lt;em&gt;thread&lt;/em&gt; or use a message queue for it and we notify either generating an
+&lt;em&gt;event&lt;/em&gt; or via an &lt;em&gt;HTTP&lt;/em&gt; call, but this needs to happen offline and be fault tolerant so we don't keep the &lt;em&gt;client&lt;/em&gt; waiting for something
+that is &lt;em&gt;our&lt;/em&gt; internal process, as well as updating the inventory, generating accounting ledger entries, etc.&lt;/p&gt;
+&lt;h2&gt;Choreography over orchestration&lt;/h2&gt;
+&lt;p&gt;This is, to me, one of the most important best practices I've learned then it comes to microservices oriented architecture, when we think of
+distributed transactions we often have some sort of &lt;em&gt;director&lt;/em&gt; or &lt;em&gt;conductor&lt;/em&gt;, which is the service that initiated the transaction, it will
+know, what needs to happen and in which order, also, it will be the responsible to roll everything back if any part of the transaction fails,
+transactions need to be &lt;em&gt;Atomic&lt;/em&gt;, right?. This is a very dangerous approach because, if something goes wrong while performing the transaction,
+nothing can guarantee something won't happen while rolling it back, leaving the system in an inconsistent state and giving us lots of
+headaches down the road when having to debug some weird behavior in our system.&lt;/p&gt;
+&lt;p&gt;The best way to implement these kind of &lt;em&gt;distributed&lt;/em&gt; transactions, i.e., business processes that need to update more than one service
+is through &lt;em&gt;Choreography&lt;/em&gt;, if you think about a &lt;em&gt;choreography&lt;/em&gt;, there's no &lt;em&gt;conductor&lt;/em&gt;, everyone knows what they need to do, where they
+need to go, the only signal is the music. This means, in &lt;em&gt;microservices&lt;/em&gt;, we just need to &lt;em&gt;notify&lt;/em&gt; everyone &lt;em&gt;something&lt;/em&gt; happened, and
+the concerning &lt;em&gt;services&lt;/em&gt; will react accordingly, either updating their database, emitting another &lt;em&gt;event&lt;/em&gt; or sending a notification to
+the user.&lt;/p&gt;
+&lt;p&gt;In order to properly implement &lt;em&gt;choreography&lt;/em&gt; we need to build &lt;em&gt;resilient&lt;/em&gt; services by putting in place fault tolerance logic or processes
+so, if some service fails to react, it can heal itself or someone gets notified.&lt;/p&gt;
+&lt;h2&gt;Don't rely on HTTP&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/L._Peter_Deutsch"&gt;Peter Deutsch&lt;/a&gt; and &lt;a href="https://en.wikipedia.org/wiki/James_Gosling"&gt;James Gosling&lt;/a&gt; wrote about the
+&lt;em&gt;8 fallacies of distributed computing&lt;/em&gt; and the first one was&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The network is reliable&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A million things can happen when you rely on the network, maybe the requests times out, maybe there's a broken link, maybe subnet permissions
+were changed maybe the host we are trying to reach is unavailable, maybe a rat ate a network cable, lots of things can happen and we are
+not in control of all of them, even withing our own private network.&lt;/p&gt;
+&lt;p&gt;What I'd recommend instead is to have a &lt;em&gt;communication layer&lt;/em&gt; in the form of a &lt;em&gt;message bus&lt;/em&gt;, it can be a &lt;em&gt;queue&lt;/em&gt; like 
+&lt;a href="https://www.rabbitmq.com/"&gt;RabbitMQ&lt;/a&gt; or a &lt;em&gt;data streaming pipeline&lt;/em&gt; like &lt;a href="https://kafka.apache.org/"&gt;Apache Kafka&lt;/a&gt;
+of course there will be a bit of network communication between your services and the communication
+layer, or your services and the database system, but that's being taken care of by the corresponding drivers or libraries or deal with those,
+so, you can assume they're fault tolerant and the data will reach its destination.&lt;/p&gt;
+&lt;p&gt;There will be cases where you can't avoid rely on &lt;em&gt;HTTP&lt;/em&gt; or any network protocol, for example, you need to serve your website somehow, and
+you need to query your services somehow too, so, in this case I'd recommend to go for a &lt;em&gt;REST API&lt;/em&gt; or whatever protocol you prefer for external
+communication (third party services and &lt;em&gt;client-server&lt;/em&gt;) and using a &lt;em&gt;message bus&lt;/em&gt; for inter-service communication.&lt;/p&gt;
+&lt;h3&gt;A note about the fallacies&lt;/h3&gt;
+&lt;p&gt;Some people will say that the &lt;em&gt;8 fallacies of distributed computing&lt;/em&gt; are obsolete nowadays because there are tools already that handle
+everything for us, replication, secure networking, authentication, networks are sophisticated so, latency is not a problem anymore but,
+just because &lt;em&gt;someone&lt;/em&gt; is taking care of &lt;em&gt;something&lt;/em&gt; for us, doesn't mean that &lt;em&gt;something&lt;/em&gt; isn't there, imagine building a system without
+these tools, you'll have to face them anyways, besides, there are countries where the computer networks are not as good as in the US or
+Europe for example, so, I wouldn't say these &lt;em&gt;fallacies&lt;/em&gt; are becoming irrelevant. Even if you're not implementing replication or security
+yourself, you need to think about it and use &lt;em&gt;something&lt;/em&gt; that handles that for you.&lt;/p&gt;
+&lt;h2&gt;Recommended readings&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://amzn.to/2AkhBdU"&gt;Building Microservices&lt;/a&gt; by &lt;a href="http://samnewman.io/"&gt;Sam Newman&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://amzn.to/2Am0eZW"&gt;RESTful API Design: Best Practices in API Design with REST&lt;/a&gt; by &lt;a href="https://twitter.com/mattbiehl"&gt;Matthias Biehl&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://amzn.to/2ngI1dI"&gt;The Pragmatic Programmer&lt;/a&gt; by &lt;a href="https://en.wikipedia.org/wiki/Dave_Thomas_(programmer)"&gt;David Thomas&lt;/a&gt; and 
+&lt;a href="https://en.wikipedia.org/wiki/Andy_Hunt_(author)"&gt;Andrew Hunt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Coupling_(computer_programming)"&gt;Coupling (computer programming)&lt;/a&gt; (Wikipedia article)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Cohesion_(computer_science)"&gt;Cohesion (computer science)&lt;/a&gt; (Wikipedia article)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing"&gt;Fallacies of distributed computing&lt;/a&gt; (Wikipedia article)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.infoworld.com/article/3114195/system-management/the-8-fallacies-of-distributed-computing-are-becoming-irrelevant.html"&gt;The 8 fallacies of distributed computing are becoming irrelevant&lt;/a&gt; build your own opinion, are they?, comment!.&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Blog"></category><category term="software engineering"></category><category term="microservices"></category></entry></feed>

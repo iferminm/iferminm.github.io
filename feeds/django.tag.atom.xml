@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - django</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://127.0.0.1:8000/feeds/django.tag.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2018-01-23T00:00:00+04:00</updated><entry><title>Django registration in no time!</title><link href="http://iffm.me/django-registration-in-no-time.html" rel="alternate"></link><published>2018-01-23T00:00:00+04:00</published><updated>2018-01-23T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2018-01-23:/django-registration-in-no-time.html</id><summary type="html">&lt;p&gt;What does 99% of the projects we work on have in common?, what's usually the first or the last
+thing we start working on when building something, a personal project perhaps?. If you said
+&lt;em&gt;dealing with users&lt;/em&gt;, that's right. On each and every project we find ourselves writing different
+registration …&lt;/p&gt;</summary><content type="html">&lt;p&gt;What does 99% of the projects we work on have in common?, what's usually the first or the last
+thing we start working on when building something, a personal project perhaps?. If you said
+&lt;em&gt;dealing with users&lt;/em&gt;, that's right. On each and every project we find ourselves writing different
+registration or authentication flows, sometimes we use third party authentication services like
+&lt;em&gt;Google&lt;/em&gt; or &lt;em&gt;facebook&lt;/em&gt; via their &lt;em&gt;API&lt;/em&gt;s, but most of the times I'd say we start by asking our user's
+to register using their &lt;code&gt;email&lt;/code&gt; and a &lt;code&gt;password&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Common approaches&lt;/h2&gt;
+&lt;p&gt;There are several approaches to user registration, we can do it on a single step, or we can do it on
+2 steps with a confirmation email being sent to the given address. There are several ways you can structure
+your registration flow, either two simple questions (&lt;code&gt;email&lt;/code&gt; and &lt;code&gt;password&lt;/code&gt;) or multiple questions through
+several pages, you name it, we always write user registration flows.&lt;/p&gt;
+&lt;p&gt;Is you ask me, I've always preferred to write a simple one, ask for an &lt;code&gt;email&lt;/code&gt; and a &lt;code&gt;password&lt;/code&gt; and ask for the
+rest of the information I need on a separate &lt;em&gt;User Profile&lt;/em&gt; page, things like name, date of birth, country, city,
+mobile number or other stuff I might need. But you want as least friction as possible on the registration process,
+specially if you're trying to get your first users, that's why I don't even send confirmation emails when I just launched
+something. I start asking for confirmation when I already got some users and I have people constantly signing up, otherwise,
+it's not worth the effort or the network traffic, plus the complexity of sending it asynchronously with a message queue.&lt;/p&gt;
+&lt;p&gt;That's why I thought of writing a reusable django app to solve this, I was working on it for a while, taking the good parts
+of all the registration flows I've written, until I found &lt;code&gt;django-registration&lt;/code&gt; and just switched to that library.&lt;/p&gt;
+&lt;h2&gt;Enter django-registration&lt;/h2&gt;
+&lt;p&gt;This is way better that anything I could have written myself, it's being used by many people, has an active maintainer, works
+out of the box and supports single and two steps registration flows so, why &lt;em&gt;reinventing the wheel&lt;/em&gt; if it's already there?,
+I'm using it for a couple of personal projects I'll be in the upcoming months (or not... you know...) and it's
+incredible how easy it makes it to implement user registration, allowing me to start working on actual features and functionality
+in almost no time.&lt;/p&gt;
+&lt;p&gt;Let's get started&lt;/p&gt;
+&lt;h3&gt;Installation&lt;/h3&gt;
+&lt;p&gt;To install it, you just need to &lt;code&gt;pip&lt;/code&gt; it as any usual &lt;em&gt;Python&lt;/em&gt; module&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;pip install django-registration&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;For the simple &lt;em&gt;one step&lt;/em&gt; registration flow or the &lt;em&gt;HMAC Based&lt;/em&gt; workflow, you don't need to do anything else.&lt;/p&gt;
+&lt;h3&gt;Registration workflows&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;django-registration&lt;/em&gt;, supports three different workflows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;One step:&lt;/strong&gt; this workflow consists of as few steps as possible, the user signs up by filling the registration form,
+after submitting, the account is created without any intermediate verification and the user is logged in automatically.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;HMAC Based:&lt;/strong&gt; it's a two steps registration workflow that doesn't store any verification key, it sends instead a
+timestamped HMAC verified value to the user via email in order to verify the account.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Model based:&lt;/strong&gt; to use this workflow, you'll have to add &lt;code&gt;registration&lt;/code&gt; to your &lt;code&gt;INSTALLED_APPS&lt;/code&gt; as you will need
+to install one model to perform the verification step. If you need a two steps account creation because you require email
+verification, the recommended way is to use the &lt;em&gt;HMAC&lt;/em&gt; flow.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The basic &lt;em&gt;one step&lt;/em&gt; registration flow is the easiest way to register new users, if you're just deploying something for fun
+and it's intended mostly for your personal use but want to allow other people to use it, I don't think you need to verify
+email and go through all that hassle unless you get serious about it, so in my case, the intended user for my project is just myself,
+but if someone else wants to use it, I'm OK with that, I assume if you want to use something you'll just provide a legit email
+because it's on your own interest.&lt;/p&gt;
+&lt;h3&gt;Settings everything up&lt;/h3&gt;
+&lt;p&gt;I decided to go for a &lt;em&gt;one step&lt;/em&gt; flow, as I don't really care if anyone provides an nonexistent email, I'm the one who will mostly
+be using this, so, I guess it's OK, &lt;em&gt;django-registration&lt;/em&gt; allows me to restrict new accounts from being created just by adding 
+&lt;code&gt;REGISTRATION_OPEN = False&lt;/code&gt; on my &lt;code&gt;settings.py&lt;/code&gt; file.&lt;/p&gt;
+&lt;p&gt;Each registration flow comes with its own set of views and urls and you'll have to create your custom template and form if you needed,
+you'll most probably end up customizing some behavior, but it's really easy to do, most of the core, boring and repetitive work
+of creating the registration workflow is done for you and works out of the box.&lt;/p&gt;
+&lt;p&gt;In this case, for the &lt;em&gt;one step&lt;/em&gt; all I had to do was the following:&lt;/p&gt;
+&lt;p&gt;1.- Include &lt;code&gt;registration.backends.simple.urls&lt;/code&gt; in my urls configuration&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;
+
+&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="c1"&gt;# Some url patterns&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;accounts/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;registration.backends.simple.urls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+    &lt;span class="c1"&gt;# More url patterns&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;2.- Set &lt;code&gt;REGISTRATION_OPEN = True&lt;/code&gt;, this is the default value, but &lt;em&gt;better explicit than implicit&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;3.- By default, after successful registration the user will be redirected to &lt;code&gt;/&lt;/code&gt;, but you can customize this behavior by
+subclassing &lt;code&gt;registration.backends.simple.views.RegistrationView&lt;/code&gt; and overriding the method &lt;code&gt;get_success_url()&lt;/code&gt;, in my case,
+redirecting to &lt;code&gt;/&lt;/code&gt; is fine.&lt;/p&gt;
+&lt;p&gt;4.- By default, &lt;em&gt;django-registration&lt;/em&gt; will use &lt;code&gt;registration.forms.RegistrationForm&lt;/code&gt;, this can be overridden by supplying your
+own &lt;code&gt;form_class&lt;/code&gt; argument when adding the default &lt;code&gt;RegistationView&lt;/code&gt; to the &lt;code&gt;urlpatterns&lt;/code&gt; or by subclassing it and setting the &lt;code&gt;form_class&lt;/code&gt;
+attribute or implementing &lt;code&gt;get_form_class()&lt;/code&gt;. In my case, I opted for passing an argument to the &lt;code&gt;as_view()&lt;/code&gt; method when addind the
+corresponding &lt;code&gt;url&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;registration.backends.simple.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;RegistrationView&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.forms&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;UserRegistrationForm&lt;/span&gt;
+
+
+&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="c1"&gt;# Some url patterns&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;accounts/register/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;RegistrationView&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;form_class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;UserRegistrationForm&lt;/span&gt;
+    &lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;accounts/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;registration.backends.simple.urls&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+    &lt;span class="c1"&gt;# More url patterns&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;5.- Customize the registration template, this flow only needs one template called &lt;code&gt;registration/registration_form.html&lt;/code&gt; and it will
+pick it up automatically, the &lt;code&gt;RegistrationView&lt;/code&gt; will add the &lt;code&gt;form&lt;/code&gt; variable to the &lt;code&gt;context&lt;/code&gt; and it will contain a &lt;code&gt;RegistrationForm&lt;/code&gt; instance,
+all for free.&lt;/p&gt;
+&lt;h2&gt;Recommended readings&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://django-registration.readthedocs.io/en/2.4.1/index.html"&gt;&lt;em&gt;django registration&lt;/em&gt; docs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Django docs on &lt;a href="https://docs.djangoproject.com/en/2.0/topics/class-based-views/"&gt;class based views&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Blog"></category><category term="python"></category><category term="django"></category><category term="tutorial"></category><category term="registration"></category></entry><entry><title>Making django scale Pt.2</title><link href="http://iffm.me/making-django-scale-pt2.html" rel="alternate"></link><published>2017-12-24T00:00:00+04:00</published><updated>2017-12-24T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-12-24:/making-django-scale-pt2.html</id><summary type="html">&lt;p&gt;It's been a while since the &lt;a href="/making-django-scale-pt1.html"&gt;first post&lt;/a&gt; about scaling web applications using &lt;em&gt;django&lt;/em&gt;, last time we
+spoke about some basic concepts about scalability, buzz words we hear everyday and we also use but
+always struggle when we need to give a formal definition to someone.&lt;/p&gt;
+&lt;p&gt;Once we have clear …&lt;/p&gt;</summary><content type="html">&lt;p&gt;It's been a while since the &lt;a href="/making-django-scale-pt1.html"&gt;first post&lt;/a&gt; about scaling web applications using &lt;em&gt;django&lt;/em&gt;, last time we
+spoke about some basic concepts about scalability, buzz words we hear everyday and we also use but
+always struggle when we need to give a formal definition to someone.&lt;/p&gt;
+&lt;p&gt;Once we have clear basic concepts about scalability, performance and we are familiar with the Pareto
+Principle, we are ready to start optimizing and improving our system's performance, right?. Not so fast
+cowboy!, if you remember the Pareto Principle most of the negative performance impact is coming for 20%
+of the negative impacters. We need to manage somehow to solve that 20% so we are sure we are making a
+significant improvement.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;You can't manage what you don't measure&lt;/em&gt; - Peter Ducker&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This means, we need to gain visibility inside our system to be able to detect those bottlenecks and 
+work on solving or easing them. For that, we will need a set of tools to monitor and profile our
+application.&lt;/p&gt;
+&lt;h2&gt;The tools&lt;/h2&gt;
+&lt;p&gt;There are a lot of monitoring tools for Linux and for &lt;em&gt;django&lt;/em&gt; out there, you can use the ones you like
+the most, but I'm going to showcase some here as a starting point. I'm not going to go deep into how to
+install them and set them up or customize them because it's out of the scope of this post, but I might
+post some individual howtos later, here I'll just point you to the corresponding documentation.&lt;/p&gt;
+&lt;h3&gt;django debug toolbar&lt;/h3&gt;
+&lt;p&gt;This is my all time favorite, it's a pip-installable module for &lt;em&gt;django&lt;/em&gt; and you'll need to add some
+settings variables and a template tag and you're done.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Image of django-debug-toolbar" src="https://dl.dropboxusercontent.com/s/bykbb9iryv1m6io/django_debug_toolbar.png"&gt;&lt;/p&gt;
+&lt;p&gt;As you can see on the screenshot it will give you a lot of relevant information about what happened under
+the hood to serve that request, it will tell you the missed cache hits, which static files and templates
+are being served, the current request headers and request parameters but my favorite feature is the SQL viewer,
+it will show you the queries that ran on that view, with a timeline and their run time so you get to see
+which ones are taking long time and take action, it gives you also the option to see an &lt;code&gt;EXPLAIN&lt;/code&gt; of the query
+to check what the query planner did.&lt;/p&gt;
+&lt;p&gt;To install it and use it, you can refer to the &lt;a href="https://django-debug-toolbar.readthedocs.io/en/stable/"&gt;official docs&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;vprof&lt;/h3&gt;
+&lt;p&gt;This is a visual profiler for &lt;em&gt;Python&lt;/em&gt;, although it isn't made for &lt;em&gt;django&lt;/em&gt;, you can plug it in and take advantage
+of all the cool graphs it will draw for you out of the box.&lt;/p&gt;
+&lt;p&gt;A profiler will measure how your code is behaving and tell you where the hot points are as well as your call
+stack, vprof will give you an insight also on how much memory your program is consuming so it's easier to detect
+memory leaks.&lt;/p&gt;
+&lt;p&gt;Here are some of the graphs &lt;em&gt;vprof&lt;/em&gt; will produce for you&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Flame diagram to allow you see your function call stack
+&lt;img alt="*vprof* flame diagram" src="https://dl.dropboxusercontent.com/s/lvi3sxxhgmjccax/vprof_flame_diagram.png"&gt;&lt;/li&gt;
+&lt;li&gt;Memory profiler
+&lt;img alt="*vprof* memory profiler" src="https://dl.dropboxusercontent.com/s/zv1o87ebms7humr/vprof_mem_profiler.png"&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To set it up you can refer to the &lt;a href="https://github.com/nvdv/vprof"&gt;official docs&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;CProfile&lt;/h3&gt;
+&lt;p&gt;Setting up &lt;em&gt;vprof&lt;/em&gt; for &lt;em&gt;django&lt;/em&gt; might be tricky depending of your application architecture and setup, &lt;em&gt;CProfile&lt;/em&gt; is
+pretty much the defacto standard on &lt;em&gt;Python&lt;/em&gt; profilers, it will produce an output on an standard format you can plug into
+any profiling reporting tool such as &lt;em&gt;SnakeViz&lt;/em&gt; to produce cool graphs that will help you understand what's going on.&lt;/p&gt;
+&lt;p&gt;You can easily set it up in &lt;em&gt;django&lt;/em&gt; by using &lt;em&gt;&lt;a href="https://github.com/omarish/django-cprofile-middleware"&gt;django-cprofile-middleware&lt;/a&gt;&lt;/em&gt; 
+this app will also add one endpoint any
+&lt;em&gt;staff&lt;/em&gt; user can hit to get data about the performance and, also, &lt;em&gt;CProfile&lt;/em&gt; can produce an output file you can
+pipe into &lt;em&gt;&lt;a href="http://jiffyclub.github.io/snakeviz/"&gt;SnakeViz&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This is how &lt;em&gt;SnakeViz&lt;/em&gt; graphs would look like:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="*SnakeViz* list view" src="https://dl.dropboxusercontent.com/s/0uxf12rxx562t6z/snake_list_view.png"&gt;
+&lt;img alt="*SnakeViz* sunburst diagram" src="https://dl.dropboxusercontent.com/s/hx9cfdxvn1dqq4o/snake_sun_diagram.png"&gt;&lt;/p&gt;
+&lt;h3&gt;StatsD&lt;/h3&gt;
+&lt;p&gt;This is an external stats collecting system built by &lt;em&gt;Etsy&lt;/em&gt;, they &lt;a href="https://codeascraft.com/2011/02/15/measure-anything-measure-everything/"&gt;blogged&lt;/a&gt;
+about it and how it works and it's also &lt;a href="https://github.com/etsy/statsd"&gt;open source&lt;/a&gt;, you can set it up in &lt;em&gt;django&lt;/em&gt; through a third
+party app called &lt;a href="http://django-statsd.readthedocs.io/en/latest/"&gt;django-statsd&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Using this is a bit manual, you will need to send out your stats the same way you use log statements to add entries
+with messages about what your system is going. In this case what StatsD will do is keep a log on counts and timing
+of the events you are sending stats about.&lt;/p&gt;
+&lt;p&gt;The coolest thing about &lt;em&gt;StatsD&lt;/em&gt; is that you can set it up to periodically flush data to &lt;a href="http://graphiteapp.org/"&gt;&lt;em&gt;Graphite&lt;/em&gt;&lt;/a&gt;
+where you can then produce this kind of graphs on top of &lt;em&gt;StatsD&lt;/em&gt;'s data&lt;/p&gt;
+&lt;p&gt;&lt;img alt="*Graphite* dashboard" src="https://dl.dropboxusercontent.com/s/mns9m1htvqvxr5k/graphite.jpg"&gt;&lt;/p&gt;
+&lt;h3&gt;Use the logging subsystem&lt;/h3&gt;
+&lt;p&gt;Logging can save you a lot of time if you do it right, it can also clutter your code with &lt;code&gt;logger.info()&lt;/code&gt; statements everywhere
+if you over do it, you need to log everything so you know what your app is doing at each step of the different processes it performs,
+but log even more on the critical ones.&lt;/p&gt;
+&lt;p&gt;These log files need to go somewhere, maybe you're familiar with &lt;a href="https://syslog-ng.org/"&gt;syslog&lt;/a&gt; to concentrate your logs in a single server so you
+have only one place to go when you need to do some text-processing-fu with &lt;code&gt;sed&lt;/code&gt;, &lt;code&gt;awk&lt;/code&gt;, &lt;code&gt;sort&lt;/code&gt; and &lt;code&gt;grep&lt;/code&gt;, but as your system grows
+and also the amount of different loggers storing messages, it will get trickier and trickier to keep track of every action across
+all the different modules of your system, an &lt;em&gt;ELK&lt;/em&gt; system can help you to ease the search through your log files and also generate
+reports and graphs on top of your log data using &lt;em&gt;Kibana&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;You can read more about the &lt;em&gt;ELK&lt;/em&gt; or &lt;em&gt;Elastic&lt;/em&gt; stack &lt;a href="https://www.elastic.co/webinars/introduction-elk-stack"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;newrelic&lt;/h3&gt;
+&lt;p&gt;If you have some budget to invest on this, &lt;a href="http://newrelic.com"&gt;&lt;em&gt;newrelic&lt;/em&gt;&lt;/a&gt; will give you most of these features
+out of the box just by installing and setting up their &lt;em&gt;Python&lt;/em&gt; tracker, it will start pushing data to &lt;em&gt;newrelic&lt;/em&gt; and
+you can see your system's performance in real time, it will show you data such as the average response time as well as
+response time in percentiles, average throughput, average error rate, error data and even transaction data like the one
+you get from &lt;em&gt;django-debug-toolbar&lt;/em&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;newrelic&lt;/em&gt;'s main dashboard
+&lt;img alt="*newrelic* main dashboard" src="https://dl.dropboxusercontent.com/s/zs0m9ozgktnhl1n/newrelic_main.png"&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Transactions dashboard
+&lt;img alt="*newrelic* transactions dashboard" src="https://dl.dropboxusercontent.com/s/vuxlqnexow0srj8/newrelic_transactions.png"&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Errors dashboard
+&lt;img alt="*newrelic* errors dashboard" src="https://dl.dropboxusercontent.com/s/iw0zhoum8hv60xw/newrelic_errors.png"&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you have the budget, &lt;em&gt;newrelic&lt;/em&gt; is a &lt;em&gt;no-brainer&lt;/em&gt; it will be a valuable tool for you and your team and save you
+a lot of time when you need to debug a live issue.&lt;/p&gt;
+&lt;h2&gt;Final words&lt;/h2&gt;
+&lt;p&gt;Before you even think of optimizing anything, you need to measure, there is no point in blindly going through the
+code and, for example, indexing fields in your models if you don't know the impact of that, if any at all. The tools
+mentioned here are not a definitive guide to profiling &lt;em&gt;django&lt;/em&gt; applications but they provide a nice starting point
+to begging playing with them and choosing which ones work for you and which ones doesn't so you can improve your
+tool belt, your stack and the quality of the products you're building.&lt;/p&gt;
+&lt;p&gt;Monitoring and measuring shouldn't be an optional thing, it should be there if not since day one, at least added within
+the first months of life of your project, that's the only way you get to see inside your application, detect bottlenecks
+and potential bugs, debug them, measure their impact, prioritize them and be sure that by rolling out the optimizations
+you will have an improvement of ~X percent in your performance.&lt;/p&gt;</content><category term="Blog"></category><category term="Python"></category><category term="django"></category><category term="scaling"></category></entry><entry><title>Making django scale Pt.1</title><link href="http://iffm.me/making-django-scale-pt1.html" rel="alternate"></link><published>2017-09-24T00:00:00+04:00</published><updated>2017-09-24T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-09-24:/making-django-scale-pt1.html</id><summary type="html">&lt;p&gt;I gave a talk on PyConPL this year about scaling django, obviously on a 35min talk you don't have enough
+time to outline all the strategies and go deeper, so I thought it might be a cool idea to write a series
+of blog posts  about this topic, not only …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I gave a talk on PyConPL this year about scaling django, obviously on a 35min talk you don't have enough
+time to outline all the strategies and go deeper, so I thought it might be a cool idea to write a series
+of blog posts  about this topic, not only to help someone who needs to optimize his django app, but also
+to help myself have it for future reference.&lt;/p&gt;
+&lt;p&gt;There are a lot of django apps out there, in most cases the default setup and basic deployment strategy
+would be fine, and your application will perform OK, but in some cases you will need to make it scale
+to serve thousands or millions of requests per day. There's no recipe for optimization or scalability,
+but there are a lot of technology or stack agnostic strategies you can use to make your systems scale
+well, here I'll show how to implement them with django.&lt;/p&gt;
+&lt;h2&gt;Basic concepts&lt;/h2&gt;
+&lt;p&gt;First things first, we need to have clear and solid concepts in mind, we use these words on a daily basis
+if we're Software Engineers but when we need to say what they mean we sometimes struggle, so, I'll write
+them down here for future reference.&lt;/p&gt;
+&lt;h3&gt;Scalability&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Scalability is the capability of a system or process to handle a growing amount of work or its potential
+to be enlarged to accommodate it
+- Wikipedia&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;What this means is the amount of work processed by a system must grow in proportion to how much it is enlarged,
+for example, if I have a cashier at a bank, and that cashier is able to serve 10 people per minute, if I add one
+more cashier to my system, it should be able to serve rightly 20 people per minute depending on the training of
+the other cashier and some other conditions. Luckily, servers are more homogenize than people's abilities, 
+for servers or applications, if I have a service that handles 1000 requests per minute, if I add another 
+instance of the same service I should be able to handle 2000 requests per minute.&lt;/p&gt;
+&lt;h3&gt;Performance&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Computer performance&lt;/em&gt; is the amount of work accomplished by a computer system.
+- Wikipedia&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You usually want to measure performance by some metric, for example:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Response time:&lt;/em&gt; which you want to minimize&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Throughput:&lt;/em&gt; throughput is the rate of processing work, this one you want to maximize&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Resource utilization:&lt;/em&gt; which you want to minimize, you want to accomplish more with less&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Availability:&lt;/em&gt; you want to maximize your uptime&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The performance metrics are relative to the type of system you're building, for web applications
+you usually go for low response time and high throughput.&lt;/p&gt;
+&lt;h3&gt;Pareto principle&lt;/h3&gt;
+&lt;p&gt;This isn't actually a concept, but it is incredible how things always turn out like this. The Pareto
+principle states what follows:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For many events, roughly 80% of the effects come from 20% of the causes&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;For example, 80% of the work will be done in 20% of the time, the other 80% will be spent on small issues
+or small tangential work not directly related to the main objective. 80% of the bugs is caused by 20% of the
+code and, in this case, 80% of the performance impact is caused by 20% of the issues.&lt;/p&gt;
+&lt;p&gt;This is interesting because it makes you see that not all issues affect your system's performance the same way,
+there are some issues that are more serious and not necessarily the same issue on a different project will impact
+it the same way. Find that 20% and gain an 80% on performance, sounds easy, right?, but it isn't.&lt;/p&gt;
+&lt;h3&gt;Takeaways&lt;/h3&gt;
+&lt;p&gt;As a Software Engineer, sometimes I become so obsessed about performance I sometimes write things &lt;em&gt;already optimized&lt;/em&gt;,
+this is a big fallacy and a huge mistake, premature optimization is bad because you don't know if what you're doing
+is actually going to have a significative impact on your system's performance, blind optimization is worse, because
+you might have some ways to get data or an insight on how your program is running but you're just too naive or lazy
+to go get it.&lt;/p&gt;
+&lt;p&gt;In the following posts, I'll recommend some tools to measure and later on some strategies to make your django site scale,
+so, what you'll see in part 2 will be a set of tools to monitor your app's health.&lt;/p&gt;
+&lt;p&gt;Don't forget to subscribe! I rarely send emails but when I do, It's interesting, I promise.&lt;/p&gt;</content><category term="Blog"></category><category term="python"></category><category term="django"></category><category term="scaling"></category></entry><entry><title>Django: vistas basadas en clases</title><link href="http://iffm.me/django-vistas-basadas-en-clases.html" rel="alternate"></link><published>2015-07-25T00:00:00+04:00</published><updated>2015-07-25T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2015-07-25:/django-vistas-basadas-en-clases.html</id><summary type="html">&lt;p&gt;Tenía pendiente escribir sobre esto desde hace tiempo, pero entre una
+cosa y otra siempre terminaba escribiendo sobre otra cosa y las vistas
+basadas en clases quedaban olvidadas.&lt;/p&gt;
+&lt;p&gt;Las vistas basadas en clases nos permiten simplificar muchísimo el
+código, reduciendo, para muchos casos, la escritura de vistas a
+simplemente heredar …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Tenía pendiente escribir sobre esto desde hace tiempo, pero entre una
+cosa y otra siempre terminaba escribiendo sobre otra cosa y las vistas
+basadas en clases quedaban olvidadas.&lt;/p&gt;
+&lt;p&gt;Las vistas basadas en clases nos permiten simplificar muchísimo el
+código, reduciendo, para muchos casos, la escritura de vistas a
+simplemente heredar de usas vistas genéricas y agregar algunos
+&lt;a href="http://iffm.me/cosas-que-he-aprendido-parte-ii.html"&gt;mixins&lt;/a&gt;{.reference
+.external}, son un recurso bastante potente y que deberíamos tomar en
+cuenta en los proyectos que estemos o vayamos a desarrollar y que además
+está allí desde django 1.3.&lt;/p&gt;
+&lt;p&gt;Cuando estaba empezando a escribir la introducción, me dió por revisar
+el blog de &lt;a href="http://alvarohurtado.es"&gt;Álvaro Hurtado&lt;/a&gt;{.reference
+.external}, un compañero de trabajo en dubizzle, conseguí varios
+artículos que voy a compartir porque están bastante sencillos y fáciles
+de entender y, además, en perfecto español, es raro que la gente decida
+hacer un blog en español y mantenerse fiel sin escribir en inglés.&lt;/p&gt;
+&lt;p&gt;Acá los links:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="http://www.alvarohurtado.es/django-vistas-basadas-en-clases-i-introduccion/"&gt;Introducción&lt;/a&gt;{.reference
+    .external}: explicación breve acerca de las Vistas Basadas en Clases&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.alvarohurtado.es/django-vistas-basadas-en-clases-ii-detail-view/"&gt;DetailView&lt;/a&gt;{.reference
+    .external}: ejemplos sobre la vista de detalle&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.alvarohurtado.es/django-vistas-basadas-en-clases-iii-list-view/"&gt;ListView&lt;/a&gt;{.reference
+    .external}: ejemplos sobre la vista de lista&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Espero que sean de su agrado.&lt;/p&gt;</content><category term="Español"></category><category term="django"></category><category term="python"></category><category term="vistas basadas en clases"></category><category term="cbv"></category></entry><entry><title>Heroku + Django sin morir en el intento (Parte 2)</title><link href="http://iffm.me/heroku-django-sin-morir-en-el-intento-parte-2.html" rel="alternate"></link><published>2014-09-20T00:00:00+04:00</published><updated>2014-09-20T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-09-20:/heroku-django-sin-morir-en-el-intento-parte-2.html</id><summary type="html">&lt;p&gt;En el artículo anterior, hablamos de IaaS y de PaaS y de cómo se
+diferencian concluimos que &lt;em&gt;Heroku&lt;/em&gt; es PaaS, además, expusimos algunas
+de las limitaciones que nos impone la plataforma para desplegar nuestras
+aplicaciones y cómo trabajar alrededor de ellas para hacer funcionar
+todo.&lt;/p&gt;
+&lt;p&gt;Muchas veces, quizás por inocentes …&lt;/p&gt;</summary><content type="html">&lt;p&gt;En el artículo anterior, hablamos de IaaS y de PaaS y de cómo se
+diferencian concluimos que &lt;em&gt;Heroku&lt;/em&gt; es PaaS, además, expusimos algunas
+de las limitaciones que nos impone la plataforma para desplegar nuestras
+aplicaciones y cómo trabajar alrededor de ellas para hacer funcionar
+todo.&lt;/p&gt;
+&lt;p&gt;Muchas veces, quizás por inocentes o inexpertos, tendemos a hacer todo
+en la vista (y hablo de vistas de &lt;em&gt;django&lt;/em&gt;), por ejemplo, necesitamos
+enviar algo al servidor donde hosteamos las imágenes, simplemente
+hacemos ejecutamos ese request en la vista, necesitamos enviar un correo
+electrónico de confirmación, nada, lo enviamos en la vista, necesitamos
+procesar una imagen para reducir la calidad y que ocupe menos espacio en
+el servidor donde la vamos a hostear, dale... en la vista.&lt;/p&gt;
+&lt;p&gt;Bueno, exagero un poco, quizás no en la vista, si somos estrictos con
+nuestro código, escribiremos una función que suba la foto al servidor,
+otra que envíe el correo y otra que procese la imagen para reducir el
+tamaño y llamaremos todo desde la vista. Este enfoque sigue estando
+errado y, a continuación, voy a explicar por qué.&lt;/p&gt;
+&lt;p&gt;Todos venimos de hacer proyectos en la universidad, algunos más
+difíciles que otros, en algún proyecto, seguramente nos tocó realizar
+llamadas a alguna &lt;em&gt;API REST&lt;/em&gt;, o enviar algún archivo a un servidor
+remoto, en todos los casos, estoy seguro de que todos hicimos lo mismo,
+una función que se ejecuta cuando enviamos el formulario y hace todo en
+línea: llamadas remotas, envío de archivos, envío de correos, etc.&lt;/p&gt;
+&lt;p&gt;No es incorrecto, funciona, pero ¿cuánto tardó la página siguiente en
+cargar?, la pregunta más adecuada sería ¿cuánto tiempo tardó la función
+en redirigirme a la siguiente página?, calculemos unos 3 a 5 segundos
+por llamada remota y unos 2 a 3 segundos, total, alrededor de 15
+segundos en redirigir, a eso hay que sumarle el tiempo de carga de la
+página siguiente.&lt;/p&gt;
+&lt;p&gt;Particularmente, mi primer trabajo fue en el mundo de los ERP, es una
+historia totalmente distinta, si una persona manda a generar un reporte
+que tarda 4 horas en ejecutarse y para ello el programa se bloquea y no
+le permite hacer más nada, simplemente no tiene otra opción más que
+esperar las 4 horas sentado en su escritorio, ir a tomarse un café,
+bajar a fumar un cigarrillo hasta que esté listo.&lt;/p&gt;
+&lt;p&gt;Cuando programas para web, debes tomar en cuenta que debes ser gentil
+con el usuario y no hacerlo esperar, tu página debe responder rápido,
+sino, hay muchas otras páginas que hacen lo mismo y el usuario
+simplemente tiene que regresar a la pestaña del navegador donde está su
+búsqueda en google y seleccionar otro resultado. Una buena &lt;em&gt;rule of
+thumb&lt;/em&gt; a la hora de ejecutar operaciones pesadas, como todas las que
+incluyan llamadas remotas o procesamiento de imágenes, es realizarlas de
+manera asíncrona, para ello debemos valernos de &lt;em&gt;algo&lt;/em&gt; que nos permita
+retrasar la ejecución de una tarea.&lt;/p&gt;
+&lt;p&gt;Por un lado, necesitaremos algo que nos sirga para mantener una cola de
+tareas pendientes por ejecutar, por otro lado necesitamos algo que vaya
+leyendo esas tareas y ejecutándolas, la manera más simple de hacerlo en
+&lt;em&gt;Python&lt;/em&gt; es con una librería llamada &lt;em&gt;python-rq&lt;/em&gt; y usando &lt;em&gt;Redis&lt;/em&gt; como
+backend de tareas, es muy fácil de configurar y súper sencilla de usar
+para la mayoría de proyectos pequeños a medianos funcionará bastante
+bien. Para proyectos a mayor escala, quizás lo mejor sea utilizar
+&lt;em&gt;celery&lt;/em&gt; con &lt;em&gt;RabbitMQ&lt;/em&gt; como broker de mensajes. Hay muchas herramientas
+que podemos usar como backend de mensajes: Redis, RabbitMQ, ZeroMQ,
+Kafka, HornetQ... es cuestión de evaluarlas y ver cuál se ajusta más al
+proyecto en cuestión en el cual estamos trabajando.&lt;/p&gt;
+&lt;p&gt;Como todo en &lt;em&gt;django&lt;/em&gt;, tenemos un paquete llamado &lt;em&gt;django-rq&lt;/em&gt; que nos
+ayuda a organizar el código de una mejor manera y nos hace la vida más
+fácil, empecemos por descargar las librerías y paquetes necesarias:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    sudo aptitude install redis-server&lt;/span&gt;
+&lt;span class="err"&gt;    pip install django-rq django&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Si estamos en &lt;em&gt;Heroku&lt;/em&gt;, no es necesario instalar &lt;em&gt;redis&lt;/em&gt;, simplemente
+agregar los nuevos paquetes Python al &lt;em&gt;requirements.txt&lt;/em&gt; para que sean
+instalados al hacer &lt;em&gt;push&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Para poder agregar trabajos a las colas, debemos declararlas para que
+&lt;em&gt;django-rq&lt;/em&gt; las reconozca, simplemente agregamos una nueva variable en
+nuestro &lt;em&gt;settings.py&lt;/em&gt;. A continuación un ejemplo de configuración para
+&lt;em&gt;django_rq&lt;/em&gt;, la cola &lt;em&gt;default&lt;/em&gt; es un ejemplo para desarrollo, la cola
+&lt;em&gt;high&lt;/em&gt; es un ejemplo de configuración para Heroku si estamos usando el
+&lt;em&gt;add on&lt;/em&gt; de &lt;em&gt;Redis To Go&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="n"&gt;RQ_QUEUES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;default&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;HOST&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;PORT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;6379&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;DB&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="p"&gt;},&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;high&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;HOST&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getenv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;REDISTOGO_URL&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;PORT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;6379&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;DB&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ahora, las funciones sumamente pesadas pueden ser encoladas en
+cualquiera de las dos colas que hemos declarado en &lt;em&gt;settings.py&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;funcion_sumamente_pesada&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;argumento&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;pass&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Lo que haremos en nuestra vista es, en vez de llamar a la función
+directamente, le diremos a &lt;em&gt;django_rq&lt;/em&gt; que agregue el trabajo en la
+cola que consideremos conveniente.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;django_rq&lt;/span&gt;
+    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;helpers&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;funcion_sumamente_pesada&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;view&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="c1"&gt;#...&lt;/span&gt;
+        &lt;span class="n"&gt;queue&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;django_rq&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_queue&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;high&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# si no indicamos una cola, retorna la cola &amp;#39;default&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;queue&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;enqueue&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;funcion_sumamente_pesada&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;argumento&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;También decorar las funciones que queremos encolar, esto hace que el
+código se vea un poco más limpio, pero el efecto es el mismo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django_rq&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;job&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@job&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;high&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;funcion_sumamente_pesada&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;argumentos&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;pass&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Y luego, en la vista:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;view&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="c1"&gt;#...&lt;/span&gt;
+        &lt;span class="n"&gt;funcion_sumamente_pesada&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;argumento&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Lo que rq hace es tomar el &lt;em&gt;objeto función&lt;/em&gt;, serializarlo usando
+&lt;em&gt;pickle&lt;/em&gt; y guardar ese objeto serializado en redis. Ahora que tenemos el
+trabajo encolado, necesitamos &lt;em&gt;algo&lt;/em&gt; para leerlo de redis,
+des-serializarlo y ejecutarlo.&lt;/p&gt;
+&lt;p&gt;RQ, viene con un worker que podemos ejecutar en un &lt;em&gt;dyno&lt;/em&gt; aparte
+(recuerden agregar la entrada correspondiente en el &lt;em&gt;Procfile&lt;/em&gt; de
+Heroku), simplemente corremos el siguiente comando en el terminal para
+probar localmente:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    python manage.py rqworker high default&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;En la consola, podemos ver cómo los trabajos se van ejecutando, incluso,
+si apagamos el worker y mandamos a encolar algunos trabajos, al ejecutar
+de nuevo el worker de rq podemos ver como los va leyendo de redis y los
+ejecuta.&lt;/p&gt;
+&lt;h2&gt;Consideraciones con objetos persistentes en base de datos&lt;/h2&gt;
+&lt;p&gt;Bueno, ya sabemos que rq hace un &lt;em&gt;pickle&lt;/em&gt; de la función y sus argumentos
+y envía esa información a &lt;em&gt;Redis&lt;/em&gt; para luego ser leído por el worker,
+hacer el &lt;em&gt;unpickle&lt;/em&gt; y ejecutar el trabajo.&lt;/p&gt;
+&lt;p&gt;A menudo, necesitamos hacer &lt;em&gt;delay&lt;/em&gt; de un trabajo que actúa sobre
+objetos que persisten en la base de datos, nuestra primera tentación es
+simplemente pasar los objetos como argumentos al trabajo.&lt;/p&gt;
+&lt;p&gt;Ahora, veamos, analicemos qué ocurrirá. Al encolar el trabajo tanto la
+función como sus argumentos serán serializados, estos argumentos son
+objetos que pueden ser modificados. Luego de encolar, supongamos que
+modifico uno de los atributos del objeto y lo guardo en la base de
+datos, luego, al ejecutarse mi trabajo la función también modifica otro
+atributo y guarda el objeto en la base de datos.&lt;/p&gt;
+&lt;p&gt;Lo que va a ocurrir es que, como la referencia que fue serializada al
+momento de encolar está desactualizada, la modificación que se hizo
+luego de encolar no estará reflejada en el objeto luego de ejecutar el
+trabajo.&lt;/p&gt;
+&lt;h3&gt;La solución&lt;/h3&gt;
+&lt;p&gt;Simplemente no pasar objetos persistentes como argumentos, es mucho
+mejor simplemente dar los &lt;em&gt;id&lt;/em&gt; de base de dato al trabajo y que dentro
+de la función se ejecute un query para traerlos, de esta manera evitamos
+conflictos y dolores de cabeza como el antes descrito.&lt;/p&gt;
+&lt;p&gt;Espero que esto sea de ayuda, es buena práctica trabajar con colas para
+trabajos pesados en cualquier proyecto web, no sólo si estamos corriendo
+nuestra app en Heroku.&lt;/p&gt;</content><category term="Español"></category><category term="heroku"></category><category term="PAAS"></category><category term="python"></category><category term="django"></category></entry><entry><title>Heroku + Django sin morir en el intento (Parte 1)</title><link href="http://iffm.me/heroku-django-sin-morir-en-el-intento-parte-1.html" rel="alternate"></link><published>2013-09-23T00:00:00+04:00</published><updated>2013-09-23T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2013-09-23:/heroku-django-sin-morir-en-el-intento-parte-1.html</id><summary type="html">&lt;p&gt;Antes, para tener tu sistema web en línea, debías contratar un servicio
+de Servidor Dedicado o mínimo un VPS y administrarlo, si tenías más
+presupuesto, comprabas un servidor y lo acondicionabas o alquilabas un
+rack en algún centro de datos para tenerlo colocado allí.&lt;/p&gt;
+&lt;p&gt;Ahora, con el boom de &lt;em&gt;Infraestructura …&lt;/em&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;Antes, para tener tu sistema web en línea, debías contratar un servicio
+de Servidor Dedicado o mínimo un VPS y administrarlo, si tenías más
+presupuesto, comprabas un servidor y lo acondicionabas o alquilabas un
+rack en algún centro de datos para tenerlo colocado allí.&lt;/p&gt;
+&lt;p&gt;Ahora, con el boom de &lt;em&gt;Infraestructura como Servicio&lt;/em&gt; (IaaS) y
+&lt;em&gt;Plataforma como Servicio&lt;/em&gt; (PaaS), ya no es necesario tener servidores
+propios y, dependiendo del servicio, es decir, si es &lt;em&gt;IaaS&lt;/em&gt; o &lt;em&gt;PaaS&lt;/em&gt;,
+tampoco debes tener conocimientos de administración de servidores.&lt;/p&gt;
+&lt;h2&gt;IAAS vs PAAS&lt;/h2&gt;
+&lt;p&gt;En general, un proveedor de &lt;em&gt;IaaS&lt;/em&gt; te da el hardware para que tú lo
+configures y ensambles el ambiente en el que va a correr tu aplicación,
+esto es instalar todos los paquetes de software necesarios par que el
+proyecto corra: servidor de base de datos, servidor web, intérpretes,
+bibliotecas, storages adicionales y un largo &lt;em&gt;end of thinking capacity&lt;/em&gt;
+(etc). La ventaja de un proveedor de este tipo es que hacen que escalar
+tu infraestructura de manera horizontal es realmente fácil y no tienes
+que construir un centro de datos para albergar tu granja de servidores
+ni mucho menos configurar todo lo que eso implica, un ejemplo de
+servicios de este tipo es el &lt;em&gt;Elastic Compute Cloud&lt;/em&gt; de &lt;em&gt;Amazon Web
+Services&lt;/em&gt; (AWS EC-2).&lt;/p&gt;
+&lt;p&gt;Por otra parte, un proveedor de &lt;em&gt;PaaS&lt;/em&gt;, hace exactamente lo mismo, pero
+con un nivel más de abstracción, te proveen toda la infraestructura y el
+ambiente para que simplemente deposites tu código allí y pongas tu
+aplicación a correr con configuraciones mínimas y sin ser un experto en
+administración y configuración de servidores, de hecho, es transparente
+para ti toda la nube que hay por detrás.
+&lt;a class="reference external" href="http://www.heroku.com/"&gt;Heroku&lt;/a&gt; es un proveedor
+de este tipo de servicio que además cumple con el &lt;a class="reference external" href="http://12factor.net/"&gt;12 factor
+app&lt;/a&gt; por lo que además hace
+que sea súper fácil ajustar tu código para correr allí y que tome los
+parámetros de configuración que define la plataforma sin mucho problema.&lt;/p&gt;
+&lt;h2&gt;Ahora, Heroku&lt;/h2&gt;
+&lt;p&gt;El modelo de trabajo en &lt;em&gt;Heroku&lt;/em&gt; se basa en add-ons, que básicamente
+integran tu sistema con un DBMS, un sistema de alertas en caso de fallos
+o de monitoreo para ver el rendimiento, detectar cuellos de botella y
+tomar correctivos al respecto, todo esto con unos cuantos clicks (y una
+tarjeta de crédito), sin configurar absolutamente nada a nivel de
+servidores sino todo a nivel de aplicación.&lt;/p&gt;
+&lt;p&gt;Todo esto suena como un sueño hecho realidad y, en muchos casos, lo es,
+pero nada es perfecto y &lt;em&gt;Heroku&lt;/em&gt;, aunque facilita muchísimas cosas a
+nivel de despliegue, te complica muchas otras a nivel de desarrollo,
+esto puede ser bueno, te obliga a optimizar y a aprender, pero a veces,
+el esquema de plugins y addons puede volverse insostenible, sobre todo
+cuando debes pagar por varios y el presupuesto es limitado, además,
+desde el punto de vista de aplicación, &lt;em&gt;Heroku&lt;/em&gt; impone varias
+limitaciones acerca de cómo debe comportarse, el tiempo en que debe
+responder, el tiempo que debe durar el deploy y cuánto debe pesar.&lt;/p&gt;
+&lt;h3&gt;Algunas limitaciones&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;El app debe iniciar en 60 segundos o menos:&lt;/em&gt; si este tiempo se
+    excede, el deploy falla.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Heroku duerme dynos cada cierto tiempo:&lt;/em&gt; cada cierto tiempo Heroku
+    reinicia los dynos, esto es un proceso totalmente aleatorio, por eso
+    se recomienda tener al menos 2, si uno es reiniciado el otro sigue
+    aceptando requests. Cuando esto ocurre, el proceso recibe un
+    &lt;em&gt;SIGTERM&lt;/em&gt;, al recibir la señal, se tienen 10 segundos de gracia para
+    terminar lo que se estaba haciendo antes de recibir un &lt;em&gt;SIGKILL&lt;/em&gt;
+    y reiniciar.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;El app no puede pesar más de 300MB:&lt;/em&gt; de lo contrario, el deploy
+    falla, es recomendable usar el .slugignore para excluir archivos que
+    sólo se usan para desarrollo y que no hacen falta en producción, lo
+    mismo con las librerías para testing, no deberían incluirse en el
+    requirements.txt que va a producción.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;El app debe responder a los requests en 30 segundos:&lt;/em&gt; de lo
+    contrario se levanta un error H12 (Worker Timeout) y la respectiva
+    pantalla de &lt;em&gt;Application Error&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Heroku es stateless:&lt;/em&gt; esto quiere decir que no guarda estado, para
+    conservar estado del app es necesario valerse de otras herramientas,
+    como una base de datos, memcached, y servicios de
+    almacenamiento externos.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Algunos de los golpes&lt;/h3&gt;
+&lt;p&gt;Con esas limitaciones se puede vivir, pero hay que darle la vuelta para
+no desesperarse, hay algunas cosas que capaz son obvias, pero que uno no
+las ve sino hasta que empieza a trabajar y se consigue con un problema,
+basta con volver sobre las limitaciones antes expuestas y encontraremos
+una respuesta o al menos una posible razón.&lt;/p&gt;
+&lt;p&gt;Ahora voy a empezar a listar los problemas que he tenido en &lt;em&gt;RingTu&lt;/em&gt; y
+cómo los solucioné. Recuerden que estoy trabajando con &lt;strong&gt;Django&lt;/strong&gt;, por
+lo que todo lo he resuelto utilizando herramientas para este framework.&lt;/p&gt;
+&lt;h4&gt;No es bueno para servir assets&lt;/h4&gt;
+&lt;p&gt;Cuando digo assets, me refiero a los archivos estáticos que dan forma a
+la interface web: css, js, imágenes, gradientes, ¿gifs animados?,
+tipografías y demás cosas bonitas que hacen los diseñadores por
+nosotros.&lt;/p&gt;
+&lt;p&gt;Por defecto, nuestro dyno sirve todos estos archivos, además de servir
+nuestra aplicación, aceptando peticiones de nuestros clientes,
+procesándolas y decidiendo qué es lo que va a enviarse de vuelta.&lt;/p&gt;
+&lt;p&gt;Servir los archivos estáticos o &lt;em&gt;static assets&lt;/em&gt; resulta en requests
+adicionales que van a mantener ocupado nuestro dyno y esto nos cuesta
+tiempo y, si ya estamos pagando, dinero. Esos requests adicionales se
+podrían invertir en responder y procesar solicitudes nuevas y no en
+entregar archivos estáticos, además, la &lt;strong&gt;buena práctica&lt;/strong&gt; con &lt;em&gt;django&lt;/em&gt;
+es delegar la entrega de contenido estático a un &lt;strong&gt;servidor web&lt;/strong&gt; como
+&lt;em&gt;Apache&lt;/em&gt; o &lt;em&gt;NGinx&lt;/em&gt; y así evitar procesamiento adicional a nivel de
+&lt;em&gt;views&lt;/em&gt; (los &lt;em&gt;controladores&lt;/em&gt; de &lt;em&gt;django&lt;/em&gt;).&lt;/p&gt;
+&lt;p&gt;La solución acá es, simplemente, almacenar los archivos estáticos &lt;em&gt;en
+otro lado&lt;/em&gt;, puede ser incluso un &lt;em&gt;VPS&lt;/em&gt; con &lt;em&gt;Apache&lt;/em&gt; o &lt;em&gt;NGinx&lt;/em&gt; instalado,
+pero hay varios servicios que pueden hacerlo mejor y optimizar la
+entrega de contenidos como &lt;em&gt;Cloudfile&lt;/em&gt; de &lt;strong&gt;Rackspace&lt;/strong&gt; y, el que opté
+por usar, &lt;em&gt;Simple Storage Service&lt;/em&gt; de &lt;strong&gt;Amazon&lt;/strong&gt;. Si ya tus assets no
+cambian mucho, lo mejor es servirlos a través de una &lt;em&gt;CDN&lt;/em&gt; (Content
+Delivery Nerwork o Red de Entrega de Contenidos), como &lt;em&gt;Cloudfront&lt;/em&gt;,
+también de &lt;strong&gt;Amazon&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Ahora, &lt;strong&gt;¿Cómo se resuelve esto en django?&lt;/strong&gt;, bueno, hay varias
+librerías que te permiten sincronizar los archivos estáticos con un
+servicio de almacenamiento remoto, la que decidí usar fue
+&lt;a href="https://github.com/jamstooks/django-s3-folder-storage"&gt;django-s3-folder-storage&lt;/a&gt;{.reference
+.external}, una pequeña librería que se vale de otra más compleja (y
+completa, soporta múltiples servicios) llamada
+&lt;a href="https://github.com/iserko/django-storages"&gt;django-storages&lt;/a&gt;{.reference
+.external} para organizar tu contenido en directorios dentro de un
+&lt;em&gt;bucket&lt;/em&gt; de &lt;em&gt;S3&lt;/em&gt;, es necesario agregar parámetros de configuración en
+nuestro &lt;em&gt;settings.py&lt;/em&gt;, sería algo como esto:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="n"&gt;AWS_QUERYSTRING_AUTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;False&lt;/span&gt;
+    &lt;span class="n"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getenv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;AWS_ACCESS_KEY_ID&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getenv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;AWS_SECRET_ACCESS_KEY&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getenv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;AWS_STORAGE_BUCKET_NAME&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Expires&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="n"&gt;years&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;future&lt;/span&gt; &lt;span class="k"&gt;at&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="n"&gt;PM&lt;/span&gt; &lt;span class="n"&gt;GMT&lt;/span&gt;
+    &lt;span class="n"&gt;tenyrs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;date&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;today&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;timedelta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;days&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;365&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;AWS_HEADERS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;Expires&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;tenyrs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;strftime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;%a, %d %b %Y 20:00:00 GMT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="err"&gt;}&lt;/span&gt;
+
+    &lt;span class="n"&gt;STATICFILES_STORAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;s3_folder_storage.s3.StaticStorage&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;STATIC_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://%s.s3.amazonaws.com/static/&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt;
+    &lt;span class="n"&gt;STATIC_S3_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;static/&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;El parámetro de configuración AWS_QUERYSTRING_AUTH colocado en &lt;em&gt;False&lt;/em&gt;
+es para que &lt;em&gt;S3&lt;/em&gt; no nos genere urls firmadas para los assets sino que
+nos permita acceso público permanente. Si lo dejamos en &lt;em&gt;True&lt;/em&gt;, su valor
+por defecto, nos va a generar un url válido por 5min y, como son
+archivos estáticos, esta url no se va a refrescar nunca, así que nuestra
+página se verá &lt;strong&gt;bien&lt;/strong&gt;, con todos sus estilos y efectos sólo mientras
+duren las urls vigentes.&lt;/p&gt;
+&lt;p&gt;Los demás son simplemente parámetros de configuración de S3, deben
+recordar añadir las variables de configuración en &lt;em&gt;Heroku&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    heroku config:add AWS_ACCESS_KEY_ID=EL_KEY_ID_DE_AWS_S3&lt;/span&gt;
+&lt;span class="err"&gt;    heroku config:add AWS_SECRET_ACCESS_KEY=EL_SECRET_KEY_ID_DE_AWS_S3&lt;/span&gt;
+&lt;span class="err"&gt;    heroku config:add AWS_STORAGE_BUCKET_NAME=EL_NOMBRE_DEL_BUCKET&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Recuerden también colocar &lt;em&gt;s3_folder_storage&lt;/em&gt; entre los
+&lt;em&gt;INSTALLED_APPS&lt;/em&gt; del proyecto y activar la opción de &lt;em&gt;Heroku&lt;/em&gt; para que
+reconozca las variables de configuración en tiempo de compilación, de
+otra manera, el deploy fallará.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    heroku labs:enable user-env-compile&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Con esto, ya deberíamos poder sincronizar los &lt;em&gt;assets&lt;/em&gt; a &lt;em&gt;S3&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    heroku run python manage.py collectstatic&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Dependiendo de qué tantos archivos estáticos tengamos, va a tardar más o
+menos, va a enviar todo lo que esté en nuestro &lt;em&gt;STATIC_ROOT&lt;/em&gt; al &lt;em&gt;bucket
+S3&lt;/em&gt; que configuramos anteriormente.&lt;/p&gt;
+&lt;h4&gt;No puedes utilizar el sistema de archivos&lt;/h4&gt;
+&lt;p&gt;Había dicho al principio que &lt;em&gt;Heroku&lt;/em&gt; es &lt;em&gt;stateless&lt;/em&gt;, es decir, no
+conserva el estado de tu aplicación. Entonces ellos implementaron algo
+llamado &lt;em&gt;Ephemeral Filesystem&lt;/em&gt;, es decir, un sistema de archivos
+&lt;em&gt;efímero&lt;/em&gt;, que se reinicia cada vez que los dynos son reiniciados por
+cualquier razón, sea un deploy o sea porque heroku los reinició.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;¿Qué significa esto?&lt;/strong&gt;, pues que &lt;strong&gt;no puedes escribir a disco&lt;/strong&gt; como
+lo harías en cualquier servidor &lt;em&gt;normal&lt;/em&gt;, si lo haces, debes saber que
+cuando tu app sea reiniciada, perderás todos los archivos, tiene un poco
+de sentido, cuando usas más de un dyno y escribes a disco, cuando el
+usuario quiera recuperar lo que subió, no tenemos manera de saber cuál
+dyno atendió aquella solicitud y no sabremos dónde buscar, así que, de
+una manera u otra, lo mejor es almacenar los archivos de nuestros
+usuarios en un lugar seguro y de donde podamos recuperarlos luego sin
+problemas.&lt;/p&gt;
+&lt;p&gt;Nuevamente podemos utilizar &lt;em&gt;AWS-S3&lt;/em&gt; para ello, con algunas
+configuraciones adicionales, podemos hacer que por defecto nuestros
+&lt;em&gt;media files&lt;/em&gt;, para usar la terminología de &lt;em&gt;django&lt;/em&gt;, sean almacenados
+en nuestro &lt;em&gt;bucket&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Es necesario agregar las siguientes líneas a nuestro &lt;em&gt;settings.py&lt;/em&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    MEDIA_ROOT = &amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class="err"&gt;    DEFAULT_FILE_STORAGE = &amp;#39;s3_folder_storage.s3.DefaultStorage&amp;#39;&lt;/span&gt;
+&lt;span class="err"&gt;    DEFAULT_S3_PATH = &amp;#39;media/&amp;#39;&lt;/span&gt;
+&lt;span class="err"&gt;    MEDIA_URL = &amp;#39;http://%s.s3.amazonaws.com/media/&amp;#39; % AWS_STORAGE_BUCKET_NAME&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Con esto, todo lo que suban nuestros usuarios irá a la carpeta &lt;em&gt;media/&lt;/em&gt;
+de nuestro bucket.&lt;/p&gt;
+&lt;p&gt;Hay que tener en cuenta que todo se está subiendo al mismo &lt;em&gt;bucket&lt;/em&gt; y la
+política que se definió en principio para poder almacenar los archivos
+estáticos da acceso público a todo el contenido por defecto, por lo que
+hay que tomar previsiones &lt;em&gt;de alguna manera&lt;/em&gt; para que no todo el mundo
+pueda ver los archivos de nuestros usuarios de manera directa.&lt;/p&gt;
+&lt;p&gt;Acá expondré la estrategia que uso:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Sobre-escritura del método save():&lt;/strong&gt; en los modelos que tengan un
+    &lt;em&gt;ImageField&lt;/em&gt; o un &lt;em&gt;FileField&lt;/em&gt;, la idea de esto es sobreescribir la
+    política de control de acceso particular para el archivo una ves que
+    fue subido. Para esto utilizaremos una librería llamada
+    &lt;a class="reference external" href="https://github.com/boto/boto"&gt;boto&lt;/a&gt; que es un
+    wrapper en Python para el API de &lt;em&gt;AWS&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
+    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;
+    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.auth.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;
+
+    &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Video&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ForeignKey&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;video&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FileField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;upload_to&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;user_videos/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;boto.s3&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;connection&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;
+            &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;VoiceMessage&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+            &lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;connection&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;S3Connection&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;bucket&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_bucket&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Key&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bucket&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;%s%s&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DEFAULTS3_PATH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;video&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_acl&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;private&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Con esto tenemos el archivo privado en &lt;em&gt;S3&lt;/em&gt;, ahora, necesitamos una
+manera de darle acceso al usuario que es propietario del archivo.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Escribiendo una vista para acceder al archivo privado:&lt;/strong&gt; la mejor
+    manera que conseguí para darle acceso al usuario a su archivo fue
+    escribiendo una vista de &lt;em&gt;django&lt;/em&gt; que revisara que el usuario que
+    origina el request es realmente el propietario del objeto y
+    redirigirlo a la ubicación de su archivo en &lt;em&gt;S3&lt;/em&gt;. Escribiremos un
+    pequeño helper, además, para encapsular la generación del URL, como
+    es un archivo privado, el url debe ir firmado y sólo será válido por
+    el tiempo que nosotros indiquemos, en este caso, lo haremos por
+    una hora.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;En el helper colocamos lo siguiente:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;
+
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_s3_redirect_url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filepath&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ttl&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;60&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;boto.s3.connection&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;S3Connection&lt;/span&gt;
+
+        &lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;S3Connection&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;is_secure&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;generate_url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ttl&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;GET&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bucket&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;filepath&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;force_http&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;y en la vista:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.http&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;HttpResponseRedirect&lt;/span&gt;
+    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.auth.decorators&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;login_required&lt;/span&gt;
+    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Video&lt;/span&gt;
+
+    &lt;span class="nd"&gt;@login_required&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_user_video&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;video_id&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;GET&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.helpers&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;get_s3_redirect_url&lt;/span&gt;
+            &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;
+            &lt;span class="n"&gt;video&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Video&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;video_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;user&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;video&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="n"&gt;filepath&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;%s%s&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;settinga&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DEFAULT_S3_PATH&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;video&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;video&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+                &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;get_s3_redirect_url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filepath&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ttl&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;3600&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+                &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponseRedirect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;status&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;403&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Con esto generamos una url firmada y válida por 3600 segundos (una hora)
+si el usuario que origina la solicitud es el propietario del objeto que
+contiene el archivo (video) que se desea obtener, caso contrario
+retornamos 403 ya que la persona no tiene permisos para ver ese
+contenido.&lt;/p&gt;</content><category term="Español"></category><category term="heroku"></category><category term="django"></category><category term="python"></category><category term="PAAS"></category></entry></feed>

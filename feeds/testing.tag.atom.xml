@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - testing</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://127.0.0.1:8000/feeds/testing.tag.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2012-07-19T00:00:00+04:00</updated><entry><title>Testing: la etapa olvidada.</title><link href="http://iffm.me/testing-la-etapa-olvidada.html" rel="alternate"></link><published>2012-07-19T00:00:00+04:00</published><updated>2012-07-19T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2012-07-19:/testing-la-etapa-olvidada.html</id><summary type="html">&lt;p&gt;by &lt;a href="author/israel-fermin-montilla.html"&gt;Israel Fermín Montilla&lt;/a&gt; on Thu
+19 Jul, 2012&lt;/p&gt;
+&lt;p&gt;En esta oportunidad, vengo a hablarles de una etapa del desarrollo que
+suele ser olvidada y marginada por la mayoría de los desarrolladores que
+conozco: las pruebas. En &lt;a href="http://zava.com.ve"&gt;Zava&lt;/a&gt;,
+la compañía en la que trabajo actualmente, llevamos un
+tiempo hablando acerca …&lt;/p&gt;</summary><content type="html">&lt;p&gt;by &lt;a href="author/israel-fermin-montilla.html"&gt;Israel Fermín Montilla&lt;/a&gt; on Thu
+19 Jul, 2012&lt;/p&gt;
+&lt;p&gt;En esta oportunidad, vengo a hablarles de una etapa del desarrollo que
+suele ser olvidada y marginada por la mayoría de los desarrolladores que
+conozco: las pruebas. En &lt;a href="http://zava.com.ve"&gt;Zava&lt;/a&gt;,
+la compañía en la que trabajo actualmente, llevamos un
+tiempo hablando acerca de
+usar &lt;a href="http://es.wikipedia.org/wiki/Desarrollo_guiado_por_pruebas"&gt;TDD&lt;/a&gt;
+(Test Driven Development o Desarrollo Guiado por Pruebas)
+como metodología de desarrollo, en esta metodología, las pruebas
+unitarias juegan un papel principal, incluso hasta protagónico, pues son
+el motor del desarrollo del proyecto. Aún cuando no es oficial el hecho
+de que desarrollaremos utilizando esta metodología, personalmente me
+tomé en serio el hecho de probar suerte ejecutando mis tareas de
+programación guiadas por pruebas. En general, el flujo de trabajo en TDD
+es el siguiente:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Elegir un requerimiento: &lt;/strong&gt;dependiendo de la metodología de
+    gestión de proyecto, será distinto este proceso, en nuestro caso,
+    implementamos una versión modificada de SCRUM, por lo que lo primero
+    que se hace es tomar uno de los requerimientos seleccionados para el
+    sprint que está en desarrollo.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Escribir las pruebas unitarias: &lt;/strong&gt;normalmente, el requerimiento
+    tiene unas características que deben ser cumplidas, estas pruebas
+    deben asegurarse de que dichas condiciones sean cumplidas. Es decir,
+    una pieza de código lleva el programa de un estado A, a un estado B,
+    la prueba deba asegurarse de que el estado B sea
+    alcanzado completamente.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Escribir la implementación: &lt;/strong&gt;lógicamente, si ejecutamos las
+    pruebas sin la implementación, todas van a fallar. En este paso "se
+    le pone carne al esqueleto", es decir, de le agrega cuerpo a las
+    funcionalidades cuyas pruebas fueron escritas.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ejecutar las pruebas automatizadas: &lt;/strong&gt;una vez codificado, se
+    corren las pruebas y se realizan ajustas hasta asegurarse de que
+    todas las pruebas pasan de manera satisfactoria.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Refactor: &lt;/strong&gt;se realizan ajustes para eliminar la duplicación,
+    reducir el acoplamiento y aumentar la cohesión.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Actualizar la lista de requerimientos: &lt;/strong&gt;se marca el requerimiento
+    como terminado.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Usualmente el proceso de desarrollo se lleva a cabo al revés, es decir,
+primero se escribe la funcionalidad y luego se prueba. El problema de
+este enfoque es el siguiente:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Muchas veces por cuestiones de tiempo y prisa por entregar,
+    simplemente se codifica la funcionalidad y se prueba de manera
+    empírica y no se deja alguna garantía de que esa pieza de software
+    funciona de manera correcta.&lt;/li&gt;
+&lt;li&gt;No se validan todos los casos de prueba, ya sea que se pruebe
+    utilizando la funcionalidad o escribiendo pruebas unitarias una vez
+    codificada la pieza que se desea probar.&lt;/li&gt;
+&lt;li&gt;Quien codifica la funcionalidad sabe lo que está bien y lo que está
+    mal y, por la prisa de entregar, no validará los casos en los que
+    sabe que falla pues, dependiendo de la metodología, cuando algo
+    falle puede retomarse por mantenimiento y bug-fixing.&lt;/li&gt;
+&lt;li&gt;En equipos de desarrollo pequeños, es el mismo desarrollador quien
+    escribe las pruebas y si la carga de trabajo es muy alta, no se
+    prueba de manera correcta.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Personalmente me ha ocurrido que al desarrollar primero y escribir las
+pruebas después, termino validando únicamente mis casos base, que es lo
+que debería ocurrir la mayor parte del tiempo, pero los casos borde
+quedan sin ser validados y, cuando llega el momento en que algún usuario
+cae dentro de estos casos y el software falla, debo volver sobre esa
+funcionalidad que, usualmente, está poco documentada (la documentación
+es otra de las etapas olvidadas por nosotros los desarrolladores), la
+escribí hace algún tiempo y no recuerdo bien cuál fue la lógica o, peor
+aún, la escribió otro desarrollador y no tengo ni la más remota idea de
+qué fue lo que hizo y, además, tengo otras cosas que hacer en el
+momento, por lo que simplemente terminaba escribiendo un parche
+específico para validar lo que estaba ocurriendo en el momento y
+solventar el problema particular. Si existía más de un caso borde sin
+validar, este proceso se podía repetir N veces. En el poco tiempo que
+tengo probando seguir el esquema que propone TDD, mi manera de
+enfrentarme a los problemas de desarrollo ha experimentado varios
+cambios y he visto las siguientes ventajas:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;El escribir las pruebas primero, requiere que tenga muy claro el
+    requerimiento y las condiciones que deben ser satisfechas, por lo
+    tanto, empiezo a codificar la funcionalidad con una idea más clara
+    de lo que debo hacer.&lt;/li&gt;
+&lt;li&gt;A medida que voy escribiendo las pruebas unitarias y validando los
+    casos de prueba, surgen casos borde que, quizás, al principio no
+    había considerado. Al final, tengo una validación completa de mi
+    código y una mayor seguridad en que lo que hice está bien
+    y funciona.&lt;/li&gt;
+&lt;li&gt;Al desarrollar la funcionalidad como tal con una idea más clara de
+    lo que cubre el requerimiento, puedo separar el código en módulos
+    que ejecuten cada uno de los pasos necesarios para cubrirlo de
+    manera satisfactoria.&lt;/li&gt;
+&lt;li&gt;Al tener todos los casos de prueba definidos y, con ello, el
+    requerimiento bien claro y definido, no escribo código de más,
+    simplemente me concentro en cubrir la funcionalidad y todo el código
+    que escribí se utiliza para ello.&lt;/li&gt;
+&lt;li&gt;La cantidad de bugs en el código que produzco ha
+    reducido considerablemente.&lt;/li&gt;
+&lt;li&gt;A la hora de alguna falla, las mismas pruebas me ayudan a cercar
+    el error.&lt;/li&gt;
+&lt;li&gt;Si agrego código que rompe una funcionalidad previa, las mismas
+    pruebas me indican qué está fallando y dónde, por lo que puedo hacer
+    refactor inmediatamente y  hacer mis módulos más ortogonales
+    entre sí.&lt;/li&gt;
+&lt;li&gt;Si otro desarrollador debe utilizar lo que yo desarrollé, el código
+    lo entrego con una garantía de que lo que hace, lo hace bien.&lt;/li&gt;
+&lt;li&gt;Cumplo con todas las etapas del desarrollo de software y ninguna
+    queda incompleta.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;En lo personal, la manera de trabajar que propone TDD me ha funcionado
+bastante bien, la única desventaja fue que al inicio de mi experimento
+no tenía mucha experiencia con frameworks o librerías para el desarrollo
+de pruebas, más allá de algunas pruebas unitarias que hice durante la
+universidad en los cursos de Ingeniería del Software utilizando JUnit en
+Java, por lo que debí cubrir una curva de aprendizaje. Una vez hecho
+esto, todo fluyó mucho más rápido y siento que soy más productivo.
+Trataré de publicar un par de tutoriales de las herramientas que he
+usado recientemente para ver si motivo a alguien más a utilizarlas y a
+tomar un poco más en serio las pruebas de software pues, aunque en la
+universidad las mencionan como una etapa importante en algunos cursos,
+muy pocas personas en la calle toman realmente en serio este recurso tan
+útil.&lt;/p&gt;</content><category term="Español"></category><category term="programación"></category><category term="testing"></category><category term="TDD"></category></entry></feed>

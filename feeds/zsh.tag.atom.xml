@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - zsh</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://127.0.0.1:8000/feeds/zsh.tag.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2015-05-26T00:00:00+04:00</updated><entry><title>Migré a ZSH</title><link href="http://iffm.me/migre-a-zsh.html" rel="alternate"></link><published>2015-05-26T00:00:00+04:00</published><updated>2015-05-26T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2015-05-26:/migre-a-zsh.html</id><summary type="html">&lt;p&gt;Es bien sabido por todos que en Linux y en el Open Source en general,
+uno es libre de elegir todas y cada una de las partes del sistema que va
+a configurar para su computadora personal o de trabajo, la línea de
+comandos no es excepción.&lt;/p&gt;
+&lt;p&gt;Por defecto, viene …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Es bien sabido por todos que en Linux y en el Open Source en general,
+uno es libre de elegir todas y cada una de las partes del sistema que va
+a configurar para su computadora personal o de trabajo, la línea de
+comandos no es excepción.&lt;/p&gt;
+&lt;p&gt;Por defecto, viene configurado
+&lt;a href="http://es.wikipedia.org/wiki/Bash"&gt;BASH&lt;/a&gt; en todos
+los sistemas linux, sin embargo, es posible cambiarlo sin ningún tipo de
+problemas, en mi caso, luego de investigar un poquito, elegí una
+combinación que me ha resultado bastante bien durante las últimas dos
+semanas: &lt;a href="http://es.wikipedia.org/wiki/Zsh"&gt;ZSH&lt;/a&gt; +
+un plugin llamado &lt;a href="https://github.com/robbyrussell/oh-my-zsh"&gt;oh my
+zsh&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Acá las razones por las cuales decidí migrar y por qué me ha parecido
+tan genial:&lt;/p&gt;
+&lt;h2&gt;YOLO&lt;/h2&gt;
+&lt;p&gt;Siempre digo que quiero probar herramientas nuevas, pero nunca pongo
+manos a la obra, en los últimos meses me he propuesto a organizarme y
+crear hábitos, utilizando distintos hacks, que me permitan llevar a cabo
+todo lo que me pasa por la mente sin descuidar cosas importantes como la
+familia y el trabajo. Así que, quise probar &lt;em&gt;ZSH&lt;/em&gt; a ver qué tal, ¿qué
+mejor momento que ahora?&lt;/p&gt;
+&lt;h2&gt;No es un cambio muy traumático&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;BASH&lt;/em&gt; nace en 1989, &lt;em&gt;ZSH&lt;/em&gt; nace en 1990, mantiene compatibilidad con
+todos los comandos de &lt;em&gt;BASH&lt;/em&gt; y agrega nuevas funcionalidades que vamos a
+ver en las razones siguientes :-).&lt;/p&gt;
+&lt;h2&gt;El autocompletado de ZSH&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;ZSH&lt;/em&gt; tiene una capacidad increíble de autocompletar, no sólo te muestra
+las posibles opciones, cosa que también hace &lt;em&gt;BASH&lt;/em&gt;, sino que te permite
+seleccionarla de manera interactiva, cosa que &lt;em&gt;BASH&lt;/em&gt; no hace de manera
+natural.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Autocompletado
+interactivo" src="https://dl.dropboxusercontent.com/s/4b7jmr0humceyyk/foto1.png"&gt;&lt;/p&gt;
+&lt;p&gt;Además, no sólo completa rutas y comandos básicos del sistema operativo,
+con &lt;em&gt;Oh My ZSH&lt;/em&gt; también tiene autocompletado para git, cosa que me
+resulta muy útil porque es una herramienta que uso todos los días en la
+oficina y para proyectos personales, este autocompletado incluye una
+pequeña descripción de lo que hace cada comando de git.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="git &amp;lt;TAB&amp;gt; y esto
+aparece" src="https://dl.dropboxusercontent.com/s/4sqyl17x60dsnk8/foto2.png"&gt;&lt;/p&gt;
+&lt;h3&gt;Completación de rutas&lt;/h3&gt;
+&lt;p&gt;No, no es lo mismo que la anterior, este es algo mucho más potente que
+no vi nunca en &lt;em&gt;BASH&lt;/em&gt; supongamos que soy perezoso para escribir, y
+quiero ir a &lt;em&gt;/home/israelord/Work&lt;/em&gt;, que es la ruta donde tengo todos mis
+proyectos, tanto de la oficina como freelance. Se que ese es el único
+patrón que coincide, simplemente escribo &lt;em&gt;/h/i/W&lt;/em&gt; y al presionar tab, me
+autocompleta la ruta.&lt;/p&gt;
+&lt;p&gt;En caso que haya ambigüedad, como por ejemplo, si quiero ir a
+&lt;em&gt;/usr/local/bin&lt;/em&gt;, al escribir &lt;em&gt;/u/l/b&lt;/em&gt;, hay dos opciones para la &lt;em&gt;l&lt;/em&gt;,
+bajo el directorio &lt;em&gt;/user&lt;/em&gt;: &lt;em&gt;lib&lt;/em&gt; o &lt;em&gt;local&lt;/em&gt;. En este caso, me permitirá
+seleccionar la opción correcta de manera interactiva, tal como en el
+ejemplo anterior, antes de terminar el autocompletado. Puedo resolver
+esto simplemente escribiendo &lt;em&gt;/u/lo/b&lt;/em&gt; y me generará la ruta correcta de
+una vez, simplemente debo completar más la parte de la ruta que genera
+el conflicto para que sea única, aunque la selección interactiva no me
+disgusta para nada.&lt;/p&gt;
+&lt;h3&gt;Cambios de directorio&lt;/h3&gt;
+&lt;p&gt;Sí, ya se, para eso está &lt;em&gt;cd&lt;/em&gt;, pero este es un caso de uso de cd que no
+vi en &lt;em&gt;BASH&lt;/em&gt;, supongamos que estoy en la ruta del ejemplo anterior
+&lt;em&gt;/usr/local/bin&lt;/em&gt;, pero en realidad quería ir a &lt;em&gt;/usr/local/sbin&lt;/em&gt;. En vez
+de hacer como en &lt;em&gt;BASH&lt;/em&gt; &lt;em&gt;cd ../sbin&lt;/em&gt;, puedo hacer &lt;em&gt;cd bin sbin&lt;/em&gt; y me
+lleva allí. Funciona igual con sub rutas, puedo hacer &lt;em&gt;cd local/sbin
+games&lt;/em&gt; y me lleva a &lt;em&gt;/usr/games&lt;/em&gt;, por ejemplo.&lt;/p&gt;
+&lt;p&gt;Esto es especialmente útil cuando tengo proyectos con la misma
+estructura, por ejemplo, estoy en
+&lt;em&gt;/home/israelord/proyecto1/auth/views/&lt;/em&gt;, simplemente con hacer &lt;em&gt;cd
+proyecto1 proyecto2&lt;/em&gt;, me lleva a
+&lt;em&gt;/home/israelord/proyecto1/auth/views/&lt;/em&gt;. No más cd ../../../../&lt;/p&gt;
+&lt;h3&gt;Autocorrector&lt;/h3&gt;
+&lt;p&gt;No mucho que decir, si me equivoco y escribo gut, me corrige y escribe
+git, por ejemplo, si hay más de un posible patrón, me muestra la
+selección interactiva que vimos antes.&lt;/p&gt;
+&lt;h3&gt;Renombrado de archivos en batch&lt;/h3&gt;
+&lt;p&gt;Supongamos que tengo 700 fotos que y los nombres son cosas como
+IMG_2193192873198723.jpg, quiero renombrarlas a algo más manejable,
+como "foto_1.jpg", "foto_2.jpg" y así.&lt;/p&gt;
+&lt;p&gt;Bueno, simplemente escribo&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;zmv &lt;span class="s1"&gt;&amp;#39;(*).jpg&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;foto_$1.jpg&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Y listo!.&lt;/p&gt;
+&lt;h2&gt;Oh My ZSH&lt;/h2&gt;
+&lt;p&gt;Es un plugin que extiende &lt;em&gt;ZSH&lt;/em&gt; y, además, tiene varios addons, por
+ahora sólo estoy usando el de &lt;em&gt;git&lt;/em&gt; porque tiene muchísimos alias útiles
+para las tareas de día a día con &lt;em&gt;git&lt;/em&gt; que les dejaré de tarea revisar,
+pero la diferencia es abismal respeto a lo que escribirías normalmente,
+por ejemplo:&lt;/p&gt;
+&lt;p&gt;En vez de git push origin master con Oh my zsh simplemente escribo
+ggpush ;-)&lt;/p&gt;
+&lt;h3&gt;Instalando&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;ZSH&lt;/em&gt; normalmente está instalado, simplemente hay que modificar nuestro
+usuario para que sea el terminal por defecto&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;chsh -s /bin/zsh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Para instalar el plugin &lt;em&gt;Oh my ZSH&lt;/em&gt;, basta con ejecutar&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh &lt;span class="p"&gt;|&lt;/span&gt; sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;O, si preferimos usar &lt;em&gt;wget&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - &lt;span class="p"&gt;|&lt;/span&gt; sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="Español"></category><category term="zsh"></category><category term="shell"></category><category term="herramientas"></category></entry></feed>

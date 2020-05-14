@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - linux</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://127.0.0.1:8000/feeds/linux.tag.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2018-01-30T00:00:00+04:00</updated><entry><title>What to do when linux freezes?</title><link href="http://iffm.me/what-to-do-when-linux-freezes.html" rel="alternate"></link><published>2018-01-30T00:00:00+04:00</published><updated>2018-01-30T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2018-01-30:/what-to-do-when-linux-freezes.html</id><summary type="html">&lt;p&gt;Well, we all know that nothing is perfect, not even linux, it sometimes freezes.
+It has happened to me several times,
+my solution? well, press and hold the power button and hope for the best. &lt;/p&gt;
+&lt;p&gt;Well, I was thinking &lt;em&gt;there must be a better way to do it&lt;/em&gt; and, like …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Well, we all know that nothing is perfect, not even linux, it sometimes freezes.
+It has happened to me several times,
+my solution? well, press and hold the power button and hope for the best. &lt;/p&gt;
+&lt;p&gt;Well, I was thinking &lt;em&gt;there must be a better way to do it&lt;/em&gt; and, like most of the times, &lt;strong&gt;there is&lt;/strong&gt;. 
+It's called &lt;em&gt;SysRq&lt;/em&gt; keys and it's a key combination only understood by the Linux kernel that lets you
+perform some low level operations no matter the state of the system, think of it like a safe reset button.&lt;/p&gt;
+&lt;p&gt;The key combination is &lt;em&gt;Ctrl + Alt + PrtSc + REISUB&lt;/em&gt;, this means, you need to press and hold &lt;em&gt;Ctrl + Alt + PrtSc&lt;/em&gt;
+and while pressing that combination, you need to write &lt;em&gt;REISUB&lt;/em&gt;, each letter has one function&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;R&lt;/strong&gt; gives the kernel back the control of the keyboard from X&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;E&lt;/strong&gt; sends &lt;em&gt;SIGTERM&lt;/em&gt; to all processes, allowing them to terminate gracefully&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;I&lt;/strong&gt; sends &lt;em&gt;SIGKILL&lt;/em&gt; to all remaining processes, forcing them to terminate right away&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;S&lt;/strong&gt; flushes data to disk&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;U&lt;/strong&gt; remounts all file systems in &lt;em&gt;read-only&lt;/em&gt; mode&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;B&lt;/strong&gt; reboot!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That way your system won't suffer any damage and it will gracefully &lt;strong&gt;R&lt;/strong&gt;eboot &lt;strong&gt;E&lt;/strong&gt;ven
+&lt;strong&gt;I&lt;/strong&gt;f &lt;strong&gt;S&lt;/strong&gt;ystem &lt;strong&gt;U&lt;/strong&gt;tterly &lt;strong&gt;B&lt;/strong&gt;roken.&lt;/p&gt;
+&lt;p&gt;If you need to turn off your computer instead of reboot, you
+can switch &lt;strong&gt;B&lt;/strong&gt; for &lt;strong&gt;O&lt;/strong&gt;. You're welcome.&lt;/p&gt;
+&lt;h2&gt;Recommended readings&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Magic_SysRq_key"&gt;THIS&lt;/a&gt; Wikipedia article&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Blog"></category><category term="linux"></category></entry></feed>

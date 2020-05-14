@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - career</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://127.0.0.1:8000/feeds/career.tag.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2020-05-03T00:00:00+04:00</updated><entry><title>Software Engineering</title><link href="http://iffm.me/software-engineering.html" rel="alternate"></link><published>2020-05-03T00:00:00+04:00</published><updated>2020-05-03T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2020-05-03:/software-engineering.html</id><summary type="html">&lt;p&gt;At work, my Engineering Manager asked me to start sharing my knowledge
+with the rest of the team more often. Of course, we do code reviews and
+we have some other ways to get the knowledge spread across the team, we have
+a wiki on confluence, we have tech meetings …&lt;/p&gt;</summary><content type="html">&lt;p&gt;At work, my Engineering Manager asked me to start sharing my knowledge
+with the rest of the team more often. Of course, we do code reviews and
+we have some other ways to get the knowledge spread across the team, we have
+a wiki on confluence, we have tech meetings where we talk about how we will
+solve the problems at hand, those are good opportunities for very specific
+knowledge sharing, which would be in the form of advice or guidance on the
+approach to follow to implement something, but it would be nice to have
+some other kind of sessions to keep the team motivated, active and seeing
+each other while the lockdown lasts.&lt;/p&gt;
+&lt;p&gt;I thought of several topics I could talk about, all technical ones:
+DevOps, Distributed Systems, Functional Programming, very exciting ones
+but then I realized, the team is very very good technically, everyone is
+a very capable &lt;em&gt;programmer&lt;/em&gt;, and then I stopped. See, I said &lt;em&gt;programmer&lt;/em&gt;,
+is that what we are?, nope, definitely not. The job title says &lt;strong&gt;Software
+Engineer&lt;/strong&gt;, is that all we do? write code?, I don't think so. I started writing
+my thoughts and put them together in the form of a talk I'll summarize in this blog
+post. Thinking about it, most of us don't realize the complexity around
+&lt;strong&gt;Software Engineering&lt;/strong&gt; and we minimize our work to &lt;em&gt;yeah, I write code and
+stuff&lt;/em&gt; or &lt;em&gt;I maintain and implement new features&lt;/em&gt; but everything is much more
+complex than that.&lt;/p&gt;
+&lt;h1&gt;Programmer vs Developer vs Engineer&lt;/h1&gt;
+&lt;p&gt;Don't misunderstand me, there are plenty of roles our there and we call ourselves
+in many ways: &lt;em&gt;Software Engineer&lt;/em&gt;, &lt;em&gt;Software Developer&lt;/em&gt;, &lt;em&gt;Programmer&lt;/em&gt;, &lt;em&gt;Computer
+Programmer&lt;/em&gt; but words have an impact and everything has a meaning, I believe
+we should name things correctly. I'm not asking everyone to think or name things the same
+as I do, but I do think we should separate things and roles in a better way and with
+different expectations.&lt;/p&gt;
+&lt;h2&gt;Programmer&lt;/h2&gt;
+&lt;p&gt;A programmer is someone who writes code, that's it, a programmer wouldn't care
+too much about Software Architecture or Design, neither about the whole lifestyle.
+A programmer gets the full spec of what they need to implement, they write the code
+and they deliver it, not much thoughts about how it's going to be deployed, where it's
+going to run or how it's going to be used.&lt;/p&gt;
+&lt;h2&gt;Developer&lt;/h2&gt;
+&lt;p&gt;A software developer will care about the software, a bit of design and architecture
+but that's it, not much interest in where it's going to be deployed, how it's going to
+run or how it's going to be used.&lt;/p&gt;
+&lt;p&gt;I'm not saying all programmer or developers are like that, I'm just saying these should be
+the concerns of those roles. If you consider yourself a Programmer or a Developer and you go
+beyond that, great!, now, the whole point of this article is to share my views and definition
+about the &lt;strong&gt;Software Engineer&lt;/strong&gt; role.&lt;/p&gt;
+&lt;h1&gt;Software Engineer&lt;/h1&gt;
+&lt;p&gt;A Software Engineer, just like a Programmer and Developer, they care about Software,
+they also write code and make sure it works as expected but also worry about design,
+architecture and implementing best practices on every aspect about software&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Building:&lt;/strong&gt; as a Software Engineer, we worry about building good software, not only
+about the software itself, we worry about the building blocks, choosing (or building) the 
+correct ones, implementing the right levels of abstraction so that maintainability is
+easier.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Operating:&lt;/strong&gt; as a Software Engineer, we know we don't have to always build something
+new, we can just run existing software and operate it, monitor, manage and make sure
+it runs smoothly so that every user can accomplish their goals with it. Also, we know that
+the software we build needs to be operated by someone (sometimes ourselves) so we need to build
+ways to interface and interact with it from an admin perspective.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Documentation:&lt;/strong&gt; this is a usually forgotten one, we read ridiculous amounts of manuals and
+other types of documentation and interpret them in order to use third party software, but we also
+need to write docs in order for other to use our software or understand and contribute to our code.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;We know about software&lt;/h2&gt;
+&lt;p&gt;And we need to know a lot about it, not only to write it, but also to use it effectively, when building
+it:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;We know it has to be well done:&lt;/strong&gt; so we worry about architecture, design and making the right decisions
+from the ground up: choosing the right stack, building the right abstractions and applying the best
+practices we know.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;We know it has to be operable:&lt;/strong&gt; so we worry about things like CICD, monitoring, logging. Building it
+in a way so that it is easy to debug and find issues while running on production as well as building ways
+to interact with it to gather information, metrics or reports via command line if needed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;We know it has to work:&lt;/strong&gt; so we worry about testing and verification so that the behavior of the systems
+we build is predictable, injective and idempotent. For a set of inputs, the output is something we expect.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;We know around software&lt;/h2&gt;
+&lt;p&gt;We not only know how to build software, we also know many things around it.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;We know it has to run somewhere:&lt;/strong&gt; so we know about infrastructure and operating systems, but we're not
+sysadmins.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;We know it talks to other software:&lt;/strong&gt; so we know about network and communication protocols as well as
+distributed systems, but we're not network engineers.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;We know it has to store data somewhere:&lt;/strong&gt; so we know about databases and data modeling, we have to do it
+efficiently and we have to know how to tune performance if needed, but we're not sysadmins.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;We know it has to function in a certain way:&lt;/strong&gt; so we worry about testing at several levels and of different kind:
+performance, unit testing, integration, UX and UI testing, API tests. But we're not QA engineers&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;We are part of a team&lt;/h2&gt;
+&lt;p&gt;All I mentioned before is very difficult and complex and, to add to that, we need to work with other humans,
+we are part of a team which usually has people from diverse backgrounds and specialties, a (sometimes non technical)
+Product or Project Manager, an Engineering Manager, some front end engineers, QA specialists and so on, we need to
+communicate in different ways and keep everyone aligned on the same page.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Meetings:&lt;/strong&gt; we need to attend meetings in order to brief about the technicalities if the work being done
+and unblock if someone needs help with something we know.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Documentation:&lt;/strong&gt; this comes in many forms, technical specs, API documentation, all of this is, at the end of the day,
+communication that needs to flow constantly, just that we choose to store it in the form of text to that we don't have
+to repeat ourselves every time when someone needs to use the API or go through how something was implemented and the thought
+process behind it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Code Review:&lt;/strong&gt; this is a good one, this is when we get to mentor people and help them get their work into a better shape,
+also when we get help to improve ours and learn from others, this is also another form of communication.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Communication is everything&lt;/h3&gt;
+&lt;p&gt;If you're not taking anything from this post, the only thing I'd like you to think about is that, yes, hard skills are very important
+for the Software Engineering role, we need to think about how we write code that performs better, but none of that is useful if we are unable
+to work with others. To work with others, communication is everything.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Don't assume the people you're talking to knows or has the same context you have, always start by sharing the contextual information
+needed to understand the problem at hand or the solution you'll present&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Know your audience, it's not like you're performing a stand-up comedy routine but, when you're communicating, you do have an audience,
+setting the tone and language is important, it's not the same talking (or writing for) API users than writing (or talking) to someone
+whose code you're reviewing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Always ask, you never know if the others are assuming some context, the only way to find out is asking. When something is not clear
+or you find yourself assuming something, that's when you need to ask. You can ask a question because you don't know something or a
+clarifying question, which might seem redundant, just to make sure everyone is on the same page and getting the same understanding.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Once you realize you don't know it all and you don't have to know everything, you also realize the rest of the people
+also don't know everything, and they also don't have to know it all, everyone comes from different backgrounds and knows some things
+they've been exposed to or studied and ignore some others. Only by talking to each other, communicating and sharing knowledge we all
+become stronger engineers.&lt;/p&gt;</content><category term="Blog"></category><category term="career"></category><category term="software engineering"></category></entry><entry><title>Bye bye dubizzle, hello Careem!</title><link href="http://iffm.me/bye-bye-dubizzle-hello-careem.html" rel="alternate"></link><published>2018-03-30T00:00:00+04:00</published><updated>2018-03-30T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2018-03-30:/bye-bye-dubizzle-hello-careem.html</id><summary type="html">&lt;p&gt;I've been quiet for the last two months, I was a bit busy switching jobs, yes,
+after more than three years I decided to leave &lt;em&gt;dubizzle&lt;/em&gt;, part of the &lt;em&gt;OLX&lt;/em&gt;
+group and one of the biggest brands here in the United Arab Emirates, for reasons
+I won't discuss in this …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I've been quiet for the last two months, I was a bit busy switching jobs, yes,
+after more than three years I decided to leave &lt;em&gt;dubizzle&lt;/em&gt;, part of the &lt;em&gt;OLX&lt;/em&gt;
+group and one of the biggest brands here in the United Arab Emirates, for reasons
+I won't discuss in this post and some reasons I'll expose here.&lt;/p&gt;
+&lt;p&gt;My good friend &lt;a href="http://gerardobarcia.com/blog/"&gt;Gerardo Barcia&lt;/a&gt; used to quote a lot
+a phrase which author I don't know:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Change is the only constant in our lives&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I liked that, I like to think that one needs to come out of your comfort zone from time
+to time as the only way to evolve as a professional and as a human being, when change
+comes to you constantly, you're done, when you can seek change easily it's also good,
+you learn, you innovate, you become better you put that brain to work.&lt;/p&gt;
+&lt;p&gt;That was one &lt;em&gt;the thing&lt;/em&gt; I loved about working at &lt;em&gt;dubizzle&lt;/em&gt;, it was dynamic, I got
+to work on interesting projects, I got to challenge myself and it was &lt;strong&gt;GREAT!!&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;I don't know what happened or when, but things became just &lt;strong&gt;good&lt;/strong&gt; and then &lt;strong&gt;meh&lt;/strong&gt;, everything
+slowed down and I didn't feel challenged anymore, in fact, I felt like I was solving the
+same problem over and over and over again, I simply stopped having fun, the projects
+I was working on didn't motivate me and I wasn't feeling I was having a positive impact
+anymore, so, change didn't come to me, so I started looking for change, trying to be
+moved to a different department or a different role and finding a lot of resistance.&lt;/p&gt;
+&lt;p&gt;When you stop enjoying something, you should stop doing it and that was exactly what happened,
+I stopped enjoying my job at &lt;em&gt;dubizzle&lt;/em&gt;, for several reasons but I believe this one was
+the most important one, so I decided to move on. Here in the UAE, there are several big
+players in the tech scene: &lt;em&gt;dubizzle&lt;/em&gt; is one of them but not the only one, there's also
+&lt;em&gt;Souq&lt;/em&gt;, &lt;em&gt;Namshi&lt;/em&gt; which are e-commerce websites, &lt;em&gt;Fetchr&lt;/em&gt; which is a delivery company and
+&lt;em&gt;Careem&lt;/em&gt; which is a ride-hailing company. &lt;/p&gt;
+&lt;p&gt;I interviewed with several but I wanted to do
+something different, I was into classifieds for too long and e-commerce I don't think is
+that different, so, when the decision came down to &lt;em&gt;Fetchr&lt;/em&gt; or &lt;em&gt;Careem&lt;/em&gt;, I started digging
+deeper into both companies and there was one talk by one of &lt;em&gt;Careem&lt;/em&gt; co-founders, Magnus Olsson,
+that made me think, well &lt;em&gt;Fetchr&lt;/em&gt; looks like a great company, also &lt;em&gt;Careem&lt;/em&gt;, but &lt;em&gt;Careem&lt;/em&gt;
+has this guy with this amazing story and the will to do something meaningful and you can
+see that even in the name of the company, &lt;em&gt;Careem&lt;/em&gt; means &lt;em&gt;generosity&lt;/em&gt; in Arabic language.
+So, here I am, being Careem at &lt;em&gt;Careem&lt;/em&gt; and helping &lt;em&gt;improve the people's lives and
+build an organization that inspires&lt;/em&gt; one line at a time.&lt;/p&gt;
+&lt;h2&gt;Recommended:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=HrSYYmaKmmo"&gt;The video&lt;/a&gt; that made me join &lt;a href="https://careem.com"&gt;Careem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.glassdoor.com/Overview/Working-at-Dubizzle-EI_IE670451.11,19.htm"&gt;dubizzle in Glassdoor&lt;/a&gt; looks like a lot of people are not happy, I hope they course correct before it's too late&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Blog"></category><category term="career"></category><category term="personal"></category></entry><entry><title>We always evolve</title><link href="http://iffm.me/we-always-evolve.html" rel="alternate"></link><published>2017-12-14T00:00:00+04:00</published><updated>2017-12-14T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-12-14:/we-always-evolve.html</id><summary type="html">&lt;p&gt;I've been going through code I wrote about two or maybe three years ago while cleaning up my working directory
+and archiving old stuff and, I must say: what the hell did I have in my head by that time?, for real, there are
+things that are over-engineered, very complicated …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I've been going through code I wrote about two or maybe three years ago while cleaning up my working directory
+and archiving old stuff and, I must say: what the hell did I have in my head by that time?, for real, there are
+things that are over-engineered, very complicated solutions to simple problems, sub-optimal or inefficient code,
+a lot of spaghetti code, highly coupled modules (or django apps), all of this to say the least.&lt;/p&gt;
+&lt;p&gt;I know, maybe, in a couple of months (or years) I'll go through the code I wrote today, or yesterday and say the
+same thing &lt;em&gt;oh my god! was I stupid or what?&lt;/em&gt;, but I believe this is part of every craftsmanship job like software
+engineering, graphic design, cooking and even music. You come out of school with the knowledge, but only experience
+doing what you're trained to do will give you elegant practices and make you a good professional.&lt;/p&gt;
+&lt;p&gt;The best way to evolve is to &lt;strong&gt;never stop learning&lt;/strong&gt;, read a lot of technical stuff, also master your &lt;strong&gt;soft skills&lt;/strong&gt;,
+I wrote it bold because they're as important as your technical ones, try out new ways of doing things, programming
+paradigms, new programming languages, new tools to add to your stack and adopt better practices or ease some
+pains in your development, testing or deploy process, perhaps your company's or your employer's processes. Only by
+learning and gaining knowledge and then putting it in practice you will gain experience and know what works, what doesn't
+work and what work betters under some conditions.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Knowledge is of no value unless you put it into practice.
+— Anton Chekhov&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You might be asking what made me reflect on this, well, some time ago I wrote about &lt;a href="the-evilness-of-none.html"&gt;&lt;em&gt;The evilness of None&lt;/em&gt;&lt;/a&gt; and
+how it is a bad practice to &lt;code&gt;return None&lt;/code&gt; or &lt;code&gt;return null&lt;/code&gt; from functions when you're expecting the output to meet
+certain requirements (internal link). Since I wrote that, I've been going through old projects checking how common
+this pattern was on my code and, unsurprisingly, I found some other bad practices.&lt;/p&gt;
+&lt;p&gt;So, if checking old code and surprising myself with &lt;em&gt;how stupid I was&lt;/em&gt; is something that happens often, it is a good
+thing, it means I've learned something I didn't know by the time I wrote that code. So, always move forward but,
+from time to time, check backwards not to adopt bad old habits, but to see how much you've learned and also if there's
+anything you need to fix on a project you're maintaining.&lt;/p&gt;</content><category term="Blog"></category><category term="software engineering"></category><category term="career"></category><category term="personal"></category></entry><entry><title>Working at dubizzle</title><link href="http://iffm.me/working-at-dubizzle.html" rel="alternate"></link><published>2017-08-16T00:00:00+04:00</published><updated>2017-08-16T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-08-16:/working-at-dubizzle.html</id><summary type="html">&lt;p&gt;About 4 years ago I got an email through StackOverflow Careers from a woman called
+Claudia Verlinden, a very nice Belgian lady who happened to be an HR Manager at a company
+in the middle east and she was looking for Software Engineers with experience in Python and
+django, so …&lt;/p&gt;</summary><content type="html">&lt;p&gt;About 4 years ago I got an email through StackOverflow Careers from a woman called
+Claudia Verlinden, a very nice Belgian lady who happened to be an HR Manager at a company
+in the middle east and she was looking for Software Engineers with experience in Python and
+django, so, she asked me if I was interested in applying to one of their open positions
+in their Engineering team, I said yes and 2 months later I was boarding a plane and landing
+in Dubai, yes Dubai.&lt;/p&gt;
+&lt;h2&gt;My Dubai experience&lt;/h2&gt;
+&lt;p&gt;There is a lot of taboo in the west side of the world about the Middle East region, specially
+about Arabs, Muslims and Islam in general, they speak a lot about terrorism and how everyone
+in the Middle East is a potential terrorist, how Arabs have no sense of humor and they're angry
+all the time. Well, I'm here to tell you that none of that is true.&lt;/p&gt;
+&lt;p&gt;So far, after living almost 4 years in Dubai, a Muslim country, my experience had been nothing
+but positive from almost every perspective (still don't like the weather in August), there's
+people from everywhere in the world, from countries I didn't know were countries and you get
+to see people whose countries had been in war, working together like the best friends in the world.&lt;/p&gt;
+&lt;p&gt;Dubai is one of the safest cities in the world and for me, coming from Caracas, one of the
+most violent cities in the world, that's very important. You'll never see a gun if it isn't on
+a Policeman's belt, no one will break into your house or car to take that cellphone you left there
+or that purse with your documents in the back seat, more important, if you leave something at some
+place, even in the street, there's a high chance it will still be there when you're back. &lt;/p&gt;
+&lt;p&gt;My wife has left her iPhone in restaurants, hospitals and stores more times than I can remember and each and
+every time we got it back the same day, they even called me once to tell me "hey, I believe someone you
+know left her phone in my store, it's a pink iPhone, anyone you know has a pink iPhone with a Hello Kitty
+cover?", yes... that's my wife's.&lt;/p&gt;
+&lt;p&gt;Despite the heat in summer, which can reach over 50C by August, there are a lot of things to do as a single
+or with your family, museums, restaurants, bars, beaches, hiking, desert camping and BBQ, you name it, even
+indoors Skying at Sky Dubai in Mall of the Emirates. I'm a declared foodie (I married a chef), and one of
+the things I like the most is the huge variety of gastronomy you can find, from Arabic to Russian food, American
+burger joints, Asian Cuisine and even Latin restaurants, some Peruvian, Colombian, Argentinean and there's even a Food Truck
+serving Arepas and a lot of Venezuelan stuff.&lt;/p&gt;
+&lt;p&gt;Arabs have such an amazing sense of humor, they even joke about bombs and having terrorist cousins,
+they get American jokes and they like Jeff Dunham!, they're pretty much like Latinos, they like to
+laugh a lot and they're loyal friends, if they can help you in any way, you can be certain they will.
+But it needs to work the other way around as well, if they need your help, they will expect you to
+help them if it's on your hands, but that's what friendship should be about, right?, relying on each
+other.&lt;/p&gt;
+&lt;p&gt;Something I realized when I moved here is that not all Arabs are Muslims and not all Muslims are Arabs,
+Islam is a wide spread religion in this region, so most Pakistanis, some Indians, also some Filipinos,
+Bosnian, and people from the *stan countries are Muslims and they're not Arabs, but also there are a lot
+of Catholics and Christians in Lebanon, which is an Arab country, and also in India and Egypt.&lt;/p&gt;
+&lt;p&gt;UAE, and specially Dubai is super liberal to be an Islamic country, you get to see everything, from women
+wearing the traditional Abaya and Niqab or Hijab, to women wearing &lt;em&gt;almost&lt;/em&gt; nothing and people is ok with
+that. Alcohol is forbidden in Islam, so, it's a bit harder to get, which doesn't mean is hard. Only Muslims
+are not allowed to drink, rest of people can get an Alcohol License which will allow you to purchase anything
+you want in the authorized stores, if you don't want to get into the (easy) paperwork to get the license, you
+can always go have some drinks at a bar or restaurant in a hotel. This was the most shocking change for me as
+a Latino, I can't buy beers or rum freely at the supermarket.&lt;/p&gt;
+&lt;p&gt;One last thing I love about Dubai, it's getting more and more like a science fiction movie, seriously,
+I don't know why, but these guys ruling the country have a very futuristic vision. Tallest building
+in the world (Burj Khalifa), artificial islands (Palm Jumeirah and the one Burj Al-Arab hotel is built on top
+of), biggest shopping mall in the world (The Dubai Mall), they are testing flying taxis already and
+there's a project to build a Hyperloop train, that will take you
+from Dubai to Abu Dhabi in less than 20min, by bus or car it almost 2hr.&lt;/p&gt;
+&lt;h2&gt;Working at dubizzle&lt;/h2&gt;
+&lt;p&gt;Working at a UAE based company, like dubizzle, comes with some perks. But working at one of the most
+visited and recognized brands in the country is even better. First of all over 30 different nationalities
+converge in the same workplace, different cultural backgrounds. British, Latinos, Indians, Arabs, Pakistanis,
+Asians, Europeans, you name it, I sometimes joke with HR everytime I recommend someone from a country we don't have
+yet saying "he's a new nationality for out list, we should just hire him to show off" so far we have people from
+all of the 5 continents working at dubizzle.&lt;/p&gt;
+&lt;p&gt;To have an idea of how big dubizzle is, we are now part of the OLX group and dubizzle was the only site within
+the region that wasn't re-branded to OLX, we got to keep our name and identity because it was a so well established
+brand that it would have been more expensive to re-brand it and rebuild it rather that just keep the same brand
+as it is, also, we are the only company running a different stack, all of the OLX sites run on PHP, we run in
+python and mostly django.&lt;/p&gt;
+&lt;p&gt;Working at a place at this scale is great!, you get to solve very complex and interesting problems, such as optimizing
+a service to reduce the response time, might be a caching problem or a database issue, you'll have to look
+at the data and make a decision on where to start and you'll have complete freedom to get it done within
+reasonable deadlines, of course. This is a very data-driven process, before we do anything we look at numbers,
+either from an A/B test or one of our monitoring tools like newrelic and we start analyzing what's happening and
+thinking how to approach the problem at hand, we sometimes need to build several proof of concepts and measure
+to see what would be the best way to proceed.&lt;/p&gt;
+&lt;p&gt;One thing I like the most is how everyone is involved on product decisions, like new features, design or workflow
+changes, every idea needs to be presented as a spec, with some sort of numbers backing it, either an A/B test or
+a market research, results from a poll, anything to back it idea, all the company is involved in these spec reviews:
+Engineering, Customer Support, Sales, Finance, Marketing, Management, literally everyone who wants to attend can
+do it. The specs are presented and everyone is encouraged to talk, criticize (in a constructive way), make suggestions,
+agree, disagree, the idea is to improve the idea and take it from good to awesome or prevent us from building it
+if someone finds a good point that proves the spec wrong or too expensive. Everyone has a voice and everyone's voice
+is heard. Anyone can have an idea, spec it and take it to spec review, some of the features in our website came from
+some engineer who thought it could work and wrote the spec along with the Product Manager and made it live.&lt;/p&gt;
+&lt;p&gt;Also, as a new parent, flexibility is very important to me, dubizzle is by far one of the most flexible companies
+I've worked at, working hours are from 9:00 to 18:00, but you don't need to be in at 9:00 sharp, strictly, if you
+can't make it, either because of traffic or because life happened at home, dubizzle is a very goal-oriented workplace,
+so, as long as you're in for your daily team stand-up (which starts by 9:45 - 10:00 in my case) or you message in advance
+if you're going to be late, it's ok. But, you need to keep in mind that, sometimes, you'll need to make up some time if
+your project is getting late and will miss the deadline. I've had to leave early because my wife or my daughter were not
+feeling well, had to take one week off in the middle of a sprint because all of us were sick, in bed, had to come in
+late because I had to run some errands or take a whole day off to go to the Venezuelan Embassy in Abu Dhabi and I've never
+got a no by an answer from my manager, they all know that unplanned issues happen, but, you need to plan for the ones
+you know will happen, like visa or passport renewals, medical appointments and that kind of things so your team adds some
+buffer time in the sprint, accounting for your time off.&lt;/p&gt;
+&lt;p&gt;Being a dubizzler, also comes with some unexpected perks, as you might imagine already, my name is Israel, and it's
+a FAQ in immigration all the time. So, first time I went out of the country and came back, I got a weird look from the
+immigration officer and a "please, go to office number 2" as he handed me my passport back. And there I was, with a lot
+of long bearded guys waiting for my turn and and Arab guy just calls my name "Israiil?" (which is Arabic for my name),
+I approach the counter and the guy starts throwing Arabic to me, and I speak no Arabic, I don't know what he said, but
+to me it sounded something like &lt;em&gt;hala mahala hammdulleh hamdu affek hal&lt;/em&gt; I replied with one of the few phrases I know in
+Arabic &lt;em&gt;ana la atakalam al-arabiia&lt;/em&gt; which means "I don't speak Arabic", the guy laughed and continued his Arabic monologue,
+I had to interrupt him by saying "No, seriously, I don't speak Arabic". So, he started making a lot of routine questions,
+"what's your full name?", "where are you from?", "how long are you planning to stay in the UAE?", "how long have you been
+living in the UAE?", "where do you live?", "where do you work?", and then, the surprise came. "oh! you work at dubizzle,
+it's ok, it's ok, I like dubizzle very much, take you passport, khalas... go, go go... it's ok". Everytime I say I work
+at dubizzle, feels like I'm a rockstar and I didn't knew about it, at each and every hackathon or conference I've been to
+in the UAE, working at dubizzle inspires some kind of respect, and I'm humbled every time it happens.&lt;/p&gt;
+&lt;h3&gt;A day in the life&lt;/h3&gt;
+&lt;p&gt;Working at dubizzle, a platform that operates at a huge scale, presents a lot of challenges as a Software Engineer. Everything
+we write and deploy to production needs to be extensively tested, it needs to scale well and have proper monitoring and
+alerting in place so in case something fails, we are informed by our systems and not by the Customer Support calling the 
+on-call number saying an angry user is yelling because something is not working, we have a &lt;em&gt;users comes first&lt;/em&gt; kind of principles,
+so everything we do is to give more value to the users and most of out tests are to research how the users are using
+our platform and see how we can deliver more value to them.&lt;/p&gt;
+&lt;p&gt;Nowadays, we are migrating the whole platform to a microservices oriented architecture, so, most of today's challenges
+are in two fronts:&lt;/p&gt;
+&lt;p&gt;1.- Breaking out a legacy monolith into independent, scalable, deployable, and testable services&lt;/p&gt;
+&lt;p&gt;2.- Building those microservices while keeping a rollback option in case of something horrible happening&lt;/p&gt;
+&lt;p&gt;Now, we are not facing that dilemma of "should this be a different package?", now it's more "where should I build this?",
+we try to keep our services from doing more than one thing, simplicity is the main value now, so far, we've deployed over 70
+services and we continue to break the monolith into smaller units, all powered by python and django for our backends and react for
+our frontend, running on top of AWS. Does this sound like a place you would like to work at? leave me a comment! and we can talk about it.&lt;/p&gt;</content><category term="Blog"></category><category term="personal"></category><category term="career"></category><category term="middle east"></category><category term="dubizzle"></category></entry><entry><title>New Grads Survival Guide</title><link href="http://iffm.me/new-grads-survival-guide.html" rel="alternate"></link><published>2016-03-25T00:00:00+04:00</published><updated>2016-03-25T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2016-03-25:/new-grads-survival-guide.html</id><summary type="html">&lt;p&gt;OK, OK... I'm sorry, I lied on the title, but please, don't stop
+reading. I know... I know, we started bad our relationship already but,
+I can explain it, I swear.&lt;/p&gt;
+&lt;p&gt;Yes, it says "survival guide", but it's not like that, I'm not going to
+tell you a recipe to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;OK, OK... I'm sorry, I lied on the title, but please, don't stop
+reading. I know... I know, we started bad our relationship already but,
+I can explain it, I swear.&lt;/p&gt;
+&lt;p&gt;Yes, it says "survival guide", but it's not like that, I'm not going to
+tell you a recipe to get the job you want, in the company you like and
+the country you dream, that's impossible, as programmer we all know
+there is no silver bullet, and it applies not only on software, also in
+day by day life problems.&lt;/p&gt;
+&lt;p&gt;What I'm going to share with you, is what worked and still working for
+me, let me give you some context. I'm a 29 years old Computer Engineer
+from Venezuela, yes, I know... we're famous for good baseball players,
+beautiful women and, most recently and sadly, thanks to this guy.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Hugo Chávez, worst Venezuelan
+president..." src="https://dl.dropboxusercontent.com/s/8v0mswsxcdii5pd/chavez.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;And this other guy...&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Nicolás Maduro... even worse that
+Chávez" src="https://dl.dropboxusercontent.com/s/2yqy0xbwldnwth4/maduro.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;My country is, obviously, a 3rd world country, we're facing huge and
+very serious economic and political issues and it's quickly getting
+worse thanks to those guys, my family is not rich so I couldn't travel
+or go to another country to study until things get better and, by now,
+I'm living in Dubai, paying my rent and brought my wife abroad so we
+have some hope of having the quality of life we dreamed together, how I
+did it?, my job is my flight ticket and my passport.&lt;/p&gt;
+&lt;p&gt;I managed to get out of Caracas, one of the most violent and dangerous
+cities in the world, and come to Dubai 2 years ago. Obviously this
+wasn't with money from my own pocket, a local company hired me and
+covered my relocation expenses. I'm going to share with you some things
+I did and still doing, this is not guaranteed to give you the job you
+want, but certainly will help you increase your chances.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Set up a decent LinkedIn profile:&lt;/em&gt; no joke, this helps, a lot of
+    recruiters and companies in LinkedIn, don't underestimate that tool,
+    it's really powerful and you don't need to pay for the pro or
+    premium version. A good LinkedIn profile includes a picture, a
+    description of each job you had, and by description I mean
+    responsibilities and key achievements and responsibilities in
+    that position.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Have a public GitHub account:&lt;/em&gt; and actually &lt;em&gt;use it!&lt;/em&gt;, I'm not
+    telling you to contribute to a lot of open source projects or to
+    start yet another social auth library, just experiment with new
+    tools, build some cool hello-world style projects and upload the
+    code to GitHub, this will show that you're actively learning new
+    stuff all the time.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Have a StackOverflow account:&lt;/em&gt; and, again, &lt;em&gt;use it&lt;/em&gt;, answer some
+    questions and ask some questions, it's useful and it will help you,
+    trust me.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Be passionate:&lt;/em&gt; love your career, you studied it for a reason.
+    Learn new stuff, experiment with a new language or framework, show
+    everybody the cool stuff you're working on, get ideas from other
+    people and learn from them.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Be pragmatic:&lt;/em&gt; yes, when it comes to work, you have to let your
+    knowledge and logic guide your decisions, not your emotions.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Choose your weapon:&lt;/em&gt; and do it early, it's good to be versatile,
+    you're a programmer, not a user of a programming language. But you
+    need a battle ax, the one that helps you solve any problem faster
+    and you feel more comfortable with.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And finally, the one I consider the most important.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Choose your first job carefully:&lt;/em&gt; yes, I mean it, don't let the job
+    choose you, you have to enjoy your job because it's where you will
+    spend most of the day and, trust me, your first job will define your
+    career. If you start developing J2EE applications, people will hire
+    you to do so, because that's the experience you have. Don't be
+    afraid to say no to an offer you're not totally convinced of taking.
+    In my case, when I was looking for an internship, I turned down an
+    offer from Microsoft in Venezuela because I've always been an Open
+    Source enthusiast and a Linux user, I didn't found myself
+    programming in ASP.NET, I decided to take an offer from Vauxoo, a
+    local small company that developed open source modules for OpenERP
+    (now Odoo) and I'm very happy I took that road, I learned Python in
+    that job, which is my battle ax and my main tool by today.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So... yeah!, not a recipe, but some tips I hope will help you on your
+first years as a professional.&lt;/p&gt;</content><category term="Blog"></category><category term="career"></category></entry></feed>

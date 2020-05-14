@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - pyve</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://127.0.0.1:8000/feeds/pyve.tag.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2012-11-18T00:00:00+04:00</updated><entry><title>Mi experiencia en el PyConVE 2012 y otros cuentos</title><link href="http://iffm.me/mi-experiencia-en-el-pyconve-2012-y-otros-cuentos.html" rel="alternate"></link><published>2012-11-18T00:00:00+04:00</published><updated>2012-11-18T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2012-11-18:/mi-experiencia-en-el-pyconve-2012-y-otros-cuentos.html</id><summary type="html">&lt;p&gt;Bueno, ya ha pasado una semana y alguito desde que terminó la primera
+Conferencia del Lenguaje Python de Venezuela (PyConVE), he tenido algo
+de tiempo para reflexionar y pensar acerca de varias cosas que me
+ocurrieron antes del evento, es decir, mientras se estaba organizando,
+durante el evento y después …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Bueno, ya ha pasado una semana y alguito desde que terminó la primera
+Conferencia del Lenguaje Python de Venezuela (PyConVE), he tenido algo
+de tiempo para reflexionar y pensar acerca de varias cosas que me
+ocurrieron antes del evento, es decir, mientras se estaba organizando,
+durante el evento y después del mismo, es decir, los días siguientes a
+que la conferencia finalizó.&lt;/p&gt;
+&lt;h2&gt;¿Cómo comenzó?&lt;/h2&gt;
+&lt;p&gt;Creo que es justo &lt;em&gt;echar el cuento&lt;/em&gt; de cómo surgió la idea de organizar
+un PyCon en Venezuela, algo que para muchos, dentro de la comunidad
+incluso, resultaba una locura hace un par de años.&lt;/p&gt;
+&lt;p&gt;Todo comenzó por allá en febrero de 2011, yo empezaba mis pasantías
+cortas de la Universidad en &lt;a href="http://vauxoo.com"&gt;Vauxoo&lt;/a&gt;,
+me iniciaba en Python con aquel trabajo, era toda una nueva
+manera de programar y me encantaba, por referencia de Nhomar Hernández
+terminé metido en la lista python-caracas y, posteriormente, en la de
+Python Venezuela en coactivate. Recuerdo algunos mensajes en la lista de
+python-caracas se estaba hablando de que sería una buena idea organizar
+un &lt;em&gt;Día Python&lt;/em&gt; para vernos las caras, yo era joven e ingenuo, me ofrecí
+para organizarlo y en marzo de 2011 tuvimos nuestro primer &lt;em&gt;PyDay
+Caracas&lt;/em&gt;, en el auditorio de la biblioteca de la Universidad Católica
+Andrés Bello.&lt;/p&gt;
+&lt;p&gt;Luego de ese primer &lt;em&gt;PyDay&lt;/em&gt;, que se repitió en Mérida unos días después,
+Francisco Palm decía por la lista que se debería aprovechar el impulso
+para organizar algo más grande: un &lt;em&gt;PyCon&lt;/em&gt;. La idea, por esos días, no
+caló mucho entre la gente de la comunidad, las cosas se fueron enfriando
+poco a poco y con el tiempo, sólo había uno que otro mensaje ocasional
+en la lista y nos veíamos una vez cada alineación planetaria.&lt;/p&gt;
+&lt;p&gt;Luego, por allá en diciembre de 2012, conversando con Francisco Palm, la
+idea de un &lt;em&gt;PyCon&lt;/em&gt; no me pareció tan descabellada, había posibles
+patrocinantes, la sede podría ser la UCAB, se asomaba la idea de invitar
+ponentes internacionales, yo por mi parte, acababa de renunciar en
+&lt;a href="http://vauxoo.com"&gt;Vauxoo&lt;/a&gt; para dedicarme a mi
+tesis de grado, entonces, también trabajaba en mi tesis, seguía siendo
+joven e ingenuo y acepté lanzarme de frente con la organización del
+evento.&lt;/p&gt;
+&lt;h2&gt;El comienzo&lt;/h2&gt;
+&lt;p&gt;Justo empezando, nos dividimos un poco las tareas, decidimos que el
+evento sería en Caracas y que la sede sería la Universidad Católica
+Andrés Bello, al ser &lt;em&gt;casi egresado&lt;/em&gt; de allí, ya se cómo se mueven las
+cosas dentro, conozco a varias autoridades y se también con quién hablar
+o dónde dirigirme.&lt;/p&gt;
+&lt;p&gt;Había algo que para mi resultaba vital, tener apoyo de mi Escuela, la
+Escuela de Ingeniería Informática de la UCAB. Lamentablemente, aunque el
+Prof. Ricardo Casanova tenía instrucciones de apoyarme en lo que
+pidiera, no hizo más que decirme que "los auditorios y los laboratorios
+no pueden reservarse con tanta antelación", de resto, resolví
+escribiéndole a las unidades funcionales correspondientes y reservando
+laboratorios y el auditorio "con mucha antelación". Me hubiera gustado
+contar con un mayor apoyo por parte de mi Escuela, pero supongo que
+aquello de "nadie es profeta en su tierra" es cierto.&lt;/p&gt;
+&lt;p&gt;Una vez asegurados los espacios para alojar el evento, me dediqué a
+buscar ponentes, ya había unos nacionales más que confirmados a quienes
+no había siquiera que preguntarles: Francisco Palm, Nhomar Hernández,
+Carlos Gustavo Ruíz, Carlos Zager y Juan Hernández, pero para atraer más
+personas al evento, hacían falta ponentes internacionales, me dediqué a
+escribirle a &lt;strong&gt;Guido Van Rossum&lt;/strong&gt; y a &lt;strong&gt;Wesley Chun&lt;/strong&gt; a ver si estarían
+interesados en participar, eso sí, teniendo presente que tocar la puerta
+no es entrar.&lt;/p&gt;
+&lt;p&gt;De parte de Guido, obtuve una respuesta negativa, él dice que prefiere
+no viajar porque es malo para su familia y es totalmente entendible, ya
+tiene su agenda y va al &lt;em&gt;PyConUS&lt;/em&gt; y al &lt;em&gt;EuroPython&lt;/em&gt; casi exclusivamente.&lt;/p&gt;
+&lt;p&gt;Por su parte Wesley también me dijo que no, sin embargo me facilitó una
+larga lista de contactos, me puso en contacto con José Montes de Oca
+(venezolano en Google) y me pidió que lo mantuviera al tanto del evento.
+Gracias a Wesley Chun, pude contactar con Facundo Batista y Érico
+Andrei, los dos ponentes &lt;strong&gt;internacionales&lt;/strong&gt; del primer &lt;em&gt;PyConVE&lt;/em&gt;, la
+invitación incluía &lt;strong&gt;pasaje y hospedaje&lt;/strong&gt; en Caracas, ambos aceptaron y
+yo, en ese momento, &lt;strong&gt;no&lt;/strong&gt; tenía patrocinantes.&lt;/p&gt;
+&lt;h2&gt;Tomando forma y sintiendo la presión&lt;/h2&gt;
+&lt;p&gt;Bien, en enero ya tenía cuatro cosas: una fecha para el &lt;em&gt;PyConVE&lt;/em&gt;, dos
+invitados internacionales &lt;strong&gt;confirmados&lt;/strong&gt; (Facundo y Érico), un invitado
+internacional &lt;strong&gt;por confirmar&lt;/strong&gt; (José Montes de Oca) y la preocupación
+de conseguir el dinero para cumplir la promesa del pasaje y el
+alojamiento en Caracas para los invitados, bastante ¿no?&lt;/p&gt;
+&lt;p&gt;Empecé a escribir a mediados de enero a la Escuela de Ingeniería
+Informática (EII) para pedirles &lt;strong&gt;apoyo&lt;/strong&gt; en la logística interna,
+especialmente la reserva de los auditorios, la Prof. Susana García,
+directora de la EII, designó al Prof. Ricardo Casanova para que me
+ayudara en lo que fuera necesario. Procedí entonces a contactarlo para
+la reserva del auditorio y los laboratorios, su respuesta fue, en
+resumen, "no puedes reservar &lt;em&gt;con tanta antelación&lt;/em&gt; en este momento
+estoy muy ocupado y no puedo", este personaje y yo tenemos en el pasado
+un problema originado por una discusión &lt;em&gt;de esos temas religiosos&lt;/em&gt; Mac
+vs Linux del que, aparentemente, no ha podido sobreponerse.&lt;/p&gt;
+&lt;p&gt;Dada la negativa de apoyo o, más bien, intento de retrasarme las cosas,
+decidí contactar directamente a la Dirección del Cultura y a la
+Dirección de Tecnologías de Información (DTI) para reservar los
+espacios. Como era de esperarse, todo fluyó con normalidad y ya a
+finales de enero tenía algo mas: el Auditorio Hermano Lanz y los
+laboratorios A613 y A553 de la UCAB &lt;strong&gt;reservados&lt;/strong&gt; para albergar el
+&lt;em&gt;PyConVE&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Las cosas se durmieron un poco hasta finales de febrero, que los
+organizadores de &lt;em&gt;PyConAR&lt;/em&gt; lanzaron su página web con el llamado a
+charlas, inscripciones, información del evento, invitados
+internacionales y demás información del evento. Acá no teníamos siquiera
+un &lt;em&gt;En Construcción&lt;/em&gt; y, en pocas palabras, &lt;strong&gt;me asusté&lt;/strong&gt; (sintiendo la
+presión). Corrí a la lista &lt;em&gt;Conferences&lt;/em&gt; de &lt;em&gt;python.org&lt;/em&gt; para pedir
+ayuda con el dominio oficial &lt;em&gt;ve.pycon.org&lt;/em&gt; y, mientras, compré el
+dominio &lt;em&gt;pyconve.com&lt;/em&gt; a través de &lt;em&gt;GoDaddy&lt;/em&gt;. Aprovecho acá para
+agradecerle a M.A. Lemburg por su ayuda configurando el dominio.&lt;/p&gt;
+&lt;p&gt;Ya que las cosas no fluían con la velocidad que quería con la página
+web, pedí ayuda en la oficina, en ese momento trabajaba en
+&lt;a href="http://zava.com.ve"&gt;Zava&lt;/a&gt;, nos dedicamos 4
+desarrolladores a sacar la página y en una tarde ya teníamos algo visual
+y semi-funcional, al final de la semana ya teníamos una página bastante
+completa y &lt;em&gt;apta para el público&lt;/em&gt;, la hospedamos en el VPS de la empresa
+y listo. Posteriormente la empresa me dejaría tiempo para atender bugs y
+añadir características nuevas, esto fue en abril.&lt;/p&gt;
+&lt;h2&gt;Empezando a tranquilizarme&lt;/h2&gt;
+&lt;p&gt;Conversando con Francisco, me di cuenta de que las cosas no iban tan
+atrasadas como pensé, él había conseguido patrocinio para afiches, agua
+y almuerzos para los organizadores y ponentes durante el evento, yo
+había conseguido ponentes internacionales, sede y página web así que lo
+demás, iría llegando poco a poco.&lt;/p&gt;
+&lt;p&gt;Todavía tenía una preocupación más: &lt;strong&gt;LOS PASAJES&lt;/strong&gt;, me dispuse a
+escribirle a Nhomar Hernández a ver si desde Vauxoo o algún
+cliente/socio de negocios podrían patrocinar los pasajes. La respuesta
+fue afirmativa y, ya a mediados de septiembre, estaba enviándole a Érico
+y a Facundo sus tickets electrónicos, en cuanto a José, el ponente de
+Google, tenía tiempo sin noticias hasta que confirmó, pero para cuando
+confirmó los pasajes habían subido de precio de manera astronómica y,
+difícilmente, un patrocinante iba a querer pagarlo, así que llegamos al
+acuerdo de que sería por videoconferencia a través de un &lt;em&gt;Google
+HangOut&lt;/em&gt;, escribí al DTI para que realizaran las configuraciones
+pertinentes.&lt;/p&gt;
+&lt;p&gt;Mientras tanto, teníamos unas 35 ponencias inscritas y alrededor de 150
+personas registradas para asistir al evento, esto me tenía súper
+contento, sinceramente no esperaba tanta receptividad. Francisco
+consiguió organizar un evento en el CIDA en Mérida y logró que un
+patrocinante pagara pasaje Caracas - Mérida para que Facundo participara
+en ese evento, el &lt;em&gt;PyTatuy&lt;/em&gt;. Todo parecía ir viento en popa.&lt;/p&gt;
+&lt;h2&gt;Imprevistos, imprevistos, IMPREVISTOS!!!&lt;/h2&gt;
+&lt;p&gt;Bueno, nada es perfecto, los imprevistos en este tipo de cosas están a
+la orden del día, recordemos que
+&lt;a href="http://es.wikipedia.org/wiki/Ley_de_Murphy"&gt;Murphy&lt;/a&gt;
+existe. Previendo que, quizás, no llegara el agua a tiempo el
+primer día. Facundo decidió venir con su familia, ahora debía buscarle
+una habitación en un Hotel cerca de la Universidad, tienen un hijo
+pequeño, así que debía ser un buen hotel y, además, debía buscar un
+patrocinante para eso, la habitación no se concretó sino hasta tres días
+antes de que llegaran el patrocinante fue
+&lt;a href="http://echandocodigo.com"&gt;EchandoCódigo&lt;/a&gt; (Gracias
+Osledy Bazó!!!).&lt;/p&gt;
+&lt;p&gt;En la madrugada del 27 de octubre recibo una llamada a mi celular, era
+un número internacional y atendí. Del otro lado decían &lt;em&gt;"Ché ¿Israel?,
+Facundo Batista aquí, estoy en el aeropuerto y no me dejan abordar
+acá"&lt;/em&gt;, había un problema con el nombre, para enterarse del cuento
+completo, click
+&lt;a href="http://www.taniquetil.com.ar/plog/post/1/583"&gt;acá&lt;/a&gt;.
+Inmediatamente llamé a Nhomar a ver si estaba despierto (y
+si no, pues que se despertara), estuvimos conversando un rato y luego
+Facundo me informó que ya le habían liberado los boletos, pero que era
+necesario corregir los boletos para el regreso.&lt;/p&gt;
+&lt;p&gt;El 27 de octubre en la noche, voy con Giselle, mi novia, al aeropuerto a
+buscar a Facundo y familia, pero al llegar, me consigo únicamente a
+Facundo, la familia se había quedado varada en Lima, les habían
+cancelado el segundo tramo del viaje. Bueno, subimos a Caracas y lo dejé
+en el Hotel para que pudiera descansar y al día siguiente ya se
+resolvería lo del vuelo de la familia, afortunadamente llegaron en
+domingo 28 al mediodía.&lt;/p&gt;
+&lt;p&gt;Francisco Palm había quedado en traer los afiches para pegarlos por la
+universidad cuando viniera a Caracas con Facundo luego del &lt;em&gt;PyTatuy&lt;/em&gt;,
+pero los dejó en el carro y el carro lo dejó en Mérida (sorry!, tenía
+que contarlo, no lo tomes a descarga, jajajajaja).&lt;/p&gt;
+&lt;p&gt;Con respecto a Érico, todo fluyó de maravilla, se quedó en mi casa,
+comió arepas, aprendió a moverse en Metro, andaba solo por la ciudad!!!,
+eso me preocupaba enormemente, pero luego entendí que él es muy
+independiente cuando viaja.&lt;/p&gt;
+&lt;p&gt;Hubo cancelaciones tardías: Ernesto Crespo sufrió una caída que le
+imposibilitó viajar (espero se encuentre bien ya), Roldan Vargas tampoco
+podría venir a Caracas, Edwind Ocando iba a ser operado y tuvo que
+cancelar también, Efraín Valles no pudo venir por razones laborales.
+Hubo otras más, pero no recuerdo, afortunadamente varios miembros
+saltaron al rescate, Gerardo Curiel cubrió varias charlas canceladas con
+temas interesantísimos de desarrollo web y vim para pythonistas,
+Leonardo Caballero cubrió una de las charlas de Plone que fueron
+canceladas y Érico Andrei también dió una charla adicional muy orientada
+al público estudiantil.&lt;/p&gt;
+&lt;p&gt;Bien, llegó el primer día del &lt;em&gt;PyConVE&lt;/em&gt; y, como era de esperarse, fue un
+desastre, había una cola insoportable en la Av. Páez, ergo, llegué tarde
+con Érico, Gigi (bueno, Giselle, mi novia) ya había llegado y me ayudó a
+ir organizando todo, ya estaban Sebastián Magrí y Leonardo Caballero en
+la UCAB, Rafael Andara (del DTI) me había estado esperando para darme
+los datos de configuración para poder realizar la videoconferencia con
+José Montes de Oca, muchísimas gracias a Gigi y a los muchachos por ir
+alistando todo, el evento arrancó casi una hora y media tarde (perdonen
+todos el retraso).&lt;/p&gt;
+&lt;p&gt;Las aguas llegaron tarde (menos mal fui precavido), los almuerzos
+también así que se convirtieron en la cena de varias personas
+(incluyéndome).&lt;/p&gt;
+&lt;p&gt;Vale acotar que pasé &lt;strong&gt;toda la semana&lt;/strong&gt; del PyCon enfermo del estómago y
+sobreviviendo a base de Loperán y Alcaseltzer.&lt;/p&gt;
+&lt;p&gt;El último día del evento, el DTI no me abrió los laboratorios porque no
+tenían la llave y la oficina donde están no abre los sábados (mal!) y,
+supuestamente, hay una persona los sábados que tiene las llaves pero ese
+día no fue (terrible!!), por lo que todos los talleres de ese día (o la
+mayoría) hubo que darlos como charlas relámpago en el Auditorio (una
+manera de resolver y no quedar tan mal).&lt;/p&gt;
+&lt;h2&gt;Conclusiones&lt;/h2&gt;
+&lt;p&gt;Bueno, luego del &lt;strong&gt;PyConVE&lt;/strong&gt;, aprendí muchísimas cosas en cuanto a
+gestión de eventos y otras tantas de comunidad, sobre todo aprendí a
+delegar, es imposible que una sola persona pueda hacerlo todo. Descubrí
+que hay mucha gente valiosa dentro de la comunidad en quien se pueden
+delegar cosas de manera muy confiable, &lt;a href="http://twitter.com/kadaba"&gt;Jin
+Kadaba&lt;/a&gt;, &lt;a href="http://twitter.com/jackboot7"&gt;Luis Alberto
+Santana&lt;/a&gt;, &lt;a href="http://twitter.com/carlosgr_arahat"&gt;Carlos
+Gustavo Ruíz&lt;/a&gt;,
+&lt;a href="http://twitter.com/macagua"&gt;Leonardo Caballero&lt;/a&gt;,
+&lt;a href="http://twitter.com/sebasmagri"&gt;Sebastián Magrí&lt;/a&gt;,
+&lt;a href="http://twitter.com/nhomar"&gt;Nhomar Hernández&lt;/a&gt;
+(pero por supuesto!), &lt;a href="http://twitter.com/vladjanicek"&gt;Juan
+Hernández&lt;/a&gt; (no
+faltaba más), &lt;a href="http://twitter.com/mapologo"&gt;Francisco Palm&lt;/a&gt;.
+y si olvido a alguien, pido disculpas.&lt;/p&gt;
+&lt;p&gt;Hay aún mucho trabajo por hacer, es necesaria una figura legal para
+poder recibir donaciones en calidad de patrocinio de una manera más
+formal, actualmente estamos en eso en la comunidad, creo que el PyCon,
+aunque bien fue algo arriesgado, fue un catalizador y un activador para
+muchas personas dentro de la comunidad, está en nosotros no dejar que la
+ola muera y continuar trabajando para llevar adelante nuestra comunidad,
+muchas personas de otros estados quieren organizar &lt;em&gt;PyDays&lt;/em&gt;, personas
+que antes no intervenían en la lista de la comunidad ahora son más
+activas y sólo leí buenos comentarios del evento. Todo esto y, sobre
+todo las dos primeras, con cosas que me hacen decir que &lt;strong&gt;valió la
+pena&lt;/strong&gt; el esfuerzo, y &lt;strong&gt;lo volvería a hacer&lt;/strong&gt;. Perdonen si me extendí,
+creo que este es el artículo más largo que he escrito en muchísimo
+tiempo, pero eran demasiadas experiencias que quería compartir,
+finalmente, muchísimas gracias a Facundo Batista y Érico Andrei por
+participar, gracias a &lt;strong&gt;todos&lt;/strong&gt; los ponentes nacionales por apartar esos
+tres días en sus agendas y movilizarse a la UCAB para nuestro &lt;strong&gt;primer&lt;/strong&gt;
+&lt;em&gt;PyCon&lt;/em&gt;, a mi novia por apoyarme en mis locuras y a todos quienes
+asistieron de Caracas y, sobre todo, del interior del país, GRACIAS
+TOTALES!.&lt;/p&gt;</content><category term="Español"></category><category term="pycon"></category><category term="pyve"></category><category term="python"></category></entry></feed>

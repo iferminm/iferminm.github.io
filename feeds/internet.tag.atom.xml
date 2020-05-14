@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - internet</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://127.0.0.1:8000/feeds/internet.tag.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2011-06-14T00:00:00+04:00</updated><entry><title>Empezando a conocer la Web 3.0 (Parte II)</title><link href="http://iffm.me/empezando-a-conocer-la-web-30-parte-ii.html" rel="alternate"></link><published>2011-06-14T00:00:00+04:00</published><updated>2011-06-14T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-06-14:/empezando-a-conocer-la-web-30-parte-ii.html</id><summary type="html">&lt;p&gt;by &lt;a href="author/israel-fermin-montilla.html"&gt;Israel Fermín Montilla&lt;/a&gt; on Tue
+14 Jun, 2011&lt;/p&gt;
+&lt;p&gt;Hace un tiempo, publiqué el primero de una serie de artículos acerca de
+La Web Semántica, en el que daba una introducción y exponía la visión de
+la W3C sobre el rumbo que debería tomar la Web en su "versión 3 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;by &lt;a href="author/israel-fermin-montilla.html"&gt;Israel Fermín Montilla&lt;/a&gt; on Tue
+14 Jun, 2011&lt;/p&gt;
+&lt;p&gt;Hace un tiempo, publiqué el primero de una serie de artículos acerca de
+La Web Semántica, en el que daba una introducción y exponía la visión de
+la W3C sobre el rumbo que debería tomar la Web en su "versión 3.0", si
+aún no lo has leido,
+&lt;a href="http://codersvenezuela.com/post/empezando-a-conocer-la-web-3-0-parte-i/50"&gt;aún estás a tiempo&lt;/a&gt;.
+En esta segunda entrega, expondré algunos conceptos que es
+necesario tener claros si deseas adentrarte en este nuevo mundo, así
+como también, daré una visión, un poco futurista (casi sacada de una
+película de Ciencia Ficción), de las cosas que serán posibles una vez se
+alcance a estandarizar todos los conceptos y tecnologías de la Web
+Semántica a lo ancho, largo y profundo de la World Wide Web.&lt;/p&gt;
+&lt;p&gt;El primero de los conceptos que debemos tener claro es el de URI
+(Universal Resource Identifier) y URL (Universal Resource Locator), y
+las diferencias y similitudes que existen entre ellos pues, es de
+intuirse, que nos servirán más adelante. Luego de entender eso, podemos
+avanzar y adentrarnos en el mundo de las Ontologías, un concepto del
+campo de la Inteligencia Artificial adaptado a la Web Semántica. Una vez
+asimilado todo lo referente a las Ontologías, podemos irnos a estudiar
+algo de lógica y consultas sobre dichas ontologías para, después, ver
+algo acerca de Motores de Inferencia, que serán nuestro más grande
+aliado al desarrollar aplicaciones que implementen tecnologías de la Web
+Semántica. En este artículo, me concentraré en los dos primeros, es
+decir, URL, URI y Ontologías. Algo que parece causar mucha confusión en
+estudiantes, son los URI y los URL. Espero despejar cualquier duda en el
+siguiente párrafo: Un Identificador Universal de Recurso o URI, por sus
+siglas en inglés, es un elemento que nos permite simplemente saber
+"quién" es ese recurso. Si me permite identificar el recurso de manera
+inequívoca, quiere decir que debe ser único para cada uno. Por su parte,
+el Localizador Universal de Recurso, o URL por sus siglas en inglés, me
+permite saber la ubicación de ese recurso, debe resultar obvio que
+también debe ser único para cada uno pues dos recursos no pueden tener
+la misma ubicación. Si exportamos estos conceptos al mundo real y los
+aplicamos a personas, un URI podría ser su Cédula de Identidad, que no
+me da acceso al recurso, pero me permite saber quién es, un URL, podría
+ser su dirección postal + habitación en la que se encuentra (asumiendo
+que en Venezuela la gente vive tan cómoda que no necesita compartir
+cuarto con nadie) o, incluso, su número telefónico, ambos me dan acceso
+al recurso y, de alguna u otra manera, también me permiten conocer quién
+es. En pocas palabras, un URL es un URI que, además, me permite conocer
+la ubicación del sujeto.&lt;/p&gt;
+&lt;p&gt;Es necesario tener claro todo lo anterior ya que en la Web Semántica no
+se habla de Páginas o Sitios Web, se busca generalizar un poco más ya
+que, en la Web, no sólo existen documentos HTML que dan forma a los
+Portales Web, sino también Videos, Fotos, documentos PDF, Música,
+Servicios Web, en fin, sería mucho más fácil decir qué es lo que no se
+encuentra en la Internet. Es por ello que la Web Semántica habla de
+Recursos, más allá de su tipo. Ahora bien, la Web Semántica se basa en
+modelos de conocimiento bien estructurado, estos modelos de conocimiento
+se conocen en el mundo de la Inteligencia Artificial como Ontologías.&lt;/p&gt;
+&lt;p&gt;Una Ontología no es más que una representación estructurada del
+conocimiento de un área específica, de allí que muchos buscadores que
+implementan 100% tecnología de Web Semántica sean específicos para un
+tema dado. Estos modelos, en el ámbito que nos compete, se utilizan para
+describir recursos, a los cuales nos referimos mediante URI's, y, en
+cierta forma, darle al computador la capacidad de "entender" de qué
+habla dicho recurso y cuáles son sus recursos relacionados, de esta
+manera, comenzamos a construir nuestra infraestructura de meta-datos
+para realizar búsquedas contextualizadas y con más sentido para el
+usuario. La manera como una Ontología organiza el conocimiento, es a
+través de una estructura de meta-conocimiento. Esta estructura se
+construye a partir de un concepto con el cual la mayoría de los
+programadores estamos famimliarizados desde tempranos años de la
+carrera, las Clases, todo meta-conocimiento es modelable a través de
+Clases. Es de intuirse que se mantienen los conceptos de Herencia y
+Polimorfismo también dentro de las Ontologías. Por ejemplo, imaginemos
+una MICRO-Ontología de la Vida Salvaje de África[1]. Empezando a
+pensar al respecto, nos percatamos de que la sabia madre naturaleza ya
+nos facilitó con dos clases bien diferenciadas: "Animales" y "Plantas".
+Una Ontología, también me permite crear relaciones entre clases, con
+propócitos didácticos, imaginemos las clases "Tallo", "Rama" y "Hoja"
+que "son parte" de una "Planta", creo que la relación es bastante obvia,
+nuestra estructura de composición para la clase "Planta" sería: "Hoja",
+es parte de: "Rama", es parte de: "Tallo", es parte de: "Planta".
+Podemos complicarlo aún más, podríamos definir clases de "Forma"
+(triángulo, rombo, etc) y relacionarlas a "Hoja" y crear la relación
+"tiene forma de" para describir cómo es la hoja de una Planta dada,
+pero, por ahora, dejémoslo así. Por otro lado, la clase "Animal", tiene
+dos subclases muy fáciles de inferir: "Carnívoro" y "Herbívoro", ambas
+sub-clases son también "Animales", esto es una estructura de Herencia
+pues, una instancia de "Herbívoro" o de "Carnívoro" es también un
+"Animal".&lt;/p&gt;
+&lt;p&gt;Nuestra estructura de Herencia para "Animal" quedaría así: "Carnívoro",
+es un: "Animal". "Herbívoro", es un: "Animal". Pero, ahora, ¿cómo se
+relacionan todas nuestras clases entre sí?. Bueno, a través de una
+relación obviamente, pero, ¿Cuál?. Bueno, un animal debe comer ¿no?.
+Entonces, un "Herbívoro" come "Planta" y un "Carnívoro" come
+"Herbívoro", también podría crear la relación inversa "es comido por",
+por ejemplo. Hasta ahora sólo tenemos el Meta-Conocimiento, es decir,
+las descripciones de los recursos, ahora debo agregar recursos, por
+ejemplo, si digo: "León" es un "Carnívoro"; "Arbusto" es una "Planta" y
+"Zebra" es un "Herbívoro" Automáticamente, podríamos inferir que el
+"Arbusto" está conpuesto por "Tallo", "Rama" y "Hoja", es comido por
+"Zebra", que a su vez es comido por "León". Si hacemos una analogía con
+la Programación Orientada a Objetos, mis clases, seguirían siendo
+clases, pero los recursos a los que hacen referencia, serían los objetos
+que son instanciados en una clase determinada.&lt;/p&gt;
+&lt;p&gt;Obviamente, pueden hacerse ontologías muy complejas, lo que aquí muestro
+a manera de ejemplo es sólo la punta del iceberg pues los lenguajes de
+ontologías para la Web Semántica son sumamente flexibles y potentes: RDF
+y OWL[2] (que no es más que una extensión de RDF), posteriormente
+dedicaré un artículo para profundizar más sobre ellos. Las clases
+RDF/OWL, definen y describen mis recursos, y las relaciones entre estas
+clases, definen ciertas reglas básicas de inferencia lógica que pueden
+ser aprovechadas en un nivel superior por un Motor de Inferencia[3]
+para resolver consultas sobre una ontología y, a partir de esas premisas
+básicas, deducir nuevo conocimiento no explícito directamente en el
+modelo de conocimiento.&lt;/p&gt;
+&lt;p&gt;Imaginemos ahora una WWW totalmente enlazada, totalmente integrada con
+la Web Semántica, cuando esto ocurra, serán agentes[4] quienes nos
+ayuden a realizar búsquedas a través de la web, examinando ontologías,
+extrayendo información que se adapte a nuestra consulta e interpretando,
+a través de reglas de inferencia bien definidas, cuáles recursos cumplen
+mejor con nuestra solicitud. Supongamos que Alan, es un empresario muy
+ocupado y su madre lo llamó anoche porque siente dolor en la zona
+abdominal desde hace unos días y siente que debería visitar a un médico.
+Alan, consulta la Internet desde su TabletPC, a través de su agente,
+solicitando las clínicas que se encuentren en 10km a la redonda de la
+casa de su madre, organizadas según su reputación. El agente revisa la
+ubicación de la casa de su madre (almacenada en el Tablet gracias a la
+tecnología de GPS) y consulta una Ontología con las clínicas de la
+ciudad y, además, busca en el Servicio Web de la Sociedad Médica
+Venezolana (bajo las circunstancias descritas en el párrafo anterior,
+debería existir), la lista de las mejores clínicas para poder cumplir
+con el patrón de ordenamiento que Alan solicitó. Luego de revisar los
+resultados, Alan le pregunta al agente de dónde obtuvo la información,
+este le redirige al portal de la Sociedad Médica Venezolana. Alan revisa
+las primeras tres clínicas y, finalmente se decide por el Hospital de
+Clínicas Caracas (HCC), pues no queda muy lejos de la casa de su madre y
+figura de 3ero en la lista de resultados. El agente del HCC le pregunta
+qué síntomas presenta, Alan escribe "Dolor Abdominal", el agente le
+recomienda visitar a un Gastroenterólogo y le devuelve una lista de los
+médicos de esa especialidad del Hospital. Alan se da cuenta de que el
+2do en la lista, es un viejo amigo del Colegio y decide solicitar una
+cita con él lo más pronto posible, el agente del Hospital le informa que
+la cita más próxima es para dentro de dos días, entre las 14:00 y las
+18:00, y su agente le recuerda que tiene un par de reuniones en ese
+intervalo de tiempo. Alan revisa su agenda y se da cuenta que son dos
+reuniones de prioridad menor, pide a su agente que las reprograme y
+solicite la cita médica. El agente de Alan, de manera automática, se
+comunica con los agentes de las personas involucradas en las reuniones
+para reprogramar las citas y, posteriormente se comunica con el agente
+del HCC para colocar la cita para dentro de dos días a la hora
+mencionada. Todo esto será posible si la información se encuentra
+totalmente enlazada y disponible en línea, los recursos son descritos de
+manera bien definida y las reglas de inferencia son bien explícitas, es
+por ello que es necesario que más personas se interesen en este tema de
+manera técnica pues, el futuro de la Internet, está tocando a nuestras
+puertas y, la Web Semántica, no puede quedarse enclaustrada dentro de la
+academia y ser dominado únicamente por grupos de investigación
+científica. Espero haber motivado a alguien más a estudiar dentro de
+este campo. Hasta un próximo artículo.&lt;/p&gt;
+&lt;p&gt;[1] Digo Micro-Ontología porque si hacemos la ontología completa, creo
+que acabaríamos con todo el espacio disponible en este servidor.&lt;/p&gt;
+&lt;p&gt;[2] Ambos lenguajes están en proceso de definición por el World Wide
+Web Consorcium (W3C), el avance puede ser seguido a través el sitio web
+del W3C.&lt;/p&gt;
+&lt;p&gt;[3] JENA y Virtuoso son los que parecieran ser más utilizados.&lt;/p&gt;
+&lt;p&gt;[4] Un agente, en informática, es una pieza de software que realiza
+una tarea específica de manera automática, es una espécie de "robot".&lt;/p&gt;</content><category term="Español"></category><category term="web semántica"></category><category term="internet"></category><category term="web 3.0"></category></entry><entry><title>Empezando a conocer la Web Semántica (Parte I)</title><link href="http://iffm.me/empezando-a-conocer-la-web-semantica-parte-i.html" rel="alternate"></link><published>2011-05-10T00:00:00+04:00</published><updated>2011-05-10T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-05-10:/empezando-a-conocer-la-web-semantica-parte-i.html</id><summary type="html">&lt;p&gt;Mucho hablamos hoy día de lo "dos punto cero": en internet, en la radio,
+en la televisión, se habla incluso de programas y empresas "dos punto
+cero" que se apoyan en estas tecnologías de la web para comunicarse con
+su audiencia o bien para ser transmitidos (podcasts, videocasts, radios
+por …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Mucho hablamos hoy día de lo "dos punto cero": en internet, en la radio,
+en la televisión, se habla incluso de programas y empresas "dos punto
+cero" que se apoyan en estas tecnologías de la web para comunicarse con
+su audiencia o bien para ser transmitidos (podcasts, videocasts, radios
+por internet).&lt;/p&gt;
+&lt;p&gt;Y es que la Web 2.0 ha revolucionado desde la manera en que vemos la
+Internet hasta el enfoque de negocios de muchas grandes empresas. Pero,
+en este mundo cambiante de la tecnología, la Web 2.0 no es más que un
+estado transitorio a otro más sofisticado: la Web 3.0, conocida en la
+inmensidad de Internet como la Web Semántica.&lt;/p&gt;
+&lt;p&gt;Resulta conveniente refrescar la memoria con algo de Historia de
+Internet pues, si actualmente nos encontramos en la Web 2.0, en algún
+momento debió existir una Web 1.0. Nos remontamos a los inicios de la
+Autopista de la Información, recordamos aquellas páginas frías,
+estáticas y en las que únicamente personal altamente capacitado y
+especializado era capaz de crear contenido y publicarlo, lo que se
+traducía en que sólo las grandes empresas tenían presencia en la red.
+Además, el flujo de información era unidireccional, es decir, se
+generaba un mensaje y otros, los usuarios, eran importantes en la medida
+en que se convertían en consumidores de dicha información. Poco a poco
+la tecnología fue evolucionando, aparecieron lenguajes capaces de
+procesar y pre-procesar hipertexto con los que se puede lograr sitios
+web más dinámicos y capaces de interactuar con bases de datos, con lo
+que el contenido pasó de ser de estático a cambiante. Esto trajo consigo
+que, aún cuando sólo personas con conocimientos de computación y
+programacion son los capaces de crear sitios y espacios en la web, todos
+los usuarios son capaces de generar y publicar contenido, con lo que la
+información ahora fluye de manera multidireccional, apareciendo
+conceptos como Redes Sociales e Inteligencia Colectiva, de esta manera
+nace lo que conocemos hoy día como La Web 2.0 en la que, contrario a la
+Web 1.0, los usuarios son importantes en la medida en que son
+generadores constantes de contenido.&lt;/p&gt;
+&lt;p&gt;Con esta nueva Web, cargada de contenido que, además, crece
+exponencialmente segundo a segundo, cobran especial importancia los
+buscadores. Estos buscadores, en su mayoría, trabajan mediante palabras
+claves o "keywords" en inglés. De esta manera, un documento es relevante
+según el número de veces que aparece una palabra clave y no por su
+significado en el contexto de la consulta realizada por el usuario. Este
+esquema funciona para búsquedas en las que el contexto no es tan
+importante, por ejemplo "Internet en Venezuela", resulta ser una
+consulta bastante general, podrían interesarme desde Proveedores de
+Servicio de Internet en Venezuela, hasta estadísticas acerca del uso y
+páginas más visitadas.&lt;/p&gt;
+&lt;p&gt;Supongamos que estamos planeando un viaje familiar a Los Andes, debemos
+llegar a Valera, Edo. Trujillo, entonces nos vamos al buscador de
+nuestra preferencia y consultamos: "Todos los vuelos a Valera mañana en
+la mañana". Esto sería así en un mundo ideal, pero en nuestro mundo los
+resultados serían un completo desastre, nuestro buscador nos daría
+páginas de agencias de viajes, sitios de aerolíneas, blogs acerca de
+"Valera" como localidad del Estado Trujillo, sitios turísticos en Valera
+e incluso noticias sobre personas con el apellido "Valera", además de
+recursos que contienen la palabra clave "mañana", estos resultados no
+son exactos y, por si solos, no satisfacen las necesidades de
+información del usuario, nuestro desafortunado viajero, tendrá que ir de
+resultado en resultado extrayendo manualmente la información que resulte
+relevante a su pregunta.&lt;/p&gt;
+&lt;p&gt;En la Web 3.0, un buscador con capacidad semántica, será capaz de
+detectar automáticamente la ubicación del usuario (en mi caso, Caracas),
+por lo que el "lugar de orígen" no tendría que ser suministrado, además,
+el buscador "entendería" que el usuario desea aerolíneas que cubran la
+ruta Caracas - Valera y calcularía el "mañana" en función de la fecha
+actual del sistema, en decir, en función de un "hoy" e interpretaría la
+segunda ocurrencia de "mañana" como un momento determinado del día, todo
+esto sólo con un click!. ¿Cómo es esto posible?, pues dotando la web de
+mayor significado en los innumerables recursos que pone a nuestra
+disposición, dotando a nuestra Web 2.0 de una mayor semántica, de manera
+que los resultados no se procesarían en base a entradas y salidas de
+datos, sino en base al contexto y significado de la consulta realizada,
+todo esto apoyándose en una infraestructura de metadatos. Suena simple
+¿verdad?. Pero, ¿cómo construimos esa infraestructura?, en los próximos
+artículos me dedicaré explorar más profundamente las posibilidades de la
+Web Semántica (que, algunas, parecen sacadas de una película de Ciencia
+Ficción) y a explicar a mayor detalle varios conceptos que hacen vida
+dentro del marco de la Web Semántica, así como también ilustrar de
+manera práctica, mediante tutoriales, el uso de las herramientas y
+tecnologías necesarias para dar vida a la Web Semántica o, lo que es lo
+mismo, dar Semántica a nuestra Web en vida, siempre dejando claro que no
+se trata de Inteligencia Artificial, sino de dar a las máquinas la
+capacidad de resolver problemas bien definidos, con operaciones bien
+definidas y sobre datos bien definidos.&lt;/p&gt;
+&lt;h3&gt;Lecturas Recomendadas&lt;/h3&gt;
+&lt;p&gt;Cobo, Cristóbal y Pardo, Hugo. (2007) Planeta
+2.0: Inteligencia Colectiva o Medios Fast Food. México DF: Grup de
+Recerca d’Interaccions e Digitals.&lt;/p&gt;</content><category term="Español"></category><category term="web semántica"></category><category term="web 3.0"></category><category term="internet"></category></entry></feed>

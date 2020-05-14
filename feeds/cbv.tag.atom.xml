@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - cbv</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://127.0.0.1:8000/feeds/cbv.tag.atom.xml" rel="self"></link><id>http://iffm.me/</id><updated>2015-07-25T00:00:00+04:00</updated><entry><title>Django: vistas basadas en clases</title><link href="http://iffm.me/django-vistas-basadas-en-clases.html" rel="alternate"></link><published>2015-07-25T00:00:00+04:00</published><updated>2015-07-25T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2015-07-25:/django-vistas-basadas-en-clases.html</id><summary type="html">&lt;p&gt;Tenía pendiente escribir sobre esto desde hace tiempo, pero entre una
+cosa y otra siempre terminaba escribiendo sobre otra cosa y las vistas
+basadas en clases quedaban olvidadas.&lt;/p&gt;
+&lt;p&gt;Las vistas basadas en clases nos permiten simplificar muchísimo el
+código, reduciendo, para muchos casos, la escritura de vistas a
+simplemente heredar …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Tenía pendiente escribir sobre esto desde hace tiempo, pero entre una
+cosa y otra siempre terminaba escribiendo sobre otra cosa y las vistas
+basadas en clases quedaban olvidadas.&lt;/p&gt;
+&lt;p&gt;Las vistas basadas en clases nos permiten simplificar muchísimo el
+código, reduciendo, para muchos casos, la escritura de vistas a
+simplemente heredar de usas vistas genéricas y agregar algunos
+&lt;a href="http://iffm.me/cosas-que-he-aprendido-parte-ii.html"&gt;mixins&lt;/a&gt;{.reference
+.external}, son un recurso bastante potente y que deberíamos tomar en
+cuenta en los proyectos que estemos o vayamos a desarrollar y que además
+está allí desde django 1.3.&lt;/p&gt;
+&lt;p&gt;Cuando estaba empezando a escribir la introducción, me dió por revisar
+el blog de &lt;a href="http://alvarohurtado.es"&gt;Álvaro Hurtado&lt;/a&gt;{.reference
+.external}, un compañero de trabajo en dubizzle, conseguí varios
+artículos que voy a compartir porque están bastante sencillos y fáciles
+de entender y, además, en perfecto español, es raro que la gente decida
+hacer un blog en español y mantenerse fiel sin escribir en inglés.&lt;/p&gt;
+&lt;p&gt;Acá los links:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="http://www.alvarohurtado.es/django-vistas-basadas-en-clases-i-introduccion/"&gt;Introducción&lt;/a&gt;{.reference
+    .external}: explicación breve acerca de las Vistas Basadas en Clases&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.alvarohurtado.es/django-vistas-basadas-en-clases-ii-detail-view/"&gt;DetailView&lt;/a&gt;{.reference
+    .external}: ejemplos sobre la vista de detalle&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.alvarohurtado.es/django-vistas-basadas-en-clases-iii-list-view/"&gt;ListView&lt;/a&gt;{.reference
+    .external}: ejemplos sobre la vista de lista&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Espero que sean de su agrado.&lt;/p&gt;</content><category term="Español"></category><category term="django"></category><category term="python"></category><category term="vistas basadas en clases"></category><category term="cbv"></category></entry></feed>
