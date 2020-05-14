@@ -6,7 +6,7 @@ import os
 AUTHOR = u'Israel Fermin Montilla'
 SITENAME = u'/dev/isra/blog/*'
 DATE_FORMAT = '%a %d %b, %Y'
-SITEURL = ''
+SITEURL = 'http://127.0.0.1:8000'
 
 PATH = 'content'
 
@@ -15,17 +15,18 @@ TIMEZONE = 'Asia/Dubai'
 DEFAULT_LANG = u'en'
 
 # Feed generation is usually not desired when developing
-FEED_ALL_ATOM = None
-CATEGORY_FEED_ATOM = None
-TRANSLATION_FEED_ATOM = None
-AUTHOR_FEED_ATOM = None
-AUTHOR_FEED_RSS = None
+FEED_DOMAIN = SITEURL
+FEED_ATOM = 'feeds/main.xml'
+FEED_ALL_ATOM = 'feeds/all.atom.xml'
+TAG_FEED_ATOM = 'feeds/{slug}.tag.atom.xml'
+CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
 
 # Blogroll
 LINKS = (
     ('Pelican', 'http://getpelican.com/'),
     ('Python.org', 'http://python.org/'),
     ('Jinja2', 'http://jinja.pocoo.org/'),
+    ('Atom', f'{SITEURL}/feeds/all.atom.xml'),
 )
 
 # Social widget
@@ -33,7 +34,7 @@ SOCIAL = (
     ('Twitter', 'http://twitter.com/iferminm'),
     ('LinkedIn', 'http://www.linkedin.com/profile/view?id=66587805&trk=tab_pro'),
     ('GitHub', 'https://github.com/iferminm'),
-    ('Email', 'mailto:iferminmontilla@gmail.com'),
+    ('Email', 'mailto:ferminster@gmail.com'),
 )
 
 DEFAULT_PAGINATION = 10
