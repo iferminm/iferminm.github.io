@@ -13,12 +13,6 @@ from pelicanconf import *
 SITEURL = 'http://iffm.me'
 RELATIVE_URLS = False
 
-#FEED_ALL_ATOM = 'feeds/all.atom.xml'
-#CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
-FEED_ALL_ATOM = 'feeds/all.atom.xml'
-TAG_FEED_ATOM = 'feeds/%s.tag.atom.xml'
-CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
-
 DELETE_OUTPUT_DIRECTORY = False
 
 # Following items are often useful when publishing
