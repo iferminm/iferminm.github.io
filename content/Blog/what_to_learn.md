@@ -2,8 +2,8 @@ Title: Which languages should I learn?
 Author: Israel Fermín Montilla
 Date: 2020-06-01
 Tags: software engineering, career, personal
-Cover: https://dl.dropboxusercontent.com/s/d97lkag2ysfdqrc/evolve.jpg
-Thumbnail: https://dl.dropboxusercontent.com/s/d97lkag2ysfdqrc/evolve.jpg
+Cover: https://dl.dropboxusercontent.com/s/u2f9jcmmskrjzdo/header.jpg
+Thumbnail: https://dl.dropboxusercontent.com/s/u2f9jcmmskrjzdo/header.jpg
 
 
 There are millions of articles and blog posts out there trying to
