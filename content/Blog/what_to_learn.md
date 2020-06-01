@@ -94,6 +94,8 @@ style, by learning, understanding and practicing is the only way we become bette
 software engineers.
 
 In my case, as I know JavaScript/Typescript, Python and Java because of previous jobs,
+maybe not all of them at an expert level but at least a general understanding so that
+I can tackle most of the day-to-day tasks using them.
 I'm focusing on learning Rust, it's a language which is growing and implements interesting
 concepts and I've toyed around with Smalltalk and Haskell to see what's there to learn and 
 incorporate new practices into my coding. 
