@@ -2,9 +2,8 @@ Title: Internal OpenSource
 Author: Israel Fermín Montilla
 Date: 2020-07-01
 Tags: opensource, projects
-Cover: https://dl.dropboxusercontent.com/s/y7hf2p40crdu19y/careem.jpeg
-Thumbnail: https://dl.dropboxusercontent.com/s/y7hf2p40crdu19y/careem.jpeg
-
+Cover: https://dl.dropboxusercontent.com/s/o4f10tc7r6zc5xm/header.jpg
+Thumbnail: https://dl.dropboxusercontent.com/s/o4f10tc7r6zc5xm/header.jpg
 
 OpenSource software has been out there for quite a long time, the idea of people
 around the world volunteering part of their time to work on free software is
