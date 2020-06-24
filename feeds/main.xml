@@ -1,5 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/*</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://127.0.0.1:8000/feeds/main.xml" rel="self"></link><id>http://iffm.me/</id><updated>2020-06-01T00:00:00+04:00</updated><entry><title>Which languages should I learn?</title><link href="http://iffm.me/which-languages-should-i-learn.html" rel="alternate"></link><published>2020-06-01T00:00:00+04:00</published><updated>2020-06-01T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2020-06-01:/which-languages-should-i-learn.html</id><summary type="html">&lt;p&gt;There are millions of articles and blog posts out there trying to
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/*</title><link href="http://iffm.me/" rel="alternate"></link><link href="http://127.0.0.1:8000/feeds/main.xml" rel="self"></link><id>http://iffm.me/</id><updated>2020-06-24T00:00:00+04:00</updated><entry><title>A Consultancy Story</title><link href="http://iffm.me/a-consultancy-story.html" rel="alternate"></link><published>2020-06-24T00:00:00+04:00</published><updated>2020-06-24T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2020-06-24:/a-consultancy-story.html</id><summary type="html">&lt;p&gt;About 8 months ago I was contacted by someone who needed a software project,
+the requirements were clear and simple enough for the most part, but it had a huge 
+field operations component and it required the software to provide real time metrics 
+to the operations teams about what was …&lt;/p&gt;</summary><content type="html">&lt;p&gt;About 8 months ago I was contacted by someone who needed a software project,
+the requirements were clear and simple enough for the most part, but it had a huge 
+field operations component and it required the software to provide real time metrics 
+to the operations teams about what was happening on the ground. Not to mention a very 
+complicated workflow for some edge cases.&lt;/p&gt;
+&lt;p&gt;I went through the documentation they sent to understand what was required, but looking 
+at the scope and the timelines they managed, I urged them to start as soon as possible in
+order to meet the deadline gracefully and without cutting too many edges.&lt;/p&gt;
+&lt;p&gt;They were hiring me as a Consultant Architect and Backend Engineer and they were hiring
+another freelancer as a Frontend Engineer who was going to only build the client side
+in accordance to the guidelines and specs given by me, so, I sent them my quotation with
+a description of all the services I was going to be providing as well as the conditions
+we both had to comply in order to ensure work gets done seamlessly and on time. As expected
+there was some pushback, so, I reduced a little bit, but then, they said they were willing to pay
+less than a half of what I was charging them, and this was their budget for the full project,
+not just for the backend. I don't know how much the Frontend Engineer was charging them but
+this was a deal breaker for me.&lt;/p&gt;
+&lt;p&gt;To make the long story short, I told them I couldn't reduce further for them, so they outsourced
+their project with an agency in South West Asia which delivered their project below their budget
+and within the timesines they needed and I took another project. Apparently the quality was not 
+great because last week they emailed me asking me if I was still interested in working with them.
+Of course, I already had another plus my job and no time to get another one, potentially fixing
+someone else's mess, so, I just told them that I was engaged with another client on a long term
+project so I wouldn't have the time to get onboard with them.&lt;/p&gt;
+&lt;h1&gt;WYPIWYG&lt;/h1&gt;
+&lt;p&gt;Basically, when it comes to building software and tech, &lt;em&gt;What You Pay Is What You Get&lt;/em&gt; (WYPIWYG).
+when you hire freelance engineers, you're not hiring a pair of hands to write the code for you,
+you are hiring a brain to design, architect, plan and implement a solution that not only works,
+but also works efficiently and scales. All of this comes with knowledge and experience after buiding,
+and maintaining a number of projects and using different stacks for that, seeing what works better
+and keeping those practices but also discarding the ones that were disastrous. &lt;/p&gt;
+&lt;p&gt;I understand everyone has a budget, but the fact that they were coming back means that they could
+afford it before, it was just that they were seeing no value in it, after all, &lt;em&gt;how hard can it be
+to build few forms and some pages&lt;/em&gt;. But in the end, it's not about building few forms and some
+pages with graphs, every application out there in the web is an Engineering project, no matter
+how small or big it is, there is Engineering behind it.&lt;/p&gt;
+&lt;h1&gt;It's not easy&lt;/h1&gt;
+&lt;p&gt;Softare Engineering and Tech in general is among what is called the Knowledge industry, your tools,
+besides a keyboard and a computer with decent specs, are your brain, which is your knowledge and
+practical experience and the ability you have to reason about problems and how to solve them in
+efficient and, sometimes, creative ways, so, in the Knowledge industry, everyone wants to be the
+smartest guy in the room and tries to make things look easier than they are, minimizing the work
+itself or only showing the 3 lines of code that it took to solve a problem, hiding all the thought
+process, failed attempts and mistakes under the rug, as I posted once, &lt;a href="http://iffm.me/software-engineering.html"&gt;there's so much more to
+software engineering than just writing code&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If we minimize our work, trying to make it look easier, people won't give it the value it deserves
+and go for cheaper options which could not always be the best choice when it comes to quality.&lt;/p&gt;
+&lt;h1&gt;Good, pretty and cheap. Choose two&lt;/h1&gt;
+&lt;p&gt;In Venezuela, we have a saying about things, whenever we are buying something we look for something that
+has the three of them, it has to be good, because no one likes poor quality stuff, it has to be pretty,
+because no one likes ugly things and it has to be cheap, because no one likes to spend a lot of money
+on things. But usually, nothing is good, pretty and cheap at the same time, so, everything comes with a
+tradeoff and you need to choose your balance.&lt;/p&gt;
+&lt;p&gt;Whatever is good and pretty, is not cheap. Whatever is good and cheap, is not pretty and whatever is
+pretty and cheap is not good and will break sooner than you think and you'll have to get another one
+or call someone in to fix it, maybe the expensive freelance consultant you spoke to some time ago.&lt;/p&gt;
+&lt;p&gt;Have you ever had a similar experience with a potential client? how did you handle it?&lt;/p&gt;</content><category term="Blog"></category><category term="business"></category><category term="consultancy"></category><category term="career"></category></entry><entry><title>Which languages should I learn?</title><link href="http://iffm.me/which-languages-should-i-learn.html" rel="alternate"></link><published>2020-06-01T00:00:00+04:00</published><updated>2020-06-01T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2020-06-01:/which-languages-should-i-learn.html</id><summary type="html">&lt;p&gt;There are millions of articles and blog posts out there trying to
 tell you what to learn next or which language or technologies are 
 worth your attention, things like &lt;em&gt;Top 10 programming languages&lt;/em&gt; or
 &lt;em&gt;Learn one of these languages and you'll be done&lt;/em&gt; with some statistics
