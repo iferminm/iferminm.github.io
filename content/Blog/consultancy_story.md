@@ -1,10 +1,10 @@
 Title: A Consultancy Story
 Subtitle: Sometimes cheaper is expensive
 Author: Israel Fermín Montilla
-Date: 2020-06-01
+Date: 2020-06-24
 Tags: business, consultancy, career
-Cover: https://dl.dropboxusercontent.com/s/d97lkag2ysfdqrc/evolve.jpg
-Thumbnail: https://dl.dropboxusercontent.com/s/d97lkag2ysfdqrc/evolve.jpg
+Cover: https://dl.dropboxusercontent.com/s/4sjucrotl4y2ang/header.png
+Thumbnail: https://dl.dropboxusercontent.com/s/4sjucrotl4y2ang/header.png
 
 About 8 months ago I was contacted by someone who needed a software project,
 the requirements were clear and simple enough for the most part, but it had a huge 
@@ -56,7 +56,7 @@ efficient and, sometimes, creative ways, so, in the Knowledge industry, everyone
 smartest guy in the room and tries to make things look easier than they are, minimizing the work
 itself or only showing the 3 lines of code that it took to solve a problem, hiding all the thought
 process, failed attempts and mistakes under the rug, as I posted once, [there's so much more to
-software engineering than just writing code]()
+software engineering than just writing code](http://iffm.me/software-engineering.html)
 
 If we minimize our work, trying to make it look easier, people won't give it the value it deserves
 and go for cheaper options which could not always be the best choice when it comes to quality.
