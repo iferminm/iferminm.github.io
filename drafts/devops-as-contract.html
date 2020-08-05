@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Internal OpenSource</title>
+        <title>DevOps as Contract</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" />
@@ -41,10 +41,10 @@
         <div class="background-image-container">
 
             <div class="background-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://dl.dropboxusercontent.com/s/y7hf2p40crdu19y/careem.jpeg);">
-                <img src="https://dl.dropboxusercontent.com/s/y7hf2p40crdu19y/careem.jpeg" alt="Internal OpenSource">
+                <img src="https://dl.dropboxusercontent.com/s/y7hf2p40crdu19y/careem.jpeg" alt="DevOps as Contract">
                 <div class="title">
                 <h1>
-                    Internal OpenSource
+                    DevOps as Contract
                 </h1>
                 </div>
             </div>
@@ -52,12 +52,120 @@
     </div>
 
     <div class="entry-content">
-        <p>Open Source Software has been around for quite a long time now, </p>
+        <p>DevOps seems to be a trending topic in the software world for quite a while
+now, organzations are adopting DevOps practices progressively and it's been
+seen as a valuable skill to have within an Engineer's toolbelt.</p>
+<p>There are many definitions of what DevOps means, everyone has their own
+definition, I have mine, of course, and that's the one I'll share here.</p>
+<h1>What does DevOps mean to me?</h1>
+<p>DevOps is a term that mixes Development and Operations, so, it involves
+all the Operations aspects of Software Engineering, things like automation,
+infrastructure provisioning, deployment, monitoring and so on.</p>
+<p>To me, DevOps is not about having a different team managing everyone's operations
+component, it's about enabling everyone to take care of their own teams
+operations, this means, administrating and managing all the platforms needed
+for the software operations: version control systems, CI/CD, monitoring, etc.
+This means, DevOps is about culture and ownership, every team should own
+not only the software they write an maintain, but also the processes around
+thart software, in the end, no one is better suited to manage it than the
+team mainaining it, they have all the context, they know how to deploy it,
+which metrics are important for it so that they can trigger alerts to let them
+know of anything goes wrong in a timely manner, they know how to run it and
+debug it so, it makes sense they own it from the ground up.</p>
+<p>Now, if we see the landscape of all the DevOps-related tools it would be
+something like the following image:</p>
+<p><img alt="DevOps tools landscape by James Bowman" src=""></p>
+<p>The image looks overwhelming, does owning all my processes means that I have
+to learn one tool per domain? if so, what if the company chooses one and then
+decides to migrate?, then I'll have to learn a new one from scratch!. I don't
+know, that looks painful, right? too much work and I also have a Product
+Manager breathing on my neck reminding me we need to release few features
+yesterday. </p>
+<p>Well, not really, you don't have to learn all that unless you want to, but
+at least you don't need to.</p>
+<h1>Then... how?</h1>
+<p>Software Engineering is a lot about abstractions, we build abstractions
+for everything, we don't let others access our resources directly, here are
+some examples:</p>
+<ul>
+<li>
+<p>We don't let our client applications call our databases directly and throw
+queries at them, we build a backend which abstracts all the business logic
+and the underlying resources and expose all of that through an API.</p>
+</li>
+<li>
+<p>We don't give access to our services directly, we encapsulate them in a private
+network and expose them via an API Gateway.</p>
+</li>
+<li>
+<p>We don't like duplication, so instead of writing the same over and over again,
+we encapsulate relevant code in classes, functions or modules and expose the
+functionality as functions or methods.</p>
+</li>
+</ul>
+<p>We do this not only to protect our resources but also to make our clients lives
+easier and simpler. If we don't allow direct access to our infrastructure instead
+we expose different forms of API so that others (both people and systems) use
+them and it works fine, why don't we do the same with our DevOps insfrastructure?</p>
+<h1>Contracts</h1>
+<p>Strictly speaking, a contract is "a written or spoken agreement between two
+or more entities", but the concept of "contracts" is not foreign to Computer
+Science, we use contracts for almost everything:</p>
+<ul>
+<li>
+<p>REST APIs are contracts, the users need to follow certain rules in order
+for the requests to be accepted and processed successfully and the service
+also follows some rules so that the client knows what to expect and what to do
+in case of errors.</p>
+</li>
+<li>
+<p>Third party libraries also expose some soft of contracts, one needs to use
+the functions they expose in order to access the functionalty</p>
+</li>
+<li>
+<p>The code we write is full of contracts: classes, functions, internal modules
+expose functionalty and that's also a contract in some way</p>
+</li>
+<li>
+<p>Even the programming languages we use are contracts, we need to follow certain
+written syntactical rules and use a set of keywords so that the programs
+are compiles/interpreted without errors.</p>
+</li>
+</ul>
+<h1>A DevOps Contract</h1>
+<p>What this means is encapsulating all your DevOps infrastructure behind a contract
+which everyone needs to follow in order to get whatever the component does,
+whether it is CI/CD, Infrastructure Provisioning or Monitoring, all engineers
+shouldn't be forced to learn Jenkins, Cloudformation or Prometheus in order to do
+all the setup for the services they build/maintain. What if some day we decide
+not to use Cloudformation anymore and migrate to Terraform?, then all engineers
+will need to spend a significant amount of time learning a new technology.</p>
+<p>This isn't new either, Gitlab offers CICD as a contract. To use Gitlab's
+CICD the only things that needs to be done is writing a YAML file, following
+certain conventions and that's it.</p>
+<h2>CICD as Contract</h2>
+<p>This is a short story of how we implemented this at Careem about two years ago,
+this was my first big project in the organization, again, this is not a new
+concept, but it's often overlooked.</p>
+<h3>Scenario</h3>
+<p>More or less 100 services, not all of them with automated deployments, 1 or 2 
+deployments to production a month, almost no automated testing. A lot of moving
+parts and unknowns since we were migrating (or not) away from Phabricator as
+code hosting service.</p>
+<p>We did have a DevOps team which maintained a very robust Jenkins cluster with
+on-demand agents, but not used by all the teams because "no one had time to
+learn groovy or write Jenkinsfiles", so, DevOps team was turned into the
+Jenkinsfile team, they effectively wrote and maintain everyones pipelines,
+it was a small team so they spent most of their time writing and updating
+Jenkinsfiles as per other teams requests, this got them very frustrated because
+there are more interesting things to do in DevOps and in Tech in general than
+writing Jenkinsfiles.</p>
+<h3>The vission</h3>
     </div>
 
     <footer>
         <div class="tags">
-            <a href="/tag/opensource.html">opensource</a>
+            <a href="/tag/devops.html">devops</a>
             <a href="/tag/projects.html">projects</a>
         </div>
         <div class="pure-g post-footer">
