@@ -18,7 +18,7 @@ I love to read, and I'm always open to get good books recommendation, you can ad
 say something interesting or add me on [LinkedIn](https://www.linkedin.com/in/israel-ferm%C3%ADn-montilla-7393721a/) if you wanna get in touch. Or,
 [buy me a coffee](https://www.buymeacoffee.com/iferminm) if you think anything I write is interesting.
 
-You can also send me an <a href="mailto:ferminster@gmail.com">email</a> I'm always open to meet new people and hear about nice opportunities even though I'm not
+You can also send me an <a href="mailto:iferminm@protonmail.com">email</a> I'm always open to meet new people and hear about nice opportunities even though I'm not
 actively looking for a career change right now.
 
 You can contact me to:
@@ -30,4 +30,4 @@ You can contact me to:
 * Consulting
 * Speak on your event
 
-Thank you for taking the time to read this page, if you got this far, <a href="mailto:ferminster@gmail.com">let's talk</a>
+Thank you for taking the time to read this page, if you got this far, <a href="mailto:iferminm@protonmail.com">let's talk</a>

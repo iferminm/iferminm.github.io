@@ -16,10 +16,10 @@ to other conferences in Spain and South Africa.
 
 I have a set of talks already prepared I've given at different conferences
 and I'm preparing many more. If you're looking for speakers for your event
-and anything here calls your attention, [drop me a line](mailto:ferminster@gmail.com)
+and anything here calls your attention, [drop me a line](mailto:iferminm@protonmail.com)
 so we can talk and coordinate how I can speak at your event. If you think
 there's something you'd like me to talk about and it's not here yet,
-[let's talk](mailto:ferminster@gmail.com)
+[let's talk](mailto:iferminm@protonmail.com)
 
 ## Talks
 

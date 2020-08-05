@@ -20,4 +20,4 @@ The fields I cover are:
 
 I also enjoy advising non-technical startup founders scoping and building their MVP.
 
-[Give me a shout](mailto:ferminster@gmail.com) if you'd like us to talk.
+[Give me a shout](mailto:iferminm@protonmail.com) if you'd like us to talk.
