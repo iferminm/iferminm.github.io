@@ -56,7 +56,7 @@ on some of our services and how we solved them with real life examples.
 
 **Duration:** 30 to 40 minutes
 
-**Given at:** PyConPL 2017 (Ossa, Poland), PyConPK 2017 (Lahore, Pakistan) (via Zoom), [PyConBalkan 2018](https://www.youtube.com/watch?v=k520PnB-xHo)
+**Given at:** [PyConPL 2017](https://pl.pycon.org/2017/index_en.html) (Ossa, Poland), PyConPK 2017 (Lahore, Pakistan) (via Zoom), [PyConBalkan 2018](https://www.youtube.com/watch?v=k520PnB-xHo)
 (Belgrade, Serbia)
 
 #### Code review the right way
