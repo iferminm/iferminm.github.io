@@ -74,7 +74,7 @@ know of anything goes wrong in a timely manner, they know how to run it and
 debug it so, it makes sense they own it from the ground up.</p>
 <p>Now, if we see the landscape of all the DevOps-related tools it would be
 something like the following image:</p>
-<p><img alt="DevOps tools landscape by James Bowman" src=""></p>
+<p><img alt="DevOps tools landscape by James Bowman" src="https://dl.dropboxusercontent.com/s/xvxtntpfsbg8zfn/devops.jpg"></p>
 <p>The image looks overwhelming, does owning all my processes means that I have
 to learn one tool per domain? if so, what if the company chooses one and then
 decides to migrate?, then I'll have to learn a new one from scratch!. I don't
@@ -174,7 +174,193 @@ and the service teams (the ones using the CICD platform) would only consume
 the contract and follow the rules defined by the DevOps team and everyone will
 be happy.</p>
 <h3>The execution</h3>
+<p>We did know what we wanted, we wanted to enable all the teams to own their
+services in full, not only the code, but also the operations, for this, we knew
+we had to make it easier for them and lower the entry barrier, the hypothesys
+we had was that most of the teams did not have automation around their services
+because they didn't have time (or want) to iinvest some time in learning about
+Jenkins' declaratiive language for pipelines (the one used to write Jenkinsfiles)</p>
 <h4>Gathering information</h4>
+<p>To start, we ran a poll to validate our hypothesys, the result was successful,
+so, now we knew we needed to move away from Jenkinsfiles and use something else
+in order to have the teams using whatever tool we roll out.</p>
+<p>At that time, since we were moving away from Phabricator, we were trying to push
+for Gitlab, but for some financial topics we decided to move to Bitbucket, we
+were already using Confluence and Jira so it made sense.</p>
+<h4>Decisions</h4>
+<p>We knew we had to move away from Jenkinsfiles, but we didn't want to move away
+from Jenkins, the team invested a lot of time and effort in making it stable
+and reliable, plus it was a well known technology, migrating to something else
+would mean spending some time in R&amp;D and building proof of concepts with other
+tools, time we didn't have, so, whatever we wanted to do, it had to be built on
+top of Jenkins.</p>
+<p>When we were experimenting with generating Jenkinsfiles from configuration files
+we found out a team in Berlin had a small Java program which took a YAML file,
+generated a Jenkins scripted pipeline and imported it directly in Jenkins, the
+best part was that it ran as a Jenkins job. We decided to adopt it and extend
+it. YAML is a very well known format, it has a low entry barrier and a lot
+of teams were already using it for their config files and other things.</p>
+<p>Theres a huge variety of languages and stacks within Careem, but Java is the most
+common one along with Springboot framework, we decided to solve for the most
+common use case (Java + Springboot) and rely on <a href="">inner sourcing</a>
+to accept contributions from other teams and extend support to other languages
+and techologies.</p>
+<p>We also wanted to control few things in the pipelines by enforcing some mandatory
+stages as well as quality gates based on few metrics such as code quality and
+test coverage, it had to be gradual, so, we established a baseline and set everything
+up to fail if quality went below that, these baseline was agreed on a per-team basis
+with each tech lead and engineering manager.</p>
+<h4>The Design</h4>
+<p>We came up with a layered design with clear boudaries and responsibilities
+for each layer, they also need to be implemented in a decoupled way so that
+we can change them if we need to. </p>
+<ul>
+<li>
+<p><strong>Contract layer:</strong> this is the actual contract, it's a set of agreed fields
+and configuration settings in a YAML file, this will be processed in other layers.</p>
+</li>
+<li>
+<p><strong>Translation layer:</strong> this is the program in charge of translating the YAML
+contract into something we can actually execute in this case is a Java program
+we called <em>the pipeline generator</em>, it translates YAML into a Groovy template,
+which would be a Jenkins scripted pipeline. This also takes care of managing the
+directory structure in Jenkins so we also have a standard structure easy to
+document and everyone knows where everything is.</p>
+</li>
+<li>
+<p><strong>Orchestration layer:</strong> this is the one which decides what runs and when, basically
+runs the template, this layer is our Jenkins cluster as the generated templates are 
+Jenkins scripted piipelines.</p>
+</li>
+<li>
+<p><strong>Excecution layer:</strong> this is the one containing what actually runs on each 
+pipeline stage. It's a set of Python scripts using <code>boto3</code> to check the status
+of different AWS resources, build and test the code among other common use cases.
+This layer is also customizable, so each team can add their own scripts and invoke
+them in their pipelines. This layer can also be set up to run inside a Docker
+container running a given image or building it from scratch from a Dockerfile, this
+removes the problem of missing dependencies in the agents or the need to have different
+agent types depending on the team.</p>
+</li>
+<li>
+<p><strong>Infrastructure layer:</strong> this is a set of configurable Terraform modules 
+for the most common resources, if needed each team can add their own modules
+if they use an AWS resource which is not supported by the core IaC modules.</p>
+</li>
+</ul>
+<p><img alt="Layers design" src="https://dl.dropboxusercontent.com/s/p0idr5040eddpbu/layers_diagram.png">
+https://www.dropbox.com?dl=0</p>
+<p>Some reasoning about this: </p>
+<ul>
+<li>
+<p>We chose YAML because everyone was already using it
+for their configutation files.</p>
+</li>
+<li>
+<p><em>the pipeline generator</em> was a codebase we
+adopted from another team so, it was done in Java already. </p>
+</li>
+<li>
+<p>We decided to keep our Jenkins cluster because it was battle tested. </p>
+</li>
+<li>
+<p>We decided to go with Terraform instead of Cloudformation, even though we run 
+on AWS, because we can use Terraform to provision resources in other cloud 
+providers using the same declarative language, we would only need to learn how
+to use the Terraform Provider for the specific cloud service we need to provission
+resources on.</p>
+</li>
+</ul>
+<h4>The Execution</h4>
+<p>We knew we would have to train everyone to use this CICD solution, so the first
+step we took was to document the basic process we inherited from the other team.
+We created a page in the internal wiki explaining how to add new pipelines and
+set them up to run automatically after we create a pull request in BitBucket and
+after we update it or merge it into <code>master</code>. We added <em>the pipeline generator</em>
+as a Jenkins job and started approaching teams for the proof of concept.</p>
+<p>ADD COMPONENTS DIAGRAM HERE</p>
+<p>In the meantime we were adding functionality in order to be able to add enforced
+stages, these are stages that were required in order to guarantee good
+code quality, we integrated <code>SonarQube</code> into the pipelines and added two enforced
+stages:</p>
+<ul>
+<li>
+<p><strong>code-quality:</strong> checks that <code>SonarQube</code>'s analysis is green, meaning there are
+no new code smells and the quality values are not less than the previous run.</p>
+</li>
+<li>
+<p><strong>code-coverage:</strong> we decided not to enforce any percentage, we wanted a minimum
+coverage of 80%, but enforcing it so early in the process would had been inconvenient
+for a lot of teams with not even 10% and would make the teams to take shortcuts
+to reach it. Instead we enforced a similar policy: code coverage should not decrease,
+this will make the teams write enough tests to keep the current coverage and eventually
+increasing it build after build.</p>
+</li>
+</ul>
+<p>ADD A PIPELINE EXAMPLE HERE</p>
+<p>By running a controlled PoC with only a handful of teams onboarded into the
+solution, we were able to get feedback from real use cases, feature requests
+and catch bugs and solve them without affecting the whole tech organization.</p>
+<p>After we reached a stable status, meaning, bugs under control and teams happy 
+using our solution, we started preparing for a larger scale, we updated the documentation
+with the enforced stages and how to add them for unsuported stacks, by default
+we implemented them for Java, but the code base is very diverse depending on the team,
+some teams use Ruby, some others Python, some are in Node or even Go, those were
+unsupported by default, so teams needed to create their own scripts for the
+enforced stages.</p>
+<p>We dedicated two team members (out of 8) to prepare on-boarding sessions, these
+were remote or on-site classroom  sessions where the teams had to send one or 
+two members to learn and actually hands on onboard one of their services into
+the solution. This way we not only trained people, but also made sure they left
+with part of the job done already and being able to repeat it for other services
+in their teams. Of course, we found real life scenarios issues and we solved them
+with them in front of other engineers so that if they encounter a similar issue
+they solve it themselves, as for the bugs, the team members who were giving the
+sessions created Jira tickets right away so that the team solved them before the 
+session. Also, the members giving the sessions updates the wiki, documenting
+the most common issues the teams encountered during the sessions.</p>
+<h4>The Result</h4>
+<p>After several iterations, about 40 sessions, over 20 wiki pages and I don't know
+how many merged pull requests we built a solution which was composed by several
+software pieces and it's able to support the generation of:</p>
+<ul>
+<li>CI pipelines</li>
+<li>CD pipelines</li>
+<li>Free-style jobs</li>
+</ul>
+<p>While also allowing the DevOps team to govern the pipelines by adding or 
+removing enforced stages as needed. By the end of the process, we achieved almost
+90% of adoption and we were doing 39 automated deployments to production every day, taking
+into account we started with 1 or 2 every once in a while and some of them
+not using any automation it was a significant improvement.</p>
+<p>People write this:</p>
+<p>ADD YAML HERE</p>
+<p>And get this</p>
+<p>ADD PIPELINE</p>
+<p>With automatic triggers in relevant version control events in GitHub or
+BitBucket.</p>
+<p>We separated the pipelines list, which is a YAML file where the pipeline generator
+finds all the pipelines declared with the team, the service name, the repo to clone
+and the location of the corresponding YAML file within the repo, into a separate
+component with its own automation to validate the syntax and the contract and
+approve the pull request without human intervention to prevent DevOps from being a
+bottleneck in approving new pipelines. This used the same contract and tools described
+throughout this article.</p>
+<p>No one had to learn how to write Terraform if the didn't need to, by just learning
+how to write a <code>.tfvars</code> file, they could get away with what was in the core Terraform
+modules written by the team. No one had to learn Groovy in order to write their
+scripted pipeline, no one had to learn Python either, in the end, the pipeline
+executes a command in every stage, so, anything callable from command line would
+do as an Execution layer component, if a team needed to add a custom script
+for their pipelines or a free style job, they would just write it in Bash or any
+language they wanted and provide a docker image or a dockerfile to run it inside
+a container which supports what they need. The teams only care about their YAML
+files and their config files for other custom behaviors and now, DevOps takes care
+of the platform and has time to invest in some other more interesting topics.</p>
+<h2>Recommended readings:</h2>
+<ul>
+<li><a href="https://medium.com/omio-engineering/devops-as-contract-54ebe61de92a">GoEuro's article on DevOps as Contract</a></li>
+</ul>
     </div>
 
     <footer>
