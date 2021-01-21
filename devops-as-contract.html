@@ -248,8 +248,7 @@ for the most common resources, if needed each team can add their own modules
 if they use an AWS resource which is not supported by the core IaC modules.</p>
 </li>
 </ul>
-<p><img alt="Layers design" src="https://dl.dropboxusercontent.com/s/p0idr5040eddpbu/layers_diagram.png">
-https://www.dropbox.com?dl=0</p>
+<p><img alt="Layers design" src="https://dl.dropboxusercontent.com/s/p0idr5040eddpbu/layers_diagram.png"></p>
 <p>Some reasoning about this: </p>
 <ul>
 <li>
@@ -279,6 +278,8 @@ set them up to run automatically after we create a pull request in BitBucket and
 after we update it or merge it into <code>master</code>. We added <em>the pipeline generator</em>
 as a Jenkins job and started approaching teams for the proof of concept.</p>
 <p>ADD COMPONENTS DIAGRAM HERE</p>
+<p>Maybe the sequence of actions would be cleaner in this sequence diagram:</p>
+<p>ADD SEQUENCE DIAGRAM</p>
 <p>In the meantime we were adding functionality in order to be able to add enforced
 stages, these are stages that were required in order to guarantee good
 code quality, we integrated <code>SonarQube</code> into the pipelines and added two enforced

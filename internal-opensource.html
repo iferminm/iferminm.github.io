@@ -1,61 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-        <title>Internal OpenSource</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="http://iffm.me/theme/css/main.css" />
-        <link href="http://127.0.0.1:8000/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="/dev/isra/blog/* Full Atom Feed" />
-        <link href="http://127.0.0.1:8000/feeds/main.xml" type="application/atom+xml" rel="alternate" title="/dev/isra/blog/* Atom Feed" />
-        <link href="http://127.0.0.1:8000/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="/dev/isra/blog/* Categories Atom Feed" />
-</head>
-<body>
-
-    <div class="navigation pure-menu pure-menu-horizontal">
-        <a href="http://iffm.me/" class="pure-menu-heading  pure-menu-link">/dev/isra/blog/*</a>
-        <ul class="pure-menu-list">
-            <li class="pure-menu-item"></li>
-
-            <li class="pure-menu-item"><a href="http://iffm.me/pages/about-me.html" class="pure-menu-link">About me...</a></li>
-            <li class="pure-menu-item"><a href="http://iffm.me/pages/consulting.html" class="pure-menu-link">Consulting</a></li>
-            <li class="pure-menu-item"><a href="http://iffm.me/pages/now.html" class="pure-menu-link">Now</a></li>
-            <li class="pure-menu-item"><a href="http://iffm.me/pages/talks.html" class="pure-menu-link">Talks</a></li>
-            <li class="pure-menu-item pure-menu-selected"><a href="http://iffm.me/category/blog.html" class="pure-menu-link">Blog</a></li>
-            <li class="pure-menu-item"><a href="http://iffm.me/category/espanol.html" class="pure-menu-link">Español</a></li>
-        </ul>
+ <head>
+  <title>
+   Internal OpenSource
+  </title>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <link href="http://iffm.me/theme/css/main.css" rel="stylesheet"/>
+  <link href="http://127.0.0.1:8000/feeds/all.atom.xml" rel="alternate" title="/dev/isra/blog/* Full Atom Feed" type="application/atom+xml"/>
+  <link href="http://127.0.0.1:8000/feeds/main.xml" rel="alternate" title="/dev/isra/blog/* Atom Feed" type="application/atom+xml"/>
+  <link href="http://127.0.0.1:8000/feeds/{slug}.atom.xml" rel="alternate" title="/dev/isra/blog/* Categories Atom Feed" type="application/atom+xml"/>
+  <link href="http://iffm.me/internal-opensource.html" rel="canonical"/>
+  <script type="application/ld+json">
+   {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "/dev/isra/blog/*", "item": "http://iffm.me"}, {"@type": "ListItem", "position": 2, "name": "Internal opensource", "item": "http://iffm.me/internal-opensource.html"}]}
+  </script>
+  <script type="application/ld+json">
+   {"@context": "https://schema.org", "@type": "Article", "author": {"@type": "Person", "name": "Israel Fermín Montilla"}, "publisher": {"@type": "Organization", "name": "/dev/isra/blog/*"}, "headline": "Internal OpenSource", "about": "Blog", "datePublished": "2020-07-08 00:00"}
+  </script>
+ </head>
+ <body>
+  <div class="navigation pure-menu pure-menu-horizontal">
+   <a class="pure-menu-heading pure-menu-link" href="http://iffm.me/">
+    /dev/isra/blog/*
+   </a>
+   <ul class="pure-menu-list">
+    <li class="pure-menu-item">
+    </li>
+    <li class="pure-menu-item">
+     <a class="pure-menu-link" href="http://iffm.me/pages/about-me.html">
+      About me...
+     </a>
+    </li>
+    <li class="pure-menu-item">
+     <a class="pure-menu-link" href="http://iffm.me/pages/consulting.html">
+      Consulting
+     </a>
+    </li>
+    <li class="pure-menu-item">
+     <a class="pure-menu-link" href="http://iffm.me/pages/now.html">
+      Now
+     </a>
+    </li>
+    <li class="pure-menu-item">
+     <a class="pure-menu-link" href="http://iffm.me/pages/talks.html">
+      Talks
+     </a>
+    </li>
+    <li class="pure-menu-item pure-menu-selected">
+     <a class="pure-menu-link" href="http://iffm.me/category/blog.html">
+      Blog
+     </a>
+    </li>
+    <li class="pure-menu-item">
+     <a class="pure-menu-link" href="http://iffm.me/category/espanol.html">
+      Español
+     </a>
+    </li>
+   </ul>
+  </div>
+  <div class="page-container">
+   <div class="entry-content">
+    <div class="post-meta pure-g">
+     <div class="pure-u-3-4 meta-data">
+      <a class="category" href="http://iffm.me/category/blog.html">
+       Blog
+      </a>
+      <br/>
+      <a class="author" href="http://iffm.me/author/israel-fermin-montilla.html">
+       Israel Fermín Montilla
+      </a>
+      —
+      <abbr title="2020-07-08T00:00:00+04:00">
+       Wed 08 July 2020
+      </abbr>
+     </div>
     </div>
-
-
-<div class="page-container">
-    <div class="entry-content">
-        <div class="post-meta pure-g">
-<div class="pure-u-3-4 meta-data">
-    <a href="http://iffm.me/category/blog.html" class="category">Blog</a><br />
-
-    <a class="author" href="http://iffm.me/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
-    &mdash; <abbr title="2020-07-08T00:00:00+04:00">Wed 08 July 2020</abbr>
-</div>        </div>
+   </div>
+   <div class="article-header-container">
+    <div class="background-image-container">
+     <div class="background-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://dl.dropboxusercontent.com/s/o4f10tc7r6zc5xm/header.jpg);">
+      <img alt="Internal OpenSource" src="https://dl.dropboxusercontent.com/s/o4f10tc7r6zc5xm/header.jpg"/>
+      <div class="title">
+       <h1>
+        Internal OpenSource
+       </h1>
+      </div>
+     </div>
     </div>
-
-    <div class="article-header-container">
-        <div class="background-image-container">
-
-            <div class="background-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://dl.dropboxusercontent.com/s/o4f10tc7r6zc5xm/header.jpg);">
-                <img src="https://dl.dropboxusercontent.com/s/o4f10tc7r6zc5xm/header.jpg" alt="Internal OpenSource">
-                <div class="title">
-                <h1>
-                    Internal OpenSource
-                </h1>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="entry-content">
-        <p>OpenSource software has been out there for quite a long time, the idea of people
+   </div>
+   <div class="entry-content">
+    <p>
+     OpenSource software has been out there for quite a long time, the idea of people
 around the world volunteering part of their time to work on free software is
 very exciting, but also maintaining those projects is very hard. Keeping everyone
 on the same page so that there's no duplicated work, agreeing on the road-map and
@@ -65,8 +103,10 @@ is a huge human distributed system which, most of the time, uses async communica
 due to the inability to get every single developer working on the software in a room
 or, at least, a virtual call for obvious reasons: timezone, everyone works on different
 schedules so everyone is free at different times and most of the people also work full time
-for software companies, most of the time on other projects.</p>
-<p>OpenSource projects and free software development has tons of limitations in the way they
+for software companies, most of the time on other projects.
+    </p>
+    <p>
+     OpenSource projects and free software development has tons of limitations in the way they
 can coordinate and communicate with the entire team, and yet OpenSource projects
 has higher standards and a higher bar than most close-source projects or corporate-internal
 software built in-house. This is why, whenever I need to do something at work, whenever I need
@@ -76,212 +116,341 @@ at the moment is doing things and borrow as many ideas as possible and see how t
 to what I'm working on or the team I'm working with. OpenSource has very complex people
 problems, team members are scattered all around the globe, if their strategies, policies and
 practices help them solve their problems, they should also work at a smaller scale in private
-companies building software.</p>
-<h1>The cathedral and the bazaar</h1>
-<p>The Cathedral and the Bazaar is an essay written by Eric Raymond, in this essay he examines two
-different approaches to Software Development by two different OpenSource projects:</p>
-<ul>
-<li>
-<p><strong>The Cathedral:</strong> where the source code is available for each release, this is only the stable
+companies building software.
+    </p>
+    <h1>
+     The cathedral and the bazaar
+    </h1>
+    <p>
+     The Cathedral and the Bazaar is an essay written by Eric Raymond, in this essay he examines two
+different approaches to Software Development by two different OpenSource projects:
+    </p>
+    <ul>
+     <li>
+      <p>
+       <strong>
+        The Cathedral:
+       </strong>
+       where the source code is available for each release, this is only the stable
 code, all the code in between releases and all the work done on top of it is private to the contributors
-only. In the essay the author cites GCC and GNU Emacs as examples for this approach.</p>
-</li>
-<li>
-<p><strong>The Bazaar:</strong> where all the code and the development process is public to all of the internet, in the essay,
+only. In the essay the author cites GCC and GNU Emacs as examples for this approach.
+      </p>
+     </li>
+     <li>
+      <p>
+       <strong>
+        The Bazaar:
+       </strong>
+       where all the code and the development process is public to all of the internet, in the essay,
 Raymond cites Linux Torvalds as the inventor of this approach and the Linux Kernel Development as an example of
-a project built under this method as well as the Fetchmail project.</p>
-</li>
-</ul>
-<p>I won't go deep into the essay as I think it is a must read for every Software Engineer, so, I'll leave some
-links so that everyone can have a look at it:</p>
-<ul>
-<li>TL;DR; you can check the main points on the essay in its <a href="https://en.wikipedia.org/wiki/The_Cathedral_and_the_Bazaar">Wikipedia page</a></li>
-<li>You can also find the full version at the <a href="http://www.catb.org/~esr/writings/cathedral-bazaar/">official website</a> along with
-other interesting writings by Eric Raymond</li>
-</ul>
-<h2>Key points</h2>
-<p>The key highlights from the article, also mentioned in the Wikipedia page, are summarized in the following 19 lessons:</p>
-<ol>
-<li>Every good work of software starts by scratching a developer's personal itch.</li>
-<li>Good programmers know what to write. Great ones know what to rewrite (and reuse).</li>
-<li>Plan to throw one [version] away; you will, anyhow. (Copied from Frederick Brooks' The Mythical Man-Month)</li>
-<li>If you have the right attitude, interesting problems will find you.</li>
-<li>When you lose interest in a program, your last duty to it is to hand it off to a competent successor.</li>
-<li>Treating your users as co-developers is your least-hassle route to rapid code improvement and effective debugging.</li>
-<li>Release early. Release often. And listen to your customers.</li>
-<li>Given a large enough beta-tester and co-developer base, almost every problem will be characterized quickly and the fix obvious to someone.</li>
-<li>Smart data structures and dumb code works a lot better than the other way around.</li>
-<li>If you treat your beta-testers as if they're your most valuable resource, they will respond by becoming your most valuable resource.</li>
-<li>The next best thing to having good ideas is recognizing good ideas from your users. Sometimes the latter is better.</li>
-<li>Often, the most striking and innovative solutions come from realizing that your concept of the problem was wrong.</li>
-<li>Perfection (in design) is achieved not when there is nothing more to add, but rather when there is nothing more to take away. (Attributed to Antoine de Saint-Exupéry)</li>
-<li>Any tool should be useful in the expected way, but a truly great tool lends itself to uses you never expected.</li>
-<li>When writing gateway software of any kind, take pains to disturb the data stream as little as possible—and never throw away information unless the recipient forces you to!</li>
-<li>When your language is nowhere near Turing-complete, syntactic sugar can be your friend.</li>
-<li>A security system is only as secure as its secret. Beware of pseudo-secrets.</li>
-<li>To solve an interesting problem, start by finding a problem that is interesting to you.</li>
-<li>Provided the development coordinator has a communications medium at least as good as the Internet, and knows how to lead without coercion, many heads are inevitably better than one.</li>
-</ol>
-<h1>My own views</h1>
-<p>While Eric Raymond's essay covers different approaches to open source development which can be also used in the industry, inside software companies,
+a project built under this method as well as the Fetchmail project.
+      </p>
+     </li>
+    </ul>
+    <p>
+     I won't go deep into the essay as I think it is a must read for every Software Engineer, so, I'll leave some
+links so that everyone can have a look at it:
+    </p>
+    <ul>
+     <li>
+      TL;DR; you can check the main points on the essay in its
+      <a href="https://en.wikipedia.org/wiki/The_Cathedral_and_the_Bazaar">
+       Wikipedia page
+      </a>
+     </li>
+     <li>
+      You can also find the full version at the
+      <a href="http://www.catb.org/~esr/writings/cathedral-bazaar/">
+       official website
+      </a>
+      along with
+other interesting writings by Eric Raymond
+     </li>
+    </ul>
+    <h2>
+     Key points
+    </h2>
+    <p>
+     The key highlights from the article, also mentioned in the Wikipedia page, are summarized in the following 19 lessons:
+    </p>
+    <ol>
+     <li>
+      Every good work of software starts by scratching a developer's personal itch.
+     </li>
+     <li>
+      Good programmers know what to write. Great ones know what to rewrite (and reuse).
+     </li>
+     <li>
+      Plan to throw one [version] away; you will, anyhow. (Copied from Frederick Brooks' The Mythical Man-Month)
+     </li>
+     <li>
+      If you have the right attitude, interesting problems will find you.
+     </li>
+     <li>
+      When you lose interest in a program, your last duty to it is to hand it off to a competent successor.
+     </li>
+     <li>
+      Treating your users as co-developers is your least-hassle route to rapid code improvement and effective debugging.
+     </li>
+     <li>
+      Release early. Release often. And listen to your customers.
+     </li>
+     <li>
+      Given a large enough beta-tester and co-developer base, almost every problem will be characterized quickly and the fix obvious to someone.
+     </li>
+     <li>
+      Smart data structures and dumb code works a lot better than the other way around.
+     </li>
+     <li>
+      If you treat your beta-testers as if they're your most valuable resource, they will respond by becoming your most valuable resource.
+     </li>
+     <li>
+      The next best thing to having good ideas is recognizing good ideas from your users. Sometimes the latter is better.
+     </li>
+     <li>
+      Often, the most striking and innovative solutions come from realizing that your concept of the problem was wrong.
+     </li>
+     <li>
+      Perfection (in design) is achieved not when there is nothing more to add, but rather when there is nothing more to take away. (Attributed to Antoine de Saint-Exupéry)
+     </li>
+     <li>
+      Any tool should be useful in the expected way, but a truly great tool lends itself to uses you never expected.
+     </li>
+     <li>
+      When writing gateway software of any kind, take pains to disturb the data stream as little as possible—and never throw away information unless the recipient forces you to!
+     </li>
+     <li>
+      When your language is nowhere near Turing-complete, syntactic sugar can be your friend.
+     </li>
+     <li>
+      A security system is only as secure as its secret. Beware of pseudo-secrets.
+     </li>
+     <li>
+      To solve an interesting problem, start by finding a problem that is interesting to you.
+     </li>
+     <li>
+      Provided the development coordinator has a communications medium at least as good as the Internet, and knows how to lead without coercion, many heads are inevitably better than one.
+     </li>
+    </ol>
+    <h1>
+     My own views
+    </h1>
+    <p>
+     While Eric Raymond's essay covers different approaches to open source development which can be also used in the industry, inside software companies,
 I see something very common within open source projects, they all produce high quality documentation, not only because they want people to use it
 but also because they want people to be able to collaborate and contribute without taking too much time from active developers who are volunteering
 to work on the project. This approach to on-boarding new contributors is very powerful and can benefit a lot any team working on software projects
-in any company.</p>
-<p>Having high quality documentation can help mainly in two things:</p>
-<h2>On-boarding new team members</h2>
-<p>How many times have you repeated yourself over and over and over again when a new engineer joins your team, walking them through
-the architecture, the code, setup the local development environment and then helping them ramp up on the tools used in the team.</p>
-<p>This walk-through can be easily delegated to documentation pages maintained and updates by the team, just the same way OpenSource projects
+in any company.
+    </p>
+    <p>
+     Having high quality documentation can help mainly in two things:
+    </p>
+    <h2>
+     On-boarding new team members
+    </h2>
+    <p>
+     How many times have you repeated yourself over and over and over again when a new engineer joins your team, walking them through
+the architecture, the code, setup the local development environment and then helping them ramp up on the tools used in the team.
+    </p>
+    <p>
+     This walk-through can be easily delegated to documentation pages maintained and updates by the team, just the same way OpenSource projects
 do it, they have a section on their docs specialized in helping new contributors getting started, it also explains how to update the docs, so
 that if any new contributor finds a mistake, something that's not up to date or something that needs to be documented, they can just edit
-the wiki and fix it or add whatever is needed. This way the next person to be on-boarded won't face those issues.</p>
-<h2>Empower other teams to contribute</h2>
-<p>It's a common case to have internal services which are only used by other services maintained by other teams, these are called platform services,
+the wiki and fix it or add whatever is needed. This way the next person to be on-boarded won't face those issues.
+    </p>
+    <h2>
+     Empower other teams to contribute
+    </h2>
+    <p>
+     It's a common case to have internal services which are only used by other services maintained by other teams, these are called platform services,
 they commonly abstract underlying resources needed by public-facing services, also, it's common to have public services relying on each other or
 exposing endpoints so that other services request or update transactional data, which means, other teams might require features to be
-built in other services by other teams for internal consumption.</p>
-<p>In a normal scenario, both teams will have to coordinate and align on deliverable, prioritize and iterate over and over again, often, priorities
+built in other services by other teams for internal consumption.
+    </p>
+    <p>
+     In a normal scenario, both teams will have to coordinate and align on deliverable, prioritize and iterate over and over again, often, priorities
 change and everything needs to be reevaluated. If you follow any inner source pattern, whether you give access to the stable code or all of it,
 plus high quality documentation for new contributors, the other team can easily contribute to the service in question and build the feature they need
 by themselves. Of course, you need to also make it easier for them by providing clear guidelines and policies on how to contribute, the code
 conventions used in your team's project and making sure the team knows them and enforce them, after all they'll be the ones maintaining that code
-after it gets merged.</p>
-<p>I've implemented this in some of my teams and the relieve of flipping the responsibilities to support internal use cases to the team requesting the
+after it gets merged.
+    </p>
+    <p>
+     I've implemented this in some of my teams and the relieve of flipping the responsibilities to support internal use cases to the team requesting the
 features is amazing. We've only had to give them links to our docs, help them update it wherever it was not and have them add whatever they thought
 could be useful, then, during development it only requires code review, 80% of the effort relies on the team building the feature they need on the
 service your team maintains while you only support them with code review and, maybe, QA, but if the feature is with them their QA team should be thew
-one having more clarity on the use case and, hence, the test cases needed to be covered.</p>
-<p>It's very convenient, it unblocks other teams which need custom features for internal consumption to be built as they don't need to wait for your team
+one having more clarity on the use case and, hence, the test cases needed to be covered.
+    </p>
+    <p>
+     It's very convenient, it unblocks other teams which need custom features for internal consumption to be built as they don't need to wait for your team
 to be free to do it, risking their deadlines on priority changes on your end while also lets your team focus on whatever priorities are there for
-them. It only requires some time to put the documentation in place and review the code being pull requested by the contributing team.</p>
-<p>Does this sound like something you might want to try?</p>
+them. It only requires some time to put the documentation in place and review the code being pull requested by the contributing team.
+    </p>
+    <p>
+     Does this sound like something you might want to try?
+    </p>
+   </div>
+   <footer>
+    <div class="tags">
+     <a href="http://iffm.me/tag/opensource.html">
+      opensource
+     </a>
+     <a href="http://iffm.me/tag/projects.html">
+      projects
+     </a>
     </div>
-
-    <footer>
-        <div class="tags">
-            <a href="http://iffm.me/tag/opensource.html">opensource</a>
-            <a href="http://iffm.me/tag/projects.html">projects</a>
-        </div>
-        <div class="pure-g post-footer">
-            <div class="pure-u-1 pure-u-md-1-2">
-                <div class="pure-g poster-info">
-                    <div class="pure-u">
-                        <a href="http://iffm.me/author/israel-fermin-montilla.html"><img src="https://dl.dropboxusercontent.com/s/1bvnowsfke4rs2k/isra.jpg" alt=""></a>
-                    </div>
-                    <div class="pure-u-3-4">
-                        <h3 class="author-name"><a href="http://iffm.me/author/israel-fermin-montilla.html">Israel Fermín Montilla</a></h3>
-                        <p class="author-description">
-                          {' Full time husband and dad who loves technology and programming. Software Engineer @ Careem / Online Mentor @ codeinstitute.net'}
-                        </p>
-                    </div>
-                    <style>.bmc-button img{height: 34px !important;width: 35px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{padding: 7px 10px 7px 10px !important;line-height: 35px !important;height:51px !important;min-width:217px !important;text-decoration: none !important;display:inline-flex !important;color:#FFFFFF !important;background-color:#FF813F !important;border-radius: 5px !important;border: 1px solid transparent !important;padding: 7px 10px 7px 10px !important;font-size: 28px !important;letter-spacing:0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#FFFFFF !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/iferminm"><img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:15px;font-size:28px !important;">Buy me a coffee</span></a>
-                </div>
-            </div>
-
-
-
-        </div>
-
-
-        <!-- Begin MailChimp Signup Form -->
-        <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
-        <style type="text/css">
-            #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+    <div class="pure-g post-footer">
+     <div class="pure-u-1 pure-u-md-1-2">
+      <div class="pure-g poster-info">
+       <div class="pure-u">
+        <a href="http://iffm.me/author/israel-fermin-montilla.html">
+         <img alt="" src="https://dl.dropboxusercontent.com/s/1bvnowsfke4rs2k/isra.jpg"/>
+        </a>
+       </div>
+       <div class="pure-u-3-4">
+        <h3 class="author-name">
+         <a href="http://iffm.me/author/israel-fermin-montilla.html">
+          Israel Fermín Montilla
+         </a>
+        </h3>
+        <p class="author-description">
+         {' Full time husband and dad who loves technology and programming. Software Engineer @ Careem / Online Mentor @ codeinstitute.net'}
+        </p>
+       </div>
+       <style>
+        .bmc-button img{height: 34px !important;width: 35px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{padding: 7px 10px 7px 10px !important;line-height: 35px !important;height:51px !important;min-width:217px !important;text-decoration: none !important;display:inline-flex !important;color:#FFFFFF !important;background-color:#FF813F !important;border-radius: 5px !important;border: 1px solid transparent !important;padding: 7px 10px 7px 10px !important;font-size: 28px !important;letter-spacing:0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#FFFFFF !important;}
+       </style>
+       <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"/>
+       <a class="bmc-button" href="https://www.buymeacoffee.com/iferminm" target="_blank">
+        <img alt="Buy me a coffee" src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg"/>
+        <span style="margin-left:15px;font-size:28px !important;">
+         Buy me a coffee
+        </span>
+       </a>
+      </div>
+     </div>
+    </div>
+    <!-- Begin MailChimp Signup Form -->
+    <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css"/>
+    <style type="text/css">
+     #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
             /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
             We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-        </style>
-        <div id="mc_embed_signup">
-            <form action="//iffm.us15.list-manage.com/subscribe/post?u=f9aa59a7fe24a1d24a95b2e41&amp;id=28de70c22b" method="post"
-                id="mc-embedded-subscribe-form"
-                name="mc-embedded-subscribe-form"
-                class="validate" target="_blank"
-                novalidate>
-                <div id="mc_embed_signup_scroll">
-                    <h2>Get notified</h2>
-                    <p class="author-description">
-                        Get an email whenever I post something or release something cool, I'm always working on something, don't miss it out!
-                    </p>
-                    <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
-                    <div class="mc-field-group">
-                        <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
-                        </label>
-                        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-                    </div>
-                    <div class="mc-field-group">
-                        <label for="mce-FNAME">First Name </label>
-                        <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
-                    </div>
-                    <div class="mc-field-group">
-                        <label for="mce-LNAME">Last Name </label>
-                        <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
-                    </div>
-                    <div id="mce-responses" class="clear">
-                        <div class="response" id="mce-error-response" style="display:none"></div>
-                        <div class="response" id="mce-success-response" style="display:none"></div>
-                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk
-                    form bot signups-->
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text"
-                    name="b_f9aa59a7fe24a1d24a95b2e41_28de70c22b"
-                    tabindex="-1"
-                    value=""></div>
-                    <div class="clear"><input type="submit" value="Subscribe" name="subscribe"
-                    id="mc-embedded-subscribe"
-                    class="button"></div>
-                </div>
-            </form>
+    </style>
+    <div id="mc_embed_signup">
+     <form action="//iffm.us15.list-manage.com/subscribe/post?u=f9aa59a7fe24a1d24a95b2e41&amp;id=28de70c22b" class="validate" id="mc-embedded-subscribe-form" method="post" name="mc-embedded-subscribe-form" novalidate="" target="_blank">
+      <div id="mc_embed_signup_scroll">
+       <h2>
+        Get notified
+       </h2>
+       <p class="author-description">
+        Get an email whenever I post something or release something cool, I'm always working on something, don't miss it out!
+       </p>
+       <div class="indicates-required">
+        <span class="asterisk">
+         *
+        </span>
+        indicates required
+       </div>
+       <div class="mc-field-group">
+        <label for="mce-EMAIL">
+         Email Address
+         <span class="asterisk">
+          *
+         </span>
+        </label>
+        <input class="required email" id="mce-EMAIL" name="EMAIL" type="email" value=""/>
+       </div>
+       <div class="mc-field-group">
+        <label for="mce-FNAME">
+         First Name
+        </label>
+        <input class="" id="mce-FNAME" name="FNAME" type="text" value=""/>
+       </div>
+       <div class="mc-field-group">
+        <label for="mce-LNAME">
+         Last Name
+        </label>
+        <input class="" id="mce-LNAME" name="LNAME" type="text" value=""/>
+       </div>
+       <div class="clear" id="mce-responses">
+        <div class="response" id="mce-error-response" style="display:none">
         </div>
-        <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($)
+        <div class="response" id="mce-success-response" style="display:none">
+        </div>
+       </div>
+       <!-- real people should not fill this in and expect good things - do not remove this or risk
+                    form bot signups-->
+       <div aria-hidden="true" style="position: absolute; left: -5000px;">
+        <input name="b_f9aa59a7fe24a1d24a95b2e41_28de70c22b" tabindex="-1" type="text" value=""/>
+       </div>
+       <div class="clear">
+        <input class="button" id="mc-embedded-subscribe" name="subscribe" type="submit" value="Subscribe"/>
+       </div>
+      </div>
+     </form>
+    </div>
+    <script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+     (function($)
         {window.fnames = new Array(); window.ftypes = new
         Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj =
-        jQuery.noConflict(true);</script>
-        <!--End mc_embed_signup-->
-
-
-
-
-
-
-    </footer>
-
-    <div class="entry-content">
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-            var disqus_shortname = 'iferminmblog';
+        jQuery.noConflict(true);
+    </script>
+    <!--End mc_embed_signup-->
+   </footer>
+   <div class="entry-content">
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript">
+     var disqus_shortname = 'iferminmblog';
             (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
             })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-    </div>
-
-</div>
-
-
-
-    <footer class="index-footer">
-
-        <a href="http://iffm.me/" title="/dev/isra/blog/*">/dev/isra/blog/*</a>
-        <a href="http://iffm.me/category/blog.html">Blog</a>
-        <a href="http://iffm.me/category/espanol.html">Español</a>
-        <a href="http://getpelican.com/">Pelican</a>
-        <a href="http://python.org/">Python.org</a>
-        <a href="http://jinja.pocoo.org/">Jinja2</a>
-        <a href="http://127.0.0.1:8000/feeds/all.atom.xml">Atom</a>
-
-    </footer>
-
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    </script>
+    <noscript>
+     Please enable JavaScript to view the
+     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+      comments powered by Disqus.
+     </a>
+    </noscript>
+   </div>
+  </div>
+  <footer class="index-footer">
+   <a href="http://iffm.me/" title="/dev/isra/blog/*">
+    /dev/isra/blog/*
+   </a>
+   <a href="http://iffm.me/category/blog.html">
+    Blog
+   </a>
+   <a href="http://iffm.me/category/espanol.html">
+    Español
+   </a>
+   <a href="http://getpelican.com/">
+    Pelican
+   </a>
+   <a href="http://python.org/">
+    Python.org
+   </a>
+   <a href="http://jinja.pocoo.org/">
+    Jinja2
+   </a>
+   <a href="http://127.0.0.1:8000/feeds/all.atom.xml">
+    Atom
+   </a>
+  </footer>
+  <script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
       ga('create', 'UA-96148260-1', 'auto');
       ga('send', 'pageview');
-
-    </script>
-</body>
+  </script>
+ </body>
 </html>
