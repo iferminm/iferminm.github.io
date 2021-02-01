@@ -6,7 +6,7 @@ import os
 AUTHOR = u'Israel Fermin Montilla'
 SITENAME = u'/dev/isra/blog/*'
 DATE_FORMAT = '%a %d %b, %Y'
-SITEURL = '127.0.0.1:8000'
+SITEURL = '//127.0.0.1:8000'
 
 PATH = 'content'
 
