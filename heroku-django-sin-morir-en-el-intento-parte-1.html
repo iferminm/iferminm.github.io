@@ -1,19 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
  <head>
   <title>
-   Heroku + Django sin morir en el intento (Parte 1)
+   Heroku + Django sin morir en el intento (Parte 1) - /dev/isra/blog/*
   </title>
   <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" rel="stylesheet"/>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" rel="stylesheet"/>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
-  <link href="//stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="//iffm.me/theme/css/main.css" rel="stylesheet"/>
-  <link href="//127.0.0.1:8000/feeds/all.atom.xml" rel="alternate" title="/dev/isra/blog/* Full Atom Feed" type="application/atom+xml"/>
+  <link href="http://fonts.googleapis.com/css?family=Arimo:400,700|Inika" rel="stylesheet" type="text/css"/>
+  <link href="//iffm.me/theme/bootstrap.css" rel="stylesheet" type="text/css"/>
+  <link href="//iffm.me/theme/pastie.css" rel="stylesheet" type="text/css"/>
   <link href="//127.0.0.1:8000/feeds/main.xml" rel="alternate" title="/dev/isra/blog/* Atom Feed" type="application/atom+xml"/>
-  <link href="//127.0.0.1:8000/feeds/{slug}.atom.xml" rel="alternate" title="/dev/isra/blog/* Categories Atom Feed" type="application/atom+xml"/>
+  <script type="text/javascript">
+   var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-96148260-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
   <link href="//iffm.me/heroku-django-sin-morir-en-el-intento-parte-1.html" rel="canonical"/>
   <script type="application/ld+json">
    {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "/dev/isra/blog/*", "item": "//iffm.me"}, {"@type": "ListItem", "position": 2, "name": "Heroku django sin morir en el intento parte 1", "item": "//iffm.me/heroku-django-sin-morir-en-el-intento-parte-1.html"}]}
@@ -23,421 +30,393 @@
   </script>
  </head>
  <body>
-  <div class="navigation pure-menu pure-menu-horizontal">
-   <a class="pure-menu-heading pure-menu-link" href="//iffm.me/">
-    /dev/isra/blog/*
-   </a>
-   <ul class="pure-menu-list">
-    <li class="pure-menu-item">
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/pages/about-me.html">
-      About me...
-     </a>
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/pages/consulting.html">
-      Consulting
-     </a>
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/pages/now.html">
-      Now
-     </a>
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/pages/talks.html">
-      Talks
-     </a>
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/category/blog.html">
-      Blog
-     </a>
-    </li>
-    <li class="pure-menu-item pure-menu-selected">
-     <a class="pure-menu-link" href="//iffm.me/category/espanol.html">
-      Español
-     </a>
-    </li>
-   </ul>
-  </div>
-  <div class="page-container">
-   <div class="entry-content">
-    <div class="post-meta pure-g">
-     <div class="pure-u-3-4 meta-data">
-      <a class="category" href="//iffm.me/category/espanol.html">
-       Español
-      </a>
-      <br/>
-      <a class="author" href="//iffm.me/author/israel-fermin-montilla.html">
-       Israel Fermín Montilla
-      </a>
-      —
-      <abbr title="2013-09-23T00:00:00+04:00">
-       Mon 23 September 2013
-      </abbr>
-     </div>
-    </div>
-   </div>
-   <div class="article-header-container">
-    <div class="background-image-container">
-     <div class="background-image-small">
-      <div class="title-container">
+  <div class="container">
+   <div class="row">
+    <div class="span8">
+     <div id="content">
+      <div class="header">
        <h1>
         Heroku + Django sin morir en el intento (Parte 1)
        </h1>
       </div>
-     </div>
-    </div>
-   </div>
-   <div class="entry-content">
-    <p>
-     Antes, para tener tu sistema web en línea, debías contratar un servicio
+      <p class="meta">
+       <small>
+        <span>
+         <a href="//iffm.me/author/israel-fermin-montilla/">
+          Israel Fermín Montilla
+         </a>
+         -
+        </span>
+        <span>
+         Mon 23 September 2013
+        </span>
+        -
+        <span class="tags">
+         <a href="/tag/heroku/">
+          heroku
+         </a>
+         ,
+         <a href="/tag/django/">
+          django
+         </a>
+         ,
+         <a href="/tag/python/">
+          python
+         </a>
+         ,
+         <a href="/tag/PAAS/">
+          PAAS
+         </a>
+        </span>
+       </small>
+      </p>
+      <div class="entry-content">
+       <p>
+        Antes, para tener tu sistema web en línea, debías contratar un servicio
 de Servidor Dedicado o mínimo un VPS y administrarlo, si tenías más
 presupuesto, comprabas un servidor y lo acondicionabas o alquilabas un
 rack en algún centro de datos para tenerlo colocado allí.
-    </p>
-    <p>
-     Ahora, con el boom de
-     <em>
-      Infraestructura como Servicio
-     </em>
-     (IaaS) y
-     <em>
-      Plataforma como Servicio
-     </em>
-     (PaaS), ya no es necesario tener servidores
+       </p>
+       <p>
+        Ahora, con el boom de
+        <em>
+         Infraestructura como Servicio
+        </em>
+        (IaaS) y
+        <em>
+         Plataforma como Servicio
+        </em>
+        (PaaS), ya no es necesario tener servidores
 propios y, dependiendo del servicio, es decir, si es
-     <em>
-      IaaS
-     </em>
-     o
-     <em>
-      PaaS
-     </em>
-     ,
+        <em>
+         IaaS
+        </em>
+        o
+        <em>
+         PaaS
+        </em>
+        ,
 tampoco debes tener conocimientos de administración de servidores.
-    </p>
-    <h2>
-     IAAS vs PAAS
-    </h2>
-    <p>
-     En general, un proveedor de
-     <em>
-      IaaS
-     </em>
-     te da el hardware para que tú lo
+       </p>
+       <h2>
+        IAAS vs PAAS
+       </h2>
+       <p>
+        En general, un proveedor de
+        <em>
+         IaaS
+        </em>
+        te da el hardware para que tú lo
 configures y ensambles el ambiente en el que va a correr tu aplicación,
 esto es instalar todos los paquetes de software necesarios par que el
 proyecto corra: servidor de base de datos, servidor web, intérpretes,
 bibliotecas, storages adicionales y un largo
-     <em>
-      end of thinking capacity
-     </em>
-     (etc). La ventaja de un proveedor de este tipo es que hacen que escalar
+        <em>
+         end of thinking capacity
+        </em>
+        (etc). La ventaja de un proveedor de este tipo es que hacen que escalar
 tu infraestructura de manera horizontal es realmente fácil y no tienes
 que construir un centro de datos para albergar tu granja de servidores
 ni mucho menos configurar todo lo que eso implica, un ejemplo de
 servicios de este tipo es el
-     <em>
-      Elastic Compute Cloud
-     </em>
-     de
-     <em>
-      Amazon Web
+        <em>
+         Elastic Compute Cloud
+        </em>
+        de
+        <em>
+         Amazon Web
 Services
-     </em>
-     (AWS EC-2).
-    </p>
-    <p>
-     Por otra parte, un proveedor de
-     <em>
-      PaaS
-     </em>
-     , hace exactamente lo mismo, pero
+        </em>
+        (AWS EC-2).
+       </p>
+       <p>
+        Por otra parte, un proveedor de
+        <em>
+         PaaS
+        </em>
+        , hace exactamente lo mismo, pero
 con un nivel más de abstracción, te proveen toda la infraestructura y el
 ambiente para que simplemente deposites tu código allí y pongas tu
 aplicación a correr con configuraciones mínimas y sin ser un experto en
 administración y configuración de servidores, de hecho, es transparente
 para ti toda la nube que hay por detrás.
-     <a class="reference external" href="http://www.heroku.com/">
-      Heroku
-     </a>
-     es un proveedor
+        <a class="reference external" href="http://www.heroku.com/">
+         Heroku
+        </a>
+        es un proveedor
 de este tipo de servicio que además cumple con el
-     <a class="reference external" href="http://12factor.net/">
-      12 factor
+        <a class="reference external" href="http://12factor.net/">
+         12 factor
 app
-     </a>
-     por lo que además hace
+        </a>
+        por lo que además hace
 que sea súper fácil ajustar tu código para correr allí y que tome los
 parámetros de configuración que define la plataforma sin mucho problema.
-    </p>
-    <h2>
-     Ahora, Heroku
-    </h2>
-    <p>
-     El modelo de trabajo en
-     <em>
-      Heroku
-     </em>
-     se basa en add-ons, que básicamente
+       </p>
+       <h2>
+        Ahora, Heroku
+       </h2>
+       <p>
+        El modelo de trabajo en
+        <em>
+         Heroku
+        </em>
+        se basa en add-ons, que básicamente
 integran tu sistema con un DBMS, un sistema de alertas en caso de fallos
 o de monitoreo para ver el rendimiento, detectar cuellos de botella y
 tomar correctivos al respecto, todo esto con unos cuantos clicks (y una
 tarjeta de crédito), sin configurar absolutamente nada a nivel de
 servidores sino todo a nivel de aplicación.
-    </p>
-    <p>
-     Todo esto suena como un sueño hecho realidad y, en muchos casos, lo es,
+       </p>
+       <p>
+        Todo esto suena como un sueño hecho realidad y, en muchos casos, lo es,
 pero nada es perfecto y
-     <em>
-      Heroku
-     </em>
-     , aunque facilita muchísimas cosas a
+        <em>
+         Heroku
+        </em>
+        , aunque facilita muchísimas cosas a
 nivel de despliegue, te complica muchas otras a nivel de desarrollo,
 esto puede ser bueno, te obliga a optimizar y a aprender, pero a veces,
 el esquema de plugins y addons puede volverse insostenible, sobre todo
 cuando debes pagar por varios y el presupuesto es limitado, además,
 desde el punto de vista de aplicación,
-     <em>
-      Heroku
-     </em>
-     impone varias
+        <em>
+         Heroku
+        </em>
+        impone varias
 limitaciones acerca de cómo debe comportarse, el tiempo en que debe
 responder, el tiempo que debe durar el deploy y cuánto debe pesar.
-    </p>
-    <h3>
-     Algunas limitaciones
-    </h3>
-    <ul>
-     <li>
-      <em>
-       El app debe iniciar en 60 segundos o menos:
-      </em>
-      si este tiempo se
+       </p>
+       <h3>
+        Algunas limitaciones
+       </h3>
+       <ul>
+        <li>
+         <em>
+          El app debe iniciar en 60 segundos o menos:
+         </em>
+         si este tiempo se
     excede, el deploy falla.
-     </li>
-     <li>
-      <em>
-       Heroku duerme dynos cada cierto tiempo:
-      </em>
-      cada cierto tiempo Heroku
+        </li>
+        <li>
+         <em>
+          Heroku duerme dynos cada cierto tiempo:
+         </em>
+         cada cierto tiempo Heroku
     reinicia los dynos, esto es un proceso totalmente aleatorio, por eso
     se recomienda tener al menos 2, si uno es reiniciado el otro sigue
     aceptando requests. Cuando esto ocurre, el proceso recibe un
-      <em>
-       SIGTERM
-      </em>
-      , al recibir la señal, se tienen 10 segundos de gracia para
+         <em>
+          SIGTERM
+         </em>
+         , al recibir la señal, se tienen 10 segundos de gracia para
     terminar lo que se estaba haciendo antes de recibir un
-      <em>
-       SIGKILL
-      </em>
-      y reiniciar.
-     </li>
-     <li>
-      <em>
-       El app no puede pesar más de 300MB:
-      </em>
-      de lo contrario, el deploy
+         <em>
+          SIGKILL
+         </em>
+         y reiniciar.
+        </li>
+        <li>
+         <em>
+          El app no puede pesar más de 300MB:
+         </em>
+         de lo contrario, el deploy
     falla, es recomendable usar el .slugignore para excluir archivos que
     sólo se usan para desarrollo y que no hacen falta en producción, lo
     mismo con las librerías para testing, no deberían incluirse en el
     requirements.txt que va a producción.
-     </li>
-     <li>
-      <em>
-       El app debe responder a los requests en 30 segundos:
-      </em>
-      de lo
+        </li>
+        <li>
+         <em>
+          El app debe responder a los requests en 30 segundos:
+         </em>
+         de lo
     contrario se levanta un error H12 (Worker Timeout) y la respectiva
     pantalla de
-      <em>
-       Application Error
-      </em>
-      .
-     </li>
-     <li>
-      <em>
-       Heroku es stateless:
-      </em>
-      esto quiere decir que no guarda estado, para
+         <em>
+          Application Error
+         </em>
+         .
+        </li>
+        <li>
+         <em>
+          Heroku es stateless:
+         </em>
+         esto quiere decir que no guarda estado, para
     conservar estado del app es necesario valerse de otras herramientas,
     como una base de datos, memcached, y servicios de
     almacenamiento externos.
-     </li>
-    </ul>
-    <h3>
-     Algunos de los golpes
-    </h3>
-    <p>
-     Con esas limitaciones se puede vivir, pero hay que darle la vuelta para
+        </li>
+       </ul>
+       <h3>
+        Algunos de los golpes
+       </h3>
+       <p>
+        Con esas limitaciones se puede vivir, pero hay que darle la vuelta para
 no desesperarse, hay algunas cosas que capaz son obvias, pero que uno no
 las ve sino hasta que empieza a trabajar y se consigue con un problema,
 basta con volver sobre las limitaciones antes expuestas y encontraremos
 una respuesta o al menos una posible razón.
-    </p>
-    <p>
-     Ahora voy a empezar a listar los problemas que he tenido en
-     <em>
-      RingTu
-     </em>
-     y
+       </p>
+       <p>
+        Ahora voy a empezar a listar los problemas que he tenido en
+        <em>
+         RingTu
+        </em>
+        y
 cómo los solucioné. Recuerden que estoy trabajando con
-     <strong>
-      Django
-     </strong>
-     , por
+        <strong>
+         Django
+        </strong>
+        , por
 lo que todo lo he resuelto utilizando herramientas para este framework.
-    </p>
-    <h4>
-     No es bueno para servir assets
-    </h4>
-    <p>
-     Cuando digo assets, me refiero a los archivos estáticos que dan forma a
+       </p>
+       <h4>
+        No es bueno para servir assets
+       </h4>
+       <p>
+        Cuando digo assets, me refiero a los archivos estáticos que dan forma a
 la interface web: css, js, imágenes, gradientes, ¿gifs animados?,
 tipografías y demás cosas bonitas que hacen los diseñadores por
 nosotros.
-    </p>
-    <p>
-     Por defecto, nuestro dyno sirve todos estos archivos, además de servir
+       </p>
+       <p>
+        Por defecto, nuestro dyno sirve todos estos archivos, además de servir
 nuestra aplicación, aceptando peticiones de nuestros clientes,
 procesándolas y decidiendo qué es lo que va a enviarse de vuelta.
-    </p>
-    <p>
-     Servir los archivos estáticos o
-     <em>
-      static assets
-     </em>
-     resulta en requests
+       </p>
+       <p>
+        Servir los archivos estáticos o
+        <em>
+         static assets
+        </em>
+        resulta en requests
 adicionales que van a mantener ocupado nuestro dyno y esto nos cuesta
 tiempo y, si ya estamos pagando, dinero. Esos requests adicionales se
 podrían invertir en responder y procesar solicitudes nuevas y no en
 entregar archivos estáticos, además, la
-     <strong>
-      buena práctica
-     </strong>
-     con
-     <em>
-      django
-     </em>
-     es delegar la entrega de contenido estático a un
-     <strong>
-      servidor web
-     </strong>
-     como
-     <em>
-      Apache
-     </em>
-     o
-     <em>
-      NGinx
-     </em>
-     y así evitar procesamiento adicional a nivel de
-     <em>
-      views
-     </em>
-     (los
-     <em>
-      controladores
-     </em>
-     de
-     <em>
-      django
-     </em>
-     ).
-    </p>
-    <p>
-     La solución acá es, simplemente, almacenar los archivos estáticos
-     <em>
-      en
+        <strong>
+         buena práctica
+        </strong>
+        con
+        <em>
+         django
+        </em>
+        es delegar la entrega de contenido estático a un
+        <strong>
+         servidor web
+        </strong>
+        como
+        <em>
+         Apache
+        </em>
+        o
+        <em>
+         NGinx
+        </em>
+        y así evitar procesamiento adicional a nivel de
+        <em>
+         views
+        </em>
+        (los
+        <em>
+         controladores
+        </em>
+        de
+        <em>
+         django
+        </em>
+        ).
+       </p>
+       <p>
+        La solución acá es, simplemente, almacenar los archivos estáticos
+        <em>
+         en
 otro lado
-     </em>
-     , puede ser incluso un
-     <em>
-      VPS
-     </em>
-     con
-     <em>
-      Apache
-     </em>
-     o
-     <em>
-      NGinx
-     </em>
-     instalado,
+        </em>
+        , puede ser incluso un
+        <em>
+         VPS
+        </em>
+        con
+        <em>
+         Apache
+        </em>
+        o
+        <em>
+         NGinx
+        </em>
+        instalado,
 pero hay varios servicios que pueden hacerlo mejor y optimizar la
 entrega de contenidos como
-     <em>
-      Cloudfile
-     </em>
-     de
-     <strong>
-      Rackspace
-     </strong>
-     y, el que opté
+        <em>
+         Cloudfile
+        </em>
+        de
+        <strong>
+         Rackspace
+        </strong>
+        y, el que opté
 por usar,
-     <em>
-      Simple Storage Service
-     </em>
-     de
-     <strong>
-      Amazon
-     </strong>
-     . Si ya tus assets no
+        <em>
+         Simple Storage Service
+        </em>
+        de
+        <strong>
+         Amazon
+        </strong>
+        . Si ya tus assets no
 cambian mucho, lo mejor es servirlos a través de una
-     <em>
-      CDN
-     </em>
-     (Content
+        <em>
+         CDN
+        </em>
+        (Content
 Delivery Nerwork o Red de Entrega de Contenidos), como
-     <em>
-      Cloudfront
-     </em>
-     ,
+        <em>
+         Cloudfront
+        </em>
+        ,
 también de
-     <strong>
-      Amazon
-     </strong>
-     .
-    </p>
-    <p>
-     Ahora,
-     <strong>
-      ¿Cómo se resuelve esto en django?
-     </strong>
-     , bueno, hay varias
+        <strong>
+         Amazon
+        </strong>
+        .
+       </p>
+       <p>
+        Ahora,
+        <strong>
+         ¿Cómo se resuelve esto en django?
+        </strong>
+        , bueno, hay varias
 librerías que te permiten sincronizar los archivos estáticos con un
 servicio de almacenamiento remoto, la que decidí usar fue
-     <a href="https://github.com/jamstooks/django-s3-folder-storage">
-      django-s3-folder-storage
-     </a>
-     {.reference
+        <a href="https://github.com/jamstooks/django-s3-folder-storage">
+         django-s3-folder-storage
+        </a>
+        {.reference
 .external}, una pequeña librería que se vale de otra más compleja (y
 completa, soporta múltiples servicios) llamada
-     <a href="https://github.com/iserko/django-storages">
-      django-storages
-     </a>
-     {.reference
+        <a href="https://github.com/iserko/django-storages">
+         django-storages
+        </a>
+        {.reference
 .external} para organizar tu contenido en directorios dentro de un
-     <em>
-      bucket
-     </em>
-     de
-     <em>
-      S3
-     </em>
-     , es necesario agregar parámetros de configuración en
+        <em>
+         bucket
+        </em>
+        de
+        <em>
+         S3
+        </em>
+        , es necesario agregar parámetros de configuración en
 nuestro
-     <em>
-      settings.py
-     </em>
-     , sería algo como esto:
-    </p>
-    <div class="highlight">
-     <pre><span></span><code>    <span class="n">AWS_QUERYSTRING_AUTH</span> <span class="o">=</span> <span class="k">False</span>
+        <em>
+         settings.py
+        </em>
+        , sería algo como esto:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>    <span class="n">AWS_QUERYSTRING_AUTH</span> <span class="o">=</span> <span class="k">False</span>
     <span class="n">AWS_ACCESS_KEY_ID</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">'AWS_ACCESS_KEY_ID'</span><span class="p">)</span>
     <span class="n">AWS_SECRET_ACCESS_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">'AWS_SECRET_ACCESS_KEY'</span><span class="p">)</span>
     <span class="n">AWS_STORAGE_BUCKET_NAME</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">'AWS_STORAGE_BUCKET_NAME'</span><span class="p">)</span>
@@ -452,132 +431,132 @@ nuestro
     <span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s1">'http://%s.s3.amazonaws.com/static/'</span> <span class="o">%</span> <span class="n">AWS_STORAGE_BUCKET_NAME</span>
     <span class="n">STATIC_S3_PATH</span> <span class="o">=</span> <span class="s1">'static/'</span>
 </code></pre>
-    </div>
-    <p>
-     El parámetro de configuración AWS_QUERYSTRING_AUTH colocado en
-     <em>
-      False
-     </em>
-     es para que
-     <em>
-      S3
-     </em>
-     no nos genere urls firmadas para los assets sino que
+       </div>
+       <p>
+        El parámetro de configuración AWS_QUERYSTRING_AUTH colocado en
+        <em>
+         False
+        </em>
+        es para que
+        <em>
+         S3
+        </em>
+        no nos genere urls firmadas para los assets sino que
 nos permita acceso público permanente. Si lo dejamos en
-     <em>
-      True
-     </em>
-     , su valor
+        <em>
+         True
+        </em>
+        , su valor
 por defecto, nos va a generar un url válido por 5min y, como son
 archivos estáticos, esta url no se va a refrescar nunca, así que nuestra
 página se verá
-     <strong>
-      bien
-     </strong>
-     , con todos sus estilos y efectos sólo mientras
+        <strong>
+         bien
+        </strong>
+        , con todos sus estilos y efectos sólo mientras
 duren las urls vigentes.
-    </p>
-    <p>
-     Los demás son simplemente parámetros de configuración de S3, deben
+       </p>
+       <p>
+        Los demás son simplemente parámetros de configuración de S3, deben
 recordar añadir las variables de configuración en
-     <em>
-      Heroku
-     </em>
-     .
-    </p>
-    <div class="highlight">
-     <pre><span></span><code><span class="err">    heroku config:add AWS_ACCESS_KEY_ID=EL_KEY_ID_DE_AWS_S3</span>
+        <em>
+         Heroku
+        </em>
+        .
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><span class="err">    heroku config:add AWS_ACCESS_KEY_ID=EL_KEY_ID_DE_AWS_S3</span>
 <span class="err">    heroku config:add AWS_SECRET_ACCESS_KEY=EL_SECRET_KEY_ID_DE_AWS_S3</span>
 <span class="err">    heroku config:add AWS_STORAGE_BUCKET_NAME=EL_NOMBRE_DEL_BUCKET</span>
 </code></pre>
-    </div>
-    <p>
-     Recuerden también colocar
-     <em>
-      s3_folder_storage
-     </em>
-     entre los
-     <em>
-      INSTALLED_APPS
-     </em>
-     del proyecto y activar la opción de
-     <em>
-      Heroku
-     </em>
-     para que
+       </div>
+       <p>
+        Recuerden también colocar
+        <em>
+         s3_folder_storage
+        </em>
+        entre los
+        <em>
+         INSTALLED_APPS
+        </em>
+        del proyecto y activar la opción de
+        <em>
+         Heroku
+        </em>
+        para que
 reconozca las variables de configuración en tiempo de compilación, de
 otra manera, el deploy fallará.
-    </p>
-    <div class="highlight">
-     <pre><span></span><code><span class="err">    heroku labs:enable user-env-compile</span>
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><span class="err">    heroku labs:enable user-env-compile</span>
 </code></pre>
-    </div>
-    <p>
-     Con esto, ya deberíamos poder sincronizar los
-     <em>
-      assets
-     </em>
-     a
-     <em>
-      S3
-     </em>
-    </p>
-    <div class="highlight">
-     <pre><span></span><code><span class="err">    heroku run python manage.py collectstatic</span>
+       </div>
+       <p>
+        Con esto, ya deberíamos poder sincronizar los
+        <em>
+         assets
+        </em>
+        a
+        <em>
+         S3
+        </em>
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><span class="err">    heroku run python manage.py collectstatic</span>
 </code></pre>
-    </div>
-    <p>
-     Dependiendo de qué tantos archivos estáticos tengamos, va a tardar más o
+       </div>
+       <p>
+        Dependiendo de qué tantos archivos estáticos tengamos, va a tardar más o
 menos, va a enviar todo lo que esté en nuestro
-     <em>
-      STATIC_ROOT
-     </em>
-     al
-     <em>
-      bucket
+        <em>
+         STATIC_ROOT
+        </em>
+        al
+        <em>
+         bucket
 S3
-     </em>
-     que configuramos anteriormente.
-    </p>
-    <h4>
-     No puedes utilizar el sistema de archivos
-    </h4>
-    <p>
-     Había dicho al principio que
-     <em>
-      Heroku
-     </em>
-     es
-     <em>
-      stateless
-     </em>
-     , es decir, no
+        </em>
+        que configuramos anteriormente.
+       </p>
+       <h4>
+        No puedes utilizar el sistema de archivos
+       </h4>
+       <p>
+        Había dicho al principio que
+        <em>
+         Heroku
+        </em>
+        es
+        <em>
+         stateless
+        </em>
+        , es decir, no
 conserva el estado de tu aplicación. Entonces ellos implementaron algo
 llamado
-     <em>
-      Ephemeral Filesystem
-     </em>
-     , es decir, un sistema de archivos
-     <em>
-      efímero
-     </em>
-     , que se reinicia cada vez que los dynos son reiniciados por
+        <em>
+         Ephemeral Filesystem
+        </em>
+        , es decir, un sistema de archivos
+        <em>
+         efímero
+        </em>
+        , que se reinicia cada vez que los dynos son reiniciados por
 cualquier razón, sea un deploy o sea porque heroku los reinició.
-    </p>
-    <p>
-     <strong>
-      ¿Qué significa esto?
-     </strong>
-     , pues que
-     <strong>
-      no puedes escribir a disco
-     </strong>
-     como
+       </p>
+       <p>
+        <strong>
+         ¿Qué significa esto?
+        </strong>
+        , pues que
+        <strong>
+         no puedes escribir a disco
+        </strong>
+        como
 lo harías en cualquier servidor
-     <em>
-      normal
-     </em>
-     , si lo haces, debes saber que
+        <em>
+         normal
+        </em>
+        , si lo haces, debes saber que
 cuando tu app sea reiniciada, perderás todos los archivos, tiene un poco
 de sentido, cuando usas más de un dyno y escribes a disco, cuando el
 usuario quiera recuperar lo que subió, no tenemos manera de saber cuál
@@ -585,95 +564,95 @@ dyno atendió aquella solicitud y no sabremos dónde buscar, así que, de
 una manera u otra, lo mejor es almacenar los archivos de nuestros
 usuarios en un lugar seguro y de donde podamos recuperarlos luego sin
 problemas.
-    </p>
-    <p>
-     Nuevamente podemos utilizar
-     <em>
-      AWS-S3
-     </em>
-     para ello, con algunas
+       </p>
+       <p>
+        Nuevamente podemos utilizar
+        <em>
+         AWS-S3
+        </em>
+        para ello, con algunas
 configuraciones adicionales, podemos hacer que por defecto nuestros
-     <em>
-      media files
-     </em>
-     , para usar la terminología de
-     <em>
-      django
-     </em>
-     , sean almacenados
+        <em>
+         media files
+        </em>
+        , para usar la terminología de
+        <em>
+         django
+        </em>
+        , sean almacenados
 en nuestro
-     <em>
-      bucket
-     </em>
-     .
-    </p>
-    <p>
-     Es necesario agregar las siguientes líneas a nuestro
-     <em>
-      settings.py
-     </em>
-     :
-    </p>
-    <div class="highlight">
-     <pre><span></span><code><span class="err">    MEDIA_ROOT = ''</span>
+        <em>
+         bucket
+        </em>
+        .
+       </p>
+       <p>
+        Es necesario agregar las siguientes líneas a nuestro
+        <em>
+         settings.py
+        </em>
+        :
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><span class="err">    MEDIA_ROOT = ''</span>
 <span class="err">    DEFAULT_FILE_STORAGE = 's3_folder_storage.s3.DefaultStorage'</span>
 <span class="err">    DEFAULT_S3_PATH = 'media/'</span>
 <span class="err">    MEDIA_URL = 'http://%s.s3.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME</span>
 </code></pre>
-    </div>
-    <p>
-     Con esto, todo lo que suban nuestros usuarios irá a la carpeta
-     <em>
-      media/
-     </em>
-     de nuestro bucket.
-    </p>
-    <p>
-     Hay que tener en cuenta que todo se está subiendo al mismo
-     <em>
-      bucket
-     </em>
-     y la
+       </div>
+       <p>
+        Con esto, todo lo que suban nuestros usuarios irá a la carpeta
+        <em>
+         media/
+        </em>
+        de nuestro bucket.
+       </p>
+       <p>
+        Hay que tener en cuenta que todo se está subiendo al mismo
+        <em>
+         bucket
+        </em>
+        y la
 política que se definió en principio para poder almacenar los archivos
 estáticos da acceso público a todo el contenido por defecto, por lo que
 hay que tomar previsiones
-     <em>
-      de alguna manera
-     </em>
-     para que no todo el mundo
+        <em>
+         de alguna manera
+        </em>
+        para que no todo el mundo
 pueda ver los archivos de nuestros usuarios de manera directa.
-    </p>
-    <p>
-     Acá expondré la estrategia que uso:
-    </p>
-    <ol>
-     <li>
-      <strong>
-       Sobre-escritura del método save():
-      </strong>
-      en los modelos que tengan un
-      <em>
-       ImageField
-      </em>
-      o un
-      <em>
-       FileField
-      </em>
-      , la idea de esto es sobreescribir la
+       </p>
+       <p>
+        Acá expondré la estrategia que uso:
+       </p>
+       <ol>
+        <li>
+         <strong>
+          Sobre-escritura del método save():
+         </strong>
+         en los modelos que tengan un
+         <em>
+          ImageField
+         </em>
+         o un
+         <em>
+          FileField
+         </em>
+         , la idea de esto es sobreescribir la
     política de control de acceso particular para el archivo una ves que
     fue subido. Para esto utilizaremos una librería llamada
-      <a class="reference external" href="https://github.com/boto/boto">
-       boto
-      </a>
-      que es un
+         <a class="reference external" href="https://github.com/boto/boto">
+          boto
+         </a>
+         que es un
     wrapper en Python para el API de
-      <em>
-       AWS
-      </em>
-     </li>
-    </ol>
-    <div class="highlight">
-     <pre><span></span><code>    <span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+         <em>
+          AWS
+         </em>
+        </li>
+       </ol>
+       <div class="highlight">
+        <pre><span></span><code>    <span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
     <span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
     <span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
 
@@ -691,44 +670,44 @@ pueda ver los archivos de nuestros usuarios de manera directa.
             <span class="n">k</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="s1">'</span><span class="si">%s%s</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">DEFAULTS3_PATH</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">video</span><span class="p">)</span>
             <span class="n">k</span><span class="o">.</span><span class="n">set_acl</span><span class="p">(</span><span class="s1">'private'</span><span class="p">)</span>
 </code></pre>
-    </div>
-    <p>
-     Con esto tenemos el archivo privado en
-     <em>
-      S3
-     </em>
-     , ahora, necesitamos una
+       </div>
+       <p>
+        Con esto tenemos el archivo privado en
+        <em>
+         S3
+        </em>
+        , ahora, necesitamos una
 manera de darle acceso al usuario que es propietario del archivo.
-    </p>
-    <ol>
-     <li>
-      <strong>
-       Escribiendo una vista para acceder al archivo privado:
-      </strong>
-      la mejor
+       </p>
+       <ol>
+        <li>
+         <strong>
+          Escribiendo una vista para acceder al archivo privado:
+         </strong>
+         la mejor
     manera que conseguí para darle acceso al usuario a su archivo fue
     escribiendo una vista de
-      <em>
-       django
-      </em>
-      que revisara que el usuario que
+         <em>
+          django
+         </em>
+         que revisara que el usuario que
     origina el request es realmente el propietario del objeto y
     redirigirlo a la ubicación de su archivo en
-      <em>
-       S3
-      </em>
-      . Escribiremos un
+         <em>
+          S3
+         </em>
+         . Escribiremos un
     pequeño helper, además, para encapsular la generación del URL, como
     es un archivo privado, el url debe ir firmado y sólo será válido por
     el tiempo que nosotros indiquemos, en este caso, lo haremos por
     una hora.
-     </li>
-    </ol>
-    <p>
-     En el helper colocamos lo siguiente:
-    </p>
-    <div class="highlight">
-     <pre><span></span><code>    <span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+        </li>
+       </ol>
+       <p>
+        En el helper colocamos lo siguiente:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>    <span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
 
 
     <span class="k">def</span> <span class="nf">get_s3_redirect_url</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">60</span><span class="p">):</span>
@@ -737,12 +716,12 @@ manera de darle acceso al usuario que es propietario del archivo.
         <span class="n">conn</span> <span class="o">=</span> <span class="n">S3Connection</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">AWS_ACCESS_KEY_ID</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">AWS_SECRET_ACCESS_KEY</span><span class="p">,</span> <span class="n">is_secure</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">conn</span><span class="o">.</span><span class="n">generate_url</span><span class="p">(</span><span class="n">ttl</span><span class="p">,</span> <span class="s1">'GET'</span><span class="p">,</span> <span class="n">bucket</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">AWS_STORAGE_BUCKET_NAME</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">filepath</span><span class="p">,</span> <span class="n">force_http</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre>
-    </div>
-    <p>
-     y en la vista:
-    </p>
-    <div class="highlight">
-     <pre><span></span><code>    <span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span><span class="p">,</span> <span class="n">HttpResponseRedirect</span>
+       </div>
+       <p>
+        y en la vista:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code>    <span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span><span class="p">,</span> <span class="n">HttpResponseRedirect</span>
     <span class="kn">from</span> <span class="nn">django.contrib.auth.decorators</span> <span class="kn">import</span> <span class="n">login_required</span>
     <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Video</span>
 
@@ -759,148 +738,149 @@ manera de darle acceso al usuario que es propietario del archivo.
 
         <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="mi">403</span><span class="p">)</span>
 </code></pre>
-    </div>
-    <p>
-     Con esto generamos una url firmada y válida por 3600 segundos (una hora)
+       </div>
+       <p>
+        Con esto generamos una url firmada y válida por 3600 segundos (una hora)
 si el usuario que origina la solicitud es el propietario del objeto que
 contiene el archivo (video) que se desea obtener, caso contrario
 retornamos 403 ya que la persona no tiene permisos para ver ese
 contenido.
-    </p>
-   </div>
-   <footer>
-    <div class="tags">
-     <a href="//iffm.me/tag/heroku.html">
-      heroku
-     </a>
-     <a href="//iffm.me/tag/django.html">
-      django
-     </a>
-     <a href="//iffm.me/tag/python.html">
-      python
-     </a>
-     <a href="//iffm.me/tag/paas.html">
-      PAAS
-     </a>
-    </div>
-    <div class="pure-g post-footer">
-     <div class="pure-u-1 pure-u-md-1-2">
-      <div class="pure-g poster-info">
-       <div class="pure-u">
-        <a href="//iffm.me/author/israel-fermin-montilla.html">
-         <img alt="" src="https://dl.dropboxusercontent.com/s/1bvnowsfke4rs2k/isra.jpg"/>
-        </a>
-       </div>
-       <div class="pure-u-3-4">
-        <h3 class="author-name">
-         <a href="//iffm.me/author/israel-fermin-montilla.html">
-          Israel Fermín Montilla
-         </a>
-        </h3>
-        <p class="author-description">
-         {' Full time husband and dad who loves technology and programming. Software Engineer @ Careem / Online Mentor @ codeinstitute.net'}
-        </p>
-       </div>
+       </p>
       </div>
-     </div>
-    </div>
-    <!-- Begin Signup Form -->
-    <div id="mc_embed_signup">
-     <div id="revue-embed">
-      <form action="https://www.getrevue.co/profile/iferminm/add_subscriber" id="revue-form" method="post" name="revue-form" target="_blank">
-       <div class="revue-form-group">
-        <label for="member_email">
-         Email address
-        </label>
-        <input class="form-control" id="member_email" name="member[email]" placeholder="Your email address..." type="email"/>
-       </div>
-       <div class="revue-form-group">
-        <label for="member_first_name">
-         First name
-         <span class="optional">
-          (Optional)
-         </span>
-        </label>
-        <input class="form-control" id="member_first_name" name="member[first_name]" placeholder="First name... (Optional)" type="text"/>
-       </div>
-       <div class="revue-form-group">
-        <label for="member_last_name">
-         Last name
-         <span class="optional">
-          (Optional)
-         </span>
-        </label>
-        <input class="form-control" id="member_last_name" name="member[last_name]" placeholder="Last name... (Optional)" type="text"/>
-       </div>
-       <div class="revue-form-actions" style="margin-top:10px;">
-        <input class="btn btn-secondary" id="member_submit" name="member[subscribe]" type="submit" value="Subscribe"/>
-       </div>
-       <div class="revue-form-footer">
-        By subscribing, you agree with Revue’s
-        <a href="https://www.getrevue.co/terms" target="_blank">
-         Terms
-        </a>
-        and
-        <a href="https://www.getrevue.co/privacy" target="_blank">
-         Privacy Policy
-        </a>
-        .
-       </div>
-      </form>
-     </div>
-    </div>
-    <!--End mc_embed_signup-->
-   </footer>
-   <div class="entry-content">
-    <div id="disqus_thread">
-    </div>
-    <script type="text/javascript">
-     var disqus_shortname = 'iferminmblog';
+      <!-- /.entry-content -->
+      <div id="disqus_thread">
+      </div>
+      <script type="text/javascript">
+       /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'iferminmblog'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
             (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
             })();
-    </script>
-    <noscript>
-     Please enable JavaScript to view the
-     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
-      comments powered by Disqus.
-     </a>
-    </noscript>
+      </script>
+      <noscript>
+       Please enable JavaScript to view the
+       <a href="http://disqus.com/?ref_noscript">
+        comments powered by Disqus.
+       </a>
+      </noscript>
+     </div>
+    </div>
+    <div class="span3 offset1">
+     <div class="well">
+      <ul class="nav nav-list">
+       <li class="nav-header">
+        Blog
+       </li>
+       <li>
+        <a href="//iffm.me">
+         Index
+        </a>
+       </li>
+       <li>
+        <a href="//iffm.me/tags/">
+         Tags
+        </a>
+       </li>
+       <li>
+        <a href="//iffm.me/archives/">
+         Archiv
+        </a>
+       </li>
+       <li class="nav-header">
+        Seiten
+       </li>
+       <li>
+        <a href="//iffm.me/pages/about-me.html">
+         About me...
+        </a>
+       </li>
+       <li>
+        <a href="//iffm.me/pages/consulting.html">
+         Consulting
+        </a>
+       </li>
+       <li>
+        <a href="//iffm.me/pages/now.html">
+         Now
+        </a>
+       </li>
+       <li>
+        <a href="//iffm.me/pages/talks.html">
+         Talks
+        </a>
+       </li>
+       <li class="nav-header">
+        Links
+       </li>
+       <li>
+        <a href="http://getpelican.com/">
+         Pelican
+        </a>
+       </li>
+       <li>
+        <a href="http://python.org/">
+         Python.org
+        </a>
+       </li>
+       <li>
+        <a href="http://jinja.pocoo.org/">
+         Jinja2
+        </a>
+       </li>
+       <li>
+        <a href="//127.0.0.1:8000/feeds/all.atom.xml">
+         Atom
+        </a>
+       </li>
+      </ul>
+     </div>
+     <!-- /#menu -->
+    </div>
+   </div>
+   <hr/>
+   <div class="row">
+    <div class="span12">
+     <div id="about">
+      <p>
+       Proudly powered by
+       <a href="http://twitter.github.com/bootstrap/">
+        bootstrap
+       </a>
+       ,
+       <a href="http://docs.notmyidea.org/alexis/pelican/">
+        pelican
+       </a>
+       ,
+       <a href="http://python.org">
+        python
+       </a>
+       and
+       <a href="http://www.julo.ch/about/">
+        Alex
+       </a>
+       !
+      </p>
+     </div>
+     <!-- /#about -->
+    </div>
+    <!-- /#contentinfo -->
    </div>
   </div>
-  <footer class="index-footer">
-   <a href="//iffm.me/" title="/dev/isra/blog/*">
-    /dev/isra/blog/*
-   </a>
-   <a href="//iffm.me/category/blog.html">
-    Blog
-   </a>
-   <a href="//iffm.me/category/espanol.html">
-    Español
-   </a>
-   <a href="http://getpelican.com/">
-    Pelican
-   </a>
-   <a href="http://python.org/">
-    Python.org
-   </a>
-   <a href="http://jinja.pocoo.org/">
-    Jinja2
-   </a>
-   <a href="//127.0.0.1:8000/feeds/all.atom.xml">
-    Atom
-   </a>
-  </footer>
-  <script>
-   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  <script type="text/javascript">
+   /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'iferminmblog'; // required: replace example with your forum shortname
 
-      ga('create', 'UA-96148260-1', 'auto');
-      ga('send', 'pageview');
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script'); s.async = true;
+            s.type = 'text/javascript';
+            s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
   </script>
  </body>
 </html>

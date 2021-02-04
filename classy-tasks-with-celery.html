@@ -1,19 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
  <head>
   <title>
-   Classy Tasks with Celery
+   Classy Tasks with Celery - /dev/isra/blog/*
   </title>
   <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" rel="stylesheet"/>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" rel="stylesheet"/>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
-  <link href="//stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="//iffm.me/theme/css/main.css" rel="stylesheet"/>
-  <link href="//127.0.0.1:8000/feeds/all.atom.xml" rel="alternate" title="/dev/isra/blog/* Full Atom Feed" type="application/atom+xml"/>
+  <link href="http://fonts.googleapis.com/css?family=Arimo:400,700|Inika" rel="stylesheet" type="text/css"/>
+  <link href="//iffm.me/theme/bootstrap.css" rel="stylesheet" type="text/css"/>
+  <link href="//iffm.me/theme/pastie.css" rel="stylesheet" type="text/css"/>
   <link href="//127.0.0.1:8000/feeds/main.xml" rel="alternate" title="/dev/isra/blog/* Atom Feed" type="application/atom+xml"/>
-  <link href="//127.0.0.1:8000/feeds/{slug}.atom.xml" rel="alternate" title="/dev/isra/blog/* Categories Atom Feed" type="application/atom+xml"/>
+  <script type="text/javascript">
+   var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-96148260-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
   <link href="//iffm.me/classy-tasks-with-celery.html" rel="canonical"/>
   <script type="application/ld+json">
    {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "/dev/isra/blog/*", "item": "//iffm.me"}, {"@type": "ListItem", "position": 2, "name": "Classy tasks with celery", "item": "//iffm.me/classy-tasks-with-celery.html"}]}
@@ -23,137 +30,105 @@
   </script>
  </head>
  <body>
-  <div class="navigation pure-menu pure-menu-horizontal">
-   <a class="pure-menu-heading pure-menu-link" href="//iffm.me/">
-    /dev/isra/blog/*
-   </a>
-   <ul class="pure-menu-list">
-    <li class="pure-menu-item">
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/pages/about-me.html">
-      About me...
-     </a>
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/pages/consulting.html">
-      Consulting
-     </a>
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/pages/now.html">
-      Now
-     </a>
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/pages/talks.html">
-      Talks
-     </a>
-    </li>
-    <li class="pure-menu-item pure-menu-selected">
-     <a class="pure-menu-link" href="//iffm.me/category/blog.html">
-      Blog
-     </a>
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/category/espanol.html">
-      Español
-     </a>
-    </li>
-   </ul>
-  </div>
-  <div class="page-container">
-   <div class="entry-content">
-    <div class="post-meta pure-g">
-     <div class="pure-u-3-4 meta-data">
-      <a class="category" href="//iffm.me/category/blog.html">
-       Blog
-      </a>
-      <br/>
-      <a class="author" href="//iffm.me/author/israel-fermin-montilla.html">
-       Israel Fermín Montilla
-      </a>
-      —
-      <abbr title="2017-03-23T00:00:00+04:00">
-       Thu 23 March 2017
-      </abbr>
-     </div>
-    </div>
-   </div>
-   <div class="article-header-container">
-    <div class="background-image-container">
-     <div class="background-image-small">
-      <div class="title-container">
+  <div class="container">
+   <div class="row">
+    <div class="span8">
+     <div id="content">
+      <div class="header">
        <h1>
         Classy Tasks with Celery
        </h1>
       </div>
-     </div>
-    </div>
-   </div>
-   <div class="entry-content">
-    <p>
-     This will be a short article, I just want to share something I learned this week.
-    </p>
-    <p>
-     If you work with
-     <em>
-      Python
-     </em>
-     and chances are you've ran into
-     <em>
-      celery
-     </em>
-     at least once, hopefully more than once, depending on how complex the projects
+      <p class="meta">
+       <small>
+        <span>
+         <a href="//iffm.me/author/israel-fermin-montilla/">
+          Israel Fermín Montilla
+         </a>
+         -
+        </span>
+        <span>
+         Thu 23 March 2017
+        </span>
+        -
+        <span class="tags">
+         <a href="/tag/python/">
+          python
+         </a>
+         ,
+         <a href="/tag/programming/">
+          programming
+         </a>
+         ,
+         <a href="/tag/celery/">
+          celery
+         </a>
+        </span>
+       </small>
+      </p>
+      <div class="entry-content">
+       <p>
+        This will be a short article, I just want to share something I learned this week.
+       </p>
+       <p>
+        If you work with
+        <em>
+         Python
+        </em>
+        and chances are you've ran into
+        <em>
+         celery
+        </em>
+        at least once, hopefully more than once, depending on how complex the projects
 you've worked on are.
-    </p>
-    <p>
-     If you don't know it yet,
-     <em>
-      Celery
-     </em>
-     is a task scheduling library that lets you schedule heavy tasks to be ran later, for example, resizing an image, sending an email or posting data to a 3rd party service, those are things that can be done
-     <em>
-      later
-     </em>
-     so you don't have to keep your users waiting online for something to finish and could actually fail.
-    </p>
-    <p>
-     <em>
-      Celery
-     </em>
-     lets you
-     <code>
-      delay
-     </code>
-     the execution of those tasks and put retry policies in place so you can re-run them after a given time under certain conditions, for example, a 3rd party service returned
-     <code>
-      500
-     </code>
-     or
-     <code>
-      502
-     </code>
-     , you might want to retry after, let's say, 20min to see if the issue is gone.
-    </p>
-    <p>
-     This won't be an in depth tutorial, you can check
-     <em>
-      Celery
-     </em>
-     <a href="http://docs.celeryproject.org/en">
-      here
-     </a>
-     if you don't know it yet.
-    </p>
-    <p>
-     Let's see this example in
-     <em>
-      Flask
-     </em>
-    </p>
-    <div class="highlight">
-     <pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span>
+       </p>
+       <p>
+        If you don't know it yet,
+        <em>
+         Celery
+        </em>
+        is a task scheduling library that lets you schedule heavy tasks to be ran later, for example, resizing an image, sending an email or posting data to a 3rd party service, those are things that can be done
+        <em>
+         later
+        </em>
+        so you don't have to keep your users waiting online for something to finish and could actually fail.
+       </p>
+       <p>
+        <em>
+         Celery
+        </em>
+        lets you
+        <code>
+         delay
+        </code>
+        the execution of those tasks and put retry policies in place so you can re-run them after a given time under certain conditions, for example, a 3rd party service returned
+        <code>
+         500
+        </code>
+        or
+        <code>
+         502
+        </code>
+        , you might want to retry after, let's say, 20min to see if the issue is gone.
+       </p>
+       <p>
+        This won't be an in depth tutorial, you can check
+        <em>
+         Celery
+        </em>
+        <a href="http://docs.celeryproject.org/en">
+         here
+        </a>
+        if you don't know it yet.
+       </p>
+       <p>
+        Let's see this example in
+        <em>
+         Flask
+        </em>
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">process_image</span><span class="p">(</span><span class="n">image_url</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">image</span> <span class="o">=</span> <span class="n">download_image</span><span class="p">(</span><span class="n">image_url</span><span class="p">)</span>
@@ -163,19 +138,19 @@ you've worked on are.
         <span class="k">return</span> <span class="s1">'Failure, please try again'</span>
     <span class="k">return</span> <span class="s1">'Success'</span>
 </code></pre>
-    </div>
-    <p>
-     This is a very basic example, full of bad practices and code like this shouldn't be pushed to production but it serves to illustrate what I need to explain.
-    </p>
-    <p>
-     Normally, what you might do is just call those three functions inside a task and just call the
-     <code>
-      task.delay()
-     </code>
-     from the request handler, something like:
-    </p>
-    <div class="highlight">
-     <pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span>
+       </div>
+       <p>
+        This is a very basic example, full of bad practices and code like this shouldn't be pushed to production but it serves to illustrate what I need to explain.
+       </p>
+       <p>
+        Normally, what you might do is just call those three functions inside a task and just call the
+        <code>
+         task.delay()
+        </code>
+        from the request handler, something like:
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">process_image</span><span class="p">(</span><span class="n">image_url</span><span class="p">):</span>
     <span class="n">tasks</span><span class="o">.</span><span class="n">process_image</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="n">image_url</span><span class="p">)</span>
     <span class="k">return</span> <span class="s1">'Success'</span>
@@ -189,40 +164,40 @@ you've worked on are.
     <span class="n">resized</span> <span class="o">=</span> <span class="n">resize_image</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
     <span class="n">upload_image</span><span class="p">(</span><span class="n">resized</span><span class="p">)</span>
 </code></pre>
-    </div>
-    <p>
-     But, those three functions are not supposed to be called synchronously, so, I don't want them laying in some module waiting for someone to call them outside a task. Reason being that, as said before, these are heavy processes that might keep my web server busy and prevent it from taking new requests for a while and also keep my users waiting on a
-     <em>
-      loading
-     </em>
-     screen for a long time, which isn't a good user experience.
-    </p>
-    <p>
-     I could delete them and copy all the code in my task function but it will lead to a potentially long function which will do a lot of things, it will be difficult to read and difficult to maintain, so... bad idea.
-    </p>
-    <p>
-     <em>
-      Celery
-     </em>
-     's
-     <code>
-      @task
-     </code>
-     decorator, actually works as an object factory of
-     <code>
-      Task
-     </code>
-     objects, and what it does is, it puts the decorated function in the
-     <code>
-      run()
-     </code>
-     method, so, I could take advantage of the object oriented paradigm to encapsulate all that logic inside a task avoiding the risk of having those functions called synchronously.
-    </p>
-    <p>
-     It would look something like this
-    </p>
-    <div class="highlight">
-     <pre><span></span><code><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Task</span>
+       </div>
+       <p>
+        But, those three functions are not supposed to be called synchronously, so, I don't want them laying in some module waiting for someone to call them outside a task. Reason being that, as said before, these are heavy processes that might keep my web server busy and prevent it from taking new requests for a while and also keep my users waiting on a
+        <em>
+         loading
+        </em>
+        screen for a long time, which isn't a good user experience.
+       </p>
+       <p>
+        I could delete them and copy all the code in my task function but it will lead to a potentially long function which will do a lot of things, it will be difficult to read and difficult to maintain, so... bad idea.
+       </p>
+       <p>
+        <em>
+         Celery
+        </em>
+        's
+        <code>
+         @task
+        </code>
+        decorator, actually works as an object factory of
+        <code>
+         Task
+        </code>
+        objects, and what it does is, it puts the decorated function in the
+        <code>
+         run()
+        </code>
+        method, so, I could take advantage of the object oriented paradigm to encapsulate all that logic inside a task avoiding the risk of having those functions called synchronously.
+       </p>
+       <p>
+        It would look something like this
+       </p>
+       <div class="highlight">
+        <pre><span></span><code><span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">Task</span>
 
 
 <span class="k">class</span> <span class="nc">ProcessImage</span><span class="p">(</span><span class="n">Task</span><span class="p">):</span>
@@ -246,156 +221,160 @@ you've worked on are.
 <span class="c1"># We need an instance we can call delay() on</span>
 <span class="n">process_image</span> <span class="o">=</span> <span class="n">ProcessImage</span><span class="p">()</span>
 </code></pre>
-    </div>
-    <p>
-     And done, we can implement also a notification logic to inform the user if there's any issue processing the image after retrying and that kind of
+       </div>
+       <p>
+        And done, we can implement also a notification logic to inform the user if there's any issue processing the image after retrying and that kind of
 things, but I'll leave that for another post.
-    </p>
-    <p>
-     By doing a
-     <em>
-      class based task
-     </em>
-     for complex background jobs, we can produce cleaner code which is easier to maintain and to read and keep those heavy tasks encapsulated so no one calls them directly from a controller or a django view.
-    </p>
-    <p>
-     I know this is not the best way to implement this use case, we could have done it with a
-     <code>
-      TaskTree
-     </code>
-     or with callbacks, but I wanted to show how to use classes to define tasks. I'll explain those approaches in future posts. :-)
-    </p>
-   </div>
-   <footer>
-    <div class="tags">
-     <a href="//iffm.me/tag/python.html">
-      python
-     </a>
-     <a href="//iffm.me/tag/programming.html">
-      programming
-     </a>
-     <a href="//iffm.me/tag/celery.html">
-      celery
-     </a>
-    </div>
-    <div class="pure-g post-footer">
-     <div class="pure-u-1 pure-u-md-1-2">
-      <div class="pure-g poster-info">
-       <div class="pure-u">
-        <a href="//iffm.me/author/israel-fermin-montilla.html">
-         <img alt="" src="https://dl.dropboxusercontent.com/s/1bvnowsfke4rs2k/isra.jpg"/>
-        </a>
-       </div>
-       <div class="pure-u-3-4">
-        <h3 class="author-name">
-         <a href="//iffm.me/author/israel-fermin-montilla.html">
-          Israel Fermín Montilla
-         </a>
-        </h3>
-        <p class="author-description">
-         {' Full time husband and dad who loves technology and programming. Software Engineer @ Careem / Online Mentor @ codeinstitute.net'}
-        </p>
-       </div>
+       </p>
+       <p>
+        By doing a
+        <em>
+         class based task
+        </em>
+        for complex background jobs, we can produce cleaner code which is easier to maintain and to read and keep those heavy tasks encapsulated so no one calls them directly from a controller or a django view.
+       </p>
+       <p>
+        I know this is not the best way to implement this use case, we could have done it with a
+        <code>
+         TaskTree
+        </code>
+        or with callbacks, but I wanted to show how to use classes to define tasks. I'll explain those approaches in future posts. :-)
+       </p>
       </div>
-     </div>
-    </div>
-    <!-- Begin Signup Form -->
-    <div id="mc_embed_signup">
-     <div id="revue-embed">
-      <form action="https://www.getrevue.co/profile/iferminm/add_subscriber" id="revue-form" method="post" name="revue-form" target="_blank">
-       <div class="revue-form-group">
-        <label for="member_email">
-         Email address
-        </label>
-        <input class="form-control" id="member_email" name="member[email]" placeholder="Your email address..." type="email"/>
-       </div>
-       <div class="revue-form-group">
-        <label for="member_first_name">
-         First name
-         <span class="optional">
-          (Optional)
-         </span>
-        </label>
-        <input class="form-control" id="member_first_name" name="member[first_name]" placeholder="First name... (Optional)" type="text"/>
-       </div>
-       <div class="revue-form-group">
-        <label for="member_last_name">
-         Last name
-         <span class="optional">
-          (Optional)
-         </span>
-        </label>
-        <input class="form-control" id="member_last_name" name="member[last_name]" placeholder="Last name... (Optional)" type="text"/>
-       </div>
-       <div class="revue-form-actions" style="margin-top:10px;">
-        <input class="btn btn-secondary" id="member_submit" name="member[subscribe]" type="submit" value="Subscribe"/>
-       </div>
-       <div class="revue-form-footer">
-        By subscribing, you agree with Revue’s
-        <a href="https://www.getrevue.co/terms" target="_blank">
-         Terms
-        </a>
-        and
-        <a href="https://www.getrevue.co/privacy" target="_blank">
-         Privacy Policy
-        </a>
-        .
-       </div>
-      </form>
-     </div>
-    </div>
-    <!--End mc_embed_signup-->
-   </footer>
-   <div class="entry-content">
-    <div id="disqus_thread">
-    </div>
-    <script type="text/javascript">
-     var disqus_shortname = 'iferminmblog';
+      <!-- /.entry-content -->
+      <div id="disqus_thread">
+      </div>
+      <script type="text/javascript">
+       /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'iferminmblog'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
             (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
             })();
-    </script>
-    <noscript>
-     Please enable JavaScript to view the
-     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
-      comments powered by Disqus.
-     </a>
-    </noscript>
+      </script>
+      <noscript>
+       Please enable JavaScript to view the
+       <a href="http://disqus.com/?ref_noscript">
+        comments powered by Disqus.
+       </a>
+      </noscript>
+     </div>
+    </div>
+    <div class="span3 offset1">
+     <div class="well">
+      <ul class="nav nav-list">
+       <li class="nav-header">
+        Blog
+       </li>
+       <li>
+        <a href="//iffm.me">
+         Index
+        </a>
+       </li>
+       <li>
+        <a href="//iffm.me/tags/">
+         Tags
+        </a>
+       </li>
+       <li>
+        <a href="//iffm.me/archives/">
+         Archiv
+        </a>
+       </li>
+       <li class="nav-header">
+        Seiten
+       </li>
+       <li>
+        <a href="//iffm.me/pages/about-me.html">
+         About me...
+        </a>
+       </li>
+       <li>
+        <a href="//iffm.me/pages/consulting.html">
+         Consulting
+        </a>
+       </li>
+       <li>
+        <a href="//iffm.me/pages/now.html">
+         Now
+        </a>
+       </li>
+       <li>
+        <a href="//iffm.me/pages/talks.html">
+         Talks
+        </a>
+       </li>
+       <li class="nav-header">
+        Links
+       </li>
+       <li>
+        <a href="http://getpelican.com/">
+         Pelican
+        </a>
+       </li>
+       <li>
+        <a href="http://python.org/">
+         Python.org
+        </a>
+       </li>
+       <li>
+        <a href="http://jinja.pocoo.org/">
+         Jinja2
+        </a>
+       </li>
+       <li>
+        <a href="//127.0.0.1:8000/feeds/all.atom.xml">
+         Atom
+        </a>
+       </li>
+      </ul>
+     </div>
+     <!-- /#menu -->
+    </div>
+   </div>
+   <hr/>
+   <div class="row">
+    <div class="span12">
+     <div id="about">
+      <p>
+       Proudly powered by
+       <a href="http://twitter.github.com/bootstrap/">
+        bootstrap
+       </a>
+       ,
+       <a href="http://docs.notmyidea.org/alexis/pelican/">
+        pelican
+       </a>
+       ,
+       <a href="http://python.org">
+        python
+       </a>
+       and
+       <a href="http://www.julo.ch/about/">
+        Alex
+       </a>
+       !
+      </p>
+     </div>
+     <!-- /#about -->
+    </div>
+    <!-- /#contentinfo -->
    </div>
   </div>
-  <footer class="index-footer">
-   <a href="//iffm.me/" title="/dev/isra/blog/*">
-    /dev/isra/blog/*
-   </a>
-   <a href="//iffm.me/category/blog.html">
-    Blog
-   </a>
-   <a href="//iffm.me/category/espanol.html">
-    Español
-   </a>
-   <a href="http://getpelican.com/">
-    Pelican
-   </a>
-   <a href="http://python.org/">
-    Python.org
-   </a>
-   <a href="http://jinja.pocoo.org/">
-    Jinja2
-   </a>
-   <a href="//127.0.0.1:8000/feeds/all.atom.xml">
-    Atom
-   </a>
-  </footer>
-  <script>
-   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  <script type="text/javascript">
+   /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'iferminmblog'; // required: replace example with your forum shortname
 
-      ga('create', 'UA-96148260-1', 'auto');
-      ga('send', 'pageview');
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script'); s.async = true;
+            s.type = 'text/javascript';
+            s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
   </script>
  </body>
 </html>
