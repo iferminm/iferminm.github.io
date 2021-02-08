@@ -1,26 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
  <head>
   <title>
-   Migré a ZSH - /dev/isra/blog/*
+   Migré a ZSH
   </title>
   <meta charset="utf-8"/>
-  <link href="http://fonts.googleapis.com/css?family=Arimo:400,700|Inika" rel="stylesheet" type="text/css"/>
-  <link href="//iffm.me/theme/bootstrap.css" rel="stylesheet" type="text/css"/>
-  <link href="//iffm.me/theme/pastie.css" rel="stylesheet" type="text/css"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" rel="stylesheet"/>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" rel="stylesheet"/>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <link href="//iffm.me/theme/css/main.css" rel="stylesheet"/>
+  <link href="//127.0.0.1:8000/feeds/all.atom.xml" rel="alternate" title="/dev/isra/blog/* Full Atom Feed" type="application/atom+xml"/>
   <link href="//127.0.0.1:8000/feeds/main.xml" rel="alternate" title="/dev/isra/blog/* Atom Feed" type="application/atom+xml"/>
-  <script type="text/javascript">
-   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-96148260-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-  </script>
+  <link href="//127.0.0.1:8000/feeds/{slug}.atom.xml" rel="alternate" title="/dev/isra/blog/* Categories Atom Feed" type="application/atom+xml"/>
   <link href="//iffm.me/migre-a-zsh.html" rel="canonical"/>
   <script type="application/ld+json">
    {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "/dev/isra/blog/*", "item": "//iffm.me"}, {"@type": "ListItem", "position": 2, "name": "Migre a zsh", "item": "//iffm.me/migre-a-zsh.html"}]}
@@ -30,492 +22,554 @@
   </script>
  </head>
  <body>
-  <div class="container">
-   <div class="row">
-    <div class="span8">
-     <div id="content">
-      <div class="header">
+  <div class="navigation pure-menu pure-menu-horizontal">
+   <a class="pure-menu-heading pure-menu-link" href="//iffm.me/">
+    /dev/isra/blog/*
+   </a>
+   <ul class="pure-menu-list">
+    <li class="pure-menu-item">
+    </li>
+    <li class="pure-menu-item">
+     <a class="pure-menu-link" href="//iffm.me/pages/about-me.html">
+      About me...
+     </a>
+    </li>
+    <li class="pure-menu-item">
+     <a class="pure-menu-link" href="//iffm.me/pages/consulting.html">
+      Consulting
+     </a>
+    </li>
+    <li class="pure-menu-item">
+     <a class="pure-menu-link" href="//iffm.me/pages/now.html">
+      Now
+     </a>
+    </li>
+    <li class="pure-menu-item">
+     <a class="pure-menu-link" href="//iffm.me/pages/talks.html">
+      Talks
+     </a>
+    </li>
+    <li class="pure-menu-item">
+     <a class="pure-menu-link" href="//iffm.me/category/blog.html">
+      Blog
+     </a>
+    </li>
+    <li class="pure-menu-item pure-menu-selected">
+     <a class="pure-menu-link" href="//iffm.me/category/espanol.html">
+      Español
+     </a>
+    </li>
+   </ul>
+  </div>
+  <div class="page-container">
+   <div class="entry-content">
+    <div class="post-meta pure-g">
+     <div class="pure-u-3-4 meta-data">
+      <a class="category" href="//iffm.me/category/espanol.html">
+       Español
+      </a>
+      <br/>
+      <a class="author" href="//iffm.me/author/israel-fermin-montilla.html">
+       Israel Fermín Montilla
+      </a>
+      —
+      <abbr title="2015-05-26T00:00:00+04:00">
+       Tue 26 May 2015
+      </abbr>
+     </div>
+    </div>
+   </div>
+   <div class="article-header-container">
+    <div class="background-image-container">
+     <div class="background-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://dl.dropboxusercontent.com/s/q8wl01sq5tlxwv0/oh-my-zsh.png);">
+      <img alt="Migré a ZSH" src="https://dl.dropboxusercontent.com/s/q8wl01sq5tlxwv0/oh-my-zsh.png"/>
+      <div class="title">
        <h1>
         Migré a ZSH
        </h1>
       </div>
-      <p class="meta">
-       <small>
-        <span>
-         <a href="//iffm.me/author/israel-fermin-montilla/">
-          Israel Fermín Montilla
-         </a>
-         -
-        </span>
-        <span>
-         Tue 26 May 2015
-        </span>
-        -
-        <span class="tags">
-         <a href="/tag/zsh/">
-          zsh
-         </a>
-         ,
-         <a href="/tag/shell/">
-          shell
-         </a>
-         ,
-         <a href="/tag/herramientas/">
-          herramientas
-         </a>
-        </span>
-       </small>
-      </p>
-      <div class="entry-content">
-       <p>
-        Es bien sabido por todos que en Linux y en el Open Source en general,
+     </div>
+    </div>
+   </div>
+   <div class="entry-content">
+    <p>
+     Es bien sabido por todos que en Linux y en el Open Source en general,
 uno es libre de elegir todas y cada una de las partes del sistema que va
 a configurar para su computadora personal o de trabajo, la línea de
 comandos no es excepción.
-       </p>
-       <p>
-        Por defecto, viene configurado
-        <a href="http://es.wikipedia.org/wiki/Bash">
-         BASH
-        </a>
-        en todos
+    </p>
+    <p>
+     Por defecto, viene configurado
+     <a href="http://es.wikipedia.org/wiki/Bash">
+      BASH
+     </a>
+     en todos
 los sistemas linux, sin embargo, es posible cambiarlo sin ningún tipo de
 problemas, en mi caso, luego de investigar un poquito, elegí una
 combinación que me ha resultado bastante bien durante las últimas dos
 semanas:
-        <a href="http://es.wikipedia.org/wiki/Zsh">
-         ZSH
-        </a>
-        +
+     <a href="http://es.wikipedia.org/wiki/Zsh">
+      ZSH
+     </a>
+     +
 un plugin llamado
-        <a href="https://github.com/robbyrussell/oh-my-zsh">
-         oh my
+     <a href="https://github.com/robbyrussell/oh-my-zsh">
+      oh my
 zsh
-        </a>
-        .
-       </p>
-       <p>
-        Acá las razones por las cuales decidí migrar y por qué me ha parecido
+     </a>
+     .
+    </p>
+    <p>
+     Acá las razones por las cuales decidí migrar y por qué me ha parecido
 tan genial:
-       </p>
-       <h2>
-        YOLO
-       </h2>
-       <p>
-        Siempre digo que quiero probar herramientas nuevas, pero nunca pongo
+    </p>
+    <h2>
+     YOLO
+    </h2>
+    <p>
+     Siempre digo que quiero probar herramientas nuevas, pero nunca pongo
 manos a la obra, en los últimos meses me he propuesto a organizarme y
 crear hábitos, utilizando distintos hacks, que me permitan llevar a cabo
 todo lo que me pasa por la mente sin descuidar cosas importantes como la
 familia y el trabajo. Así que, quise probar
-        <em>
-         ZSH
-        </em>
-        a ver qué tal, ¿qué
+     <em>
+      ZSH
+     </em>
+     a ver qué tal, ¿qué
 mejor momento que ahora?
-       </p>
-       <h2>
-        No es un cambio muy traumático
-       </h2>
-       <p>
-        <em>
-         BASH
-        </em>
-        nace en 1989,
-        <em>
-         ZSH
-        </em>
-        nace en 1990, mantiene compatibilidad con
+    </p>
+    <h2>
+     No es un cambio muy traumático
+    </h2>
+    <p>
+     <em>
+      BASH
+     </em>
+     nace en 1989,
+     <em>
+      ZSH
+     </em>
+     nace en 1990, mantiene compatibilidad con
 todos los comandos de
-        <em>
-         BASH
-        </em>
-        y agrega nuevas funcionalidades que vamos a
+     <em>
+      BASH
+     </em>
+     y agrega nuevas funcionalidades que vamos a
 ver en las razones siguientes :-).
-       </p>
-       <h2>
-        El autocompletado de ZSH
-       </h2>
-       <p>
-        <em>
-         ZSH
-        </em>
-        tiene una capacidad increíble de autocompletar, no sólo te muestra
+    </p>
+    <h2>
+     El autocompletado de ZSH
+    </h2>
+    <p>
+     <em>
+      ZSH
+     </em>
+     tiene una capacidad increíble de autocompletar, no sólo te muestra
 las posibles opciones, cosa que también hace
-        <em>
-         BASH
-        </em>
-        , sino que te permite
+     <em>
+      BASH
+     </em>
+     , sino que te permite
 seleccionarla de manera interactiva, cosa que
-        <em>
-         BASH
-        </em>
-        no hace de manera
+     <em>
+      BASH
+     </em>
+     no hace de manera
 natural.
-       </p>
-       <p>
-        <img alt="Autocompletado
+    </p>
+    <p>
+     <img alt="Autocompletado
 interactivo" src="https://dl.dropboxusercontent.com/s/4b7jmr0humceyyk/foto1.png"/>
-       </p>
-       <p>
-        Además, no sólo completa rutas y comandos básicos del sistema operativo,
+    </p>
+    <p>
+     Además, no sólo completa rutas y comandos básicos del sistema operativo,
 con
-        <em>
-         Oh My ZSH
-        </em>
-        también tiene autocompletado para git, cosa que me
+     <em>
+      Oh My ZSH
+     </em>
+     también tiene autocompletado para git, cosa que me
 resulta muy útil porque es una herramienta que uso todos los días en la
 oficina y para proyectos personales, este autocompletado incluye una
 pequeña descripción de lo que hace cada comando de git.
-       </p>
-       <p>
-        <img alt="git &lt;TAB&gt; y esto
+    </p>
+    <p>
+     <img alt="git &lt;TAB&gt; y esto
 aparece" src="https://dl.dropboxusercontent.com/s/4sqyl17x60dsnk8/foto2.png"/>
-       </p>
-       <h3>
-        Completación de rutas
-       </h3>
-       <p>
-        No, no es lo mismo que la anterior, este es algo mucho más potente que
+    </p>
+    <h3>
+     Completación de rutas
+    </h3>
+    <p>
+     No, no es lo mismo que la anterior, este es algo mucho más potente que
 no vi nunca en
-        <em>
-         BASH
-        </em>
-        supongamos que soy perezoso para escribir, y
+     <em>
+      BASH
+     </em>
+     supongamos que soy perezoso para escribir, y
 quiero ir a
-        <em>
-         /home/israelord/Work
-        </em>
-        , que es la ruta donde tengo todos mis
+     <em>
+      /home/israelord/Work
+     </em>
+     , que es la ruta donde tengo todos mis
 proyectos, tanto de la oficina como freelance. Se que ese es el único
 patrón que coincide, simplemente escribo
-        <em>
-         /h/i/W
-        </em>
-        y al presionar tab, me
+     <em>
+      /h/i/W
+     </em>
+     y al presionar tab, me
 autocompleta la ruta.
-       </p>
-       <p>
-        En caso que haya ambigüedad, como por ejemplo, si quiero ir a
-        <em>
-         /usr/local/bin
-        </em>
-        , al escribir
-        <em>
-         /u/l/b
-        </em>
-        , hay dos opciones para la
-        <em>
-         l
-        </em>
-        ,
+    </p>
+    <p>
+     En caso que haya ambigüedad, como por ejemplo, si quiero ir a
+     <em>
+      /usr/local/bin
+     </em>
+     , al escribir
+     <em>
+      /u/l/b
+     </em>
+     , hay dos opciones para la
+     <em>
+      l
+     </em>
+     ,
 bajo el directorio
-        <em>
-         /user
-        </em>
-        :
-        <em>
-         lib
-        </em>
-        o
-        <em>
-         local
-        </em>
-        . En este caso, me permitirá
+     <em>
+      /user
+     </em>
+     :
+     <em>
+      lib
+     </em>
+     o
+     <em>
+      local
+     </em>
+     . En este caso, me permitirá
 seleccionar la opción correcta de manera interactiva, tal como en el
 ejemplo anterior, antes de terminar el autocompletado. Puedo resolver
 esto simplemente escribiendo
-        <em>
-         /u/lo/b
-        </em>
-        y me generará la ruta correcta de
+     <em>
+      /u/lo/b
+     </em>
+     y me generará la ruta correcta de
 una vez, simplemente debo completar más la parte de la ruta que genera
 el conflicto para que sea única, aunque la selección interactiva no me
 disgusta para nada.
-       </p>
-       <h3>
-        Cambios de directorio
-       </h3>
-       <p>
-        Sí, ya se, para eso está
-        <em>
-         cd
-        </em>
-        , pero este es un caso de uso de cd que no
+    </p>
+    <h3>
+     Cambios de directorio
+    </h3>
+    <p>
+     Sí, ya se, para eso está
+     <em>
+      cd
+     </em>
+     , pero este es un caso de uso de cd que no
 vi en
-        <em>
-         BASH
-        </em>
-        , supongamos que estoy en la ruta del ejemplo anterior
-        <em>
-         /usr/local/bin
-        </em>
-        , pero en realidad quería ir a
-        <em>
-         /usr/local/sbin
-        </em>
-        . En vez
+     <em>
+      BASH
+     </em>
+     , supongamos que estoy en la ruta del ejemplo anterior
+     <em>
+      /usr/local/bin
+     </em>
+     , pero en realidad quería ir a
+     <em>
+      /usr/local/sbin
+     </em>
+     . En vez
 de hacer como en
-        <em>
-         BASH
-        </em>
-        <em>
-         cd ../sbin
-        </em>
-        , puedo hacer
-        <em>
-         cd bin sbin
-        </em>
-        y me
+     <em>
+      BASH
+     </em>
+     <em>
+      cd ../sbin
+     </em>
+     , puedo hacer
+     <em>
+      cd bin sbin
+     </em>
+     y me
 lleva allí. Funciona igual con sub rutas, puedo hacer
-        <em>
-         cd local/sbin
+     <em>
+      cd local/sbin
 games
-        </em>
-        y me lleva a
-        <em>
-         /usr/games
-        </em>
-        , por ejemplo.
-       </p>
-       <p>
-        Esto es especialmente útil cuando tengo proyectos con la misma
+     </em>
+     y me lleva a
+     <em>
+      /usr/games
+     </em>
+     , por ejemplo.
+    </p>
+    <p>
+     Esto es especialmente útil cuando tengo proyectos con la misma
 estructura, por ejemplo, estoy en
-        <em>
-         /home/israelord/proyecto1/auth/views/
-        </em>
-        , simplemente con hacer
-        <em>
-         cd
+     <em>
+      /home/israelord/proyecto1/auth/views/
+     </em>
+     , simplemente con hacer
+     <em>
+      cd
 proyecto1 proyecto2
-        </em>
-        , me lleva a
-        <em>
-         /home/israelord/proyecto1/auth/views/
-        </em>
-        . No más cd ../../../../
-       </p>
-       <h3>
-        Autocorrector
-       </h3>
-       <p>
-        No mucho que decir, si me equivoco y escribo gut, me corrige y escribe
+     </em>
+     , me lleva a
+     <em>
+      /home/israelord/proyecto1/auth/views/
+     </em>
+     . No más cd ../../../../
+    </p>
+    <h3>
+     Autocorrector
+    </h3>
+    <p>
+     No mucho que decir, si me equivoco y escribo gut, me corrige y escribe
 git, por ejemplo, si hay más de un posible patrón, me muestra la
 selección interactiva que vimos antes.
-       </p>
-       <h3>
-        Renombrado de archivos en batch
-       </h3>
-       <p>
-        Supongamos que tengo 700 fotos que y los nombres son cosas como
+    </p>
+    <h3>
+     Renombrado de archivos en batch
+    </h3>
+    <p>
+     Supongamos que tengo 700 fotos que y los nombres son cosas como
 IMG_2193192873198723.jpg, quiero renombrarlas a algo más manejable,
 como "foto_1.jpg", "foto_2.jpg" y así.
-       </p>
-       <p>
-        Bueno, simplemente escribo
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>zmv <span class="s1">'(*).jpg'</span> <span class="s1">'foto_$1.jpg'</span>
+    </p>
+    <p>
+     Bueno, simplemente escribo
+    </p>
+    <div class="highlight">
+     <pre><span></span><code>zmv <span class="s1">'(*).jpg'</span> <span class="s1">'foto_$1.jpg'</span>
 </code></pre>
-       </div>
-       <p>
-        Y listo!.
-       </p>
-       <h2>
-        Oh My ZSH
-       </h2>
-       <p>
-        Es un plugin que extiende
-        <em>
-         ZSH
-        </em>
-        y, además, tiene varios addons, por
+    </div>
+    <p>
+     Y listo!.
+    </p>
+    <h2>
+     Oh My ZSH
+    </h2>
+    <p>
+     Es un plugin que extiende
+     <em>
+      ZSH
+     </em>
+     y, además, tiene varios addons, por
 ahora sólo estoy usando el de
-        <em>
-         git
-        </em>
-        porque tiene muchísimos alias útiles
+     <em>
+      git
+     </em>
+     porque tiene muchísimos alias útiles
 para las tareas de día a día con
-        <em>
-         git
-        </em>
-        que les dejaré de tarea revisar,
+     <em>
+      git
+     </em>
+     que les dejaré de tarea revisar,
 pero la diferencia es abismal respeto a lo que escribirías normalmente,
 por ejemplo:
-       </p>
-       <p>
-        En vez de git push origin master con Oh my zsh simplemente escribo
+    </p>
+    <p>
+     En vez de git push origin master con Oh my zsh simplemente escribo
 ggpush ;-)
-       </p>
-       <h3>
-        Instalando
-       </h3>
-       <p>
-        <em>
-         ZSH
-        </em>
-        normalmente está instalado, simplemente hay que modificar nuestro
+    </p>
+    <h3>
+     Instalando
+    </h3>
+    <p>
+     <em>
+      ZSH
+     </em>
+     normalmente está instalado, simplemente hay que modificar nuestro
 usuario para que sea el terminal por defecto
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>chsh -s /bin/zsh
+    </p>
+    <div class="highlight">
+     <pre><span></span><code>chsh -s /bin/zsh
 </code></pre>
+    </div>
+    <p>
+     Para instalar el plugin
+     <em>
+      Oh my ZSH
+     </em>
+     , basta con ejecutar
+    </p>
+    <div class="highlight">
+     <pre><span></span><code>curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh <span class="p">|</span> sh
+</code></pre>
+    </div>
+    <p>
+     O, si preferimos usar
+     <em>
+      wget
+     </em>
+    </p>
+    <div class="highlight">
+     <pre><span></span><code>wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - <span class="p">|</span> sh
+</code></pre>
+    </div>
+   </div>
+   <footer>
+    <div class="tags">
+     <a href="//iffm.me/tag/zsh.html">
+      zsh
+     </a>
+     <a href="//iffm.me/tag/shell.html">
+      shell
+     </a>
+     <a href="//iffm.me/tag/herramientas.html">
+      herramientas
+     </a>
+    </div>
+    <div class="pure-g post-footer">
+     <div class="pure-u-1 pure-u-md-1-2">
+      <div class="pure-g poster-info">
+       <div class="pure-u">
+        <a href="//iffm.me/author/israel-fermin-montilla.html">
+         <img alt="" src="https://dl.dropboxusercontent.com/s/1bvnowsfke4rs2k/isra.jpg"/>
+        </a>
        </div>
-       <p>
-        Para instalar el plugin
-        <em>
-         Oh my ZSH
-        </em>
-        , basta con ejecutar
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh <span class="p">|</span> sh
-</code></pre>
+       <div class="pure-u-3-4">
+        <h3 class="author-name">
+         <a href="//iffm.me/author/israel-fermin-montilla.html">
+          Israel Fermín Montilla
+         </a>
+        </h3>
+        <p class="author-description">
+         {' Full time husband and dad who loves technology and programming. Software Engineer @ Careem / Online Mentor @ codeinstitute.net'}
+        </p>
        </div>
-       <p>
-        O, si preferimos usar
-        <em>
-         wget
-        </em>
+       <style>
+        .bmc-button img{height: 34px !important;width: 35px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{padding: 7px 10px 7px 10px !important;line-height: 35px !important;height:51px !important;min-width:217px !important;text-decoration: none !important;display:inline-flex !important;color:#FFFFFF !important;background-color:#FF813F !important;border-radius: 5px !important;border: 1px solid transparent !important;padding: 7px 10px 7px 10px !important;font-size: 28px !important;letter-spacing:0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#FFFFFF !important;}
+       </style>
+       <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"/>
+       <a class="bmc-button" href="https://www.buymeacoffee.com/iferminm" target="_blank">
+        <img alt="Buy me a coffee" src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg"/>
+        <span style="margin-left:15px;font-size:28px !important;">
+         Buy me a coffee
+        </span>
+       </a>
+      </div>
+     </div>
+    </div>
+    <!-- Begin MailChimp Signup Form -->
+    <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css"/>
+    <style type="text/css">
+     #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+            /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+            We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+    </style>
+    <div id="mc_embed_signup">
+     <form action="//iffm.us15.list-manage.com/subscribe/post?u=f9aa59a7fe24a1d24a95b2e41&amp;id=28de70c22b" class="validate" id="mc-embedded-subscribe-form" method="post" name="mc-embedded-subscribe-form" novalidate="" target="_blank">
+      <div id="mc_embed_signup_scroll">
+       <h2>
+        Get notified
+       </h2>
+       <p class="author-description">
+        Get an email whenever I post something or release something cool, I'm always working on something, don't miss it out!
        </p>
-       <div class="highlight">
-        <pre><span></span><code>wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - <span class="p">|</span> sh
-</code></pre>
+       <div class="indicates-required">
+        <span class="asterisk">
+         *
+        </span>
+        indicates required
+       </div>
+       <div class="mc-field-group">
+        <label for="mce-EMAIL">
+         Email Address
+         <span class="asterisk">
+          *
+         </span>
+        </label>
+        <input class="required email" id="mce-EMAIL" name="EMAIL" type="email" value=""/>
+       </div>
+       <div class="mc-field-group">
+        <label for="mce-FNAME">
+         First Name
+        </label>
+        <input class="" id="mce-FNAME" name="FNAME" type="text" value=""/>
+       </div>
+       <div class="mc-field-group">
+        <label for="mce-LNAME">
+         Last Name
+        </label>
+        <input class="" id="mce-LNAME" name="LNAME" type="text" value=""/>
+       </div>
+       <div class="clear" id="mce-responses">
+        <div class="response" id="mce-error-response" style="display:none">
+        </div>
+        <div class="response" id="mce-success-response" style="display:none">
+        </div>
+       </div>
+       <!-- real people should not fill this in and expect good things - do not remove this or risk
+                    form bot signups-->
+       <div aria-hidden="true" style="position: absolute; left: -5000px;">
+        <input name="b_f9aa59a7fe24a1d24a95b2e41_28de70c22b" tabindex="-1" type="text" value=""/>
+       </div>
+       <div class="clear">
+        <input class="button" id="mc-embedded-subscribe" name="subscribe" type="submit" value="Subscribe"/>
        </div>
       </div>
-      <!-- /.entry-content -->
-      <div id="disqus_thread">
-      </div>
-      <script type="text/javascript">
-       /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-            var disqus_shortname = 'iferminmblog'; // required: replace example with your forum shortname
-
-            /* * * DON'T EDIT BELOW THIS LINE * * */
+     </form>
+    </div>
+    <script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+     (function($)
+        {window.fnames = new Array(); window.ftypes = new
+        Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj =
+        jQuery.noConflict(true);
+    </script>
+    <!--End mc_embed_signup-->
+   </footer>
+   <div class="entry-content">
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript">
+     var disqus_shortname = 'iferminmblog';
             (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
             })();
-      </script>
-      <noscript>
-       Please enable JavaScript to view the
-       <a href="http://disqus.com/?ref_noscript">
-        comments powered by Disqus.
-       </a>
-      </noscript>
-     </div>
-    </div>
-    <div class="span3 offset1">
-     <div class="well">
-      <ul class="nav nav-list">
-       <li class="nav-header">
-        Blog
-       </li>
-       <li>
-        <a href="//iffm.me">
-         Index
-        </a>
-       </li>
-       <li>
-        <a href="//iffm.me/tags/">
-         Tags
-        </a>
-       </li>
-       <li>
-        <a href="//iffm.me/archives/">
-         Archiv
-        </a>
-       </li>
-       <li class="nav-header">
-        Pages
-       </li>
-       <li>
-        <a href="//iffm.me/pages/about-me.html">
-         About me...
-        </a>
-       </li>
-       <li>
-        <a href="//iffm.me/pages/consulting.html">
-         Consulting
-        </a>
-       </li>
-       <li>
-        <a href="//iffm.me/pages/now.html">
-         Now
-        </a>
-       </li>
-       <li>
-        <a href="//iffm.me/pages/talks.html">
-         Talks
-        </a>
-       </li>
-       <li class="nav-header">
-        Links
-       </li>
-       <li>
-        <a href="http://getpelican.com/">
-         Pelican
-        </a>
-       </li>
-       <li>
-        <a href="http://python.org/">
-         Python.org
-        </a>
-       </li>
-       <li>
-        <a href="http://jinja.pocoo.org/">
-         Jinja2
-        </a>
-       </li>
-       <li>
-        <a href="//iffm.me/feeds/all.atom.xml">
-         Atom
-        </a>
-       </li>
-      </ul>
-     </div>
-     <!-- /#menu -->
-    </div>
-   </div>
-   <hr/>
-   <div class="row">
-    <div class="span12">
-     <div id="about">
-      <p>
-       Proudly powered by
-       <a href="http://twitter.github.com/bootstrap/">
-        bootstrap
-       </a>
-       ,
-       <a href="http://docs.notmyidea.org/alexis/pelican/">
-        pelican
-       </a>
-       ,
-       <a href="http://python.org">
-        python
-       </a>
-       and
-       <a href="http://www.julo.ch/about/">
-        Alex
-       </a>
-       !
-      </p>
-     </div>
-     <!-- /#about -->
-    </div>
-    <!-- /#contentinfo -->
+    </script>
+    <noscript>
+     Please enable JavaScript to view the
+     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+      comments powered by Disqus.
+     </a>
+    </noscript>
    </div>
   </div>
-  <script type="text/javascript">
-   /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'iferminmblog'; // required: replace example with your forum shortname
+  <footer class="index-footer">
+   <a href="//iffm.me/" title="/dev/isra/blog/*">
+    /dev/isra/blog/*
+   </a>
+   <a href="//iffm.me/category/blog.html">
+    Blog
+   </a>
+   <a href="//iffm.me/category/espanol.html">
+    Español
+   </a>
+   <a href="http://getpelican.com/">
+    Pelican
+   </a>
+   <a href="http://python.org/">
+    Python.org
+   </a>
+   <a href="http://jinja.pocoo.org/">
+    Jinja2
+   </a>
+   <a href="//iffm.me/feeds/all.atom.xml">
+    Atom
+   </a>
+  </footer>
+  <script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function () {
-            var s = document.createElement('script'); s.async = true;
-            s.type = 'text/javascript';
-            s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-        }());
+      ga('create', 'UA-96148260-1', 'auto');
+      ga('send', 'pageview');
   </script>
  </body>
 </html>

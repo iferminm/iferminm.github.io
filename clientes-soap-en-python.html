@@ -1,26 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
  <head>
   <title>
-   Clientes SOAP en Python - /dev/isra/blog/*
+   Clientes SOAP en Python
   </title>
   <meta charset="utf-8"/>
-  <link href="http://fonts.googleapis.com/css?family=Arimo:400,700|Inika" rel="stylesheet" type="text/css"/>
-  <link href="//iffm.me/theme/bootstrap.css" rel="stylesheet" type="text/css"/>
-  <link href="//iffm.me/theme/pastie.css" rel="stylesheet" type="text/css"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" rel="stylesheet"/>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" rel="stylesheet"/>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <link href="//iffm.me/theme/css/main.css" rel="stylesheet"/>
+  <link href="//127.0.0.1:8000/feeds/all.atom.xml" rel="alternate" title="/dev/isra/blog/* Full Atom Feed" type="application/atom+xml"/>
   <link href="//127.0.0.1:8000/feeds/main.xml" rel="alternate" title="/dev/isra/blog/* Atom Feed" type="application/atom+xml"/>
-  <script type="text/javascript">
-   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-96148260-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-  </script>
+  <link href="//127.0.0.1:8000/feeds/{slug}.atom.xml" rel="alternate" title="/dev/isra/blog/* Categories Atom Feed" type="application/atom+xml"/>
   <link href="//iffm.me/clientes-soap-en-python.html" rel="canonical"/>
   <script type="application/ld+json">
    {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "/dev/isra/blog/*", "item": "//iffm.me"}, {"@type": "ListItem", "position": 2, "name": "Clientes soap en python", "item": "//iffm.me/clientes-soap-en-python.html"}]}
@@ -30,154 +22,182 @@
   </script>
  </head>
  <body>
-  <div class="container">
-   <div class="row">
-    <div class="span8">
-     <div id="content">
-      <div class="header">
+  <div class="navigation pure-menu pure-menu-horizontal">
+   <a class="pure-menu-heading pure-menu-link" href="//iffm.me/">
+    /dev/isra/blog/*
+   </a>
+   <ul class="pure-menu-list">
+    <li class="pure-menu-item">
+    </li>
+    <li class="pure-menu-item">
+     <a class="pure-menu-link" href="//iffm.me/pages/about-me.html">
+      About me...
+     </a>
+    </li>
+    <li class="pure-menu-item">
+     <a class="pure-menu-link" href="//iffm.me/pages/consulting.html">
+      Consulting
+     </a>
+    </li>
+    <li class="pure-menu-item">
+     <a class="pure-menu-link" href="//iffm.me/pages/now.html">
+      Now
+     </a>
+    </li>
+    <li class="pure-menu-item">
+     <a class="pure-menu-link" href="//iffm.me/pages/talks.html">
+      Talks
+     </a>
+    </li>
+    <li class="pure-menu-item">
+     <a class="pure-menu-link" href="//iffm.me/category/blog.html">
+      Blog
+     </a>
+    </li>
+    <li class="pure-menu-item pure-menu-selected">
+     <a class="pure-menu-link" href="//iffm.me/category/espanol.html">
+      Español
+     </a>
+    </li>
+   </ul>
+  </div>
+  <div class="page-container">
+   <div class="entry-content">
+    <div class="post-meta pure-g">
+     <div class="pure-u-3-4 meta-data">
+      <a class="category" href="//iffm.me/category/espanol.html">
+       Español
+      </a>
+      <br/>
+      <a class="author" href="//iffm.me/author/israel-fermin-montilla.html">
+       Israel Fermín Montilla
+      </a>
+      —
+      <abbr title="2013-08-18T00:00:00+04:00">
+       Sun 18 August 2013
+      </abbr>
+     </div>
+    </div>
+   </div>
+   <div class="article-header-container">
+    <div class="background-image-container">
+     <div class="background-image-small">
+      <div class="title-container">
        <h1>
         Clientes SOAP en Python
        </h1>
       </div>
-      <p class="meta">
-       <small>
-        <span>
-         <a href="//iffm.me/author/israel-fermin-montilla/">
-          Israel Fermín Montilla
-         </a>
-         -
-        </span>
-        <span>
-         Sun 18 August 2013
-        </span>
-        -
-        <span class="tags">
-         <a href="/tag/python/">
-          python
-         </a>
-         ,
-         <a href="/tag/soap/">
-          soap
-         </a>
-         ,
-         <a href="/tag/soa/">
-          soa
-         </a>
-         ,
-         <a href="/tag/suds/">
-          suds
-         </a>
-        </span>
-       </small>
-      </p>
-      <div class="entry-content">
-       <p>
-        Como todos saben, y algunos me chalequean por eso, en la primera mitad
+     </div>
+    </div>
+   </div>
+   <div class="entry-content">
+    <p>
+     Como todos saben, y algunos me chalequean por eso, en la primera mitad
 de 2013 cambié de trabajo dos veces, estaba algo aburrido en Metamax y
 decidí aceptar una oportunidad en 4geeks, junto con una serie de
 proyectos para una empresa en el extranjero que pintaban bastante bien,
 una vez que terminé los proyectos de la otra empresa, terminé
 enamorándome del proyecto que desarrollaba desde 4geeks y uniéndome al
 startup a tiempo completo.
-       </p>
-       <p>
-        La historia en 4geeks es muy graciosa, un tal Saúl Lustgarten llevaba
+    </p>
+    <p>
+     La historia en 4geeks es muy graciosa, un tal Saúl Lustgarten llevaba
 tiempo escribiendo en todas las listas de correo donde estoy pidiendo un
 desarrollador Python, incluso me contactó personalmente varias veces vía
 email y a través de
-        <em>
-         LinkedIn
-        </em>
-        para desarrollar su
-        <em>
-         startup
-        </em>
-        , una
+     <em>
+      LinkedIn
+     </em>
+     para desarrollar su
+     <em>
+      startup
+     </em>
+     , una
 central telefónica en la nube llamada
-        <em>
-         RingTu
-        </em>
-        , el tema era que no me
+     <em>
+      RingTu
+     </em>
+     , el tema era que no me
 resultaba atractivo, así que en ese momento acepté la oferta de 4geeks.
-       </p>
-       <p>
-        El primer día en 4geeks, me informan acerca del proyecto que iba a
+    </p>
+    <p>
+     El primer día en 4geeks, me informan acerca del proyecto que iba a
 desarrollar, "vas a hacer uno de los startups de Wayra, es una central
 telefónica en la nube" y yo "¿RingTu?", "sí ese mismo", vaya, al parecer
 hasta se las arregló para que desde 4geeks desarrollara su startup,
 jajajajajajaja.
-       </p>
-       <p>
-        Básicamente lo que debía hacer era unos wrappers para unos servicios web
+    </p>
+    <p>
+     Básicamente lo que debía hacer era unos wrappers para unos servicios web
 que ellos consumen, ese era sólo el inicio del proyecto, pensé que sería
 divertido, ya había hecho wrappers para otros servicios web, y en Python
 es muy fácil hacer clientes para servicios web, sin importar si hablan
 JSON o XML o algún protocolo propio, la cosa se puso esotérica cuando vi
 que todos los URL de los servicios con los que iba a trabajar terminaban
 en .wsdl.
-       </p>
-       <p>
-        ¿SOAP?, con el boom de REST ¿quién usa SOAP?, en fin, ¿qué tan difícil
+    </p>
+    <p>
+     ¿SOAP?, con el boom de REST ¿quién usa SOAP?, en fin, ¿qué tan difícil
 puede ser?, en Java es realmente fácil escribir clientes y servicios web
 usando SOAP y en Python no debe ser la excepción, hay librerías para
 todo, dejé de hacerme preguntas acerca del sentido de la vida, el
 universo y todo lo demás y puse manos a la obra a investigar alguna
 buena librería que me facilitara el trabajo.
-       </p>
-       <p>
-        Luego de unos minutos leyendo en
-        <em>
-         StackOverflow
-        </em>
-        , vi que al parecer suds
+    </p>
+    <p>
+     Luego de unos minutos leyendo en
+     <em>
+      StackOverflow
+     </em>
+     , vi que al parecer suds
 era la mejor opción, no se veía tan abandonada y, comparada a las demás
 opciones, tenía una documentación decente.
-       </p>
-       <p>
-        Lo primero es, obviamente, instalarla:
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>pip install suds
+    </p>
+    <p>
+     Lo primero es, obviamente, instalarla:
+    </p>
+    <div class="highlight">
+     <pre><span></span><code>pip install suds
 </code></pre>
-       </div>
-       <p>
-        Recuerden que siempre es buena práctica trabajar con virtualenvs y,
+    </div>
+    <p>
+     Recuerden que siempre es buena práctica trabajar con virtualenvs y,
 además, es muy buena opción el hecho de utilizar virtualenvwrapper para
 gestionarlos.
-       </p>
-       <p>
-        Una vez que tenemos suds ya instalado, es sólo cuestión de empezar a
+    </p>
+    <p>
+     Una vez que tenemos suds ya instalado, es sólo cuestión de empezar a
 utilizarla, para hacer clientes, que es de lo que hablaré en este post,
 sólo nos interesa la clase definida en
-        <em>
-         suds.client.Client
-        </em>
-        .
-       </p>
-       <p>
-        Si repasamos un poco de teoría acerca de los servicios web sobre el
+     <em>
+      suds.client.Client
+     </em>
+     .
+    </p>
+    <p>
+     Si repasamos un poco de teoría acerca de los servicios web sobre el
 protocolo SOAP, veremos que se convirtió en la capa subyacente para
 servicios complejos basados en WSDL, que es una manera de especificar
 los objetos y métodos que expone un servicio web y a los que el cliente
 puede tener acceso. WSDL es un acrónimo que significa
-        <em>
-         Web Service
+     <em>
+      Web Service
 Description Language
-        </em>
-        .
-       </p>
-       <p>
-        Toda la definición de servicios web SOAP se hace en un documento WSDL,
+     </em>
+     .
+    </p>
+    <p>
+     Toda la definición de servicios web SOAP se hace en un documento WSDL,
 que no es mas que un XML donde se define todo lo que este servicio
 expone para ser consumido por sus clientes. De igual manera, el pase de
 mensajes (soap messages) entre el cliente y el servidor, se hace en
 formato XML.
-       </p>
-       <p>
-        A continuación un ejemplo de documento WSDL:
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>    <span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+    </p>
+    <p>
+     A continuación un ejemplo de documento WSDL:
+    </p>
+    <div class="highlight">
+     <pre><span></span><code>    <span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
     <span class="nt">&lt;description</span> <span class="na">xmlns=</span><span class="s">"http://www.w3.org/ns/wsdl"</span>
                  <span class="na">xmlns:tns=</span><span class="s">"http://www.tmsws.com/wsdl20sample"</span>
                  <span class="na">xmlns:whttp=</span><span class="s">"http://schemas.xmlsoap.org/wsdl/http/"</span>
@@ -230,37 +250,37 @@ formato XML.
        <span class="nt">&lt;/service&gt;</span>
     <span class="nt">&lt;/description&gt;</span>
 </code></pre>
-       </div>
-       <p>
-        La sección
-        <em>
-         types
-        </em>
-        describe los tipos de dato a los que da soporte el
+    </div>
+    <p>
+     La sección
+     <em>
+      types
+     </em>
+     describe los tipos de dato a los que da soporte el
 servicio web que se está describiendo. Las
-        <em>
-         interfaces
-        </em>
-        , definen un
+     <em>
+      interfaces
+     </em>
+     , definen un
 servicio como tal, es decir, las operaciones que pueden ser realizadas y
 los mensajes que son soportados para realizar cada operación. Los
-        <em>
-         bindings
-        </em>
-        especifican la interface y cómo deben ser pasados los
+     <em>
+      bindings
+     </em>
+     especifican la interface y cómo deben ser pasados los
 mensajes e incluso el protocolo que debe ser utilizado para el
 transporte. Finalmente, los
-        <em>
-         endpoints
-        </em>
-        , definen los puntos de conexión
+     <em>
+      endpoints
+     </em>
+     , definen los puntos de conexión
 con el servicio web.
-       </p>
-       <p>
-        Por otra parte, un mensaje SOAP debería verse de la siguiente manera:
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>    POST /InStock HTTP/1.1
+    </p>
+    <p>
+     Por otra parte, un mensaje SOAP debería verse de la siguiente manera:
+    </p>
+    <div class="highlight">
+     <pre><span></span><code>    POST /InStock HTTP/1.1
     Host: www.example.org
     Content-Type: application/soap+xml; charset=utf-8
     Content-Length: 299
@@ -277,142 +297,142 @@ con el servicio web.
         <span class="nt">&lt;/soap:Body&gt;</span>
     <span class="nt">&lt;/soap:Envelope&gt;</span>
 </code></pre>
-       </div>
-       <p>
-        En un mensaje, el
-        <em>
-         envelope
-        </em>
-        es lo que identifica el XML como un mensaje
+    </div>
+    <p>
+     En un mensaje, el
+     <em>
+      envelope
+     </em>
+     es lo que identifica el XML como un mensaje
 SOAP, el
-        <em>
-         header
-        </em>
-        contiene información de encabezado, como por ejemplo,
+     <em>
+      header
+     </em>
+     contiene información de encabezado, como por ejemplo,
 llaves de autenticación o tokens de acceso. Finalmente, el
-        <em>
-         body
-        </em>
-        o
+     <em>
+      body
+     </em>
+     o
 cuerpo del mensaje, es el que contiene el mensaje como tal que se está
 enviando, ya sea en solicitud o respuesta del servicio.
-       </p>
-       <p>
-        En este caso, se está invocando una función remota
-        <em>
-         GetStockPrice
-        </em>
-        definida en un namespace
-        <em>
-         m
-        </em>
-        del wsdl que describe este servicio. A esta
+    </p>
+    <p>
+     En este caso, se está invocando una función remota
+     <em>
+      GetStockPrice
+     </em>
+     definida en un namespace
+     <em>
+      m
+     </em>
+     del wsdl que describe este servicio. A esta
 función remota se le está enviando un argumento llamado
-        <em>
-         StockName
-        </em>
-        y el
+     <em>
+      StockName
+     </em>
+     y el
 valor de este argumento es
-        <em>
-         IBM
-        </em>
-        , el servicio debería retornar el precio
+     <em>
+      IBM
+     </em>
+     , el servicio debería retornar el precio
 del producto cuyo
-        <em>
-         StockName
-        </em>
-        sea
-        <em>
-         IBM
-        </em>
-       </p>
-       <p>
-        Para que pueda darse el intercambio de información entre un cliente y un
+     <em>
+      StockName
+     </em>
+     sea
+     <em>
+      IBM
+     </em>
+    </p>
+    <p>
+     Para que pueda darse el intercambio de información entre un cliente y un
 servidor SOAP, ambos deben tener conocimiento de lo que está definido en
 el descriptor del servicio, es decir, ambos deben tener acceso al WSDL,
 es por ello que lo usual es que el proveedor del servicio web exponga el
 documento en un URL accesible.
-       </p>
-       <p>
-        Para este tutorial, usaremos este servicio web:
-        <a href="http://www.webservicex.com/globalweather.asmx?WSDL">
-         http://www.webservicex.com/globalweather.asmx?WSDL
-        </a>
-        , que es un servicio
+    </p>
+    <p>
+     Para este tutorial, usaremos este servicio web:
+     <a href="http://www.webservicex.com/globalweather.asmx?WSDL">
+      http://www.webservicex.com/globalweather.asmx?WSDL
+     </a>
+     , que es un servicio
 web de clima. Acá:
-        <a href="http://www.service-repository.com/operation/operations?id=4">
-         http://www.service-repository.com/operation/operations?id=4
-        </a>
-        podemos
+     <a href="http://www.service-repository.com/operation/operations?id=4">
+      http://www.service-repository.com/operation/operations?id=4
+     </a>
+     podemos
 observar las operaciones y sus parámetros en un formato amigable al
 humano :-).
-       </p>
-       <p>
-        Lo primero es, en nuestro caso, construir una instancia de
+    </p>
+    <p>
+     Lo primero es, en nuestro caso, construir una instancia de
 suds.client.Client que tenga conocimiento del WSDL que describe el
 servicio que vamos a usar:
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>    <span class="kn">from</span> <span class="nn">suds.client</span> <span class="kn">import</span> <span class="n">Client</span>
+    </p>
+    <div class="highlight">
+     <pre><span></span><code>    <span class="kn">from</span> <span class="nn">suds.client</span> <span class="kn">import</span> <span class="n">Client</span>
 
     <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s1">'http://www.webservicex.com/globalweather.asmx?WSDL'</span><span class="p">)</span>
 </code></pre>
-       </div>
-       <p>
-        Listo, ya tenemos un cliente SOAP listo para consumir el servicio desde
+    </div>
+    <p>
+     Listo, ya tenemos un cliente SOAP listo para consumir el servicio desde
 Python.
-       </p>
-       <p>
-        Lo que nos queda es revisar la documentación del servicio o, si no la
+    </p>
+    <p>
+     Lo que nos queda es revisar la documentación del servicio o, si no la
 hay, el WSDL para ver cuáles objetos pueden ser pasados como mensajes,
 construir el request e invocar el método remoto, para ello nos
 interesan: Client.factory y Client.service.
-       </p>
-       <p>
-        Por ejemplo, obtengamos el tiempo para Caracas - Venezuela:
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>    <span class="n">request</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s1">'tns:GetWeather'</span><span class="p">)</span>
+    </p>
+    <p>
+     Por ejemplo, obtengamos el tiempo para Caracas - Venezuela:
+    </p>
+    <div class="highlight">
+     <pre><span></span><code>    <span class="n">request</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s1">'tns:GetWeather'</span><span class="p">)</span>
     <span class="n">request</span><span class="o">.</span><span class="n">CityName</span> <span class="o">=</span> <span class="s1">'Caracas'</span>
     <span class="n">request</span><span class="o">.</span><span class="n">CountryName</span> <span class="o">=</span> <span class="s1">'Venezuela'</span>
 
     <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">GetWeather</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
 </code></pre>
-       </div>
-       <p>
-        Listo, así de fácil, explorando la documentación o el WSDL veremos que
+    </div>
+    <p>
+     Listo, así de fácil, explorando la documentación o el WSDL veremos que
 hay un objeto llamado
-        <em>
-         GetWeather
-        </em>
-        definido en el namespace
-        <em>
-         tns
-        </em>
-        , este
+     <em>
+      GetWeather
+     </em>
+     definido en el namespace
+     <em>
+      tns
+     </em>
+     , este
 objeto tiene dos campos
-        <em>
-         string
-        </em>
-        :
-        <em>
-         CityName
-        </em>
-        y
-        <em>
-         CountryName
-        </em>
-        , también,
+     <em>
+      string
+     </em>
+     :
+     <em>
+      CityName
+     </em>
+     y
+     <em>
+      CountryName
+     </em>
+     , también,
 si vemos la definición de la respuesta en el WSDL, podremos observar que
 es un texto plano (es decir, viene un objeto primitivo
-        <em>
-         string
-        </em>
-        como
+     <em>
+      string
+     </em>
+     como
 SOAPResponse). Vamos a ver cómo maneja suds ambos casos:
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>    <span class="nb">type</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+    </p>
+    <div class="highlight">
+     <pre><span></span><code>    <span class="nb">type</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
     <span class="n">instance</span>
     <span class="nb">print</span> <span class="n">request</span>
     <span class="p">(</span><span class="n">GetWeather</span><span class="p">){</span>
@@ -436,49 +456,49 @@ SOAPResponse). Vamos a ver cómo maneja suds ambos casos:
         <span class="o">&lt;</span><span class="n">Status</span><span class="o">&gt;</span><span class="n">Success</span><span class="o">&lt;/</span><span class="n">Status</span><span class="o">&gt;</span>
     <span class="o">&lt;/</span><span class="n">CurrentWeather</span><span class="o">&gt;</span>
 </code></pre>
-       </div>
-       <p>
-        Como veremos, suds nos crea un objeto Python a partir de la definición
+    </div>
+    <p>
+     Como veremos, suds nos crea un objeto Python a partir de la definición
 que obtuvo del WSDL en el caso del
-        <em>
-         request
-        </em>
-        que se construye a partir
+     <em>
+      request
+     </em>
+     que se construye a partir
 de la fábrica del cliente usando el objeto remoto
-        <em>
-         tns:GetWeather
-        </em>
-        como
+     <em>
+      tns:GetWeather
+     </em>
+     como
 plantilla.
-       </p>
-       <p>
-        En el caso del response, que está declarada como string, nos envía un
+    </p>
+    <p>
+     En el caso del response, que está declarada como string, nos envía un
 objeto suds.sax.text.Text, que puede ser tratado como un objeto string o
 unicode Python normalmente.
-       </p>
-       <p>
-        Suds, no sólo nos hace más fácil la interacción con servicios SOAP, sino
+    </p>
+    <p>
+     Suds, no sólo nos hace más fácil la interacción con servicios SOAP, sino
 que también nos abstrae del hecho de que tratamos con objetos remotos,
 convirtiendo todo a objetos Python por nosotros.
-       </p>
-       <p>
-        En algunos casos es necesario autenticarse contra un servicio web para
+    </p>
+    <p>
+     En algunos casos es necesario autenticarse contra un servicio web para
 poder utilizar sus métodos remotos, usualmente eso se hace a través de
 un método público de autenticación que revisa los permisos y retorna un
 token de acceso encapsulado en un objeto, este objeto debe colocarse en
 el header de los requests que van dirigidos a los métodos privados.
-       </p>
-       <p>
-        Debido a que no conseguí ningún servicio web que me permitiera hacer un
+    </p>
+    <p>
+     Debido a que no conseguí ningún servicio web que me permitiera hacer un
 ejemplo de esto, simplemente haré un ejemplo
-        <em>
-         dummy
-        </em>
-        de cómo sería en
+     <em>
+      dummy
+     </em>
+     de cómo sería en
 código:
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>    <span class="kn">from</span> <span class="nn">suds.client</span> <span class="kn">import</span> <span class="n">Client</span>
+    </p>
+    <div class="highlight">
+     <pre><span></span><code>    <span class="kn">from</span> <span class="nn">suds.client</span> <span class="kn">import</span> <span class="n">Client</span>
 
     <span class="n">auth_client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="s1">'http://www.servicio.com/authservice.wsdl'</span><span class="p">)</span>
     <span class="n">request</span> <span class="o">=</span> <span class="n">auth_client</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s1">'ns:AuthObjectRequest'</span><span class="p">)</span>
@@ -490,27 +510,27 @@ código:
     <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="s1">'https://www.servicio.com/otras_cosas.wsdl'</span><span class="p">)</span>
     <span class="n">client</span><span class="o">.</span><span class="n">set_options</span><span class="p">(</span><span class="n">soapheaders</span><span class="o">=</span><span class="n">auth_object</span><span class="p">)</span>
 </code></pre>
-       </div>
-       <p>
-        Algunas veces, basta sólo con un objeto que contenga el usuario y el
+    </div>
+    <p>
+     Algunas veces, basta sólo con un objeto que contenga el usuario y el
 password para el servicio (como el request de este ejemplo) en el
 soapheaders del client y listo.
-       </p>
-       <p>
-        La única desventaja que vi al trabajar con suds es que no viene con
+    </p>
+    <p>
+     La única desventaja que vi al trabajar con suds es que no viene con
 soporte nativo para attachments, sin embargo, es relativamente fácil
 añadir esta funcionalidad en
-        <a class="reference external" href="https://gist.github.com/iferminm/6265400">
-         este
+     <a class="reference external" href="https://gist.github.com/iferminm/6265400">
+      este
 gist
-        </a>
-        podemos ver el código para hacerlo.
-       </p>
-       <p>
-        La manera de utilizarlo es la siguiente:
-       </p>
-       <div class="highlight">
-        <pre><span></span><code>    <span class="kn">from</span> <span class="nn">suds.client</span> <span class="kn">import</span> <span class="n">Client</span>
+     </a>
+     podemos ver el código para hacerlo.
+    </p>
+    <p>
+     La manera de utilizarlo es la siguiente:
+    </p>
+    <div class="highlight">
+     <pre><span></span><code>    <span class="kn">from</span> <span class="nn">suds.client</span> <span class="kn">import</span> <span class="n">Client</span>
     <span class="kn">from</span> <span class="nn">soap_attachments</span> <span class="kn">import</span> <span class="n">with_soap_attachment</span>
 
     <span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s1">'http://www.servicio.com/wsdl/servicio.wsdl'</span><span class="p">)</span>
@@ -524,163 +544,195 @@ gist
 
     <span class="n">response</span> <span class="o">=</span> <span class="n">with_soap_attachment</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">subir_pista</span><span class="p">,</span> <span class="n">bin_param</span><span class="p">,</span> <span class="n">endpoint</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
 </code></pre>
-       </div>
-       <p>
-        Básicamente lo que se hace es leer los bytes que conforman el archivo y
+    </div>
+    <p>
+     Básicamente lo que se hace es leer los bytes que conforman el archivo y
 colocarlos en el cuerpo del mensaje SOAP (eso hace
 with_soap_attachment), lo único que hay que saber acá es que el
 endpoint (que se ve como parámetro en la llamada a
 with_soap_attachment) es el punto de conexión al servicio web
 especificado en el WSDL.
-       </p>
-       <p>
-        De esta manera, colocamos un archivo adjunto al mensaje SOAP para que
+    </p>
+    <p>
+     De esta manera, colocamos un archivo adjunto al mensaje SOAP para que
 sea subido al servidor vía SOAP.
-       </p>
-       <p>
-        Para más información recomiendo revisar la documentación de la librería
-        <a href="https://fedorahosted.org/suds/wiki/Documentation">
-         acá
-        </a>
-        {.reference
+    </p>
+    <p>
+     Para más información recomiendo revisar la documentación de la librería
+     <a href="https://fedorahosted.org/suds/wiki/Documentation">
+      acá
+     </a>
+     {.reference
 .external}, sin embargo, para hacer clientes para servicios SOAP
 básicos, con este tutorial debería ser suficiente.
+    </p>
+   </div>
+   <footer>
+    <div class="tags">
+     <a href="//iffm.me/tag/python.html">
+      python
+     </a>
+     <a href="//iffm.me/tag/soap.html">
+      soap
+     </a>
+     <a href="//iffm.me/tag/soa.html">
+      soa
+     </a>
+     <a href="//iffm.me/tag/suds.html">
+      suds
+     </a>
+    </div>
+    <div class="pure-g post-footer">
+     <div class="pure-u-1 pure-u-md-1-2">
+      <div class="pure-g poster-info">
+       <div class="pure-u">
+        <a href="//iffm.me/author/israel-fermin-montilla.html">
+         <img alt="" src="https://dl.dropboxusercontent.com/s/1bvnowsfke4rs2k/isra.jpg"/>
+        </a>
+       </div>
+       <div class="pure-u-3-4">
+        <h3 class="author-name">
+         <a href="//iffm.me/author/israel-fermin-montilla.html">
+          Israel Fermín Montilla
+         </a>
+        </h3>
+        <p class="author-description">
+         {' Full time husband and dad who loves technology and programming. Software Engineer @ Careem / Online Mentor @ codeinstitute.net'}
+        </p>
+       </div>
+       <style>
+        .bmc-button img{height: 34px !important;width: 35px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{padding: 7px 10px 7px 10px !important;line-height: 35px !important;height:51px !important;min-width:217px !important;text-decoration: none !important;display:inline-flex !important;color:#FFFFFF !important;background-color:#FF813F !important;border-radius: 5px !important;border: 1px solid transparent !important;padding: 7px 10px 7px 10px !important;font-size: 28px !important;letter-spacing:0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#FFFFFF !important;}
+       </style>
+       <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"/>
+       <a class="bmc-button" href="https://www.buymeacoffee.com/iferminm" target="_blank">
+        <img alt="Buy me a coffee" src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg"/>
+        <span style="margin-left:15px;font-size:28px !important;">
+         Buy me a coffee
+        </span>
+       </a>
+      </div>
+     </div>
+    </div>
+    <!-- Begin MailChimp Signup Form -->
+    <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css"/>
+    <style type="text/css">
+     #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+            /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+            We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+    </style>
+    <div id="mc_embed_signup">
+     <form action="//iffm.us15.list-manage.com/subscribe/post?u=f9aa59a7fe24a1d24a95b2e41&amp;id=28de70c22b" class="validate" id="mc-embedded-subscribe-form" method="post" name="mc-embedded-subscribe-form" novalidate="" target="_blank">
+      <div id="mc_embed_signup_scroll">
+       <h2>
+        Get notified
+       </h2>
+       <p class="author-description">
+        Get an email whenever I post something or release something cool, I'm always working on something, don't miss it out!
        </p>
+       <div class="indicates-required">
+        <span class="asterisk">
+         *
+        </span>
+        indicates required
+       </div>
+       <div class="mc-field-group">
+        <label for="mce-EMAIL">
+         Email Address
+         <span class="asterisk">
+          *
+         </span>
+        </label>
+        <input class="required email" id="mce-EMAIL" name="EMAIL" type="email" value=""/>
+       </div>
+       <div class="mc-field-group">
+        <label for="mce-FNAME">
+         First Name
+        </label>
+        <input class="" id="mce-FNAME" name="FNAME" type="text" value=""/>
+       </div>
+       <div class="mc-field-group">
+        <label for="mce-LNAME">
+         Last Name
+        </label>
+        <input class="" id="mce-LNAME" name="LNAME" type="text" value=""/>
+       </div>
+       <div class="clear" id="mce-responses">
+        <div class="response" id="mce-error-response" style="display:none">
+        </div>
+        <div class="response" id="mce-success-response" style="display:none">
+        </div>
+       </div>
+       <!-- real people should not fill this in and expect good things - do not remove this or risk
+                    form bot signups-->
+       <div aria-hidden="true" style="position: absolute; left: -5000px;">
+        <input name="b_f9aa59a7fe24a1d24a95b2e41_28de70c22b" tabindex="-1" type="text" value=""/>
+       </div>
+       <div class="clear">
+        <input class="button" id="mc-embedded-subscribe" name="subscribe" type="submit" value="Subscribe"/>
+       </div>
       </div>
-      <!-- /.entry-content -->
-      <div id="disqus_thread">
-      </div>
-      <script type="text/javascript">
-       /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-            var disqus_shortname = 'iferminmblog'; // required: replace example with your forum shortname
-
-            /* * * DON'T EDIT BELOW THIS LINE * * */
+     </form>
+    </div>
+    <script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+     (function($)
+        {window.fnames = new Array(); window.ftypes = new
+        Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj =
+        jQuery.noConflict(true);
+    </script>
+    <!--End mc_embed_signup-->
+   </footer>
+   <div class="entry-content">
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript">
+     var disqus_shortname = 'iferminmblog';
             (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
             })();
-      </script>
-      <noscript>
-       Please enable JavaScript to view the
-       <a href="http://disqus.com/?ref_noscript">
-        comments powered by Disqus.
-       </a>
-      </noscript>
-     </div>
-    </div>
-    <div class="span3 offset1">
-     <div class="well">
-      <ul class="nav nav-list">
-       <li class="nav-header">
-        Blog
-       </li>
-       <li>
-        <a href="//iffm.me">
-         Index
-        </a>
-       </li>
-       <li>
-        <a href="//iffm.me/tags/">
-         Tags
-        </a>
-       </li>
-       <li>
-        <a href="//iffm.me/archives/">
-         Archiv
-        </a>
-       </li>
-       <li class="nav-header">
-        Pages
-       </li>
-       <li>
-        <a href="//iffm.me/pages/about-me.html">
-         About me...
-        </a>
-       </li>
-       <li>
-        <a href="//iffm.me/pages/consulting.html">
-         Consulting
-        </a>
-       </li>
-       <li>
-        <a href="//iffm.me/pages/now.html">
-         Now
-        </a>
-       </li>
-       <li>
-        <a href="//iffm.me/pages/talks.html">
-         Talks
-        </a>
-       </li>
-       <li class="nav-header">
-        Links
-       </li>
-       <li>
-        <a href="http://getpelican.com/">
-         Pelican
-        </a>
-       </li>
-       <li>
-        <a href="http://python.org/">
-         Python.org
-        </a>
-       </li>
-       <li>
-        <a href="http://jinja.pocoo.org/">
-         Jinja2
-        </a>
-       </li>
-       <li>
-        <a href="//iffm.me/feeds/all.atom.xml">
-         Atom
-        </a>
-       </li>
-      </ul>
-     </div>
-     <!-- /#menu -->
-    </div>
-   </div>
-   <hr/>
-   <div class="row">
-    <div class="span12">
-     <div id="about">
-      <p>
-       Proudly powered by
-       <a href="http://twitter.github.com/bootstrap/">
-        bootstrap
-       </a>
-       ,
-       <a href="http://docs.notmyidea.org/alexis/pelican/">
-        pelican
-       </a>
-       ,
-       <a href="http://python.org">
-        python
-       </a>
-       and
-       <a href="http://www.julo.ch/about/">
-        Alex
-       </a>
-       !
-      </p>
-     </div>
-     <!-- /#about -->
-    </div>
-    <!-- /#contentinfo -->
+    </script>
+    <noscript>
+     Please enable JavaScript to view the
+     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+      comments powered by Disqus.
+     </a>
+    </noscript>
    </div>
   </div>
-  <script type="text/javascript">
-   /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'iferminmblog'; // required: replace example with your forum shortname
+  <footer class="index-footer">
+   <a href="//iffm.me/" title="/dev/isra/blog/*">
+    /dev/isra/blog/*
+   </a>
+   <a href="//iffm.me/category/blog.html">
+    Blog
+   </a>
+   <a href="//iffm.me/category/espanol.html">
+    Español
+   </a>
+   <a href="http://getpelican.com/">
+    Pelican
+   </a>
+   <a href="http://python.org/">
+    Python.org
+   </a>
+   <a href="http://jinja.pocoo.org/">
+    Jinja2
+   </a>
+   <a href="//iffm.me/feeds/all.atom.xml">
+    Atom
+   </a>
+  </footer>
+  <script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function () {
-            var s = document.createElement('script'); s.async = true;
-            s.type = 'text/javascript';
-            s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-        }());
+      ga('create', 'UA-96148260-1', 'auto');
+      ga('send', 'pageview');
   </script>
  </body>
 </html>
