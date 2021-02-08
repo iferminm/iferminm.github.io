@@ -147,5 +147,5 @@ they've been exposed to or studied and ignore some others. Only by talking to ea
 become stronger engineers.
 
 
-## Recommended readongs:
+## Recommended readings:
 * [Software Developer vs. Engineer: What's the Difference?](https://www.developersforhire.com/software-developer-vs-software-engineer) by developersforhire, this one goes a bit more about how much they make and the salary ranges for the roles
