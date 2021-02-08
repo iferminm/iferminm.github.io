@@ -19,3 +19,10 @@ DELETE_OUTPUT_DIRECTORY = False
 
 DISQUS_SITENAME = 'iferminmblog'
 GOOGLE_ANALYTICS = "UA-96148260-1"
+
+LINKS = (
+    ('Pelican', 'http://getpelican.com/'),
+    ('Python.org', 'http://python.org/'),
+    ('Jinja2', 'http://jinja.pocoo.org/'),
+    ('Atom', f'{SITEURL}/feeds/all.atom.xml'),
+)
