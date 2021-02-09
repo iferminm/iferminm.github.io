@@ -504,7 +504,7 @@ div.author-page-divider {
     border-color: rgba(0, 0, 0, 0.6);
     color: rgba(0, 0, 0, 0.8); }
 
-div.tags a {
+div.tags a, div.tags p {
   color: rgba(0, 0, 0, 0.6);
   background: rgba(255, 255, 255, 0.97);
   font-size: 13px;
