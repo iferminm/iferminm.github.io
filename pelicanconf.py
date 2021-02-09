@@ -35,6 +35,7 @@ SOCIAL = (
     ('LinkedIn', 'http://www.linkedin.com/profile/view?id=66587805&trk=tab_pro'),
     ('GitHub', 'https://github.com/iferminm'),
     ('Email', 'mailto:ferminster@gmail.com'),
+    ('Newsletter', 'http://newsletter.iffm.me')
 )
 
 DEFAULT_PAGINATION = 10
@@ -46,7 +47,7 @@ MEDIUS_AUTHORS = {
     'Israel Fermín Montilla': {
         'image': 'https://dl.dropboxusercontent.com/s/1bvnowsfke4rs2k/isra.jpg',
         'description':  {
-            ''' Full time husband and dad who loves technology and programming. Software Engineer @ Careem / Online Mentor @ codeinstitute.net'''
+            ''' Full time husband and dad who loves technology and programming. Software Engineer @ Careem'''
         }
     }
 }
