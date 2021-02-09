@@ -51,5 +51,16 @@ MEDIUS_AUTHORS = {
         }
     }
 }
+LONG_DESCRIPTIONS = {
+    'Israel Fermín Montilla': {
+        'image': 'https://dl.dropboxusercontent.com/s/1bvnowsfke4rs2k/isra.jpg',
+        'description':  {
+            '''
+            I'm an experienced software engineer and tech lead. I've designed system architectures and also managed implementations at dubizzle (OLX) and at my own startup previously. I'm currently a Senior Software Engineer at Careem (Uber), one of the top tech companies in the Middle East. I have limited slots for consultancy.
+            '''
+        }
+    }
+
+}
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
