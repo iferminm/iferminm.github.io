@@ -47,7 +47,7 @@ MEDIUS_AUTHORS = {
     'Israel Fermín Montilla': {
         'image': 'https://dl.dropboxusercontent.com/s/1bvnowsfke4rs2k/isra.jpg',
         'description':  {
-            ''' Full time husband and dad who loves technology and programming. Software Engineer @ Careem'''
+            ''' Full time husband and dad who loves technology and programming. Senior Software Engineer @ Careem'''
         }
     }
 }
