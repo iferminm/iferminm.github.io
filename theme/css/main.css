@@ -30,6 +30,13 @@ div.metabar-container {
     height: 100%;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.15); }
 
+.hide-on-mobile {display: none;}
+
+@media screen and (max-width: 768px) {
+  .hide-on-mobiile {display: block;}
+}
+
+
 div.post-content, div.entry-content {
   font-weight: 300;
   font-family: Merriweather, freight-text-pro, Georgia, Cambria, "Times New Roman", Times, serif; }
