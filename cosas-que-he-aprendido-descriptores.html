@@ -656,12 +656,17 @@ publicando más cosas sobre desarrollo y programación por esas vías.
   <script crossorigin="anonymous" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" src="https://code.jquery.com/jquery-3.5.1.slim.min.js">
   </script>
   <script type="text/javascript">
-   var mobile = (/iphone|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));  
-        if (mobile) { 
-            $('.hide-on-mobile').hide();
-        } else {
-            $('.hide-on-mobile').show();
-        }
+   $(document).ready(() => {
+
+            var mobile = (/iphone|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));  
+            if (mobile) { 
+                $('.hide-on-mobile').show();
+            } else {
+                ethicalads.load();
+                $('.hide-on-mobile').show();
+            }   
+
+        });
   </script>
  </body>
 </html>
