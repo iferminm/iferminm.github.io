@@ -30,10 +30,10 @@ div.metabar-container {
     height: 100%;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.15); }
 
-.hide-on-mobile {display: none;}
+#index-add-wrapper {display: none !important;}
 
 @media screen and (max-width: 768px) {
-  .hide-on-mobiile {display: block;}
+  #index-add-wrapper {display: inline-block !important;}
 }
 
 
