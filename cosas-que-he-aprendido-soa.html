@@ -590,12 +590,9 @@ personales sobre este tema, Werner Vogels, CEO de Amazon.
   <script type="text/javascript">
    var mobile = (/iphone|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));  
         if (mobile) { 
-            alert("MOBILE DEVICE!!");
             $('.hide-on-mobile').hide();
-        } 
-        else 
-        { 
-           alert("NOT A MOBILE DEVICE!!"); 
+        } else {
+            $('.hide-on-mobile').show();
         }
   </script>
  </body>
