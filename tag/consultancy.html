@@ -82,7 +82,7 @@ to the operations teams about what was …</p>
                     <div class="tags">
                         <p>I'm an experienced software engineer and tech lead. I've designed system architectures and also managed implementations at dubizzle (OLX) and at my own startup previously. I'm currently a Senior Software Engineer at Careem (Uber), one of the top tech companies in the Middle East.</p>
                     </div>
-                    <div id="index-ad" class="hide-on-mobile" data-ea-manual="true" data-ea-publisher="iffm-me" data-ea-type="image"></div>
+                    <div id="index-ad" data-ea-manual="true" data-ea-publisher="iffm-me" data-ea-type="image"></div>
                     <a class="twitter-timeline" data-width="400" data-height="1000" data-theme="light" href="https://twitter.com/iferminm?ref_src=twsrc%5Etfw">Tweets by iferminm</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
             </div>
@@ -123,11 +123,8 @@ to the operations teams about what was …</p>
         $(document).ready(() => {
 
             var mobile = (/iphone|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));  
-            if (mobile) { 
-                $('.hide-on-mobile').show();
-            } else {
+            if (!mobile) { 
                 ethicalads.load();
-                $('.hide-on-mobile').show();
             }   
 
         });

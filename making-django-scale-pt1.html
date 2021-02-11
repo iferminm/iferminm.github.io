@@ -399,11 +399,8 @@ so, what you'll see in part 2 will be a set of tools to monitor your app's healt
    $(document).ready(() => {
 
             var mobile = (/iphone|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));  
-            if (mobile) { 
-                $('.hide-on-mobile').show();
-            } else {
+            if (!mobile) { 
                 ethicalads.load();
-                $('.hide-on-mobile').show();
             }   
 
         });

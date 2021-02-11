@@ -465,11 +465,8 @@ muy pocas personas en la calle toman realmente en serio este recurso tan
    $(document).ready(() => {
 
             var mobile = (/iphone|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));  
-            if (mobile) { 
-                $('.hide-on-mobile').show();
-            } else {
+            if (!mobile) { 
                 ethicalads.load();
-                $('.hide-on-mobile').show();
             }   
 
         });
