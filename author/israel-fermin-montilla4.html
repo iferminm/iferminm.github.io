@@ -315,5 +315,20 @@ tiempo hablando acerca …</p>
       ga('send', 'pageview');
 
     </script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+      crossorigin="anonymous"></script>
+    <script type="text/javascript"> 
+        var mobile = (/iphone|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));  
+        if (mobile) { 
+            alert("MOBILE DEVICE!!");
+            $('.hide-on-mobile').hide();
+        } 
+        else 
+        { 
+           alert("NOT A MOBILE DEVICE!!"); 
+        }
+    </script> 
 </body>
 </html>

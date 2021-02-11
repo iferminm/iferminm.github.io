@@ -30,13 +30,6 @@ div.metabar-container {
     height: 100%;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.15); }
 
-#index-add-wrapper {display: none !important;}
-
-@media screen and (max-width: 768px) {
-  #index-add-wrapper {display: inline-block !important;}
-}
-
-
 div.post-content, div.entry-content {
   font-weight: 300;
   font-family: Merriweather, freight-text-pro, Georgia, Cambria, "Times New Roman", Times, serif; }
