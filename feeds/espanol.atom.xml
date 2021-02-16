@@ -1640,6 +1640,7 @@ proyectos para una empresa en el extranjero que pintaban bastante bien,
 una vez que terminé los proyectos de la otra empresa, terminé
 enamorándome del proyecto que desarrollaba desde 4geeks y uniéndome al
 startup a tiempo completo.&lt;/p&gt;
+&lt;h1&gt;La historia&lt;/h1&gt;
 &lt;p&gt;La historia en 4geeks es muy graciosa, un tal Saúl Lustgarten llevaba
 tiempo escribiendo en todas las listas de correo donde estoy pidiendo un
 desarrollador Python, incluso me contactó personalmente varias veces vía
@@ -1658,6 +1659,7 @@ es muy fácil hacer clientes para servicios web, sin importar si hablan
 JSON o XML o algún protocolo propio, la cosa se puso esotérica cuando vi
 que todos los URL de los servicios con los que iba a trabajar terminaban
 en .wsdl.&lt;/p&gt;
+&lt;h1&gt;REST... NO! vas a usar SOAP&lt;/h1&gt;
 &lt;p&gt;¿SOAP?, con el boom de REST ¿quién usa SOAP?, en fin, ¿qué tan difícil
 puede ser?, en Java es realmente fácil escribir clientes y servicios web
 usando SOAP y en Python no debe ser la excepción, hay librerías para
@@ -1667,7 +1669,7 @@ buena librería que me facilitara el trabajo.&lt;/p&gt;
 &lt;p&gt;Luego de unos minutos leyendo en &lt;em&gt;StackOverflow&lt;/em&gt;, vi que al parecer suds
 era la mejor opción, no se veía tan abandonada y, comparada a las demás
 opciones, tenía una documentación decente.&lt;/p&gt;
-&lt;p&gt;Lo primero es, obviamente, instalarla:&lt;/p&gt;
+&lt;h2&gt;Instalando suds&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pip install suds
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -1675,9 +1677,11 @@ opciones, tenía una documentación decente.&lt;/p&gt;
 &lt;p&gt;Recuerden que siempre es buena práctica trabajar con virtualenvs y,
 además, es muy buena opción el hecho de utilizar virtualenvwrapper para
 gestionarlos.&lt;/p&gt;
+&lt;h2&gt;Empezando a desarrollar tu cliente SOAP&lt;/h2&gt;
 &lt;p&gt;Una vez que tenemos suds ya instalado, es sólo cuestión de empezar a
 utilizarla, para hacer clientes, que es de lo que hablaré en este post,
 sólo nos interesa la clase definida en &lt;em&gt;suds.client.Client&lt;/em&gt;.&lt;/p&gt;
+&lt;h3&gt;SOAP 101&lt;/h3&gt;
 &lt;p&gt;Si repasamos un poco de teoría acerca de los servicios web sobre el
 protocolo SOAP, veremos que se convirtió en la capa subyacente para
 servicios complejos basados en WSDL, que es una manera de especificar
@@ -1783,6 +1787,7 @@ definida en un namespace &lt;em&gt;m&lt;/em&gt; del wsdl que describe este servi
 función remota se le está enviando un argumento llamado &lt;em&gt;StockName&lt;/em&gt; y el
 valor de este argumento es &lt;em&gt;IBM&lt;/em&gt;, el servicio debería retornar el precio
 del producto cuyo &lt;em&gt;StockName&lt;/em&gt; sea &lt;em&gt;IBM&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;Inicializando el cliente SOAP consumiendo el WSDL del servicio&lt;/h2&gt;
 &lt;p&gt;Para que pueda darse el intercambio de información entre un cliente y un
 servidor SOAP, ambos deben tener conocimiento de lo que está definido en
 el descriptor del servicio, es decir, ambos deben tener acceso al WSDL,
@@ -1805,6 +1810,7 @@ servicio que vamos a usar:&lt;/p&gt;
 
 &lt;p&gt;Listo, ya tenemos un cliente SOAP listo para consumir el servicio desde
 Python.&lt;/p&gt;
+&lt;h2&gt;Utilizando el servicio SOAP via el cliente en Python&lt;/h2&gt;
 &lt;p&gt;Lo que nos queda es revisar la documentación del servicio o, si no la
 hay, el WSDL para ver cuáles objetos pueden ser pasados como mensajes,
 construir el request e invocar el método remoto, para ello nos
@@ -1818,12 +1824,14 @@ interesan: Client.factory y Client.service.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Listo, así de fácil, explorando la documentación o el WSDL veremos que
+&lt;h2&gt;Un vistazo a suds, por dentro&lt;/h2&gt;
+&lt;p&gt;Explorando la documentación o el WSDL veremos que
 hay un objeto llamado &lt;em&gt;GetWeather&lt;/em&gt; definido en el namespace &lt;em&gt;tns&lt;/em&gt;, este
 objeto tiene dos campos &lt;em&gt;string&lt;/em&gt;: &lt;em&gt;CityName&lt;/em&gt; y &lt;em&gt;CountryName&lt;/em&gt;, también,
 si vemos la definición de la respuesta en el WSDL, podremos observar que
 es un texto plano (es decir, viene un objeto primitivo &lt;em&gt;string&lt;/em&gt; como
 SOAPResponse). Vamos a ver cómo maneja suds ambos casos:&lt;/p&gt;
+&lt;p&gt;En el caso del &lt;code&gt;request&lt;/code&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;instance&lt;/span&gt;
     &lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;
@@ -1831,7 +1839,11 @@ SOAPResponse). Vamos a ver cómo maneja suds ambos casos:&lt;/p&gt;
        &lt;span class="n"&gt;CityName&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Caracas&amp;quot;&lt;/span&gt;
        &lt;span class="n"&gt;CountryName&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Venezuela&amp;quot;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
-    &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ahora, el &lt;code&gt;response&lt;/code&gt; se ve de la siguiente manera:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;suds&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sax&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Text&lt;/span&gt;
     &lt;span class="nb"&gt;print&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;
     &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;?&lt;/span&gt;&lt;span class="n"&gt;xml&lt;/span&gt; &lt;span class="n"&gt;version&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1.0&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;encoding&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;utf-16&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;?&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
@@ -1850,7 +1862,7 @@ SOAPResponse). Vamos a ver cómo maneja suds ambos casos:&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Como veremos, suds nos crea un objeto Python a partir de la definición
+&lt;p&gt;Como vemos, suds nos crea un objeto Python a partir de la definición
 que obtuvo del WSDL en el caso del &lt;em&gt;request&lt;/em&gt; que se construye a partir
 de la fábrica del cliente usando el objeto remoto &lt;em&gt;tns:GetWeather&lt;/em&gt; como
 plantilla.&lt;/p&gt;
@@ -1860,6 +1872,7 @@ unicode Python normalmente.&lt;/p&gt;
 &lt;p&gt;Suds, no sólo nos hace más fácil la interacción con servicios SOAP, sino
 que también nos abstrae del hecho de que tratamos con objetos remotos,
 convirtiendo todo a objetos Python por nosotros.&lt;/p&gt;
+&lt;h2&gt;Autenticación en SOAP usando suds&lt;/h2&gt;
 &lt;p&gt;En algunos casos es necesario autenticarse contra un servicio web para
 poder utilizar sus métodos remotos, usualmente eso se hace a través de
 un método público de autenticación que revisa los permisos y retorna un
@@ -1885,6 +1898,7 @@ código:&lt;/p&gt;
 &lt;p&gt;Algunas veces, basta sólo con un objeto que contenga el usuario y el
 password para el servicio (como el request de este ejemplo) en el
 soapheaders del client y listo.&lt;/p&gt;
+&lt;h2&gt;Agregando datos adjuntos en SOAP utilizando suds, claro que se puede!&lt;/h2&gt;
 &lt;p&gt;La única desventaja que vi al trabajar con suds es que no viene con
 soporte nativo para attachments, sin embargo, es relativamente fácil
 añadir esta funcionalidad en &lt;a class="reference external" href="https://gist.github.com/iferminm/6265400"&gt;este
@@ -1915,10 +1929,11 @@ with_soap_attachment) es el punto de conexión al servicio web
 especificado en el WSDL.&lt;/p&gt;
 &lt;p&gt;De esta manera, colocamos un archivo adjunto al mensaje SOAP para que
 sea subido al servidor vía SOAP.&lt;/p&gt;
+&lt;h1&gt;Lecturas recomendadas:&lt;/h1&gt;
 &lt;p&gt;Para más información recomiendo revisar la documentación de la librería
-&lt;a href="https://fedorahosted.org/suds/wiki/Documentation"&gt;acá&lt;/a&gt;{.reference
-.external}, sin embargo, para hacer clientes para servicios SOAP
-básicos, con este tutorial debería ser suficiente.&lt;/p&gt;</content><category term="Español"></category><category term="python"></category><category term="soap"></category><category term="soa"></category><category term="suds"></category></entry><entry><title>Y al fin!, me estrené como ponente</title><link href="//iffm.me/y-al-fin-me-estrene-como-ponente.html" rel="alternate"></link><published>2013-08-10T00:00:00+04:00</published><updated>2013-08-10T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2013-08-10:/y-al-fin-me-estrene-como-ponente.html</id><summary type="html">&lt;p&gt;Bueno, esto ya es tema viejo, pero no había tenido tiempo de escribir al
+&lt;a class="reference external" href="https://github.com/suds-community/suds"&gt;acá&lt;/a&gt;, 
+sin embargo, para hacer clientes para servicios SOAP básicos, con este 
+tutorial debería ser suficiente.&lt;/p&gt;</content><category term="Español"></category><category term="python"></category><category term="soap"></category><category term="soa"></category><category term="suds"></category></entry><entry><title>Y al fin!, me estrené como ponente</title><link href="//iffm.me/y-al-fin-me-estrene-como-ponente.html" rel="alternate"></link><published>2013-08-10T00:00:00+04:00</published><updated>2013-08-10T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2013-08-10:/y-al-fin-me-estrene-como-ponente.html</id><summary type="html">&lt;p&gt;Bueno, esto ya es tema viejo, pero no había tenido tiempo de escribir al
 respecto. Desde que organicé el &lt;em&gt;PyConVE2012&lt;/em&gt; había tenido la idea de
 probar cómo me iba dando alguna ponencia o algún tutorial, ya en la
 Universidad era preparador y miembro del &lt;em&gt;Sun Team University&lt;/em&gt;, una de

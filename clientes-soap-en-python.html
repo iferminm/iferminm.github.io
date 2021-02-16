@@ -107,6 +107,9 @@ una vez que terminé los proyectos de la otra empresa, terminé
 enamorándome del proyecto que desarrollaba desde 4geeks y uniéndome al
 startup a tiempo completo.
     </p>
+    <h1>
+     La historia
+    </h1>
     <p>
      La historia en 4geeks es muy graciosa, un tal Saúl Lustgarten llevaba
 tiempo escribiendo en todas las listas de correo donde estoy pidiendo un
@@ -143,6 +146,9 @@ JSON o XML o algún protocolo propio, la cosa se puso esotérica cuando vi
 que todos los URL de los servicios con los que iba a trabajar terminaban
 en .wsdl.
     </p>
+    <h1>
+     REST... NO! vas a usar SOAP
+    </h1>
     <p>
      ¿SOAP?, con el boom de REST ¿quién usa SOAP?, en fin, ¿qué tan difícil
 puede ser?, en Java es realmente fácil escribir clientes y servicios web
@@ -160,9 +166,9 @@ buena librería que me facilitara el trabajo.
 era la mejor opción, no se veía tan abandonada y, comparada a las demás
 opciones, tenía una documentación decente.
     </p>
-    <p>
-     Lo primero es, obviamente, instalarla:
-    </p>
+    <h2>
+     Instalando suds
+    </h2>
     <div class="highlight">
      <pre><span></span><code>pip install suds
 </code></pre>
@@ -172,6 +178,9 @@ opciones, tenía una documentación decente.
 además, es muy buena opción el hecho de utilizar virtualenvwrapper para
 gestionarlos.
     </p>
+    <h2>
+     Empezando a desarrollar tu cliente SOAP
+    </h2>
     <p>
      Una vez que tenemos suds ya instalado, es sólo cuestión de empezar a
 utilizarla, para hacer clientes, que es de lo que hablaré en este post,
@@ -181,6 +190,9 @@ sólo nos interesa la clase definida en
      </em>
      .
     </p>
+    <h3>
+     SOAP 101
+    </h3>
     <p>
      Si repasamos un poco de teoría acerca de los servicios web sobre el
 protocolo SOAP, veremos que se convirtió en la capa subyacente para
@@ -353,6 +365,9 @@ del producto cuyo
       IBM
      </em>
     </p>
+    <h2>
+     Inicializando el cliente SOAP consumiendo el WSDL del servicio
+    </h2>
     <p>
      Para que pueda darse el intercambio de información entre un cliente y un
 servidor SOAP, ambos deben tener conocimiento de lo que está definido en
@@ -389,6 +404,9 @@ servicio que vamos a usar:
      Listo, ya tenemos un cliente SOAP listo para consumir el servicio desde
 Python.
     </p>
+    <h2>
+     Utilizando el servicio SOAP via el cliente en Python
+    </h2>
     <p>
      Lo que nos queda es revisar la documentación del servicio o, si no la
 hay, el WSDL para ver cuáles objetos pueden ser pasados como mensajes,
@@ -406,8 +424,11 @@ interesan: Client.factory y Client.service.
     <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">service</span><span class="o">.</span><span class="n">GetWeather</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
 </code></pre>
     </div>
+    <h2>
+     Un vistazo a suds, por dentro
+    </h2>
     <p>
-     Listo, así de fácil, explorando la documentación o el WSDL veremos que
+     Explorando la documentación o el WSDL veremos que
 hay un objeto llamado
      <em>
       GetWeather
@@ -438,6 +459,13 @@ es un texto plano (es decir, viene un objeto primitivo
      como
 SOAPResponse). Vamos a ver cómo maneja suds ambos casos:
     </p>
+    <p>
+     En el caso del
+     <code>
+      request
+     </code>
+     :
+    </p>
     <div class="highlight">
      <pre><span></span><code>    <span class="nb">type</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
     <span class="n">instance</span>
@@ -446,7 +474,17 @@ SOAPResponse). Vamos a ver cómo maneja suds ambos casos:
        <span class="n">CityName</span> <span class="o">=</span> <span class="s2">"Caracas"</span>
        <span class="n">CountryName</span> <span class="o">=</span> <span class="s2">"Venezuela"</span>
     <span class="p">}</span>
-    <span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</code></pre>
+    </div>
+    <p>
+     Ahora, el
+     <code>
+      response
+     </code>
+     se ve de la siguiente manera:
+    </p>
+    <div class="highlight">
+     <pre><span></span><code>    <span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
     <span class="n">suds</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">Text</span>
     <span class="nb">print</span> <span class="n">response</span>
     <span class="o">&lt;</span><span class="err">?</span><span class="n">xml</span> <span class="n">version</span><span class="o">=</span><span class="s2">"1.0"</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-16"</span><span class="err">?</span><span class="o">&gt;</span>
@@ -465,7 +503,7 @@ SOAPResponse). Vamos a ver cómo maneja suds ambos casos:
 </code></pre>
     </div>
     <p>
-     Como veremos, suds nos crea un objeto Python a partir de la definición
+     Como vemos, suds nos crea un objeto Python a partir de la definición
 que obtuvo del WSDL en el caso del
      <em>
       request
@@ -488,6 +526,9 @@ unicode Python normalmente.
 que también nos abstrae del hecho de que tratamos con objetos remotos,
 convirtiendo todo a objetos Python por nosotros.
     </p>
+    <h2>
+     Autenticación en SOAP usando suds
+    </h2>
     <p>
      En algunos casos es necesario autenticarse contra un servicio web para
 poder utilizar sus métodos remotos, usualmente eso se hace a través de
@@ -523,6 +564,9 @@ código:
 password para el servicio (como el request de este ejemplo) en el
 soapheaders del client y listo.
     </p>
+    <h2>
+     Agregando datos adjuntos en SOAP utilizando suds, claro que se puede!
+    </h2>
     <p>
      La única desventaja que vi al trabajar con suds es que no viene con
 soporte nativo para attachments, sin embargo, es relativamente fácil
@@ -564,14 +608,17 @@ especificado en el WSDL.
      De esta manera, colocamos un archivo adjunto al mensaje SOAP para que
 sea subido al servidor vía SOAP.
     </p>
+    <h1>
+     Lecturas recomendadas:
+    </h1>
     <p>
      Para más información recomiendo revisar la documentación de la librería
-     <a href="https://fedorahosted.org/suds/wiki/Documentation">
+     <a class="reference external" href="https://github.com/suds-community/suds">
       acá
      </a>
-     {.reference
-.external}, sin embargo, para hacer clientes para servicios SOAP
-básicos, con este tutorial debería ser suficiente.
+     , 
+sin embargo, para hacer clientes para servicios SOAP básicos, con este 
+tutorial debería ser suficiente.
     </p>
    </div>
    <footer>
