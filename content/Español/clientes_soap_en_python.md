@@ -11,6 +11,7 @@ una vez que terminé los proyectos de la otra empresa, terminé
 enamorándome del proyecto que desarrollaba desde 4geeks y uniéndome al
 startup a tiempo completo.
 
+# La historia
 La historia en 4geeks es muy graciosa, un tal Saúl Lustgarten llevaba
 tiempo escribiendo en todas las listas de correo donde estoy pidiendo un
 desarrollador Python, incluso me contactó personalmente varias veces vía
@@ -32,6 +33,7 @@ JSON o XML o algún protocolo propio, la cosa se puso esotérica cuando vi
 que todos los URL de los servicios con los que iba a trabajar terminaban
 en .wsdl.
 
+# REST... NO! vas a usar SOAP
 ¿SOAP?, con el boom de REST ¿quién usa SOAP?, en fin, ¿qué tan difícil
 puede ser?, en Java es realmente fácil escribir clientes y servicios web
 usando SOAP y en Python no debe ser la excepción, hay librerías para
@@ -43,7 +45,7 @@ Luego de unos minutos leyendo en *StackOverflow*, vi que al parecer suds
 era la mejor opción, no se veía tan abandonada y, comparada a las demás
 opciones, tenía una documentación decente.
 
-Lo primero es, obviamente, instalarla:
+## Instalando suds
 
 ```bash
 pip install suds
@@ -53,10 +55,12 @@ Recuerden que siempre es buena práctica trabajar con virtualenvs y,
 además, es muy buena opción el hecho de utilizar virtualenvwrapper para
 gestionarlos.
 
+## Empezando a desarrollar tu cliente SOAP
 Una vez que tenemos suds ya instalado, es sólo cuestión de empezar a
 utilizarla, para hacer clientes, que es de lo que hablaré en este post,
 sólo nos interesa la clase definida en *suds.client.Client*.
 
+### SOAP 101
 Si repasamos un poco de teoría acerca de los servicios web sobre el
 protocolo SOAP, veremos que se convirtió en la capa subyacente para
 servicios complejos basados en WSDL, que es una manera de especificar
@@ -169,6 +173,7 @@ función remota se le está enviando un argumento llamado *StockName* y el
 valor de este argumento es *IBM*, el servicio debería retornar el precio
 del producto cuyo *StockName* sea *IBM*
 
+## Inicializando el cliente SOAP consumiendo el WSDL del servicio
 Para que pueda darse el intercambio de información entre un cliente y un
 servidor SOAP, ambos deben tener conocimiento de lo que está definido en
 el descriptor del servicio, es decir, ambos deben tener acceso al WSDL,
@@ -195,6 +200,7 @@ servicio que vamos a usar:
 Listo, ya tenemos un cliente SOAP listo para consumir el servicio desde
 Python.
 
+## Utilizando el servicio SOAP via el cliente en Python
 Lo que nos queda es revisar la documentación del servicio o, si no la
 hay, el WSDL para ver cuáles objetos pueden ser pasados como mensajes,
 construir el request e invocar el método remoto, para ello nos
@@ -210,12 +216,15 @@ Por ejemplo, obtengamos el tiempo para Caracas - Venezuela:
     response = client.service.GetWeather(request)
 ```
 
-Listo, así de fácil, explorando la documentación o el WSDL veremos que
+## Un vistazo a suds, por dentro
+Explorando la documentación o el WSDL veremos que
 hay un objeto llamado *GetWeather* definido en el namespace *tns*, este
 objeto tiene dos campos *string*: *CityName* y *CountryName*, también,
 si vemos la definición de la respuesta en el WSDL, podremos observar que
 es un texto plano (es decir, viene un objeto primitivo *string* como
 SOAPResponse). Vamos a ver cómo maneja suds ambos casos:
+
+En el caso del `request`:
 
 ```python
     type(request)
@@ -225,6 +234,10 @@ SOAPResponse). Vamos a ver cómo maneja suds ambos casos:
        CityName = "Caracas"
        CountryName = "Venezuela"
     }
+```
+
+Ahora, el `response` se ve de la siguiente manera:
+```python
     type(response)
     suds.sax.text.Text
     print response
@@ -243,7 +256,7 @@ SOAPResponse). Vamos a ver cómo maneja suds ambos casos:
     </CurrentWeather>
 ```
 
-Como veremos, suds nos crea un objeto Python a partir de la definición
+Como vemos, suds nos crea un objeto Python a partir de la definición
 que obtuvo del WSDL en el caso del *request* que se construye a partir
 de la fábrica del cliente usando el objeto remoto *tns:GetWeather* como
 plantilla.
@@ -256,6 +269,7 @@ Suds, no sólo nos hace más fácil la interacción con servicios SOAP, sino
 que también nos abstrae del hecho de que tratamos con objetos remotos,
 convirtiendo todo a objetos Python por nosotros.
 
+## Autenticación en SOAP usando suds
 En algunos casos es necesario autenticarse contra un servicio web para
 poder utilizar sus métodos remotos, usualmente eso se hace a través de
 un método público de autenticación que revisa los permisos y retorna un
@@ -285,6 +299,7 @@ Algunas veces, basta sólo con un objeto que contenga el usuario y el
 password para el servicio (como el request de este ejemplo) en el
 soapheaders del client y listo.
 
+## Agregando datos adjuntos en SOAP utilizando suds, claro que se puede!
 La única desventaja que vi al trabajar con suds es que no viene con
 soporte nativo para attachments, sin embargo, es relativamente fácil
 añadir esta funcionalidad en [este
@@ -320,7 +335,8 @@ especificado en el WSDL.
 De esta manera, colocamos un archivo adjunto al mensaje SOAP para que
 sea subido al servidor vía SOAP.
 
+# Lecturas recomendadas:
 Para más información recomiendo revisar la documentación de la librería
-[acá](https://fedorahosted.org/suds/wiki/Documentation){.reference
-.external}, sin embargo, para hacer clientes para servicios SOAP
-básicos, con este tutorial debería ser suficiente.
+[acá](https://github.com/suds-community/suds){.reference .external}, 
+sin embargo, para hacer clientes para servicios SOAP básicos, con este 
+tutorial debería ser suficiente.
