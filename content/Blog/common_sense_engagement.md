@@ -1,6 +1,6 @@
 Title: Work at a company that puts people first
 Author: Israel Fermín Montilla
-Date: 2021-04-20
+Date: 2021-04-14
 Tags: career, personal
 Cover: https://dl.dropboxusercontent.com/s/y7hf2p40crdu19y/careem.jpeg
 Thumbnail: https://dl.dropboxusercontent.com/s/y7hf2p40crdu19y/careem.jpeg
