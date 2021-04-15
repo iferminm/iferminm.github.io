@@ -1,5 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - personal</title><link href="https://iffm.me/" rel="alternate"></link><link href="http://127.0.0.1:8000/feeds/personal.tag.atom.xml" rel="self"></link><id>https://iffm.me/</id><updated>2020-06-01T00:00:00+04:00</updated><entry><title>Which languages should I learn?</title><link href="https://iffm.me/which-languages-should-i-learn.html" rel="alternate"></link><published>2020-06-01T00:00:00+04:00</published><updated>2020-06-01T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2020-06-01:/which-languages-should-i-learn.html</id><summary type="html">&lt;p&gt;There are millions of articles and blog posts out there trying to
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - personal</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/personal.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2021-04-14T00:00:00+04:00</updated><entry><title>Work at a company that puts people first</title><link href="//iffm.me/work-at-a-company-that-puts-people-first.html" rel="alternate"></link><published>2021-04-14T00:00:00+04:00</published><updated>2021-04-14T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2021-04-14:/work-at-a-company-that-puts-people-first.html</id><summary type="html">&lt;p&gt;The title says it all, easier said than done right? the truth is that it takes
+a lot of time for some people (and not so long for some others) to find a place
+where they feel welcomed and belonging, it's a quite cool feeling when people
+appreciate you and …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The title says it all, easier said than done right? the truth is that it takes
+a lot of time for some people (and not so long for some others) to find a place
+where they feel welcomed and belonging, it's a quite cool feeling when people
+appreciate you and makes an effort in making you feel comfortable at work in
+every aspect by always taking into account what's important to you and helping
+you with that.&lt;/p&gt;
+&lt;p&gt;For me, I've been working in the software industry since I was studying, and I
+have a lot of stories. Most companies value the business first, and that's
+completely valid, if the business is OK, everyone is getting paid and everyone
+is happy. But I feel I don't last long in this type of companies, I value
+flexibility, every company has its rules and every manager has their values and
+also set of rules they use to run their teams, but I believe everything needs to
+be evaluated in a case by case basis, not everyone has the same conditions
+or priorities in life and this is where this approach fails. Let me share a brief
+story of my professional life until now and why I've left some of the companies
+I worked for.&lt;/p&gt;
+&lt;h2&gt;My first job&lt;/h2&gt;
+&lt;p&gt;My first &lt;em&gt;official&lt;/em&gt; job, and by &lt;em&gt;official&lt;/em&gt; I mean, for a company, with a contract
+and not doing something kinda freelance for a friend, was with an online news
+hub, they scrapped news websites and presented all the headlines from different
+sources in a single place, people could customize which sources they preferred 
+for certain topics and filter based on that. My job there was to build bots to
+scrape multiple sources, extract the content and store it in our system. I was
+still doing my undergraduate courses so it was a part-time thing.&lt;/p&gt;
+&lt;p&gt;Everything was going great! salary always on time for about 3 months, then...&lt;/p&gt;
+&lt;p&gt;By the end of the fourth month, I didn't see the salary being credited to my
+account, I didn't pay too much attention, maybe there's a delay with the bank
+or they didn't process the payroll on time or whatever, I emailed my manager and
+I got an auto-response that he was on vacation, half-way into the month I email
+my manager's manager asking what happened...&lt;/p&gt;
+&lt;p&gt;The answer was &lt;em&gt;yes, you didn't get paid because you're not working with 
+us anymore&lt;/em&gt;, I was a bit shocked because no one told me I was let go, they
+conveniently forgot to tell me that little detail, wait a minute, this gets way
+better, I highlighted exactly that and the answer was amazing: &lt;em&gt;well, Israel,
+if you see the contract it says any party can end the employment agreement. It
+doesn't explicitly mention any notice, technically we didn't do anything wrong&lt;/em&gt;.
+Long story short, I had to threat them with going to the labor authority and
+report the issue in order to get my last salary... almost 3 months after.&lt;/p&gt;
+&lt;h3&gt;Lesson learned&lt;/h3&gt;
+&lt;p&gt;There's very bad people owning and managing companies, I know I was undergraduate
+but they even used that fact to imply I should be thankful about them paying me
+for my work because, and I quote textually, &lt;em&gt;a lot of students would work for 
+free just to get the experience&lt;/em&gt;, well, I wasn't one of those students...&lt;/p&gt;
+&lt;h2&gt;My internship, great! until it wasn't&lt;/h2&gt;
+&lt;p&gt;My first professional work experience was on my internship, I did it with a
+small local OpenSource consultancy firm, I learned A LOT!, the work environment
+was great and fun, workmates were cool, smart and the kind of people who knows
+what they're doing. The only bad thing was salary, as I was an intern, my salary
+was low, but I was OK, at least I was doing things I was into and learning quite
+a lot.&lt;/p&gt;
+&lt;p&gt;When I finished my internship, they offered me a permanent position which I
+accepted, they were aware I was still having academic commitments and they were
+OK with that. I had to work on my thesis project so, after some time I asked for
+some time off to do that, they offered me a room at the office where I could lock
+myself up for up to 3 hours a day to fully focus on my thesis, this was awesome but
+the only bad thing was it was respected for a bit over a week, after that I started
+getting constantly interrupted to work on other things, we went back and forth
+with this for a little over 2 months until I decided to quit so I could focus
+on my thesis.&lt;/p&gt;
+&lt;h3&gt;Lesson learned&lt;/h3&gt;
+&lt;p&gt;Sometimes your priorities and the organization's priorities are not aligned, and
+this is fine, when this happens the best thing to do is to part ways. Maybe if
+I was given that time off to complete my thesis as I initially requests I would
+still be working there. The company, the projects and the team were awesome.&lt;/p&gt;
+&lt;h2&gt;Fast forward to my first job in Dubai&lt;/h2&gt;
+&lt;p&gt;I won't be talking about how I got a job in Dubai and how I got here, I wrote
+about it before, I won't write about how cool it was because I already did it
+but I'll dig a bit deeper on the real reasons behind me leaving that company.
+I wrote an article before about it, but I wasn't completely honest about why
+I actually left because I didn't think it was appropriate at that time. By now,
+I know people have changed and switched places, and everything is different so
+I won't be at risk of exposing anyone.&lt;/p&gt;
+&lt;h3&gt;The end of the honeymoon&lt;/h3&gt;
+&lt;p&gt;In October 18th 2016 my first daughter was born, and it was also the day that
+marked the beginning of the end for me at that company. See, here in the UAE, the
+paternity leave policy at that time was 1 week off, that company gave 2 weeks
+and nothing more. Everyone knew my wife and I are here alone, the nearest
+relatives we have are in Spain so we were becoming parents all by ourselves,
+which is a lot of work, paternity leave is not vacation it's time to support
+your wife who just pushed a human being out of her body and now has to breastfeed,
+which is very energy-consuming and demanding.&lt;/p&gt;
+&lt;p&gt;So, 2 weeks are not enough, 40 days is the recommended resting time for new moms,
+I literally had to beg for my line manager to approve 2 extra weeks off from my
+annual leave and coming back, everything was changed.&lt;/p&gt;
+&lt;p&gt;My line manager started making my life impossible, I got a terrible performance
+review, which I felt was not fair because an incident from over a year and a half
+ago was brought up as the reason even though I fixed it in less than 1hr since the
+bug affecting subscriptions experience was reported.&lt;/p&gt;
+&lt;p&gt;Then, my in-laws visited in November, they were staying with us in Dubai for
+three months, until January, so, I applied for 2 weeks off in December so that
+we could spend some time around Christmas and New Year together and show them
+around. In December, the guy announces the following: &lt;em&gt;guys!, there's a lot to
+do, so I won't be approving any vacations this month&lt;/em&gt;, my time off request was
+rejected and then I got to know another colleague got it approved to go back home
+for a relative's wedding and another colleague was also traveling the same month.
+I didn't get to spend too much time around either because there was always something
+to do, one day, at around 17:30, the guy in question starts packing to leave and
+says &lt;em&gt;Israel!, please make sure you close all the zendesk tickets before leaving&lt;/em&gt;.
+After he left, I checked our support dashboard... over 30 tickets pending for 
+resolution. I was effectively being given all the crappy tasks no one else wanted
+to work on.&lt;/p&gt;
+&lt;h3&gt;Then I was moved to a different team&lt;/h3&gt;
+&lt;p&gt;Yup, I thought things were going to improve, and they did for a bit, in 2017 I
+spoke in 2 conferences and several meetups, mostly about things I was working on
+and trying to attract more talent for the company as well. Before one of the 
+conferences I got a task on a very short notice before traveling, so, I made it
+clear I might not be able to finish it before flying, but I would complete
+what I could and leave pointers on how to finish it so someone else could pick
+it up and I did exactly that, the night before flying I wrote a very comprehensive
+email explaining the approach I was following and detailing which classes needed
+to be changed, which methods and why, even left some test cases written to validate
+the functionality worked correctly. Coming back from the conference, my new manager
+calls me for a meeting, I thought it was something related to the talk I gave
+in the conference, but nope... not even close...&lt;/p&gt;
+&lt;p&gt;He hands me a warning letter, on which grounds?, because &lt;em&gt;I failed to finish
+a task and left for a week&lt;/em&gt;, and he also mentioned &lt;em&gt;your team mates say you're
+unreliable and they avoid working with you&lt;/em&gt;, I was shocked, no one ever told me
+anything like that. A few days after that meeting I asked my colleagues for
+feedback and everything I got was positive, so, I figured, either my line manager
+was lying to me or my colleagues were not professional enough to speak to me
+directly about work-related things they were not happy about with me. In both
+cases, I think that's unacceptable in a professional environment, I thought I left
+all that "talking behind your back" thing back in high school.&lt;/p&gt;
+&lt;p&gt;Anyways, the performance review time comes and I'm called for the performance
+evaluation meeting, to my surprise, there's my line manager and my old manager
+sitting behind the table which I found strange, what was even more strange was
+that the person delivering the performance evaluation was my old manager and,
+guess what, it wasn't a good one and quite old things from over 2.5 years ago
+were brought up, I have to admit I lost my cool in the middle stopped the
+evaluation, told my manager &lt;em&gt;You'll have my resignation email in a few minutes&lt;/em&gt;
+and left the room, that's when I wrote an email to HR CCing my line manager to
+start my notice period.&lt;/p&gt;
+&lt;h3&gt;Lesson learned&lt;/h3&gt;
+&lt;p&gt;The minute you feel something is not right, speak up, complain, talk to people,
+highlight it... if you feel it isn't right, then it isn't right, you don't have
+take crap from anyone and if someone is giving you a hard time for no apparent
+reason, the best thing to do is to part ways, to be honest, looking back I feel I
+took too long to leave.&lt;/p&gt;
+&lt;h2&gt;And I joined Careem&lt;/h2&gt;
+&lt;p&gt;I already wrote about joining Careem and why I joined, so, I won't repeat myself
+here, but I will point out that I had my second daughter recently (2020) and I was
+super scared about it, this didn't go too well with my previous employer and
+I have to confess I started interviewing with several companies at the time, had
+2 very good offer letters in my hands and was on the final stages for another 2
+openings.&lt;/p&gt;
+&lt;h3&gt;Things were different this time&lt;/h3&gt;
+&lt;p&gt;Well, the only thing which was the same was the paternity leave time, only 2 
+weeks, I spoke to my manager about getting an extended paternity leave because 
+of COVID, no family was going to be able to come over, airports were closed
+(it was by the end of 2020) and forget about traveling to Spain and working from
+there for a while... you know... because COVID... and also because my wife's 
+passport was expiring. Nothing like this was ever proposed at Careem and he was
+quite new in this &lt;em&gt;being a manager&lt;/em&gt; thing so, he did what any new manager would do,
+he asked me to go to HR and he would be OK with whatever they decide and, if they
+said &lt;em&gt;no&lt;/em&gt;, we would find a way.&lt;/p&gt;
+&lt;p&gt;So... I went to HR and explained everything, they were super supportive, they said
+&lt;em&gt;hey, there's no such thing as an extended paternity leave, but you can request
+time off your annual leave as we have unlimited vacations policy and we will leave
+a note highlighting this was for paternity extension&lt;/em&gt;. I did just that, not only
+HR and my manager were super supportive, but also my whole team. I got a bit over
+a full month to spend at home supporting my wife and taking care of our 4yo
+who was staying at home because of the pandemic so that my wife could breastfeed
+peacefully, also doing a lot of diaper changes.&lt;/p&gt;
+&lt;p&gt;Then, coming back to work was super flexible, they gave me quite flexible timing
+to continue supporting at home while we got back into the routine. I even got a 
+great performance review, I am beyond happy about all of this.&lt;/p&gt;
+&lt;h3&gt;What about the interviews&lt;/h3&gt;
+&lt;p&gt;Well, I understood that very few companies are like this, so... I ended up rejecting
+the offers and canceling the last interview rounds.&lt;/p&gt;
+&lt;h2&gt;My take about everything&lt;/h2&gt;
+&lt;p&gt;A job is a job, and there's nothing you can do about it, you have it today,
+tomorrow no one knows. But not all companies are the same, there are some which
+puts the business first. For example, the first company I worked for... maybe they
+needed someone cheap to complete the mechanical work of implementing web scrapers
+to extract the content from those websites and they just stopped caring after it
+was done, I don't know. The one where I did my internship, well, they had projects
+to finish for the clients, so, they needed me to work on that, so my thesis and
+my graduation goal wasn't a priority for them. My first job in Dubai, well, I
+don't know what happened there, but if they had a "people first" kind of philosophy
+nothing of that would had happened. Of course, I understand, if the business comes
+first, it runs, it generates value and revenue and people gets paid.&lt;/p&gt;
+&lt;p&gt;Then, on the other hand, we have companies like Careem, maybe supporting my wife
+is not their business or priority, but it was something I needed to do so, they
+supported me on that. Then, coming back to work and get back into the routine
+might be their priority, and also mine, but also family comes first, so... if 
+something was happening at home, I had to solve that first and then comes the work.
+They could have rushed me into work, but they didn't, we went step by step and
+I took only non-critical tasks for a while until everything was settled both at
+home and work. They understand that if you put your people first, they will 
+care for the business as if it was their own, and that's exactly what I do. I want
+to work on a place like this for a very long time, and it's my job to contribute
+to its success so I can continue here.&lt;/p&gt;
+&lt;p&gt;Thank you Careem for being Careem.&lt;/p&gt;</content><category term="Blog"></category><category term="career"></category><category term="personal"></category></entry><entry><title>Which languages should I learn?</title><link href="//iffm.me/which-languages-should-i-learn.html" rel="alternate"></link><published>2020-06-01T00:00:00+04:00</published><updated>2020-06-01T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2020-06-01:/which-languages-should-i-learn.html</id><summary type="html">&lt;p&gt;There are millions of articles and blog posts out there trying to
 tell you what to learn next or which language or technologies are 
 worth your attention, things like &lt;em&gt;Top 10 programming languages&lt;/em&gt; or
 &lt;em&gt;Learn one of these languages and you'll be done&lt;/em&gt; with some statistics
@@ -91,7 +286,7 @@ I can tackle most of the day-to-day tasks using them.
 I'm focusing on learning Rust, it's a language which is growing and implements interesting
 concepts and I've toyed around with Smalltalk and Haskell to see what's there to learn and 
 incorporate new practices into my coding. &lt;/p&gt;
-&lt;p&gt;What's currently on your learning list? let me know on the comments box.&lt;/p&gt;</content><category term="Blog"></category><category term="software engineering"></category><category term="career"></category><category term="personal"></category></entry><entry><title>Engage!</title><link href="https://iffm.me/engage.html" rel="alternate"></link><published>2020-05-20T00:00:00+04:00</published><updated>2020-05-20T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2020-05-20:/engage.html</id><summary type="html">&lt;p&gt;I was playing with my daughter the other day, I had work to do but I take breaks
+&lt;p&gt;What's currently on your learning list? let me know on the comments box.&lt;/p&gt;</content><category term="Blog"></category><category term="software engineering"></category><category term="career"></category><category term="personal"></category></entry><entry><title>Engage!</title><link href="//iffm.me/engage.html" rel="alternate"></link><published>2020-05-20T00:00:00+04:00</published><updated>2020-05-20T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2020-05-20:/engage.html</id><summary type="html">&lt;p&gt;I was playing with my daughter the other day, I had work to do but I take breaks
 every now and then to pay attention and play or watch some episode of her favorite
 cartoons on Netflix as I mentioned &lt;a href="http://iffm.me/working-from-home-with-kids.html"&gt;on a previous article&lt;/a&gt;. 
 So, I was waiting for the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I was playing with my daughter the other day, I had work to do but I take breaks
@@ -146,7 +341,7 @@ I'll be 100% into the conversation, not checking my phone. Some app installed on
 phone is not going to take me away from &lt;strong&gt;here and now&lt;/strong&gt;, because it's the only thing we have and the
 only thing we live directly, a message from someone hundreds of kilometers away is not more important
 than whatever is in front of you, interacting face to face. &lt;/p&gt;
-&lt;p&gt;Stop letting the algorithm distract you and decide to engage!&lt;/p&gt;</content><category term="Blog"></category><category term="career"></category><category term="personal"></category></entry><entry><title>Bye bye dubizzle, hello Careem!</title><link href="https://iffm.me/bye-bye-dubizzle-hello-careem.html" rel="alternate"></link><published>2018-03-30T00:00:00+04:00</published><updated>2018-03-30T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2018-03-30:/bye-bye-dubizzle-hello-careem.html</id><summary type="html">&lt;p&gt;I've been quiet for the last two months, I was a bit busy switching jobs, yes,
+&lt;p&gt;Stop letting the algorithm distract you and decide to engage!&lt;/p&gt;</content><category term="Blog"></category><category term="career"></category><category term="personal"></category></entry><entry><title>Bye bye dubizzle, hello Careem!</title><link href="//iffm.me/bye-bye-dubizzle-hello-careem.html" rel="alternate"></link><published>2018-03-30T00:00:00+04:00</published><updated>2018-03-30T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2018-03-30:/bye-bye-dubizzle-hello-careem.html</id><summary type="html">&lt;p&gt;I've been quiet for the last two months, I was a bit busy switching jobs, yes,
 after more than three years I decided to leave &lt;em&gt;dubizzle&lt;/em&gt;, part of the &lt;em&gt;OLX&lt;/em&gt;
 group and one of the biggest brands here in the United Arab Emirates, for reasons
 I won't discuss in this …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I've been quiet for the last two months, I was a bit busy switching jobs, yes,
@@ -189,7 +384,7 @@ build an organization that inspires&lt;/em&gt; one line at a time.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=HrSYYmaKmmo"&gt;The video&lt;/a&gt; that made me join &lt;a href="https://careem.com"&gt;Careem&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.glassdoor.com/Overview/Working-at-Dubizzle-EI_IE670451.11,19.htm"&gt;dubizzle in Glassdoor&lt;/a&gt; looks like a lot of people are not happy, I hope they course correct before it's too late&lt;/li&gt;
-&lt;/ul&gt;</content><category term="Blog"></category><category term="career"></category><category term="personal"></category></entry><entry><title>We always evolve</title><link href="https://iffm.me/we-always-evolve.html" rel="alternate"></link><published>2017-12-14T00:00:00+04:00</published><updated>2017-12-14T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-12-14:/we-always-evolve.html</id><summary type="html">&lt;p&gt;I've been going through code I wrote about two or maybe three years ago while cleaning up my working directory
+&lt;/ul&gt;</content><category term="Blog"></category><category term="career"></category><category term="personal"></category></entry><entry><title>We always evolve</title><link href="//iffm.me/we-always-evolve.html" rel="alternate"></link><published>2017-12-14T00:00:00+04:00</published><updated>2017-12-14T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-12-14:/we-always-evolve.html</id><summary type="html">&lt;p&gt;I've been going through code I wrote about two or maybe three years ago while cleaning up my working directory
 and archiving old stuff and, I must say: what the hell did I have in my head by that time?, for real, there are
 things that are over-engineered, very complicated …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I've been going through code I wrote about two or maybe three years ago while cleaning up my working directory
 and archiving old stuff and, I must say: what the hell did I have in my head by that time?, for real, there are
@@ -216,7 +411,7 @@ this pattern was on my code and, unsurprisingly, I found some other bad practice
 &lt;p&gt;So, if checking old code and surprising myself with &lt;em&gt;how stupid I was&lt;/em&gt; is something that happens often, it is a good
 thing, it means I've learned something I didn't know by the time I wrote that code. So, always move forward but,
 from time to time, check backwards not to adopt bad old habits, but to see how much you've learned and also if there's
-anything you need to fix on a project you're maintaining.&lt;/p&gt;</content><category term="Blog"></category><category term="software engineering"></category><category term="career"></category><category term="personal"></category></entry><entry><title>PyConPL 2017</title><link href="https://iffm.me/pyconpl-2017.html" rel="alternate"></link><published>2017-09-01T00:00:00+04:00</published><updated>2017-09-01T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-09-01:/pyconpl-2017.html</id><summary type="html">&lt;p&gt;Two of my personal goals for this year were:&lt;/p&gt;
+anything you need to fix on a project you're maintaining.&lt;/p&gt;</content><category term="Blog"></category><category term="software engineering"></category><category term="career"></category><category term="personal"></category></entry><entry><title>PyConPL 2017</title><link href="//iffm.me/pyconpl-2017.html" rel="alternate"></link><published>2017-09-01T00:00:00+04:00</published><updated>2017-09-01T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-09-01:/pyconpl-2017.html</id><summary type="html">&lt;p&gt;Two of my personal goals for this year were:&lt;/p&gt;
 &lt;p&gt;1.- To speak at a local meetup here in Dubai&lt;/p&gt;
 &lt;p&gt;2.- To speak at a bigger conference, anywhere&lt;/p&gt;
 &lt;p&gt;Thanks to my wife, who is always supporting me much more than I support her, I could do
@@ -277,7 +472,7 @@ I was interested in but couldn't attend.&lt;/p&gt;
 conferences, I'll apply to speak at PyConPL next year for sure and will take my family as well, Warsaw
 is a beautiful city, full of history and nice people. Will come back for sure!.&lt;/p&gt;
 &lt;p&gt;Also, if you're looking for a job and would like to relocate to Dubai, have a look &lt;a href="http://blog.dubizzle.com/uae/job-vacancies/"&gt;here&lt;/a&gt;
-at the open positions and leave me a comment, we can talk about it.&lt;/p&gt;</content><category term="Blog"></category><category term="personal"></category><category term="speaking"></category><category term="pycon"></category></entry><entry><title>Working at dubizzle</title><link href="https://iffm.me/working-at-dubizzle.html" rel="alternate"></link><published>2017-08-16T00:00:00+04:00</published><updated>2017-08-16T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-08-16:/working-at-dubizzle.html</id><summary type="html">&lt;p&gt;About 4 years ago I got an email through StackOverflow Careers from a woman called
+at the open positions and leave me a comment, we can talk about it.&lt;/p&gt;</content><category term="Blog"></category><category term="personal"></category><category term="speaking"></category><category term="pycon"></category></entry><entry><title>Working at dubizzle</title><link href="//iffm.me/working-at-dubizzle.html" rel="alternate"></link><published>2017-08-16T00:00:00+04:00</published><updated>2017-08-16T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-08-16:/working-at-dubizzle.html</id><summary type="html">&lt;p&gt;About 4 years ago I got an email through StackOverflow Careers from a woman called
 Claudia Verlinden, a very nice Belgian lady who happened to be an HR Manager at a company
 in the middle east and she was looking for Software Engineers with experience in Python and
 django, so …&lt;/p&gt;</summary><content type="html">&lt;p&gt;About 4 years ago I got an email through StackOverflow Careers from a woman called
@@ -399,7 +594,7 @@ are in two fronts:&lt;/p&gt;
 &lt;p&gt;Now, we are not facing that dilemma of "should this be a different package?", now it's more "where should I build this?",
 we try to keep our services from doing more than one thing, simplicity is the main value now, so far, we've deployed over 70
 services and we continue to break the monolith into smaller units, all powered by python and django for our backends and react for
-our frontend, running on top of AWS. Does this sound like a place you would like to work at? leave me a comment! and we can talk about it.&lt;/p&gt;</content><category term="Blog"></category><category term="personal"></category><category term="career"></category><category term="middle east"></category><category term="dubizzle"></category></entry><entry><title>PyCon: Challenge Accepted</title><link href="https://iffm.me/pycon-challenge-accepted.html" rel="alternate"></link><published>2017-08-01T00:00:00+04:00</published><updated>2017-08-01T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-08-01:/pycon-challenge-accepted.html</id><summary type="html">&lt;p&gt;Everyone who has known me long enough, knows that I'm a huge fan of Python programming language,
+our frontend, running on top of AWS. Does this sound like a place you would like to work at? leave me a comment! and we can talk about it.&lt;/p&gt;</content><category term="Blog"></category><category term="personal"></category><category term="career"></category><category term="middle east"></category><category term="dubizzle"></category></entry><entry><title>PyCon: Challenge Accepted</title><link href="//iffm.me/pycon-challenge-accepted.html" rel="alternate"></link><published>2017-08-01T00:00:00+04:00</published><updated>2017-08-01T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-08-01:/pycon-challenge-accepted.html</id><summary type="html">&lt;p&gt;Everyone who has known me long enough, knows that I'm a huge fan of Python programming language,
 for several reasons, ease of use, ease of learning, the huge amount of libraries, frameworks and
 packages in general available in PyPI, it's not perfect but it has become my tool of choice …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Everyone who has known me long enough, knows that I'm a huge fan of Python programming language,
 for several reasons, ease of use, ease of learning, the huge amount of libraries, frameworks and
@@ -419,7 +614,7 @@ So, I decided to apply to PyCon Poland, PyCon Spain and PyCon South Africa.&lt;/
 in PyCon Spain. I'm still waiting for news from South Africa. I will for sure share my experience in both
 conferences, I'm so excited and thankful with my employer, dubizzle, for sponsoring my trip to the conference,
 with the organizers for this huge opportunity and specially with my wife because she won't be able to go
-with me and she's spending almost one week alone with our baby.&lt;/p&gt;</content><category term="Blog"></category><category term="personal"></category><category term="speaking"></category><category term="pycon"></category></entry><entry><title>Reflexión del día que me fui del país</title><link href="https://iffm.me/reflexion-del-dia-que-me-fui-del-pais.html" rel="alternate"></link><published>2014-11-21T00:00:00+04:00</published><updated>2014-11-21T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-11-21:/reflexion-del-dia-que-me-fui-del-pais.html</id><summary type="html">&lt;p&gt;Bueno, no se si estoy intenso ya con el tema de las reflexiones pero
+with me and she's spending almost one week alone with our baby.&lt;/p&gt;</content><category term="Blog"></category><category term="personal"></category><category term="speaking"></category><category term="pycon"></category></entry><entry><title>Reflexión del día que me fui del país</title><link href="//iffm.me/reflexion-del-dia-que-me-fui-del-pais.html" rel="alternate"></link><published>2014-11-21T00:00:00+04:00</published><updated>2014-11-21T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-11-21:/reflexion-del-dia-que-me-fui-del-pais.html</id><summary type="html">&lt;p&gt;Bueno, no se si estoy intenso ya con el tema de las reflexiones pero
 esta será la última al menos por un buen tiempo, lo que ocurre es que
 hace poco conseguí un par de escritos que pensé que había perdido cuando
 formateé la computadora acá en Dubai apenas llegué …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Bueno, no se si estoy intenso ya con el tema de las reflexiones pero
@@ -522,7 +717,7 @@ van a joder” es la que nos tiene con el agua hasta el cuello y, también,
 esa actitud de “si puedo jodo al que me cae mal, me mire o me hable feo”
 es la que sigue echándole agua a la piscina en la que, si seguimos como
 vamos, nos ahogaremos todos, mi pregunta es, ¿hasta cuándo vamos a vivir
-en la mierda?, ¿hasta cuando vamos a aceptar un “no hay” por respuesta?.&lt;/p&gt;</content><category term="Español"></category><category term="reflexión"></category><category term="personal"></category></entry><entry><title>Algo que escribí antes de emigrar</title><link href="https://iffm.me/algo-que-escribi-antes-de-emigrar.html" rel="alternate"></link><published>2014-11-20T00:00:00+04:00</published><updated>2014-11-20T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-11-20:/algo-que-escribi-antes-de-emigrar.html</id><summary type="html">&lt;p&gt;Revisando archivos viejos luego de que migré a &lt;em&gt;Linux Mint&lt;/em&gt;, conseguí
+en la mierda?, ¿hasta cuando vamos a aceptar un “no hay” por respuesta?.&lt;/p&gt;</content><category term="Español"></category><category term="reflexión"></category><category term="personal"></category></entry><entry><title>Algo que escribí antes de emigrar</title><link href="//iffm.me/algo-que-escribi-antes-de-emigrar.html" rel="alternate"></link><published>2014-11-20T00:00:00+04:00</published><updated>2014-11-20T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-11-20:/algo-que-escribi-antes-de-emigrar.html</id><summary type="html">&lt;p&gt;Revisando archivos viejos luego de que migré a &lt;em&gt;Linux Mint&lt;/em&gt;, conseguí
 algo que escribí unos 3 días antes de emigrar, recuerdo haberme sentado
 en mi escritorio, aún sin poder creer que me iba de casa, que me iba de
 mi país, sintiéndome muy impotente de toda la situación que me …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Revisando archivos viejos luego de que migré a &lt;em&gt;Linux Mint&lt;/em&gt;, conseguí
@@ -591,7 +786,7 @@ dejar de nadar contra la corriente para llegar a rescatarte, espero que
 todo mejore pronto y se que cuando decida volver, me recibirás con los
 brazos abiertos como buena madre.&lt;/p&gt;
 &lt;p&gt;Familia, amigos, compañeros, conocidos… Hasta siempre!!&lt;/p&gt;
-&lt;p&gt;-- Israel.&lt;/p&gt;</content><category term="Español"></category><category term="reflexion"></category><category term="personal"></category></entry><entry><title>Algo hemos hecho mal en Venezuela, ¿qué?</title><link href="https://iffm.me/algo-hemos-hecho-mal-en-venezuela-que.html" rel="alternate"></link><published>2014-10-12T00:00:00+04:00</published><updated>2014-10-12T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-10-12:/algo-hemos-hecho-mal-en-venezuela-que.html</id><summary type="html">&lt;p&gt;Voy ya para cinco meses viviendo fuera del país y empiezo a ver las
+&lt;p&gt;-- Israel.&lt;/p&gt;</content><category term="Español"></category><category term="reflexion"></category><category term="personal"></category></entry><entry><title>Algo hemos hecho mal en Venezuela, ¿qué?</title><link href="//iffm.me/algo-hemos-hecho-mal-en-venezuela-que.html" rel="alternate"></link><published>2014-10-12T00:00:00+04:00</published><updated>2014-10-12T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-10-12:/algo-hemos-hecho-mal-en-venezuela-que.html</id><summary type="html">&lt;p&gt;Voy ya para cinco meses viviendo fuera del país y empiezo a ver las
 cosas de otra manera, quizás estando en Venezuela todo estaba tan
 caótico que me impedía pensar "fuera de la caja", quizás llegó el
 momento en el que dejó de importarme y me enfoqué en mis asuntos …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Voy ya para cinco meses viviendo fuera del país y empiezo a ver las
@@ -743,7 +938,7 @@ vino de paseo al medio oriente y, como el suelo es pura arena y es muy
 difícil hacer crecer plantas, hicieron crecer edificios.&lt;/p&gt;
 &lt;p&gt;¿Alguien me puede explicar?&lt;/p&gt;
 &lt;p&gt;&lt;img alt="dafuq?" src="https://dl.dropboxusercontent.com/s/bkk53ile2u1jlrs/jackie-chan-meme.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;[1] Hoy, Follador de libertades&lt;/p&gt;</content><category term="Español"></category><category term="reflexion"></category><category term="personal"></category></entry><entry><title>¿Y si me compro una Mac?</title><link href="https://iffm.me/y-si-me-compro-una-mac.html" rel="alternate"></link><published>2014-10-03T00:00:00+04:00</published><updated>2014-10-03T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-10-03:/y-si-me-compro-una-mac.html</id><summary type="html">&lt;p&gt;Llevo ya un par de meses considerando la posibilidad, sí, YO, Israel
+&lt;p&gt;[1] Hoy, Follador de libertades&lt;/p&gt;</content><category term="Español"></category><category term="reflexion"></category><category term="personal"></category></entry><entry><title>¿Y si me compro una Mac?</title><link href="//iffm.me/y-si-me-compro-una-mac.html" rel="alternate"></link><published>2014-10-03T00:00:00+04:00</published><updated>2014-10-03T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-10-03:/y-si-me-compro-una-mac.html</id><summary type="html">&lt;p&gt;Llevo ya un par de meses considerando la posibilidad, sí, YO, Israel
 Fermín Montilla llevo un par de meses considerando la posibilidad de
 comprarme una &lt;em&gt;MacBook&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;No, no me hackearon github y subieron este artículo, tampoco estoy
@@ -821,7 +1016,7 @@ dicen que &lt;em&gt;homebrew&lt;/em&gt; hace el trabajo bastante bien, incluso, 
 es algo que vale la pena probar y que está súper feliz programando en su
 &lt;em&gt;MacBook&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Simplemente lo estoy considerando, necesito leer más al respecto, quizás
-jugar un par de días con una a ver qué decido hacer.&lt;/p&gt;</content><category term="Español"></category><category term="personal"></category></entry><entry><title>Ahora soy lead developer y no tengo mucha idea: anécdotas y reflexión</title><link href="https://iffm.me/ahora-soy-lead-developer-y-no-tengo-mucha-idea-anecdotas-y-reflexion.html" rel="alternate"></link><published>2013-09-23T00:00:00+04:00</published><updated>2013-09-23T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2013-09-23:/ahora-soy-lead-developer-y-no-tengo-mucha-idea-anecdotas-y-reflexion.html</id><summary type="html">&lt;p&gt;Primero que nada, me gustaría pedir disculpas (o permiso xD) si cometo
+jugar un par de días con una a ver qué decido hacer.&lt;/p&gt;</content><category term="Español"></category><category term="personal"></category></entry><entry><title>Ahora soy lead developer y no tengo mucha idea: anécdotas y reflexión</title><link href="//iffm.me/ahora-soy-lead-developer-y-no-tengo-mucha-idea-anecdotas-y-reflexion.html" rel="alternate"></link><published>2013-09-23T00:00:00+04:00</published><updated>2013-09-23T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2013-09-23:/ahora-soy-lead-developer-y-no-tengo-mucha-idea-anecdotas-y-reflexion.html</id><summary type="html">&lt;p&gt;Primero que nada, me gustaría pedir disculpas (o permiso xD) si cometo
 algún error ortográfico en este artículo, se me olvidó pasar el
 &lt;a class="reference external" href="http://aspell.net/"&gt;aspell&lt;/a&gt;, el hecho es que,
 para ponerlos un poco en contexto, vengo de un rato un poco etílico.&lt;/p&gt;
@@ -913,7 +1108,7 @@ desde el principio, no se, capaz me faltó liderazgo o capacidad de
 reflexionando, capaz producto de las bebidas espirituosas de hoy, he
 empezado a pensar que quizás no estoy listo para asumir
 responsabilidades de este calibre aún, quizás sea algo de actitud o
-quizás sea algo de aptitud. Ustedes, ¿qué piensan?.&lt;/p&gt;</content><category term="Español"></category><category term="reflexion"></category><category term="personal"></category></entry><entry><title>Y al fin!, me estrené como ponente</title><link href="https://iffm.me/y-al-fin-me-estrene-como-ponente.html" rel="alternate"></link><published>2013-08-10T00:00:00+04:00</published><updated>2013-08-10T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2013-08-10:/y-al-fin-me-estrene-como-ponente.html</id><summary type="html">&lt;p&gt;Bueno, esto ya es tema viejo, pero no había tenido tiempo de escribir al
+quizás sea algo de aptitud. Ustedes, ¿qué piensan?.&lt;/p&gt;</content><category term="Español"></category><category term="reflexion"></category><category term="personal"></category></entry><entry><title>Y al fin!, me estrené como ponente</title><link href="//iffm.me/y-al-fin-me-estrene-como-ponente.html" rel="alternate"></link><published>2013-08-10T00:00:00+04:00</published><updated>2013-08-10T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2013-08-10:/y-al-fin-me-estrene-como-ponente.html</id><summary type="html">&lt;p&gt;Bueno, esto ya es tema viejo, pero no había tenido tiempo de escribir al
 respecto. Desde que organicé el &lt;em&gt;PyConVE2012&lt;/em&gt; había tenido la idea de
 probar cómo me iba dando alguna ponencia o algún tutorial, ya en la
 Universidad era preparador y miembro del &lt;em&gt;Sun Team University&lt;/em&gt;, una de
@@ -960,7 +1155,7 @@ agrado:&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Testing: la etapa olvidada&lt;/em&gt;
 &lt;a href="http://www.slideshare.net/iferminm/testing-etapa-olvidada"&gt;http://www.slideshare.net/iferminm/testing-etapa-olvidada&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Iniciación a las artes marciales con Python&lt;/em&gt;
-&lt;a href="http://www.slideshare.net/iferminm/iniciacin-a-las-artes-marciales-con-python"&gt;http://www.slideshare.net/iferminm/iniciacin-a-las-artes-marciales-con-python&lt;/a&gt;&lt;/p&gt;</content><category term="Español"></category><category term="personal"></category></entry><entry><title>Graduado, ¿y ahora?</title><link href="https://iffm.me/graduado-y-ahora.html" rel="alternate"></link><published>2012-06-27T00:00:00+04:00</published><updated>2012-06-27T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2012-06-27:/graduado-y-ahora.html</id><summary type="html">&lt;p&gt;Bueno, vengo con otra reflexión respecto a qué ocurre al culminar la
+&lt;a href="http://www.slideshare.net/iferminm/iniciacin-a-las-artes-marciales-con-python"&gt;http://www.slideshare.net/iferminm/iniciacin-a-las-artes-marciales-con-python&lt;/a&gt;&lt;/p&gt;</content><category term="Español"></category><category term="personal"></category></entry><entry><title>Graduado, ¿y ahora?</title><link href="//iffm.me/graduado-y-ahora.html" rel="alternate"></link><published>2012-06-27T00:00:00+04:00</published><updated>2012-06-27T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2012-06-27:/graduado-y-ahora.html</id><summary type="html">&lt;p&gt;Bueno, vengo con otra reflexión respecto a qué ocurre al culminar la
 carrera a nivel universitario, quiero empezar aclarando que acá expondré
 mi (¿poca?) experiencia personal y este artículo estará marcado por mi
 manera particular de ver las cosas que no necesariamente resulta ser la
@@ -1052,7 +1247,7 @@ aprendan de todo un poco, sean buenos, pero hay que especializarse y ser
 excepcionalmente bueno en algo, yo elegí Desarrollo en Python, y estoy
 trabajando en ello, también programo en PHP, Java, Perl y C/C++ si es
 necesario, pero mi principal herramienta es Python y, aún así, tengo
-intenciones de aprender Ruby.&lt;/p&gt;</content><category term="Español"></category><category term="personal"></category><category term="reflexión"></category></entry><entry><title>Una nueva etapa se cierra</title><link href="https://iffm.me/una-nueva-etapa-se-cierra.html" rel="alternate"></link><published>2012-06-23T00:00:00+04:00</published><updated>2012-06-23T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2012-06-23:/una-nueva-etapa-se-cierra.html</id><summary type="html">&lt;p&gt;He tenido un poco abandonado el blog debido a mi trabajo especial de
+intenciones de aprender Ruby.&lt;/p&gt;</content><category term="Español"></category><category term="personal"></category><category term="reflexión"></category></entry><entry><title>Una nueva etapa se cierra</title><link href="//iffm.me/una-nueva-etapa-se-cierra.html" rel="alternate"></link><published>2012-06-23T00:00:00+04:00</published><updated>2012-06-23T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2012-06-23:/una-nueva-etapa-se-cierra.html</id><summary type="html">&lt;p&gt;He tenido un poco abandonado el blog debido a mi trabajo especial de
 grado (TEG) y a mi nuevo trabajo en Zava, pero poco a poco he ido
 adelantando cosas y hoy conseguí algo de tiempo para escribir las
 últimas cosas sobre las que he estado reflexionando las últimas semanas …&lt;/p&gt;</summary><content type="html">&lt;p&gt;He tenido un poco abandonado el blog debido a mi trabajo especial de
@@ -1147,7 +1342,7 @@ fueron:&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;Sus lecciones académicas y personales son muy valiosas, no puedo más que
 decirles: MUCHAS GRACIAS!, espero llegar a ser al menos la mitad de
-buenos de lo que ustedes son.&lt;/p&gt;</content><category term="Español"></category><category term="carrera"></category><category term="personal"></category></entry><entry><title>Algo sobre Dennis Ritchie</title><link href="https://iffm.me/algo-sobre-dennis-ritchie.html" rel="alternate"></link><published>2011-10-18T00:00:00+04:00</published><updated>2011-10-18T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-10-18:/algo-sobre-dennis-ritchie.html</id><summary type="html">&lt;p&gt;Quizás no sepas de quien se trata, es probable que hayas escuchado su
+buenos de lo que ustedes son.&lt;/p&gt;</content><category term="Español"></category><category term="carrera"></category><category term="personal"></category></entry><entry><title>Algo sobre Dennis Ritchie</title><link href="//iffm.me/algo-sobre-dennis-ritchie.html" rel="alternate"></link><published>2011-10-18T00:00:00+04:00</published><updated>2011-10-18T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-10-18:/algo-sobre-dennis-ritchie.html</id><summary type="html">&lt;p&gt;Quizás no sepas de quien se trata, es probable que hayas escuchado su
 nombre alguna vez si (¿y sólo si?) estudias o estudiaste computación,
 informática o alguna carrera similar.&lt;/p&gt;
 &lt;p&gt;Aún así, si no eres computista, seguramente utilizas algo basado en
