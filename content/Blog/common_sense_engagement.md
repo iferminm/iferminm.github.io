@@ -81,10 +81,10 @@ I was given that time off to complete my thesis as I initially requests I would
 still be working there. The company, the projects and the team were awesome.
 
 ## Fast forward to my first job in Dubai
-I won't be talking about how I got a job in Dubai and how I got here, I wrote
-about it before, I won't write about how cool it was because I already did it
+I won't be talking about how I got a job in Dubai and how I got here, [I wrote
+about it before](https://iffm.me/new-grads-survival-guide.html), I won't write about how cool it was because [I already did it](https://iffm.me/working-at-dubizzle.html)
 but I'll dig a bit deeper on the real reasons behind me leaving that company.
-I wrote an article before about it, but I wasn't completely honest about why
+I wrote an [article before about it](https://iffm.me/bye-bye-dubizzle-hello-careem.html), but I wasn't completely honest about why
 I actually left because I didn't think it was appropriate at that time. By now,
 I know people have changed and switched places, and everything is different so
 I won't be at risk of exposing anyone.
