@@ -2,8 +2,8 @@ Title: Work at a company that puts people first
 Author: Israel Fermín Montilla
 Date: 2021-04-14
 Tags: career, personal
-Cover: https://dl.dropboxusercontent.com/s/y7hf2p40crdu19y/careem.jpeg
-Thumbnail: https://dl.dropboxusercontent.com/s/y7hf2p40crdu19y/careem.jpeg
+Cover: https://dl.dropboxusercontent.com/s/g2hnjo0xsaixsuw/IMG_4173.jpg
+Thumbnail: https://dl.dropboxusercontent.com/s/g2hnjo0xsaixsuw/IMG_4173.jpg
 
 The title says it all, easier said than done right? the truth is that it takes
 a lot of time for some people (and not so long for some others) to find a place
@@ -148,7 +148,7 @@ all that "talking behind your back" thing back in high school.
 
 Anyways, the performance review time comes and I'm called for the performance
 evaluation meeting, to my surprise, there's my line manager and my old manager
-sitting behind the table which I found strange, which was even more strange was
+sitting behind the table which I found strange, what was even more strange was
 that the person delivering the performance evaluation was my old manager and,
 guess what, it wasn't a good one and quite old things from over 2.5 years ago
 were brought up, I have to admit I lost my cool in the middle stopped the
@@ -160,15 +160,15 @@ start my notice period.
 The minute you feel something is not right, speak up, complain, talk to people,
 highlight it... if you feel it isn't right, then it isn't right, you don't have
 take crap from anyone and if someone is giving you a hard time for no apparent
-reason, the best thing to do is to part ways, to be hones, looking back I feel I
+reason, the best thing to do is to part ways, to be honest, looking back I feel I
 took too long to leave.
 
 ## And I joined Careem
 I already wrote about joining Careem and why I joined, so, I won't repeat myself
-here, but I will point out that I had my second daughter recently and I was
+here, but I will point out that I had my second daughter recently (2020) and I was
 super scared about it, this didn't go too well with my previous employer and
 I have to confess I started interviewing with several companies at the time, had
-2 very good offer letters in my hand and was on the final stages for another 2
+2 very good offer letters in my hands and was on the final stages for another 2
 openings.
 
 ### Things were different this time
