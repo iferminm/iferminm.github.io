@@ -39,6 +39,7 @@ SOCIAL = (
 )
 
 DEFAULT_PAGINATION = 10
+USE_FOLDER_AS_CATEGORY = True
 
 # Theme setup
 THEME = os.path.join(os.path.dirname(__file__), 'mymedius/')
@@ -51,6 +52,10 @@ MEDIUS_AUTHORS = {
         }
     }
 }
+MEDIUS_CATEGORIES = {
+    'Blog': {}
+}
+
 LONG_DESCRIPTION = "I'm an experienced software engineer and tech lead. I've designed system architectures and also managed implementations at dubizzle (OLX) and at my own startup previously. I'm currently a Senior Software Engineer at Careem (Uber), one of the top tech companies in the Middle East." 
 LONG_DESCRIPTIONS = {
     'Israel Fermín Montilla': {
