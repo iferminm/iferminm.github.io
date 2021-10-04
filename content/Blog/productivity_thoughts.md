@@ -1,7 +1,7 @@
 Title: 7 tips to be a more productive engineer
 Author: Israel Fermín Montilla
-Date: 2022-03-30
-Tags: career, personal
+Date: 2021-10-05
+Tags: career, personal, productivity
 Cover: https://dl.dropboxusercontent.com/s/y7hf2p40crdu19y/careem.jpeg
 Thumbnail: https://dl.dropboxusercontent.com/s/y7hf2p40crdu19y/careem.jpeg
 
