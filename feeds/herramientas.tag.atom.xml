@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - herramientas</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/herramientas.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2015-05-26T00:00:00+04:00</updated><entry><title>Migré a ZSH</title><link href="//iffm.me/migre-a-zsh.html" rel="alternate"></link><published>2015-05-26T00:00:00+04:00</published><updated>2015-05-26T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2015-05-26:/migre-a-zsh.html</id><summary type="html">&lt;p&gt;Es bien sabido por todos que en Linux y en el Open Source en general,
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - herramientas</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/herramientas.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2015-05-26T00:00:00+04:00</updated><subtitle></subtitle><entry><title>Migré a ZSH</title><link href="//iffm.me/migre-a-zsh.html" rel="alternate"></link><published>2015-05-26T00:00:00+04:00</published><updated>2015-05-26T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2015-05-26:/migre-a-zsh.html</id><summary type="html">&lt;p&gt;Es bien sabido por todos que en Linux y en el Open Source en general,
 uno es libre de elegir todas y cada una de las partes del sistema que va
 a configurar para su computadora personal o de trabajo, la línea de
 comandos no es excepción.&lt;/p&gt;
@@ -82,7 +82,6 @@ como "foto_1.jpg", "foto_2.jpg" y así.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;zmv &lt;span class="s1"&gt;&amp;#39;(*).jpg&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;foto_$1.jpg&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Y listo!.&lt;/p&gt;
 &lt;h2&gt;Oh My ZSH&lt;/h2&gt;
 &lt;p&gt;Es un plugin que extiende &lt;em&gt;ZSH&lt;/em&gt; y, además, tiene varios addons, por
@@ -98,11 +97,9 @@ usuario para que sea el terminal por defecto&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;chsh -s /bin/zsh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Para instalar el plugin &lt;em&gt;Oh my ZSH&lt;/em&gt;, basta con ejecutar&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh &lt;span class="p"&gt;|&lt;/span&gt; sh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;O, si preferimos usar &lt;em&gt;wget&lt;/em&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - &lt;span class="p"&gt;|&lt;/span&gt; sh

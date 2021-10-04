@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - buenas prácticas</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/buenas-practicas.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2014-12-06T00:00:00+04:00</updated><entry><title>Cosas que he aprendido, SOA</title><link href="//iffm.me/cosas-que-he-aprendido-soa.html" rel="alternate"></link><published>2014-12-06T00:00:00+04:00</published><updated>2014-12-06T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-12-06:/cosas-que-he-aprendido-soa.html</id><summary type="html">&lt;p&gt;Luego de algún tiempo desarrollando software, sea para web o escritorio,
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - buenas prácticas</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/buenas-practicas.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2014-12-06T00:00:00+04:00</updated><subtitle></subtitle><entry><title>Cosas que he aprendido, SOA</title><link href="//iffm.me/cosas-que-he-aprendido-soa.html" rel="alternate"></link><published>2014-12-06T00:00:00+04:00</published><updated>2014-12-06T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-12-06:/cosas-que-he-aprendido-soa.html</id><summary type="html">&lt;p&gt;Luego de algún tiempo desarrollando software, sea para web o escritorio,
 uno realmente termina de entender aquello que nos decían en &lt;em&gt;Algoritmos
 y Programación I&lt;/em&gt; de &lt;strong&gt;Divide y vencerás&lt;/strong&gt;, quizás en la Universidad uno
 no lo aplica mucho, tienes 8 proyectos y 14 parciales en una semana y
@@ -21,7 +21,6 @@ colaterales, por ejemplo:&lt;/p&gt;
     &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Esta función, claramente, no hace una cosa, hace dos, escribe un texto
 al archivo y luego lo cierra, esto es poco intuitivo, cualquiera

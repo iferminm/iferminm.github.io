@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - bases de dato</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/bases-de-dato.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2011-11-10T00:00:00+04:00</updated><entry><title>Configurando réplicas Maestro-Esclavo con Postgres</title><link href="//iffm.me/configurando-replicas-maestro-esclavo-con-postgres.html" rel="alternate"></link><published>2011-11-10T00:00:00+04:00</published><updated>2011-11-10T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-11-10:/configurando-replicas-maestro-esclavo-con-postgres.html</id><summary type="html">&lt;p&gt;Muchas veces, por alguna razón, hacemos desde la capa de aplicación
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - bases de dato</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/bases-de-dato.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2011-11-10T00:00:00+04:00</updated><subtitle></subtitle><entry><title>Configurando réplicas Maestro-Esclavo con Postgres</title><link href="//iffm.me/configurando-replicas-maestro-esclavo-con-postgres.html" rel="alternate"></link><published>2011-11-10T00:00:00+04:00</published><updated>2011-11-10T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2011-11-10:/configurando-replicas-maestro-esclavo-con-postgres.html</id><summary type="html">&lt;p&gt;Muchas veces, por alguna razón, hacemos desde la capa de aplicación
 cientos de validaciones y procesos que, si sabemos cómo, podríamos
 delegar en el manejador de base de datos.&lt;/p&gt;
 &lt;p&gt;Las validaciones de reglas de negocio son un ejemplo muy frecuente de
@@ -47,13 +47,12 @@ datos, digamos que puede realizar todas las operaciones CRUD. Empecemos
 por establecer ciertos valores de configuración para el manejador en el
 archivo /etc/postgresql/9.1/main/postgresql.conf. Debemos configurar los
 siguientes valores:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;listen_addresses = &amp;#39;*&amp;#39;&lt;/span&gt;
-&lt;span class="err"&gt;wal_level = hot_standby&lt;/span&gt;
-&lt;span class="err"&gt;wal_sync_method = fsync&lt;/span&gt;
-&lt;span class="err"&gt;max_wal_senders = 2&lt;/span&gt;
-&lt;span class="err"&gt;wal_keep_segments = 8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;listen_addresses = &amp;#39;*&amp;#39;
+wal_level = hot_standby
+wal_sync_method = fsync
+max_wal_senders = 2
+wal_keep_segments = 8
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Ahora bien, analicemos este segmento de configuración:&lt;/p&gt;
 &lt;ul&gt;
@@ -90,9 +89,8 @@ siguientes valores:&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;Ahora, debemos agregar una regla más de acceso al &lt;strong&gt;pg_hba.conf&lt;/strong&gt;, para
 permitir a los esclavos conectarse al servidor maestro:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;host replication all 10.1.1.8/32 trust&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;host replication all 10.1.1.8/32 trust
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Con esa línea, estamos configurando el servidor para que permita
 conexiones a todos los usuarios con permiso de replicación desde la
@@ -102,17 +100,14 @@ terminal SQL de Postgres:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;pg_start_backup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Mientras eso esté ocurriendo, en otro terminal, ejecutamos lo siguiente:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;cd /var/lib/postgresql/9.1 # tar czvf backup.tgz main&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;postgresql&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mf"&gt;9.1&lt;/span&gt; &lt;span class="c1"&gt;# tar czvf backup.tgz main&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Con esto estamos comprimiendo el directorio de datos de Postgres. Una
 vez hecho esto, detenemos la generación de WAL:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;pg_stop_backup&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;El asunto general se resume con la siguiente ecuación:&lt;/p&gt;
 &lt;p&gt;backup inconsistente + WAL = restauración a estado consistente.&lt;/p&gt;
@@ -124,9 +119,8 @@ instancia de Postgres por el directorio de datos del Maestro. Luego,
 creamos un directorio &lt;em&gt;recovery&lt;/em&gt;, donde copiaremos el último WAL del
 directorio pg_xlog. Adicionalmente, debemos modificar el
 postgresql.conf con las siguientes variables:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;hot_standby = on wal_level = hot_standby``&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;hot_standby = on wal_level = hot_standby``
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Ahora, creamos un archivo de configuración en la raíz del directorio de
 datos para establecer las siguientes opciones:&lt;/p&gt;
@@ -135,7 +129,6 @@ datos para establecer las siguientes opciones:&lt;/p&gt;
 &lt;span class="n"&gt;restore_command&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;cp /var/lib/postgresql/9.1/main/recovery/%f %p&amp;#39;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Con esto le decimos al servidor que va a esperar réplicas de
 &lt;strong&gt;primary_conninfo&lt;/strong&gt;, además, el &lt;strong&gt;restore_command&lt;/strong&gt; indica dónde se
 encuentra el respaldo inicial inconsistente. Finalmente, nos aseguramos
@@ -143,12 +136,10 @@ de que los roles tengan permiso de replicación:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;pg_roles&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;y, de no tener permisos de replicación, alteramos los roles necesarios
 para ello:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;ALTER&lt;/span&gt; &lt;span class="k"&gt;ROLE&lt;/span&gt; &lt;span class="n"&gt;nombre&lt;/span&gt; &lt;span class="k"&gt;WITH&lt;/span&gt; &lt;span class="n"&gt;REPLICATION&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Una vez hecho todo esto, ya hemos configurado un sistema de replicación
 Maestro-Esclavo utilizando Postgres como sistema manejador de base de

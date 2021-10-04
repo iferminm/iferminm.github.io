@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - soap</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/soap.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2013-08-18T00:00:00+04:00</updated><entry><title>Clientes SOAP en Python</title><link href="//iffm.me/clientes-soap-en-python.html" rel="alternate"></link><published>2013-08-18T00:00:00+04:00</published><updated>2013-08-18T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2013-08-18:/clientes-soap-en-python.html</id><summary type="html">&lt;p&gt;Como todos saben, y algunos me chalequean por eso, en la primera mitad
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - soap</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/soap.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2013-08-18T00:00:00+04:00</updated><subtitle></subtitle><entry><title>Clientes SOAP en Python</title><link href="//iffm.me/clientes-soap-en-python.html" rel="alternate"></link><published>2013-08-18T00:00:00+04:00</published><updated>2013-08-18T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2013-08-18:/clientes-soap-en-python.html</id><summary type="html">&lt;p&gt;Como todos saben, y algunos me chalequean por eso, en la primera mitad
 de 2013 cambié de trabajo dos veces, estaba algo aburrido en Metamax y
 decidí aceptar una oportunidad en 4geeks, junto con una serie de
 proyectos para una empresa en el extranjero que pintaban bastante bien,
@@ -42,7 +42,6 @@ opciones, tenía una documentación decente.&lt;/p&gt;
 &lt;h2&gt;Instalando suds&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pip install suds
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Recuerden que siempre es buena práctica trabajar con virtualenvs y,
 además, es muy buena opción el hecho de utilizar virtualenvwrapper para
@@ -118,7 +117,6 @@ formato XML.&lt;/p&gt;
     &lt;span class="nt"&gt;&amp;lt;/description&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;La sección &lt;em&gt;types&lt;/em&gt; describe los tipos de dato a los que da soporte el
 servicio web que se está describiendo. Las &lt;em&gt;interfaces&lt;/em&gt;, definen un
 servicio como tal, es decir, las operaciones que pueden ser realizadas y
@@ -145,7 +143,6 @@ con el servicio web.&lt;/p&gt;
         &lt;span class="nt"&gt;&amp;lt;/soap:Body&amp;gt;&lt;/span&gt;
     &lt;span class="nt"&gt;&amp;lt;/soap:Envelope&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;En un mensaje, el &lt;em&gt;envelope&lt;/em&gt; es lo que identifica el XML como un mensaje
 SOAP, el &lt;em&gt;header&lt;/em&gt; contiene información de encabezado, como por ejemplo,
@@ -177,7 +174,6 @@ servicio que vamos a usar:&lt;/p&gt;
     &lt;span class="n"&gt;client&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Client&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;http://www.webservicex.com/globalweather.asmx?WSDL&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Listo, ya tenemos un cliente SOAP listo para consumir el servicio desde
 Python.&lt;/p&gt;
 &lt;h2&gt;Utilizando el servicio SOAP via el cliente en Python&lt;/h2&gt;
@@ -192,7 +188,6 @@ interesan: Client.factory y Client.service.&lt;/p&gt;
 
     &lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;service&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GetWeather&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2&gt;Un vistazo a suds, por dentro&lt;/h2&gt;
 &lt;p&gt;Explorando la documentación o el WSDL veremos que
@@ -211,7 +206,6 @@ SOAPResponse). Vamos a ver cómo maneja suds ambos casos:&lt;/p&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Ahora, el &lt;code&gt;response&lt;/code&gt; se ve de la siguiente manera:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;suds&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sax&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Text&lt;/span&gt;
@@ -219,7 +213,7 @@ SOAPResponse). Vamos a ver cómo maneja suds ambos casos:&lt;/p&gt;
     &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;?&lt;/span&gt;&lt;span class="n"&gt;xml&lt;/span&gt; &lt;span class="n"&gt;version&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1.0&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;encoding&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;utf-16&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;?&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
     &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;CurrentWeather&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
         &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Location&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;Caracas&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;Maiquetia&lt;/span&gt; &lt;span class="n"&gt;Aerop&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Intl&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Simon&lt;/span&gt; &lt;span class="n"&gt;Bolivar&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Venezuela&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SVMI&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;36&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt; &lt;span class="mi"&gt;066&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;59&lt;/span&gt;&lt;span class="n"&gt;W&lt;/span&gt; &lt;span class="mi"&gt;48&lt;/span&gt;&lt;span class="n"&gt;M&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;Location&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Time&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;Aug&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2013&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;00&lt;/span&gt; &lt;span class="n"&gt;PM&lt;/span&gt; &lt;span class="n"&gt;EDT&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mf"&gt;2013.08&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt; &lt;span class="mi"&gt;0100&lt;/span&gt; &lt;span class="n"&gt;UTC&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;Time&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Time&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;Aug&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2013&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;00&lt;/span&gt; &lt;span class="n"&gt;PM&lt;/span&gt; &lt;span class="n"&gt;EDT&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mf"&gt;2013.08.19&lt;/span&gt; &lt;span class="mi"&gt;0100&lt;/span&gt; &lt;span class="n"&gt;UTC&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;Time&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
         &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Wind&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Calm&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;Wind&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
         &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Visibility&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;greater&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="n"&gt;mile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;Visibility&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
         &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;SkyConditions&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;partly&lt;/span&gt; &lt;span class="n"&gt;cloudy&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;SkyConditions&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
@@ -230,7 +224,6 @@ SOAPResponse). Vamos a ver cómo maneja suds ambos casos:&lt;/p&gt;
         &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Status&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;Success&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;Status&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
     &lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;CurrentWeather&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Como vemos, suds nos crea un objeto Python a partir de la definición
 que obtuvo del WSDL en el caso del &lt;em&gt;request&lt;/em&gt; que se construye a partir
@@ -264,7 +257,6 @@ código:&lt;/p&gt;
     &lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_options&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;soapheaders&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;auth_object&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Algunas veces, basta sólo con un objeto que contenga el usuario y el
 password para el servicio (como el request de este ejemplo) en el
 soapheaders del client y listo.&lt;/p&gt;
@@ -289,7 +281,6 @@ podemos ver el código para hacerlo.&lt;/p&gt;
 
     &lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;with_soap_attachment&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;subir_pista&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bin_param&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;endpoint&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Básicamente lo que se hace es leer los bytes que conforman el archivo y
 colocarlos en el cuerpo del mensaje SOAP (eso hace

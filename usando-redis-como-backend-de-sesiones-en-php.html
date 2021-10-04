@@ -1,489 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <title>
-   Usando Redis como backend de sesiones en php
-  </title>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <meta content="summary_large_image" name="twitter:card"/>
-  <meta content="@iferminm" name="twitter:site"/>
-  <meta content="Usando Redis como backend de sesiones en php" name="twitter:title"/>
-  <meta content="" name="twitter:description"/>
-  <meta content="" name="twitter:image"/>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" rel="stylesheet"/>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" rel="stylesheet"/>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
-  <link href="//iffm.me/theme/css/main.css" rel="stylesheet"/>
-  <link href="//127.0.0.1:8000/feeds/all.atom.xml" rel="alternate" title="/dev/isra/blog/* Full Atom Feed" type="application/atom+xml"/>
-  <link href="//127.0.0.1:8000/feeds/main.xml" rel="alternate" title="/dev/isra/blog/* Atom Feed" type="application/atom+xml"/>
-  <link href="//127.0.0.1:8000/feeds/{slug}.atom.xml" rel="alternate" title="/dev/isra/blog/* Categories Atom Feed" type="application/atom+xml"/>
-  <script async="" src="https://media.ethicalads.io/media/client/ethicalads.min.js">
-  </script>
-  <link href="//iffm.me/usando-redis-como-backend-de-sesiones-en-php.html" rel="canonical"/>
-  <script type="application/ld+json">
-   {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "/dev/isra/blog/*", "item": "//iffm.me"}, {"@type": "ListItem", "position": 2, "name": "Usando redis como backend de sesiones en php", "item": "//iffm.me/usando-redis-como-backend-de-sesiones-en-php.html"}]}
-  </script>
-  <script type="application/ld+json">
-   {"@context": "https://schema.org", "@type": "Article", "author": {"@type": "Person", "name": "Israel Fermín Montilla"}, "publisher": {"@type": "Organization", "name": "/dev/isra/blog/*"}, "headline": "Usando Redis como backend de sesiones en php", "about": "Español", "datePublished": "2014-10-19 00:00"}
-  </script>
- </head>
- <body>
-  <div class="navigation pure-menu pure-menu-horizontal">
-   <a class="pure-menu-heading pure-menu-link" href="//iffm.me/">
-    /dev/isra/blog/*
-   </a>
-   <ul class="pure-menu-list">
-    <li class="pure-menu-item">
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/pages/about-me.html">
-      About me...
-     </a>
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/pages/consulting.html">
-      Consulting
-     </a>
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/pages/now.html">
-      Now
-     </a>
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/pages/talks.html">
-      Talks
-     </a>
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/category/blog.html">
-      Blog
-     </a>
-    </li>
-    <li class="pure-menu-item pure-menu-selected">
-     <a class="pure-menu-link" href="//iffm.me/category/espanol.html">
-      Español
-     </a>
-    </li>
-   </ul>
-  </div>
-  <div class="page-container">
-   <div class="entry-content">
-    <div class="post-meta pure-g">
-     <div class="pure-u-3-4 meta-data">
-      <a class="category" href="//iffm.me/category/espanol.html">
-       Español
-      </a>
-      <br/>
-      <a class="author" href="//iffm.me/author/israel-fermin-montilla.html">
-       Israel Fermín Montilla
-      </a>
-      —
-      <abbr title="2014-10-19T00:00:00+04:00">
-       Sun 19 October 2014
-      </abbr>
-     </div>
+<head>
+        <title>Usando Redis como backend de sesiones en php</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@iferminm">
+<meta name="twitter:title" content="Usando Redis como backend de sesiones en php">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="//iffm.me/theme/css/main.css" />
+        <link href="//127.0.0.1:8000/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="/dev/isra/blog/* Full Atom Feed" />
+        <link href="//127.0.0.1:8000/feeds/main.xml" type="application/atom+xml" rel="alternate" title="/dev/isra/blog/* Atom Feed" />
+        <link href="//127.0.0.1:8000/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="/dev/isra/blog/* Categories Atom Feed" />
+        <script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
+</head>
+<body>
+
+    <div class="navigation pure-menu pure-menu-horizontal">
+        <a href="//iffm.me/" class="pure-menu-heading  pure-menu-link">/dev/isra/blog/*</a>
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"></li>
+
+            <li class="pure-menu-item"><a href="//iffm.me/pages/about-me.html" class="pure-menu-link">About me...</a></li>
+            <li class="pure-menu-item"><a href="//iffm.me/pages/consulting.html" class="pure-menu-link">Consulting</a></li>
+            <li class="pure-menu-item"><a href="//iffm.me/pages/now.html" class="pure-menu-link">Now</a></li>
+            <li class="pure-menu-item"><a href="//iffm.me/pages/talks.html" class="pure-menu-link">Talks</a></li>
+            <li class="pure-menu-item"><a href="//iffm.me/category/blog.html" class="pure-menu-link">Blog</a></li>
+            <li class="pure-menu-item pure-menu-selected"><a href="//iffm.me/category/espanol.html" class="pure-menu-link">Español</a></li>
+        </ul>
     </div>
-   </div>
-   <div class="article-header-container">
-    <div class="background-image-container">
-     <div class="background-image-small">
-      <div class="title-container">
-       <h1>
-        Usando Redis como backend de sesiones en php
-       </h1>
-      </div>
-     </div>
+
+
+<div class="page-container">
+    <div class="entry-content">
+        <div class="post-meta pure-g">
+<div class="pure-u-3-4 meta-data">
+    <a href="//iffm.me/category/espanol.html" class="category">Español</a><br />
+
+    <a class="author" href="//iffm.me/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+    &mdash; <abbr title="2014-10-19T00:00:00+04:00">Sun 19 October 2014</abbr>
+</div>        </div>
     </div>
-   </div>
-   <div class="entry-content">
-    <p>
-     Bueno, sí, leyeron bien el título, luego de años me tocó trabajar de
-nuevo con php en la oficina, dejen el escándalo.
-    </p>
-    <p>
-     Siendo sincero, las cosas parecieran haber mejorado mucho desde la
+
+    <div class="article-header-container">
+        <div class="background-image-container">
+
+            <div class="background-image-small">
+                <div class="title-container">
+                    <h1>Usando Redis como backend de sesiones en php</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="entry-content">
+        
+        <p>Bueno, sí, leyeron bien el título, luego de años me tocó trabajar de
+nuevo con php en la oficina, dejen el escándalo.</p>
+<p>Siendo sincero, las cosas parecieran haber mejorado mucho desde la
 última vez que hice (o traté de hacer) algo con php, era php 4.algo en
-aquel momento, jugaba con
-     <em>
-      Symfony
-     </em>
-     y fue una desgracia que no se la
-deseo ni a mi peor enemigo.
-    </p>
-    <p>
-     Luego, más recientemente jugué con
-     <em>
-      Yii
-     </em>
-     , un framework para desarrollo
+aquel momento, jugaba con <em>Symfony</em> y fue una desgracia que no se la
+deseo ni a mi peor enemigo.</p>
+<p>Luego, más recientemente jugué con <em>Yii</em>, un framework para desarrollo
 web con php que me pareció bastante bueno y es una alternativa que le
 recomiendo a todo aquel que no tenga más remedio que desarrollar usando
-este lenguaje, algunos me dicen que pruebe
-     <em>
-      Lavarel
-     </em>
-     y seguramente me
-cambie a php, pero dudo mucho que algo me atrape tanto como
-     <em>
-      Python
-     </em>
-     ,
-sin importar el framework, incluso
-     <em>
-      Web2Py
-     </em>
-     tiene muchas cosas
-rescatables.
-    </p>
-    <p>
-     Bueno, manos a la obra:
-    </p>
-    <h2>
-     La historia:
-    </h2>
-    <p>
-     En la oficina están en una onda de
-     <em>
-      intercambiar código
-     </em>
-     con nuestros
+este lenguaje, algunos me dicen que pruebe <em>Lavarel</em> y seguramente me
+cambie a php, pero dudo mucho que algo me atrape tanto como <em>Python</em>,
+sin importar el framework, incluso <em>Web2Py</em> tiene muchas cosas
+rescatables.</p>
+<p>Bueno, manos a la obra:</p>
+<h2>La historia:</h2>
+<p>En la oficina están en una onda de <em>intercambiar código</em> con nuestros
 aliados comerciales o "páginas hermanas", el problema es que nosotros
-desarrollamos en
-     <em>
-      Python
-     </em>
-     +
-     <em>
-      django
-     </em>
-     y a veces
-     <em>
-      bottle
-     </em>
-     y todos los
-demás en php.
-    </p>
-    <p>
-     Este proyecto en particular, fue desarrollado con un framework hecho en
+desarrollamos en <em>Python</em> + <em>django</em> y a veces <em>bottle</em> y todos los
+demás en php.</p>
+<p>Este proyecto en particular, fue desarrollado con un framework hecho en
 casa en php y es usado como una librería para autenticación utilizando
-servicios de 3eros, es decir,
-     <em>
-      OAuth
-     </em>
-     . Esto en un mundo ideal, donde
-todo lo programas con php y puedes simplemente hacer:
-    </p>
-    <div class="highlight">
-     <pre><span></span><code><span class="x">use project\module\submodule\file;</span>
-</code></pre>
-    </div>
-    <p>
-     y todo bien.
-    </p>
-    <h2>
-     El problema:
-    </h2>
-    <p>
-     Obviamente, no podemos importar código php en nuestro proyecto en
-     <em>
-      Python
-     </em>
-     , entonces, la solución fue simplemente, adaptar la librería
+servicios de 3eros, es decir, <em>OAuth</em>. Esto en un mundo ideal, donde
+todo lo programas con php y puedes simplemente hacer:</p>
+<div class="highlight"><pre><span></span><code><span class="x">use project\module\submodule\file;</span>
+</code></pre></div>
+
+<p>y todo bien.</p>
+<h2>El problema:</h2>
+<p>Obviamente, no podemos importar código php en nuestro proyecto en
+<em>Python</em>, entonces, la solución fue simplemente, adaptar la librería
 provista por la otra gente para usarla como un servicio, la cosa salió
 bastante bien, pero al momento de poner todo en producción, nos dimos
-cuenta de algo.
-    </p>
-    <p>
-     Se desplegaron dos instancias de este servicio detrás de un balanceador
-de carga, para autenticar usando
-     <em>
-      OAuth
-     </em>
-     , es necesario golpear más de
+cuenta de algo.</p>
+<p>Se desplegaron dos instancias de este servicio detrás de un balanceador
+de carga, para autenticar usando <em>OAuth</em>, es necesario golpear más de
 una vez el servicio, entonces, estando dos (o más) instancias detrás de
 un balanceador de carga, no tienes manera de garantizar que quien
-atiende el primer
-     <em>
-      request
-     </em>
-     , es el mismo que atiende el segundo.
-    </p>
-    <p>
-     A esto súmale que se guarda cierta información en la sesión para
+atiende el primer <em>request</em>, es el mismo que atiende el segundo.</p>
+<p>A esto súmale que se guarda cierta información en la sesión para
 mantenerla durante todo el proceso de autenticación y php almacena las
-variables de sesión en un archivo local del servidor.
-    </p>
-    <h2>
-     La solución:
-    </h2>
-    <p>
-     Sin pensarlo mucho, la solución es tener
-     <em>
-      algo
-     </em>
-     que todas las instancias
+variables de sesión en un archivo local del servidor.</p>
+<h2>La solución:</h2>
+<p>Sin pensarlo mucho, la solución es tener <em>algo</em> que todas las instancias
 compartan para escribir la información relacionada a las sesiones, puede
-ser una base de datos
-     <em>
-      MySQL
-     </em>
-     , un sistema de archivos compartido con
-     <em>
-      NFS
-     </em>
-     , lo que sea, nosotros optamos por
-     <em>
-      Redis
-     </em>
-     porque es lo más rápido
+ser una base de datos <em>MySQL</em>, un sistema de archivos compartido con
+<em>NFS</em>, lo que sea, nosotros optamos por <em>Redis</em> porque es lo más rápido
 y fácil de configurar, responde rápido porque mantiene ciertas cosas en
 memoria y es difícil que pierda datos, puede pasar, pero igual es
-información transitoria que no nos interesa conservar.
-    </p>
-    <h3>
-     Implementación:
-    </h3>
-    <p>
-     Luego de investigar unos minutos, nos dimos cuenta de que no era nada
+información transitoria que no nos interesa conservar.</p>
+<h3>Implementación:</h3>
+<p>Luego de investigar unos minutos, nos dimos cuenta de que no era nada
 del otro mundo, simplemente cambiar unos parámetros de configuración en
-los respectivos archivos
-     <em>
-      php.ini
-     </em>
-     , instalar un par de paquetes y listo.
-    </p>
-    <h4>
-     Instalación de paquetes:
-    </h4>
-    <p>
-     Descargamos
-     <a href="https://github.com/nicolasff/phpredis">
-      php-redis
-     </a>
-    </p>
-    <div class="highlight">
-     <pre><span></span><code>sudo aptitude install php5-dev
+los respectivos archivos <em>php.ini</em>, instalar un par de paquetes y listo.</p>
+<h4>Instalación de paquetes:</h4>
+<p>Descargamos
+<a href="https://github.com/nicolasff/phpredis">php-redis</a></p>
+<div class="highlight"><pre><span></span><code>sudo aptitude install php5-dev
 <span class="nb">cd</span> php_redis/
 sudo phpize
 sudo ./configure
 sudo make
 sudo make install
-</code></pre>
-    </div>
-    <h4>
-     php.ini:
-    </h4>
-    <p>
-     Simplemente debemos modificar las siguientes líneas:
-    </p>
-    <div class="highlight">
-     <pre><span></span><code><span class="n">extension</span><span class="o">=</span><span class="n">redis</span><span class="p">.</span><span class="n">so</span><span class="w"></span>
+</code></pre></div>
+
+<h4>php.ini:</h4>
+<p>Simplemente debemos modificar las siguientes líneas:</p>
+<div class="highlight"><pre><span></span><code><span class="n">extension</span><span class="o">=</span><span class="n">redis</span><span class="p">.</span><span class="n">so</span><span class="w"></span>
 <span class="o">[</span><span class="n">Session</span><span class="o">]</span><span class="w"></span>
 <span class="k">session</span><span class="p">.</span><span class="n">save_handler</span><span class="o">=</span><span class="n">redis</span><span class="w"></span>
-<span class="k">session</span><span class="p">.</span><span class="n">save_path</span><span class="o">=</span><span class="ss">"tcp://localhost:6379"</span><span class="w"></span>
-</code></pre>
-    </div>
-    <p>
-     El
-     <em>
-      save_path
-     </em>
-     debe tener la IP y el Puerto donde nuestra instancia de
-redis estará escuchando.
-    </p>
-    <h2>
-     Conclusión:
-    </h2>
-    <p>
-     Ciertamente las cosas han mejorado sólo un poco en php desde la última
+<span class="k">session</span><span class="p">.</span><span class="n">save_path</span><span class="o">=</span><span class="ss">&quot;tcp://localhost:6379&quot;</span><span class="w"></span>
+</code></pre></div>
+
+<p>El <em>save_path</em> debe tener la IP y el Puerto donde nuestra instancia de
+redis estará escuchando.</p>
+<h2>Conclusión:</h2>
+<p>Ciertamente las cosas han mejorado sólo un poco en php desde la última
 vez que lo usé para algo más que un proyecto de juguete. Sin embargo no
 me veo programando en php a menos que sea estrictamente necesario por
-las características o restricciones de un proyecto en particular.
-    </p>
-    <p>
-     Respecto al servicio de autenticación, ya está en producción, pareciera
+las características o restricciones de un proyecto en particular.</p>
+<p>Respecto al servicio de autenticación, ya está en producción, pareciera
 estar funcionando bastante bien, sin embargo hay muchas cosas con las
 que no estamos contentos, seguramente terminemos cambiándolo por una
-versión 2.0, seguramente en
-     <em>
-      Python
-     </em>
-     y desarrollado por nosotros pero,
-al menos por ahora, funciona y hace el trabajo.
-    </p>
-   </div>
-   <footer>
-    <div class="tags">
-     <a href="//iffm.me/tag/programacion.html">
-      programación
-     </a>
-     <a href="//iffm.me/tag/redis.html">
-      redis
-     </a>
-     <a href="//iffm.me/tag/web.html">
-      web
-     </a>
-     <a href="//iffm.me/tag/php.html">
-      php
-     </a>
+versión 2.0, seguramente en <em>Python</em> y desarrollado por nosotros pero,
+al menos por ahora, funciona y hace el trabajo.</p>
     </div>
-    <a class="twitter-share-button" data-size="large" href="https://twitter.com/intent/tweet">
-     Tweet
-    </a>
-    <div class="pure-g post-footer">
-     <div class="pure-u-1 pure-u-md-1-2">
-      <div class="pure-g poster-info">
-       <div class="pure-u">
-        <a href="//iffm.me/author/israel-fermin-montilla.html">
-         <img alt="" src="https://dl.dropboxusercontent.com/s/1bvnowsfke4rs2k/isra.jpg"/>
+
+    <footer>
+        <div class="tags">
+            <a href="//iffm.me/tag/programacion.html">programación</a>
+            <a href="//iffm.me/tag/redis.html">redis</a>
+            <a href="//iffm.me/tag/web.html">web</a>
+            <a href="//iffm.me/tag/php.html">php</a>
+        </div>
+        <a class="twitter-share-button" data-size="large"
+          href="https://twitter.com/intent/tweet">
+            Tweet
         </a>
-       </div>
-       <div class="pure-u-3-4">
-        <h3 class="author-name">
-         <a href="//iffm.me/author/israel-fermin-montilla.html">
-          Israel Fermín Montilla
-         </a>
-        </h3>
-        <a class="twitter-follow-button" data-show-count="false" href="https://twitter.com/iferminm?ref_src=twsrc%5Etfw">
-         Follow @iferminm
-        </a>
-        <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js">
-        </script>
-        <p class="author-description">
-         {' Full time husband and dad who loves technology and programming. Senior Software Engineer @ Careem'}
-        </p>
-       </div>
-      </div>
-     </div>
-    </div>
-    <!-- Begin MailChimp Signup Form -->
-    <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css"/>
-    <style type="text/css">
-     #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+        <div class="pure-g post-footer">
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div class="pure-g poster-info">
+                    <div class="pure-u">
+                        <a href="//iffm.me/author/israel-fermin-montilla.html"><img src="https://dl.dropboxusercontent.com/s/1bvnowsfke4rs2k/isra.jpg" alt=""></a>
+                    </div>
+                    <div class="pure-u-3-4">
+                        <h3 class="author-name"><a href="//iffm.me/author/israel-fermin-montilla.html">Israel Fermín Montilla</a></h3>
+                        <a href="https://twitter.com/iferminm?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @iferminm</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <p class="author-description">
+                          {' Full time husband and dad who loves technology and programming. Senior Software Engineer @ Careem'}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+        <!-- Begin MailChimp Signup Form -->
+        <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+        <style type="text/css">
+            #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
             /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
             We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-    </style>
-    <div id="mc_embed_signup">
-     <form action="//iffm.us15.list-manage.com/subscribe/post?u=f9aa59a7fe24a1d24a95b2e41&amp;id=28de70c22b" class="validate" id="mc-embedded-subscribe-form" method="post" name="mc-embedded-subscribe-form" novalidate="" target="_blank">
-      <div id="mc_embed_signup_scroll">
-       <h2>
-        Subscribe to my newsletter
-       </h2>
-       <p class="author-description">
-        I share interesting stuff I find over the internet. Mostly about software, tech and science.
+        </style>
+        <div id="mc_embed_signup">
+            <form action="//iffm.us15.list-manage.com/subscribe/post?u=f9aa59a7fe24a1d24a95b2e41&amp;id=28de70c22b" method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate" target="_blank"
+                novalidate>
+                <div id="mc_embed_signup_scroll">
+                    <h2>Subscribe to my newsletter</h2>
+                    <p class="author-description">
+                        I share interesting stuff I find over the internet. Mostly about software, tech and science.
                         Think of it as a curated list of cool links with an explanation of why I think it's intetresting.
-       </p>
-       <div class="indicates-required">
-        <span class="asterisk">
-         *
-        </span>
-        indicates required
-       </div>
-       <div class="mc-field-group">
-        <label for="mce-EMAIL">
-         Email Address
-         <span class="asterisk">
-          *
-         </span>
-        </label>
-        <input class="required email" id="mce-EMAIL" name="EMAIL" type="email" value=""/>
-       </div>
-       <div class="mc-field-group">
-        <label for="mce-FNAME">
-         First Name
-        </label>
-        <input class="" id="mce-FNAME" name="FNAME" type="text" value=""/>
-       </div>
-       <div class="mc-field-group">
-        <label for="mce-LNAME">
-         Last Name
-        </label>
-        <input class="" id="mce-LNAME" name="LNAME" type="text" value=""/>
-       </div>
-       <div class="clear" id="mce-responses">
-        <div class="response" id="mce-error-response" style="display:none">
-        </div>
-        <div class="response" id="mce-success-response" style="display:none">
-        </div>
-       </div>
-       <!-- real people should not fill this in and expect good things - do not remove this or risk
+                    </p>
+                    <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+                    <div class="mc-field-group">
+                        <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+                        </label>
+                        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+                    </div>
+                    <div class="mc-field-group">
+                        <label for="mce-FNAME">First Name </label>
+                        <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+                    </div>
+                    <div class="mc-field-group">
+                        <label for="mce-LNAME">Last Name </label>
+                        <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+                    </div>
+                    <div id="mce-responses" class="clear">
+                        <div class="response" id="mce-error-response" style="display:none"></div>
+                        <div class="response" id="mce-success-response" style="display:none"></div>
+                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk
                     form bot signups-->
-       <div aria-hidden="true" style="position: absolute; left: -5000px;">
-        <input name="b_f9aa59a7fe24a1d24a95b2e41_28de70c22b" tabindex="-1" type="text" value=""/>
-       </div>
-       <div class="clear">
-        <input class="button" id="mc-embedded-subscribe" name="subscribe" type="submit" value="Subscribe"/>
-       </div>
-      </div>
-     </form>
-    </div>
-    <script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js" type="text/javascript">
-    </script>
-    <script type="text/javascript">
-     (function($)
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text"
+                    name="b_f9aa59a7fe24a1d24a95b2e41_28de70c22b"
+                    tabindex="-1"
+                    value=""></div>
+                    <div class="clear"><input type="submit" value="Subscribe" name="subscribe"
+                    id="mc-embedded-subscribe"
+                    class="button"></div>
+                </div>
+            </form>
+        </div>
+        <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($)
         {window.fnames = new Array(); window.ftypes = new
         Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj =
-        jQuery.noConflict(true);
-    </script>
-    <!--End mc_embed_signup-->
-   </footer>
-   <div class="entry-content">
-    <div id="disqus_thread">
-    </div>
-    <script type="text/javascript">
-     var disqus_shortname = 'iferminmblog';
+        jQuery.noConflict(true);</script>
+        <!--End mc_embed_signup-->
+
+
+
+
+
+
+    </footer>
+
+    <div class="entry-content">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'iferminmblog';
             (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
             })();
-    </script>
-    <noscript>
-     Please enable JavaScript to view the
-     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
-      comments powered by Disqus.
-     </a>
-    </noscript>
-   </div>
-  </div>
-  <footer class="index-footer">
-   <a href="//iffm.me/" title="/dev/isra/blog/*">
-    /dev/isra/blog/*
-   </a>
-   <a href="//iffm.me/category/blog.html">
-    Blog
-   </a>
-   <a href="//iffm.me/category/espanol.html">
-    Español
-   </a>
-   <a href="http://getpelican.com/">
-    Pelican
-   </a>
-   <a href="http://python.org/">
-    Python.org
-   </a>
-   <a href="http://jinja.pocoo.org/">
-    Jinja2
-   </a>
-   <a href="//iffm.me/feeds/all.atom.xml">
-    Atom
-   </a>
-  </footer>
-  <script>
-   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+
+</div>
+
+
+
+    <footer class="index-footer">
+
+        <a href="//iffm.me/" title="/dev/isra/blog/*">/dev/isra/blog/*</a>
+        <a href="//iffm.me/category/blog.html">Blog</a>
+        <a href="//iffm.me/category/espanol.html">Español</a>
+        <a href="http://getpelican.com/">Pelican</a>
+        <a href="http://python.org/">Python.org</a>
+        <a href="http://jinja.pocoo.org/">Jinja2</a>
+        <a href="//iffm.me/feeds/all.atom.xml">Atom</a>
+
+    </footer>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
       ga('create', 'UA-96148260-1', 'auto');
       ga('send', 'pageview');
-  </script>
-  <script crossorigin="anonymous" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" src="https://code.jquery.com/jquery-3.5.1.slim.min.js">
-  </script>
-  <script type="text/javascript">
-   $(document).ready(() => {
+
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+      crossorigin="anonymous"></script>
+    <script type="text/javascript"> 
+        $(document).ready(() => {
 
             var mobile = (/iphone|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));  
             if (!mobile) { 
@@ -493,6 +292,6 @@ al menos por ahora, funciona y hace el trabajo.
             }   
 
         });
-  </script>
- </body>
+    </script> 
+</body>
 </html>

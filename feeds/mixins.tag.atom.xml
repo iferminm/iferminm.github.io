@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - mixins</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/mixins.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2014-12-19T00:00:00+04:00</updated><entry><title>Cosas que he aprendido, Mixins</title><link href="//iffm.me/cosas-que-he-aprendido-mixins.html" rel="alternate"></link><published>2014-12-19T00:00:00+04:00</published><updated>2014-12-19T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-12-19:/cosas-que-he-aprendido-mixins.html</id><summary type="html">&lt;p&gt;A menudo nos ocurre que estamos programando y vemos que hay ciertos
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - mixins</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/mixins.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2014-12-19T00:00:00+04:00</updated><subtitle></subtitle><entry><title>Cosas que he aprendido, Mixins</title><link href="//iffm.me/cosas-que-he-aprendido-mixins.html" rel="alternate"></link><published>2014-12-19T00:00:00+04:00</published><updated>2014-12-19T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-12-19:/cosas-que-he-aprendido-mixins.html</id><summary type="html">&lt;p&gt;A menudo nos ocurre que estamos programando y vemos que hay ciertos
 métodos que se repiten en varias clases, esto es una señal de que ese
 conjunto de métodos pueden abstraerse de alguna manera para no tener que
 duplicar esa lógica, entonces, escribimos una clase base, con esos
@@ -52,7 +52,6 @@ en el futuro habrá más vistas que deben ser "ajax friendly"&lt;/p&gt;
     &lt;span class="n"&gt;form&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;CommentForm&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Como vemos, es la implementación de lo que vendría siendo una vista
 basada en clases normal y corriente para procesar un formulario,
 validarlo y crear un nuevo registro de &lt;em&gt;Comment&lt;/em&gt;, sólo una cosa salta a
@@ -68,7 +67,6 @@ la vista: el &lt;em&gt;JSONResponseMixin&lt;/em&gt;. Veamos qué hace:&lt;/p&gt;
             &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;
         &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Y eso es todo, luego, si necesito hacer que alguna otra vista sea "ajax
 friendly", simplemente tengo que hacer que herede del

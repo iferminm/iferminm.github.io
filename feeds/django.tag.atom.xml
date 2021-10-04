@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - django</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/django.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2018-01-23T00:00:00+04:00</updated><entry><title>Django registration in no time!</title><link href="//iffm.me/django-registration-in-no-time.html" rel="alternate"></link><published>2018-01-23T00:00:00+04:00</published><updated>2018-01-23T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2018-01-23:/django-registration-in-no-time.html</id><summary type="html">&lt;p&gt;What does 99% of the projects we work on have in common?, what's usually the first or the last
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - django</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/django.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2018-01-23T00:00:00+04:00</updated><subtitle></subtitle><entry><title>Django registration in no time!</title><link href="//iffm.me/django-registration-in-no-time.html" rel="alternate"></link><published>2018-01-23T00:00:00+04:00</published><updated>2018-01-23T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2018-01-23:/django-registration-in-no-time.html</id><summary type="html">&lt;p&gt;What does 99% of the projects we work on have in common?, what's usually the first or the last
 thing we start working on when building something, a personal project perhaps?. If you said
 &lt;em&gt;dealing with users&lt;/em&gt;, that's right. On each and every project we find ourselves writing different
 registration …&lt;/p&gt;</summary><content type="html">&lt;p&gt;What does 99% of the projects we work on have in common?, what's usually the first or the last
@@ -30,9 +30,8 @@ in almost no time.&lt;/p&gt;
 &lt;p&gt;Let's get started&lt;/p&gt;
 &lt;h3&gt;Installation&lt;/h3&gt;
 &lt;p&gt;To install it, you just need to &lt;code&gt;pip&lt;/code&gt; it as any usual &lt;em&gt;Python&lt;/em&gt; module&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;pip install django-registration&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;registration&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;For the simple &lt;em&gt;one step&lt;/em&gt; registration flow or the &lt;em&gt;HMAC Based&lt;/em&gt; workflow, you don't need to do anything else.&lt;/p&gt;
 &lt;h3&gt;Registration workflows&lt;/h3&gt;
@@ -70,7 +69,6 @@ of creating the registration workflow is done for you and works out of the box.&
 &lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;2.- Set &lt;code&gt;REGISTRATION_OPEN = True&lt;/code&gt;, this is the default value, but &lt;em&gt;better explicit than implicit&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;3.- By default, after successful registration the user will be redirected to &lt;code&gt;/&lt;/code&gt;, but you can customize this behavior by
 subclassing &lt;code&gt;registration.backends.simple.views.RegistrationView&lt;/code&gt; and overriding the method &lt;code&gt;get_success_url()&lt;/code&gt;, in my case,
@@ -96,7 +94,6 @@ corresponding &lt;code&gt;url&lt;/code&gt;.&lt;/p&gt;
     &lt;span class="c1"&gt;# More url patterns&lt;/span&gt;
 &lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;5.- Customize the registration template, this flow only needs one template called &lt;code&gt;registration/registration_form.html&lt;/code&gt; and it will
 pick it up automatically, the &lt;code&gt;RegistrationView&lt;/code&gt; will add the &lt;code&gt;form&lt;/code&gt; variable to the &lt;code&gt;context&lt;/code&gt; and it will contain a &lt;code&gt;RegistrationForm&lt;/code&gt; instance,
@@ -368,10 +365,9 @@ proyecto en cuestión en el cual estamos trabajando.&lt;/p&gt;
 &lt;p&gt;Como todo en &lt;em&gt;django&lt;/em&gt;, tenemos un paquete llamado &lt;em&gt;django-rq&lt;/em&gt; que nos
 ayuda a organizar el código de una mejor manera y nos hace la vida más
 fácil, empecemos por descargar las librerías y paquetes necesarias:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    sudo aptitude install redis-server&lt;/span&gt;
-&lt;span class="err"&gt;    pip install django-rq django&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    sudo aptitude install redis-server
+    pip install django-rq django
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Si estamos en &lt;em&gt;Heroku&lt;/em&gt;, no es necesario instalar &lt;em&gt;redis&lt;/em&gt;, simplemente
 agregar los nuevos paquetes Python al &lt;em&gt;requirements.txt&lt;/em&gt; para que sean
@@ -396,13 +392,11 @@ nuestro &lt;em&gt;settings.py&lt;/em&gt;. A continuación un ejemplo de configur
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Ahora, las funciones sumamente pesadas pueden ser encoladas en
 cualquiera de las dos colas que hemos declarado en &lt;em&gt;settings.py&lt;/em&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;funcion_sumamente_pesada&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;argumento&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;pass&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Lo que haremos en nuestra vista es, en vez de llamar a la función
 directamente, le diremos a &lt;em&gt;django_rq&lt;/em&gt; que agregue el trabajo en la
@@ -416,7 +410,6 @@ cola que consideremos conveniente.&lt;/p&gt;
         &lt;span class="n"&gt;queue&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;enqueue&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;funcion_sumamente_pesada&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;argumento&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;También decorar las funciones que queremos encolar, esto hace que el
 código se vea un poco más limpio, pero el efecto es el mismo:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django_rq&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;job&lt;/span&gt;
@@ -426,13 +419,11 @@ código se vea un poco más limpio, pero el efecto es el mismo:&lt;/p&gt;
         &lt;span class="k"&gt;pass&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Y luego, en la vista:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;view&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="c1"&gt;#...&lt;/span&gt;
         &lt;span class="n"&gt;funcion_sumamente_pesada&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;argumento&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Lo que rq hace es tomar el &lt;em&gt;objeto función&lt;/em&gt;, serializarlo usando
 &lt;em&gt;pickle&lt;/em&gt; y guardar ese objeto serializado en redis. Ahora que tenemos el
@@ -442,9 +433,8 @@ des-serializarlo y ejecutarlo.&lt;/p&gt;
 (recuerden agregar la entrada correspondiente en el &lt;em&gt;Procfile&lt;/em&gt; de
 Heroku), simplemente corremos el siguiente comando en el terminal para
 probar localmente:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    python manage.py rqworker high default&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    python manage.py rqworker high default
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;En la consola, podemos ver cómo los trabajos se van ejecutando, incluso,
 si apagamos el worker y mandamos a encolar algunos trabajos, al ejecutar
@@ -592,22 +582,21 @@ completa, soporta múltiples servicios) llamada
 .external} para organizar tu contenido en directorios dentro de un
 &lt;em&gt;bucket&lt;/em&gt; de &lt;em&gt;S3&lt;/em&gt;, es necesario agregar parámetros de configuración en
 nuestro &lt;em&gt;settings.py&lt;/em&gt;, sería algo como esto:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="n"&gt;AWS_QUERYSTRING_AUTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;False&lt;/span&gt;
-    &lt;span class="n"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getenv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;AWS_ACCESS_KEY_ID&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getenv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;AWS_SECRET_ACCESS_KEY&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getenv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;AWS_STORAGE_BUCKET_NAME&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="nv"&gt;AWS_QUERYSTRING_AUTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;False&lt;/span&gt;
+    &lt;span class="nv"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;os&lt;/span&gt;.&lt;span class="k"&gt;getenv&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
+    &lt;span class="nv"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;os&lt;/span&gt;.&lt;span class="k"&gt;getenv&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
+    &lt;span class="nv"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;os&lt;/span&gt;.&lt;span class="k"&gt;getenv&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
 
-    &lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Expires&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="n"&gt;years&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;future&lt;/span&gt; &lt;span class="k"&gt;at&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="n"&gt;PM&lt;/span&gt; &lt;span class="n"&gt;GMT&lt;/span&gt;
-    &lt;span class="n"&gt;tenyrs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;date&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;today&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;timedelta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;days&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;365&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;AWS_HEADERS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
-        &lt;span class="s1"&gt;&amp;#39;Expires&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;tenyrs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;strftime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;%a, %d %b %Y 20:00:00 GMT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="err"&gt;}&lt;/span&gt;
+    # &lt;span class="nv"&gt;Expires&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="nv"&gt;years&lt;/span&gt; &lt;span class="nv"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;the&lt;/span&gt; &lt;span class="nv"&gt;future&lt;/span&gt; &lt;span class="nv"&gt;at&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="nv"&gt;PM&lt;/span&gt; &lt;span class="nv"&gt;GMT&lt;/span&gt;
+    &lt;span class="nv"&gt;tenyrs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;date&lt;/span&gt;.&lt;span class="nv"&gt;today&lt;/span&gt;&lt;span class="ss"&gt;()&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nv"&gt;timedelta&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;days&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;365&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
+    &lt;span class="nv"&gt;AWS_HEADERS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; {
+        &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;Expires&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;: &lt;span class="nv"&gt;tenyrs&lt;/span&gt;.&lt;span class="nv"&gt;strftime&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;%a, %d %b %Y 20:00:00 GMT&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
+    }
 
-    &lt;span class="n"&gt;STATICFILES_STORAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;s3_folder_storage.s3.StaticStorage&amp;#39;&lt;/span&gt;
-    &lt;span class="n"&gt;STATIC_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://%s.s3.amazonaws.com/static/&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt;
-    &lt;span class="n"&gt;STATIC_S3_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;static/&amp;#39;&lt;/span&gt;
+    &lt;span class="nv"&gt;STATICFILES_STORAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;s3_folder_storage.s3.StaticStorage&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;
+    &lt;span class="nv"&gt;STATIC_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;http://%s.s3.amazonaws.com/static/&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nv"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt;
+    &lt;span class="nv"&gt;STATIC_S3_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;static/&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;El parámetro de configuración AWS_QUERYSTRING_AUTH colocado en &lt;em&gt;False&lt;/em&gt;
 es para que &lt;em&gt;S3&lt;/em&gt; no nos genere urls firmadas para los assets sino que
@@ -618,24 +607,21 @@ página se verá &lt;strong&gt;bien&lt;/strong&gt;, con todos sus estilos y efec
 duren las urls vigentes.&lt;/p&gt;
 &lt;p&gt;Los demás son simplemente parámetros de configuración de S3, deben
 recordar añadir las variables de configuración en &lt;em&gt;Heroku&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    heroku config:add AWS_ACCESS_KEY_ID=EL_KEY_ID_DE_AWS_S3&lt;/span&gt;
-&lt;span class="err"&gt;    heroku config:add AWS_SECRET_ACCESS_KEY=EL_SECRET_KEY_ID_DE_AWS_S3&lt;/span&gt;
-&lt;span class="err"&gt;    heroku config:add AWS_STORAGE_BUCKET_NAME=EL_NOMBRE_DEL_BUCKET&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    heroku config:add AWS_ACCESS_KEY_ID=EL_KEY_ID_DE_AWS_S3
+    heroku config:add AWS_SECRET_ACCESS_KEY=EL_SECRET_KEY_ID_DE_AWS_S3
+    heroku config:add AWS_STORAGE_BUCKET_NAME=EL_NOMBRE_DEL_BUCKET
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Recuerden también colocar &lt;em&gt;s3_folder_storage&lt;/em&gt; entre los
 &lt;em&gt;INSTALLED_APPS&lt;/em&gt; del proyecto y activar la opción de &lt;em&gt;Heroku&lt;/em&gt; para que
 reconozca las variables de configuración en tiempo de compilación, de
 otra manera, el deploy fallará.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    heroku labs:enable user-env-compile&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    heroku labs:enable user-env-compile
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Con esto, ya deberíamos poder sincronizar los &lt;em&gt;assets&lt;/em&gt; a &lt;em&gt;S3&lt;/em&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    heroku run python manage.py collectstatic&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    heroku run python manage.py collectstatic
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Dependiendo de qué tantos archivos estáticos tengamos, va a tardar más o
 menos, va a enviar todo lo que esté en nuestro &lt;em&gt;STATIC_ROOT&lt;/em&gt; al &lt;em&gt;bucket
@@ -660,12 +646,11 @@ configuraciones adicionales, podemos hacer que por defecto nuestros
 &lt;em&gt;media files&lt;/em&gt;, para usar la terminología de &lt;em&gt;django&lt;/em&gt;, sean almacenados
 en nuestro &lt;em&gt;bucket&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Es necesario agregar las siguientes líneas a nuestro &lt;em&gt;settings.py&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    MEDIA_ROOT = &amp;#39;&amp;#39;&lt;/span&gt;
-&lt;span class="err"&gt;    DEFAULT_FILE_STORAGE = &amp;#39;s3_folder_storage.s3.DefaultStorage&amp;#39;&lt;/span&gt;
-&lt;span class="err"&gt;    DEFAULT_S3_PATH = &amp;#39;media/&amp;#39;&lt;/span&gt;
-&lt;span class="err"&gt;    MEDIA_URL = &amp;#39;http://%s.s3.amazonaws.com/media/&amp;#39; % AWS_STORAGE_BUCKET_NAME&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    MEDIA_ROOT = &amp;#39;&amp;#39;
+    DEFAULT_FILE_STORAGE = &amp;#39;s3_folder_storage.s3.DefaultStorage&amp;#39;
+    DEFAULT_S3_PATH = &amp;#39;media/&amp;#39;
+    MEDIA_URL = &amp;#39;http://%s.s3.amazonaws.com/media/&amp;#39; % AWS_STORAGE_BUCKET_NAME
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Con esto, todo lo que suban nuestros usuarios irá a la carpeta &lt;em&gt;media/&lt;/em&gt;
 de nuestro bucket.&lt;/p&gt;
@@ -702,7 +687,6 @@ pueda ver los archivos de nuestros usuarios de manera directa.&lt;/p&gt;
             &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_acl&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;private&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Con esto tenemos el archivo privado en &lt;em&gt;S3&lt;/em&gt;, ahora, necesitamos una
 manera de darle acceso al usuario que es propietario del archivo.&lt;/p&gt;
 &lt;ol&gt;
@@ -727,7 +711,6 @@ manera de darle acceso al usuario que es propietario del archivo.&lt;/p&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;generate_url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ttl&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;GET&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bucket&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;filepath&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;force_http&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;y en la vista:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.http&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;HttpResponseRedirect&lt;/span&gt;
     &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.auth.decorators&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;login_required&lt;/span&gt;
@@ -746,7 +729,6 @@ manera de darle acceso al usuario que es propietario del archivo.&lt;/p&gt;
 
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;status&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;403&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Con esto generamos una url firmada y válida por 3600 segundos (una hora)
 si el usuario que origina la solicitud es el propietario del objeto que

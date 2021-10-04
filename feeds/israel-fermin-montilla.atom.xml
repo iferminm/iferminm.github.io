@@ -1,5 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - Israel Fermín Montilla</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/israel-fermin-montilla.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2021-04-23T00:00:00+04:00</updated><entry><title>The pain of moving</title><link href="//iffm.me/the-pain-of-moving.html" rel="alternate"></link><published>2021-04-23T00:00:00+04:00</published><updated>2021-04-23T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2021-04-23:/the-pain-of-moving.html</id><summary type="html">&lt;p&gt;There are only few things in life which are as painful, annoying, energy and
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - Israel Fermín Montilla</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/israel-fermin-montilla.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2021-10-05T00:00:00+04:00</updated><subtitle></subtitle><entry><title>7 tips to be a more productive engineer</title><link href="//iffm.me/7-tips-to-be-a-more-productive-engineer.html" rel="alternate"></link><published>2021-10-05T00:00:00+04:00</published><updated>2021-10-05T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2021-10-05:/7-tips-to-be-a-more-productive-engineer.html</id><summary type="html">&lt;p&gt;As Software Engineers, we are not measured by how much we know about computer
+science, data structures and algorithms, at least not after we pass the interview.
+At the job the story is completely different, we can be the best programmers in
+the company, we can know our way around …&lt;/p&gt;</summary><content type="html">&lt;p&gt;As Software Engineers, we are not measured by how much we know about computer
+science, data structures and algorithms, at least not after we pass the interview.
+At the job the story is completely different, we can be the best programmers in
+the company, we can know our way around the languages we work on and write code
+with the eyes closed but, none of that matters if we produce no value. Our value
+comes in many forms, code and working, scalable and robust software is one of those
+ways, but we can't forget we are part of an engineering team and also keep in mind
+that &lt;a href="https://iffm.me/software-engineering.html"&gt;Software Engineering is more than writing code&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Most of our value comes in the form of working software, performance and resources
+optimizations, architecture and software design RFCs and so on, these tasks
+require a high level of concentration which means our ability to produce high
+value work is constrained by the amount of continuous uninterrupted time we have.
+Along with that, we also produce value in meetings, by aligning priorities and
+work with other engineering teams and also within our team when we work with other
+engineers, by reviewing code and other forms of collaborative work.&lt;/p&gt;
+&lt;p&gt;Ideally, we need to maximize the amount of high impact work we do as engineers,
+this usually has to do with the tasks that require a higher level of focus, but
+we can't neglect the other kinds of work we need to do as well. To 
+do this, we need to maximize the amount of uninterrupted time we have during our
+working hours.&lt;/p&gt;
+&lt;p&gt;Here are seven practices that have worked for me, hopefully they will work for 
+you too. Let's get it on:&lt;/p&gt;
+&lt;h2&gt;Have a daily prioritized list&lt;/h2&gt;
+&lt;p&gt;This looks like a no-brainer, right? and yet, a lot of people seems to fail in
+using them. I love lists, I make lists for almost everything: my daily work, 
+my personal projects, what I need when I go to the supermarket...&lt;/p&gt;
+&lt;p&gt;I keep a daily TODO list and I manage priorities with colors:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Red:&lt;/strong&gt; for high impact or urgent work, things that need to be done ASAP or
+things that, when done, will have a high impact on the projects I'm maintaining&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Yellow:&lt;/strong&gt; for things that will have impact, but not as much and can wait a bit
+to get some attention, for example, looking into an error that pops out from time
+to time in the logs or reading about some technology I will need to use some time
+in the future. It's good to tackle them before they become red.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Blue:&lt;/strong&gt; for things with low to no impact but would be fun or nice to do.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I usually mark in &lt;strong&gt;bold&lt;/strong&gt; the ones that require deep focus to be done, these 
+visual conventions help me navigate my list easier than &lt;em&gt;P1&lt;/em&gt;, &lt;em&gt;P0&lt;/em&gt; and &lt;em&gt;P2&lt;/em&gt; or
+a numeric approach to set priorities.&lt;/p&gt;
+&lt;p&gt;I don't finish my TODO list every day, to be honest, there are always a lot of
+things to tackle and it's impossible to get everything done in one day, plus,
+every day something new comes up, someone has a new request, someone writes a new
+RFC I need to read and comment, so, I keep adding tasks to the list as they come
+up and prioritize them later unless they're explicitly urgent. Whatever I can't
+finish today gets spilled for &lt;em&gt;tomorrow's&lt;/em&gt; list.&lt;/p&gt;
+&lt;p&gt;I also do my lists in advance, I prepare &lt;em&gt;tomorrow's&lt;/em&gt; list &lt;em&gt;today&lt;/em&gt; by end of day,
+that way I don't have to do it &lt;em&gt;tomorrow&lt;/em&gt; and I can just review it, and get to
+it after I have my coffee in the morning.&lt;/p&gt;
+&lt;p&gt;Of course, you'll need to keep your lists somewhere, for this, really, whatever
+floats your boat, some people use &lt;a href="https://www.notion.so/"&gt;Notion&lt;/a&gt;, some others
+prefer &lt;a href="https://evernote.com/"&gt;Evernote&lt;/a&gt;, &lt;a href="https://keep.google.com"&gt;Google Keep&lt;/a&gt;
+also seems to be a very popular option. At &lt;a href="https://careem.com/careers"&gt;Careem&lt;/a&gt;
+we use &lt;a href="https://www.atlassian.com/software/confluence"&gt;Confluence&lt;/a&gt;
+internally as a knowledge base solution for all things documentation, the thing
+I like about &lt;a href="https://www.atlassian.com/software/confluence"&gt;Confluence&lt;/a&gt; is that
+it gives every user a &lt;em&gt;personal&lt;/em&gt; space, I keep my daily TODO in my personal
+space as private notes for myself, it's very convenient because I don't have to
+have yet another tool, it's work and it's protected by all the security measures
+we have at &lt;a href="https://careem.com/careers"&gt;Careem&lt;/a&gt; and I'm usually logged in.&lt;/p&gt;
+&lt;p&gt;This system helps me keep focused and by creating a new page every day, I can
+look back and keep track of everything I've worked on and when while also making
+sure I focus only on unfinished tasks and remove the noise of finished tasks from
+my view.&lt;/p&gt;
+&lt;h2&gt;Be intentional with your time&lt;/h2&gt;
+&lt;p&gt;Have you ever wondered how it is possible to deliver so much stuff at school or
+uni and why we're not able to deliver as much at work?, the answer is, we had a
+routine, more or less. We knew every day we were going to have Calculus I
+from 10:00 to 12:30, then Algorithms II from 13:00 to 14:30, then 3 hours free,
+then back to classes from 18:00 to 19:45, it was predictable, we would use those
+3 hours to study, work on a project, have lunch, socialize or a combination of
+those, every day was planned and we could schedule in advance what to do. At work
+it's a bit more difficult, we have 8 hours of semi-random activities. When I
+realized this, I thought it makes sense to give some order to that chaos and
+make a routine for myself so that I could use my time in a more predictable manner.&lt;/p&gt;
+&lt;p&gt;One book that changed the way I think and reason about time is &lt;a href="https://www.goodreads.com/book/show/31287110-master-your-time-master-your-life"&gt;Master your time
+master your life&lt;/a&gt;
+by productivity coach &lt;a href="https://www.goodreads.com/author/show/22033.Brian_Tracy"&gt;Brian Tracy&lt;/a&gt;.
+I this book, Tracy mentions that there are multiple types of time in life and
+one needs to be able to identify what kind of time you have at the moment
+to know how you should use it as well as what kind of time a task requires in 
+order to know when to do it.&lt;/p&gt;
+&lt;p&gt;At &lt;a href="https://careem.com/careers"&gt;Careem&lt;/a&gt; we have what we call &lt;em&gt;focus time&lt;/em&gt;, which
+are blocks where no group meetings are allowed, only pairing for problem-solving
+or making progress on a task, we also have a no-meetings day, so, I schedule
+all my high-focus work at those times. Before we had these policies, I used to
+schedule 2 hours every day where I didn't accept any meetings or interruptions,
+muted all notifications and just focused on that type of tasks, whether it was
+writing code, working on some architecture or designing a solution to implement
+it later, I just focused on that during the time I blocked for this high focus
+work.&lt;/p&gt;
+&lt;p&gt;Now, I do all my collaborative work on the rest of the time I have, we usually
+have some time in-between meetings so I use that to read RFCs, review code and
+sometimes socialize.&lt;/p&gt;
+&lt;p&gt;If you're taking nothing else from this blog post, take only this point, &lt;strong&gt;Be
+Intentional with your time&lt;/strong&gt;, time is too limited and too precious to use it
+in a random way, &lt;strong&gt;be intentional&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2&gt;Be defensive with time&lt;/h2&gt;
+&lt;p&gt;Do you often find yourself attending more meetings than you feel you should?, or
+stuck in a meeting having no idea why you're there?. Learning to say &lt;em&gt;no&lt;/em&gt; is a
+skill you need to master, I had some hard time mastering this skill for many
+reasons, our inner nature is to help others, at least mine, I used to say no
+very rarely and as a result I was usually swamped with work, meetings and other
+commitments. Now, if I find a reason to say &lt;em&gt;no&lt;/em&gt;, I say &lt;em&gt;no&lt;/em&gt;. It's usually for
+a reason. I have a limited amount of time every day and I have to use it wisely.&lt;/p&gt;
+&lt;p&gt;For meetings, if I have a clashing event, I directly reject the invitation. All
+my current commitments take precedence with respect to new requests. If the
+meeting doesn't have a clear objective or agenda I ask for it to be added, if
+it's not added, and I have no way to know what's expected in the meeting, I let
+the organizer know I won't attend. If the meetings are spilling, I call that into
+attention and leave if I have other things to do. This might seem rude as attending
+meetings is part of the job but so it organizing and running them, if a meeting
+has no information about what to expect, it means someone is not doing their job
+organizing it. If the meeting is spilling, it means someone is not doing their job
+running it effectively.&lt;/p&gt;
+&lt;p&gt;Remember, as an IC (Individual Contributor) your time is your most valued resource,
+don't give it to everyone.&lt;/p&gt;
+&lt;h2&gt;Learn your tools&lt;/h2&gt;
+&lt;p&gt;This might seem an obvious one, but It's incredible the number of people I know
+who just know the basics of everything they use. I spend most of my time... well...
+writing, so, my text editor is where I spend most of my productive time. It doesn't
+matter what editor you use, whether it's vim or Emacs, vs-code or an IDE, learn
+how to use the advanced features. I use vim for most of the things that has to
+do with text: coding, writing docs in markdown, notes, etc. I'm constantly
+improving my vim config so that I can write code faster and navigate projects more
+efficiently. For larger codebases I'm not very familiar with, I do use an IDE, 
+we have an IntelliJ license through Careem, so, that's the IDE I use until I'm
+familiar with the project so that I can navigate my way through the code, it's
+convenient to learn the key shortcuts.&lt;/p&gt;
+&lt;p&gt;The other thing I spend most of my time now is the office chat, we use Slack,
+so, it's also worth learning how to use it properly, all the key shortcuts as
+well as learning to use the search, it's very powerful and you can find almost
+anything you can by using the search box instead of navigating through the chats.&lt;/p&gt;
+&lt;p&gt;By becoming a power user of all the things you use, you can then create systems
+to help you become more productive, for example, I often mark slack messages
+with reactions I can later search for, or set reminders on Slack about something
+a colleague said so that I can take action about it. Investing some time in
+becoming a power user at work often pays off.&lt;/p&gt;
+&lt;h2&gt;Take breaks&lt;/h2&gt;
+&lt;p&gt;This might seem counterintuitive but taking breaks makes you more productive just
+because you give your brain some chance to breath, what does this mean?. Have you
+ever been working on a feature, debugging an issue and felt blocked? like, you
+don't know what to do, what else to try or that the next step should be?, this is
+usually because you're locked inside the problem you're trying to solve, think of
+it as a box, it's very difficult to find something when you're inside the box, it's
+better to take some distance and look at it from a different perspective that lets
+you see what you're searching for. It's very difficult to find a failure anywhere
+if you're looking at it too closely, you might be looking at the wrong place,
+taking some distance and looking at it from afar makes it easier to spot anomalies
+and then just zoom-in there again.&lt;/p&gt;
+&lt;p&gt;That's exactly what happens when you take a break, you take some distance from
+the problem, allowing your brain to look at it from afar, your unconscious mind
+will continue working on the problem while you drink a cup of coffee or read
+some other material or (if you work from home and have kids) go change some diapers.
+Once you come back to the thing you were working on, it will be more clear or,
+at least, you'll have some hints on where to go next.&lt;/p&gt;
+&lt;p&gt;As I mentioned &lt;a href="https://iffm.me/working-from-home-with-kids.html"&gt;on a previous post&lt;/a&gt;,
+I often use the &lt;a href="https://en.wikipedia.org/wiki/Pomodoro_Technique"&gt;pomodoro technique&lt;/a&gt; 
+on my day to day work, I set a timer and I commit to work on a task for, 
+say, 30-40 minutes, I focus on the task at hand and only on that, when the 
+time in finished, I take a 5min break and then come back to the task for another
+30-40min block, this way I make taking breaks part of my work routine and avoid
+dawning myself in a problem.&lt;/p&gt;
+&lt;p&gt;This also applies to taking vacations, at &lt;a href="https://careem.com/careers"&gt;Careem&lt;/a&gt;
+we have unlimited vacations policy, this is great because I can take 1 or 2 days off
+whenever I feel I'm burnt out and come back refreshed to work. When you're too
+tired or burnt out by work, your motivation decreases and your work doesn't come
+out as easy or with the same quality, this is also when you consider switching jobs. 
+Taking a couple of days off to rest and disconnect from work when a weekend is 
+not enough to recover is a wise time investment, for me, after one of those 
+hard-deadline, time-sensitive, critical projects I try to take extend the weekend,
+at least 1 day, then I come back fresh and ready for another round. I'm not
+saying you should abuse these kind of policies, rather use them for your well-being
+and mental sanity, take a break when you feel you need it, your body and your
+employer will thank you for it.&lt;/p&gt;
+&lt;h2&gt;Get the most out of meetings&lt;/h2&gt;
+&lt;p&gt;This one might sound odd, if you want to be productive you should actually
+avoid meetings, right? as long as I'm sitting on a meeting I'm not doing my
+job, hence, I'm not producing value. We can agree on part of the statement for
+sure but it's not entirely true, meetings are an essential part of the job, we
+work with other fellow humans to tell machines what to do, so meeting with other
+people is essential to create alignment and decide on further steps, and make
+decisions about the underlying tech we are working on.&lt;/p&gt;
+&lt;p&gt;Meetings can't be avoided for sure, we can reduce them as much as we want/need
+but some kinds of meetings are just unavoidable and we need to learn to live with
+that. Not everything is lost, now that we accepted meetings are part of our life,
+we can choose to get the most out of them and make them efficient so that we don't
+have to meet too many times to discuss the same topics over and over again.&lt;/p&gt;
+&lt;p&gt;This might take a bit of discipline and agreement with your team, but with a few
+general practices in your meetings you can make them more efficient:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Start and finish on time, don't wait for late joiners, if you're on-time, you're
+late by German standards.&lt;/li&gt;
+&lt;li&gt;Have a clear meeting objective and agenda shared previously, this helps everyone
+know what will be discussed and prepare accordingly. If you receive a meeting
+invitation without an agenda or at least a description, reject it right away&lt;/li&gt;
+&lt;li&gt;Keep the conversation on-topic, call out side tracks and bring everyone again
+to the main topic&lt;/li&gt;
+&lt;li&gt;Take notes and share them, this avoids the back and forth after the meetings and
+the traditional questions such as "who was going to do X?", "did we decide A or B?"&lt;/li&gt;
+&lt;li&gt;Share pre-reads in advance and, if you receive a pre-read for a meeting, make
+sure you read it before joining&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Meetings are a necessary evil, but with discipline you can tame the monster
+and make them more effective.&lt;/p&gt;
+&lt;h2&gt;Start and stop on time&lt;/h2&gt;
+&lt;p&gt;Yes, this is the most important advice. We often see Engineers working until late
+evening, it's not about the hours, it's about the quality of the time you put
+into everything you do, I'd rather work 20min on something but really focused
+than 4 hours but all over the place.&lt;/p&gt;
+&lt;p&gt;Work will always be there, it never ends, if you start and stop working on time
+you're not doing anything wrong, it's just the way it should be. Working remotely
+this is especially tricky because you don't have the pressure of commuting, you can
+stretch a few minutes to wrap up, but that's it!, when it's time, close your laptop
+and go to your family, otherwise working after-hours becomes a habit and you won't
+be productive during office hours because you'll be thinking on finishing after-hours.&lt;/p&gt;
+&lt;h1&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;Time management is vital and a very difficult soft skill to develop, it's all about
+routines and rituals to me, it takes a lot of will power and discipline to actually
+put these personal processes in place but, in my own experience, it's totally worth
+the effort, if I miss doing my TODO list one day, I feel bad and a bit lost and
+I'm not fully productive that day because I don't have a clear picture of the
+priorities. Writing everything down helps you take it out of your system and
+take the tasks one by one without the fear of forgetting something.&lt;/p&gt;</content><category term="Blog"></category><category term="career"></category><category term="personal"></category><category term="productivity"></category></entry><entry><title>The pain of moving</title><link href="//iffm.me/the-pain-of-moving.html" rel="alternate"></link><published>2021-04-23T00:00:00+04:00</published><updated>2021-04-23T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2021-04-23:/the-pain-of-moving.html</id><summary type="html">&lt;p&gt;There are only few things in life which are as painful, annoying, energy and
 time consuming as moving, yes, shifting places is a pain in the... you know.
 There are a lot of unknowns and that baffles me: new rent, new neighborhood,
 am I going to like it? is it …&lt;/p&gt;</summary><content type="html">&lt;p&gt;There are only few things in life which are as painful, annoying, energy and
@@ -927,19 +1152,16 @@ by you.&lt;/p&gt;
 &lt;span class="n"&gt;Base&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;prepare&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;engine&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reflect&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Then you can access the classes with the table name as it is in the database let's say you have a
 &lt;code&gt;user_profile&lt;/code&gt; database, then you can access it as&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;Base&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;classes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;user_profile&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Trigger queries as&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;UserProfile&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Base&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;classes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;user_profile&lt;/span&gt;
 
 &lt;span class="n"&gt;profile&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;session&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;UserProfile&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;UserProfile&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;user_id&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;123123&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fist&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;And you're good to go.&lt;/p&gt;
 &lt;p&gt;Of course, code conventions in SQL and Python are different, if you want your code to look more pythonic
@@ -950,12 +1172,10 @@ when the automap is performed, it will add few lines but still below 20 lines in
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;w&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;capitalize&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;w&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;tablename&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;_&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)])&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Of course, that assumes your tables are named as &lt;code&gt;this_is_a_table&lt;/code&gt; and will be converted to &lt;code&gt;ThisIsATable&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;You can use that function when you call &lt;code&gt;Base.prepare&lt;/code&gt; as follows&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;Base&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;prepare&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;engine&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;reflect&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;classname_for_table&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;snake_to_pascal&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;And that's it. :-)&lt;/p&gt;</content><category term="Blog"></category><category term="python"></category><category term="databases"></category><category term="sqlalchemy"></category><category term="orm"></category></entry><entry><title>Choreography and Orchestration</title><link href="//iffm.me/choreography-and-orchestration.html" rel="alternate"></link><published>2018-05-10T00:00:00+04:00</published><updated>2018-05-10T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2018-05-10:/choreography-and-orchestration.html</id><summary type="html">&lt;p&gt;On a &lt;a href="http://iffm.me/my-take-on-microservices.html"&gt;previous article&lt;/a&gt; on &lt;em&gt;microservices&lt;/em&gt;, we went through the best practices I've seen,
 which doesn't mean those are the only ones, it only means that those are the ones I've seen work for me
@@ -1185,9 +1405,8 @@ in almost no time.&lt;/p&gt;
 &lt;p&gt;Let's get started&lt;/p&gt;
 &lt;h3&gt;Installation&lt;/h3&gt;
 &lt;p&gt;To install it, you just need to &lt;code&gt;pip&lt;/code&gt; it as any usual &lt;em&gt;Python&lt;/em&gt; module&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;pip install django-registration&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;registration&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;For the simple &lt;em&gt;one step&lt;/em&gt; registration flow or the &lt;em&gt;HMAC Based&lt;/em&gt; workflow, you don't need to do anything else.&lt;/p&gt;
 &lt;h3&gt;Registration workflows&lt;/h3&gt;
@@ -1225,7 +1444,6 @@ of creating the registration workflow is done for you and works out of the box.&
 &lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;2.- Set &lt;code&gt;REGISTRATION_OPEN = True&lt;/code&gt;, this is the default value, but &lt;em&gt;better explicit than implicit&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;3.- By default, after successful registration the user will be redirected to &lt;code&gt;/&lt;/code&gt;, but you can customize this behavior by
 subclassing &lt;code&gt;registration.backends.simple.views.RegistrationView&lt;/code&gt; and overriding the method &lt;code&gt;get_success_url()&lt;/code&gt;, in my case,
@@ -1251,7 +1469,6 @@ corresponding &lt;code&gt;url&lt;/code&gt;.&lt;/p&gt;
     &lt;span class="c1"&gt;# More url patterns&lt;/span&gt;
 &lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;5.- Customize the registration template, this flow only needs one template called &lt;code&gt;registration/registration_form.html&lt;/code&gt; and it will
 pick it up automatically, the &lt;code&gt;RegistrationView&lt;/code&gt; will add the &lt;code&gt;form&lt;/code&gt; variable to the &lt;code&gt;context&lt;/code&gt; and it will contain a &lt;code&gt;RegistrationForm&lt;/code&gt; instance,
@@ -1823,7 +2040,6 @@ you've worked on are.&lt;/p&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Success&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;This is a very basic example, full of bad practices and code like this shouldn't be pushed to production but it serves to illustrate what I need to explain.&lt;/p&gt;
 &lt;p&gt;Normally, what you might do is just call those three functions inside a task and just call the &lt;code&gt;task.delay()&lt;/code&gt; from the request handler, something like:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nd"&gt;@app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -1840,7 +2056,6 @@ you've worked on are.&lt;/p&gt;
     &lt;span class="n"&gt;resized&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;resize_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;upload_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;resized&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;But, those three functions are not supposed to be called synchronously, so, I don't want them laying in some module waiting for someone to call them outside a task. Reason being that, as said before, these are heavy processes that might keep my web server busy and prevent it from taking new requests for a while and also keep my users waiting on a &lt;em&gt;loading&lt;/em&gt; screen for a long time, which isn't a good user experience.&lt;/p&gt;
 &lt;p&gt;I could delete them and copy all the code in my task function but it will lead to a potentially long function which will do a lot of things, it will be difficult to read and difficult to maintain, so... bad idea.&lt;/p&gt;
@@ -1871,7 +2086,6 @@ you've worked on are.&lt;/p&gt;
 &lt;span class="n"&gt;process_image&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ProcessImage&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;And done, we can implement also a notification logic to inform the user if there's any issue processing the image after retrying and that kind of
 things, but I'll leave that for another post.&lt;/p&gt;
 &lt;p&gt;By doing a &lt;em&gt;class based task&lt;/em&gt; for complex background jobs, we can produce cleaner code which is easier to maintain and to read and keep those heavy tasks encapsulated so no one calls them directly from a controller or a django view.&lt;/p&gt;
@@ -1884,7 +2098,6 @@ see in newrelic for this service, the better.&lt;/p&gt;
 &lt;span class="n"&gt;package&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;subscription&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;package&lt;/span&gt;  &lt;span class="c1"&gt;# This was the failing line&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;The method says it returns a &lt;code&gt;subscription&lt;/code&gt; object, but it's returning &lt;code&gt;None&lt;/code&gt;, why?&lt;/p&gt;
 &lt;p&gt;I digged deeper and opened the &lt;code&gt;models.py&lt;/code&gt; file I searched for the method's name and bingo! I got it!&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="c1"&gt;# ...&lt;/span&gt;
@@ -1895,7 +2108,6 @@ see in newrelic for this service, the better.&lt;/p&gt;
                 &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;subscription&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;And... that's where the &lt;code&gt;None&lt;/code&gt; is coming from...&lt;/p&gt;
 &lt;h2&gt;What's wrong about this?&lt;/h2&gt;
@@ -2111,7 +2323,6 @@ como "foto_1.jpg", "foto_2.jpg" y así.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;zmv &lt;span class="s1"&gt;&amp;#39;(*).jpg&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;foto_$1.jpg&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Y listo!.&lt;/p&gt;
 &lt;h2&gt;Oh My ZSH&lt;/h2&gt;
 &lt;p&gt;Es un plugin que extiende &lt;em&gt;ZSH&lt;/em&gt; y, además, tiene varios addons, por
@@ -2127,11 +2338,9 @@ usuario para que sea el terminal por defecto&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;chsh -s /bin/zsh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Para instalar el plugin &lt;em&gt;Oh my ZSH&lt;/em&gt;, basta con ejecutar&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh &lt;span class="p"&gt;|&lt;/span&gt; sh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;O, si preferimos usar &lt;em&gt;wget&lt;/em&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - &lt;span class="p"&gt;|&lt;/span&gt; sh
@@ -2188,7 +2397,6 @@ en el futuro habrá más vistas que deben ser "ajax friendly"&lt;/p&gt;
     &lt;span class="n"&gt;form&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;CommentForm&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Como vemos, es la implementación de lo que vendría siendo una vista
 basada en clases normal y corriente para procesar un formulario,
 validarlo y crear un nuevo registro de &lt;em&gt;Comment&lt;/em&gt;, sólo una cosa salta a
@@ -2204,7 +2412,6 @@ la vista: el &lt;em&gt;JSONResponseMixin&lt;/em&gt;. Veamos qué hace:&lt;/p&gt;
             &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;
         &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Y eso es todo, luego, si necesito hacer que alguna otra vista sea "ajax
 friendly", simplemente tengo que hacer que herede del
@@ -2235,7 +2442,6 @@ colaterales, por ejemplo:&lt;/p&gt;
     &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Esta función, claramente, no hace una cosa, hace dos, escribe un texto
 al archivo y luego lo cierra, esto es poco intuitivo, cualquiera
@@ -2417,7 +2623,6 @@ acceso más pythónica a dicho atributo, por ejemplo:&lt;/p&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;used_credits&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;total_credits&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Como vemos, se simplifica un poco el acceso a estos atributos, se
 encapsula la llamada a la función correspondiente y se da una interfaz
 como si se tratara de un atributo, escondiendo la complejidad "tras
@@ -2487,7 +2692,6 @@ veamos como&lt;/p&gt;
     &lt;span class="c1"&gt;# Bueno, ya se hacen una idea&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Habría que hacer lo mismo para cada atributo/propiedad, la interfaz es
 simple, pero la implementación no es elegante, se ve un poco sucia y
 repetitiva, sin embargo, es válida.&lt;/p&gt;
@@ -2529,7 +2733,6 @@ realizar las validaciones necesarias de manera simple. Algo así como un
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;instance&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Con esto, nuestra clase &lt;em&gt;Book&lt;/em&gt; cambiaría de la siguiente manera:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Book&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="c1"&gt;# Los descriptores siempre se colocan al nivel de la clase&lt;/span&gt;
@@ -2547,12 +2750,10 @@ realizar las validaciones necesarias de manera simple. Algo así como un
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;year&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;year&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Una implementación mucho más limpia y legible, veamos cómo funciona&lt;/p&gt;
 &lt;p&gt;Supongamos que ya hemos hecho algo como&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;La Muerte de Honorio&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Miguel Otero Silva&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1963&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;ol&gt;
 &lt;li&gt;Al ejecutar, por ejemplo &lt;em&gt;b.year = 1200&lt;/em&gt;, se va a invocar realmente
@@ -2799,7 +3000,6 @@ todo lo programas con php y puedes simplemente hacer:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="x"&gt;use project\module\submodule\file;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;y todo bien.&lt;/p&gt;
 &lt;h2&gt;El problema:&lt;/h2&gt;
 &lt;p&gt;Obviamente, no podemos importar código php en nuestro proyecto en
@@ -2838,7 +3038,6 @@ sudo make
 sudo make install
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h4&gt;php.ini:&lt;/h4&gt;
 &lt;p&gt;Simplemente debemos modificar las siguientes líneas:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;extension&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;redis&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;so&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
@@ -2846,7 +3045,6 @@ sudo make install
 &lt;span class="k"&gt;session&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save_handler&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;redis&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;span class="k"&gt;session&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save_path&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;tcp://localhost:6379&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;El &lt;em&gt;save_path&lt;/em&gt; debe tener la IP y el Puerto donde nuestra instancia de
 redis estará escuchando.&lt;/p&gt;
@@ -3152,10 +3350,9 @@ proyecto en cuestión en el cual estamos trabajando.&lt;/p&gt;
 &lt;p&gt;Como todo en &lt;em&gt;django&lt;/em&gt;, tenemos un paquete llamado &lt;em&gt;django-rq&lt;/em&gt; que nos
 ayuda a organizar el código de una mejor manera y nos hace la vida más
 fácil, empecemos por descargar las librerías y paquetes necesarias:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    sudo aptitude install redis-server&lt;/span&gt;
-&lt;span class="err"&gt;    pip install django-rq django&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    sudo aptitude install redis-server
+    pip install django-rq django
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Si estamos en &lt;em&gt;Heroku&lt;/em&gt;, no es necesario instalar &lt;em&gt;redis&lt;/em&gt;, simplemente
 agregar los nuevos paquetes Python al &lt;em&gt;requirements.txt&lt;/em&gt; para que sean
@@ -3180,13 +3377,11 @@ nuestro &lt;em&gt;settings.py&lt;/em&gt;. A continuación un ejemplo de configur
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Ahora, las funciones sumamente pesadas pueden ser encoladas en
 cualquiera de las dos colas que hemos declarado en &lt;em&gt;settings.py&lt;/em&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;funcion_sumamente_pesada&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;argumento&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;pass&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Lo que haremos en nuestra vista es, en vez de llamar a la función
 directamente, le diremos a &lt;em&gt;django_rq&lt;/em&gt; que agregue el trabajo en la
@@ -3200,7 +3395,6 @@ cola que consideremos conveniente.&lt;/p&gt;
         &lt;span class="n"&gt;queue&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;enqueue&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;funcion_sumamente_pesada&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;argumento&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;También decorar las funciones que queremos encolar, esto hace que el
 código se vea un poco más limpio, pero el efecto es el mismo:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django_rq&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;job&lt;/span&gt;
@@ -3210,13 +3404,11 @@ código se vea un poco más limpio, pero el efecto es el mismo:&lt;/p&gt;
         &lt;span class="k"&gt;pass&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Y luego, en la vista:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;view&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="c1"&gt;#...&lt;/span&gt;
         &lt;span class="n"&gt;funcion_sumamente_pesada&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;argumento&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Lo que rq hace es tomar el &lt;em&gt;objeto función&lt;/em&gt;, serializarlo usando
 &lt;em&gt;pickle&lt;/em&gt; y guardar ese objeto serializado en redis. Ahora que tenemos el
@@ -3226,9 +3418,8 @@ des-serializarlo y ejecutarlo.&lt;/p&gt;
 (recuerden agregar la entrada correspondiente en el &lt;em&gt;Procfile&lt;/em&gt; de
 Heroku), simplemente corremos el siguiente comando en el terminal para
 probar localmente:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    python manage.py rqworker high default&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    python manage.py rqworker high default
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;En la consola, podemos ver cómo los trabajos se van ejecutando, incluso,
 si apagamos el worker y mandamos a encolar algunos trabajos, al ejecutar
@@ -3468,22 +3659,21 @@ completa, soporta múltiples servicios) llamada
 .external} para organizar tu contenido en directorios dentro de un
 &lt;em&gt;bucket&lt;/em&gt; de &lt;em&gt;S3&lt;/em&gt;, es necesario agregar parámetros de configuración en
 nuestro &lt;em&gt;settings.py&lt;/em&gt;, sería algo como esto:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="n"&gt;AWS_QUERYSTRING_AUTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;False&lt;/span&gt;
-    &lt;span class="n"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getenv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;AWS_ACCESS_KEY_ID&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getenv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;AWS_SECRET_ACCESS_KEY&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getenv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;AWS_STORAGE_BUCKET_NAME&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="nv"&gt;AWS_QUERYSTRING_AUTH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;False&lt;/span&gt;
+    &lt;span class="nv"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;os&lt;/span&gt;.&lt;span class="k"&gt;getenv&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;AWS_ACCESS_KEY_ID&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
+    &lt;span class="nv"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;os&lt;/span&gt;.&lt;span class="k"&gt;getenv&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;AWS_SECRET_ACCESS_KEY&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
+    &lt;span class="nv"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;os&lt;/span&gt;.&lt;span class="k"&gt;getenv&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
 
-    &lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Expires&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="n"&gt;years&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;future&lt;/span&gt; &lt;span class="k"&gt;at&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="n"&gt;PM&lt;/span&gt; &lt;span class="n"&gt;GMT&lt;/span&gt;
-    &lt;span class="n"&gt;tenyrs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;date&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;today&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;timedelta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;days&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;365&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;AWS_HEADERS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
-        &lt;span class="s1"&gt;&amp;#39;Expires&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;tenyrs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;strftime&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;%a, %d %b %Y 20:00:00 GMT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="err"&gt;}&lt;/span&gt;
+    # &lt;span class="nv"&gt;Expires&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt; &lt;span class="nv"&gt;years&lt;/span&gt; &lt;span class="nv"&gt;in&lt;/span&gt; &lt;span class="nv"&gt;the&lt;/span&gt; &lt;span class="nv"&gt;future&lt;/span&gt; &lt;span class="nv"&gt;at&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="nv"&gt;PM&lt;/span&gt; &lt;span class="nv"&gt;GMT&lt;/span&gt;
+    &lt;span class="nv"&gt;tenyrs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;date&lt;/span&gt;.&lt;span class="nv"&gt;today&lt;/span&gt;&lt;span class="ss"&gt;()&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nv"&gt;timedelta&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;days&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;365&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
+    &lt;span class="nv"&gt;AWS_HEADERS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; {
+        &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;Expires&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;: &lt;span class="nv"&gt;tenyrs&lt;/span&gt;.&lt;span class="nv"&gt;strftime&lt;/span&gt;&lt;span class="ss"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;%a, %d %b %Y 20:00:00 GMT&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="ss"&gt;)&lt;/span&gt;
+    }
 
-    &lt;span class="n"&gt;STATICFILES_STORAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;s3_folder_storage.s3.StaticStorage&amp;#39;&lt;/span&gt;
-    &lt;span class="n"&gt;STATIC_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;http://%s.s3.amazonaws.com/static/&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt;
-    &lt;span class="n"&gt;STATIC_S3_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;static/&amp;#39;&lt;/span&gt;
+    &lt;span class="nv"&gt;STATICFILES_STORAGE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;s3_folder_storage.s3.StaticStorage&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;
+    &lt;span class="nv"&gt;STATIC_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;http://%s.s3.amazonaws.com/static/&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="nv"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt;
+    &lt;span class="nv"&gt;STATIC_S3_PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="s"&gt;static/&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;El parámetro de configuración AWS_QUERYSTRING_AUTH colocado en &lt;em&gt;False&lt;/em&gt;
 es para que &lt;em&gt;S3&lt;/em&gt; no nos genere urls firmadas para los assets sino que
@@ -3494,24 +3684,21 @@ página se verá &lt;strong&gt;bien&lt;/strong&gt;, con todos sus estilos y efec
 duren las urls vigentes.&lt;/p&gt;
 &lt;p&gt;Los demás son simplemente parámetros de configuración de S3, deben
 recordar añadir las variables de configuración en &lt;em&gt;Heroku&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    heroku config:add AWS_ACCESS_KEY_ID=EL_KEY_ID_DE_AWS_S3&lt;/span&gt;
-&lt;span class="err"&gt;    heroku config:add AWS_SECRET_ACCESS_KEY=EL_SECRET_KEY_ID_DE_AWS_S3&lt;/span&gt;
-&lt;span class="err"&gt;    heroku config:add AWS_STORAGE_BUCKET_NAME=EL_NOMBRE_DEL_BUCKET&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    heroku config:add AWS_ACCESS_KEY_ID=EL_KEY_ID_DE_AWS_S3
+    heroku config:add AWS_SECRET_ACCESS_KEY=EL_SECRET_KEY_ID_DE_AWS_S3
+    heroku config:add AWS_STORAGE_BUCKET_NAME=EL_NOMBRE_DEL_BUCKET
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Recuerden también colocar &lt;em&gt;s3_folder_storage&lt;/em&gt; entre los
 &lt;em&gt;INSTALLED_APPS&lt;/em&gt; del proyecto y activar la opción de &lt;em&gt;Heroku&lt;/em&gt; para que
 reconozca las variables de configuración en tiempo de compilación, de
 otra manera, el deploy fallará.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    heroku labs:enable user-env-compile&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    heroku labs:enable user-env-compile
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Con esto, ya deberíamos poder sincronizar los &lt;em&gt;assets&lt;/em&gt; a &lt;em&gt;S3&lt;/em&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    heroku run python manage.py collectstatic&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    heroku run python manage.py collectstatic
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Dependiendo de qué tantos archivos estáticos tengamos, va a tardar más o
 menos, va a enviar todo lo que esté en nuestro &lt;em&gt;STATIC_ROOT&lt;/em&gt; al &lt;em&gt;bucket
@@ -3536,12 +3723,11 @@ configuraciones adicionales, podemos hacer que por defecto nuestros
 &lt;em&gt;media files&lt;/em&gt;, para usar la terminología de &lt;em&gt;django&lt;/em&gt;, sean almacenados
 en nuestro &lt;em&gt;bucket&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Es necesario agregar las siguientes líneas a nuestro &lt;em&gt;settings.py&lt;/em&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;    MEDIA_ROOT = &amp;#39;&amp;#39;&lt;/span&gt;
-&lt;span class="err"&gt;    DEFAULT_FILE_STORAGE = &amp;#39;s3_folder_storage.s3.DefaultStorage&amp;#39;&lt;/span&gt;
-&lt;span class="err"&gt;    DEFAULT_S3_PATH = &amp;#39;media/&amp;#39;&lt;/span&gt;
-&lt;span class="err"&gt;    MEDIA_URL = &amp;#39;http://%s.s3.amazonaws.com/media/&amp;#39; % AWS_STORAGE_BUCKET_NAME&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    MEDIA_ROOT = &amp;#39;&amp;#39;
+    DEFAULT_FILE_STORAGE = &amp;#39;s3_folder_storage.s3.DefaultStorage&amp;#39;
+    DEFAULT_S3_PATH = &amp;#39;media/&amp;#39;
+    MEDIA_URL = &amp;#39;http://%s.s3.amazonaws.com/media/&amp;#39; % AWS_STORAGE_BUCKET_NAME
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Con esto, todo lo que suban nuestros usuarios irá a la carpeta &lt;em&gt;media/&lt;/em&gt;
 de nuestro bucket.&lt;/p&gt;
@@ -3578,7 +3764,6 @@ pueda ver los archivos de nuestros usuarios de manera directa.&lt;/p&gt;
             &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_acl&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;private&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Con esto tenemos el archivo privado en &lt;em&gt;S3&lt;/em&gt;, ahora, necesitamos una
 manera de darle acceso al usuario que es propietario del archivo.&lt;/p&gt;
 &lt;ol&gt;
@@ -3603,7 +3788,6 @@ manera de darle acceso al usuario que es propietario del archivo.&lt;/p&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;generate_url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ttl&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;GET&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bucket&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AWS_STORAGE_BUCKET_NAME&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;filepath&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;force_http&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;y en la vista:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.http&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;HttpResponseRedirect&lt;/span&gt;
     &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib.auth.decorators&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;login_required&lt;/span&gt;
@@ -3622,7 +3806,6 @@ manera de darle acceso al usuario que es propietario del archivo.&lt;/p&gt;
 
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;status&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;403&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Con esto generamos una url firmada y válida por 3600 segundos (una hora)
 si el usuario que origina la solicitud es el propietario del objeto que
@@ -3671,7 +3854,6 @@ opciones, tenía una documentación decente.&lt;/p&gt;
 &lt;h2&gt;Instalando suds&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;pip install suds
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Recuerden que siempre es buena práctica trabajar con virtualenvs y,
 además, es muy buena opción el hecho de utilizar virtualenvwrapper para
@@ -3747,7 +3929,6 @@ formato XML.&lt;/p&gt;
     &lt;span class="nt"&gt;&amp;lt;/description&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;La sección &lt;em&gt;types&lt;/em&gt; describe los tipos de dato a los que da soporte el
 servicio web que se está describiendo. Las &lt;em&gt;interfaces&lt;/em&gt;, definen un
 servicio como tal, es decir, las operaciones que pueden ser realizadas y
@@ -3774,7 +3955,6 @@ con el servicio web.&lt;/p&gt;
         &lt;span class="nt"&gt;&amp;lt;/soap:Body&amp;gt;&lt;/span&gt;
     &lt;span class="nt"&gt;&amp;lt;/soap:Envelope&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;En un mensaje, el &lt;em&gt;envelope&lt;/em&gt; es lo que identifica el XML como un mensaje
 SOAP, el &lt;em&gt;header&lt;/em&gt; contiene información de encabezado, como por ejemplo,
@@ -3806,7 +3986,6 @@ servicio que vamos a usar:&lt;/p&gt;
     &lt;span class="n"&gt;client&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Client&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;http://www.webservicex.com/globalweather.asmx?WSDL&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Listo, ya tenemos un cliente SOAP listo para consumir el servicio desde
 Python.&lt;/p&gt;
 &lt;h2&gt;Utilizando el servicio SOAP via el cliente en Python&lt;/h2&gt;
@@ -3821,7 +4000,6 @@ interesan: Client.factory y Client.service.&lt;/p&gt;
 
     &lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;service&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GetWeather&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;h2&gt;Un vistazo a suds, por dentro&lt;/h2&gt;
 &lt;p&gt;Explorando la documentación o el WSDL veremos que
@@ -3840,7 +4018,6 @@ SOAPResponse). Vamos a ver cómo maneja suds ambos casos:&lt;/p&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Ahora, el &lt;code&gt;response&lt;/code&gt; se ve de la siguiente manera:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;    &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;suds&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sax&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Text&lt;/span&gt;
@@ -3848,7 +4025,7 @@ SOAPResponse). Vamos a ver cómo maneja suds ambos casos:&lt;/p&gt;
     &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;?&lt;/span&gt;&lt;span class="n"&gt;xml&lt;/span&gt; &lt;span class="n"&gt;version&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1.0&amp;quot;&lt;/span&gt; &lt;span class="n"&gt;encoding&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;utf-16&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;?&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
     &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;CurrentWeather&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
         &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Location&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;Caracas&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;Maiquetia&lt;/span&gt; &lt;span class="n"&gt;Aerop&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Intl&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Simon&lt;/span&gt; &lt;span class="n"&gt;Bolivar&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Venezuela&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;SVMI&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;36&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt; &lt;span class="mi"&gt;066&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;59&lt;/span&gt;&lt;span class="n"&gt;W&lt;/span&gt; &lt;span class="mi"&gt;48&lt;/span&gt;&lt;span class="n"&gt;M&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;Location&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Time&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;Aug&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2013&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;00&lt;/span&gt; &lt;span class="n"&gt;PM&lt;/span&gt; &lt;span class="n"&gt;EDT&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mf"&gt;2013.08&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;19&lt;/span&gt; &lt;span class="mi"&gt;0100&lt;/span&gt; &lt;span class="n"&gt;UTC&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;Time&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Time&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;Aug&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2013&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;09&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;00&lt;/span&gt; &lt;span class="n"&gt;PM&lt;/span&gt; &lt;span class="n"&gt;EDT&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mf"&gt;2013.08.19&lt;/span&gt; &lt;span class="mi"&gt;0100&lt;/span&gt; &lt;span class="n"&gt;UTC&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;Time&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
         &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Wind&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Calm&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;Wind&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
         &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Visibility&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;greater&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt; &lt;span class="n"&gt;mile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;Visibility&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
         &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;SkyConditions&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;partly&lt;/span&gt; &lt;span class="n"&gt;cloudy&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;SkyConditions&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
@@ -3859,7 +4036,6 @@ SOAPResponse). Vamos a ver cómo maneja suds ambos casos:&lt;/p&gt;
         &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Status&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;Success&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;Status&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
     &lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;CurrentWeather&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Como vemos, suds nos crea un objeto Python a partir de la definición
 que obtuvo del WSDL en el caso del &lt;em&gt;request&lt;/em&gt; que se construye a partir
@@ -3893,7 +4069,6 @@ código:&lt;/p&gt;
     &lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_options&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;soapheaders&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;auth_object&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Algunas veces, basta sólo con un objeto que contenga el usuario y el
 password para el servicio (como el request de este ejemplo) en el
 soapheaders del client y listo.&lt;/p&gt;
@@ -3918,7 +4093,6 @@ podemos ver el código para hacerlo.&lt;/p&gt;
 
     &lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;with_soap_attachment&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;client&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;subir_pista&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bin_param&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;endpoint&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Básicamente lo que se hace es leer los bytes que conforman el archivo y
 colocarlos en el cuerpo del mensaje SOAP (eso hace
@@ -4117,7 +4291,6 @@ una herramienta y un lenguaje, ambos &lt;strong&gt;Software Libre&lt;/strong&gt;
 &lt;em&gt;Linux distro list&lt;/em&gt; o &lt;em&gt;alternativas de software libre&lt;/em&gt; en Google y
 evaluar ustedes mismos si hay poco &lt;em&gt;Software Libre&lt;/em&gt;.&lt;/p&gt;
 &lt;/div&gt;
-
 &lt;div id="ahora-mi-reflexion" class="section"&gt;
 
 ## Ahora, mi reflexión
@@ -4781,13 +4954,12 @@ datos, digamos que puede realizar todas las operaciones CRUD. Empecemos
 por establecer ciertos valores de configuración para el manejador en el
 archivo /etc/postgresql/9.1/main/postgresql.conf. Debemos configurar los
 siguientes valores:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;listen_addresses = &amp;#39;*&amp;#39;&lt;/span&gt;
-&lt;span class="err"&gt;wal_level = hot_standby&lt;/span&gt;
-&lt;span class="err"&gt;wal_sync_method = fsync&lt;/span&gt;
-&lt;span class="err"&gt;max_wal_senders = 2&lt;/span&gt;
-&lt;span class="err"&gt;wal_keep_segments = 8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;listen_addresses = &amp;#39;*&amp;#39;
+wal_level = hot_standby
+wal_sync_method = fsync
+max_wal_senders = 2
+wal_keep_segments = 8
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Ahora bien, analicemos este segmento de configuración:&lt;/p&gt;
 &lt;ul&gt;
@@ -4824,9 +4996,8 @@ siguientes valores:&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;Ahora, debemos agregar una regla más de acceso al &lt;strong&gt;pg_hba.conf&lt;/strong&gt;, para
 permitir a los esclavos conectarse al servidor maestro:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;host replication all 10.1.1.8/32 trust&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;host replication all 10.1.1.8/32 trust
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Con esa línea, estamos configurando el servidor para que permita
 conexiones a todos los usuarios con permiso de replicación desde la
@@ -4836,17 +5007,14 @@ terminal SQL de Postgres:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;pg_start_backup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Mientras eso esté ocurriendo, en otro terminal, ejecutamos lo siguiente:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;cd /var/lib/postgresql/9.1 # tar czvf backup.tgz main&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;postgresql&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mf"&gt;9.1&lt;/span&gt; &lt;span class="c1"&gt;# tar czvf backup.tgz main&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Con esto estamos comprimiendo el directorio de datos de Postgres. Una
 vez hecho esto, detenemos la generación de WAL:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;pg_stop_backup&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;El asunto general se resume con la siguiente ecuación:&lt;/p&gt;
 &lt;p&gt;backup inconsistente + WAL = restauración a estado consistente.&lt;/p&gt;
@@ -4858,9 +5026,8 @@ instancia de Postgres por el directorio de datos del Maestro. Luego,
 creamos un directorio &lt;em&gt;recovery&lt;/em&gt;, donde copiaremos el último WAL del
 directorio pg_xlog. Adicionalmente, debemos modificar el
 postgresql.conf con las siguientes variables:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;hot_standby = on wal_level = hot_standby``&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;hot_standby = on wal_level = hot_standby``
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Ahora, creamos un archivo de configuración en la raíz del directorio de
 datos para establecer las siguientes opciones:&lt;/p&gt;
@@ -4869,7 +5036,6 @@ datos para establecer las siguientes opciones:&lt;/p&gt;
 &lt;span class="n"&gt;restore_command&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;cp /var/lib/postgresql/9.1/main/recovery/%f %p&amp;#39;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Con esto le decimos al servidor que va a esperar réplicas de
 &lt;strong&gt;primary_conninfo&lt;/strong&gt;, además, el &lt;strong&gt;restore_command&lt;/strong&gt; indica dónde se
 encuentra el respaldo inicial inconsistente. Finalmente, nos aseguramos
@@ -4877,12 +5043,10 @@ de que los roles tengan permiso de replicación:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;pg_roles&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;y, de no tener permisos de replicación, alteramos los roles necesarios
 para ello:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;ALTER&lt;/span&gt; &lt;span class="k"&gt;ROLE&lt;/span&gt; &lt;span class="n"&gt;nombre&lt;/span&gt; &lt;span class="k"&gt;WITH&lt;/span&gt; &lt;span class="n"&gt;REPLICATION&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Una vez hecho todo esto, ya hemos configurado un sistema de replicación
 Maestro-Esclavo utilizando Postgres como sistema manejador de base de
@@ -5202,11 +5366,8 @@ Email Address
 &lt;/div&gt;
 
 &lt;/div&gt;
-
 &lt;/div&gt;
-
 &lt;/div&gt;
-
 &lt;div class="footer"&gt;
 
 &lt;div class="container"&gt;

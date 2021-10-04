@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - web</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/web.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2014-10-19T00:00:00+04:00</updated><entry><title>Usando Redis como backend de sesiones en php</title><link href="//iffm.me/usando-redis-como-backend-de-sesiones-en-php.html" rel="alternate"></link><published>2014-10-19T00:00:00+04:00</published><updated>2014-10-19T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-10-19:/usando-redis-como-backend-de-sesiones-en-php.html</id><summary type="html">&lt;p&gt;Bueno, sí, leyeron bien el título, luego de años me tocó trabajar de
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - web</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/web.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2014-10-19T00:00:00+04:00</updated><subtitle></subtitle><entry><title>Usando Redis como backend de sesiones en php</title><link href="//iffm.me/usando-redis-como-backend-de-sesiones-en-php.html" rel="alternate"></link><published>2014-10-19T00:00:00+04:00</published><updated>2014-10-19T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-10-19:/usando-redis-como-backend-de-sesiones-en-php.html</id><summary type="html">&lt;p&gt;Bueno, sí, leyeron bien el título, luego de años me tocó trabajar de
 nuevo con php en la oficina, dejen el escándalo.&lt;/p&gt;
 &lt;p&gt;Siendo sincero, las cosas parecieran haber mejorado mucho desde la
 última vez que hice (o traté de hacer) algo con php, era php 4.algo en
@@ -28,7 +28,6 @@ servicios de 3eros, es decir, &lt;em&gt;OAuth&lt;/em&gt;. Esto en un mundo ideal
 todo lo programas con php y puedes simplemente hacer:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="x"&gt;use project\module\submodule\file;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;y todo bien.&lt;/p&gt;
 &lt;h2&gt;El problema:&lt;/h2&gt;
@@ -68,7 +67,6 @@ sudo make
 sudo make install
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h4&gt;php.ini:&lt;/h4&gt;
 &lt;p&gt;Simplemente debemos modificar las siguientes líneas:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;extension&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;redis&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;so&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
@@ -76,7 +74,6 @@ sudo make install
 &lt;span class="k"&gt;session&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save_handler&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;redis&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;span class="k"&gt;session&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save_path&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;tcp://localhost:6379&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;El &lt;em&gt;save_path&lt;/em&gt; debe tener la IP y el Puerto donde nuestra instancia de
 redis estará escuchando.&lt;/p&gt;

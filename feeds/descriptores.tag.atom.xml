@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - descriptores</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/descriptores.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2014-12-01T00:00:00+04:00</updated><entry><title>Cosas que he aprendido: Descriptores</title><link href="//iffm.me/cosas-que-he-aprendido-descriptores.html" rel="alternate"></link><published>2014-12-01T00:00:00+04:00</published><updated>2014-12-01T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-12-01:/cosas-que-he-aprendido-descriptores.html</id><summary type="html">&lt;p&gt;Bueno, llevo ya unos años dedicado casi 100% a desarrollo web con
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - descriptores</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/descriptores.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2014-12-01T00:00:00+04:00</updated><subtitle></subtitle><entry><title>Cosas que he aprendido: Descriptores</title><link href="//iffm.me/cosas-que-he-aprendido-descriptores.html" rel="alternate"></link><published>2014-12-01T00:00:00+04:00</published><updated>2014-12-01T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-12-01:/cosas-que-he-aprendido-descriptores.html</id><summary type="html">&lt;p&gt;Bueno, llevo ya unos años dedicado casi 100% a desarrollo web con
 &lt;em&gt;Python&lt;/em&gt;, unos años en los que he aprendido muchas cosas sobre el
 lenguaje y, por un momento, pensé que sabía suficiente, pero cuando uno
 empieza a pensar eso es peligroso, al final, nunca se sabe suficiente y
@@ -44,7 +44,6 @@ acceso más pythónica a dicho atributo, por ejemplo:&lt;/p&gt;
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;is_consumed&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;used_credits&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;total_credits&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Como vemos, se simplifica un poco el acceso a estos atributos, se
 encapsula la llamada a la función correspondiente y se da una interfaz
@@ -115,7 +114,6 @@ veamos como&lt;/p&gt;
     &lt;span class="c1"&gt;# Bueno, ya se hacen una idea&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Habría que hacer lo mismo para cada atributo/propiedad, la interfaz es
 simple, pero la implementación no es elegante, se ve un poco sucia y
 repetitiva, sin embargo, es válida.&lt;/p&gt;
@@ -157,7 +155,6 @@ realizar las validaciones necesarias de manera simple. Algo así como un
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;instance&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Con esto, nuestra clase &lt;em&gt;Book&lt;/em&gt; cambiaría de la siguiente manera:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Book&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="c1"&gt;# Los descriptores siempre se colocan al nivel de la clase&lt;/span&gt;
@@ -175,12 +172,10 @@ realizar las validaciones necesarias de manera simple. Algo así como un
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;year&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;year&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Una implementación mucho más limpia y legible, veamos cómo funciona&lt;/p&gt;
 &lt;p&gt;Supongamos que ya hemos hecho algo como&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;La Muerte de Honorio&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Miguel Otero Silva&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1963&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;ol&gt;
 &lt;li&gt;Al ejecutar, por ejemplo &lt;em&gt;b.year = 1200&lt;/em&gt;, se va a invocar realmente

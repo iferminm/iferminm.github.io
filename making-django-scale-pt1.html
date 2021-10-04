@@ -1,402 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <title>
-   Making django scale Pt.1
-  </title>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <meta content="summary_large_image" name="twitter:card"/>
-  <meta content="@iferminm" name="twitter:site"/>
-  <meta content="Making django scale Pt.1" name="twitter:title"/>
-  <meta content="" name="twitter:description"/>
-  <meta content="https://dl.dropboxusercontent.com/s/qfuis9ownkf3g2t/django-logo-positive.png" name="twitter:image"/>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" rel="stylesheet"/>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" rel="stylesheet"/>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
-  <link href="//iffm.me/theme/css/main.css" rel="stylesheet"/>
-  <link href="//127.0.0.1:8000/feeds/all.atom.xml" rel="alternate" title="/dev/isra/blog/* Full Atom Feed" type="application/atom+xml"/>
-  <link href="//127.0.0.1:8000/feeds/main.xml" rel="alternate" title="/dev/isra/blog/* Atom Feed" type="application/atom+xml"/>
-  <link href="//127.0.0.1:8000/feeds/{slug}.atom.xml" rel="alternate" title="/dev/isra/blog/* Categories Atom Feed" type="application/atom+xml"/>
-  <script async="" src="https://media.ethicalads.io/media/client/ethicalads.min.js">
-  </script>
-  <link href="//iffm.me/making-django-scale-pt1.html" rel="canonical"/>
-  <script type="application/ld+json">
-   {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "/dev/isra/blog/*", "item": "//iffm.me"}, {"@type": "ListItem", "position": 2, "name": "Making django scale pt1", "item": "//iffm.me/making-django-scale-pt1.html"}]}
-  </script>
-  <script type="application/ld+json">
-   {"@context": "https://schema.org", "@type": "Article", "author": {"@type": "Person", "name": "Israel Fermín Montilla"}, "publisher": {"@type": "Organization", "name": "/dev/isra/blog/*"}, "headline": "Making django scale Pt.1", "about": "Blog", "datePublished": "2017-09-24 00:00"}
-  </script>
- </head>
- <body>
-  <div class="navigation pure-menu pure-menu-horizontal">
-   <a class="pure-menu-heading pure-menu-link" href="//iffm.me/">
-    /dev/isra/blog/*
-   </a>
-   <ul class="pure-menu-list">
-    <li class="pure-menu-item">
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/pages/about-me.html">
-      About me...
-     </a>
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/pages/consulting.html">
-      Consulting
-     </a>
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/pages/now.html">
-      Now
-     </a>
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/pages/talks.html">
-      Talks
-     </a>
-    </li>
-    <li class="pure-menu-item pure-menu-selected">
-     <a class="pure-menu-link" href="//iffm.me/category/blog.html">
-      Blog
-     </a>
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/category/espanol.html">
-      Español
-     </a>
-    </li>
-   </ul>
-  </div>
-  <div class="page-container">
-   <div class="entry-content">
-    <div class="post-meta pure-g">
-     <div class="pure-u-3-4 meta-data">
-      <a class="category" href="//iffm.me/category/blog.html">
-       Blog
-      </a>
-      <br/>
-      <a class="author" href="//iffm.me/author/israel-fermin-montilla.html">
-       Israel Fermín Montilla
-      </a>
-      —
-      <abbr title="2017-09-24T00:00:00+04:00">
-       Sun 24 September 2017
-      </abbr>
-     </div>
+<head>
+        <title>Making django scale Pt.1</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@iferminm">
+<meta name="twitter:title" content="Making django scale Pt.1">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://dl.dropboxusercontent.com/s/qfuis9ownkf3g2t/django-logo-positive.png">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="//iffm.me/theme/css/main.css" />
+        <link href="//127.0.0.1:8000/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="/dev/isra/blog/* Full Atom Feed" />
+        <link href="//127.0.0.1:8000/feeds/main.xml" type="application/atom+xml" rel="alternate" title="/dev/isra/blog/* Atom Feed" />
+        <link href="//127.0.0.1:8000/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="/dev/isra/blog/* Categories Atom Feed" />
+        <script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
+</head>
+<body>
+
+    <div class="navigation pure-menu pure-menu-horizontal">
+        <a href="//iffm.me/" class="pure-menu-heading  pure-menu-link">/dev/isra/blog/*</a>
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"></li>
+
+            <li class="pure-menu-item"><a href="//iffm.me/pages/about-me.html" class="pure-menu-link">About me...</a></li>
+            <li class="pure-menu-item"><a href="//iffm.me/pages/consulting.html" class="pure-menu-link">Consulting</a></li>
+            <li class="pure-menu-item"><a href="//iffm.me/pages/now.html" class="pure-menu-link">Now</a></li>
+            <li class="pure-menu-item"><a href="//iffm.me/pages/talks.html" class="pure-menu-link">Talks</a></li>
+            <li class="pure-menu-item pure-menu-selected"><a href="//iffm.me/category/blog.html" class="pure-menu-link">Blog</a></li>
+            <li class="pure-menu-item"><a href="//iffm.me/category/espanol.html" class="pure-menu-link">Español</a></li>
+        </ul>
     </div>
-   </div>
-   <div class="article-header-container">
-    <div class="background-image-container">
-     <div class="background-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://dl.dropboxusercontent.com/s/qfuis9ownkf3g2t/django-logo-positive.png);">
-      <img alt="Making django scale Pt.1" src="https://dl.dropboxusercontent.com/s/qfuis9ownkf3g2t/django-logo-positive.png"/>
-      <div class="title">
-       <h1>
-        Making django scale Pt.1
-       </h1>
-       <h2>
-        Getting the basic concepts
-       </h2>
-      </div>
-     </div>
+
+
+<div class="page-container">
+    <div class="entry-content">
+        <div class="post-meta pure-g">
+            <!--div class="pure-u">
+                <a href="//iffm.me/category/blog.html"><img src=" " class="post-avatar" alt="Blog"></a>
+            </div-->
+<div class="pure-u-3-4 meta-data">
+    <a href="//iffm.me/category/blog.html" class="category">Blog</a><br />
+
+    <a class="author" href="//iffm.me/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+    &mdash; <abbr title="2017-09-24T00:00:00+04:00">Sun 24 September 2017</abbr>
+</div>        </div>
     </div>
-   </div>
-   <div class="entry-content">
-    <p>
-     I gave a talk on PyConPL this year about scaling django, obviously on a 35min talk you don't have enough
+
+    <div class="article-header-container">
+        <div class="background-image-container">
+
+            <div class="background-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://dl.dropboxusercontent.com/s/qfuis9ownkf3g2t/django-logo-positive.png);">
+                <img src="https://dl.dropboxusercontent.com/s/qfuis9ownkf3g2t/django-logo-positive.png" alt="Making django scale Pt.1">
+                <div class="title">
+                <h1>
+                    Making django scale Pt.1
+                </h1>
+                <h2>
+                    Getting the basic concepts
+                </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="entry-content">
+        
+        <p>I gave a talk on PyConPL this year about scaling django, obviously on a 35min talk you don't have enough
 time to outline all the strategies and go deeper, so I thought it might be a cool idea to write a series
 of blog posts  about this topic, not only to help someone who needs to optimize his django app, but also
-to help myself have it for future reference.
-    </p>
-    <p>
-     There are a lot of django apps out there, in most cases the default setup and basic deployment strategy
+to help myself have it for future reference.</p>
+<p>There are a lot of django apps out there, in most cases the default setup and basic deployment strategy
 would be fine, and your application will perform OK, but in some cases you will need to make it scale
 to serve thousands or millions of requests per day. There's no recipe for optimization or scalability,
 but there are a lot of technology or stack agnostic strategies you can use to make your systems scale
-well, here I'll show how to implement them with django.
-    </p>
-    <h2>
-     Basic concepts
-    </h2>
-    <p>
-     First things first, we need to have clear and solid concepts in mind, we use these words on a daily basis
+well, here I'll show how to implement them with django.</p>
+<h2>Basic concepts</h2>
+<p>First things first, we need to have clear and solid concepts in mind, we use these words on a daily basis
 if we're Software Engineers but when we need to say what they mean we sometimes struggle, so, I'll write
-them down here for future reference.
-    </p>
-    <h3>
-     Scalability
-    </h3>
-    <blockquote>
-     <p>
-      Scalability is the capability of a system or process to handle a growing amount of work or its potential
+them down here for future reference.</p>
+<h3>Scalability</h3>
+<blockquote>
+<p>Scalability is the capability of a system or process to handle a growing amount of work or its potential
 to be enlarged to accommodate it
-- Wikipedia
-     </p>
-    </blockquote>
-    <p>
-     What this means is the amount of work processed by a system must grow in proportion to how much it is enlarged,
+- Wikipedia</p>
+</blockquote>
+<p>What this means is the amount of work processed by a system must grow in proportion to how much it is enlarged,
 for example, if I have a cashier at a bank, and that cashier is able to serve 10 people per minute, if I add one
 more cashier to my system, it should be able to serve rightly 20 people per minute depending on the training of
 the other cashier and some other conditions. Luckily, servers are more homogenize than people's abilities, 
 for servers or applications, if I have a service that handles 1000 requests per minute, if I add another 
-instance of the same service I should be able to handle 2000 requests per minute.
-    </p>
-    <h3>
-     Performance
-    </h3>
-    <blockquote>
-     <p>
-      <em>
-       Computer performance
-      </em>
-      is the amount of work accomplished by a computer system.
-- Wikipedia
-     </p>
-    </blockquote>
-    <p>
-     You usually want to measure performance by some metric, for example:
-    </p>
-    <ul>
-     <li>
-      <em>
-       Response time:
-      </em>
-      which you want to minimize
-     </li>
-     <li>
-      <em>
-       Throughput:
-      </em>
-      throughput is the rate of processing work, this one you want to maximize
-     </li>
-     <li>
-      <em>
-       Resource utilization:
-      </em>
-      which you want to minimize, you want to accomplish more with less
-     </li>
-     <li>
-      <em>
-       Availability:
-      </em>
-      you want to maximize your uptime
-     </li>
-    </ul>
-    <p>
-     The performance metrics are relative to the type of system you're building, for web applications
-you usually go for low response time and high throughput.
-    </p>
-    <h3>
-     Pareto principle
-    </h3>
-    <p>
-     This isn't actually a concept, but it is incredible how things always turn out like this. The Pareto
-principle states what follows:
-    </p>
-    <blockquote>
-     <p>
-      For many events, roughly 80% of the effects come from 20% of the causes
-     </p>
-    </blockquote>
-    <p>
-     For example, 80% of the work will be done in 20% of the time, the other 80% will be spent on small issues
+instance of the same service I should be able to handle 2000 requests per minute.</p>
+<h3>Performance</h3>
+<blockquote>
+<p><em>Computer performance</em> is the amount of work accomplished by a computer system.
+- Wikipedia</p>
+</blockquote>
+<p>You usually want to measure performance by some metric, for example:</p>
+<ul>
+<li><em>Response time:</em> which you want to minimize</li>
+<li><em>Throughput:</em> throughput is the rate of processing work, this one you want to maximize</li>
+<li><em>Resource utilization:</em> which you want to minimize, you want to accomplish more with less</li>
+<li><em>Availability:</em> you want to maximize your uptime</li>
+</ul>
+<p>The performance metrics are relative to the type of system you're building, for web applications
+you usually go for low response time and high throughput.</p>
+<h3>Pareto principle</h3>
+<p>This isn't actually a concept, but it is incredible how things always turn out like this. The Pareto
+principle states what follows:</p>
+<blockquote>
+<p>For many events, roughly 80% of the effects come from 20% of the causes</p>
+</blockquote>
+<p>For example, 80% of the work will be done in 20% of the time, the other 80% will be spent on small issues
 or small tangential work not directly related to the main objective. 80% of the bugs is caused by 20% of the
-code and, in this case, 80% of the performance impact is caused by 20% of the issues.
-    </p>
-    <p>
-     This is interesting because it makes you see that not all issues affect your system's performance the same way,
+code and, in this case, 80% of the performance impact is caused by 20% of the issues.</p>
+<p>This is interesting because it makes you see that not all issues affect your system's performance the same way,
 there are some issues that are more serious and not necessarily the same issue on a different project will impact
-it the same way. Find that 20% and gain an 80% on performance, sounds easy, right?, but it isn't.
-    </p>
-    <h3>
-     Takeaways
-    </h3>
-    <p>
-     As a Software Engineer, sometimes I become so obsessed about performance I sometimes write things
-     <em>
-      already optimized
-     </em>
-     ,
+it the same way. Find that 20% and gain an 80% on performance, sounds easy, right?, but it isn't.</p>
+<h3>Takeaways</h3>
+<p>As a Software Engineer, sometimes I become so obsessed about performance I sometimes write things <em>already optimized</em>,
 this is a big fallacy and a huge mistake, premature optimization is bad because you don't know if what you're doing
 is actually going to have a significative impact on your system's performance, blind optimization is worse, because
 you might have some ways to get data or an insight on how your program is running but you're just too naive or lazy
-to go get it.
-    </p>
-    <p>
-     In the following posts, I'll recommend some tools to measure and later on some strategies to make your django site scale,
-so, what you'll see in part 2 will be a set of tools to monitor your app's health.
-    </p>
-    <p>
-     Don't forget to subscribe! I rarely send emails but when I do, It's interesting, I promise.
-    </p>
-   </div>
-   <footer>
-    <div class="tags">
-     <a href="//iffm.me/tag/python.html">
-      python
-     </a>
-     <a href="//iffm.me/tag/django.html">
-      django
-     </a>
-     <a href="//iffm.me/tag/scaling.html">
-      scaling
-     </a>
+to go get it.</p>
+<p>In the following posts, I'll recommend some tools to measure and later on some strategies to make your django site scale,
+so, what you'll see in part 2 will be a set of tools to monitor your app's health.</p>
+<p>Don't forget to subscribe! I rarely send emails but when I do, It's interesting, I promise.</p>
     </div>
-    <a class="twitter-share-button" data-size="large" href="https://twitter.com/intent/tweet">
-     Tweet
-    </a>
-    <div class="pure-g post-footer">
-     <div class="pure-u-1 pure-u-md-1-2">
-      <div class="pure-g poster-info">
-       <div class="pure-u">
-        <a href="//iffm.me/author/israel-fermin-montilla.html">
-         <img alt="" src="https://dl.dropboxusercontent.com/s/1bvnowsfke4rs2k/isra.jpg"/>
+
+    <footer>
+        <div class="tags">
+            <a href="//iffm.me/tag/python.html">python</a>
+            <a href="//iffm.me/tag/django.html">django</a>
+            <a href="//iffm.me/tag/scaling.html">scaling</a>
+        </div>
+        <a class="twitter-share-button" data-size="large"
+          href="https://twitter.com/intent/tweet">
+            Tweet
         </a>
-       </div>
-       <div class="pure-u-3-4">
-        <h3 class="author-name">
-         <a href="//iffm.me/author/israel-fermin-montilla.html">
-          Israel Fermín Montilla
-         </a>
-        </h3>
-        <a class="twitter-follow-button" data-show-count="false" href="https://twitter.com/iferminm?ref_src=twsrc%5Etfw">
-         Follow @iferminm
-        </a>
-        <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js">
-        </script>
-        <p class="author-description">
-         {' Full time husband and dad who loves technology and programming. Senior Software Engineer @ Careem'}
-        </p>
-       </div>
-      </div>
-     </div>
-    </div>
-    <!-- Begin MailChimp Signup Form -->
-    <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css"/>
-    <style type="text/css">
-     #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+        <div class="pure-g post-footer">
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div class="pure-g poster-info">
+                    <div class="pure-u">
+                        <a href="//iffm.me/author/israel-fermin-montilla.html"><img src="https://dl.dropboxusercontent.com/s/1bvnowsfke4rs2k/isra.jpg" alt=""></a>
+                    </div>
+                    <div class="pure-u-3-4">
+                        <h3 class="author-name"><a href="//iffm.me/author/israel-fermin-montilla.html">Israel Fermín Montilla</a></h3>
+                        <a href="https://twitter.com/iferminm?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @iferminm</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <p class="author-description">
+                          {' Full time husband and dad who loves technology and programming. Senior Software Engineer @ Careem'}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="pure-u-1 pure-u-md-1-2">
+
+                <div class="pure-g post-category-info">
+                    <div class="pure-u">
+                        <a href="//iffm.me/category/blog.html"><img src="" alt=""></a>
+                    </div>
+                    <div class="pure-u-3-4">
+                        <h3 class="author-name"><a href="//iffm.me/category/blog.html">Blog</a></h3>
+                        <p class="author-description">
+                          
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Begin MailChimp Signup Form -->
+        <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+        <style type="text/css">
+            #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
             /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
             We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-    </style>
-    <div id="mc_embed_signup">
-     <form action="//iffm.us15.list-manage.com/subscribe/post?u=f9aa59a7fe24a1d24a95b2e41&amp;id=28de70c22b" class="validate" id="mc-embedded-subscribe-form" method="post" name="mc-embedded-subscribe-form" novalidate="" target="_blank">
-      <div id="mc_embed_signup_scroll">
-       <h2>
-        Subscribe to my newsletter
-       </h2>
-       <p class="author-description">
-        I share interesting stuff I find over the internet. Mostly about software, tech and science.
+        </style>
+        <div id="mc_embed_signup">
+            <form action="//iffm.us15.list-manage.com/subscribe/post?u=f9aa59a7fe24a1d24a95b2e41&amp;id=28de70c22b" method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate" target="_blank"
+                novalidate>
+                <div id="mc_embed_signup_scroll">
+                    <h2>Subscribe to my newsletter</h2>
+                    <p class="author-description">
+                        I share interesting stuff I find over the internet. Mostly about software, tech and science.
                         Think of it as a curated list of cool links with an explanation of why I think it's intetresting.
-       </p>
-       <div class="indicates-required">
-        <span class="asterisk">
-         *
-        </span>
-        indicates required
-       </div>
-       <div class="mc-field-group">
-        <label for="mce-EMAIL">
-         Email Address
-         <span class="asterisk">
-          *
-         </span>
-        </label>
-        <input class="required email" id="mce-EMAIL" name="EMAIL" type="email" value=""/>
-       </div>
-       <div class="mc-field-group">
-        <label for="mce-FNAME">
-         First Name
-        </label>
-        <input class="" id="mce-FNAME" name="FNAME" type="text" value=""/>
-       </div>
-       <div class="mc-field-group">
-        <label for="mce-LNAME">
-         Last Name
-        </label>
-        <input class="" id="mce-LNAME" name="LNAME" type="text" value=""/>
-       </div>
-       <div class="clear" id="mce-responses">
-        <div class="response" id="mce-error-response" style="display:none">
-        </div>
-        <div class="response" id="mce-success-response" style="display:none">
-        </div>
-       </div>
-       <!-- real people should not fill this in and expect good things - do not remove this or risk
+                    </p>
+                    <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+                    <div class="mc-field-group">
+                        <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+                        </label>
+                        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+                    </div>
+                    <div class="mc-field-group">
+                        <label for="mce-FNAME">First Name </label>
+                        <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+                    </div>
+                    <div class="mc-field-group">
+                        <label for="mce-LNAME">Last Name </label>
+                        <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+                    </div>
+                    <div id="mce-responses" class="clear">
+                        <div class="response" id="mce-error-response" style="display:none"></div>
+                        <div class="response" id="mce-success-response" style="display:none"></div>
+                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk
                     form bot signups-->
-       <div aria-hidden="true" style="position: absolute; left: -5000px;">
-        <input name="b_f9aa59a7fe24a1d24a95b2e41_28de70c22b" tabindex="-1" type="text" value=""/>
-       </div>
-       <div class="clear">
-        <input class="button" id="mc-embedded-subscribe" name="subscribe" type="submit" value="Subscribe"/>
-       </div>
-      </div>
-     </form>
-    </div>
-    <script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js" type="text/javascript">
-    </script>
-    <script type="text/javascript">
-     (function($)
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text"
+                    name="b_f9aa59a7fe24a1d24a95b2e41_28de70c22b"
+                    tabindex="-1"
+                    value=""></div>
+                    <div class="clear"><input type="submit" value="Subscribe" name="subscribe"
+                    id="mc-embedded-subscribe"
+                    class="button"></div>
+                </div>
+            </form>
+        </div>
+        <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($)
         {window.fnames = new Array(); window.ftypes = new
         Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj =
-        jQuery.noConflict(true);
-    </script>
-    <!--End mc_embed_signup-->
-   </footer>
-   <div class="entry-content">
-    <div id="disqus_thread">
-    </div>
-    <script type="text/javascript">
-     var disqus_shortname = 'iferminmblog';
+        jQuery.noConflict(true);</script>
+        <!--End mc_embed_signup-->
+
+
+
+
+
+
+    </footer>
+
+    <div class="entry-content">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'iferminmblog';
             (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
             })();
-    </script>
-    <noscript>
-     Please enable JavaScript to view the
-     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
-      comments powered by Disqus.
-     </a>
-    </noscript>
-   </div>
-  </div>
-  <footer class="index-footer">
-   <a href="//iffm.me/" title="/dev/isra/blog/*">
-    /dev/isra/blog/*
-   </a>
-   <a href="//iffm.me/category/blog.html">
-    Blog
-   </a>
-   <a href="//iffm.me/category/espanol.html">
-    Español
-   </a>
-   <a href="http://getpelican.com/">
-    Pelican
-   </a>
-   <a href="http://python.org/">
-    Python.org
-   </a>
-   <a href="http://jinja.pocoo.org/">
-    Jinja2
-   </a>
-   <a href="//iffm.me/feeds/all.atom.xml">
-    Atom
-   </a>
-  </footer>
-  <script>
-   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+
+</div>
+
+
+
+    <footer class="index-footer">
+
+        <a href="//iffm.me/" title="/dev/isra/blog/*">/dev/isra/blog/*</a>
+        <a href="//iffm.me/category/blog.html">Blog</a>
+        <a href="//iffm.me/category/espanol.html">Español</a>
+        <a href="http://getpelican.com/">Pelican</a>
+        <a href="http://python.org/">Python.org</a>
+        <a href="http://jinja.pocoo.org/">Jinja2</a>
+        <a href="//iffm.me/feeds/all.atom.xml">Atom</a>
+
+    </footer>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
       ga('create', 'UA-96148260-1', 'auto');
       ga('send', 'pageview');
-  </script>
-  <script crossorigin="anonymous" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" src="https://code.jquery.com/jquery-3.5.1.slim.min.js">
-  </script>
-  <script type="text/javascript">
-   $(document).ready(() => {
+
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+      crossorigin="anonymous"></script>
+    <script type="text/javascript"> 
+        $(document).ready(() => {
 
             var mobile = (/iphone|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));  
             if (!mobile) { 
@@ -406,6 +290,6 @@ so, what you'll see in part 2 will be a set of tools to monitor your app's healt
             }   
 
         });
-  </script>
- </body>
+    </script> 
+</body>
 </html>

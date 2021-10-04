@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - celery</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/celery.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2017-03-23T00:00:00+04:00</updated><entry><title>Classy Tasks with Celery</title><link href="//iffm.me/classy-tasks-with-celery.html" rel="alternate"></link><published>2017-03-23T00:00:00+04:00</published><updated>2017-03-23T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-03-23:/classy-tasks-with-celery.html</id><summary type="html">&lt;p&gt;This will be a short article, I just want to share something I learned this week.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - celery</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/celery.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2017-03-23T00:00:00+04:00</updated><subtitle></subtitle><entry><title>Classy Tasks with Celery</title><link href="//iffm.me/classy-tasks-with-celery.html" rel="alternate"></link><published>2017-03-23T00:00:00+04:00</published><updated>2017-03-23T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2017-03-23:/classy-tasks-with-celery.html</id><summary type="html">&lt;p&gt;This will be a short article, I just want to share something I learned this week.&lt;/p&gt;
 &lt;p&gt;If you work with &lt;em&gt;Python&lt;/em&gt; and chances are you've ran into &lt;em&gt;celery&lt;/em&gt; at least once, hopefully more than once, depending on how complex the projects
 you've worked on are.&lt;/p&gt;
 &lt;p&gt;If you don't know it …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This will be a short article, I just want to share something I learned this week.&lt;/p&gt;
@@ -20,7 +20,6 @@ you've worked on are.&lt;/p&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Success&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;This is a very basic example, full of bad practices and code like this shouldn't be pushed to production but it serves to illustrate what I need to explain.&lt;/p&gt;
 &lt;p&gt;Normally, what you might do is just call those three functions inside a task and just call the &lt;code&gt;task.delay()&lt;/code&gt; from the request handler, something like:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nd"&gt;@app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -37,7 +36,6 @@ you've worked on are.&lt;/p&gt;
     &lt;span class="n"&gt;resized&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;resize_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;image&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;upload_image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;resized&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;But, those three functions are not supposed to be called synchronously, so, I don't want them laying in some module waiting for someone to call them outside a task. Reason being that, as said before, these are heavy processes that might keep my web server busy and prevent it from taking new requests for a while and also keep my users waiting on a &lt;em&gt;loading&lt;/em&gt; screen for a long time, which isn't a good user experience.&lt;/p&gt;
 &lt;p&gt;I could delete them and copy all the code in my task function but it will lead to a potentially long function which will do a lot of things, it will be difficult to read and difficult to maintain, so... bad idea.&lt;/p&gt;
@@ -67,7 +65,6 @@ you've worked on are.&lt;/p&gt;
 &lt;span class="c1"&gt;# We need an instance we can call delay() on&lt;/span&gt;
 &lt;span class="n"&gt;process_image&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ProcessImage&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;And done, we can implement also a notification logic to inform the user if there's any issue processing the image after retrying and that kind of
 things, but I'll leave that for another post.&lt;/p&gt;

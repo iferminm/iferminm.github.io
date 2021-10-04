@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - tutorial</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/tutorial.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2018-01-23T00:00:00+04:00</updated><entry><title>Django registration in no time!</title><link href="//iffm.me/django-registration-in-no-time.html" rel="alternate"></link><published>2018-01-23T00:00:00+04:00</published><updated>2018-01-23T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2018-01-23:/django-registration-in-no-time.html</id><summary type="html">&lt;p&gt;What does 99% of the projects we work on have in common?, what's usually the first or the last
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - tutorial</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/tutorial.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2018-01-23T00:00:00+04:00</updated><subtitle></subtitle><entry><title>Django registration in no time!</title><link href="//iffm.me/django-registration-in-no-time.html" rel="alternate"></link><published>2018-01-23T00:00:00+04:00</published><updated>2018-01-23T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2018-01-23:/django-registration-in-no-time.html</id><summary type="html">&lt;p&gt;What does 99% of the projects we work on have in common?, what's usually the first or the last
 thing we start working on when building something, a personal project perhaps?. If you said
 &lt;em&gt;dealing with users&lt;/em&gt;, that's right. On each and every project we find ourselves writing different
 registration …&lt;/p&gt;</summary><content type="html">&lt;p&gt;What does 99% of the projects we work on have in common?, what's usually the first or the last
@@ -30,9 +30,8 @@ in almost no time.&lt;/p&gt;
 &lt;p&gt;Let's get started&lt;/p&gt;
 &lt;h3&gt;Installation&lt;/h3&gt;
 &lt;p&gt;To install it, you just need to &lt;code&gt;pip&lt;/code&gt; it as any usual &lt;em&gt;Python&lt;/em&gt; module&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;pip install django-registration&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;registration&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;For the simple &lt;em&gt;one step&lt;/em&gt; registration flow or the &lt;em&gt;HMAC Based&lt;/em&gt; workflow, you don't need to do anything else.&lt;/p&gt;
 &lt;h3&gt;Registration workflows&lt;/h3&gt;
@@ -70,7 +69,6 @@ of creating the registration workflow is done for you and works out of the box.&
 &lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;2.- Set &lt;code&gt;REGISTRATION_OPEN = True&lt;/code&gt;, this is the default value, but &lt;em&gt;better explicit than implicit&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;3.- By default, after successful registration the user will be redirected to &lt;code&gt;/&lt;/code&gt;, but you can customize this behavior by
 subclassing &lt;code&gt;registration.backends.simple.views.RegistrationView&lt;/code&gt; and overriding the method &lt;code&gt;get_success_url()&lt;/code&gt;, in my case,
@@ -96,7 +94,6 @@ corresponding &lt;code&gt;url&lt;/code&gt;.&lt;/p&gt;
     &lt;span class="c1"&gt;# More url patterns&lt;/span&gt;
 &lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;5.- Customize the registration template, this flow only needs one template called &lt;code&gt;registration/registration_form.html&lt;/code&gt; and it will
 pick it up automatically, the &lt;code&gt;RegistrationView&lt;/code&gt; will add the &lt;code&gt;form&lt;/code&gt; variable to the &lt;code&gt;context&lt;/code&gt; and it will contain a &lt;code&gt;RegistrationForm&lt;/code&gt; instance,

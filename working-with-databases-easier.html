@@ -1,428 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <title>
-   Working with databases easier
-  </title>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <meta content="summary_large_image" name="twitter:card"/>
-  <meta content="@iferminm" name="twitter:site"/>
-  <meta content="Working with databases easier" name="twitter:title"/>
-  <meta content="" name="twitter:description"/>
-  <meta content="https://dl.dropboxusercontent.com/s/e5f7as0ghmihdxn/header.jpg" name="twitter:image"/>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" rel="stylesheet"/>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" rel="stylesheet"/>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet"/>
-  <link href="//iffm.me/theme/css/main.css" rel="stylesheet"/>
-  <link href="//127.0.0.1:8000/feeds/all.atom.xml" rel="alternate" title="/dev/isra/blog/* Full Atom Feed" type="application/atom+xml"/>
-  <link href="//127.0.0.1:8000/feeds/main.xml" rel="alternate" title="/dev/isra/blog/* Atom Feed" type="application/atom+xml"/>
-  <link href="//127.0.0.1:8000/feeds/{slug}.atom.xml" rel="alternate" title="/dev/isra/blog/* Categories Atom Feed" type="application/atom+xml"/>
-  <script async="" src="https://media.ethicalads.io/media/client/ethicalads.min.js">
-  </script>
-  <link href="//iffm.me/working-with-databases-easier.html" rel="canonical"/>
-  <script type="application/ld+json">
-   {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "/dev/isra/blog/*", "item": "//iffm.me"}, {"@type": "ListItem", "position": 2, "name": "Working with databases easier", "item": "//iffm.me/working-with-databases-easier.html"}]}
-  </script>
-  <script type="application/ld+json">
-   {"@context": "https://schema.org", "@type": "Article", "author": {"@type": "Person", "name": "Israel Fermín Montilla"}, "publisher": {"@type": "Organization", "name": "/dev/isra/blog/*"}, "headline": "Working with databases easier", "about": "Blog", "datePublished": "2020-04-01 00:00"}
-  </script>
- </head>
- <body>
-  <div class="navigation pure-menu pure-menu-horizontal">
-   <a class="pure-menu-heading pure-menu-link" href="//iffm.me/">
-    /dev/isra/blog/*
-   </a>
-   <ul class="pure-menu-list">
-    <li class="pure-menu-item">
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/pages/about-me.html">
-      About me...
-     </a>
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/pages/consulting.html">
-      Consulting
-     </a>
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/pages/now.html">
-      Now
-     </a>
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/pages/talks.html">
-      Talks
-     </a>
-    </li>
-    <li class="pure-menu-item pure-menu-selected">
-     <a class="pure-menu-link" href="//iffm.me/category/blog.html">
-      Blog
-     </a>
-    </li>
-    <li class="pure-menu-item">
-     <a class="pure-menu-link" href="//iffm.me/category/espanol.html">
-      Español
-     </a>
-    </li>
-   </ul>
-  </div>
-  <div class="page-container">
-   <div class="entry-content">
-    <div class="post-meta pure-g">
-     <div class="pure-u-3-4 meta-data">
-      <a class="category" href="//iffm.me/category/blog.html">
-       Blog
-      </a>
-      <br/>
-      <a class="author" href="//iffm.me/author/israel-fermin-montilla.html">
-       Israel Fermín Montilla
-      </a>
-      —
-      <abbr title="2020-04-01T00:00:00+04:00">
-       Wed 01 April 2020
-      </abbr>
-     </div>
+<head>
+        <title>Working with databases easier</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@iferminm">
+<meta name="twitter:title" content="Working with databases easier">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://dl.dropboxusercontent.com/s/e5f7as0ghmihdxn/header.jpg">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="//iffm.me/theme/css/main.css" />
+        <link href="//127.0.0.1:8000/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="/dev/isra/blog/* Full Atom Feed" />
+        <link href="//127.0.0.1:8000/feeds/main.xml" type="application/atom+xml" rel="alternate" title="/dev/isra/blog/* Atom Feed" />
+        <link href="//127.0.0.1:8000/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="/dev/isra/blog/* Categories Atom Feed" />
+        <script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
+</head>
+<body>
+
+    <div class="navigation pure-menu pure-menu-horizontal">
+        <a href="//iffm.me/" class="pure-menu-heading  pure-menu-link">/dev/isra/blog/*</a>
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"></li>
+
+            <li class="pure-menu-item"><a href="//iffm.me/pages/about-me.html" class="pure-menu-link">About me...</a></li>
+            <li class="pure-menu-item"><a href="//iffm.me/pages/consulting.html" class="pure-menu-link">Consulting</a></li>
+            <li class="pure-menu-item"><a href="//iffm.me/pages/now.html" class="pure-menu-link">Now</a></li>
+            <li class="pure-menu-item"><a href="//iffm.me/pages/talks.html" class="pure-menu-link">Talks</a></li>
+            <li class="pure-menu-item pure-menu-selected"><a href="//iffm.me/category/blog.html" class="pure-menu-link">Blog</a></li>
+            <li class="pure-menu-item"><a href="//iffm.me/category/espanol.html" class="pure-menu-link">Español</a></li>
+        </ul>
     </div>
-   </div>
-   <div class="article-header-container">
-    <div class="background-image-container">
-     <div class="background-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://dl.dropboxusercontent.com/s/e5f7as0ghmihdxn/header.jpg);">
-      <img alt="Working with databases easier" src="https://dl.dropboxusercontent.com/s/e5f7as0ghmihdxn/header.jpg"/>
-      <div class="title">
-       <h1>
-        Working with databases easier
-       </h1>
-      </div>
-     </div>
+
+
+<div class="page-container">
+    <div class="entry-content">
+        <div class="post-meta pure-g">
+            <!--div class="pure-u">
+                <a href="//iffm.me/category/blog.html"><img src=" " class="post-avatar" alt="Blog"></a>
+            </div-->
+<div class="pure-u-3-4 meta-data">
+    <a href="//iffm.me/category/blog.html" class="category">Blog</a><br />
+
+    <a class="author" href="//iffm.me/author/israel-fermin-montilla.html">Israel Fermín Montilla</a>
+    &mdash; <abbr title="2020-04-01T00:00:00+04:00">Wed 01 April 2020</abbr>
+</div>        </div>
     </div>
-   </div>
-   <div class="entry-content">
-    <p>
-     This will be a short article, recently at work I had to build few reports on
+
+    <div class="article-header-container">
+        <div class="background-image-container">
+
+            <div class="background-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://dl.dropboxusercontent.com/s/e5f7as0ghmihdxn/header.jpg);">
+                <img src="https://dl.dropboxusercontent.com/s/e5f7as0ghmihdxn/header.jpg" alt="Working with databases easier">
+                <div class="title">
+                <h1>
+                    Working with databases easier
+                </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="entry-content">
+        
+        <p>This will be a short article, recently at work I had to build few reports on
 top of two legacy databases, to be honest, the whole architecture and the way
 the data is stored, in my opinion, is not optimal, a lot of things need to change
-but, as usual, features and business take precedence over tech debt.
-    </p>
-    <p>
-     The whole stack is based on nodejs on top of typescript, which makes a bit more
+but, as usual, features and business take precedence over tech debt.</p>
+<p>The whole stack is based on nodejs on top of typescript, which makes a bit more
 enjoyable the fact that I'm now working in JavaScript. All the databases were
 generated using knexjs so, these databases were there already and I only had to
-connect to them.
-    </p>
-    <p>
-     I didn't want to spend too much time on the connection and mapping part, so
-I wanted to see if an ORM would be of use here
-    </p>
-    <h2>
-     The overall idea
-    </h2>
-    <p>
-     Since we will be integrating with other internal tools to generate these reports
+connect to them.</p>
+<p>I didn't want to spend too much time on the connection and mapping part, so
+I wanted to see if an ORM would be of use here</p>
+<h2>The overall idea</h2>
+<p>Since we will be integrating with other internal tools to generate these reports
 the implementation I came up with is temporary, so I wanted to make as few changes
-as possible in the current codebase for several reasons:
-    </p>
-    <ol>
-     <li>
-      <p>
-       Once you add something temporary, it will be difficult to clean it up
+as possible in the current codebase for several reasons:</p>
+<ol>
+<li>
+<p>Once you add something temporary, it will be difficult to clean it up
 after it's not needed anymore, the chances of someone building on top of it 
-is high.
-      </p>
-     </li>
-     <li>
-      <p>
-       I don't like working with typescript, or JavaScript in general so if I could
-get away with writing in some other language it could be more fun
-      </p>
-     </li>
-     <li>
-      <p>
-       The current application is a monolith and the logic is complex,
-adding more would take longer than implementing something from scratch
-      </p>
-     </li>
-    </ol>
-    <p>
-     So, I decided to implement the report generating logic in a Lambda function
+is high.</p>
+</li>
+<li>
+<p>I don't like working with typescript, or JavaScript in general so if I could
+get away with writing in some other language it could be more fun</p>
+</li>
+<li>
+<p>The current application is a monolith and the logic is complex,
+adding more would take longer than implementing something from scratch</p>
+</li>
+</ol>
+<p>So, I decided to implement the report generating logic in a Lambda function
 which will be executed periodically, this meant I had to setup the connections
 to the databases from scratch and map to my domain classes and types in order
-to have a clean architecture.
-    </p>
-    <h2>
-     Enter Sqlalchemy
-    </h2>
-    <p>
-     Sqlalchemy is the database Swiss army knife in python, it makes it very
+to have a clean architecture.</p>
+<h2>Enter Sqlalchemy</h2>
+<p>Sqlalchemy is the database Swiss army knife in python, it makes it very
 easy to work with databases by mapping tables to domain classes, but it also
 works the other way around by introspecting the database's schema metadata and
-generating stub classes to deal with them in Python.
-    </p>
-    <h3>
-     Automap
-    </h3>
-    <p>
-     Sqlalchemy has an Automap extension, which lets you connect to an existing database
+generating stub classes to deal with them in Python.</p>
+<h3>Automap</h3>
+<p>Sqlalchemy has an Automap extension, which lets you connect to an existing database
 and generate a domain model from the existing database schema and operate with it
 from Python, trigger queries and use Sqlalchemy normally as if the schema was generated
-by you.
-    </p>
-    <p>
-     It's very easy and it doesn't take 30 lines of code
-    </p>
-    <div class="highlight">
-     <pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+by you.</p>
+<p>It's very easy and it doesn't take 30 lines of code</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">from</span> <span class="nn">sqlalchemy.ext.automap</span> <span class="kn">import</span> <span class="n">automap_base</span>
 <span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">Session</span>
 <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
 
 
-<span class="n">DATABASE_URL</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">'DB_URL'</span><span class="p">)</span>
+<span class="n">DATABASE_URL</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;DB_URL&#39;</span><span class="p">)</span>
 
 <span class="n">Base</span> <span class="o">=</span> <span class="n">automap_base</span><span class="p">()</span>
 <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">DATABASE_URL</span><span class="p">)</span>
 <span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
 
 <span class="n">Base</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="n">engine</span><span class="p">,</span> <span class="n">reflect</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</code></pre>
-    </div>
-    <p>
-     Then you can access the classes with the table name as it is in the database let's say you have a
-     <code>
-      user_profile
-     </code>
-     database, then you can access it as
-    </p>
-    <div class="highlight">
-     <pre><span></span><code><span class="n">Base</span><span class="o">.</span><span class="n">classes</span><span class="o">.</span><span class="n">user_profile</span>
-</code></pre>
-    </div>
-    <p>
-     Trigger queries as
-    </p>
-    <div class="highlight">
-     <pre><span></span><code><span class="n">UserProfile</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">classes</span><span class="o">.</span><span class="n">user_profile</span>
+</code></pre></div>
+
+<p>Then you can access the classes with the table name as it is in the database let's say you have a
+<code>user_profile</code> database, then you can access it as</p>
+<div class="highlight"><pre><span></span><code><span class="n">Base</span><span class="o">.</span><span class="n">classes</span><span class="o">.</span><span class="n">user_profile</span>
+</code></pre></div>
+
+<p>Trigger queries as</p>
+<div class="highlight"><pre><span></span><code><span class="n">UserProfile</span> <span class="o">=</span> <span class="n">Base</span><span class="o">.</span><span class="n">classes</span><span class="o">.</span><span class="n">user_profile</span>
 
 <span class="n">profile</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">UserProfile</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">UserProfile</span><span class="o">.</span><span class="n">user_id</span> <span class="o">==</span> <span class="mi">123123</span><span class="p">)</span><span class="o">.</span><span class="n">fist</span><span class="p">()</span>
-</code></pre>
+</code></pre></div>
+
+<p>And you're good to go.</p>
+<p>Of course, code conventions in SQL and Python are different, if you want your code to look more pythonic
+and have <code>Base.classes.*</code> to be in PascalCase as well, you can write a function to override the table naming
+when the automap is performed, it will add few lines but still below 20 lines in general</p>
+<p>It looks something like this</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">snake_to_pascal</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">tablename</span><span class="p">,</span> <span class="n">table</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">w</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">tablename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)])</span>
+</code></pre></div>
+
+<p>Of course, that assumes your tables are named as <code>this_is_a_table</code> and will be converted to <code>ThisIsATable</code></p>
+<p>You can use that function when you call <code>Base.prepare</code> as follows</p>
+<div class="highlight"><pre><span></span><code><span class="n">Base</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="n">engine</span><span class="p">,</span> <span class="n">reflect</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">classname_for_table</span><span class="o">=</span><span class="n">snake_to_pascal</span><span class="p">)</span>
+</code></pre></div>
+
+<p>And that's it. :-)</p>
     </div>
-    <p>
-     And you're good to go.
-    </p>
-    <p>
-     Of course, code conventions in SQL and Python are different, if you want your code to look more pythonic
-and have
-     <code>
-      Base.classes.*
-     </code>
-     to be in PascalCase as well, you can write a function to override the table naming
-when the automap is performed, it will add few lines but still below 20 lines in general
-    </p>
-    <p>
-     It looks something like this
-    </p>
-    <div class="highlight">
-     <pre><span></span><code><span class="k">def</span> <span class="nf">snake_to_pascal</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">tablename</span><span class="p">,</span> <span class="n">table</span><span class="p">):</span>
-    <span class="k">return</span> <span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">w</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">tablename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'_'</span><span class="p">)])</span>
-</code></pre>
-    </div>
-    <p>
-     Of course, that assumes your tables are named as
-     <code>
-      this_is_a_table
-     </code>
-     and will be converted to
-     <code>
-      ThisIsATable
-     </code>
-    </p>
-    <p>
-     You can use that function when you call
-     <code>
-      Base.prepare
-     </code>
-     as follows
-    </p>
-    <div class="highlight">
-     <pre><span></span><code><span class="n">Base</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="n">engine</span><span class="p">,</span> <span class="n">reflect</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">classname_for_table</span><span class="o">=</span><span class="n">snake_to_pascal</span><span class="p">)</span>
-</code></pre>
-    </div>
-    <p>
-     And that's it. :-)
-    </p>
-   </div>
-   <footer>
-    <div class="tags">
-     <a href="//iffm.me/tag/python.html">
-      python
-     </a>
-     <a href="//iffm.me/tag/databases.html">
-      databases
-     </a>
-     <a href="//iffm.me/tag/sqlalchemy.html">
-      sqlalchemy
-     </a>
-     <a href="//iffm.me/tag/orm.html">
-      orm
-     </a>
-    </div>
-    <a class="twitter-share-button" data-size="large" href="https://twitter.com/intent/tweet">
-     Tweet
-    </a>
-    <div class="pure-g post-footer">
-     <div class="pure-u-1 pure-u-md-1-2">
-      <div class="pure-g poster-info">
-       <div class="pure-u">
-        <a href="//iffm.me/author/israel-fermin-montilla.html">
-         <img alt="" src="https://dl.dropboxusercontent.com/s/1bvnowsfke4rs2k/isra.jpg"/>
+
+    <footer>
+        <div class="tags">
+            <a href="//iffm.me/tag/python.html">python</a>
+            <a href="//iffm.me/tag/databases.html">databases</a>
+            <a href="//iffm.me/tag/sqlalchemy.html">sqlalchemy</a>
+            <a href="//iffm.me/tag/orm.html">orm</a>
+        </div>
+        <a class="twitter-share-button" data-size="large"
+          href="https://twitter.com/intent/tweet">
+            Tweet
         </a>
-       </div>
-       <div class="pure-u-3-4">
-        <h3 class="author-name">
-         <a href="//iffm.me/author/israel-fermin-montilla.html">
-          Israel Fermín Montilla
-         </a>
-        </h3>
-        <a class="twitter-follow-button" data-show-count="false" href="https://twitter.com/iferminm?ref_src=twsrc%5Etfw">
-         Follow @iferminm
-        </a>
-        <script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js">
-        </script>
-        <p class="author-description">
-         {' Full time husband and dad who loves technology and programming. Senior Software Engineer @ Careem'}
-        </p>
-       </div>
-      </div>
-     </div>
-    </div>
-    <!-- Begin MailChimp Signup Form -->
-    <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css"/>
-    <style type="text/css">
-     #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+        <div class="pure-g post-footer">
+            <div class="pure-u-1 pure-u-md-1-2">
+                <div class="pure-g poster-info">
+                    <div class="pure-u">
+                        <a href="//iffm.me/author/israel-fermin-montilla.html"><img src="https://dl.dropboxusercontent.com/s/1bvnowsfke4rs2k/isra.jpg" alt=""></a>
+                    </div>
+                    <div class="pure-u-3-4">
+                        <h3 class="author-name"><a href="//iffm.me/author/israel-fermin-montilla.html">Israel Fermín Montilla</a></h3>
+                        <a href="https://twitter.com/iferminm?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @iferminm</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <p class="author-description">
+                          {' Full time husband and dad who loves technology and programming. Senior Software Engineer @ Careem'}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="pure-u-1 pure-u-md-1-2">
+
+                <div class="pure-g post-category-info">
+                    <div class="pure-u">
+                        <a href="//iffm.me/category/blog.html"><img src="" alt=""></a>
+                    </div>
+                    <div class="pure-u-3-4">
+                        <h3 class="author-name"><a href="//iffm.me/category/blog.html">Blog</a></h3>
+                        <p class="author-description">
+                          
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Begin MailChimp Signup Form -->
+        <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+        <style type="text/css">
+            #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
             /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
             We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-    </style>
-    <div id="mc_embed_signup">
-     <form action="//iffm.us15.list-manage.com/subscribe/post?u=f9aa59a7fe24a1d24a95b2e41&amp;id=28de70c22b" class="validate" id="mc-embedded-subscribe-form" method="post" name="mc-embedded-subscribe-form" novalidate="" target="_blank">
-      <div id="mc_embed_signup_scroll">
-       <h2>
-        Subscribe to my newsletter
-       </h2>
-       <p class="author-description">
-        I share interesting stuff I find over the internet. Mostly about software, tech and science.
+        </style>
+        <div id="mc_embed_signup">
+            <form action="//iffm.us15.list-manage.com/subscribe/post?u=f9aa59a7fe24a1d24a95b2e41&amp;id=28de70c22b" method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                class="validate" target="_blank"
+                novalidate>
+                <div id="mc_embed_signup_scroll">
+                    <h2>Subscribe to my newsletter</h2>
+                    <p class="author-description">
+                        I share interesting stuff I find over the internet. Mostly about software, tech and science.
                         Think of it as a curated list of cool links with an explanation of why I think it's intetresting.
-       </p>
-       <div class="indicates-required">
-        <span class="asterisk">
-         *
-        </span>
-        indicates required
-       </div>
-       <div class="mc-field-group">
-        <label for="mce-EMAIL">
-         Email Address
-         <span class="asterisk">
-          *
-         </span>
-        </label>
-        <input class="required email" id="mce-EMAIL" name="EMAIL" type="email" value=""/>
-       </div>
-       <div class="mc-field-group">
-        <label for="mce-FNAME">
-         First Name
-        </label>
-        <input class="" id="mce-FNAME" name="FNAME" type="text" value=""/>
-       </div>
-       <div class="mc-field-group">
-        <label for="mce-LNAME">
-         Last Name
-        </label>
-        <input class="" id="mce-LNAME" name="LNAME" type="text" value=""/>
-       </div>
-       <div class="clear" id="mce-responses">
-        <div class="response" id="mce-error-response" style="display:none">
-        </div>
-        <div class="response" id="mce-success-response" style="display:none">
-        </div>
-       </div>
-       <!-- real people should not fill this in and expect good things - do not remove this or risk
+                    </p>
+                    <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+                    <div class="mc-field-group">
+                        <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+                        </label>
+                        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+                    </div>
+                    <div class="mc-field-group">
+                        <label for="mce-FNAME">First Name </label>
+                        <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+                    </div>
+                    <div class="mc-field-group">
+                        <label for="mce-LNAME">Last Name </label>
+                        <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+                    </div>
+                    <div id="mce-responses" class="clear">
+                        <div class="response" id="mce-error-response" style="display:none"></div>
+                        <div class="response" id="mce-success-response" style="display:none"></div>
+                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk
                     form bot signups-->
-       <div aria-hidden="true" style="position: absolute; left: -5000px;">
-        <input name="b_f9aa59a7fe24a1d24a95b2e41_28de70c22b" tabindex="-1" type="text" value=""/>
-       </div>
-       <div class="clear">
-        <input class="button" id="mc-embedded-subscribe" name="subscribe" type="submit" value="Subscribe"/>
-       </div>
-      </div>
-     </form>
-    </div>
-    <script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js" type="text/javascript">
-    </script>
-    <script type="text/javascript">
-     (function($)
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text"
+                    name="b_f9aa59a7fe24a1d24a95b2e41_28de70c22b"
+                    tabindex="-1"
+                    value=""></div>
+                    <div class="clear"><input type="submit" value="Subscribe" name="subscribe"
+                    id="mc-embedded-subscribe"
+                    class="button"></div>
+                </div>
+            </form>
+        </div>
+        <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($)
         {window.fnames = new Array(); window.ftypes = new
         Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj =
-        jQuery.noConflict(true);
-    </script>
-    <!--End mc_embed_signup-->
-   </footer>
-   <div class="entry-content">
-    <div id="disqus_thread">
-    </div>
-    <script type="text/javascript">
-     var disqus_shortname = 'iferminmblog';
+        jQuery.noConflict(true);</script>
+        <!--End mc_embed_signup-->
+
+
+
+
+
+
+    </footer>
+
+    <div class="entry-content">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'iferminmblog';
             (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
             })();
-    </script>
-    <noscript>
-     Please enable JavaScript to view the
-     <a href="https://disqus.com/?ref_noscript" rel="nofollow">
-      comments powered by Disqus.
-     </a>
-    </noscript>
-   </div>
-  </div>
-  <footer class="index-footer">
-   <a href="//iffm.me/" title="/dev/isra/blog/*">
-    /dev/isra/blog/*
-   </a>
-   <a href="//iffm.me/category/blog.html">
-    Blog
-   </a>
-   <a href="//iffm.me/category/espanol.html">
-    Español
-   </a>
-   <a href="http://getpelican.com/">
-    Pelican
-   </a>
-   <a href="http://python.org/">
-    Python.org
-   </a>
-   <a href="http://jinja.pocoo.org/">
-    Jinja2
-   </a>
-   <a href="//iffm.me/feeds/all.atom.xml">
-    Atom
-   </a>
-  </footer>
-  <script>
-   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+
+</div>
+
+
+
+    <footer class="index-footer">
+
+        <a href="//iffm.me/" title="/dev/isra/blog/*">/dev/isra/blog/*</a>
+        <a href="//iffm.me/category/blog.html">Blog</a>
+        <a href="//iffm.me/category/espanol.html">Español</a>
+        <a href="http://getpelican.com/">Pelican</a>
+        <a href="http://python.org/">Python.org</a>
+        <a href="http://jinja.pocoo.org/">Jinja2</a>
+        <a href="//iffm.me/feeds/all.atom.xml">Atom</a>
+
+    </footer>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
       ga('create', 'UA-96148260-1', 'auto');
       ga('send', 'pageview');
-  </script>
-  <script crossorigin="anonymous" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" src="https://code.jquery.com/jquery-3.5.1.slim.min.js">
-  </script>
-  <script type="text/javascript">
-   $(document).ready(() => {
+
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+      crossorigin="anonymous"></script>
+    <script type="text/javascript"> 
+        $(document).ready(() => {
 
             var mobile = (/iphone|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));  
             if (!mobile) { 
@@ -432,6 +314,6 @@ when the automap is performed, it will add few lines but still below 20 lines in
             }   
 
         });
-  </script>
- </body>
+    </script> 
+</body>
 </html>

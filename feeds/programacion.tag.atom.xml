@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - programación</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/programacion.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2014-12-19T00:00:00+04:00</updated><entry><title>Cosas que he aprendido, Mixins</title><link href="//iffm.me/cosas-que-he-aprendido-mixins.html" rel="alternate"></link><published>2014-12-19T00:00:00+04:00</published><updated>2014-12-19T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-12-19:/cosas-que-he-aprendido-mixins.html</id><summary type="html">&lt;p&gt;A menudo nos ocurre que estamos programando y vemos que hay ciertos
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - programación</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/programacion.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2014-12-19T00:00:00+04:00</updated><subtitle></subtitle><entry><title>Cosas que he aprendido, Mixins</title><link href="//iffm.me/cosas-que-he-aprendido-mixins.html" rel="alternate"></link><published>2014-12-19T00:00:00+04:00</published><updated>2014-12-19T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2014-12-19:/cosas-que-he-aprendido-mixins.html</id><summary type="html">&lt;p&gt;A menudo nos ocurre que estamos programando y vemos que hay ciertos
 métodos que se repiten en varias clases, esto es una señal de que ese
 conjunto de métodos pueden abstraerse de alguna manera para no tener que
 duplicar esa lógica, entonces, escribimos una clase base, con esos
@@ -52,7 +52,6 @@ en el futuro habrá más vistas que deben ser "ajax friendly"&lt;/p&gt;
     &lt;span class="n"&gt;form&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;CommentForm&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Como vemos, es la implementación de lo que vendría siendo una vista
 basada en clases normal y corriente para procesar un formulario,
 validarlo y crear un nuevo registro de &lt;em&gt;Comment&lt;/em&gt;, sólo una cosa salta a
@@ -68,7 +67,6 @@ la vista: el &lt;em&gt;JSONResponseMixin&lt;/em&gt;. Veamos qué hace:&lt;/p&gt;
             &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;
         &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Y eso es todo, luego, si necesito hacer que alguna otra vista sea "ajax
 friendly", simplemente tengo que hacer que herede del
@@ -99,7 +97,6 @@ colaterales, por ejemplo:&lt;/p&gt;
     &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;Esta función, claramente, no hace una cosa, hace dos, escribe un texto
 al archivo y luego lo cierra, esto es poco intuitivo, cualquiera
@@ -281,7 +278,6 @@ acceso más pythónica a dicho atributo, por ejemplo:&lt;/p&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;used_credits&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;total_credits&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Como vemos, se simplifica un poco el acceso a estos atributos, se
 encapsula la llamada a la función correspondiente y se da una interfaz
 como si se tratara de un atributo, escondiendo la complejidad "tras
@@ -351,7 +347,6 @@ veamos como&lt;/p&gt;
     &lt;span class="c1"&gt;# Bueno, ya se hacen una idea&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Habría que hacer lo mismo para cada atributo/propiedad, la interfaz es
 simple, pero la implementación no es elegante, se ve un poco sucia y
 repetitiva, sin embargo, es válida.&lt;/p&gt;
@@ -393,7 +388,6 @@ realizar las validaciones necesarias de manera simple. Algo así como un
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;instance&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Con esto, nuestra clase &lt;em&gt;Book&lt;/em&gt; cambiaría de la siguiente manera:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Book&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="c1"&gt;# Los descriptores siempre se colocan al nivel de la clase&lt;/span&gt;
@@ -411,12 +405,10 @@ realizar las validaciones necesarias de manera simple. Algo así como un
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;year&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;year&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;Una implementación mucho más limpia y legible, veamos cómo funciona&lt;/p&gt;
 &lt;p&gt;Supongamos que ya hemos hecho algo como&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Book&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;La Muerte de Honorio&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Miguel Otero Silva&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1963&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;ol&gt;
 &lt;li&gt;Al ejecutar, por ejemplo &lt;em&gt;b.year = 1200&lt;/em&gt;, se va a invocar realmente
@@ -491,7 +483,6 @@ todo lo programas con php y puedes simplemente hacer:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="x"&gt;use project\module\submodule\file;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;p&gt;y todo bien.&lt;/p&gt;
 &lt;h2&gt;El problema:&lt;/h2&gt;
 &lt;p&gt;Obviamente, no podemos importar código php en nuestro proyecto en
@@ -530,7 +521,6 @@ sudo make
 sudo make install
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-
 &lt;h4&gt;php.ini:&lt;/h4&gt;
 &lt;p&gt;Simplemente debemos modificar las siguientes líneas:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;extension&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;redis&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;so&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
@@ -538,7 +528,6 @@ sudo make install
 &lt;span class="k"&gt;session&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save_handler&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;redis&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;span class="k"&gt;session&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save_path&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;tcp://localhost:6379&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
 
 &lt;p&gt;El &lt;em&gt;save_path&lt;/em&gt; debe tener la IP y el Puerto donde nuestra instancia de
 redis estará escuchando.&lt;/p&gt;
