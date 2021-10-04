@@ -2,8 +2,8 @@ Title: 7 tips to be a more productive engineer
 Author: Israel Fermín Montilla
 Date: 2021-10-05
 Tags: career, personal, productivity
-Cover: https://dl.dropboxusercontent.com/s/y7hf2p40crdu19y/careem.jpeg
-Thumbnail: https://dl.dropboxusercontent.com/s/y7hf2p40crdu19y/careem.jpeg
+Cover: https://dl.dropboxusercontent.com/s/7ftg8l3wmane11v/header.jpeg
+Thumbnail: https://dl.dropboxusercontent.com/s/7ftg8l3wmane11v/header.jpeg
 
 As Software Engineers, we are not measured by how much we know about computer
 science, data structures and algorithms, at least not after we pass the interview.
@@ -38,6 +38,7 @@ using them. I love lists, I make lists for almost everything: my daily work,
 my personal projects, what I need when I go to the supermarket...
 
 I keep a daily TODO list and I manage priorities with colors:
+
 * **Red:** for high impact or urgent work, things that need to be done ASAP or
 things that, when done, will have a high impact on the projects I'm maintaining
 * **Yellow:** for things that will have impact, but not as much and can wait a bit
