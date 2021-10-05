@@ -261,3 +261,6 @@ I'm not fully productive that day because I don't have a clear picture of the
 priorities. Writing everything down helps you take it out of your system and
 take the tasks one by one without the fear of forgetting something.
 
+# Recommended readings
+* Master your time, Master your life by Brian Tracy
+* Deep Work by Cal Newport
