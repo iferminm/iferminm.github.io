@@ -94,7 +94,7 @@ make a routine for myself so that I could use my time in a more predictable mann
 One book that changed the way I think and reason about time is [Master your time
 master your life](https://www.goodreads.com/book/show/31287110-master-your-time-master-your-life)
 by productivity coach [Brian Tracy](https://www.goodreads.com/author/show/22033.Brian_Tracy).
-I this book, Tracy mentions that there are multiple types of time in life and
+In this book, Tracy mentions that there are multiple types of time in life and
 one needs to be able to identify what kind of time you have at the moment
 to know how you should use it as well as what kind of time a task requires in 
 order to know when to do it.
