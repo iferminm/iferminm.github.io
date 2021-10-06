@@ -188,7 +188,7 @@ As I mentioned [on a previous post](https://iffm.me/working-from-home-with-kids.
 I often use the [pomodoro technique](https://en.wikipedia.org/wiki/Pomodoro_Technique) 
 on my day to day work, I set a timer and I commit to work on a task for, 
 say, 30-40 minutes, I focus on the task at hand and only on that, when the 
-time in finished, I take a 5min break and then come back to the task for another
+time is finished, I take a 5min break and then come back to the task for another
 30-40min block, this way I make taking breaks part of my work routine and avoid
 dawning myself in a problem.
 
