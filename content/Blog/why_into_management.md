@@ -2,8 +2,8 @@ Title: Why I am considering getting into management
 Author: Israel Fermin Montilla
 Date: 2022-03-25
 Tags: career, personal
-Cover: aaaaaaa
-Thumbnail: aaaaa
+Cover: https://dl.dropboxusercontent.com/s/dz1lifonh07ecd9/header.jpg
+Thumbnail: https://dl.dropboxusercontent.com/s/dz1lifonh07ecd9/header.jpg
 
 
 I've reached a point in my career in which I'm questioning a lot of things about
