@@ -153,16 +153,16 @@ conexiones a todos los usuarios con permiso de replicación desde la
 sub-red <strong>10.1.1.8/32</strong>.</p>
 <p>Ahora, generamos los <strong>WAL</strong>, para ello, ejecutamos lo siguiente en el
 terminal SQL de Postgres:</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">pg_start_backup</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">pg_start_backup</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 
 <p>Mientras eso esté ocurriendo, en otro terminal, ejecutamos lo siguiente:</p>
-<div class="highlight"><pre><span></span><code><span class="n">cd</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="mf">9.1</span> <span class="c1"># tar czvf backup.tgz main</span>
+<div class="highlight"><pre><span></span><code><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="mf">9.1</span><span class="w"> </span><span class="c1"># tar czvf backup.tgz main</span><span class="w"></span>
 </code></pre></div>
 
 <p>Con esto estamos comprimiendo el directorio de datos de Postgres. Una
 vez hecho esto, detenemos la generación de WAL:</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="n">pg_stop_backup</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">pg_stop_backup</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 
 <p>El asunto general se resume con la siguiente ecuación:</p>
@@ -189,12 +189,12 @@ datos para establecer las siguientes opciones:</p>
 <strong>primary_conninfo</strong>, además, el <strong>restore_command</strong> indica dónde se
 encuentra el respaldo inicial inconsistente. Finalmente, nos aseguramos
 de que los roles tengan permiso de replicación:</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">pg_roles</span>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pg_roles</span><span class="w"></span>
 </code></pre></div>
 
 <p>y, de no tener permisos de replicación, alteramos los roles necesarios
 para ello:</p>
-<div class="highlight"><pre><span></span><code><span class="k">ALTER</span> <span class="k">ROLE</span> <span class="n">nombre</span> <span class="k">WITH</span> <span class="n">REPLICATION</span>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">REPLICATION</span><span class="w"></span>
 </code></pre></div>
 
 <p>Una vez hecho todo esto, ya hemos configurado un sistema de replicación

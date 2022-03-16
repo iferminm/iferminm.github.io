@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - soa</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/soa.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2013-08-18T00:00:00+04:00</updated><subtitle></subtitle><entry><title>Clientes SOAP en Python</title><link href="//iffm.me/clientes-soap-en-python.html" rel="alternate"></link><published>2013-08-18T00:00:00+04:00</published><updated>2013-08-18T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2013-08-18:/clientes-soap-en-python.html</id><summary type="html">&lt;p&gt;Como todos saben, y algunos me chalequean por eso, en la primera mitad
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - soa</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/soa.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2013-08-18T00:00:00+04:00</updated><entry><title>Clientes SOAP en Python</title><link href="//iffm.me/clientes-soap-en-python.html" rel="alternate"></link><published>2013-08-18T00:00:00+04:00</published><updated>2013-08-18T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2013-08-18:/clientes-soap-en-python.html</id><summary type="html">&lt;p&gt;Como todos saben, y algunos me chalequean por eso, en la primera mitad
 de 2013 cambié de trabajo dos veces, estaba algo aburrido en Metamax y
 decidí aceptar una oportunidad en 4geeks, junto con una serie de
 proyectos para una empresa en el extranjero que pintaban bastante bien,
@@ -70,7 +70,7 @@ formato XML.&lt;/p&gt;
                  &lt;span class="na"&gt;xmlns:wsoap=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://schemas.xmlsoap.org/wsdl/soap/&amp;quot;&lt;/span&gt;
                  &lt;span class="na"&gt;targetNamespace=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.tmsws.com/wsdl20sample&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
 
-    &lt;span class="c"&gt;&amp;lt;!-- Tipos Abstractos --&amp;gt;&lt;/span&gt;
+    &lt;span class="cm"&gt;&amp;lt;!-- Tipos Abstractos --&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;types&amp;gt;&lt;/span&gt;
           &lt;span class="nt"&gt;&amp;lt;xs:schema&lt;/span&gt; &lt;span class="na"&gt;xmlns:xs=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.w3.org/2001/XMLSchema&amp;quot;&lt;/span&gt;
                     &lt;span class="na"&gt;xmlns=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.tmsws.com/wsdl20sample&amp;quot;&lt;/span&gt;
@@ -81,7 +81,7 @@ formato XML.&lt;/p&gt;
           &lt;span class="nt"&gt;&amp;lt;/xs:schema&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;/types&amp;gt;&lt;/span&gt;
 
-    &lt;span class="c"&gt;&amp;lt;!-- Interfaces abstractas --&amp;gt;&lt;/span&gt;
+    &lt;span class="cm"&gt;&amp;lt;!-- Interfaces abstractas --&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;interface&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Interface1&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
           &lt;span class="nt"&gt;&amp;lt;fault&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Error1&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;element=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tns:response&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
           &lt;span class="nt"&gt;&amp;lt;operation&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Opp1&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;pattern=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.w3.org/ns/wsdl/in-out&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
@@ -90,13 +90,13 @@ formato XML.&lt;/p&gt;
           &lt;span class="nt"&gt;&amp;lt;/operation&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;/interface&amp;gt;&lt;/span&gt;
 
-    &lt;span class="c"&gt;&amp;lt;!-- Interface concreta sobre HTTP --&amp;gt;&lt;/span&gt;
+    &lt;span class="cm"&gt;&amp;lt;!-- Interface concreta sobre HTTP --&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;binding&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;HttpBinding&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;interface=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tns:Interface1&amp;quot;&lt;/span&gt;
                 &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.w3.org/ns/wsdl/http&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
           &lt;span class="nt"&gt;&amp;lt;operation&lt;/span&gt; &lt;span class="na"&gt;ref=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tns:Get&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;whttp:method=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;GET&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;/binding&amp;gt;&lt;/span&gt;
 
-    &lt;span class="c"&gt;&amp;lt;!-- Interface concreta sobre SOAP --&amp;gt;&lt;/span&gt;
+    &lt;span class="cm"&gt;&amp;lt;!-- Interface concreta sobre SOAP --&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;binding&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;SoapBinding&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;interface=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tns:Interface1&amp;quot;&lt;/span&gt;
                 &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.w3.org/ns/wsdl/soap&amp;quot;&lt;/span&gt;
                 &lt;span class="na"&gt;wsoap:protocol=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.w3.org/2003/05/soap/bindings/HTTP/&amp;quot;&lt;/span&gt;
@@ -105,7 +105,7 @@ formato XML.&lt;/p&gt;
        &lt;span class="nt"&gt;&amp;lt;/binding&amp;gt;&lt;/span&gt;
 
 
-    &lt;span class="c"&gt;&amp;lt;!-- Endpoints que ofrecen el servicio --&amp;gt;&lt;/span&gt;
+    &lt;span class="cm"&gt;&amp;lt;!-- Endpoints que ofrecen el servicio --&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;service&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Service1&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;interface=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tns:Interface1&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
           &lt;span class="nt"&gt;&amp;lt;endpoint&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;HttpEndpoint&amp;quot;&lt;/span&gt;
                     &lt;span class="na"&gt;binding=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tns:HttpBinding&amp;quot;&lt;/span&gt;

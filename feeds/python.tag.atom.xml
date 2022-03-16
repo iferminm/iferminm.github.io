@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - python</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/python.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2020-04-01T00:00:00+04:00</updated><subtitle></subtitle><entry><title>Working with databases easier</title><link href="//iffm.me/working-with-databases-easier.html" rel="alternate"></link><published>2020-04-01T00:00:00+04:00</published><updated>2020-04-01T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2020-04-01:/working-with-databases-easier.html</id><summary type="html">&lt;p&gt;This will be a short article, recently at work I had to build few reports on
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - python</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/python.tag.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2020-04-01T00:00:00+04:00</updated><entry><title>Working with databases easier</title><link href="//iffm.me/working-with-databases-easier.html" rel="alternate"></link><published>2020-04-01T00:00:00+04:00</published><updated>2020-04-01T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2020-04-01:/working-with-databases-easier.html</id><summary type="html">&lt;p&gt;This will be a short article, recently at work I had to build few reports on
 top of two legacy databases, to be honest, the whole architecture and the way
 the data is stored, in my opinion, is not optimal, a lot of things need to change
 but, as usual …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This will be a short article, recently at work I had to build few reports on
@@ -118,7 +118,7 @@ in almost no time.&lt;/p&gt;
 &lt;p&gt;Let's get started&lt;/p&gt;
 &lt;h3&gt;Installation&lt;/h3&gt;
 &lt;p&gt;To install it, you just need to &lt;code&gt;pip&lt;/code&gt; it as any usual &lt;em&gt;Python&lt;/em&gt; module&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;registration&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;pip&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;install&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;registration&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;For the simple &lt;em&gt;one step&lt;/em&gt; registration flow or the &lt;em&gt;HMAC Based&lt;/em&gt; workflow, you don't need to do anything else.&lt;/p&gt;
@@ -1226,7 +1226,7 @@ formato XML.&lt;/p&gt;
                  &lt;span class="na"&gt;xmlns:wsoap=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://schemas.xmlsoap.org/wsdl/soap/&amp;quot;&lt;/span&gt;
                  &lt;span class="na"&gt;targetNamespace=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.tmsws.com/wsdl20sample&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
 
-    &lt;span class="c"&gt;&amp;lt;!-- Tipos Abstractos --&amp;gt;&lt;/span&gt;
+    &lt;span class="cm"&gt;&amp;lt;!-- Tipos Abstractos --&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;types&amp;gt;&lt;/span&gt;
           &lt;span class="nt"&gt;&amp;lt;xs:schema&lt;/span&gt; &lt;span class="na"&gt;xmlns:xs=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.w3.org/2001/XMLSchema&amp;quot;&lt;/span&gt;
                     &lt;span class="na"&gt;xmlns=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.tmsws.com/wsdl20sample&amp;quot;&lt;/span&gt;
@@ -1237,7 +1237,7 @@ formato XML.&lt;/p&gt;
           &lt;span class="nt"&gt;&amp;lt;/xs:schema&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;/types&amp;gt;&lt;/span&gt;
 
-    &lt;span class="c"&gt;&amp;lt;!-- Interfaces abstractas --&amp;gt;&lt;/span&gt;
+    &lt;span class="cm"&gt;&amp;lt;!-- Interfaces abstractas --&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;interface&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Interface1&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
           &lt;span class="nt"&gt;&amp;lt;fault&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Error1&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;element=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tns:response&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
           &lt;span class="nt"&gt;&amp;lt;operation&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Opp1&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;pattern=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.w3.org/ns/wsdl/in-out&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
@@ -1246,13 +1246,13 @@ formato XML.&lt;/p&gt;
           &lt;span class="nt"&gt;&amp;lt;/operation&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;/interface&amp;gt;&lt;/span&gt;
 
-    &lt;span class="c"&gt;&amp;lt;!-- Interface concreta sobre HTTP --&amp;gt;&lt;/span&gt;
+    &lt;span class="cm"&gt;&amp;lt;!-- Interface concreta sobre HTTP --&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;binding&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;HttpBinding&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;interface=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tns:Interface1&amp;quot;&lt;/span&gt;
                 &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.w3.org/ns/wsdl/http&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
           &lt;span class="nt"&gt;&amp;lt;operation&lt;/span&gt; &lt;span class="na"&gt;ref=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tns:Get&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;whttp:method=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;GET&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;/binding&amp;gt;&lt;/span&gt;
 
-    &lt;span class="c"&gt;&amp;lt;!-- Interface concreta sobre SOAP --&amp;gt;&lt;/span&gt;
+    &lt;span class="cm"&gt;&amp;lt;!-- Interface concreta sobre SOAP --&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;binding&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;SoapBinding&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;interface=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tns:Interface1&amp;quot;&lt;/span&gt;
                 &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.w3.org/ns/wsdl/soap&amp;quot;&lt;/span&gt;
                 &lt;span class="na"&gt;wsoap:protocol=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.w3.org/2003/05/soap/bindings/HTTP/&amp;quot;&lt;/span&gt;
@@ -1261,7 +1261,7 @@ formato XML.&lt;/p&gt;
        &lt;span class="nt"&gt;&amp;lt;/binding&amp;gt;&lt;/span&gt;
 
 
-    &lt;span class="c"&gt;&amp;lt;!-- Endpoints que ofrecen el servicio --&amp;gt;&lt;/span&gt;
+    &lt;span class="cm"&gt;&amp;lt;!-- Endpoints que ofrecen el servicio --&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;service&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Service1&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;interface=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tns:Interface1&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
           &lt;span class="nt"&gt;&amp;lt;endpoint&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;HttpEndpoint&amp;quot;&lt;/span&gt;
                     &lt;span class="na"&gt;binding=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tns:HttpBinding&amp;quot;&lt;/span&gt;

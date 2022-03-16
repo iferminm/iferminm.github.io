@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - Español</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/espanol.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2015-07-25T00:00:00+04:00</updated><subtitle></subtitle><entry><title>Django: vistas basadas en clases</title><link href="//iffm.me/django-vistas-basadas-en-clases.html" rel="alternate"></link><published>2015-07-25T00:00:00+04:00</published><updated>2015-07-25T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2015-07-25:/django-vistas-basadas-en-clases.html</id><summary type="html">&lt;p&gt;Tenía pendiente escribir sobre esto desde hace tiempo, pero entre una
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/dev/isra/blog/* - Español</title><link href="//iffm.me/" rel="alternate"></link><link href="//127.0.0.1:8000/feeds/espanol.atom.xml" rel="self"></link><id>//iffm.me/</id><updated>2015-07-25T00:00:00+04:00</updated><entry><title>Django: vistas basadas en clases</title><link href="//iffm.me/django-vistas-basadas-en-clases.html" rel="alternate"></link><published>2015-07-25T00:00:00+04:00</published><updated>2015-07-25T00:00:00+04:00</updated><author><name>Israel Fermín Montilla</name></author><id>tag:iffm.me,2015-07-25:/django-vistas-basadas-en-clases.html</id><summary type="html">&lt;p&gt;Tenía pendiente escribir sobre esto desde hace tiempo, pero entre una
 cosa y otra siempre terminaba escribiendo sobre otra cosa y las vistas
 basadas en clases quedaban olvidadas.&lt;/p&gt;
 &lt;p&gt;Las vistas basadas en clases nos permiten simplificar muchísimo el
@@ -1671,7 +1671,7 @@ formato XML.&lt;/p&gt;
                  &lt;span class="na"&gt;xmlns:wsoap=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://schemas.xmlsoap.org/wsdl/soap/&amp;quot;&lt;/span&gt;
                  &lt;span class="na"&gt;targetNamespace=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.tmsws.com/wsdl20sample&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
 
-    &lt;span class="c"&gt;&amp;lt;!-- Tipos Abstractos --&amp;gt;&lt;/span&gt;
+    &lt;span class="cm"&gt;&amp;lt;!-- Tipos Abstractos --&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;types&amp;gt;&lt;/span&gt;
           &lt;span class="nt"&gt;&amp;lt;xs:schema&lt;/span&gt; &lt;span class="na"&gt;xmlns:xs=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.w3.org/2001/XMLSchema&amp;quot;&lt;/span&gt;
                     &lt;span class="na"&gt;xmlns=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.tmsws.com/wsdl20sample&amp;quot;&lt;/span&gt;
@@ -1682,7 +1682,7 @@ formato XML.&lt;/p&gt;
           &lt;span class="nt"&gt;&amp;lt;/xs:schema&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;/types&amp;gt;&lt;/span&gt;
 
-    &lt;span class="c"&gt;&amp;lt;!-- Interfaces abstractas --&amp;gt;&lt;/span&gt;
+    &lt;span class="cm"&gt;&amp;lt;!-- Interfaces abstractas --&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;interface&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Interface1&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
           &lt;span class="nt"&gt;&amp;lt;fault&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Error1&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;element=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tns:response&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
           &lt;span class="nt"&gt;&amp;lt;operation&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Opp1&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;pattern=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.w3.org/ns/wsdl/in-out&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
@@ -1691,13 +1691,13 @@ formato XML.&lt;/p&gt;
           &lt;span class="nt"&gt;&amp;lt;/operation&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;/interface&amp;gt;&lt;/span&gt;
 
-    &lt;span class="c"&gt;&amp;lt;!-- Interface concreta sobre HTTP --&amp;gt;&lt;/span&gt;
+    &lt;span class="cm"&gt;&amp;lt;!-- Interface concreta sobre HTTP --&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;binding&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;HttpBinding&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;interface=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tns:Interface1&amp;quot;&lt;/span&gt;
                 &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.w3.org/ns/wsdl/http&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
           &lt;span class="nt"&gt;&amp;lt;operation&lt;/span&gt; &lt;span class="na"&gt;ref=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tns:Get&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;whttp:method=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;GET&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;/binding&amp;gt;&lt;/span&gt;
 
-    &lt;span class="c"&gt;&amp;lt;!-- Interface concreta sobre SOAP --&amp;gt;&lt;/span&gt;
+    &lt;span class="cm"&gt;&amp;lt;!-- Interface concreta sobre SOAP --&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;binding&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;SoapBinding&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;interface=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tns:Interface1&amp;quot;&lt;/span&gt;
                 &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.w3.org/ns/wsdl/soap&amp;quot;&lt;/span&gt;
                 &lt;span class="na"&gt;wsoap:protocol=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;http://www.w3.org/2003/05/soap/bindings/HTTP/&amp;quot;&lt;/span&gt;
@@ -1706,7 +1706,7 @@ formato XML.&lt;/p&gt;
        &lt;span class="nt"&gt;&amp;lt;/binding&amp;gt;&lt;/span&gt;
 
 
-    &lt;span class="c"&gt;&amp;lt;!-- Endpoints que ofrecen el servicio --&amp;gt;&lt;/span&gt;
+    &lt;span class="cm"&gt;&amp;lt;!-- Endpoints que ofrecen el servicio --&amp;gt;&lt;/span&gt;
        &lt;span class="nt"&gt;&amp;lt;service&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Service1&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;interface=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tns:Interface1&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
           &lt;span class="nt"&gt;&amp;lt;endpoint&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;HttpEndpoint&amp;quot;&lt;/span&gt;
                     &lt;span class="na"&gt;binding=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;tns:HttpBinding&amp;quot;&lt;/span&gt;
@@ -2793,16 +2793,16 @@ conexiones a todos los usuarios con permiso de replicación desde la
 sub-red &lt;strong&gt;10.1.1.8/32&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Ahora, generamos los &lt;strong&gt;WAL&lt;/strong&gt;, para ello, ejecutamos lo siguiente en el
 terminal SQL de Postgres:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;pg_start_backup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pg_start_backup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Mientras eso esté ocurriendo, en otro terminal, ejecutamos lo siguiente:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;postgresql&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mf"&gt;9.1&lt;/span&gt; &lt;span class="c1"&gt;# tar czvf backup.tgz main&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;postgresql&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mf"&gt;9.1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# tar czvf backup.tgz main&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Con esto estamos comprimiendo el directorio de datos de Postgres. Una
 vez hecho esto, detenemos la generación de WAL:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;pg_stop_backup&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pg_stop_backup&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;El asunto general se resume con la siguiente ecuación:&lt;/p&gt;
@@ -2829,12 +2829,12 @@ datos para establecer las siguientes opciones:&lt;/p&gt;
 &lt;strong&gt;primary_conninfo&lt;/strong&gt;, además, el &lt;strong&gt;restore_command&lt;/strong&gt; indica dónde se
 encuentra el respaldo inicial inconsistente. Finalmente, nos aseguramos
 de que los roles tengan permiso de replicación:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;pg_roles&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pg_roles&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;y, de no tener permisos de replicación, alteramos los roles necesarios
 para ello:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;ALTER&lt;/span&gt; &lt;span class="k"&gt;ROLE&lt;/span&gt; &lt;span class="n"&gt;nombre&lt;/span&gt; &lt;span class="k"&gt;WITH&lt;/span&gt; &lt;span class="n"&gt;REPLICATION&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;ALTER&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;ROLE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;nombre&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;WITH&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;REPLICATION&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Una vez hecho todo esto, ya hemos configurado un sistema de replicación

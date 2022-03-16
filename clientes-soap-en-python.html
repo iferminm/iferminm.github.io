@@ -126,7 +126,7 @@ formato XML.</p>
                  <span class="na">xmlns:wsoap=</span><span class="s">&quot;http://schemas.xmlsoap.org/wsdl/soap/&quot;</span>
                  <span class="na">targetNamespace=</span><span class="s">&quot;http://www.tmsws.com/wsdl20sample&quot;</span><span class="nt">&gt;</span>
 
-    <span class="c">&lt;!-- Tipos Abstractos --&gt;</span>
+    <span class="cm">&lt;!-- Tipos Abstractos --&gt;</span>
        <span class="nt">&lt;types&gt;</span>
           <span class="nt">&lt;xs:schema</span> <span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span>
                     <span class="na">xmlns=</span><span class="s">&quot;http://www.tmsws.com/wsdl20sample&quot;</span>
@@ -137,7 +137,7 @@ formato XML.</p>
           <span class="nt">&lt;/xs:schema&gt;</span>
        <span class="nt">&lt;/types&gt;</span>
 
-    <span class="c">&lt;!-- Interfaces abstractas --&gt;</span>
+    <span class="cm">&lt;!-- Interfaces abstractas --&gt;</span>
        <span class="nt">&lt;interface</span> <span class="na">name=</span><span class="s">&quot;Interface1&quot;</span><span class="nt">&gt;</span>
           <span class="nt">&lt;fault</span> <span class="na">name=</span><span class="s">&quot;Error1&quot;</span> <span class="na">element=</span><span class="s">&quot;tns:response&quot;</span><span class="nt">/&gt;</span>
           <span class="nt">&lt;operation</span> <span class="na">name=</span><span class="s">&quot;Opp1&quot;</span> <span class="na">pattern=</span><span class="s">&quot;http://www.w3.org/ns/wsdl/in-out&quot;</span><span class="nt">&gt;</span>
@@ -146,13 +146,13 @@ formato XML.</p>
           <span class="nt">&lt;/operation&gt;</span>
        <span class="nt">&lt;/interface&gt;</span>
 
-    <span class="c">&lt;!-- Interface concreta sobre HTTP --&gt;</span>
+    <span class="cm">&lt;!-- Interface concreta sobre HTTP --&gt;</span>
        <span class="nt">&lt;binding</span> <span class="na">name=</span><span class="s">&quot;HttpBinding&quot;</span> <span class="na">interface=</span><span class="s">&quot;tns:Interface1&quot;</span>
                 <span class="na">type=</span><span class="s">&quot;http://www.w3.org/ns/wsdl/http&quot;</span><span class="nt">&gt;</span>
           <span class="nt">&lt;operation</span> <span class="na">ref=</span><span class="s">&quot;tns:Get&quot;</span> <span class="na">whttp:method=</span><span class="s">&quot;GET&quot;</span><span class="nt">/&gt;</span>
        <span class="nt">&lt;/binding&gt;</span>
 
-    <span class="c">&lt;!-- Interface concreta sobre SOAP --&gt;</span>
+    <span class="cm">&lt;!-- Interface concreta sobre SOAP --&gt;</span>
        <span class="nt">&lt;binding</span> <span class="na">name=</span><span class="s">&quot;SoapBinding&quot;</span> <span class="na">interface=</span><span class="s">&quot;tns:Interface1&quot;</span>
                 <span class="na">type=</span><span class="s">&quot;http://www.w3.org/ns/wsdl/soap&quot;</span>
                 <span class="na">wsoap:protocol=</span><span class="s">&quot;http://www.w3.org/2003/05/soap/bindings/HTTP/&quot;</span>
@@ -161,7 +161,7 @@ formato XML.</p>
        <span class="nt">&lt;/binding&gt;</span>
 
 
-    <span class="c">&lt;!-- Endpoints que ofrecen el servicio --&gt;</span>
+    <span class="cm">&lt;!-- Endpoints que ofrecen el servicio --&gt;</span>
        <span class="nt">&lt;service</span> <span class="na">name=</span><span class="s">&quot;Service1&quot;</span> <span class="na">interface=</span><span class="s">&quot;tns:Interface1&quot;</span><span class="nt">&gt;</span>
           <span class="nt">&lt;endpoint</span> <span class="na">name=</span><span class="s">&quot;HttpEndpoint&quot;</span>
                     <span class="na">binding=</span><span class="s">&quot;tns:HttpBinding&quot;</span>
