@@ -1,6 +1,6 @@
 Title: Why I am considering getting into management
 Author: Israel Fermin Montilla
-Date: 2022-03-25
+Date: 2022-03-16
 Tags: career, personal
 Cover: https://dl.dropboxusercontent.com/s/dz1lifonh07ecd9/header.jpg
 Thumbnail: https://dl.dropboxusercontent.com/s/dz1lifonh07ecd9/header.jpg
