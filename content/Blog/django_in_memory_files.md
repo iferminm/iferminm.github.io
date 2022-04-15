@@ -1,9 +1,9 @@
 Title: Working with FileFields on the fly in django
 Author: Israel Fermín Montilla
-Date: 2018-03-30
+Date: 2022-04-15
 Tags: python, django, web development
-Cover: https://dl.dropboxusercontent.com/s/y7hf2p40crdu19y/careem.jpeg
-Thumbnail: https://dl.dropboxusercontent.com/s/y7hf2p40crdu19y/careem.jpeg
+Photo: https://dl.dropboxusercontent.com/s/6rywkfo3retv3gt/header.jpg
+Thumbnail: https://dl.dropboxusercontent.com/s/6rywkfo3retv3gt/header.jpg
 
 
 This took me a couple of hours to figure out. I needed to process a csv file
@@ -36,7 +36,7 @@ everything is in-memory and `models.FileField()` has the necessary methods to
 read the contents, in this case we will read the whole file into memory for the
 sake of simplicity, but it has methods to read line by line as well.
 
-The code to read the file would look something like this:
+The code to read the file and generate the treated one would look something like this:
 
 ```
 import csv
