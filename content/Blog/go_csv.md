@@ -26,3 +26,18 @@ after so long working with dynamically typed languages like Python and PHP.
 
 So, the first thing I had to do was to declare a `struct` `type` for holding
 the data I need from the CSV I'm going to parse.
+
+The program generating these CSVs already makes sure the structure is as expected,
+no pre-validation is required in this case because I have full control on how
+the CSV is generated. I'll use a very basic example.
+
+```
+package csv
+
+
+type Person struct {
+    FirstName string `csv:"first_name"`
+    LastName string `csv:"last_name"`
+}
+
+```
