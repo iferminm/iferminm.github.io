@@ -1,9 +1,9 @@
 Title: Processing CSV files in Go
 Author: Israel Fermín Montilla
-Date: 2018-03-30
+Date: 2022-06-18
 Tags: programming, go, csv
-Cover: https://dl.dropboxusercontent.com/s/y7hf2p40crdu19y/careem.jpeg
-Thumbnail: https://dl.dropboxusercontent.com/s/y7hf2p40crdu19y/careem.jpeg
+Cover: https://dl.dropboxusercontent.com/s/jo9r6ed0nimez85/download.jpeg
+Thumbnail: https://dl.dropboxusercontent.com/s/jo9r6ed0nimez85/download.jpeg
 
 
 Lately, I've been interested in learning Go, the main reason is we're starting
@@ -31,9 +31,18 @@ The program generating these CSVs already makes sure the structure is as expecte
 no pre-validation is required in this case because I have full control on how
 the CSV is generated. I'll use a very basic example.
 
+Go doesn't support unpacking csv values by default, so, I installed `gocsv`
+package to have this very convenient feature available.
+
 ```
 package csv
 
+import (
+    "fmt"
+    "os"
+
+    "github.com/gocarina/gocsv"
+)
 
 type Person struct {
     FirstName string `csv:"first_name"`
@@ -41,3 +50,34 @@ type Person struct {
 }
 
 ```
+
+Then we need to write a function that reads the csv file and returns `Person`s
+
+```
+func ReadFile(path string) []*Person {
+    pfile, err := os.OpenFile(path)
+    if err != nil {
+        panic(err)
+    }
+    defer pfile.Close()
+
+    people := []*Person{}
+
+    if err := gocsv.UnmarshalFile(file, &people); err != nil {
+        panic(err)
+    }
+
+    for _, p := range people {
+        fmt.Println(p.FirstName, p.LastName)
+    }
+
+    return people
+
+}
+```
+
+For simplicity we left error handling in a very basic shape, we only `panic`
+at the error.
+
+That's it!
+
