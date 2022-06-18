@@ -4,3 +4,6 @@
 [submodule "output"]
 	path = output
 	url = git@github.com:iferminm/iferminm.github.io.git
+[submodule "themes/ananke"]
+	path = themes/ananke
+	url = https://github.com/theNewDynamic/gohugo-theme-ananke.git
