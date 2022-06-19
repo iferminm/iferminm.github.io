@@ -1,0 +1,123 @@
+Title: The pain of moving
+Author: Israel Fermín Montilla
+Date: 2021-04-23
+Tags: personal, life
+
+There are only few things in life which are as painful, annoying, energy and
+time consuming as moving, yes, shifting places is a pain in the... you know.
+There are a lot of unknowns and that baffles me: new rent, new neighborhood,
+am I going to like it? is it going to worth the money I'm spending in rent?
+Is the new landlord going to be an asshole at some point? then... the new
+house, things are never as advertised, they'll show you only what they want you
+to see, Real Estate agents are very good at distracting you from details during
+the site visit, there's only so much you can see in a few minutes in the property
+and that's a huge monster under the bed that will come back and bite you later on.
+
+I've moved a handful of times because I don't like it, yes, it's very exciting to
+be at a new place and meet new people, but all the process around it is never
+straightforward. We recently moved to a bigger place, here in Dubai, I believe
+the biggest expense is paying the rent, so we delayed it as much as we could, then
+COVID gave us the perfect excuse to delay it even more. The truth is, we were all
+living in a 1 bedroom apartment for over seven years, since we arrived in Dubai.
+We lived in the same building, shifted apartments a couple of times within the
+same building, we started just the two of us, my wife and I, then Antonietta
+was born and now, 4 years later, Elise has come. It became very difficult to
+work from home at some point with everyone in the house and my workspace set up
+at the dining table.
+
+# The house
+Because of COVID, rents were doing down and kept low for a long while, so, COVID
+also gave us the opportunity to move from a 1 bedroom apartment in a very old
+building, into a brand new 3 bedrooms villa, with a backyard and everything
+for the kids to play and bring friends over, and the rest was almost the same as
+the apartment. But not everything is as pretty as
+it sounds...
+
+## New place means everything is broken
+Yes, it's weird but it's true, I wish I knew this before, we've had many issues
+with water-related things. First the kitchen sink was blocked, apparently there
+was a lot of dirt in the pipes so it had to be cleaned, we did that, then, suddenly
+water stopped coming out of the faucets, I called maintenance and the guy said
+the water tank was empty, so, he opened the main stopcock and water started coming
+into the tank, 20min after, my recently fixed brand new backyard was flooded.
+I called maintenance again and they took about 2h to come, it turned out the
+have the float valve, which closes the water once the tank is full, had to be replaced.
+This repair had to be done by my landlord, thankfully it didn't take too long to
+fix and the landscaping company fixed the grass again at no cost, KUDOS Green
+Lawn Landscaping for the GREAT customer support.
+
+Then... no water again, after troubleshooting I found out the water tank was
+empty again, someone closed the main stopcock. No worries, I opened it and after 20min
+it was full again, no floods this time but no water was coming either, I guessed
+since the tank was empty the pumps might had got air-blocked, I tried to purge them
+myself but it didn't work, so I called maintenance again. They managed to purge
+the pumps and get everything working again, but they also said I had to replace
+the non-return valve, which prevents the water flowing back into the tank when the
+pumps are not working because there's enough pressure. Again... has to be
+fixed by my landlord.
+
+## Stupid warranty policy
+Yes DAMAC, this is you!. Both times I had to call maintenance, the pointed out
+the Villa is out of warranty, which I find quite unfair, and I'm speaking for
+my landlord here, COVID delayed the handover because he was back home in India and
+was unable to flight back into the UAE for a long while, again, because of the
+global COVID-19 pandemic, something no one could foresee, it was officially handed
+over to him by the end of December 2020 and now, by April 2021, only 4 months
+after, warranty is expired. Let's pause here, the house was supposed to have 1
+year warranty coverage, yes, **a house** has only **one year** of warranty. My
+TV has 2 years, my iPod, 3 years, my car, 5 years. A Louis Vuitton bag or a Gucci
+pair of shoes have **a life time** warranty, they can be repaired, anytime,
+anywhere, at any store in any country, as many times as you need, all of these
+warranties start running since the moment I get the items, not when I paid, not
+when they were built, they only start when I have the product in my hands. A
+"luxury villa" has only 1 year, which turned out to be 4 months only. You might
+think, yes, those are electronics, very small things, OK, let's go back to construction,
+my backyard landscaping has 8 years of warranty and the shades I installed have 3 years,
+the entire house only 4 months, how is this supposed to be right?
+
+## Old issues
+When my landlord came to check the water tank the first time, there was no trace of
+any float valve, if it was broken it had to be somewhere inside or around the tank,
+but there was none, I am sure the valve was not installed since the beginning, same
+with the NRV, they were not there. Those were old issues which went undiscovered
+because no one was living in the house until now. I am quite sure there are many 
+more undiscovered issues I'll be stepping into...
+
+but...
+
+Because the warranty was less than 4 months... you get the point.
+
+# The furniture
+Because we moved from a one bedroom apartment into a 3 bedrooms villa, we had to
+buy some new furniture, we went to IKEA and HomeCenter of course, the experience
+has been beyond horrible.
+
+## IKEA
+The assemblers didn't follow the instructions and now, there's one cabinet pending
+for installation among some other additional enhancements for the same unit.
+I visited the store, explained everything that happened and they agreed to arrange
+a team to do all the things, I get a call from a supervisor to coordinate the date,
+we agreed on a Sunday, before noon. The day comes, no one shows up, next day we went
+out and I get a call from the driver "sir, I'll be there within 20min", I tell him
+"I was expecting you yesterday, I'm about 1h and 20m away" he answers "it's OK
+sir, we will be there". I reach the house, no truck is there, I call and the
+guy laughs at me and says "we waited 30min and left, we have other customers to
+serve", of course I complained a lot, they made me waste my time, I wasn't planing
+to come back home and I did because they said they could wait, I visited the 
+store again and I'm waiting to coordinate... again... 
+
+## HomeCenter
+The delivery of my daughter's bed was scheduled to happen between 13:00 and 17:00,
+after hanging up the phone on me multiple times, they showed up almost at 23:00,
+I was tired so I just let them do their job and leave, they scratched all of the stairs
+and the bed was also all scratched as if it was used for 5 years before reaching
+my daughter's room, I complained at the store and to site manager promises to call
+me back within 3 days, it's been over a week and nothing has happened
+
+## Horrible after-sales service
+This is a recurring issue, it seems like all merchants forget about the customer
+right after taking their money and the only way to get things done is to stop being
+a nice human being, yell and threat to escalate things.
+
+All of this has happened over the past 2 weeks, so... let's see how I solve everything
+hopefully quick... let's see what happens"
